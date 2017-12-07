@@ -1,0 +1,3 @@
+# Restricting Access Using Crossdomain\.xml<a name="Streaming_CrossDomain"></a>
+
+The Adobe Flash Media Server `crossdomain.xml` file specifies which domains can access media files in a particular domain\. CloudFront supplies a default file that allows all domains to access the media files in your RTMP distribution, and you cannot change this behavior\. If you include a more restrictive `crossdomain.xml` file in your Amazon S3 bucket, CloudFront ignores it\.
