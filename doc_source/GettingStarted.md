@@ -52,7 +52,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 1. Select your bucket in the **Buckets** pane, and choose **Upload**\.
 
 1. On the **Upload \- Select Files** page, choose **Add Files**, and choose the files that you want to upload\.  
-![\[Upload files to your Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Upload files to your Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/s3-add-files.png)
 
 1. Enable public read privileges for each object that you upload to your Amazon S3 bucket\. 
 
@@ -79,10 +79,10 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 1. Choose **Create Distribution**\.
 
 1. On the **Select a delivery method for your content** page, in the **Web** section, choose **Get Started**\.  
-![\[Select Web as the distribution type.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Select Web as the distribution type.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-1.png)
 
 1. On the **Create Distribution** page, under **Origin Settings**, choose the Amazon S3 bucket that you created earlier\. For **Origin ID**, **Origin Path**, **Restrict Bucket Access**, and **Origin Custom Headers**, accept the default values\.  
-![\[Specify the Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Specify the Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-2-origin-s3-get-started.png)
 
 1. Under **Default Cache Behavior Settings**, accept the default values, and CloudFront will:
 
@@ -105,7 +105,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
    + Not automatically compress your content\.
 
    For more information about cache behavior options, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.  
-![\[Define cache behavior.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Define cache behavior.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-3-cache-behavior-get-started.png)
 
 1. Under **Distribution Settings**, enter the applicable values:  
 **Price Class**  
@@ -122,7 +122,7 @@ instead of like this:
 `http://d111111abcdef8.cloudfront.net/images/image.jpg`  
 you would create a CNAME for `www.example.com`\.  
 If you add a CNAME for `www.example.com` to your distribution, you also need to create \(or update\) a CNAME record with your DNS service to route queries for `www.example.com` to `d111111abcdef8.cloudfront.net`\. You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, but you may also be developing an application for the domain owner\. For more information about CNAMEs, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
-For the current limit on the number of alternate domain names that you can add to a distribution, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.  
+For the current limit on the number of alternate domain names that you can add to a distribution or request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.  
 **SSL Certificate**  
 Accept the default value, **Default CloudFront Certificate**\.   
 **Default Root Object \(Optional\)**  
@@ -135,7 +135,7 @@ In this example, we're using Amazon S3 as the origin for your objects, and Amazo
 Enter any comments that you want to save with the distribution\.  
 **Distribution State**  
 Select **Enabled** if you want CloudFront to begin processing requests as soon as the distribution is created, or select **Disabled** if you do not want CloudFront to begin processing requests after the distribution is created\.   
-![\[Distribution settings\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Distribution settings\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-4-distribution-details.png)
 
 1. Choose **Create Distribution**\.
 

@@ -10,6 +10,7 @@ This section describes how you configure and manage CloudFront web distributions
 + [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)
 + [Values that CloudFront Displays in the Console When You Create or Update a Web Distribution](distribution-web-values-returned.md)
 + [Requirements and Recommendations for Using Amazon EC2 and Other Custom Origins](CustomOriginBestPractices.md)
++ [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)
 + [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)
 + [Restricting the Geographic Distribution of Your Content](georestrictions.md)
 + [Configuring On\-Demand Smooth Streaming](on-demand-streaming-smooth.md)

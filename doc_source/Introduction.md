@@ -4,7 +4,7 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
 
 This concept is best illustrated by an example\. Suppose you're serving the following image from a traditional web server, not from CloudFront\.
 
-![\[WatchMouse\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[WatchMouse\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/globe_west_540.png)
 
 \(The image is owned by NASA and comes from the Visible Earth website at [http://visibleearth\.nasa\.gov/](http://visibleearth.nasa.gov/)\.\)
 
@@ -12,9 +12,9 @@ You're serving the image using the URL `http://example.com/globe_west_540.png`\.
 
 Further suppose that the web server that you're serving the image from is in Seattle, Washington, USA, and that a user in Austin, Texas, USA requests the image\. The following traceroute list \(courtesy of www\.WatchMouse\.com\) shows one way that this request could be routed\. 
 
-![\[WatchMouse\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[WatchMouse\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/GSG_0001_RouteText.png)
 
-![\[U.S. map\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[U.S. map\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/GSG_0001_USMapWithRoute.png)
 
 In this example, the request was routed 10 times within the United States before the image was retrieved, which is not an unusually large number of hops \(the network paths between the source and the final destination\)\. If your user were in Europe, the request would be routed through even more networks to reach your server in Seattle\. The number of networks and the distance that the request and the image must travel have a significant impact on the performance, reliability, and availability of the image\. 
 

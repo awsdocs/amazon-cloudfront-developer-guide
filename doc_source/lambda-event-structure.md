@@ -20,7 +20,6 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
 
 ```
 {
-
   "Records": [
     {
       "cf": {
@@ -30,8 +29,9 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
         },
         "request": {
           "clientIp": "2001:0db8:85a3:0:0:8a2e:0370:7334",
-          "method": "GET",
           "querystring": "size=large",
+          "uri": "/picture.jpg",
+          "method": "GET",
           "headers": {
             "host": [
               {
@@ -82,8 +82,7 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
               "region": "us-east-1"
             }
           }
-        },
-        "uri": "/picture.jpg"
+        }
       }
     }
   ]
@@ -239,7 +238,7 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
 }
 ```
 
-Response events include the values that appear in the corresponding request event, and in addition, the following values\. If your Lambda@Edge function generates an HTTP response, see [Generating HTTP Responses](lambda-generating-http-responses.md)\.
+Response events include the values that appear in the corresponding request event, and in addition, the following values\. If your Lambda@Edge function generates an HTTP response, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
 
 **distributionID \(read\-only\)**  
 The ID of the distribution that's associated with the request\.

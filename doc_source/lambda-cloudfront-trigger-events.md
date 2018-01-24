@@ -12,12 +12,10 @@ The function executes when CloudFront receives a request from a viewer and befor
 The function executes only when CloudFront forwards a request to your origin\. When the requested object is in the edge cache, the function doesn't execute\.
 
 **CloudFront Origin Response**  
-The function executes after CloudFront receives a response from the origin and before it caches the object in the response\.  
+The function executes after CloudFront receives a response from the origin and before it caches the object in the response\. The function will execute even if an error is returned from the origin\.  
 The function doesn't execute in the following cases:  
 
 + When the requested object is in the edge cache
-
-+ When the origin returns an HTTP status code of 400 or higher
 
 + When the response is generated from a function that was triggered by an origin request event
 
@@ -26,6 +24,8 @@ The function executes before returning the requested object to the viewer\. The 
 The function doesn't execute in the following cases:  
 
 + When the origin returns an HTTP status code of 400 or higher
+
++ When a custom error page is returned
 
 + When the response is generated from a function that was triggered by a viewer request event
 

@@ -38,6 +38,7 @@ For more information about setting up CloudFront with Lambda@Edge, see [Lambda@E
 + [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)
 + [Creating Lambda Functions and Adding Triggers](lambda-create-functions.md)
 + [Event Structure](lambda-event-structure.md)
-+ [Generating HTTP Responses](lambda-generating-http-responses.md)
++ [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)
++ [Updating HTTP Responses in an Origin\-Response Trigger](lambda-updating-http-responses.md)
 + [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)
 + [Example Functions](lambda-examples.md)

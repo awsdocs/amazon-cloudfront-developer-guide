@@ -1,7 +1,7 @@
 # Amazon CloudFront Developer Guide
 
 -----
-*****Copyright &copy; 2017 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2018 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -47,6 +47,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)
    + [Values that CloudFront Displays in the Console When You Create or Update a Web Distribution](distribution-web-values-returned.md)
    + [Requirements and Recommendations for Using Amazon EC2 and Other Custom Origins](CustomOriginBestPractices.md)
+   + [Using Field-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)
    + [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)
    + [Restricting the Geographic Distribution of Your Content](georestrictions.md)
    + [Configuring On-Demand Smooth Streaming](on-demand-streaming-smooth.md)
@@ -58,7 +59,8 @@ Amazon's trademarks and trade dress may not be used in
    + [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)
    + [Creating Lambda Functions and Adding Triggers](lambda-create-functions.md)
    + [Event Structure](lambda-event-structure.md)
-   + [Generating HTTP Responses](lambda-generating-http-responses.md)
+   + [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)
+   + [Updating HTTP Responses in an Origin-Response Trigger](lambda-updating-http-responses.md)
    + [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)
    + [Example Functions](lambda-examples.md)
 + [Working with RTMP Distributions](distribution-rtmp.md)

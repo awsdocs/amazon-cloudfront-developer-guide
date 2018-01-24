@@ -91,6 +91,8 @@ The length of the public key for a certificate depends on where you're storing i
 
 + Uploading a certificate to the AWS Identity and Access Management \(IAM\) certificate store: maximum size of the public key is 2048 bits\.
 
+We recommend using 2048 bits\.
+
 For information about the public keys for certificates provided by ACM, see [ACM Certificate Characteristics](http://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html) in the *AWS Certificate Manager User Guide*\. 
 
 For information about how to determine the size of the public key, see [Determining the Size of the Public Key in an SSL/TLS Certificate](cnames-and-https-size-of-public-key.md)\.

@@ -50,6 +50,8 @@ When you create a new web distribution or update an existing distribution, you s
 
 + [Allowed HTTP Methods](#DownloadDistValuesAllowedHTTPMethods)
 
++ [Field Level Encryption](#DownloadDistValuesFieldLevelEncryption)
+
 + [Cached HTTP Methods](#DownloadDistValuesCachedHTTPMethods)
 
 + [Cache Based on Selected Request Headers](#DownloadDistValuesForwardHeaders)
@@ -146,7 +148,7 @@ You specify the delivery method when you create a distribution\. For a web distr
 
 When you create or update a distribution, you provide information about one or more locations—known as origins—where you store the original versions of your web content\. CloudFront gets your web content from your origins and serves it to viewers via a world\-wide network of edge servers\. Each origin is either an Amazon S3 bucket or an HTTP server, for example, a web server\. 
 
-For the current limit on the number of origins that you can create for a distribution, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of origins that you can create for a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 If you want to delete an origin, you must first edit or delete the cache behaviors that are associated with that origin\. 
 
@@ -338,7 +340,7 @@ When you create a new distribution, you specify settings for the default cache b
 
 When you create a cache behavior, you specify the one origin from which you want CloudFront to get objects\. As a result, if you want CloudFront to distribute objects from all of your origins, you must have at least as many cache behaviors \(including the default cache behavior\) as you have origins\. For example, if you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin will never be used\.
 
-For the current limit on the number of cache behaviors that you can add to a distribution, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of cache behaviors that you can add to a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 ### Path Pattern<a name="DownloadDistValuesPathPattern"></a>
 
@@ -410,6 +412,12 @@ Choose the protocol policy that you want viewers to use to access your content i
 
 For more information, see [Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
 
+### Field Level Encryption<a name="DownloadDistValuesFieldLevelEncryption"></a>
+
+If you want to enforce field\-level encryption on specific data fields, in the dropdown lits, choose a field\-level encryption configuration\.
+
+For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.
+
 ### Allowed HTTP Methods<a name="DownloadDistValuesAllowedHTTPMethods"></a>
 
 Specify the HTTP methods that you want CloudFront to process and forward to your origin:
@@ -457,7 +465,7 @@ For more information, see [Configuring CloudFront to Cache Objects Based on Requ
 
 Specify the headers that you want CloudFront to consider when caching your objects\. Select headers from the list of available headers and choose **Add**\. To forward a custom header, enter the name of the header in the field, and choose **Add Custom**\.
 
-For the current limit on the number of headers that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of headers that you can whitelist for each cache behavior or to request a higher limit, see [Limits on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
 
 ### Object Caching<a name="DownloadDistValuesObjectCaching"></a>
 
@@ -520,7 +528,7 @@ where each of your users has a unique value for *member\-number*\. You want Clou
 
 `userid_*`
 
-For the current limit on the number of cookie names that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of cookie names that you can whitelist for each cache behavior or to request a higher limit, see [Limits on Whitelisted Cookies \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-cookies)\.
 
 ### Query String Forwarding and Caching<a name="DownloadDistValuesQueryString"></a>
 
@@ -640,7 +648,7 @@ add a CNAME for `www.example.com`\.
 **Important**  
 If you add a CNAME for `www.example.com` to your distribution, you also need to create \(or update\) a CNAME record with your DNS service to route queries for `www.example.com` to `d111111abcdef8.cloudfront.net`\. You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, but you may also be developing an application for the domain owner\.
 
-For the current limit on the number of alternate domain names that you can add to a distribution, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of alternate domain names that you can add to a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 For more information about alternate domain names, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Format of URLs for Objects](LinkFormat.md)\.
 
@@ -745,7 +753,7 @@ IPv6 is a new version of the IP protocol\. It's the eventual replacement for IPv
 
 In general, you should enable IPv6 if you have users on IPv6 networks who want to access your content\. However, if you're using signed URLs or signed cookies to restrict access to your content, and if you're using a custom policy that includes the `IpAddress` parameter to restrict the IP addresses that can access your content, do not enable IPv6\. If you want to restrict access to some content by IP address and not restrict access to other content \(or restrict access but not by IP address\), you can create two distributions\. For information about creating signed URLs by using a custom policy, see [Creating a Signed URL Using a Custom Policy](private-content-creating-signed-url-custom-policy.md)\. For information about creating signed cookies by using a custom policy, see [Setting Signed Cookies Using a Custom Policy](private-content-setting-signed-cookie-custom-policy.md)\.
 
-If you're using an Amazon Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:
+If you're using an Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:
 
 + You enable IPv6 for the distribution
 
@@ -753,7 +761,7 @@ If you're using an Amazon Route 53 alias resource record set to route traffic t
 
 For more information, see [Routing Traffic to an Amazon CloudFront Web Distribution by Using Your Domain Name](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
 
-If you created a CNAME resource record set, either with Amazon Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record will route traffic to your distribution regardless of the IP address format of the viewer request\.
+If you created a CNAME resource record set, either with Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record will route traffic to your distribution regardless of the IP address format of the viewer request\.
 
 If you enable IPv6 and CloudFront access logs, the `c-ip` column will include values in IPv4 and IPv6 format\. For more information, see [Access Logs](AccessLogs.md)\.
 

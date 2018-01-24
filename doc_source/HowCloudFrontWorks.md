@@ -22,7 +22,7 @@ Setting up CloudFront involves a few simple steps:
 
 1. CloudFront sends your distribution's configuration \(but not your content\) to all of its **edge locations**—collections of servers in geographically dispersed data centers where CloudFront caches copies of your objects\.
 
-![\[Paying for CloudFront\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Paying for CloudFront\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/how-you-configure-cf.png)
 
 As you develop your website or application, you use the domain name that CloudFront provides for your URLs\. For example, if CloudFront returns `d111111abcdef8.cloudfront.net` as the domain name for your distribution, the URL for logo\.jpg in your Amazon S3 bucket \(or in the root directory on an HTTP server\) will be `http://d111111abcdef8.cloudfront.net/logo.jpg`\.
 
@@ -46,4 +46,4 @@ Once you configure CloudFront to deliver your content, here's what happens when 
 
    1. As soon as the first byte arrives from the origin, CloudFront begins to forward the files to the user\. CloudFront also adds the files to the cache in the edge location for the next time someone requests those files\.
 
-![\[Paying for CloudFront\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Paying for CloudFront\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/how-cloudfront-delivers-content.png)

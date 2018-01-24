@@ -108,7 +108,7 @@ The following third\-party sources provide additional information on distributin
 
   + [ iPhone Windowed HTTP Live Streaming Server](http://www.ioncannon.net/meta/564/iphone-windowed-http-live-streaming-server/)
 
-+ Flowplayer\.org – [Bandwidth detection: Make sure you reach your entire audience with good quality](http://flowplayer.org/plugins/streaming/bwcheck.html)
++ Flowplayer\.org – [Flowplayer demos for streaming video](http://demos.flowplayer.org)
 
 + JW Player – [About RTMP Streaming](http://support.jwplayer.com/customer/portal/articles/1430349-about-rtmp-streaming)
 

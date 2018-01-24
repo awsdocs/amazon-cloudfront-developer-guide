@@ -14,7 +14,7 @@ When you want to use CloudFront to distribute your content, you create a distrib
 
 + Whether you want CloudFront to create access logs\.
 
-For the current limit on the number of web and RTMP distributions that you can create for each AWS account, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of distributions that you can create for each AWS account, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions) and [Limits on RTMP Distributions](cloudfront-limits.md#limits-rtmp-distributions)\.
 
 The number of files that you can serve per distribution is unlimited\.
 

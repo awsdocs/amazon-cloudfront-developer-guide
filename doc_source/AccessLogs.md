@@ -20,15 +20,15 @@ The following diagram shows how CloudFront logs information about requests for y
 
 ![\[Basic flow for access logs\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
 
+The following explains how CloudFront logs information about requests for your objects, as illustrated in the previous graphic\.
 
-**How CloudFront Logs Information About Requests for Your Objects**  
+1. In this diagram, you have two websites, A and B, and two corresponding CloudFront distributions\. Users request your objects using URLs that are associated with your distributions\.
 
-|  |  | 
-| --- |--- |
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)  |  In this diagram, you have two websites, A and B, and two corresponding CloudFront distributions\. Users request your objects using URLs that are associated with your distributions\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png)  |  CloudFront routes each request to the appropriate edge location\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png)  |  CloudFront writes data about each request to a log file specific to that distribution\. In this example, information about requests related to Distribution A goes into a log file just for Distribution A, and information about requests related to Distribution B goes into a log file just for Distribution B\.  | 
-|  ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png)  |  CloudFront periodically saves the log file for a distribution in the Amazon S3 bucket that you specified when you enabled logging\. CloudFront then starts saving information about subsequent requests in a new log file for the distribution\.  | 
+1. CloudFront routes each request to the appropriate edge location\.
+
+1. CloudFront writes data about each request to a log file specific to that distribution\. In this example, information about requests related to Distribution A goes into a log file just for Distribution A, and information about requests related to Distribution B goes into a log file just for Distribution B\.
+
+1. CloudFront periodically saves the log file for a distribution in the Amazon S3 bucket that you specified when you enabled logging\. CloudFront then starts saving information about subsequent requests in a new log file for the distribution\.
 
 Each entry in a log file gives details about a single request\. For more information about log file format, see [Log File Format](#LogFileFormat)\.
 
@@ -200,6 +200,8 @@ The log file for a web distribution includes the following fields in the listed 
 | 22 | ssl\-cipher | When `cs-protocol` in field 17 is `https`, the SSL cipher that the client and CloudFront negotiated for encrypting the request and response\. When `cs-protocol` is `http`, the value for `ssl-cipher` is a hyphen \(\-\)\. Possible values include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 23 | x\-edge\-response\-result\-type | How CloudFront classified the response just before returning the response to the viewer\. See also `x-edge-result-type` in field 14\.  Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 24 | cs\-protocol\-version | The HTTP version that the viewer specified in the request\. Possible values include HTTP/0\.9, HTTP/1\.0, HTTP/1\.1, and HTTP/2\.0\. | 
+| 25 | fle\-status | When [field\-level encryption](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, a code that indicates whether the request body was successfully processed\. If field\-level encryption is not configured for the distribution, the value of `fle-status` is a hyphen \(`-`\)\. When CloudFront successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of the `fle-status` column is `Processed`\. The value of `x-edge-result-type`, column 14, can still indicate a client\-side or server\-side error\. If the request exceeds a field\-level encryption limit, `fle-status` contains one of the following error codes, and CloudFront returns HTTP status code 400 to the viewer\. For a list of the current limits on field\-level encryption, see [Limits on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) Other possible values for fle\-status include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
+| 26 | fle\-encrypted\-fields | The number of fields that CloudFront encrypted and forwarded to the origin\. CloudFront streams the processed request to the origin as it encrypts data, so `fle-encrypted-fields` can have a value even if the value of `fle-status` is an error\. If field\-level encryption is not configured for the distribution, the value of `fle-encrypted-fields` is a hyphen \(`-`\)\.  | 
 
 **Note**  
 Question marks \(?\) in URLs and query strings are not included in the log\.
@@ -208,9 +210,9 @@ The following is an example log file for a web distribution:
 
 ```
 #Version: 1.0
-#Fields: date time x-edge-location sc-bytes c-ip cs-method cs(Host) cs-uri-stem sc-status cs(Referer) cs(User-Agent) cs-uri-query cs(Cookie) x-edge-result-type x-edge-request-id x-host-header cs-protocol cs-bytes time-taken x-forwarded-for ssl-protocol ssl-cipher x-edge-response-result-type cs-protocol-version
-2014-05-23 01:13:11 FRA2 182 192.0.2.10 GET d111111abcdef8.cloudfront.net /view/my/file.html 200 www.displaymyfiles.com Mozilla/4.0%20(compatible;%20MSIE%205.0b1;%20Mac_PowerPC) - zip=98101 RefreshHit MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE== d111111abcdef8.cloudfront.net http - 0.001 - - - RefreshHit HTTP/1.1
-2014-05-23 01:13:12 LAX1 2390282 192.0.2.202 GET d111111abcdef8.cloudfront.net /soundtrack/happy.mp3 304 www.unknownsingers.com Mozilla/4.0%20(compatible;%20MSIE%207.0;%20Windows%20NT%205.1) a=b&c=d zip=50158 Hit xGN7KWpVEmB9Dp7ctcVFQC4E-nrcOcEKS3QyAez--06dV7TEXAMPLE== d111111abcdef8.cloudfront.net http - 0.002 - - - Hit HTTP/1.1
+#Fields: date time x-edge-location sc-bytes c-ip cs-method cs(Host) cs-uri-stem sc-status cs(Referer) cs(User-Agent) cs-uri-query cs(Cookie) x-edge-result-type x-edge-request-id x-host-header cs-protocol cs-bytes time-taken x-forwarded-for ssl-protocol ssl-cipher x-edge-response-result-type cs-protocol-version fle-status fle-encrypted-fields 
+2014-05-23 01:13:11 FRA2 182 192.0.2.10 GET d111111abcdef8.cloudfront.net /view/my/file.html 200 www.displaymyfiles.com Mozilla/4.0%20(compatible;%20MSIE%205.0b1;%20Mac_PowerPC) - zip=98101 RefreshHit MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE== d111111abcdef8.cloudfront.net http - 0.001 - - - RefreshHit HTTP/1.1 Processed 1
+2014-05-23 01:13:12 LAX1 2390282 192.0.2.202 GET d111111abcdef8.cloudfront.net /soundtrack/happy.mp3 304 www.unknownsingers.com Mozilla/4.0%20(compatible;%20MSIE%207.0;%20Windows%20NT%205.1) a=b&c=d zip=50158 Hit xGN7KWpVEmB9Dp7ctcVFQC4E-nrcOcEKS3QyAez--06dV7TEXAMPLE== d111111abcdef8.cloudfront.net http - 0.002 - - - Hit HTTP/1.1 - -
 ```
 
 ### RTMP Distribution Log File Format<a name="StreamingDistributionLogFileFormat"></a>

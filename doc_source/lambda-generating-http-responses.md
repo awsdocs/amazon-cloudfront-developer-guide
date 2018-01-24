@@ -1,4 +1,4 @@
-# Generating HTTP Responses<a name="lambda-generating-http-responses"></a>
+# Generating HTTP Responses in Request Triggers<a name="lambda-generating-http-responses"></a>
 
 When CloudFront receives a request, you can use a Lambda function to generate an HTTP response that CloudFront returns directly to the viewer without forwarding the response to the origin\. Generating HTTP responses reduces the load on the origin, and typically also reduces latency for the viewer\.
 

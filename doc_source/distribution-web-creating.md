@@ -10,7 +10,7 @@ The following task list summarizes the process for creating a web distribution\.
 
    If you're using an Amazon EC2 server or another custom origin, review [Requirements and Recommendations for Using Amazon EC2 and Other Custom Origins](CustomOriginBestPractices.md)\.
 
-   For the current limit on the number of origins that you can create for a distribution, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+   For the current limit on the number of origins that you can create for a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 1. Upload your content to your origin servers\. If you don't want to restrict access to your content using CloudFront signed URLs, make the objects publicly readable\. 
 **Important**  

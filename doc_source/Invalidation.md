@@ -17,6 +17,10 @@ To invalidate objects, you can specify either the path for individual objects or
 
 + `/images/*`
 
+**Note**  
+If you use the AWS command line interface \(CLI\) for invalidating objects and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path\.   
+For example: `aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBUTION_ID --paths "/*"`
+
 You can submit a specified number of invalidation paths each month for free\. If you submit more than the allotted number of invalidation paths in a month, you pay a fee for each invalidation path that you submit\. For more information about the charges for invalidation, see [Paying for Object Invalidation](#PayingForInvalidation)\. 
 
 
@@ -110,7 +114,8 @@ The path is relative to the distribution\. A leading / is optional\. For example
 `/images/image2.jpg`  
 or  
 `images/image2.jpg`  
-You can also invalidate multiple objects simultaneously by using the `*` wildcard\. The `*`, which replaces 0 or more characters, must be the last character in the invalidation path\. For example:  
+You can also invalidate multiple objects simultaneously by using the `*` wildcard\. The `*`, which replaces 0 or more characters, must be the last character in the invalidation path\. Also, if you use the AWS command line interface \(CLI\) for invalidating objects and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path \(like `"/*"`\)\.  
+The following are some examples:  
 
 + To invalidate all of the objects in a directory:
 
@@ -122,7 +127,7 @@ You can also invalidate multiple objects simultaneously by using the `*` wildcar
 
 + To invalidate all files that have the same name but different file name extensions, such as logo\.jpg, logo\.png, and logo\.gif:
 
-  `/`*directory\-path*`/`*file\-name*`*`
+  `/`*directory\-path*`/`*file\-name*`.*`
 
 + To invalidate all of the files in a directory for which the file name starts with the same characters \(such as all of the files for a video in HLS format\), regardless of the file name extension:
 

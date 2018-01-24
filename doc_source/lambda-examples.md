@@ -18,6 +18,8 @@ Each Lambda@Edge function must contain the `callback` parameter to successfully 
 + [Example: Using an Origin\-Request Trigger to Change From an Amazon S3 Origin to a Custom Origin](#lambda-examples-content-based-custom-origin-request-trigger)
 + [Example: Using an Origin\-Request Trigger to Gradually Transfer Traffic From One Amazon S3 Bucket to Another](#lambda-examples-content-based-gradual-traffic-transfer)
 + [Example: Using an Origin\-Request Trigger to Change the Origin Domain Name Based on the Country Header](#lambda-examples-content-based-geo-header)
++ [Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK](#lambda-examples-custom-error-static-body)
++ [Example: Using an Origin\-Response Trigger to Update the Error Status Code to 302\-Found](#lambda-examples-custom-error-new-site)
 
 ## Example: A/B Testing<a name="lambda-examples-a-b-testing"></a>
 
@@ -118,7 +120,7 @@ exports.handler = (event, context, callback) => {
 The following example shows how to use a Lambda function to serve static website content, which reduces the load on the origin server and reduces overall latency\. 
 
 **Note**  
-You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses](lambda-generating-http-responses.md)\.
+You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
 
 ```
 'use strict';
@@ -168,7 +170,7 @@ exports.handler = (event, context, callback) => {
 The following example shows how to generate an HTTP redirect\.
 
 **Note**  
-You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses](lambda-generating-http-responses.md)\.
+You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
 
 ```
 'use strict';
@@ -439,7 +441,7 @@ exports.handler = (event, context, callback) => {
 
 This function demonstrates how to use a Lambda function to serve static website content as gzip compressed content, which reduces the load on the origin server and reduces overall latency\.
 
-You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses](lambda-generating-http-responses.md)
+You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)
 
 ```
 'use strict';
@@ -605,7 +607,7 @@ const querystring = require('querystring');
 
 ## Example: Using an Origin\-Request Trigger to Gradually Transfer Traffic From One Amazon S3 Bucket to Another<a name="lambda-examples-content-based-gradual-traffic-transfer"></a>
 
-This function demonstrates how to you can gradually transfer traffic from one Amazon S3 bucket to another, in a controlled way\.
+This function demonstrates how you can gradually transfer traffic from one Amazon S3 bucket to another, in a controlled way\.
 
 ```
 'use strict';
@@ -643,7 +645,7 @@ if (randomNumber <= BLUE_TRAFFIC_PERCENTAGE) {
 
 This function demonstrates how to you can change the origin domain name based on the CloudFront\-Viewer\-Country header, so content is served from an origin closer to the viewer's country\.
 
-Based on the value of the CloudFront\-Viewer\-Country header, you can change the origin domain name so content is served from an origin nearer to viewer's country\.
+Based on the value of the CloudFront\-Viewer\-Country header, you can change the origin domain name so content is served from an origin nearer to viewer's country\. This can have advantages such as the following:
 
 + It reduces latencies when the region specified is nearer to the viewer's country\.
 
@@ -667,5 +669,73 @@ exports.handler = (event, context, callback) => {
      }
      
     callback(null, request);
+};
+```
+
+## Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK<a name="lambda-examples-custom-error-static-body"></a>
+
+This function demonstrates how you can update the response status to 200 and generate static body content to return to the viewer in the following scenario:
+
++ The function is triggered in an origin response
+
++ The response status from the origin server is an error status code \(4xx or 5xx\)
+
+```
+'use strict';
+
+exports.handler = (event, context, callback) => {
+    const response = event.Records[0].cf.response;
+
+    /**
+     * This function updates the response status to 200 and generates static
+     * body content to return to the viewer in the following scenario:
+     * 1. The function is triggered in an origin response
+     * 2. The response status from the origin server is an error status code (4xx or 5xx)
+     */
+
+    if (response.status >= 400 && response.status <= 599) {
+        response.status = 200;
+        response.statusDescription = 'OK';
+        response.body = 'Body generation example';
+    }
+
+    callback(null, response);
+};
+```
+
+## Example: Using an Origin\-Response Trigger to Update the Error Status Code to 302\-Found<a name="lambda-examples-custom-error-new-site"></a>
+
+This function demonstrates how you can update the HTTP status code to 302 to redirect to another path \(cache behavior\) that has a different origin configured\. Note the following:
+
++ The function is triggered in an origin response
+
++ The response status from the origin server is an error status code \(4xx or 5xx\)
+
+```
+'use strict';
+
+exports.handler = (event, context, callback) => {
+    const response = event.Records[0].cf.response;
+    const request = event.Records[0].cf.request;
+
+    /**
+     * This function updates the HTTP status code in the response to 302, to redirect to another
+     * path (cache behavior) that has a different origin configured. Note the following:
+     * 1. The function is triggered in an origin response
+     * 2. The response status from the origin server is an error status code (4xx or 5xx)
+     */
+
+    if (response.status >= 400 && response.status <= 599) {
+        const redirect_path = `/plan-b/path?${request.querystring}`;
+
+        response.status = 302;
+        response.statusDescription = 'Found';
+
+        /* Drop the body, as it is not required for redirects */
+        response.body = '';
+        response.headers['location'] = [{ key: 'Location', value: redirect_path }];
+    }
+
+    callback(null, response);
 };
 ```

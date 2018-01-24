@@ -24,7 +24,7 @@ To configure a web distribution to forward custom headers to your origin, you up
 When you create or update a distribution, specify header names and values in the **Origin Custom Headers** settings\. For more information, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\.
 
 **CloudFront API**  
-For each origin that you want to forward custom headers to, add header names and values to the `CustomHeaders` section of the `DistributionConfig` complex type\. For more information, see [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html) \(to create a new distribution\) or [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) \(to update an existing distribution\)\. 
+For each origin that you want to forward custom headers to, add header names and values to the `CustomHeaders` section of the `DistributionConfig` complex type\. For more information, see [Create Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) \(to create a new distribution\) or [Update Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) \(to update an existing distribution\)\. 
 
 If the header names and values that you specify are not already present in the viewer request, CloudFront adds them\. If a header is present, CloudFront overwrites the header value before forwarding the request to the origin\.
 

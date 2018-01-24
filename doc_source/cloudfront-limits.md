@@ -10,6 +10,7 @@ CloudFront entities are subject to the following limits\.
 + [Limits on Custom Headers \(Web Distributions Only\)](#limits-custom-headers)
 + [Limits on SSL Certificates \(Web Distributions Only\)](#limits-ssl-certificates)
 + [Limits on Invalidations](#limits-invalidations)
++ [Limits on Field\-Level Encryption](#limits-field-level-encryption)
 + [Limits on Lambda@Edge](#limits-lambda-at-edge)
 + [Limits on RTMP Distributions](#limits-rtmp-distributions)
 
@@ -95,6 +96,23 @@ CloudFront entities are subject to the following limits\.
 | Object invalidation: maximum number of objects allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Objects \(Web Distributions Only\)](Invalidation.md)\.  | 3,000 | 
 | Object invalidation: maximum number of active wildcard invalidations allowed | 15 | 
 | Object invalidation: maximum number of objects that one wildcard invalidation can process | Unlimited | 
+
+## Limits on Field\-Level Encryption<a name="limits-field-level-encryption"></a>
+
+
+****  
+
+| Entity | Limit | 
+| --- | --- | 
+| Maximum length of a field to encrypt For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.  | 16 KB | 
+| Maximum number of fields in a request body when field\-level encryption encryption is configured | 10 | 
+| Maximum length of a request body when field\-level encryption is configured | 1 MB | 
+| Maximum number of field\-level encryption configurations that can be associated with one AWS account | 10 | 
+| Maximum number of field\-level encryption profiles that can be associated with one AWS account | 10 | 
+| Maximum number of public keys that can be added to one AWS account | 10 | 
+| Maximum number of fields to encrypt that can be specified in one profile | 10 | 
+| Maximum number of CloudFront distributions that can be associated with a field\-level encryption configuration | 20 | 
+| Maximum number of query argument profile mappings that can be included in a field\-level encryption configuration | 5 | 
 
 ## Limits on Lambda@Edge<a name="limits-lambda-at-edge"></a>
 

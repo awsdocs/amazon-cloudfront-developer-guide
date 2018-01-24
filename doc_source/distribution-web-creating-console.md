@@ -2,7 +2,7 @@
 
 The procedures in this topic explain how to create or update a web distribution using the CloudFront console\. If you want to create a web distribution using the CloudFront API, go to [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html) in the *Amazon CloudFront API Reference*\. If you want to update a web distribution using the CloudFront API, go to [PUT DistributionConfig](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\. 
 
-For the current limit on the number of web distributions that you can create for each AWS account, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of web distributions that you can create for each AWS account or to request a higher limit, [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 + [To create a CloudFront web distribution using the CloudFront console](#CreatingDownloadDistributionsConsoleProcedure)
 
