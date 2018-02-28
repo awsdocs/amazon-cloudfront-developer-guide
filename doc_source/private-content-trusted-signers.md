@@ -44,7 +44,7 @@ You can create a key pair in the following ways:
 
 + Create a key pair in the AWS Management Console and download the private key\. See the procedure [To create CloudFront key pairs in the AWS Management Console](#private-content-creating-cloudfront-key-pairs-procedure)\.
 
-+ Create an RSA key pair by using an application such as OpenSSL, and upload the public key to the AWS Management Console\. See the procedure [To create an RSA key pair and upload the public key in the AWS Management Console](#private-content-uploading-cloudfront-public-key-procedure)\.
++ Create an RSA key pair by using an application such as OpenSSL, and upload the public key to the AWS Management Console\. See the procedure [To create an RSA key pair and upload the public key in the AWS Management Console](#private-content-uploading-cloudfront-public-key-procedure)\.<a name="private-content-creating-cloudfront-key-pairs-procedure"></a>
 
 **To create CloudFront key pairs in the AWS Management Console**
 
@@ -66,7 +66,7 @@ IAM users can't create CloudFront key pairs\. You must log in using root credent
 **Important**  
 Save the private key for your CloudFront key pair in a secure location, and set permissions on the file so that only the desired administrator users can read it\. If someone gets your private key, they can generate valid signed URLs and signed cookies and download your content\. You cannot get the private key again, so if you lose or delete it, you must create a new CloudFront key pair\. 
 
-1. Record the key pair ID for your key pair\. \(In the AWS Management Console, this is called the access key ID\.\) You'll use it when you create signed URLs or signed cookies\.
+1. Record the key pair ID for your key pair\. \(In the AWS Management Console, this is called the access key ID\.\) You'll use it when you create signed URLs or signed cookies\.<a name="private-content-uploading-cloudfront-public-key-procedure"></a>
 
 **To create an RSA key pair and upload the public key in the AWS Management Console**
 
@@ -152,7 +152,7 @@ You can add trusted signers to your distribution using either the CloudFront con
 
 + [Adding Trusted Signers to Your Distribution Using the CloudFront API](#private-content-adding-trusted-signers-api)
 
-### Adding Trusted Signers to Your Distribution Using the CloudFront Console<a name="private-content-adding-trusted-signers-console"></a>
+### Adding Trusted Signers to Your Distribution Using the CloudFront Console<a name="private-content-adding-trusted-signers-console"></a><a name="private-content-adding-trusted-signers-console-procedure"></a>
 
 **To add trusted signers to your distribution using the CloudFront console**
 

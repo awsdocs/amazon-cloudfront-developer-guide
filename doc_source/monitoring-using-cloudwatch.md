@@ -2,7 +2,7 @@
 
 Amazon CloudFront integrates with Amazon CloudWatch metrics so that you can monitor your website or application\. CloudFront currently provides six free metrics, and these metrics don't count against [CloudWatch limits](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_limits.html)\. When viewing metrics, you can specify a time interval of as little as one minute for time periods in the previous two weeks\.
 
-## Viewing Metrics for a Distribution<a name="viewing-metrics"></a>
+## Viewing Metrics for a Distribution<a name="viewing-metrics"></a><a name="monitoring-using-cloudwatch-procedure"></a>
 
 **To view metrics for a distribution in the CloudWatch console**
 
@@ -20,7 +20,7 @@ Select the distribution that you want to display metrics for\.
 
 1. Click **Update Graph** to refresh the graph based on the settings that you specified\.
 
-## Receiving Notifications<a name="receiving-notifications"></a>
+## Receiving Notifications<a name="receiving-notifications"></a><a name="alarming-using-cloudwatch-procedure"></a>
 
 **To receive an Amazon Simple Notification Service \(Amazon SNS\) notification based on a CloudFront metric**
 
@@ -54,7 +54,7 @@ Specify how many consecutive time periods of the specified duration the metric m
 
 ## Downloading Data in CSV Format<a name="cloudwatch-csv"></a>
 
-You can download the CloudWatch Metrics report in CSV format\. This section explains how to download the report and describes the values in the report\.
+You can download the CloudWatch Metrics report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="cloudwatch-csv-procedure"></a>
 
 **To download the CloudWatch Metrics report in CSV format**
 

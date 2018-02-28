@@ -9,7 +9,7 @@ Creating a URL signature is just one part of the process of serving private cont
 
 In the following code segment, the function `rsa_sha1_sign` hashes and signs the policy statement\. The arguments required are a policy statement, an out parameter to contain the signature, and the private key for your AWS account or for a trusted AWS account that you specify\. Next, the `url_safe_base64_encode` function creates a URL\-safe version of the signature\.
 
-**Example RSA SHA1 Hashing in PHP**  
+**Example RSA SHA1 Hashing in PHP**  <a name="RSA_SHA1_EncryptionInPHP"></a>
 
 ```
  function rsa_sha1_sign($policy, $private_key_filename) {
@@ -43,7 +43,7 @@ function url_safe_base64_encode($value) {
 
 The following code constructs a *canned* policy statement needed for creating the signature\. For more information about canned policies, see [Creating a Signed URL Using a Canned Policy](private-content-creating-signed-url-canned-policy.md)\.
 
-**Example Canned Signing Function in PHP**  
+**Example Canned Signing Function in PHP**  <a name="CannedSigningFunctionInPHP"></a>
 
 ```
 function get_canned_policy_stream_name($video_path, $private_key_filename, $key_pair_id, $expires) {
@@ -68,7 +68,7 @@ The following code constructs a *custom* policy statement needed for creating th
 **Note**  
 The `$expires` variable is a date/time stamp that must be an integer, not a string\.
 
-**Example Custom Signing Function in PHP**  
+**Example Custom Signing Function in PHP**  <a name="CustomSigningFunctionInPHP"></a>
 
 ```
 function get_custom_policy_stream_name($video_path, $private_key_filename, $key_pair_id, $policy) {

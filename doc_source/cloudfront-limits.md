@@ -61,6 +61,8 @@ CloudFront entities are subject to the following limits\.
 
 | Entity | Limit | 
 | --- | --- | 
+| Maximum number of characters in a whitelisted query string  | 128 characters  | 
+| Maximum number of characters total for all whitelisted query strings in the same parameter  | 512 characters  | 
 | Whitelisted query strings per cache behavior For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
 ## Limits on Custom Headers \(Web Distributions Only\)<a name="limits-custom-headers"></a>

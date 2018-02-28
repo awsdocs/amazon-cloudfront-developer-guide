@@ -2,7 +2,7 @@
 
 The Amazon CloudFront console can display a graphical representation of your CloudFront usage that is based on a subset of the usage report data\. You can display charts for a specified date range in the last 60 days, with data points every hour or every day\. You can usually view data about requests that CloudFront received as recently as four hours ago, but data can occasionally be delayed by as much as 24 hours\.
 
-For more information, see [How the Usage Charts Are Related to Data in the CloudFront Usage Report](#usage-charts-table)\.
+For more information, see [How the Usage Charts Are Related to Data in the CloudFront Usage Report](#usage-charts-table)\.<a name="usage-charts-procedure"></a>
 
 **To display CloudFront usage charts**
 
@@ -44,7 +44,7 @@ For more information, see [How the Usage Charts Are Related to Data in the Cloud
 
 ## Downloading Data in CSV Format<a name="usage-csv"></a>
 
-You can download the Usage report in CSV format\. This section explains how to download the report and describes the values in the report\.
+You can download the Usage report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="usage-csv-procedure"></a>
 
 **To download the Usage report in CSV format**
 

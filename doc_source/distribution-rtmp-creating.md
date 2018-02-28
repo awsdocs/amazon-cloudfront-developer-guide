@@ -2,7 +2,7 @@
 
 This section summarizes the general process for configuring on\-demand streaming using the Adobe RTMP protocol for any media player\. If you're using JW Player for your media player, see [On\-Demand Video Streaming Using CloudFront and JW Player](TutorialStreamingJWPlayer.md)\.
 
-The following task list summarizes the process for creating a web distribution\.
+The following task list summarizes the process for creating a web distribution\.<a name="create-streaming-distribution-task-list"></a>
 
 **To Create an RTMP Distribution**
 

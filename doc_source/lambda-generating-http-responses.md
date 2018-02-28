@@ -22,7 +22,7 @@ When a function is triggered by an origin request event, CloudFront checks the e
 
 + If the response isn't in the cache, the function is executed, CloudFront returns the response to the viewer, and also caches it\.
 
-For some examples of generating HTTP responses, see [Example Functions](lambda-examples.md)\.
+To see some sample code for generating HTTP responses, see [ field\-level encryption](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-examples.html#lambda-examples-generated-response-examples)\. You can also replace the HTTP responses in response triggers\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
 
 ## Programming Model<a name="lambda-generating-http-responses-programming-model"></a>
 
@@ -72,7 +72,7 @@ Headers that you want CloudFront to return in the generated response\. Note the 
 + `key` is the case\-sensitive name of the header as it appears in an HTTP request; for example, `accept` or `host`\.
 
 + `value` is a header value\.
-For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\.
+For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\. 
 
 **status**  
 The HTTP status code that you want CloudFront to use for the following:  

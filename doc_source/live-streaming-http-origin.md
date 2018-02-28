@@ -12,7 +12,7 @@ This tutorial assumes that you have already set up your live encoder\.
 
 ## Creating a New CloudFront Distribution for Live Streaming<a name="live-streaming-http-origin-creating-distribution"></a>
 
-The following procedure uses an AWS CloudFormation template to create a new CloudFront distribution that you will use for your live stream\. 
+The following procedure uses an AWS CloudFormation template to create a new CloudFront distribution that you will use for your live stream\. <a name="live-streaming-http-origin-creating-distribution-procedure"></a>
 
 **To create a new CloudFront distribution for live streaming**
 
@@ -59,7 +59,7 @@ To play the live stream, embed the manifest URL in the players that your users w
 When your live event is over, delete the stack that you created for live streaming\. This deletes the CloudFront distribution that you created for your live\-streaming event\. 
 
 **Note**  
-When you stop streaming, you also stop incurring CloudFront charges for this distribution\. There are no charges for the AWS CloudFormation stack\.
+When you stop streaming, you also stop incurring CloudFront charges for this distribution\. There are no charges for the AWS CloudFormation stack\.<a name="live-streaming-http-origin-deleting-stack-procedure"></a>
 
 **To delete an AWS CloudFormation stack for live streaming**
 

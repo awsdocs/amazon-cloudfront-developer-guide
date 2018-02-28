@@ -70,7 +70,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    Use your Amazon S3 URL to verify that your content is publicly accessible, but remember that this is not the URL you will use when you are ready to distribute your content\.
 
-## Step 3: Create a CloudFront Web Distribution<a name="GettingStartedCreateDistribution"></a>
+## Step 3: Create a CloudFront Web Distribution<a name="GettingStartedCreateDistribution"></a><a name="GettingStartedCreateDistributionProcedure"></a>
 
 **To create a CloudFront web distribution**
 
@@ -150,7 +150,7 @@ After you've created your distribution, CloudFront knows where your Amazon S3 or
 **Note**  
 You must wait until the status of your distribution changes to **Deployed** before testing your links\.
 
-****
+****<a name="GettingStartedAccessingDistributionsProcedure"></a>
 
 **To link to your objects**
 

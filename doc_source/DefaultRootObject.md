@@ -45,7 +45,7 @@ If you don't define a default root object, requests for the root of your distrib
 
 + **Error 403 Forbidden**—CloudFront returns this error if the permissions on the Amazon S3 bucket associated with your distribution or the permissions on the objects in that bucket deny access to CloudFront and to everyone\.
 
-To avoid exposing the contents of your web distribution or returning an error, perform the following procedure to specify a default root object for your distribution\.
+To avoid exposing the contents of your web distribution or returning an error, perform the following procedure to specify a default root object for your distribution\.<a name="DefaultRootObjectProcedure"></a>
 
 **To specify a default root object for your distribution**
 

@@ -5,7 +5,7 @@
 + [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)
 + [Creating a Signature for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-creating-signature)
 
-To create a signed URL using a custom policy, perform the following procedure\.
+To create a signed URL using a custom policy, perform the following procedure\.<a name="private-content-creating-signed-url-custom-policy-procedure"></a>
 
 **To create a signed URL using a custom policy**
 
@@ -74,7 +74,7 @@ Example signed URL for an RTMP distribution:
 
 ## Creating a Policy Statement for a Signed URL That Uses a Custom Policy<a name="private-content-custom-policy-statement"></a>
 
-To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to objects in a variety of ways, see [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)\.
+To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to objects in a variety of ways, see [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)\.<a name="private-content-custom-policy-creating-policy-procedure"></a>
 
 **To create the policy statement for a signed URL that uses a custom policy**
 
@@ -274,7 +274,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
 
-+ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)
++ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-custom-policy-creating-signature-download-procedure"></a>
 
 **Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a custom policy**
 
@@ -292,7 +292,7 @@ The method that you use to hash and sign the policy statement depends on your pr
 ****    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-custom-policy.html)
 
-1. Append the resulting value to your signed URL after `&Signature=`, and return to [To create a signed URL using a custom policy](#private-content-creating-signed-url-custom-policy-procedure) to finish concatenating the parts of your signed URL\.
+1. Append the resulting value to your signed URL after `&Signature=`, and return to [To create a signed URL using a custom policy](#private-content-creating-signed-url-custom-policy-procedure) to finish concatenating the parts of your signed URL\.<a name="private-content-custom-policy-creating-signature-streaming-flash-procedure"></a>
 
 **Option 2: To create a signature for an RTMP distribution by using a custom policy \(Adobe Flash Player\)**
 

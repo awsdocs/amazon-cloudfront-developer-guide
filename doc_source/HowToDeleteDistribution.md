@@ -9,7 +9,7 @@ You can also delete a distribution using the CloudFront API:
 + To delete an RTMP distribution, use the `DELETE Streaming Distribution` API action\. For more information, go to [DELETE Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/DeleteStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 **Note**  
-CloudFront lets you create a total of up to 200 web distributions and 100 RTMP distributions for an AWS account\.
+CloudFront lets you create a total of up to 200 web distributions and 100 RTMP distributions for an AWS account\.<a name="HowToDeleteDistributionProcedure"></a>
 
 **To Delete a CloudFront Distribution Using the CloudFront Console**
 

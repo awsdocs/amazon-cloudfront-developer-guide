@@ -1,6 +1,6 @@
 # Creating a Signed URL Using a Canned Policy<a name="private-content-creating-signed-url-canned-policy"></a>
 
-To create a signed URL using a canned policy, perform the following procedure\.
+To create a signed URL using a canned policy, perform the following procedure\.<a name="private-content-creating-signed-url-canned-policy-procedure"></a>
 
 **To create a signed URL using a canned policy**
 
@@ -45,8 +45,8 @@ then add the parameters after the **?** \(see ![\[2\]](http://docs.aws.amazon.co
 Your parameters cannot be named `Expires`, `Signature`, or `Key-Pair-Id`\.
 If you add your own parameters, append an **&** after each one, including the last one\.  
 **![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) `Expires=`*date and time in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)***  
-Specify the expiration date and time in Unix time format and Coordinated Universal Time \(UTC\)\. For example, January 1, 2013 10:00 am UTC converts to 1357034400 in Unix time format\. For information about UTC, see *RFC 3339, Date and Time on the Internet: Timestamps*, [http://tools\.ietf\.org/html/rfc3339](http://tools.ietf.org/html/rfc3339)\.  
-Specify the date and time, in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\), that you want the URL to stop allowing access to the object\. For example, January 1, 2013 10:00 am UTC converts to 1357034400 in Unix time format\.   
+The date and time that you want the URL to stop allowing access to the object\.  
+Specify the expiration date and time in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. For example, January 1, 2013 10:00 am UTC converts to 1357034400 in Unix time format\. To use epoch time, use a 32\-bit integer for a date which can be no later than 2147483647 \(January 19th, 2038 at 03:14:07 UTC\)\. For information about UTC, see *RFC 3339, Date and Time on the Internet: Timestamps*, [http://tools\.ietf\.org/html/rfc3339](http://tools.ietf.org/html/rfc3339)\.  
 **![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) `&Signature=`*hashed and signed version of the policy statement***  
 A hashed, signed, and base64\-encoded version of the JSON policy statement\. For more information, see [Creating a Signature for a Signed URL That Uses a Canned Policy](#private-content-canned-policy-creating-signature)\.  
 **![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=`*active CloudFront key pair Id for the key pair that you're using to generate the signature***  
@@ -77,7 +77,7 @@ To create the signature for a signed URL that uses a canned policy, you perform 
 
 ### Creating a Policy Statement for a Signed URL That Uses a Canned Policy<a name="private-content-canned-policy-creating-policy-statement"></a>
 
-When you create a signed URL using a canned policy, the `Signature` parameter is a hashed and signed version of a policy statement\. For signed URLs that use a canned policy, you don't include the policy statement in the URL, as you do for signed URLs that use a custom policy\. To create the policy statement, perform the following procedure\.
+When you create a signed URL using a canned policy, the `Signature` parameter is a hashed and signed version of a policy statement\. For signed URLs that use a canned policy, you don't include the policy statement in the URL, as you do for signed URLs that use a custom policy\. To create the policy statement, perform the following procedure\.<a name="private-content-canned-policy-creating-policy-statement-procedure"></a>
 
 **To create the policy statement for a signed URL that uses a canned policy**
 
@@ -162,7 +162,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
 
-+ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)
++ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-canned-policy-creating-signature-download-procedure"></a>
 
 **Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a canned policy**
 
@@ -180,7 +180,7 @@ The method that you use to hash and sign the policy statement depends on your pr
 ****    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-canned-policy.html)
 
-1. Append the resulting value to your signed URL after `&Signature=`, and return to [To create a signed URL using a canned policy](#private-content-creating-signed-url-canned-policy-procedure) to finish concatenating the parts of your signed URL\.
+1. Append the resulting value to your signed URL after `&Signature=`, and return to [To create a signed URL using a canned policy](#private-content-creating-signed-url-canned-policy-procedure) to finish concatenating the parts of your signed URL\.<a name="private-content-canned-policy-creating-signature-streaming-flash-procedure"></a>
 
 **Option 2: To create a signature for an RTMP distribution by using a canned policy \(Adobe Flash Player\)**
 

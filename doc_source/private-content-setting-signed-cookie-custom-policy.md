@@ -5,7 +5,7 @@
 + [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)
 + [Creating a Signature for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-signature-cookies)
 
-To set a signed cookie that uses a custom policy, perform the following procedure\.
+To set a signed cookie that uses a custom policy, perform the following procedure\.<a name="private-content-setting-signed-cookie-custom-policy-procedure"></a>
 
 **To set a signed cookie using a custom policy**
 
@@ -82,7 +82,7 @@ If you want to use an alternate domain name such as example\.com in URLs, you mu
 
 ## Creating a Policy Statement for a Signed Cookie That Uses a Custom Policy<a name="private-content-custom-policy-statement-cookies"></a>
 
-To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to objects in a variety of ways, see [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)\.
+To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to objects in a variety of ways, see [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)\.<a name="private-content-custom-policy-statement-cookies-procedure"></a>
 
 **To create the policy statement for a signed cookie that uses a custom policy**
 
@@ -269,7 +269,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
 
-+ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)
++ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-custom-policy-signature-cookies-procedure"></a>
 
 **To create a signature for a signed cookie by using a custom policy**
 

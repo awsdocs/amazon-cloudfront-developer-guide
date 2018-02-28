@@ -55,7 +55,7 @@ To get started, you must obtain a RSA key pair that includes a public key, so Cl
 
 ### Step 2: Add Your Public Key to CloudFront<a name="field-level-encryption-setting-up-step2"></a>
 
-After you get your RSA key pair, add your public key to CloudFront\.
+After you get your RSA key pair, add your public key to CloudFront\.<a name="field-level-encryption-setting-up-step2-procedure"></a>
 
 **To add your public key to CloudFront \(console\)**
 
@@ -77,7 +77,7 @@ You can add more keys to use with CloudFront by repeating the steps in the proce
 
 ### Step 3: Create a Profile for Field\-Level Encryption<a name="field-level-encryption-setting-up-step3"></a>
 
-After you add at least one public key to CloudFront, create a profile that tells CloudFront which fields to encrypt\.
+After you add at least one public key to CloudFront, create a profile that tells CloudFront which fields to encrypt\.<a name="field-level-encryption-setting-up-step3-procedure"></a>
 
 **To create a profile for field\-level encryption \(console\)**
 
@@ -119,7 +119,7 @@ In a configuration, you can also specify whether providing a profile as a query 
 
 So, for example, you might specify \(in your configuration\) SampleProfile as the query argument profile to use\. Then you could use the URL `https://d1234.cloudfront.net?fle-profile=SampleProfile` instead of `https://d1234.cloudfront.net`, to have CloudFront use SampleProfile for this request, instead of the profile you'd set up for the content type of the request\.
 
-You can create up to 10 configurations for a single account, and then associate one of the configurations to the cache behavior of any distribution for the account\.
+You can create up to 10 configurations for a single account, and then associate one of the configurations to the cache behavior of any distribution for the account\.<a name="field-level-encryption-setting-up-step4-procedure"></a>
 
 **To create a configuration for field\-level encryption \(console\)**
 

@@ -1,27 +1,20 @@
-# Example Functions<a name="lambda-examples"></a>
+# Lambda@Edge Example Functions<a name="lambda-examples"></a>
 
-Each Lambda@Edge function must contain the `callback` parameter to successfully process a request or return a response\. For more information, see [Authoring Functions for Lambda@Edge](http://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.htm) in the *AWS Lambda Developer Guide*\.
+See the following sections for examples of using Lambda functions with CloudFront\.
+
+Note that each Lambda@Edge function must contain the `callback` parameter to successfully process a request or return a response\. For more information, see [Writing and Creating a Lambda@Edge Function](lambda-edge-create-function.md)\.
 
 
-+ [Example: A/B Testing](#lambda-examples-a-b-testing)
-+ [Example: Overriding a Response Header](#lambda-examples-overriding-response-header)
-+ [Example: Serving Static Content \(Generated Response\)](#lambda-examples-static-web-server)
-+ [Example: Generating an HTTP Redirect \(Generated Response\)](#lambda-examples-http-redirect)
-+ [Example: Adding a Header Based on a Query String Parameter](#lambda-examples-header-based-on-query-string)
-+ [Example: Normalizing Query String Parameters to Improve the Cache Hit Ratio](#lambda-examples-normalize-query-string-parameters)
-+ [Example: Redirecting Unauthenticated Users to a Sign\-In Page](#lambda-examples-redirect-to-signin-page)
-+ [Example: Redirecting Viewer Requests to a Country\-Specific URL](#lambda-examples-redirect-based-on-country)
-+ [Example: Serving Different Versions of an Object Based on the Device](#lambda-examples-vary-on-device-type)
-+ [Example: Serving Static Website Content as Gzip Compressed Content](#lambda-examples-body-encoding-base64)
-+ [Example: Using an Origin\-Request Trigger to Change From a Custom Origin to an Amazon S3 Origin](#lambda-examples-content-based-S3-origin-based-on-query)
-+ [Example: Using an Origin\-Request Trigger to Change the Amazon S3 Origin Region](#lambda-examples-content-based-S3-origin-request-trigger)
-+ [Example: Using an Origin\-Request Trigger to Change From an Amazon S3 Origin to a Custom Origin](#lambda-examples-content-based-custom-origin-request-trigger)
-+ [Example: Using an Origin\-Request Trigger to Gradually Transfer Traffic From One Amazon S3 Bucket to Another](#lambda-examples-content-based-gradual-traffic-transfer)
-+ [Example: Using an Origin\-Request Trigger to Change the Origin Domain Name Based on the Country Header](#lambda-examples-content-based-geo-header)
-+ [Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK](#lambda-examples-custom-error-static-body)
-+ [Example: Using an Origin\-Response Trigger to Update the Error Status Code to 302\-Found](#lambda-examples-custom-error-new-site)
++ [General Examples](#lambda-examples-general-examples)
++ [Generating Responses \- Examples](#lambda-examples-generated-response-examples)
++ [Working with Query Strings \- Examples](#lambda-examples-query-string-examples)
++ [Personalize Content by Country or Device Type Headers \- Examples](#lambda-examples-redirecting-examples)
++ [Content\-Based Routing \- Examples](#lambda-examples-content-based-routing-examples)
++ [Updating Error Statuses \- Examples](#lambda-examples-update-error-status-examples)
 
-## Example: A/B Testing<a name="lambda-examples-a-b-testing"></a>
+## General Examples<a name="lambda-examples-general-examples"></a>
+
+### Example: A/B Testing<a name="lambda-examples-a-b-testing"></a>
 
 You can use the following example if you want to test two different versions of your home page, but you don't want to create redirects or change the URL\. This example sets cookies when CloudFront receives a request, randomly assigns the user to version A or B, and then returns the corresponding version to the viewer\.
 
@@ -89,7 +82,7 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Overriding a Response Header<a name="lambda-examples-overriding-response-header"></a>
+### Example: Overriding a Response Header<a name="lambda-examples-overriding-response-header"></a>
 
 The following example shows how to change the value of a response header based on the value of another header:
 
@@ -115,12 +108,14 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Serving Static Content \(Generated Response\)<a name="lambda-examples-static-web-server"></a>
+## Generating Responses \- Examples<a name="lambda-examples-generated-response-examples"></a>
+
+### Example: Serving Static Content \(Generated Response\)<a name="lambda-examples-static-web-server"></a>
 
 The following example shows how to use a Lambda function to serve static website content, which reduces the load on the origin server and reduces overall latency\. 
 
 **Note**  
-You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
+You can generate HTTP responses for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\. You can also replace the HTTP response in origin and viewer response events\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
 
 ```
 'use strict';
@@ -165,12 +160,60 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Generating an HTTP Redirect \(Generated Response\)<a name="lambda-examples-http-redirect"></a>
+### Example: Serving Static Website Content as Gzip Compressed Content \(Generated Response\)<a name="lambda-examples-body-encoding-base64"></a>
+
+This function demonstrates how to use a Lambda function to serve static website content as gzip compressed content, which reduces the load on the origin server and reduces overall latency\.
+
+You can generate HTTP responses for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)
+
+```
+'use strict';
+
+const zlib = require('zlib');
+
+let content = `
+<\!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Lambda@Edge Static Content Response</title>
+  </head>
+  <body>
+    <p>Hello from Lambda@Edge!</p>
+  </body>
+</html>
+`;
+
+exports.handler = (event, context, callback) => {
+
+    /*
+     * Generate HTTP OK response using 200 status code with a gzip compressed content HTML body.
+     */
+    
+    const buffer = zlib.gzipSync(content); 
+    const base64EncodedBody = buffer.toString('base64');
+    
+    var response = {
+        headers: {
+            'content-type': [{key:'Content-Type', value: 'text/html; charset=utf-8'}],
+            'content-encoding' : [{key:'Content-Encoding', value: 'gzip'}]
+         },
+        body: base64EncodedBody,
+        bodyEncoding: 'base64',
+        status: '200',
+        statusDescription: "OK"
+     }
+     
+    callback(null, response);
+};
+```
+
+### Example: Generating an HTTP Redirect \(Generated Response\)<a name="lambda-examples-http-redirect"></a>
 
 The following example shows how to generate an HTTP redirect\.
 
 **Note**  
-You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
+You can generate HTTP responses for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
 
 ```
 'use strict';
@@ -193,7 +236,9 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Adding a Header Based on a Query String Parameter<a name="lambda-examples-header-based-on-query-string"></a>
+## Working with Query Strings \- Examples<a name="lambda-examples-query-string-examples"></a>
+
+### Example: Adding a Header Based on a Query String Parameter<a name="lambda-examples-header-based-on-query-string"></a>
 
 The following example shows how to get the key\-value pair of a query string parameter and add a header based on those values\.
 
@@ -229,7 +274,7 @@ exports.handler = (event, context, callback) => {
 ;
 ```
 
-## Example: Normalizing Query String Parameters to Improve the Cache Hit Ratio<a name="lambda-examples-normalize-query-string-parameters"></a>
+### Example: Normalizing Query String Parameters to Improve the Cache Hit Ratio<a name="lambda-examples-normalize-query-string-parameters"></a>
 
 The following example shows how to improve your cache hit ratio by making the following changes to query strings before CloudFront forwards requests to your origin:
 
@@ -277,7 +322,7 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Redirecting Unauthenticated Users to a Sign\-In Page<a name="lambda-examples-redirect-to-signin-page"></a>
+### Example: Redirecting Unauthenticated Users to a Sign\-In Page<a name="lambda-examples-redirect-to-signin-page"></a>
 
 The following example shows how to redirect users to a sign\-in page if they haven't entered their credentials\.
 
@@ -328,7 +373,9 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Redirecting Viewer Requests to a Country\-Specific URL<a name="lambda-examples-redirect-based-on-country"></a>
+## Personalize Content by Country or Device Type Headers \- Examples<a name="lambda-examples-redirecting-examples"></a>
+
+### Example: Redirecting Viewer Requests to a Country\-Specific URL<a name="lambda-examples-redirect-based-on-country"></a>
 
 The following example shows how to generate an HTTP redirect response with a country\-specific URL and return the response to the viewer\. This is useful when you want to provide country\-specific responses\. For example:
 
@@ -386,7 +433,7 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Serving Different Versions of an Object Based on the Device<a name="lambda-examples-vary-on-device-type"></a>
+### Example: Serving Different Versions of an Object Based on the Device<a name="lambda-examples-vary-on-device-type"></a>
 
 The following example shows how to serve different versions of an object based on the type of device that the user is using, for example, a mobile device or a tablet\. Note the following:
 
@@ -437,55 +484,9 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Serving Static Website Content as Gzip Compressed Content<a name="lambda-examples-body-encoding-base64"></a>
+## Content\-Based Routing \- Examples<a name="lambda-examples-content-based-routing-examples"></a>
 
-This function demonstrates how to use a Lambda function to serve static website content as gzip compressed content, which reduces the load on the origin server and reduces overall latency\.
-
-You can generate HTTP responses only for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)
-
-```
-'use strict';
-
-const zlib = require('zlib');
-
-let content = `
-<\!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Simple Lambda@Edge Static Content Response</title>
-  </head>
-  <body>
-    <p>Hello from Lambda@Edge!</p>
-  </body>
-</html>
-`;
-
-exports.handler = (event, context, callback) => {
-
-    /*
-     * Generate HTTP OK response using 200 status code with a gzip compressed content HTML body.
-     */
-    
-    const buffer = zlib.gzipSync(content); 
-    const base64EncodedBody = buffer.toString('base64');
-    
-    var response = {
-        headers: {
-            'content-type': [{key:'Content-Type', value: 'text/html; charset=utf-8'}],
-            'content-encoding' : [{key:'Content-Encoding', value: 'gzip'}]
-         },
-        body: base64EncodedBody,
-        bodyEncoding: 'base64',
-        status: '200',
-        statusDescription: "OK"
-     }
-     
-    callback(null, response);
-};
-```
-
-## Example: Using an Origin\-Request Trigger to Change From a Custom Origin to an Amazon S3 Origin<a name="lambda-examples-content-based-S3-origin-based-on-query"></a>
+### Example: Using an Origin\-Request Trigger to Change From a Custom Origin to an Amazon S3 Origin<a name="lambda-examples-content-based-S3-origin-based-on-query"></a>
 
 This function demonstrates how an origin\-request trigger can be used to change from a custom origin to an Amazon S3 origin from which the content is fetched, based on request properties\.
 
@@ -526,7 +527,7 @@ This function demonstrates how an origin\-request trigger can be used to change 
 };
 ```
 
-## Example: Using an Origin\-Request Trigger to Change the Amazon S3 Origin Region<a name="lambda-examples-content-based-S3-origin-request-trigger"></a>
+### Example: Using an Origin\-Request Trigger to Change the Amazon S3 Origin Region<a name="lambda-examples-content-based-S3-origin-request-trigger"></a>
 
 This function demonstrates how an origin\-request trigger can be used to change the Amazon S3 origin from which the content is fetched, based on request properties\.
 
@@ -563,7 +564,7 @@ const querystring = require('querystring');
 };
 ```
 
-## Example: Using an Origin\-Request Trigger to Change From an Amazon S3 Origin to a Custom Origin<a name="lambda-examples-content-based-custom-origin-request-trigger"></a>
+### Example: Using an Origin\-Request Trigger to Change From an Amazon S3 Origin to a Custom Origin<a name="lambda-examples-content-based-custom-origin-request-trigger"></a>
 
 This function demonstrates how an origin\-request trigger can be used to change the custom origin from which the content is fetched, based on request properties\.
 
@@ -605,7 +606,7 @@ const querystring = require('querystring');
 };
 ```
 
-## Example: Using an Origin\-Request Trigger to Gradually Transfer Traffic From One Amazon S3 Bucket to Another<a name="lambda-examples-content-based-gradual-traffic-transfer"></a>
+### Example: Using an Origin\-Request Trigger to Gradually Transfer Traffic From One Amazon S3 Bucket to Another<a name="lambda-examples-content-based-gradual-traffic-transfer"></a>
 
 This function demonstrates how you can gradually transfer traffic from one Amazon S3 bucket to another, in a controlled way\.
 
@@ -641,7 +642,7 @@ if (randomNumber <= BLUE_TRAFFIC_PERCENTAGE) {
 };
 ```
 
-## Example: Using an Origin\-Request Trigger to Change the Origin Domain Name Based on the Country Header<a name="lambda-examples-content-based-geo-header"></a>
+### Example: Using an Origin\-Request Trigger to Change the Origin Domain Name Based on the Country Header<a name="lambda-examples-content-based-geo-header"></a>
 
 This function demonstrates how to you can change the origin domain name based on the CloudFront\-Viewer\-Country header, so content is served from an origin closer to the viewer's country\.
 
@@ -672,7 +673,9 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK<a name="lambda-examples-custom-error-static-body"></a>
+## Updating Error Statuses \- Examples<a name="lambda-examples-update-error-status-examples"></a>
+
+### Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK<a name="lambda-examples-custom-error-static-body"></a>
 
 This function demonstrates how you can update the response status to 200 and generate static body content to return to the viewer in the following scenario:
 
@@ -703,7 +706,7 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Example: Using an Origin\-Response Trigger to Update the Error Status Code to 302\-Found<a name="lambda-examples-custom-error-new-site"></a>
+### Example: Using an Origin\-Response Trigger to Update the Error Status Code to 302\-Found<a name="lambda-examples-custom-error-new-site"></a>
 
 This function demonstrates how you can update the HTTP status code to 302 to redirect to another path \(cache behavior\) that has a different origin configured\. Note the following:
 

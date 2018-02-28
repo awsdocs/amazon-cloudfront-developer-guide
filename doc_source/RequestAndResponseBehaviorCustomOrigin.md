@@ -252,7 +252,7 @@ If you specify **Match Viewer**, CloudFront forwards requests to the origin serv
 **Important**  
 If CloudFront forwards a request to the origin using the HTTPS protocol, and if the origin server returns an invalid certificate or a self\-signed certificate, CloudFront drops the TCP connection\.
 
-For information about how to update a distribution using the CloudFront console, see [Listing, Viewing, and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\. 
+For information about how to update a distribution using the CloudFront console, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\. 
 
 ### Query Strings<a name="RequestCustomQueryStrings"></a>
 

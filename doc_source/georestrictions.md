@@ -21,7 +21,7 @@ When a user requests your content, CloudFront typically serves the requested con
 For example, if a request comes from a country where, for copyright reasons, you are not authorized to distribute your content, you can use CloudFront geo restriction to block the request\.
 
 **Note**  
-CloudFront determines the location of your users by using a third\-party GeoIP database\. The accuracy of the mapping between IP addresses and countries varies by region\. Based on recent tests, the overall accuracy is 99\.8%\. 
+CloudFront determines the location of your users by using a third\-party GeoIP database\. The accuracy of the mapping between IP addresses and countries varies by region\. Based on recent tests, the overall accuracy is 99\.8%\. Be aware that if CloudFront can't determine a user's location, CloudFront will serve the content that the user has requested\.
 
 Here's how geo restriction works:
 
@@ -39,7 +39,7 @@ Geo restriction applies to an entire web distribution\. If you need to apply one
 
 If you enable CloudFront access logging, you can identify the requests that CloudFront rejected by searching for the log entries for which the value of `sc-status` \(the HTTP status code\) is `403`\. However, using only the access logs, you can't distinguish a request that CloudFront rejected based on the location of the user from a request that CloudFront rejected because the user didn't have permission to access the object for another reason\. If you have a third\-party geolocation service such as Digital Element or MaxMind, you can identify the location of requests based on the IP address in the `c-ip` \(client IP\) column in the access logs\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
 
-The following procedure explains how to use the CloudFront console to add geo restriction to an existing web distribution\. For information about how to use the console to create a web distribution, see [Working with Web Distributions](distribution-web.md)\.
+The following procedure explains how to use the CloudFront console to add geo restriction to an existing web distribution\. For information about how to use the console to create a web distribution, see [Working with Web Distributions](distribution-web.md)\.<a name="restrictions-geo-procedure"></a>
 
 **To use the CloudFront console to add geo restriction to your CloudFront web distribution**
 

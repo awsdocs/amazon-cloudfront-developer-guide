@@ -14,7 +14,7 @@ If you need permission to permanently associate three or more SSL/TLS Dedicated 
 
 **Note**  
 This procedure is for using 3 or more DedicatedIP certificates across your CloudFront distributions\. The default value is 2\. Keep in mind you cannot bind more than 1 SSL certificate to a distribution\.  
-You can only associate a single SSL/TLS certificate to a CloudFront distribution at a time\. This number is for the total number of Dedicated IP SSL certificates you can use across all of your CloudFront distributions\.
+You can only associate a single SSL/TLS certificate to a CloudFront distribution at a time\. This number is for the total number of Dedicated IP SSL certificates you can use across all of your CloudFront distributions\.<a name="cnames-and-https-multiple-certificates-procedure"></a>
 
 **To request permission to use three or more certificates with a CloudFront distribution**
 
@@ -60,11 +60,11 @@ Note the following:
 + **Using the CloudFront Console** – The value that you specify for the `--server-certificate-name` parameter in the AWS CLI, for example, `myServerCertificate`, appears in the **SSL Certificate** list in the CloudFront console\.
 
 + **Using the CloudFront API** – Make note of the alphanumeric string that the AWS CLI returns, for example, `AS1A2M3P4L5E67SIIXR3J`\. This is the value that you will specify in the `IAMCertificateId` element\. You don't need the IAM ARN, which is also returned by the CLI\.
-For more information about the AWS CLI, see the [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) and the [AWS Command Line Interface Reference](http://docs.aws.amazon.com/cli/latest/reference/)\.
+For more information about the AWS CLI, see the [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) and the [AWS CLI Command Reference](http://docs.aws.amazon.com/cli/latest/reference/)\.
 
 ## Updating Your CloudFront Distribution<a name="cnames-and-https-updating-cloudfront"></a>
 
-To update settings for your distribution, perform the following procedure:
+To update settings for your distribution, perform the following procedure:<a name="cnames-and-https-updating-cloudfront-procedure"></a>
 
 **To configure your CloudFront distribution for alternate domain names**
 

@@ -13,7 +13,7 @@ You can configure one or more cache behaviors in your CloudFront distribution to
 **Note**  
 If you want to ensure that the objects that viewers get from CloudFront were encrypted when CloudFront got them from your origin, always use HTTPS between CloudFront and your origin\. If you recently changed from HTTP to HTTPS between CloudFront and your origin, we recommend that you invalidate objects in CloudFront edge locations\. CloudFront will return an object to a viewer regardless of whether the protocol used by the viewer \(HTTP or HTTPS\) matches the protocol that CloudFront used to get the object\. For more information about removing or replacing objects in a distribution, see [Adding, Removing, or Replacing Objects in a Distribution](AddRemoveReplaceObjects.md)\.
 
-To require HTTPS between viewers and CloudFront for one or more cache behaviors, perform the following procedure\.
+To require HTTPS between viewers and CloudFront for one or more cache behaviors, perform the following procedure\.<a name="using-https-viewers-to-cloudfront-procedure"></a>
 
 **To configure CloudFront to require HTTPS between viewers and CloudFront**
 

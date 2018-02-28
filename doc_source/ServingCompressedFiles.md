@@ -82,7 +82,7 @@ To configure a web distribution to compress your content, you update the applica
 
 + **One of the AWS SDKs** – See the applicable SDK documentation on the [AWS Documentation](http://aws.amazon.com/documentation/) page\.
 
-+ **The AWS CLI** – For more information, see [create\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-distribution.html) or [update\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/update-distribution.html) in the *AWS Command Line Interface Reference*\.
++ **The AWS CLI** – For more information, see [create\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-distribution.html) or [update\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/update-distribution.html) in the *AWS CLI Command Reference*\.
 
 ### File Types that CloudFront Compresses<a name="compressed-content-cloudfront-file-types"></a>
 

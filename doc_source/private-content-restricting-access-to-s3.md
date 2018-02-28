@@ -37,7 +37,7 @@ If you didn't create an origin access identity and add it to your distribution w
 
 ### Creating an Origin Access Identity and Adding it to Your Distribution Using the CloudFront Console<a name="private-content-creating-oai-console"></a>
 
-If you didn't create an origin access identity when you created your distribution, perform the following procedure\. 
+If you didn't create an origin access identity when you created your distribution, perform the following procedure\. <a name="private-content-creating-oai-console-procedure"></a>
 
 **To create a CloudFront origin access identity using the CloudFront console**
 
@@ -133,7 +133,7 @@ You can update the Amazon S3 bucket policy using either the AWS Management Conso
 
 For more information, go to [Using Bucket Policies and User Policies](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucketPolicies.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-For an example, see "Granting Permission to an Amazon CloudFront Origin Identify" in the topic [Bucket Policy Examples](http://docs.aws.amazon.com/AmazonS3/latest/dev/AccessPolicyLanguage_UseCases_s3_a.html), also in the *Amazon Simple Storage Service Developer Guide*\.
+For an example, see "Granting Permission to an Amazon CloudFront Origin Identity" in the topic [Bucket Policy Examples](http://docs.aws.amazon.com/AmazonS3/latest/dev/AccessPolicyLanguage_UseCases_s3_a.html), also in the *Amazon Simple Storage Service Developer Guide*\.
 
 ### Updating Amazon S3 ACLs<a name="private-content-updating-s3-acls"></a>
 
@@ -145,11 +145,11 @@ Using either the AWS Management Console or the Amazon S3 API, change the Amazon 
 
 + Deny access to anyone that you don't want to have access using Amazon S3 URLs\.
 
-If another AWS account uploads objects to your bucket, that account is the owner of the objects\. By default, the account that owns objects in a bucket is the only account that can grant permissions to those objects\. However, the AWS account that owns the objects can make you an owner, too, which allows you to change permissions on the objects\.
+If another AWS account uploads objects to your bucket, that account is the owner of those objects\. Bucket policies only apply to objects that the bucket owner owns\. This means that if another account uploads objects to your bucket, the bucket policy that you created for your OAI will not be evaluated for those objects\.
 
-For more information, go to [Managing Access with ACLs](http://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information, see [Managing Access with ACLs](http://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-You can also change the ACLs using code and one of the AWS SDKs\. For an example, see the downloadable sample code in [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)\.
+You can also change the ACLs programmatically by using one of the AWS SDKs\. For an example, see the downloadable sample code in [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)\.
 
 ## Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication<a name="private-content-origin-access-identity-signature-version-4"></a>
 

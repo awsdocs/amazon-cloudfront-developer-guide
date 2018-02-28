@@ -94,12 +94,20 @@ If no users request your objects during the time period, you don't receive any l
 
 ## Analyzing Access Logs<a name="access-logs-analyzing"></a>
 
-Because you can receive multiple access logs an hour, we recommend that you combine all the log files you receive for a given period into one file\. You can then analyze the data for that period more quickly and accurately\.
+Because you can receive multiple access logs per hour, we recommend that you combine all the log files you receive for a given period into one file\. You can then analyze the data for that period more quickly and accurately\.
+
+One way to analyze your access logs is to use Amazon Athena\. Athena is an interactive query service that can help you analyze data for AWS services, including CloudFront\. To learn more, see [ Querying Amazon CloudFront Logs](https://docs.aws.amazon.com/athena/latest/ug/cloudfront-logs.html) in the Amazon Athena User Guide\.
+
+In addition, the following AWS blog posts discuss some ways to analyze access logs\.
+
+AWS Blog: [ Amazon CloudFront Request Logging](http://aws.typepad.com/aws/2009/05/amazon-cloudfront-request-logging.html) \(for content delivered via HTTP\)
+
+AWS Blog: [ Amazon CloudFront Now Supports Streaming Access Logs](http://aws.typepad.com/aws/2010/05/amazon-cloudfront-supports-streaming-access-logs.html) \(for content delivered via RTMP\)
+
+AWS Blog: [ Enhanced CloudFront Logs, Now With Query Strings](http://aws.typepad.com/aws/2010/07/enhanced-cloudfront-logs-now-with-query-strings.html)
 
 **Important**  
 We recommend that you use the logs to understand the nature of the requests for your content, not as a complete accounting of all requests\. CloudFront delivers access logs on a best\-effort basis\. The log entry for a particular request might be delivered long after the request was actually processed and, in rare cases, a log entry might not be delivered at all\. When a log entry is omitted from access logs, the number of entries in the access logs won't match the usage that appears in the AWS usage and billing reports\.
-
-For more information about CloudFront access logs, including recommendations for tools that you can use to analyze access logs, see [Using CloudFront Logging](Resources.md#resources-cloudfront-logging)\.
 
 ## Editing Your Logging Settings<a name="ChangeSettings"></a>
 
@@ -107,7 +115,7 @@ You can enable or disable logging, change the Amazon S3 bucket where your logs a
 
 For more information, see the following topics:
 
-+ Updating a web or an RTMP distribution using the CloudFront console: [Listing, Viewing, and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
++ Updating a web or an RTMP distribution using the CloudFront console: [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
 
 + Updating a web distribution using the CloudFront API: [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
 

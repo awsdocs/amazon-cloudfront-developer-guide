@@ -50,13 +50,13 @@ Replace *domainname* with the applicable value:
 
 ## Origin Is Not Responding with Supported Ciphers/Protocols<a name="origin-not-responding-with-supported-ciphers-protocols"></a>
 
-CloudFront connects to origin servers using ciphers and protocols\. For a list of the ciphers and protocols that CloudFront supports, see Supported Ciphers and Protocols\. If your origin does not respond with one of these ciphers or protocols in the SSL/TLS exchange, CloudFront fails to connect\. You can validate that your origin supports the ciphers and protocols by using SSL Labs:
+CloudFront connects to origin servers using ciphers and protocols\. For a list of the ciphers and protocols that CloudFront supports, see [Supported Ciphers and Protocols](secure-connections-supported-viewer-protocols-ciphers.md)\. If your origin does not respond with one of these ciphers or protocols in the SSL/TLS exchange, CloudFront fails to connect\. You can validate that your origin supports the ciphers and protocols by using SSL Labs:
 
 + [SSL Labs](https://www.ssllabs.com/ssltest)
 
   Type the domain name of your origin in the **Hostname** field, and then choose **Submit**\. Review the **Common names** and **Alternative names** fields from the test to see if they match your origin's domain name\.
 
-  After the test is finished, find the **Protocols** and **Cipher Suites** sections in the test results to see which ciphers or protocols are supported by your origin\. Compare them with the list of Supported Ciphers and Protocols\.
+  After the test is finished, find the **Protocols** and **Cipher Suites** sections in the test results to see which ciphers or protocols are supported by your origin\. Compare them with the list of [Supported Ciphers and Protocols](secure-connections-supported-viewer-protocols-ciphers.md)\.
 
 **Note**  
 If you're using Elastic Load Balancing, see [SSL Security Policies for Elastic Load Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/elb-security-policy-options.html) in the *Elastic Load Balancing User Guide* to learn how to set the ciphers and protocols\. Using the Predefined Security Policy *ELBSecurityPolicy\-2016\-08* gives CloudFrontaccess to your elastic load balancer\. If you want to restrict it further using a custom policy, you must allow the ciphers that CloudFront supports\.
@@ -76,7 +76,7 @@ If the origin server returns the following, CloudFront drops the TCP connection,
 **Note**  
 If the full chain of certificates, including the intermediate certificate, is not present, CloudFront drops the TCP connection\.
 
-For information about installing an SSL/TLS certificate on your custom origin server, see Requiring HTTPS for Communication Between CloudFront and Your Custom Origin\.
+For information about installing an SSL/TLS certificate on your custom origin server, see [Requiring HTTPS for Communication Between CloudFront and Your Custom Origin](using-https-cloudfront-to-custom-origin.md)\.
 
 ## Origin Is Not Responding on Specified Ports in Origin Settings<a name="origin-not-responding-on-specified-ports"></a>
 

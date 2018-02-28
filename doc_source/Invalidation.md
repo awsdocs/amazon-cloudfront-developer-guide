@@ -168,7 +168,7 @@ See the applicable topic:
 
 ### Invalidating Objects Using the CloudFront Console<a name="invalidating-objects-console"></a>
 
-To invalidate objects using the CloudFront console, do the following procedure\.
+To invalidate objects using the CloudFront console, do the following procedure\.<a name="invalidating-objects-console-procedure"></a>
 
 **To invalidate objects using the CloudFront console**
 
@@ -193,7 +193,7 @@ Specify object paths carefully\. You can't cancel an invalidation request after 
 You can copy an invalidation that you created previously, update the list of invalidation paths, and run the updated invalidation\. You cannot copy an existing invalidation, update the invalidation paths, and save the updated invalidation without running it\.
 
 **Important**  
-If you copy an invalidation that is still in progress, update the list of invalidation paths, and run the updated invalidation, CloudFront will not stop or delete the invalidation that you copied\. If any invalidation paths appear in the original and in the copy, CloudFront will try to invalidate the objects twice, and both invalidations will count against your maximum number of free invalidations for the month\. If you've already reached the maximum number of free invalidations, you'll be charged for both invalidations of each object\. For more information, see [Invalidation Limits](#InvalidationLimits)\.
+If you copy an invalidation that is still in progress, update the list of invalidation paths, and run the updated invalidation, CloudFront will not stop or delete the invalidation that you copied\. If any invalidation paths appear in the original and in the copy, CloudFront will try to invalidate the objects twice, and both invalidations will count against your maximum number of free invalidations for the month\. If you've already reached the maximum number of free invalidations, you'll be charged for both invalidations of each object\. For more information, see [Invalidation Limits](#InvalidationLimits)\.<a name="invalidating-objects-copy-console-procedure"></a>
 
 **To copy, edit, and rerun an existing invalidation using the CloudFront console**
 
@@ -221,7 +221,7 @@ When you submit an invalidation request to CloudFront, CloudFront forwards the r
 
 ### Listing Invalidations Using the CloudFront Console<a name="listing-invalidations-console"></a>
 
-Using the console, you can display a list of the last 100 invalidations that you've created and run for a distribution\. If you want to get a list of more than 100 invalidations, use the GET Invalidation List API action\. For more information, see [GET Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/ListInvalidations.html) in the *Amazon CloudFront API Reference*\.
+Using the console, you can display a list of the last 100 invalidations that you've created and run for a distribution\. If you want to get a list of more than 100 invalidations, use the GET Invalidation List API action\. For more information, see [GET Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
 
 **To list invalidations using the CloudFront console**
 
@@ -235,7 +235,7 @@ Using the console, you can display a list of the last 100 invalidations that you
 
 ### Displaying Information about an Invalidation Using the CloudFront Console<a name="invalidation-details-console"></a>
 
-You can display detailed information about an invalidation, including distribution ID, invalidation ID, the status of the invalidation, the date and time that the invalidation was created, and a complete list of the invalidation paths\. 
+You can display detailed information about an invalidation, including distribution ID, invalidation ID, the status of the invalidation, the date and time that the invalidation was created, and a complete list of the invalidation paths\. <a name="invalidation-details-console-procedure"></a>
 
 **To display information about an invalidation using the CloudFront console**
 

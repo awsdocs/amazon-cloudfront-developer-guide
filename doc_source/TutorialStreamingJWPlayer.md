@@ -16,7 +16,7 @@ For more information about streaming media using CloudFront, see [Working with R
 
 ## Uploading Media and JW Player Files to an Amazon S3 Bucket<a name="StreamingJWPlayerUploadFiles"></a>
 
-You can upload your media files and your media player files to the same Amazon S3 bucket or to separate buckets\. For this tutorial, you'll upload an \.mp4 or \.flv media file and the JW Player media player files to the same bucket\.
+You can upload your media files and your media player files to the same Amazon S3 bucket or to separate buckets\. For this tutorial, you'll upload an \.mp4 or \.flv media file and the JW Player media player files to the same bucket\.<a name="StreamingJWPlayerUploadFilesProcedure"></a>
 
 **To upload media and JW Player files to an Amazon S3 bucket**
 
@@ -57,7 +57,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 ## Creating CloudFront Web and RTMP Distributions<a name="StreamingJWPlayerCreateDist"></a>
 
-To configure CloudFront to stream a media file, you need a CloudFront web distribution for the JW Player files and an HTML file, and an RTMP distribution for the media file\. Perform the following two procedures to create a web distribution and an RTMP distribution\.
+To configure CloudFront to stream a media file, you need a CloudFront web distribution for the JW Player files and an HTML file, and an RTMP distribution for the media file\. Perform the following two procedures to create a web distribution and an RTMP distribution\.<a name="StreamingJWPlayerCreateDownloadDistributionProcedure"></a>
 
 **To create a CloudFront web distribution for your JW Player files**
 
@@ -74,7 +74,7 @@ To configure CloudFront to stream a media file, you need a CloudFront web distri
 
 1. After CloudFront creates your distribution, the value of the **Status** column for your distribution will change from **InProgress** to **Deployed**\. This should take less than 15 minutes\.
 
-   The domain name that CloudFront assigns to your distribution appears in the list of distributions\. The domain name also appears on the Distribution Settings page for a selected distribution\.\)
+   The domain name that CloudFront assigns to your distribution appears in the list of distributions\. The domain name also appears on the Distribution Settings page for a selected distribution\.\)<a name="StreamingJWPlayerCreateStreamingDistributionProcedure"></a>
 
 **To create a CloudFront RTMP distribution for your media file**
 
@@ -169,7 +169,7 @@ jwplayer("my-video").setup({
 
 ## Uploading the HTML File and Playing the Video<a name="StreamingJWPlayerUploadHTML"></a>
 
-To play the video using the HTML file that you created in [Embedding Video in a Web Page](#StreamingJWPlayerEmbedVideo), upload the file to your Amazon S3 bucket, and use the URL for your CloudFront distribution\. 
+To play the video using the HTML file that you created in [Embedding Video in a Web Page](#StreamingJWPlayerEmbedVideo), upload the file to your Amazon S3 bucket, and use the URL for your CloudFront distribution\. <a name="StreamingJWPlayerUploadHTMLProcedure"></a>
 
 **To upload the HTML file and play the video**
 

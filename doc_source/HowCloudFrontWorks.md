@@ -2,7 +2,7 @@
 
 After some initial setup, CloudFront works invisibly to speed up delivery of your content\. This overview includes both the steps you perform before your first user accesses your application or website and how CloudFront serves your content when configuration is complete\. 
 
-Setting up CloudFront involves a few simple steps:
+Setting up CloudFront involves a few simple steps:<a name="HowCloudFrontWorksConfiguration"></a>
 
 **How You Configure CloudFront to Deliver Your Content**
 
@@ -28,7 +28,7 @@ As you develop your website or application, you use the domain name that CloudFr
 
 You can also configure your CloudFront distribution so you can use your own domain name\. In that case, the URL might be `http://www.example.com/logo.jpg`\.
 
-Optionally, you can configure your origin server to add headers to the files; the headers indicate how long you want the files to stay in the cache in CloudFront edge locations\. By default, each object stays in an edge location for 24 hours before it expires\. The minimum expiration time is 0 seconds; there isn't a maximum expiration time limit\. For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+Optionally, you can configure your origin server to add headers to the files; the headers indicate how long you want the files to stay in the cache in CloudFront edge locations\. By default, each object stays in an edge location for 24 hours before it expires\. The minimum expiration time is 0 seconds; there isn't a maximum expiration time limit\. For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.<a name="HowCloudFrontDeliversContent"></a>
 
 **How CloudFront Delivers Content to Your Users**
 

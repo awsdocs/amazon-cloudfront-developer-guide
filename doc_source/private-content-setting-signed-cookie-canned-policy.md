@@ -3,7 +3,7 @@
 
 + [Creating a Signature for a Signed Cookie That Uses a Canned Policy](#private-content-canned-policy-signature-cookies)
 
-To set a signed cookie using a canned policy, perform the following procedure\.
+To set a signed cookie using a canned policy, perform the following procedure\.<a name="private-content-setting-signed-cookie-canned-policy-procedure"></a>
 
 **To set a signed cookie using a canned policy**
 
@@ -50,7 +50,7 @@ Requires that the viewer encrypt cookies before sending a request\. We recommend
 **`HttpOnly`**  
 Requires that the viewer send the cookie only in HTTP or HTTPS requests\.  
 **`CloudFront-Expires`**  
-Specify the expiration date and time in Unix time format and Coordinated Universal Time \(UTC\)\. For example, March 16, 2015 10:00 am UTC converts to 1426500000 in Unix time format\. For information about UTC, see *RFC 3339, Date and Time on the Internet: Timestamps*, [http://tools\.ietf\.org/html/rfc3339](http://tools.ietf.org/html/rfc3339)\.  
+Specify the expiration date and time in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. For example, January 1, 2013 10:00 am UTC converts to 1357034400 in Unix time format\. To use epoch time, use a 32\-bit integer for a date which can be no later than 2147483647 \(January 19th, 2038 at 03:14:07 UTC\)\. For information about UTC, see *RFC 3339, Date and Time on the Internet: Timestamps*, [http://tools\.ietf\.org/html/rfc3339](http://tools.ietf.org/html/rfc3339)\.  
 **`CloudFront-Signature`**  
 A hashed, signed, and base64\-encoded version of a JSON policy statement\. For more information, see [Creating a Signature for a Signed Cookie That Uses a Canned Policy](#private-content-canned-policy-signature-cookies)\.  
 **`CloudFront-Key-Pair-Id`**  
@@ -87,7 +87,7 @@ To create the signature for a signed cookie that uses a canned policy, you perfo
 
 ### Creating a Policy Statement for a Signed Cookie That Uses a Canned Policy<a name="private-content-canned-policy-statement-cookies"></a>
 
-When you set a signed cookie that uses a canned policy, the `CloudFront-Signature` attribute is a hashed and signed version of a policy statement\. For signed cookies that use a canned policy, you don't include the policy statement in the `Set-Cookie` header, as you do for signed cookies that use a custom policy\. To create the policy statement, perform the following procedure\.
+When you set a signed cookie that uses a canned policy, the `CloudFront-Signature` attribute is a hashed and signed version of a policy statement\. For signed cookies that use a canned policy, you don't include the policy statement in the `Set-Cookie` header, as you do for signed cookies that use a custom policy\. To create the policy statement, perform the following procedure\.<a name="private-content-canned-policy-statement-cookies-procedure"></a>
 
 **To create a policy statement for a signed cookie that uses a canned policy**
 
@@ -161,7 +161,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
 
-+ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)
++ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-canned-policy-cookie-creating-signature-procedure"></a>
 
 **To create a signature for a signed cookie using a canned policy**
 

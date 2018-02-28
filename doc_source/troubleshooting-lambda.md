@@ -16,7 +16,7 @@ To confirm that you're still using the preview version, check the following:
 
   arn:aws:lambda:us\-east\-1:123456789012:function:http\-redirect:**1**
 
-You can continue to use the preview version of Lambda@Edge for a distribution until you delete all the triggers that are associated with the distribution\. To add new triggers to the distribution, you must migrate from the preview version to the general availability version; you can't revert to the preview version\.
+You can continue to use the preview version of Lambda@Edge for a distribution until you delete all the triggers that are associated with the distribution\. To add new triggers to the distribution, you must migrate from the preview version to the general availability version; you can't revert to the preview version\.<a name="troubleshooting-lambda-preview-procedure"></a>
 
 **To migrate from the preview version to the general availability version of Lambda@Edge for a distribution**
 
@@ -44,7 +44,7 @@ You can continue to use the preview version of Lambda@Edge for a distribution un
 
    + Create functions with the nodejs6\.10 runtime property\.
 
-   + Update the event structure for headers\. For more information, see [Event Structure](lambda-event-structure.md)\.
+   + Update the event structure for headers\. For more information, see [Lambda@Edge Event Structure](lambda-event-structure.md)\.
 
    + For general information, see [Using CloudFront with Lambda@Edge](lambda-at-the-edge.md)\.
 

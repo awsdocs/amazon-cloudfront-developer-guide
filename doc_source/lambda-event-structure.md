@@ -1,18 +1,21 @@
-# Event Structure<a name="lambda-event-structure"></a>
+# Lambda@Edge Event Structure<a name="lambda-event-structure"></a>
 
 The examples in this section show request and response events that CloudFront passes to or returns from a Lambda@Edge function when it's triggered\.
 
+
++ [Content\-Based Routing](#lambda-event-content-based-routing)
++ [Request Event](#lambda-event-structure-request)
++ [Response Event](#lambda-event-structure-response)
+
+## Content\-Based Routing<a name="lambda-event-content-based-routing"></a>
+
 You can use the path pattern in a cache behavior to route requests to an origin, based on the path and name of the requested object, such as images/\*\.jpg\. Using Lambda@Edge, you can also route requests to an origin based on other characteristics, such as the values in request headers\. 
 
-There are a number of ways this content\-based dynamic origin selection can be useful\. For example, you can distribute requests across origins in different geographic areas to help with global load balancing\. Or you can selectively route requests to different origins that each serve a particular function: bot handling, SEO optimization, authentication, and so on\. For code samples that demonstrate how to use this feature, see [Example Functions](lambda-examples.md)\.
+There are a number of ways this content\-based dynamic origin selection can be useful\. For example, you can distribute requests across origins in different geographic areas to help with global load balancing\. Or you can selectively route requests to different origins that each serve a particular function: bot handling, SEO optimization, authentication, and so on\. For code samples that demonstrate how to use this feature, see [ Example Functions for Content\-Based Routing](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-examples.html#lambda-examples-content-based-routing-examples)\.
 
 In the CloudFront origin request event, the origin element in the event structure contains information about the Amazon S3 or custom origin that the request would be routed to, based on the path pattern\. You can update the values in the origin object to route a request to a different origin\. The origin doesn't need to be defined in the distribution, and you can replace an Amazon S3 origin object with a custom origin object and vice versa\. 
 
 You can specify either a custom origin or an Amazon S3 origin in a single request, but not both\.
-
-
-+ [Request Event](#lambda-event-structure-request)
-+ [Response Event](#lambda-event-structure-response)
 
 ## Request Event<a name="lambda-event-structure-request"></a>
 
@@ -169,7 +172,7 @@ For more information about using an OAI, see [Using an Origin Access Identity to
 You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can't Forward to Your Origin](forward-custom-headers.md#forward-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
 
 **domainName**  
-The domain name of the Amazon S3 origin server, like `my-bucket.s3.amazonaws.com`\. The domain name can't be empty, and must be an allowed bucket name \(as defined by Amazon S3\)\. The name can be up to 128 characters, and must be all lowercase\.
+The domain name of the Amazon S3 origin server, like `my-bucket.s3.amazonaws.com`\. The domain name can't be empty, and must be an allowed bucket name \(as defined by Amazon S3\)\. Do not use a region\-specific endpoint, like `my-bucket.s3-eu-west-1.amazonaws.com`\. The name can be up to 128 characters, and must be all lowercase\.
 
 **path**  
 The directory path at the server where the request should locate content\. The path should start with a slash \(/\) but should have no trailing / \(like path/\)\.

@@ -111,7 +111,7 @@ When you create a distribution, you must specify whether you want the distributi
 
 + *Disabled* means that even though the distribution might be deployed and ready to use, end users can't use it\. When a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
-You can toggle a distribution between disabled and enabled as often as you want\. For information about updating a distribution's configuration, see [Listing, Viewing, and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
+You can toggle a distribution between disabled and enabled as often as you want\. For information about updating a distribution's configuration, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
 
 ## Restrict Viewer Access \(Use Signed URLs\)<a name="StreamingDistValuesRestrictViewerAccess"></a>
 

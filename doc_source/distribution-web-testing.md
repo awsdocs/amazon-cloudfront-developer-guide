@@ -3,7 +3,7 @@
 After you've created your distribution, CloudFront knows where your origin server is, and you know the domain name associated with the distribution\. You can create links to your objects using the CloudFront domain name, and CloudFront will serve the objects to your web page or application\.
 
 **Note**  
-You must wait until the status of the distribution changes to **Deployed** before you can test your links\.
+You must wait until the status of the distribution changes to **Deployed** before you can test your links\.<a name="distribution-web-testing-procedure"></a>
 
 **To create links to objects in a web distribution**
 

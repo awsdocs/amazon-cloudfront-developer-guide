@@ -22,6 +22,8 @@ See the following sections for requirements and restrictions on using Lambda fun
 
 + You can create a maximum of 100 triggers \(associations\) for a distribution\. 
 
++ You cannot associate a Lambda function with a CloudFront distribution owned by another AWS account\. 
+
 ## CloudFront Triggers for Lambda Functions<a name="lambda-requirements-cloudfront-triggers"></a>
 
 + You can add triggers only for a numbered version, not for `$LATEST` or for aliases\.
@@ -201,6 +203,8 @@ CloudFront doesn't execute Lambda functions for viewer response events if the or
 + You must create functions with the `nodejs6.10` runtime property\.
 
 + You can't configure your Lambda function to access resources inside your VPC\.
+
++ You can't associate your Lambda function to a CloudFront distribution owned by another AWS account\. 
 
 + The Dead Letter Queue \(DLQ\) isn't supported\.
 

@@ -10,7 +10,7 @@ If you're using a third\-party certificate authority and you imported certificat
 **Important**  
 If you configured CloudFront to serve HTTPS requests by using dedicated IP addresses, you might incur an additional, pro\-rated charge for using one or more additional certificates while you're rotating certificates\. We recommend that you update your distributions promptly to minimize the additional charge\.
 
-To rotate certificates, perform the following procedure\. Viewers can continue to access your content while you rotate certificates as well as after the process is complete\.
+To rotate certificates, perform the following procedure\. Viewers can continue to access your content while you rotate certificates as well as after the process is complete\.<a name="rotate-ssl-tls-certificates-proc"></a>
 
 **To rotate SSL/TLS certificates**
 

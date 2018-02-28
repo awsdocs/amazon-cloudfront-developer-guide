@@ -9,7 +9,7 @@ Creating a URL signature is just one part of the process of serving private cont
 
 The following methods are from the Java open source toolkit for Amazon S3 and CloudFront\. You must convert the private key from PEM to DER format for Java implementations to use it\.
 
-**Example Java Policy and Signature Encryption Methods**  
+**Example Java Policy and Signature Encryption Methods**  <a name="ExampleJavaPolicyAndSignatureEncryptionMethods"></a>
 
 ```
 // Signed URLs for a private distribution

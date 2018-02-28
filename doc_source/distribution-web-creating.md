@@ -1,6 +1,6 @@
 # Task List for Creating a Web Distribution<a name="distribution-web-creating"></a>
 
-The following task list summarizes the process for creating a web distribution\.
+The following task list summarizes the process for creating a web distribution\.<a name="create-download-distribution-task-list"></a>
 
 **To Create a Web Distribution**
 
@@ -22,7 +22,7 @@ You are responsible for ensuring the security of your origin server\. You must e
 
    + For information about creating a web distribution using the CloudFront API, go to [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
-1. Optional: If you created your distribution using the CloudFront console, create more cache behaviors or origins for your distribution\. For more information, see [To List, View, and Update CloudFront Distributions Using the CloudFront Console](HowToUpdateDistribution.md#HowToUpdateDistributionProcedure)\.
+1. Optional: If you created your distribution using the CloudFront console, create more cache behaviors or origins for your distribution\. For more information, see [To Update CloudFront Distributions Using the CloudFront Console](HowToUpdateDistribution.md#HowToUpdateDistributionProcedure)\.
 
 1. Test your web distribution\. For more information, see [Testing Your Web Distribution](distribution-web-testing.md)\.
 

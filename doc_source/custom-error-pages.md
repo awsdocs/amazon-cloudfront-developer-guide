@@ -82,6 +82,8 @@ If you want to control how long CloudFront caches errors for individual objects,
 
 + **If the origin adds a `Cache-Control max-age` or `Cache-Control s-maxage` directive, or an `Expires` header:** CloudFront caches error responses for the greater of the value in the header or the value of **Error Caching Minimum TTL**\.
 
+  Be aware that `Cache-Control max-age` and `Cache-Control s-maxage` values cannot be greater than the **Maximum TTL** value set for the cache behavior for which the error page is being fetched\.
+
 + **If the origin adds other `Cache-Control` directives or adds no headers:** CloudFront caches error responses for the value of **Error Caching Minimum TTL**\.
 
 If the expiration time for a 4xx or 5xx status code for an object is longer than you want to wait, you can invalidate the status code by using the URL of the requested object\. If your origin is returning an error response for multiple objects, you need to invalidate each object separately\. For more information about invalidating objects, see [Invalidating Objects \(Web Distributions Only\)](Invalidation.md)\.

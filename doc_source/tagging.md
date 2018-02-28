@@ -16,11 +16,11 @@ You can also apply tags to resources by using the CloudFront API, AWS CLI, SDKs,
 
 + CloudFront API – See [Actions on Tags](http://docs.aws.amazon.com/cloudfront/latest/APIReference/actions-tags.html) in the *Amazon CloudFront API Reference*
 
-+ AWS CLI – See [cloudfront](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/index.html) in the *AWS Command Line Interface Reference*
++ AWS CLI – See [cloudfront](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/index.html) in the *AWS CLI Command Reference*
 
 + SDKs – See the applicable SDK documentation on the [AWS Documentation](http://docs.aws.amazon.com/) page
 
-+ Tools for Windows PowerShell – See [Amazon CloudFront](http://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudFront_cmdlets.html) in the [AWS Tools for Windows PowerShell Reference](http://docs.aws.amazon.com/powershell/latest/reference/)
++ Tools for Windows PowerShell – See [Amazon CloudFront](http://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudFront_cmdlets.html) in the [AWS Tools for PowerShell Cmdlet Reference](http://docs.aws.amazon.com/powershell/latest/reference/)
 
 
 + [Tag Restrictions](#tagging-restrictions)
@@ -44,7 +44,7 @@ The following basic restrictions apply to tags:
 
 ## Adding, Editing, and Deleting Tags for Distributions<a name="tagging-add-edit-delete"></a>
 
-The following procedure explains how to add, edit, and delete tags for your distributions in the CloudFront console\.
+The following procedure explains how to add, edit, and delete tags for your distributions in the CloudFront console\.<a name="tagging-add-edit-delete-procedure"></a>
 
 **To add tags, edit, or delete tags for a distribution**
 

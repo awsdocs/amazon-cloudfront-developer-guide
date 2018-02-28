@@ -22,7 +22,7 @@ You don't need to enable access logging to view Viewers charts and reports\.
 
 ## Displaying Viewers Charts and Reports<a name="viewers-reports-displaying"></a>
 
-To display CloudFront Viewers charts and reports, perform the following procedure\.
+To display CloudFront Viewers charts and reports, perform the following procedure\.<a name="viewers-reports-procedure"></a>
 
 **To display CloudFront Viewers charts and reports**
 
@@ -58,7 +58,7 @@ To display CloudFront Viewers charts and reports, perform the following procedur
 
 ## Downloading Data in CSV Format<a name="viewer-csv"></a>
 
-You can download each of the Viewer reports in CSV format\. This section explains how to download the reports and describes the values in the report\.
+You can download each of the Viewer reports in CSV format\. This section explains how to download the reports and describes the values in the report\.<a name="viewer-csv-procedure"></a>
 
 **To download the Viewer reports in CSV format**
 

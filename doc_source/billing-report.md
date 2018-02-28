@@ -28,7 +28,7 @@ You can also download a more detailed version of the report in CSV format\. The 
 
   + The number of objects invalidated
 
-  + The sum of the prorated months that you had SSL certificates associated with enabled CloudFront distributions\. For example, if you have one certificate associated with an enabled distribution for an entire month and another certificate associated with an enabled distribution for half of the month, this value will be 1\.5\. 
+  + The sum of the prorated months that you had SSL certificates associated with enabled CloudFront distributions\. For example, if you have one certificate associated with an enabled distribution for an entire month and another certificate associated with an enabled distribution for half of the month, this value will be 1\.5\. <a name="billing-report-procedure"></a>
 
 **To display summary billing information and download the detailed billing report**
 

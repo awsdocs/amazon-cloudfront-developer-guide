@@ -8,7 +8,7 @@ If a user enters a URL directly into the address line of a browser, there is no 
 Data for the Top Referrers report is drawn from the same source as CloudFront access logs\. To get an accurate count of the top 25 referrers, CloudFront counts the requests for all of your objects in 10\-minute intervals and keeps a running total of the top 75 referrers\. Near the bottom of the list, referrers constantly rise onto or drop off of the list, so the totals for those referrers are approximations\. The 25 referrers at the top of the list of 75 referrers may rise and fall within the list, but they rarely drop off of the list altogether, so the totals for those referrers typically are more reliable\.
 
 **Note**  
-You don't need to enable access logging to view a list of top referrers\.
+You don't need to enable access logging to view a list of top referrers\.<a name="top-referrers-report-procedure"></a>
 
 **To display top referrers for a distribution**
 
@@ -30,7 +30,7 @@ You don't need to enable access logging to view a list of top referrers\.
 
 ## Downloading Data in CSV Format<a name="top-referrers-csv"></a>
 
-You can download the Top Referrers report in CSV format\. This section explains how to download the report and describes the values in the report\.
+You can download the Top Referrers report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="top-referrers-csv-procedure"></a>
 
 **To download the Top Referrers report in CSV format**
 

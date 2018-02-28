@@ -7,7 +7,7 @@ Data for the Popular Objects report is drawn from the same source as CloudFront 
 When an object drops off of the list of the top 150 objects and then rises onto the list again over the course of a day, CloudFront adds an estimated number of requests for the period that the object was missing from the list\. The estimate is based on the number of requests received by whichever object was at the bottom of the list during that time period\. If the object rises into the top 50 objects later in the day, the estimates of the number of requests that CloudFront received while the object was out of the top 150 objects usually causes the number of requests in the Popular Objects report to exceed the number of requests that appear in the access logs for that object\.
 
 **Note**  
-You don't need to enable access logging to view a list of popular objects\.
+You don't need to enable access logging to view a list of popular objects\.<a name="popular-objects-report-procedure"></a>
 
 **To display popular objects for a distribution**
 
@@ -29,7 +29,7 @@ You don't need to enable access logging to view a list of popular objects\.
 
 ## Downloading Data in CSV Format<a name="popular-objects-csv"></a>
 
-You can download the Popular Objects report in CSV format\. This section explains how to download the report and describes the values in the report\.
+You can download the Popular Objects report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="popular-objects-csv-procedure"></a>
 
 **To download the Popular Objects report in CSV format**
 

@@ -45,7 +45,7 @@ If you want to use SNI but some of your users' browsers don't support SNI, you h
 
   You also need to change the SSL/TLS certificate that CloudFront is using from a custom certificate to the default CloudFront certificate:
 
-  + If you haven't used your distribution to distribute your content, you can just change the configuration\. For more information, see [Listing, Viewing, and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
+  + If you haven't used your distribution to distribute your content, you can just change the configuration\. For more information, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
 
   + If you have used your distribution to distribute your content, you need to create a new CloudFront distribution and change the URLs for your objects to reduce or eliminate the amount of time that your content is unavailable\. For more information, see [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)\.
 

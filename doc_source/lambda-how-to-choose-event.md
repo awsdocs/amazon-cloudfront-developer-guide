@@ -1,4 +1,4 @@
-# How You Decide Which CloudFront Event to Use to Trigger a Lambda Function<a name="lambda-how-to-choose-event"></a>
+# How to Decide Which CloudFront Event to Use to Trigger a Lambda Function<a name="lambda-how-to-choose-event"></a>
 
 When you're deciding which CloudFront event you want to use to trigger a Lambda function, consider the following:
 

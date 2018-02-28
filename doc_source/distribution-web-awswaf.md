@@ -4,7 +4,7 @@ AWS WAF is a web application firewall that lets you monitor the HTTP and HTTPS r
 
 After you create an AWS WAF web access control list \(web ACL\), you create or update a web distribution and associate the distribution with a web ACL\. You can associate as many CloudFront distributions as you want with the same web ACL or with different web ACLs\. For information about creating a web distribution and associating it with a web ACL, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\.
 
-To associate or disassociate a web ACL and an existing distribution, or change the web ACL that is associated with a distribution, perform the following procedure\.
+To associate or disassociate a web ACL and an existing distribution, or change the web ACL that is associated with a distribution, perform the following procedure\.<a name="distribution-web-awswaf-procedure"></a>
 
 **To associate or disassociate an AWS WAF web ACL and an existing CloudFront distribution by using the CloudFront console**
 

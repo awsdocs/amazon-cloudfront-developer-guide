@@ -12,7 +12,7 @@ You can use AWS\-wide condition keys in your CloudFront policies to express cond
 + [Required Permissions for CloudFront Actions Related to Lambda@Edge](#required-permissions-lambda)
 + [Required Permissions for Actions on Tags](#required-permissions-tags)
 
-## Required Permissions for Actions on Web Distributions<a name="required-permissions-web-distributions"></a>
+## Required Permissions for Actions on Web Distributions<a name="required-permissions-web-distributions"></a><a name="web-distributions-table"></a>
 
 [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)  
 **Required Permissions \(API Action\):**  
@@ -96,7 +96,7 @@ You can use AWS\-wide condition keys in your CloudFront policies to express cond
 **Required Permissions \(API Action\):** `cloudfront:DeleteDistribution`  
 **Resources:** `*`
 
-## Required Permissions for Actions on RTMP Distributions<a name="required-permissions-rtmp-distributions"></a>
+## Required Permissions for Actions on RTMP Distributions<a name="required-permissions-rtmp-distributions"></a><a name="rtmp-distributions-table"></a>
 
 [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)  
 **Required Permissions \(API Action\):** `cloudfront:CreateStreamingDistribution`  
@@ -150,7 +150,7 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 **Required Permissions \(API Action\):** `cloudfront:DeleteDistribution`  
 **Resources:** `*`
 
-## Required Permissions for Actions on Invalidations<a name="required-permissions-invalidations"></a>
+## Required Permissions for Actions on Invalidations<a name="required-permissions-invalidations"></a><a name="invalidations-table"></a>
 
 [CreateInvalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html)  
 **Required Permissions \(API Action\):** `cloudfront:CreateInvalidation`  
@@ -164,7 +164,7 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 **Required Permissions \(API Action\):** `cloudfront:ListInvalidations`  
 **Resources:** `*`
 
-## Required Permissions for Actions on Origin Access Identities<a name="required-permissions-origin-access-identities"></a>
+## Required Permissions for Actions on Origin Access Identities<a name="required-permissions-origin-access-identities"></a><a name="origin-access-identities-table"></a>
 
 [CreateCloudFrontOriginAccessIdentity](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html)  
 **Required Permissions \(API Action\):** `cloudfront:CreateCloudFrontOriginAccessIdentity`  
@@ -192,7 +192,7 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 
 ## Required Permissions for CloudFront Actions Related to Lambda@Edge<a name="required-permissions-lambda"></a>
 
-To use Lambda@Edge, you need the following CloudFront permissions so you can create or update a distribution that includes triggers for Lambda functions\. For information about the Lambda permissions that you need, see [Setting IAM Permissions](http://docs.aws.amazon.com/lambda/latest/dg/lambda-edge-permissions.html) in the "AWS Lambda@Edge" chapter in the *AWS Lambda Developer Guide*\.
+To use Lambda@Edge, you need the following CloudFront permissions so you can create or update a distribution that includes triggers for Lambda functions\. For information about the Lambda permissions that you need, see [Setting IAM Permissions](http://docs.aws.amazon.com/lambda/latest/dg/lambda-edge-permissions.html) in the "AWS Lambda@Edge" chapter in the *AWS Lambda Developer Guide*\.<a name="lambda-table"></a>
 
 [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)  
 **Required Permissions \(API Action\):**  
@@ -260,7 +260,7 @@ To use Lambda@Edge, you need the following CloudFront permissions so you can cre
 
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
-## Required Permissions for Actions on Tags<a name="required-permissions-tags"></a>
+## Required Permissions for Actions on Tags<a name="required-permissions-tags"></a><a name="invalidations-tags"></a>
 
 [TagResource](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html)  
 **Required Permissions \(API Action\):** `cloudfront:TagResource`  

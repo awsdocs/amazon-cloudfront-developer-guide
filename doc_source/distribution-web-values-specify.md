@@ -4,7 +4,7 @@ When you create a new web distribution or update an existing distribution, you s
 
 + [Working with Web Distributions](distribution-web.md)
 
-+ [Listing, Viewing, and Updating CloudFront Distributions](HowToUpdateDistribution.md)
++ [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)
 
 **[Delivery Method](#DownloadDistValuesMethod)**
 
@@ -607,11 +607,11 @@ You can choose to run a Lambda function when one or more of the following CloudF
 
 + Before CloudFront returns the response to the viewer \(viewer response\)
 
-For more information, see [How You Decide Which CloudFront Event to Use to Trigger a Lambda Function](lambda-how-to-choose-event.md)\.
+For more information, see [How to Decide Which CloudFront Event to Use to Trigger a Lambda Function](lambda-how-to-choose-event.md)\.
 
 ### Lambda Function ARN<a name="DownloadDistValuesLambdaFunctionARN"></a>
 
-Specify the Amazon Resource Name \(ARN\) of the Lambda function that you want to add a trigger for\. To learn how to get the ARN for a function, see step 1 of the procedure [Adding Triggers for CloudFront Events \(CloudFront Console\)](lambda-create-functions.md#lambda-create-functions-add-triggers-cloudfront-console)\.
+Specify the Amazon Resource Name \(ARN\) of the Lambda function that you want to add a trigger for\. To learn how to get the ARN for a function, see step 1 of the procedure [ Adding Triggers by Using the CloudFront Console](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-add-triggers.html#lambda-edge-add-triggers-cf-console)\.
 
 ## Distribution Details<a name="DownloadDistValuesGeneral"></a>
 
@@ -783,7 +783,7 @@ Indicates whether you want the distribution to be enabled or disabled once it's 
 
 + *Disabled* means that even though the distribution might be deployed and ready to use, users can't use it\. Whenever a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
-You can toggle a distribution between disabled and enabled as often as you want\. Follow the process for updating a distribution's configuration\. For more information, see [Listing, Viewing, and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
+You can toggle a distribution between disabled and enabled as often as you want\. Follow the process for updating a distribution's configuration\. For more information, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
 
 ## Custom Error Pages and Error Caching<a name="DownloadDistValuesErrorPages"></a>
 

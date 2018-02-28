@@ -3,7 +3,7 @@
 You can use the Amazon CloudFront console to display a graphical representation of statistics related to CloudFront edge locations\. Data for these statistics are drawn from the same source as CloudFront access logs\. You can display charts for a specified date range in the last 60 days, with data points every hour or every day\. You can usually view data about requests that CloudFront received as recently as an hour ago, but data can occasionally be delayed by as much as 24 hours\. 
 
 **Note**  
-You don't need to enable access logging to view cache statistics\.
+You don't need to enable access logging to view cache statistics\.<a name="cache-statistics-procedure"></a>
 
 **To display CloudFront cache statistics**
 
@@ -41,7 +41,7 @@ You don't need to enable access logging to view cache statistics\.
 
 ## Downloading Data in CSV Format<a name="cache-statistics-csv"></a>
 
-You can download the Cache Statistics report in CSV format\. This section explains how to download the report and describes the values in the report\.
+You can download the Cache Statistics report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="cache-statistics-csv-procedure"></a>
 
 **To download the Cache Statistics report in CSV format**
 

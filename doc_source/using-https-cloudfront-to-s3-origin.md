@@ -8,7 +8,7 @@ Note the following about using HTTPS when the origin is an Amazon S3 bucket:
 
 + If your Amazon S3 bucket is configured as a website endpoint, you can't configure CloudFront to use HTTPS to communicate with your origin because Amazon S3 doesn't support HTTPS connections in that configuration\.
 
-+ Amazon S3 provides the SSL/TLS certificate, so you don't have to\.
++ Amazon S3 provides the SSL/TLS certificate, so you don't have to\.<a name="using-https-cloudfront-to-s3-origin-procedure"></a>
 
 **To configure CloudFront to require HTTPS between CloudFront and your Amazon S3 origin**
 

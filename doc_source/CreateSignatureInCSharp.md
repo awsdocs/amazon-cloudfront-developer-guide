@@ -17,7 +17,7 @@ To use the RSA keys provided by [AWS Account/Security](http://aws-portal.amazon.
 
 After conversion, the RSA private key file is in the following format:
 
-**Example RSA Private Key in the XML \.NET Framework Format**  
+**Example RSA Private Key in the XML \.NET Framework Format**  <a name="RSAPrivateKeyXML.NETFrameworkFormat"></a>
 
 ```
 <RSAKeyValue>
@@ -66,7 +66,7 @@ The following C\# code creates a signed URL that uses a canned policy by perform
 
 For the complete implementation, see the example at [Signature Code in C\#](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
 
-**Example Canned Policy Signing Method in C\#**  
+**Example Canned Policy Signing Method in C\#**  <a name="ExampleCannedPolicySigningMethod-CSharp"></a>
 
 ```
 public static string ToUrlSafeBase64String(byte[] bytes)
@@ -156,7 +156,7 @@ The following C\# code creates a signed URL that uses a custom policy by perform
 
 For the complete implementation, see the example at [Signature Code in C\#](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
 
-**Example Custom Policy Signing Method in C\#**  
+**Example Custom Policy Signing Method in C\#**  <a name="ExampleCustomPolicySigningMethod-CSharp"></a>
 
 ```
 public static string ToUrlSafeBase64String(byte[] bytes)
@@ -234,7 +234,7 @@ public static string CreateCustomPrivateURL(string urlString,
 }
 ```
 
-**Example Utility Methods for Signature Generation**  
+**Example Utility Methods for Signature Generation**  <a name="UtilityMethodsForSignatureGeneration"></a>
 The following methods get the policy statement from a file and parse time intervals for signature generation\.  
 
 ```

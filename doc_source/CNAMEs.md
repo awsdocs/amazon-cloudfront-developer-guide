@@ -66,7 +66,7 @@ The following task list describes the process for using the CloudFront console t
 **Note**  
 If you want viewers to use HTTPS with your alternate domain name, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
-For information about updating your distribution using the CloudFront API, see [Working with Distributions](distribution-working-with.md)\.
+For information about updating your distribution using the CloudFront API, see [Working with Distributions](distribution-working-with.md)\.<a name="CreatingCNAMEProcess"></a>
 
 **Adding an Alternate Domain Name Using the CloudFront Console**
 
