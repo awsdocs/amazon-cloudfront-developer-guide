@@ -1,6 +1,6 @@
 # Customizing Error Responses<a name="custom-error-pages"></a>
 
-
+**Topics**
 + [Creating or Updating a Cache Behavior for Custom Error Pages](#custom-error-pages-cache-behavior)
 + [Changing Response Codes](#custom-error-pages-response-code)
 + [Controlling How Long CloudFront Caches Errors](#custom-error-pages-expiration)
@@ -19,15 +19,11 @@ If you'd rather display a custom error message, possibly using the same formatti
 You can specify a different object for each supported HTTP status code, or you can use the same object for all of the supported status codes\. You can also choose to specify objects for some status codes and not for others\. 
 
 The objects that you're serving through CloudFront can be unavailable for a variety of reasons\. These fall into two broad categories:
-
 + **Client errors** indicate a problem with the request\. For example, an object with the specified name isn't available, or the user doesn't have the permissions required to get an object in your Amazon S3 bucket\. When a client error occurs, the origin returns an HTTP status code in the 400 range to CloudFront\.
-
 + **Server errors** indicate a problem with the origin server\. For example, the HTTP server is busy or unavailable\. When a server error occurs, either your origin server returns an HTTP status code in the 500 range to CloudFront, or CloudFront doesn't get a response from your origin server for a certain period of time and assumes a 504 status code \(gateway timeout\)\.
 
 The HTTP status codes for which CloudFront can return a custom error page include the following:
-
 + 400, 403, 404, 405, 414, 416
-
 + 500, 501, 502, 503, 504
 
 **Note**  
@@ -38,9 +34,7 @@ For a detailed explanation of how CloudFront handles error responses from your o
 ## Creating or Updating a Cache Behavior for Custom Error Pages<a name="custom-error-pages-cache-behavior"></a>
 
 If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:
-
 + The value of **Path Pattern** matches the path to your custom error messages\. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named `/4xx-errors`\. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, **/4xx\-errors/\***\. 
-
 + The value of **Origin** specifies the value of **Origin ID** for the origin that contains your custom error pages\.
 
 For more information, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the topic [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
@@ -48,21 +42,15 @@ For more information, see [Cache Behavior Settings](distribution-web-values-spec
 ## Changing Response Codes<a name="custom-error-pages-response-code"></a>
 
 You can choose the HTTP status code CloudFront returns along with a custom error page for a given HTTP status code\. For example, if your origin returns a 500 status code to CloudFront, you might want CloudFront to return a custom error page and a 200 status code \(OK\) to the viewer\. There are a variety of reasons that you might want CloudFront to return a status code to the viewer that is different from the one that your origin returned to CloudFront:
-
 + Some internet devices \(some firewalls and corporate proxies, for example\) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer\. If you substitute `200`, the response typically won't be intercepted\.
-
 + If you don't care about distinguishing among different client errors or server errors, you can specify **400** or **500** as the value that CloudFront returns for all 4xx or 5xx status codes\.
-
 + You might want to return a `200` status code \(OK\) and static website so your customers don't know that your website is down\.
 
 If you enable CloudFront access logs and you configure CloudFront to change the HTTP status code in the response, the value of the `sc-status` column in access logs will contain the status code that you specify\. However, the value of the `x-edge-result-type` column will not be affected; it will still contain the result type of the response from the origin\. For example, suppose you configure CloudFront to return a status code of `200` to the viewer when the origin returns `404` \(Not Found\) to CloudFront\. When the origin responds to a request with a `404` status code, the value in the `sc-status` column in the access log will be `200`, but the value in the `x-edge-result-type` column will be `Error`\.
 
 You can configure CloudFront to return any of the following HTTP status codes along with a custom error page:
-
 + 200
-
 + 400, 403, 404, 405, 414, 416
-
 + 500, 501, 502, 503, 504
 
 ## Controlling How Long CloudFront Caches Errors<a name="custom-error-pages-expiration"></a>
@@ -73,17 +61,13 @@ By default, when your origin returns an HTTP 4xx or 5xx status code, CloudFront 
 You can create a custom error page for HTTP status code 416 \(Requested Range Not Satisfiable\), and you can change the HTTP status code that CloudFront returns to viewers when your origin returns a status code 416 to CloudFront\. \(For more information, see [Changing Response Codes](#custom-error-pages-response-code)\.\) However, CloudFront doesn't cache status code 416 responses, so you can specify a value for **Error Caching Minimum TTL** for status code 416, but CloudFront doesn't use it\. 
 
 You can specify the error\-caching duration—the **Error Caching Minimum TTL**—for each 4xx and 5xx status code that CloudFront caches\. For a procedure, see [Configuring Error Response Behavior](#custom-error-pages-procedure)\. When you specify a duration, note the following:
-
 + If you specify a short error\-caching duration, CloudFront forwards more requests to your origin than if you specify a longer duration\. For 5xx errors, this may aggravate the problem that originally caused your origin to return an error\.
-
 + When your origin returns an error for an object, CloudFront responds to requests for the object either with the error response or with your custom error page until the error\-caching duration elapses\. If you specify a long error\-caching duration, CloudFront might continue to respond to requests with an error response or your custom error page for a long time after the object becomes available again\.
 
 If you want to control how long CloudFront caches errors for individual objects, you can configure your origin server to add the applicable header to the error response for that object: 
-
 + **If the origin adds a `Cache-Control max-age` or `Cache-Control s-maxage` directive, or an `Expires` header:** CloudFront caches error responses for the greater of the value in the header or the value of **Error Caching Minimum TTL**\.
 
   Be aware that `Cache-Control max-age` and `Cache-Control s-maxage` values cannot be greater than the **Maximum TTL** value set for the cache behavior for which the error page is being fetched\.
-
 + **If the origin adds other `Cache-Control` directives or adds no headers:** CloudFront caches error responses for the value of **Error Caching Minimum TTL**\.
 
 If the expiration time for a 4xx or 5xx status code for an object is longer than you want to wait, you can invalidate the status code by using the URL of the requested object\. If your origin is returning an error response for multiple objects, you need to invalidate each object separately\. For more information about invalidating objects, see [Invalidating Objects \(Web Distributions Only\)](Invalidation.md)\.

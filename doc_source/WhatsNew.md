@@ -1,9 +1,7 @@
 # Document History<a name="WhatsNew"></a>
 
 The following table describes the important changes to the documentation since the last release of CloudFront\.
-
 + **API Version:** 2016\-11\-25
-
 + **Latest documentation update:** November 30, 2016
 
 
@@ -45,7 +43,7 @@ The following table describes the important changes to the documentation since t
 |  New Features  |  This release of CloudFront introduces geo restriction\. If you need to prevent users in selected countries from accessing your content, you can configure a CloudFront web distribution to do one of the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/WhatsNew.html) For more information, see [Restricting the Geographic Distribution of Your Content](georestrictions.md)\.  |  December 18, 2013  | 
 |  New Features  |  This release of CloudFront introduces the following features: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/WhatsNew.html)  |  October 15, 2013  | 
 |  New Features  |  This release of CloudFront introduces the following features: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/WhatsNew.html)  |  September 23, 2013  | 
-|  New Feature  |  You can now include the \* wildcard in a CloudFront alternate domain name \(CNAME\), such as \*\.example\.com\. This is useful when you want to route all requests for objects in a domain and its subdomains to a CloudFront distribution\. For more information, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.  |  September 18, 2013  | 
+|  New Feature  |  You can now include the \* wildcard in a CloudFront alternate domain name \(CNAME\), such as \*\.example\.com\. This is useful when you want to route all requests for objects in a domain and its subdomains to a CloudFront distribution\. For more information, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.  |  September 18, 2013  | 
 |  Updated Documentation  |  Documentation about live streaming with Wowza Media Server 3\.6 was added\.  |  September 10, 2013  | 
 |  New Features  |  This release of CloudFront introduces the following features: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/WhatsNew.html) In addition, a simultaneous release of Amazon Route 53 introduces the following CloudFront–related feature: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/WhatsNew.html)  |  June 11, 2013  | 
 |  New Features  |  This release of CloudFront introduces the following features: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/WhatsNew.html)  |  September 27, 2012  | 

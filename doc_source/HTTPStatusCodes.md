@@ -1,18 +1,14 @@
 # How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin<a name="HTTPStatusCodes"></a>
 
-
+**Topics**
 + [How CloudFront Processes Errors When You Have Configured Custom Error Pages](#HTTPStatusCodes-custom-error-pages)
 + [How CloudFront Processes Errors When You Have Not Configured Custom Error Pages](#HTTPStatusCodes-no-custom-error-pages)
 + [HTTP 4xx and 5xx Status Codes that CloudFront Caches](#HTTPStatusCodes-cached-errors)
 
 When CloudFront requests an object from your Amazon S3 bucket or custom origin server, your origin sometimes returns an HTTP 4xx or 5xx status code, which indicates an error has occurred\. CloudFront behavior depends on:
-
 + Whether you have configured custom error pages\.
-
 + Whether you have configured how long you want CloudFront to cache error responses from your origin \(error caching minimum TTL\)\.
-
 + The status code\.
-
 + For 5xx status codes, whether the requested object is currently in the CloudFront edge cache\.
 
 CloudFront always caches responses to `GET` and `HEAD` requests\. You can also configure CloudFront to cache responses to `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
@@ -30,11 +26,8 @@ If you have configured custom error pages, CloudFront behavior depends on whethe
 ### The Requested Object Is Not in the Edge Cache<a name="HTTPStatusCodes-custom-error-pages-not-in-cache"></a>
 
 CloudFront continues to try to get the requested object from your origin when all of the following are true:
-
 + A viewer requests an object
-
 + The object isn't in the edge cache
-
 + Your origin returns an HTTP 4xx or 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object
 
 CloudFront does the following:
@@ -54,11 +47,8 @@ CloudFront does the following:
 ### The Requested Object Is in the Edge Cache<a name="HTTPStatusCodes-custom-error-pages-in-cache"></a>
 
 CloudFront continues to serve the object that is currently in the edge cache when all of the following are true:
-
 + A viewer requests an object
-
 + The object is in the edge cache but it has expired
-
 + Your origin returns an HTTP 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object
 
 CloudFront does the following:
@@ -76,11 +66,8 @@ If you have not configured custom error pages, CloudFront behavior depends on wh
 ### The Requested Object Is Not in the Edge Cache<a name="HTTPStatusCodes-no-custom-error-pages-not-in-cache"></a>
 
 CloudFront continues to try to get the requested object from your origin when all of the following are true:
-
 + A viewer requests an object
-
 + The object isn't in the edge cache
-
 + Your origin returns an HTTP 4xx or 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object
 
 CloudFront does the following:
@@ -96,11 +83,8 @@ CloudFront does the following:
 ### The Requested Object Is in the Edge Cache<a name="HTTPStatusCodes-no-custom-error-pages-in-cache"></a>
 
 CloudFront continues to serve the object that is currently in the edge cache when all of the following are true:
-
 + A viewer requests an object
-
 + The object is in the edge cache but it has expired
-
 + Your origin returns an HTTP 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object
 
 CloudFront does the following:

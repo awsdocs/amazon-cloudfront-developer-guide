@@ -5,9 +5,7 @@ Here's an overview of how to create and use Lambda functions with CloudFront:
 1. You use Node\.js 6\.10 to write the code for your Lambda function\.
 
 1. In the AWS Lambda console, you create a Lambda function in the US East \(N\. Virginia\) Region\. \(You can also create the function programmatically, for example, by using one of the AWS SDKs\.\) When you create the function, you specify the following:
-
    + The CloudFront distribution that you want the function to apply to
-
    + A cache behavior in the distribution
 
 1. You publish a numbered version of the function\.

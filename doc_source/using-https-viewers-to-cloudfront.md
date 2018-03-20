@@ -1,13 +1,11 @@
 # Requiring HTTPS for Communication Between Viewers and CloudFront<a name="using-https-viewers-to-cloudfront"></a>
 
 You can configure one or more cache behaviors in your CloudFront distribution to require HTTPS for communication between viewers and CloudFront\. You also can configure one or more cache behaviors to allow both HTTP and HTTPS, so that CloudFront requires HTTPS for some objects but not for others\. The configuration steps depend on which domain name you're using in object URLs:
-
 + If you're using the domain name that CloudFront assigned to your distribution, such as d111111abcdef8\.cloudfront\.net, you change the **Viewer Protocol Policy** setting for one or more cache behaviors to require HTTPS communication\. In that configuration, CloudFront provides the SSL/TLS certificate\. 
 
   To change the value of **Viewer Protocol Policy** by using the CloudFront console, see the procedure later in this section\.
 
   For information about how to use the CloudFront API to change the value of the `ViewerProtocolPolicy` element, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
-
 + If you're using your own domain name, such as example\.com, you need to change several CloudFront settings\. You also need to use an SSL/TLS certificate provided by AWS Certificate Manager \(ACM\), import a certificate from a third\-party certificate authority into ACM or the IAM certificate store, or create and import a self\-signed certificate\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
 **Note**  
@@ -37,9 +35,6 @@ Viewers can access your content only if they're using HTTPS\. If a viewer sends 
 1. Repeat steps 3 through 5 for each additional cache behavior that you want to require HTTPS for between viewers and CloudFront\.
 
 1. Confirm the following before you use the updated configuration in a production environment:
-
    + The path pattern in each cache behavior applies only to the requests that you want viewers to use HTTPS for\.
-
    + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path Pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
-
    + The cache behaviors are routing requests to the correct origins\. 

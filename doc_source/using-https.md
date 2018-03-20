@@ -18,7 +18,7 @@ If you configure CloudFront to require HTTPS both to communicate with viewers an
 
 For information about how to require HTTPS between viewers and CloudFront, and between CloudFront and your origin, see the following topics\.
 
-
+**Topics**
 + [Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)
 + [Requiring HTTPS for Communication Between CloudFront and Your Custom Origin](using-https-cloudfront-to-custom-origin.md)
 + [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)

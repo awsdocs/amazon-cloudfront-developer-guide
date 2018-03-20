@@ -1,6 +1,6 @@
 # Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)<a name="private-content-trusted-signers"></a>
 
-
+**Topics**
 + [Creating CloudFront Key Pairs for Your Trusted Signers](#private-content-creating-cloudfront-key-pairs)
 + [Reformatting the CloudFront Private Key \(\.NET and Java Only\)](#private-content-reformatting-private-key)
 + [Adding Trusted Signers to Your Distribution](#private-content-adding-trusted-signers)
@@ -8,15 +8,11 @@
 + [Rotating CloudFront Key Pairs](#private-content-rotating-key-pairs)
 
 To create signed URLs or signed cookies, you need at least one AWS account that has an active CloudFront key pair\. This account is known as a trusted signer\. The trusted signer has two purposes:
-
 + As soon as you add the AWS account ID for your trusted signer to your distribution, CloudFront starts to require that users use signed URLs or signed cookies to access your objects\.
-
 + When you create signed URLs or signed cookies, you use the private key from the trusted signer's key pair to sign a portion of the URL or the cookie\. When someone requests a restricted object, CloudFront compares the signed portion of the URL or cookie with the unsigned portion to verify that the URL or cookie hasn't been tampered with\. CloudFront also verifies that the URL or cookie is valid, meaning, for example, that the expiration date and time hasn't passed\.
 
 When you specify trusted signers, you also indirectly specify the objects that require signed URLs or signed cookies:
-
 + **Web distributions** – You add trusted signers to cache behaviors\. If your distribution has only one cache behavior, users must use signed URLs or signed cookies to access any object associated with the distribution\. If you create multiple cache behaviors and add trusted signers to some cache behaviors and not to others, you can require that users use signed URLs or signed cookies to access some objects and not others\.
-
 + **RTMP distributions \(signed URLs only\)** – You add trusted signers to a distribution\. After you add trusted signers to an RTMP distribution, users must use signed URLs to access any object associated with the distribution\.
 
 **Note**  
@@ -41,9 +37,7 @@ Each of the AWS accounts that you use to create CloudFront signed URLs or signed
 To help secure your applications, we recommend that you change CloudFront key pairs every 90 days or more often\. For more information, see [Rotating CloudFront Key Pairs](#private-content-rotating-key-pairs)\.
 
 You can create a key pair in the following ways:
-
 + Create a key pair in the AWS Management Console and download the private key\. See the procedure [To create CloudFront key pairs in the AWS Management Console](#private-content-creating-cloudfront-key-pairs-procedure)\.
-
 + Create an RSA key pair by using an application such as OpenSSL, and upload the public key to the AWS Management Console\. See the procedure [To create an RSA key pair and upload the public key in the AWS Management Console](#private-content-uploading-cloudfront-public-key-procedure)\.<a name="private-content-creating-cloudfront-key-pairs-procedure"></a>
 
 **To create CloudFront key pairs in the AWS Management Console**
@@ -83,11 +77,8 @@ Save the private key for your CloudFront key pair in a secure location, and set 
    The public key is the file that you upload later in this procedure
 
    Note the following requirements for the key:
-
    + The key pair must be an SSH\-2 RSA key pair\.
-
    + The key pair must be in base64 encoded PEM format\.
-
    + The supported key lengths are 1024, 2048, and 4096 bits\.
 
 1. Sign in to the AWS Management Console using the root credentials for an AWS account\.
@@ -113,9 +104,7 @@ IAM users can't create CloudFront key pairs\. You must log in using root credent
 ## Reformatting the CloudFront Private Key \(\.NET and Java Only\)<a name="private-content-reformatting-private-key"></a>
 
 If you're using \.NET or Java to create signed URLs or signed cookies, you cannot use the private key from your key pair in the default \.pem format to create the signature:
-
 + **\.NET framework** – Convert the private key to the XML format that the \.NET framework uses\. Several tools are available\.   
-
 + **Java** – Convert the private key to DER format\. To do this, you can use OpenSSL:
 
   `$ openssl pkcs8 -topk8 -nocrypt -in origin.pem -inform PEM -out new.der -outform DER`
@@ -125,9 +114,7 @@ If you're using \.NET or Java to create signed URLs or signed cookies, you canno
 ## Adding Trusted Signers to Your Distribution<a name="private-content-adding-trusted-signers"></a>
 
 Trusted signers are the AWS accounts that can create signed URLs and signed cookies for a distribution\. By default, no account, not even the account that created the distribution, is allowed to create signed URLs or signed cookies\. To specify the AWS accounts that you want to use as trusted signers, add the accounts to your distribution:
-
 + **Web distributions** – Trusted signers are associated with cache behaviors\. This allows you to require signed URLs or signed cookies for some objects and not for others in the same distribution\. Trusted signers can only create signed URLs or cookies for objects that are associated with the corresponding cache behaviors\. For example, if you have one trusted signer for one cache behavior and a different trusted signer for a different cache behavior, neither trusted signer can create signed URLs or cookies for objects that are associated with the other cache behavior\.
-
 + **RTMP distributions \(signed URLs only\)** – Trusted signers are associated with the distribution\. After you add trusted signers to an RTMP distribution, users must use signed URLs or signed cookies to access any of the objects associated with the distribution\.
 
 **Important**  
@@ -141,15 +128,11 @@ If you're updating a distribution that you're already using to distribute conten
 **RTMP distributions \(signed URLs only\)** – After you add trusted signers to an RTMP distribution, users must use signed URLs to access any of the objects associated with the distribution\. 
 
 The maximum number of trusted signers depends on the type of distribution:
-
 + **Web distributions** – A maximum of five for each cache behavior
-
 + **RTMP distributions** – A maximum of five for the distribution
 
 You can add trusted signers to your distribution using either the CloudFront console or the CloudFront API\. See the applicable topic:
-
 + [Adding Trusted Signers to Your Distribution Using the CloudFront Console](#private-content-adding-trusted-signers-console)
-
 + [Adding Trusted Signers to Your Distribution Using the CloudFront API](#private-content-adding-trusted-signers-api)
 
 ### Adding Trusted Signers to Your Distribution Using the CloudFront Console<a name="private-content-adding-trusted-signers-console"></a><a name="private-content-adding-trusted-signers-console-procedure"></a>
@@ -175,17 +158,13 @@ You can add trusted signers to your distribution using either the CloudFront con
 1. Click the distribution ID\.
 
 1. Change to edit mode:
-
    + **Web distributions** – Click the **Behaviors** tab, click the behavior that you want to edit, and click **Edit**\.
-
    + **RTMP distributions** – Click **Edit**\.
 
 1. For **Restrict Viewer Access \(Use Signed URLs or Signed Cookies\)**, click **Yes**\.
 
 1. For **Trusted Signers**, check the applicable check boxes:
-
    + **Self** – Check this check box if you want to use the current account \(the account that you used to create the distribution\)\.
-
    + **Specify Accounts** – Check this check box if you want to use other AWS accounts\.
 
 1. If you checked the **Specify Accounts** check box, enter AWS account IDs in the **AWS Account Number** field\. These are the account IDs that you got in the first step of this procedure\. Enter one account ID per line\.
@@ -199,21 +178,15 @@ You can add trusted signers to your distribution using either the CloudFront con
 You can use the CloudFront API to add the AWS account IDs for trusted signers to an existing distribution or to create a new distribution that includes trusted signers\. In either case, specify the applicable values in the `TrustedSigners` element\. For web distributions, add the `TrustedSigners` element to one or more cache behaviors\. For RTMP distributions, add the `TrustedSigners` element to the distribution\.
 
 See the applicable topic in the *Amazon CloudFront API Reference*:
-
 + **Create a new web distribution** – [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html)
-
 + **Update an existing web distribution** – [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html)
-
 + **Create a new RTMP distribution** – [POST Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateStreamingDistribution.html)
-
 + **Update an existing RTMP distribution** – [PUT Streaming Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutStreamingDistConfig.html)
 
 ## Verifying that Trusted Signers Are Active \(Optional\)<a name="private-content-verifying-trusted-signers-active"></a>
 
 After you add trusted signers to your distribution, you might want to verify that the signers are active\. For a trusted signer to be active, the following must be true:
-
 + The AWS account must have at least one active key pair\. If you're rotating key pairs, the account will temporarily have two active key pairs, the old key pair and the new one\.
-
 + CloudFront must be aware of the active key pair\. After you create a key pair, there can be a short period of time before CloudFront is aware that the key pair exists\.
 
 **Note**  
@@ -222,9 +195,7 @@ To display a list of active trusted signers for a distribution, you currently mu
 ### Verifying that Trusted Signers Are Active Using the CloudFront API<a name="private-content-verifying-trusted-signers-active-api"></a>
 
 To determine which trusted signers have active key pairs \(are active trusted signers\), you get the distribution and review the values in the `ActiveTrustedSigners` element\. This element lists the AWS account ID of each account that the distribution identifies as a trusted signer\. If the trusted signer has one or more active CloudFront key pairs, the `ActiveTrustedSigners` element also lists the key pair IDs\. For more information, see the applicable topic in the *Amazon CloudFront API Reference*:
-
 + **Web distributions** – [GET Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/GetDistribution.html)
-
 + **RTMP distributions** – [GET Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/GetStreamingDistribution.html)
 
 ## Rotating CloudFront Key Pairs<a name="private-content-rotating-key-pairs"></a>

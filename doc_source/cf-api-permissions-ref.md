@@ -4,7 +4,7 @@ When you are setting up [Access Control](auth-and-access-control.md#access-contr
 
 You can use AWS\-wide condition keys in your CloudFront policies to express conditions\. For a complete list of AWS\-wide keys, see [Available Keys](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
 
-
+**Topics**
 + [Required Permissions for Actions on Web Distributions](#required-permissions-web-distributions)
 + [Required Permissions for Actions on RTMP Distributions](#required-permissions-rtmp-distributions)
 + [Required Permissions for Actions on Invalidations](#required-permissions-invalidations)
@@ -16,46 +16,28 @@ You can use AWS\-wide condition keys in your CloudFront policies to express cond
 
 [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)  
 **Required Permissions \(API Action\):**  
-
 + `cloudfront:CreateDistribution`
-
 + `acm:ListCertificates` \(CloudFront console only\)
-
 + Only if you configure CloudFront to save access logs:
-
   + `s3:GetBucketAcl`
-
   + `s3:PutBucketAcl`
-
   + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:**  
-
 + CloudFront: \*
-
 + ACM: \*
-
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
 [CreateDistributionWithTags](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistributionWithTags.html)  
 **Required Permissions \(API Action\):**  
-
 + `cloudfront:CreateDistribution`, `cloudfront:TagResource`
-
 + `acm:ListCertificates` \(CloudFront console only\)
-
 + Only if you configure CloudFront to save access logs:
-
   + `s3:GetBucketAcl`
-
   + `s3:PutBucketAcl`
-
   + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:**  
-
 + CloudFront: \*
-
 + ACM: \*
-
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
 [GetDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html)  
@@ -72,24 +54,15 @@ You can use AWS\-wide condition keys in your CloudFront policies to express cond
 
 [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)  
 **Required Permissions \(API Action\):**  
-
 + `cloudfront:UpdateDistribution`
-
 + `acm:ListCertificates` \(CloudFront console only\)
-
 + Only if you configure CloudFront to save access logs:
-
   + `s3:GetBucketAcl`
-
   + `s3:PutBucketAcl`
-
   + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:**  
-
 + CloudFront: \*
-
 + ACM: \*
-
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
 [DeleteDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteDistribution.html)  
@@ -101,11 +74,8 @@ You can use AWS\-wide condition keys in your CloudFront policies to express cond
 [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)  
 **Required Permissions \(API Action\):** `cloudfront:CreateStreamingDistribution`  
 Only if you configure CloudFront to save access logs:  
-
 + `s3:GetBucketAcl`
-
 + `s3:PutBucketAcl`
-
 + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:** `*`  
 If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
@@ -113,11 +83,8 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 [CreateStreamingDistributionWithTags](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistributionWithTags.html)  
 **Required Permissions \(API Action\):** `cloudfront:CreateStreamingDistribution`, `cloudfront:TagResource`  
 Only if you configure CloudFront to save access logs:  
-
 + `s3:GetBucketAcl`
-
 + `s3:PutBucketAcl`
-
 + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:** `*`  
 If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
@@ -137,11 +104,8 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 [UpdateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html)  
 **Required Permissions \(API Action\):** `cloudfront:UpdateStreamingDistribution`  
 Only if you configure CloudFront to save access logs:  
-
 + `s3:GetBucketAcl`
-
 + `s3:PutBucketAcl`
-
 + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:** `*`  
 If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
@@ -196,68 +160,41 @@ To use Lambda@Edge, you need the following CloudFront permissions so you can cre
 
 [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)  
 **Required Permissions \(API Action\):**  
-
 + `cloudfront:CreateDistribution`
-
 + `acm:ListCertificates` \(CloudFront console only\)
-
 + Only if you configure CloudFront to save access logs:
-
   + `s3:GetBucketAcl`
-
   + `s3:PutBucketAcl`
-
   + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:**  
-
 + CloudFront: \*
-
 + ACM: \*
-
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
 [CreateDistributionWithTags](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistributionWithTags.html)  
 **Required Permissions \(API Action\):**  
-
 + `cloudfront:CreateDistribution`, `cloudfront:TagResource`
-
 + `acm:ListCertificates` \(CloudFront console only\)
-
 + Only if you configure CloudFront to save access logs:
-
   + `s3:GetBucketAcl`
-
   + `s3:PutBucketAcl`
-
   + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:**  
-
 + CloudFront: \*
-
 + ACM: \*
-
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
 [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)  
 **Required Permissions \(API Action\):**  
-
 + `cloudfront:UpdateDistribution`
-
 + `acm:ListCertificates` \(CloudFront console only\)
-
 + Only if you configure CloudFront to save access logs:
-
   + `s3:GetBucketAcl`
-
   + `s3:PutBucketAcl`
-
   + The S3 ACL for the bucket must grant you `FULL_CONTROL`
 **Resources:**  
-
 + CloudFront: \*
-
 + ACM: \*
-
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
 ## Required Permissions for Actions on Tags<a name="required-permissions-tags"></a><a name="invalidations-tags"></a>

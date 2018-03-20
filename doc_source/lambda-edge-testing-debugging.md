@@ -9,7 +9,5 @@ When you check for the log files, be aware that log files are stored in the Regi
 For more information, see [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-cloudwatch-metrics-logging.html)\.
 
 For more information, see the following topics:
-
 + [Lambda@Edge Event Structure](lambda-event-structure.md)
-
 + [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)

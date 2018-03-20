@@ -1,14 +1,14 @@
 # Request and Response Behavior for Amazon S3 Origins<a name="RequestAndResponseBehaviorS3Origin"></a>
 
-
+**Topics**
 + [How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server](#RequestBehaviorS3Origin)
 + [How CloudFront Processes Responses from Your Amazon S3 Origin Server](#ResponseBehaviorS3Origin)
 
 ## How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server<a name="RequestBehaviorS3Origin"></a>
 
-For information about how CloudFront processes viewer requests and forwards the requests to your Amazon S3 origin, see the applicable topic:
+This topic contains information about how CloudFront processes viewer requests and forwards the requests to your Amazon S3 origin\.
 
-
+**Topics**
 + [Caching Duration and Minimum TTL](#RequestS3Caching)
 + [Client IP Addresses](#RequestS3IPAddresses)
 + [Conditional GETs](#RequestS3ConditionalGETs)
@@ -27,11 +27,8 @@ For information about how CloudFront processes viewer requests and forwards the 
 ### Caching Duration and Minimum TTL<a name="RequestS3Caching"></a>
 
 For web distributions, to control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin, you can:
-
 + Configure your origin to add a `Cache-Control` or an `Expires` header field to each object\.
-
 + Specify a value for Minimum TTL in CloudFront cache behaviors\.
-
 + Use the default value of 24 hours\.
 
 For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
@@ -52,9 +49,7 @@ The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) a
 ### Conditional GETs<a name="RequestS3ConditionalGETs"></a>
 
 When CloudFront receives a request for an object that has expired from an edge cache, it forwards the request to the Amazon S3 origin either to get the latest version of the object or to get confirmation from Amazon S3 that the CloudFront edge cache already has the latest version\. When Amazon S3 originally sent the object to CloudFront, it included an `ETag` value and a `LastModified` value in the response\. In the new request that CloudFront forwards to Amazon S3, CloudFront adds one or both of the following:
-
 + An `If-Match` or `If-None-Match` header that contains the `ETag` value for the expired version of the object\.
-
 + An `If-Modified-Since` header that contains the `LastModified` value for the expired version of the object\.
 
 Amazon S3 uses this information to determine whether the object has been updated and, therefore, whether to return the entire object to CloudFront or to return only an HTTP 304 status code \(not modified\)\.
@@ -74,19 +69,12 @@ If a viewer `GET` request includes a body, CloudFront returns an HTTP status cod
 ### HTTP Methods<a name="RequestS3HTTPMethods"></a>
 
 If you configure CloudFront to process all of the HTTP methods that it supports, CloudFront accepts the following requests from viewers and forwards them to your Amazon S3 origin:
-
 + `DELETE`
-
 + `GET`
-
 + `HEAD`
-
 + `OPTIONS`
-
 + `PATCH`
-
 + `POST`
-
 + `PUT`
 
 CloudFront always caches responses to `GET` and `HEAD` requests\. You can also configure CloudFront to cache responses to `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
@@ -102,43 +90,7 @@ For information about the operations supported by Amazon S3, see the [Amazon S3 
 
 ### HTTP Request Headers That CloudFront Removes or Updates<a name="request-s3-removed-headers"></a>
 
-CloudFront removes or updates the following header fields before forwarding requests to your Amazon S3 origin: 
-
-+ `Accept`
-
-+ `Accept-Charset`
-
-+ `Accept-Encoding` – If the value contains `gzip`, CloudFront forwards `Accept-Encoding: gzip` to your Amazon S3 origin\. If the value does not contain `gzip`, CloudFront removes the `Accept-Encoding` header field before forwarding the request to your origin\.
-
-+ `Accept-Language`
-
-+ `Authorization`: 
-
-  + `GET` and `HEAD` requests: CloudFront removes the `Authorization` header field before forwarding the request to your origin\.
-
-  + `OPTIONS` requests: CloudFront removes the `Authorization` header field before forwarding the request to your origin if you configure CloudFront to cache responses to `OPTIONS` requests\.
-
-    CloudFront forwards the `Authorization` header field to your origin if you do not configure CloudFront to cache responses to OPTIONS requests\.
-
-  + `DELETE`, `PATCH`, `POST`, and `PUT` requests: CloudFront does not remove the header field before forwarding the request to your origin\.
-
-+ `Connection` – CloudFront replaces this header with `Connection: Keep-Alive` before forwarding the request to your Amazon S3 origin\.
-
-+ `Cookie` – If you configure CloudFront to forward cookies, it will forward the `Cookie` header field to your Amazon S3 origin\. If you don't, CloudFront removes the `Cookie` header field\. For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
-
-+ `Expect`
-
-+ `Host` – CloudFront sets the value to the name of the Amazon S3 bucket that is associated with the requested object\.
-
-+ `Proxy-Authorization`
-
-+ `Referer`
-
-+ `TE`
-
-+ `Upgrade`
-
-+ `User-Agent` – CloudFront replaces the value of this header field with `Amazon CloudFront`\.
+CloudFront removes or updates some headers before forwarding requests to your Amazon S3 origin\. For most headers this behavior is the same as for custom origins\. For a full list of HTTP request headers and how CloudFront processes them, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
 ### Maximum Length of a Request and Maximum Length of a URL<a name="RequestS3MaxRequestStringLength"></a>
 
@@ -168,15 +120,11 @@ For web distributions, you can configure whether CloudFront forwards query strin
 ### Origin Response Timeout<a name="RequestS3RequestTimeout"></a>
 
 The origin response timeout, also known as the origin read timeout or origin request timeout, applies to both of the following values:
-
 + The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to Amazon S3
-
 + The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from S3 and before receiving the next packet
 
 CloudFront behavior depends on the HTTP method:
-
 + `GET` and `HEAD` requests – If Amazon S3 doesn't respond within 30 seconds or stops responding for 30 seconds, CloudFront drops the connection and makes two additional attempts to contact the origin\. If the origin doesn't reply during the third attempt, CloudFront doesn't try again until it receives another request for content on the same CloudFront origin\.
-
 + `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If Amazon S3 doesn't respond within 30 seconds, CloudFront drops the connection and doesn't try again to contact the origin\. The client can resubmit the request if necessary\.
 
 For all requests, CloudFront attempts to establish a connection with S3\. If the connection fails within 10 seconds, CloudFront drops the connection and makes two additional attempts to contact S3\. If the origin doesn't reply during the third attempt, CloudFront doesn't try again until it receives another request for content on the same origin\.
@@ -191,7 +139,9 @@ When the response from the origin includes a `Cache-Control: no-cache` header, C
 
 ## How CloudFront Processes Responses from Your Amazon S3 Origin Server<a name="ResponseBehaviorS3Origin"></a>
 
+This topic contains information about how CloudFront processes responses from your Amazon S3 origin\.
 
+**Topics**
 + [Canceled Requests](#response-s3-canceled-requests)
 + [HTTP Response Headers That CloudFront Removes or Updates](#response-s3-removed-headers)
 + [Maximum File Size](#ResponseS3MaxFileSize)
@@ -204,15 +154,10 @@ If an object is not in the edge cache, and if a viewer terminates a session \(fo
 ### HTTP Response Headers That CloudFront Removes or Updates<a name="response-s3-removed-headers"></a>
 
 CloudFront removes or updates the following header fields before forwarding the response from your Amazon S3 origin to the viewer: 
-
 + `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
-
 + `Trailer`
-
 + `Transfer-Encoding` – If your Amazon S3 origin returns this header field, CloudFront sets the value to `chunked` before returning the response to the viewer\.
-
 + `Upgrade`
-
 + `Via` – CloudFront sets the value to:
 
   `Via: 1.1 `*alphanumeric\-string*`.cloudfront.net (CloudFront)`
@@ -230,7 +175,7 @@ The maximum size of a response body that CloudFront will return to the viewer is
 You can configure an Amazon S3 bucket to redirect all requests to another host name; this can be another Amazon S3 bucket or an HTTP server\. If you configure a bucket to redirect all requests and if the bucket is the origin for a CloudFront distribution, we recommend that you configure the bucket to redirect all requests to a CloudFront distribution using either the domain name for the distribution \(for example, d111111abcdef8\.cloudfront\.net\) or an alternate domain name \(a CNAME\) that is associated with a distribution \(for example, example\.com\)\. Otherwise, viewer requests bypass CloudFront, and the objects are served directly from the new origin\.
 
 **Note**  
-If you redirect requests to an alternate domain name, you must also update the DNS service for your domain by adding a CNAME record\. For more information, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+If you redirect requests to an alternate domain name, you must also update the DNS service for your domain by adding a CNAME record\. For more information, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
 Here's what happens when you configure a bucket to redirect all requests:
 
@@ -243,7 +188,5 @@ Here's what happens when you configure a bucket to redirect all requests:
 1. CloudFront caches the redirect status code and the new location, and returns the values to the viewer\. CloudFront does not follow the redirect to get the object from the new location\.
 
 1. The viewer sends another request for the object, but this time the viewer specifies the new location that it got from CloudFront:
-
    + If the Amazon S3 bucket is redirecting all requests to a CloudFront distribution, using either the domain name for the distribution or an alternate domain name, CloudFront requests the object from the Amazon S3 bucket or the HTTP server in the new location\. When the new location returns the object, CloudFront returns it to the viewer and caches it in an edge location\.
-
    + If the Amazon S3 bucket is redirecting requests to another location, the second request bypasses CloudFront\. The Amazon S3 bucket or the HTTP server in the new location returns the object directly to the viewer, so the object is never cached in a CloudFront edge cache\.

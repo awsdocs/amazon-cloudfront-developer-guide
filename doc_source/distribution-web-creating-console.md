@@ -23,7 +23,7 @@ To see the current limit on the number of web distributions that you can create 
 
    The domain name that CloudFront assigns to your distribution appears in the list of distributions\. \(It also appears on the **General** tab for a selected distribution\.\) 
 **Tip**  
-You can use an alternate domain name, instead of the name assigned to you by CloudFront; by following the steps in [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+You can use an alternate domain name, instead of the name assigned to you by CloudFront; by following the steps in [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
 1. When your distribution is deployed, confirm that you can access your content using your new CloudFront URL or CNAME\. For more information, see [Testing Your Web Distribution](distribution-web-testing.md)\.
 

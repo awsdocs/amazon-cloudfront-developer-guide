@@ -12,9 +12,7 @@ You don't need to enable access logging to view cache statistics\.<a name="cache
 1. In the navigation pane, click **Cache Statistics**\.
 
 1. In the **CloudFront Cache Statistics Reports** pane, for **Start Date** and **End Date**, select the date range for which you want to display cache statistics charts\. Available ranges depend on the value that you select for **Granularity**:
-
    + **Daily** – To display charts with one data point per day, select any date range in the previous 60 days\.
-
    + **Hourly** – To display charts with one data point every hour, select any date range of up to 14 days within the previous 60 days\.
 
    Dates and times are in Coordinated Universal Time \(UTC\)\.
@@ -24,9 +22,7 @@ You don't need to enable access logging to view cache statistics\.<a name="cache
 1. For **Viewer Location**, choose the continent from which viewer requests originated, or choose **All Locations**\. Cache statistics charts include data for requests that CloudFront received from the specified location\.
 
 1. In the **Distribution** list, select the distributions for which you want to display data in the usage charts:
-
    + **An individual web distribution** – The charts display data for the selected CloudFront web distribution\. The **Distribution** list displays the distribution ID and alternate domain names \(CNAMEs\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes origin domain names for the distribution\.
-
    + **All Web Distributions** – The charts display summed data for all web distributions that are associated with the current AWS account, excluding web distributions that you have deleted\.
 
 1. Click **Update**\.
@@ -35,7 +31,7 @@ You don't need to enable access logging to view cache statistics\.<a name="cache
 
 1. For charts that show data transferred, note that you can change the vertical scale to gigabytes, megabytes, or kilobytes for each chart\.
 
-
+**Topics**
 + [Downloading Data in CSV Format](#cache-statistics-csv)
 + [How Cache Statistics Charts Are Related to Data in the CloudFront Access Logs](#cache-statistics-data)
 
@@ -135,30 +131,21 @@ This chart shows the total number of requests for all HTTP status codes \(for ex
 
 **Percentage of Viewer Requests by Result Type**  
 This chart shows hits, misses, and errors as a percentage of total viewer requests for the selected CloudFront distribution:  
-
 + **Hit** – A viewer request for which the object is served from a CloudFront edge cache\. In access logs, these are requests for which the value of `x-edge-response-result-type` is `Hit`\.
-
 + **Miss** – A viewer request for which the object isn't currently in an edge cache, so CloudFront must get the object from your origin\. In access logs, these are requests for which the value of `x-edge-response-result-type` is `Miss`\.
-
 + **Error** – A viewer request that resulted in an error, so CloudFront didn't serve the object\. In access logs, these are requests for which the value of `x-edge-response-result-type` is `Error`, `LimitExceeded`, or `CapacityExceeded`\.
 The chart does not include refresh hits—requests for objects that are in the edge cache but that have expired\. In access logs, refresh hits are requests for which the value of `x-edge-response-result-type` is `RefreshHit`\.
 
 **Bytes Transferred to Viewers**  
 This chart shows two values:  
-
 + **Total Bytes** – The total number of bytes served to viewers by CloudFront in response to all requests for all HTTP methods\. In CloudFront access logs, **Total Bytes** is the sum of the values in the `sc-bytes` column for all of the requests during the same time period\.
-
 + **Bytes from Misses** – The number of bytes served to viewers for objects that were not in the applicable edge cache at the time of the request\. In CloudFront access logs, **Bytes from Misses** is the sum of the values in the `sc-bytes` column for requests for which the value of `x-edge-result-type` is `Miss`\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
 
 **HTTP Status Codes**  
 This chart shows viewer requests by HTTP status code\. In CloudFront access logs, status codes appear in the `sc-status` column:  
-
 + **2xx** – The request succeeded\.
-
 + **3xx** – Additional action is required\. For example, 301 \(Moved Permanently\) means that the requested object has moved to a different location\.
-
 + **4xx** – The client apparently made an error\. For example, 404 \(Not Found\) means that the client requested an object that could not be found\.
-
 + **5xx** – The origin server didn't fill the request\. For example, 503 \(Service Unavailable\) means that the origin server is currently unavailable\.
 
 **Percentage of GET Requests that Didn't Finish Downloading**  

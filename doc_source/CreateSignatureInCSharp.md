@@ -3,9 +3,7 @@
 The C\# examples in this section implement an example application that demonstrates how to create the signatures for CloudFront private distributions using canned and custom policy statements\. The examples includes utility functions based on the [AWS \.NET SDK](http://aws.amazon.com/sdkfornet/) that can be useful in \.NET applications\. 
 
 You can also create signed URLs and signed cookies by using the AWS SDK for \.NET\. In the [AWS SDK for \.NET API Reference](http://docs.aws.amazon.com/sdkfornet/v3/apidocs/), see the following topics:
-
 + **Signed URLs** – Amazon\.CloudFront > AmazonCloudFrontUrlSigner
-
 + **Signed cookies** – Amazon\.CloudFront > AmazonCloudFrontCookieSigner
 
 **Note**  
@@ -55,13 +53,9 @@ After conversion, the RSA private key file is in the following format:
 ```
 
 The following C\# code creates a signed URL that uses a canned policy by performing the following steps:
-
 + Creates a policy statement\.
-
 + Hashes the policy statement using SHA1, and signs the result using RSA and the private key for your AWS account or for a trusted AWS account that you specify\.
-
 + Base64\-encodes the hashed and signed policy statement and replaces special characters to make the string safe to use as a URL request parameter\.
-
 + Concatenates the applicable values\.
 
 For the complete implementation, see the example at [Signature Code in C\#](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
@@ -339,11 +333,7 @@ public static string CopyExpirationTimeFromPolicy(string policyStatement)
 ```
 
 See also
-
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
-
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
-
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)

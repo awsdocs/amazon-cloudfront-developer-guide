@@ -1,19 +1,12 @@
 # Editing a Lambda Function for Lambda@Edge<a name="lambda-edge-edit-function"></a>
 
 When you want to edit a Lambda function, note the following:
-
 + The original version is labeled $LATEST\.
-
 + You can edit only the $LATEST version\.
-
 + Each time you edit the $LATEST version, you must publish a new numbered version\.
-
 + You can't create triggers for $LATEST\.
-
 + When you publish a new version of a function, Lambda doesn't automatically copy triggers from the previous version to the new version\. You must reproduce the triggers for the new version\. 
-
 + When you add a trigger for a CloudFront event to a function, if there's already a trigger for the same distribution, cache behavior, and event for an earlier version of the same function, Lambda deletes the trigger from the earlier version\.
-
 + After you make updates to a CloudFront distribution, like adding triggers, you must wait for the changes to propagate to edge locations before the functions you've specified in the triggers will work\.<a name="lambda-edge-edit-function-procedure"></a>
 
 **To edit a Lambda function \(AWS Lambda console\)**

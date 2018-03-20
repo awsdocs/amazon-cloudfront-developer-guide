@@ -11,9 +11,7 @@ For more information, see [How the Usage Charts Are Related to Data in the Cloud
 1. In **navigation** pane, click **Usage Reports**\.
 
 1. In the **CloudFront Usage Reports** pane, for **Start Date** and **End Date**, select the date range for which you want to display usage charts\. Available ranges depend on the value that you select for **Granularity**:
-
    + **Daily** — To display charts with one data point per day, select any date range in the previous 60 days\. 
-
    + **Hourly** — To display charts with one data point every hour, select any date range of up to 14 days within the previous 60 days\. 
 
    Dates and times are in Coordinated Universal Time \(UTC\)\.
@@ -25,11 +23,8 @@ For more information, see [How the Usage Charts Are Related to Data in the Cloud
    Select only regions that are included in the price class for your distribution; otherwise, the usage charts probably won't contain any data\. For example, if you chose Price Class 200 for your distribution, the South America and Australia billing regions are not included, so CloudFront generally won't process your requests from those regions\. For more information about price classes, see [Choosing the Price Class for a CloudFront Distribution](PriceClass.md)\.
 
 1. In the **Distribution** list, select the distributions for which you want to display data in the usage charts: 
-
    + **An individual web distribution** — The charts display data for the selected CloudFront distribution\. The **Distribution** list displays the distribution ID and alternate domain names \(CNAMEs\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes origin domain names for the distribution\.
-
    + **All Web Distributions \(excludes deleted\)** — The charts display summed data for all web distributions that are associated with the current AWS account, excluding web distributions that you have deleted\.
-
    + **All Deleted Distributions** — The charts display summed data for all web distributions that are associated with the current AWS account and that were deleted in the last 60 days\.
 
 1. Click **Update Graphs**\.
@@ -38,7 +33,7 @@ For more information, see [How the Usage Charts Are Related to Data in the Cloud
 
 1. For charts that show data transferred, note that you can change the vertical scale to gigabytes, megabytes, or kilobytes for each chart\. 
 
-
+**Topics**
 + [Downloading Data in CSV Format](#usage-csv)
 + [How the Usage Charts Are Related to Data in the CloudFront Usage Report](#usage-charts-table)
 
@@ -98,34 +93,24 @@ The hour or the day that data applies to, in Coordinated Universal Time \(UTC\)\
 
 **HTTP**  
 The number of HTTP requests that CloudFront responded to from edge locations in the selected region during each time interval for the specified CloudFront distribution\. Values include:  
-
 + The number of `GET` and `HEAD` requests, which cause CloudFront to transfer data to your users
-
 + The number of `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests, which cause CloudFront to transfer data to your origin
 
 **HTTPS**  
 The number of HTTPS requests that CloudFront responded to from edge locations in the selected region during each time interval for the specified CloudFront distribution\. Values include:  
-
 + The number of `GET` and `HEAD` requests, which cause CloudFront to transfer data to your users
-
 + The number of `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests, which cause CloudFront to transfer data to your origin
 
 **HTTPBytes**  
 The total amount of data transferred over HTTP from CloudFront edge locations in the selected billing region during the time period for the specified CloudFront distribution\. Values include:  
-
 + Data transferred from CloudFront to your users in response to `GET` and `HEAD` requests
-
 + Data transferred from CloudFront to your origin for `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
-
 + Data transferred from CloudFront to your users in response to DELETE, OPTIONS, PATCH, POST, and PUT requests
 
 **HTTPSBytes**  
 The total amount of data transferred over HTTPS from CloudFront edge locations in the selected billing region during the time period for the specified CloudFront distribution\. Values include:  
-
 + Data transferred from CloudFront to your users in response to `GET` and `HEAD` requests
-
 + Data transferred from CloudFront to your origin for `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
-
 + Data transferred from CloudFront to your users in response to DELETE, OPTIONS, PATCH, POST, and PUT requests
 
 **BytesIn**  
@@ -133,16 +118,14 @@ The total amount of data transferred from CloudFront to your origin for `DELETE`
 
 **BytesOut**  
 The total amount of data transferred over HTTP and HTTPS from CloudFront to your users in the selected region during each time interval for the specified CloudFront distribution\. Values include:  
-
 + Data transferred from CloudFront to your users in response to `GET` and `HEAD` requests
-
 + Data transferred from CloudFront to your users in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
 
 ## How the Usage Charts Are Related to Data in the CloudFront Usage Report<a name="usage-charts-table"></a>
 
 The following list shows how the usage charts in the CloudFront console correspond with values in the **Usage Type** column in the CloudFront usage report\.
 
-
+**Topics**
 + [Number of Requests](#usage-charts-requests)
 + [Data Transferred by Protocol](#usage-charts-data-transferred-by-protocol)
 + [Data Transferred by Destination](#usage-charts-data-transferred-by-destination)
@@ -152,19 +135,13 @@ The following list shows how the usage charts in the CloudFront console correspo
 This chart shows the number of HTTP and HTTPS requests that CloudFront responds to from edge locations in the selected region during each time interval for the specified CloudFront distribution\. 
 
 **Number of HTTP Requests**  
-
 + *region***\-Requests\-HTTP\-Static:** Number of HTTP `GET` and `HEAD` requests served for objects with TTL ≥ 3600 seconds
-
 + *region***\-Requests\-HTTP\-Dynamic:** Number of HTTP `GET` and `HEAD` requests served for objects with TTL < 3600 seconds
-
 + *region***\-Requests\-HTTP\-Proxy:** Number of HTTP `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests that CloudFront forwards to your origin
 
 **Number of HTTPS Requests**  
-
 + *region***\-Requests\-HTTPS\-Static:** Number of HTTPS `GET` and `HEAD` requests served for objects with TTL ≥ 3600 seconds
-
 + *region***\-Requests\-HTTPS\-Dynamic:** Number of HTTPS `GET` and `HEAD` requests served for objects with TTL < 3600 seconds
-
 + *region***\-Requests\-HTTPS\-Proxy:** Number of HTTPS `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests that CloudFront forwards to your origin
 
 ### Data Transferred by Protocol<a name="usage-charts-data-transferred-by-protocol"></a>
@@ -172,23 +149,15 @@ This chart shows the number of HTTP and HTTPS requests that CloudFront responds 
 This chart shows the total amount of data transferred over HTTP and HTTPS from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution\. 
 
 **Data Transferred over HTTP**  
-
 + *region***\-Out\-Bytes\-HTTP\-Static:** Bytes served via HTTP for objects with TTL ≥ 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTP\-Dynamic:** Bytes served via HTTP for objects with TTL < 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTP\-Proxy:** Bytes returned from CloudFront to viewers via HTTP in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
-
 + *region***\-Out\-OBytes\-HTTP\-Proxy:** Total bytes transferred via HTTP from CloudFront edge locations to your origin in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
 
 **Data Transferred over HTTPS**  
-
 + *region***\-Out\-Bytes\-HTTPS\-Static:** Bytes served via HTTPS for objects with TTL ≥ 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTPS\-Dynamic:** Bytes served via HTTPS for objects with TTL < 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTPS\-Proxy:** Bytes returned from CloudFront to viewers via HTTPS in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
-
 + *region***\-Out\-OBytes\-HTTPS\-Proxy:** Total bytes transferred via HTTPS from CloudFront edge locations to your origin in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
 
 ### Data Transferred by Destination<a name="usage-charts-data-transferred-by-destination"></a>
@@ -196,21 +165,13 @@ This chart shows the total amount of data transferred over HTTP and HTTPS from C
 This chart shows the total amount of data transferred over HTTP and HTTPS from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution\. 
 
 **Data Transferred from CloudFront to Your Users**  
-
 + *region***\-Out\-Bytes\-HTTP\-Static:** Bytes served via HTTP for objects with TTL ≥ 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTPS\-Static:** Bytes served via HTTPS for objects with TTL ≥ 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTP\-Dynamic:** Bytes served via HTTP for objects with TTL < 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTPS\-Dynamic:** Bytes served via HTTPS for objects with TTL < 3600 seconds
-
 + *region***\-Out\-Bytes\-HTTP\-Proxy:** Bytes returned from CloudFront to viewers via HTTP in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
-
 + *region***\-Out\-Bytes\-HTTPS\-Proxy:** Bytes returned from CloudFront to viewers via HTTPS in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
 
 **Data Transferred from CloudFront to Your Origin**  
-
 + *region***\-Out\-OBytes\-HTTP\-Proxy:** Total bytes transferred via HTTP from CloudFront edge locations to your origin in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests
-
 + *region***\-Out\-OBytes\-HTTPS\-Proxy:** Total bytes transferred via HTTPS from CloudFront edge locations to your origin in response to `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests

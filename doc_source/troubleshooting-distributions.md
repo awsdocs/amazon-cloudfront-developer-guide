@@ -43,7 +43,7 @@ The following example shows a dig request for a domain name called `images.examp
 14. 	...
 ```
 
-For more information about CNAMEs, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+For more information about CNAMEs, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
 ### Are You Referencing the Correct URL for Your CloudFront Distribution?<a name="Troubleshooting.URL"></a>
 
@@ -62,7 +62,5 @@ If you can't view the files in your RTMP distribution, are your URL and your pla
 **Problem:** You're trying to delete an SSL/TLS certificate from the IAM certificate store, and you're getting the message "Certificate: <certificate\-id> is being used by CloudFront\."
 
 **Solution:** Every CloudFront web distribution must be associated either with the default CloudFront certificate or with a custom SSL/TLS certificate\. Before you can delete an SSL/TLS certificate, you must either rotate the certificate \(replace the current custom SSL/TLS certificate with another custom SSL/TLS certificate\) or revert from using a custom SSL/TLS certificate to using the default CloudFront certificate\. To do that, perform the procedure in the applicable section:
-
 + [Rotating SSL/TLS Certificates](cnames-and-https-rotate-certificates.md)
-
 + [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)

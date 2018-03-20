@@ -41,11 +41,8 @@ Choose the existing Amazon SNS topic that you want to send notification to if th
 Specify when CloudWatch should trigger an alarm and send a notification to the specified email list\. For example, to receive notification when the 5xx error rate exceeds 1%, you'd specify the following:  
 **Whenever Average of 5xxErrorRate** `> 1`  
 Note the following about specifying values for *value*:  
-
    + Enter only whole numbers without punctuation\. For example, to specify one thousand, enter **1000**\.
-
    + For 4xx, 5xx, and total error rates, the value that you specify is a percentage\.
-
    + For requests, bytes downloaded, and bytes uploaded, the value you specify is in units, for example, 1000000000 bytes\.  
 ****For at least** *x* **consecutive periods of** *time period***  
 Specify how many consecutive time periods of the specified duration the metric must meet the criteria before CloudWatch sends notification\. When you choose a value, you need to find an appropriate balance between a value that produces frequent notifications for fleeting problems and delayed notifications for real problems\.

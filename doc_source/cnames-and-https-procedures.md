@@ -2,7 +2,7 @@
 
 To use alternate domain names in the URLs for your objects and to use HTTPS between viewers and CloudFront, perform the applicable procedures\.
 
-
+**Topics**
 + [Requesting Permission to Use Three or More SSL/TLS Certificates](#cnames-and-https-multiple-certificates)
 + [Getting an SSL/TLS Certificate](#cnames-and-https-getting-certificates)
 + [Importing an SSL/TLS Certificate](#cnames-and-https-uploading-certificates)
@@ -27,13 +27,10 @@ You can only associate a single SSL/TLS certificate to a CloudFront distribution
 ## Getting an SSL/TLS Certificate<a name="cnames-and-https-getting-certificates"></a>
 
 Get an SSL/TLS certificate if you don't already have one\. For more information, see the applicable documentation:
-
 + To use a certificate provided by AWS Certificate Manager \(ACM\), see the [AWS Certificate Manager User Guide](http://docs.aws.amazon.com/acm/latest/userguide/)\. Then skip to [Updating Your CloudFront Distribution](#cnames-and-https-updating-cloudfront)\.
 **Note**  
 We recommend that you use ACM to provision, manage, and deploy SSL/TLS certificates on AWS managed resources\. 
-
 + To get a certificate from a third\-party certificate authority \(CA\), see the documentation provided by the certificate authority\. When you have the certificate, continue with the next procedure\.
-
 + To create a self\-signed certificate, see the documentation for the application that you're using to create and sign the certificate\. Then continue with the next procedure\.
 
 ## Importing an SSL/TLS Certificate<a name="cnames-and-https-uploading-certificates"></a>
@@ -50,15 +47,10 @@ If ACM is not available in your region, use the following AWS CLI command to upl
 aws iam upload-server-certificate --server-certificate-name CertificateName --certificate-body file://public_key_certificate_file --private-key file://privatekey.pem --certificate-chain file://certificate_chain_file --path /cloudfront/path/
 ```
 Note the following:  
-
 + **AWS Account** – You must upload the certificate to the IAM certificate store using the same AWS account that you used to create your CloudFront distribution\.
-
 + **\-\-path Parameter** – When you upload the certificate to IAM, the value of the `-path` parameter \(certificate path\) must start with `/cloudfront/`, for example, `/cloudfront/production/` or `/cloudfront/test/`\. The path must end with a /\.
-
 + **Existing certificates** – You must specify values for the `--server-certificate-name` and `--path` parameters that are different from the values that are associated with existing certificates\.
-
 + **Using the CloudFront Console** – The value that you specify for the `--server-certificate-name` parameter in the AWS CLI, for example, `myServerCertificate`, appears in the **SSL Certificate** list in the CloudFront console\.
-
 + **Using the CloudFront API** – Make note of the alphanumeric string that the AWS CLI returns, for example, `AS1A2M3P4L5E67SIIXR3J`\. This is the value that you will specify in the `IAMCertificateId` element\. You don't need the IAM ARN, which is also returned by the CLI\.
 For more information about the AWS CLI, see the [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) and the [AWS CLI Command Reference](http://docs.aws.amazon.com/cli/latest/reference/)\.
 
@@ -78,14 +70,13 @@ To update settings for your distribution, perform the following procedure:<a nam
 **Alternate Domain Names \(CNAMEs\)**  
 Add the applicable alternate domain names\. Separate domain names with commas, or type each domain name on a new line\.  
 **SSL Certificate \(Web Distributions Only\)**  
-Choose **Custom SSL Certificate**, and choose a certificate from the list\.   
+Choose **Custom SSL Certificate**, and choose a certificate from the list\.  
+Up to 100 certificates are listed here\. If you have more than 100 certificates and you don't see the certificate that you want to add, you can type a certificate ARN in the field to choose it\.  
 If you uploaded a certificate to the IAM certificate store but it doesn't appear in the list, review the procedure [Importing an SSL/TLS Certificate](#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\.   
 After you associate your SSL/TLS certificate with your CloudFront distribution, do not delete the certificate from ACM or the IAM certificate store until you remove the certificate from all distributions and until the status of the distributions has changed to **Deployed**\.  
 **Clients Supported \(Web Distributions Only\)**  
 Choose the applicable option:  
-
    + **All Clients**: CloudFront serves your HTTPS content using dedicated IP addresses\. If you select this option, you incur additional charges when you associate your SSL/TLS certificate with a distribution that is enabled\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing)\.
-
    + **Only Clients that Support Server Name Indication \(SNI\)**: Older browsers or other clients that don't support SNI must use another method to access your content\.
 For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)\.
 
@@ -108,9 +99,6 @@ Viewers can access your content only if they're using HTTPS\. If a viewer sends 
    1. Repeat steps a through c for each additional cache behavior that you want to require HTTPS for between viewers and CloudFront\.
 
 1. Confirm the following before you use the updated configuration in a production environment:
-
    + The path pattern in each cache behavior applies only to the requests that you want viewers to use HTTPS for\.
-
    + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path Pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
-
    + The cache behaviors are routing requests to the correct origins\. 

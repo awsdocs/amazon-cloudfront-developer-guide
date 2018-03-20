@@ -23,7 +23,7 @@ You don't need to enable access logging to view a list of popular objects\.<a na
 
 1. Click **Update**\.
 
-
+**Topics**
 + [Downloading Data in CSV Format](#popular-objects-csv)
 + [How Data in the Popular Objects Report Is Related to Data in the CloudFront Access Logs](#popular-objects-data)
 

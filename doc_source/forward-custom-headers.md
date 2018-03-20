@@ -1,16 +1,12 @@
 # Forwarding Custom Headers to Your Origin \(Web Distributions Only\)<a name="forward-custom-headers"></a>
 
 You can configure CloudFront to include custom headers whenever it forwards a request to your origin\. You can specify the names and values of custom headers for each origin, both for custom origins and for Amazon S3 buckets\. Custom headers have a variety of uses, such as the following: 
-
 + You can identify the requests that are forwarded to your custom origin by CloudFront\. This is useful if you want to know whether users are bypassing CloudFront or if you're using more than one CDN and you want information about which requests are coming from each CDN\. \(If you're using an Amazon S3 origin and you enable [Amazon S3 server access logging](http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html), the logs don't include header information\.\)
-
 + If you've configured more than one CloudFront distribution to use the same origin, you can specify different custom headers for the origins in each distribution and use the logs for your web server to distinguish between the requests that CloudFront forwards for each distribution\.
-
 + If some of your users use viewers that don't support cross\-origin resource sharing \(CORS\), you can configure CloudFront to forward the `Origin` header to your origin\. That will cause your origin to return the `Access-Control-Allow-Origin` header for every request\.
-
 + You can use custom headers together and, optionally, signed URLs or signed cookies, to control access to content on a custom origin\. If you configure your custom origin to respond to requests only if they include a custom header, you can prevent users from bypassing CloudFront and submitting requests directly to your origin\. 
 
-
+**Topics**
 + [Configuring CloudFront to Forward Custom Headers to Your Origin](#forward-custom-headers-configure)
 + [Custom Headers that CloudFront Can't Forward to Your Origin](#forward-custom-headers-blacklist)
 + [Using Custom Headers for Cross\-Origin Resource Sharing \(CORS\)](#forward-custom-headers-cors)

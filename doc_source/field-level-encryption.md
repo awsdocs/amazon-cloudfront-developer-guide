@@ -16,7 +16,7 @@ CloudFront field\-level encryption uses asymmetric encryption, also known as pub
 
 ![\[Encrypt only sensitive data\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/encryptedfields.png)
 
-
+**Topics**
 + [Overview of Field\-Level Encryption](#field-level-encryption-overview)
 + [Setting Up Field\-Level Encryption](#field-level-encryption-setting-up)
 + [Decrypting Data Fields at Your Origin](#field-level-encryption-decrypt)
@@ -38,15 +38,10 @@ The following steps provide an overview of setting up field\-level encryption\. 
 ## Setting Up Field\-Level Encryption<a name="field-level-encryption-setting-up"></a>
 
 Follow these steps to get started using field\-level encryption\. To learn about limits in field\-level encryption, see [Limits](cloudfront-limits.md)\.
-
 + [Step 1: Get an RSA Key Pair](#field-level-encryption-setting-up-step1)
-
 + [Step 2: Add Your Public Key to CloudFront](#field-level-encryption-setting-up-step2)
-
 + [Step 3: Create a Profile for Field\-Level Encryption](#field-level-encryption-setting-up-step3)
-
 + [Step 4: Create a Configuration](#field-level-encryption-setting-up-step4)
-
 + [Step 5: Add a Configuration to a Cache Behavior](#field-level-encryption-setting-up-step5)
 
 ### Step 1: Get an RSA Key Pair<a name="field-level-encryption-setting-up-step1"></a>
@@ -108,11 +103,9 @@ Make sure that you don’t use overlapping characters for different field name p
 After you create one or more field\-level encryption profiles, create a configuration that specifies the content type of the request that includes the data to be encrypted, the profile to use for encryption, and other options that specify how you want CloudFront to handle encryption\.
 
 For example, when CloudFront can’t encrypt the data, you can specify whether CloudFront should block or forward a request to your origin in the following scenarios:
-
 + **When a request's content type isn't in a configuration\.** If you haven't added a content type to a configuration, you can specify whether CloudFront should forward the request with that content type to the origin without encrypting data fields, or block the request and return an error\.
 
   Note: If you add a content type to a configuration but haven't specified a profile to use with that type, requests with that content type will always be forwarded to the origin\.
-
 + **When the profile name provided in a query argument is unknown\.** When you specify the `fle-profile` query argument with a profile name that doesn’t exist for your distribution, you can specify whether CloudFront should send the request to the origin without encrypting data fields, or block the request and return an error\.
 
 In a configuration, you can also specify whether providing a profile as a query argument in a URL overrides a profile that you’ve mapped to the content type for that query\. By default, CloudFront uses the profile that you've mapped to a content type, if you specify one\. This lets you have a profile that's used by default but decide for certain requests that you want to enforce a different profile\. 
@@ -163,17 +156,11 @@ CloudFront encrypts data fields by using the [AWS Encryption SDK](http://docs.aw
 After encryption, the cipher text is base64 encoded\. When your applications decrypt the text at the origin, they must first decode the cipher text, and then use the AWS Encryption SDK to decrypt the data\.
 
 The following code sample illustrates how applications can decrypt data at your origin\. Note the following: 
-
 + To simplify the example, this sample loads public and private keys \(in DER format\) from files in the working directory\. In practice, you would store the private key in a secure offline location, such as an offline hardware security module, and distribute the public key to your development team\.
-
 + CloudFront uses specific information while encrypting the data, and the same set of parameters should be used at the origin to decrypt it\. Parameters CloudFront uses while initializing the MasterKey include the following:
-
   + PROVIDER\_NAME: You specified this value when you created a field\-level encryption profile\. Use the same value here\.
-
   + KEY\_NAME: You created a name for your public key when you uploaded it to CloudFront, and then specified the key name in the profile\. Use the same value here\.
-
   + ALGORITHM: CloudFront uses "RSA/ECB/OAEPWithSHA\-256AndMGF1Padding" as the algorithm for encrypting, so you must use the same algorithm to decrypt the data\.
-
 + If you run the following sample program with cipher text as input, the decrypted data is output to your console\. For more information, see the [Java Example Code](http://docs.aws.amazon.com/encryption-sdk/latest/developer-guide//java-example-code.html) in the AWS Encryption SDK\.
 
 ### Sample Code<a name="field-level-encryption-decrypt-sample"></a>

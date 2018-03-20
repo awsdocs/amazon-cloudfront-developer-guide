@@ -32,17 +32,11 @@ The behavior of CloudFront default root objects is different from the behavior o
 Remember that a default root object applies only to your CloudFront distribution\. You still need to manage security for your origin\. For example, if you are using an Amazon S3 origin, you still need to set your Amazon S3 bucket ACLs appropriately to ensure the level of access you want on your bucket\.
 
 If you don't define a default root object, requests for the root of your distribution pass to your origin server\. If you are using an Amazon S3 origin, any of the following might be returned:
-
 + **A list of the contents of your Amazon S3 bucket**—Under any of the following conditions, the contents of your origin are visible to anyone who uses CloudFront to access your distribution:
-
   + Your bucket is not properly configured\. 
-
   + The Amazon S3 permissions on the bucket associated with your distribution and on the objects in the bucket grant access to *everyone*\.
-
   + An end user accesses your origin using your origin root URL\. 
-
 + **A list of the private contents of your origin**—If you configure your origin as a private distribution \(only you and CloudFront have access\), the contents of the Amazon S3 bucket associated with your distribution are visible to anyone who has the credentials to access your distribution through CloudFront\. In this case, users are not able to access your content through your origin root URL\. For more information about distributing private content, see [Serving Private Content through CloudFront](PrivateContent.md)\.
-
 + **Error 403 Forbidden**—CloudFront returns this error if the permissions on the Amazon S3 bucket associated with your distribution or the permissions on the objects in that bucket deny access to CloudFront and to everyone\.
 
 To avoid exposing the contents of your web distribution or returning an error, perform the following procedure to specify a default root object for your distribution\.<a name="DefaultRootObjectProcedure"></a>

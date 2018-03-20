@@ -74,11 +74,7 @@ System.out.println(signedUrl);
 ```
 
 See also
-
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
-
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
-
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)

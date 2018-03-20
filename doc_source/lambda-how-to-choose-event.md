@@ -11,15 +11,11 @@ If you want the function to execute for every request that CloudFront receives f
 
 **Does the function change the cache key?**  
 If you want the function to change a value that you're using as a basis for caching, use the viewer request event\. For example, if a function changes the URL to include a language abbreviation in the path \(for example, because the user chose their language from a dropdown list\), use the viewer request event:  
-
 + **URL in the viewer request** – http://example\.com/en/index\.html
-
 + **URL when the request comes from an IP address in Germany** – http://example\.com/de/index\.html
 You also use the viewer request event if you're caching based on cookies or request headers\.  
 If the function changes cookies or headers, configure CloudFront to forward the applicable part of the request to the origin\. For more information, see the following topics:  
-
 + [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)
-
 + [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)
 
 **Does the function affect the response from the origin?**  

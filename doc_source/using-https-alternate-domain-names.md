@@ -7,7 +7,7 @@ If you want your viewers to use HTTPS and you want to use your own domain name i
 **Important**  
 When you add a certificate to your distribution, CloudFront immediately propagates the certificate to all of its edge locations\. As new edge locations become available, CloudFront will propagate the certificate to those locations, too\. You can't restrict the edge locations that CloudFront propagates the certificates to\.
 
-
+**Topics**
 + [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)
 + [Requirements for Using SSL/TLS Certificates with CloudFront](cnames-and-https-requirements.md)
 + [Limits on Using SSL/TLS Certificates with CloudFront \(HTTPS Between Viewers and CloudFront Only\)](cnames-and-https-limits.md)

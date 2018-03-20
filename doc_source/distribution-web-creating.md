@@ -17,9 +17,7 @@ The following task list summarizes the process for creating a web distribution\.
 You are responsible for ensuring the security of your origin server\. You must ensure that CloudFront has permission to access the server and that the security settings are appropriate to safeguard your content\.
 
 1. Create your CloudFront web distribution:
-
    + For more information about creating a web distribution using the CloudFront console, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\.
-
    + For information about creating a web distribution using the CloudFront API, go to [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 1. Optional: If you created your distribution using the CloudFront console, create more cache behaviors or origins for your distribution\. For more information, see [To Update CloudFront Distributions Using the CloudFront Console](HowToUpdateDistribution.md#HowToUpdateDistributionProcedure)\.
@@ -31,9 +29,6 @@ You are responsible for ensuring the security of your origin server\. You must e
    If you specified one or more alternate domain names \(CNAMEs\) when you created your distribution, you can use your own domain name\. In that case, the URL for `image.jpg` might be `http://www.example.com/image.jpg`\.
 
    Note the following:
-
    + If you want to use signed URLs to restrict access to your content, see [Serving Private Content through CloudFront](PrivateContent.md)\. 
-
    + If you want to serve compressed content, see [Serving Compressed Files](ServingCompressedFiles.md)\.
-
    + For information about CloudFront request and response behavior for Amazon S3 and custom origins, see [Request and Response Behavior](RequestAndResponseBehavior.md)\.

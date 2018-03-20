@@ -1,9 +1,7 @@
 # How RTMP Distributions Work<a name="HowStreamingDistributionsWork"></a>
 
 To stream media files using CloudFront, you provide two types of files to your end users:
-
 + Your media files
-
 + A media player, for example, JW Player, Flowplayer, or Adobe Flash
 
 End users view your media files using the media player that you provide for them; they do not use the media player \(if any\) that is already installed on their computer or other device\.
@@ -25,11 +23,7 @@ In the following diagram, your site serves a cached copy of the media player to 
 When you configure CloudFront to distribute media files, CloudFront uses Adobe Flash Media Server as the streaming server and streams your media files using Adobe's Real\-Time Messaging Protocol \(RTMP\)\. CloudFront accepts RTMP requests over port 1935 and port 80\.
 
 CloudFront supports the following variants of the RTMP protocol:
-
 + **RTMP** – Adobe's Real\-Time Message Protocol
-
 + **RTMPT** – Adobe streaming tunneled over HTTP
-
 + **RTMPE** – Adobe encrypted
-
 + **RTMPTE** – Adobe encrypted tunneled over HTTP

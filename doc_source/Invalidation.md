@@ -1,20 +1,15 @@
 # Invalidating Objects \(Web Distributions Only\)<a name="Invalidation"></a>
 
 If you need to remove an object from CloudFront edge caches before it expires, you can do one of the following:
-
 + Invalidate the object from edge caches\. The next time a viewer requests the object, CloudFront returns to the origin to fetch the latest version of the object\.
-
 + Use object versioning to serve a different version of the object that has a different name\. For more information, see [Updating Existing Objects Using Versioned Object Names](ReplacingObjects.md)\.
 
 **Important**  
 You can invalidate most types of objects that are served by a web distribution, but you cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior\. In addition, you cannot invalidate objects that are served by an RTMP distribution\.
 
 To invalidate objects, you can specify either the path for individual objects or a path that ends with the `*` wildcard, which might apply to one object or to many, as shown in the following examples:
-
 + `/images/image1.jpg`
-
 + `/images/image*`
-
 + `/images/*`
 
 **Note**  
@@ -23,7 +18,7 @@ For example: `aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBU
 
 You can submit a specified number of invalidation paths each month for free\. If you submit more than the allotted number of invalidation paths in a month, you pay a fee for each invalidation path that you submit\. For more information about the charges for invalidation, see [Paying for Object Invalidation](#PayingForInvalidation)\. 
 
-
+**Topics**
 + [Choosing Between Invalidating Objects and Using Versioned Object Names](#Invalidation_Expiration)
 + [Determining Which Objects to Invalidate](#invalidation-access-logs)
 + [Specifying the Objects to Invalidate](#invalidation-specifying-objects)
@@ -35,15 +30,10 @@ You can submit a specified number of invalidation paths each month for free\. If
 ## Choosing Between Invalidating Objects and Using Versioned Object Names<a name="Invalidation_Expiration"></a>
 
 To control the versions of objects that are served from your distribution, you can either invalidate objects or give them versioned file names\. If you'll want to update your objects frequently, we recommend that you primarily use object versioning for the following reasons:
-
 + Versioning enables you to control which object a request returns even when the user has a version cached either locally or behind a corporate caching proxy\. If you invalidate the object, the user might continue to see the old version until it expires from those caches\.
-
 + CloudFront access logs include the names of your objects, so versioning makes it easier to analyze the results of object changes\.
-
 + Versioning provides a way to serve different versions of objects to different users\.
-
 + Versioning simplifies rolling forward and back between object revisions\.
-
 + Versioning is less expensive\. You still have to pay for CloudFront to transfer new versions of your objects to edge locations, but you don't have to pay for invalidating objects\. 
 
 For more information about object versioning, see [Updating Existing Objects Using Versioned Object Names](ReplacingObjects.md)\.
@@ -63,18 +53,14 @@ Invalidation paths are case sensitive, so `/images/image.jpg` and `/images/Image
 
  **Changing the URI Using a Lambda Function**  
 If your CloudFront distribution triggers a Lambda function on viewer request events, and if the function changes the URI of the requested object, you must invalidate both URIs to remove the object from CloudFront edge caches:  
-
 + The URI in the viewer request
-
 + The URI after the function changed it
 For example, suppose your Lambda function changes the URI for an object from this:  
 `http://d111111abcdef8.cloudfront.net/index.html`  
 to a URI that includes a language directory:  
 `http://d111111abcdef8.cloudfront.net/en/index.html`  
 To invalidate the object, you must specify the following paths:  
-
 + `index.html`
-
 + `en/index.html`
 For more information, see [Invalidation paths](#invalidation-specifying-objects-paths)\.
 
@@ -92,9 +78,7 @@ If you configured CloudFront to forward a whitelist of headers to your origin an
 
  **Forwarding query strings**  
 If you configured CloudFront to forward query strings to your origin, you must include the query strings when invalidating objects, as shown in the following examples:  
-
 + `images/image.jpg?parameter1=a`
-
 + `images/image.jpg?parameter1=b`
 If client requests include five different query strings for the same object, you can either invalidate the object five times, once for each query string, or you can use the \* wildcard in the invalidation path, as shown in the following example:  
 `/images/image.jpg*`  
@@ -116,27 +100,21 @@ or
 `images/image2.jpg`  
 You can also invalidate multiple objects simultaneously by using the `*` wildcard\. The `*`, which replaces 0 or more characters, must be the last character in the invalidation path\. Also, if you use the AWS command line interface \(CLI\) for invalidating objects and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path \(like `"/*"`\)\.  
 The following are some examples:  
-
 + To invalidate all of the objects in a directory:
 
   `/`*directory\-path*`/*`
-
 + To invalidate a directory, all of its subdirectories, and all of the objects in the directory and subdirectories:
 
   `/`*directory\-path*`*`
-
 + To invalidate all files that have the same name but different file name extensions, such as logo\.jpg, logo\.png, and logo\.gif:
 
   `/`*directory\-path*`/`*file\-name*`.*`
-
 + To invalidate all of the files in a directory for which the file name starts with the same characters \(such as all of the files for a video in HLS format\), regardless of the file name extension:
 
   `/`*directory\-path*`/`*initial\-characters\-in\-file\-name*`*`
-
 + When you configure CloudFront to cache based on query string parameters and you want to invalidate every version of an object:
 
   `/`*directory\-path*`/`*file\-name*`.`*file\-name\-extension*`*`
-
 + To invalidate all of the objects in a distribution:
 
   `/*`
@@ -153,17 +131,11 @@ If you are using signed URLs, invalidate an object by including only the portion
 You can use the CloudFront console or CloudFront API actions to create and run an invalidation, display a list of the invalidations that you submitted previously, and display detailed information about an individual invalidation\. You can also copy an existing invalidation, edit the list of object paths, and run the edited invalidation\.
 
 See the applicable topic:
-
 + [Invalidating Objects Using the CloudFront Console](#invalidating-objects-console)
-
 + [Copying, Editing, and Rerunning an Existing Invalidation Using the CloudFront Console](#invalidating-objects-copy-console)
-
 + [Canceling Invalidations](#canceling-invalidations)
-
 + [Listing Invalidations Using the CloudFront Console](#listing-invalidations-console)
-
 + [Displaying Information about an Invalidation Using the CloudFront Console](#invalidation-details-console)
-
 + [Invalidating Objects and Displaying Information about Invalidations Using the CloudFront API](#invalidating-objects-api)
 
 ### Invalidating Objects Using the CloudFront Console<a name="invalidating-objects-console"></a>
@@ -254,11 +226,8 @@ You can display detailed information about an invalidation, including distributi
 ### Invalidating Objects and Displaying Information about Invalidations Using the CloudFront API<a name="invalidating-objects-api"></a>
 
 For information about invalidating objects and about displaying information about invalidations using the CloudFront API, see the applicable topic in the *Amazon CloudFront API Reference*:
-
 + Invalidating objects: [POST Invalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html) 
-
 + Getting a list of your invalidations: [GET Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html)
-
 + Getting information about a specific invalidation: [GET Invalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetInvalidation.html)
 
 ## Third\-Party Tools for Invalidating Objects<a name="InvalidationTools"></a>

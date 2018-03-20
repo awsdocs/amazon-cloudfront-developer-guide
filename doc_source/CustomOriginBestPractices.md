@@ -1,19 +1,12 @@
 # Requirements and Recommendations for Using Amazon EC2 and Other Custom Origins<a name="CustomOriginBestPractices"></a>
 
 Follow these guidelines for using Amazon EC2 instances and other custom origins with CloudFront\. 
-
 + Host and serve the same content on all servers\.
-
 + Log the `X-Amz-Cf-Id` header entries on all servers; CloudFront requires this information for debugging\.
-
 + Restrict access requests to the HTTP and HTTPS ports that your custom origin listens on\.
-
 + Synchronize the clocks of all servers in your implementation\.
-
 + Use redundant servers to handle failures\.
-
 + For information about using a custom origin to serve private content, see [Using an HTTP Server for Private Content](PrivateContent.md#private-content-overview-choosing-origin)\.
-
 + For information about request and response behavior and about supported HTTP status codes, see [Request and Response Behavior](RequestAndResponseBehavior.md)\.
 
 If you use Amazon Elastic Compute Cloud for your custom origins, we recommend that you do the following:

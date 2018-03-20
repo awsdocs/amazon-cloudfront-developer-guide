@@ -1,22 +1,17 @@
 # Getting Started with CloudFront<a name="GettingStarted"></a>
 
 The example in this topic gives you a quick overview of how to use CloudFront to:
-
 + Store the original versions of your objects in one Amazon Simple Storage Service \(Amazon S3\) bucket\.
-
 + Distribute download content such as text or graphics\. 
-
 + Make your objects accessible to everyone\.
-
 + Use the CloudFront domain name in URLs for your objects \(for example, `http://d111111abcdef8.cloudfront.net/image.jpg`\) instead of your own domain name \(for example, `http://www.example.com/image.jpg`\)\.
-
 + Keep your objects in CloudFront edge locations for the default duration of 24 hours\. \(The minimum duration is 0 seconds\.\)
 
 For information about how to use CloudFront when you want to use other options, see [Task List for Creating a Web Distribution](distribution-web-creating.md) or [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\.
 
 You only need to perform a few basic steps to start delivering your content using CloudFront\. The first step is signing up\. After that, you create a CloudFront distribution, and then use the CloudFront domain name to reference content in your web pages or applications\.
 
-
+**Topics**
 + [Step 1: Sign up for Amazon Web Services](#GettingStartedSignup)
 + [Step 2: Upload your content to Amazon S3 and grant object permissions](#GettingStartedUploadContent)
 + [Step 3: Create a CloudFront Web Distribution](#GettingStartedCreateDistribution)
@@ -85,23 +80,14 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 ![\[Specify the Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-2-origin-s3-get-started.png)
 
 1. Under **Default Cache Behavior Settings**, accept the default values, and CloudFront will:
-
    + Forward all requests that use the CloudFront URL for your distribution \(for example, `http://d111111abcdef8.cloudfront.net/image.jpg`\) to the Amazon S3 bucket that you specified in Step 4\.
-
    + Allow end users to use either HTTP or HTTPS to access your objects\.
-
    + Respond to requests for your objects\.
-
    + Cache your objects at CloudFront edge locations for 24 hours\.
-
    + Forward only the default request headers to your origin and not cache your objects based on the values in the headers\.
-
    + Exclude cookies and query string parameters, if any, when forwarding requests for objects to your origin\. \(Amazon S3 doesn't process cookies and processes only a limited set of query string parameters\.\)
-
    + Not be configured to distribute media files in the Microsoft Smooth Streaming format\.
-
    + Allow everyone to view your content\.
-
    + Not automatically compress your content\.
 
    For more information about cache behavior options, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.  
@@ -121,7 +107,7 @@ to look like this:
 instead of like this:  
 `http://d111111abcdef8.cloudfront.net/images/image.jpg`  
 you would create a CNAME for `www.example.com`\.  
-If you add a CNAME for `www.example.com` to your distribution, you also need to create \(or update\) a CNAME record with your DNS service to route queries for `www.example.com` to `d111111abcdef8.cloudfront.net`\. You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, but you may also be developing an application for the domain owner\. For more information about CNAMEs, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+If you add a CNAME for `www.example.com` to your distribution, you also need to create \(or update\) a CNAME record with your DNS service to route queries for `www.example.com` to `d111111abcdef8.cloudfront.net`\. You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, but you may also be developing an application for the domain owner\. For more information about CNAMEs, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 For the current limit on the number of alternate domain names that you can add to a distribution or request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.  
 **SSL Certificate**  
 Accept the default value, **Default CloudFront Certificate**\.   
@@ -155,9 +141,7 @@ You must wait until the status of your distribution changes to **Deployed** befo
 **To link to your objects**
 
 1. Copy the following HTML into a new file:
-
    + Replace <domain name> with the domain name that CloudFront assigned to your distribution\.
-
    + Replace <object name> with the name of a file in your Amazon S3 bucket\.
 
    ```

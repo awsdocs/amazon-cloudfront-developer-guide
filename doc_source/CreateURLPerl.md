@@ -5,7 +5,7 @@ This section includes a Perl script for Linux/Mac platforms that you can use to 
 **Note**  
 Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the end\-to\-end process, see [Using Signed URLs](private-content-signed-urls.md)\. 
 
-
+**Topics**
 + [Example of Using a Perl Script to Create a Signed URL](#CreateURLPerlExample)
 + [Source for the Perl Script to Create a Signed URL](#CreateURLPerlScriptSource)
 
@@ -75,13 +75,9 @@ EXAMPLE
 For more information about the command line switches and features of this toolee the comments in the Perl source code, which is included in the next section\.
 
 See also
-
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
-
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
-
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)
 
 ## Source for the Perl Script to Create a Signed URL<a name="CreateURLPerlScriptSource"></a>

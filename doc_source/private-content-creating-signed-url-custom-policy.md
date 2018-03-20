@@ -1,6 +1,6 @@
 # Creating a Signed URL Using a Custom Policy<a name="private-content-creating-signed-url-custom-policy"></a>
 
-
+**Topics**
 + [Creating a Policy Statement for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement)
 + [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)
 + [Creating a Signature for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-creating-signature)
@@ -15,30 +15,23 @@ To create a signed URL using a custom policy, perform the following procedure\.<
 **![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the object***  
 The base URL is the CloudFront URL that you would use to access the object if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Format of URLs for Objects](LinkFormat.md)\.  
 The following examples show values that you specify for web distributions\.  
-
    + The following CloudFront URL is for an object in a web distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the object in the URL must match the path to the object on your HTTP server or in your Amazon S3 bucket\.
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg`
-
    + The following CloudFront URL includes a query string:
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
-
    + The following CloudFront URLs are for objects in a web distribution\. Both use an alternate domain name; the second one includes a query string:
 
      `http://www.example.com/images/image.jpg`
 
      `http://www.example.com/images/image.jpg?color=red`
-
    + The following CloudFront URL is for an objects in a web distribution that uses an alternate domain name and the HTTPS protocol:
 
      `https://www.example.com/images/image.jpg`
 For RTMP distributions, the following examples are for objects in two different video formats, MP4 and FLV:  
-
    + **MP4** – `mp4:sydney-vacation.mp4`
-
    + **FLV** – `sydney-vacation`
-
    + **FLV** – `sydney-vacation.flv`
 For \.flv files, whether you include the `.flv` filename extension depends on your player\. To serve MP3 audio files or H\.264/MPEG\-4 video files, you might need to prefix the file name with `mp3:` or `mp4:`\. Some media players can be configured to add the prefix automatically\. The media player might also require you to specify the file name without the file extension \(for example, sydney\-vacation instead of sydney\-vacation\.mp4\)\.  
 **![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) **?****  
@@ -57,9 +50,7 @@ A hashed, signed, and base64\-encoded version of the JSON policy statement\. For
 **![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=`*active CloudFront key pair Id for the key pair that you're using to sign the policy statement***  
 The ID for an active CloudFront key pair, for example, APKA9ONS7QCOWEXAMPLE\. The CloudFront key pair ID tells CloudFront which public key to use to validate the signed URL\. CloudFront compares the information in the signature with the information in the policy statement to verify that the URL has not been tampered with\.  
 The key pair ID that you include in CloudFront signed URLs must be the ID of an active key pair for one of your trusted signers:  
-
    + **Web distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the applicable cache behavior\.
-
    + **RTMP distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the distribution\.
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, and if you're generating signed URLs programmatically, you must update your application to use a new active key pair for one of your trusted signers\. If you're generating signed URLs manually, you must create new signed URLs\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
@@ -96,15 +87,10 @@ To create a policy statement for a custom policy, perform the following procedur
    ```
 
    Note the following:
-
    + You can include only one statement\.
-
    + Use UTF\-8 character encoding\.
-
    + Include all punctuation and parameter names exactly as specified\. Abbreviations for parameter names are not accepted\.
-
    + The order of the parameters in the `Condition` section doesn't matter\.
-
    + For information about the values for `Resource`, `DateLessThan`, `DateGreaterThan`, and `IpAddress`, see [Values that You Specify in the Policy Statement for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-values)\.
 
 1. Remove all whitespace \(including tabs and newline characters\) from the policy statement\. You might have to include escape characters in the string in application code\.
@@ -131,23 +117,16 @@ The base URL including your query strings, if any, but excluding the CloudFront 
 `http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
 If you omit the Resource parameter for a web distribution, users can access all of the objects associated with any distribution that is associated with the key pair that you use to create the signed URL\.
 Note the following:  
-
 + **Protocol** – The value must begin with `http://`, `https://`, or `*`\. 
-
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
-
 + **Wildcard characters** – You can use the wildcard character that matches zero or more characters \(\*\) or the wild\-card character that matches exactly one character \(?\) anywhere in the string\. For example, the value:
 
   `http://d111111abcdef8.cloudfront.net/*game_download.zip*`
 
   would include \(for example\) the following objects:
-
   + `http://d111111abcdef8.cloudfront.net/game_download.zip`
-
   + `http://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
-
   + `http://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
-
 + **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.  
 **RTMP distributions**  
 Include only the stream name\. For example, if the full URL for a streaming video is:  
@@ -167,15 +146,11 @@ An optional start date and time for the URL in Unix time format \(in seconds\) a
 
 **IpAddress \(Optional\)**  
 The IP address of the client making the GET request\. Note the following:  
-
 + To allow any IP address to access the object, omit the `IpAddress` parameter\.
-
 + You can specify either one IP address or one IP address range\. For example, you can't set the policy to allow access if the client's IP address is in one of two separate ranges\.
-
 + To allow access from a single IP address, you specify:
 
   `"`*IPv4 IP address*`/32"`
-
 + You must specify IP address ranges in standard IPv4 CIDR format \(for example, `192.0.2.0/24`\)\. For more information, see *RFC 4632, Classless Inter\-domain Routing \(CIDR\): The Internet Address Assignment and Aggregation Plan*, [http://tools\.ietf\.org/html/rfc4632](http://tools.ietf.org/html/rfc4632)\.
 **Important**  
 IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, are not supported\. 
@@ -190,7 +165,7 @@ If you copy and paste any of these examples, remove any whitespace \(including t
 
 For more information, see [Values that You Specify in the Policy Statement for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-values)\.
 
-
+**Topics**
 + [Example Policy Statement: Accessing One Object from a Range of IP Addresses](#private-content-custom-policy-statement-example-one-object)
 + [Example Policy Statement: Accessing All Objects in a Directory from a Range of IP Addresses](#private-content-custom-policy-statement-example-all-objects)
 + [Example Policy Statement: Accessing All Objects Associated with a Key Pair ID from One IP Address](#private-content-custom-policy-statement-example-one-ip)
@@ -263,17 +238,12 @@ The signed URL also includes a key pair ID, which must be associated with a trus
 ## Creating a Signature for a Signed URL That Uses a Custom Policy<a name="private-content-custom-policy-creating-signature"></a>
 
 The signature for a signed URL that uses a custom policy is a hashed, signed, and base64\-encoded version of the policy statement\. To create a signature for a custom policy, perform the applicable procedure\. The version that you choose depends on your distribution type \(web or RTMP\) and, for RTMP distributions, the media player that you're using \(Adobe Flash Player or another media player\):
-
 + [Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a custom policy](#private-content-custom-policy-creating-signature-download-procedure)
-
 + [Option 2: To create a signature for an RTMP distribution by using a custom policy \(Adobe Flash Player\)](#private-content-custom-policy-creating-signature-streaming-flash-procedure)
 
 For additional information and examples of how to hash, sign, and encode the policy statement, see:
-
 + [Using a Linux Command and OpenSSL for Base64\-Encoding and Encryption](private-content-linux-openssl.md)
-
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-custom-policy-creating-signature-download-procedure"></a>
 
 **Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a custom policy**

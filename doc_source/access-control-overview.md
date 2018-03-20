@@ -7,7 +7,7 @@ An *account administrator* \(or administrator user\) is a user that has administ
 
 When you grant permissions, you decide who gets the permissions, the resources they get permissions for, and the actions that they get permission to perform\.
 
-
+**Topics**
 + [ARNs for CloudFront Resources](#access-control-resources)
 + [Understanding Resource Ownership](#access-control-owner)
 + [Managing Access to Resources](#access-control-manage-access-intro)
@@ -27,11 +27,8 @@ CloudFront provides API actions to work with each of these types of resources\. 
 An AWS account owns the resources that are created in the account, regardless of who created the resources\. Specifically, the resource owner is the AWS account of the principal entity \(that is, the root account, an IAM user, or an IAM role\) that authenticates the resource creation request\. 
 
 The following examples illustrate how this works:
-
 + If you use the root account credentials of your AWS account to create a web distribution, your AWS account is the owner of the distribution\.
-
 + If you create an IAM user in your AWS account and grant permissions to create a web distribution to that user, the user can create a web distribution\. The AWS account that created the user owns the distribution\.
-
 + If you create an IAM role in your AWS account with permissions to create a web distribution, anyone who can assume the role can create a web distribution\. Your AWS account, to which the role belongs, owns the distribution\.
 
 ## Managing Access to Resources<a name="access-control-manage-access-intro"></a>
@@ -40,16 +37,14 @@ A *permissions policy* specifies who has access to what\. This section explains 
 
 Policies attached to an IAM identity are referred to as identity\-based policies \(IAM policies\), and policies attached to a resource are referred to as resource\-based policies\. CloudFront supports only identity\-based policies \(IAM policies\)\.
 
-
+**Topics**
 + [Identity\-Based Policies \(IAM Policies\)](#access-control-manage-access-intro-iam-policies)
 + [Resource\-Based Policies](#access-control-manage-access-intro-resource-policies)
 
 ### Identity\-Based Policies \(IAM Policies\)<a name="access-control-manage-access-intro-iam-policies"></a>
 
 You can attach policies to IAM identities\. For example, you can do the following:
-
 + **Attach a permissions policy to a user or a group in your account** – An account administrator can use a permissions policy that is associated with a particular user to grant permissions for that user to create a web distribution\. 
-
 + **Attach a permissions policy to a role \(grant cross\-account permissions\)** – You can grant permissions to perform CloudFront actions to a user that was created in another AWS account\. To do so, you attach a permissions policy to an IAM role, and then you allow the user in the other account to assume the role\. The following example explains how this works for two AWS accounts, account A and account B:
 
   1. Account A administrator creates an IAM role and attaches to the role a permissions policy that grants permissions to create or access resources that are owned by account A\.
@@ -88,13 +83,9 @@ Other services, such as Amazon S3, support attaching permissions policies to res
 CloudFront includes API actions \(see [Amazon CloudFront API Reference](http://docs.aws.amazon.com/cloudfront/latest/APIReference/)\) that you can use on each CloudFront resource \(see [ARNs for CloudFront Resources](#access-control-resources)\)\. You can grant a user or a federated user permission to perform any or all of these actions\. 
 
 The following are the basic policy elements:
-
 + **Resource** – You use an Amazon Resource Name \(ARN\) to identify the resource that the policy applies to\. For more information, see [ARNs for CloudFront Resources](#access-control-resources)\.
-
 + **Action** – You use action keywords to identify resource operations that you want to allow or deny\. For example, depending on the specified `Effect`, the `cloudfront:CreateDistribution` permission allows or denies the user permissions to perform the CloudFront `CreateDistribution` action\.
-
 + **Effect** – You specify the effect, either allow or deny, when a user tries to perform the action on the specified resource\. If you don't explicitly grant access to an action, access is implicitly denied\. You can also explicitly deny access to a resource, which you might do to make sure that a user cannot access it, even if a different policy grants access\.
-
 + **Principal** – In identity\-based policies \(IAM policies\), the user that the policy is attached to is the implicit principal\. For resource\-based policies, you specify the user, account, service, or other entity that you want to receive permissions \(applies to resource\-based policies only\)\. CloudFront doesn't support resource\-based policies\.
 
 For more information about IAM policy syntax and descriptions, see the [AWS IAM Policy Reference](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.

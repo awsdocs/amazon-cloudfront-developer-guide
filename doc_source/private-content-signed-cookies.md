@@ -2,7 +2,7 @@
 
 CloudFront signed cookies allow you to control who can access your content when you don't want to change your current URLs or when you want to provide access to multiple restricted files, for example, all of the files in the subscribers' area of a website\. This topic explains the considerations when using signed cookies and describes how to set signed cookies using canned and custom policies\.
 
-
+**Topics**
 + [Choosing Between Canned and Custom Policies for Signed Cookies](#private-content-choosing-canned-custom-cookies)
 + [How Signed Cookies Work](#private-content-how-signed-cookies-work)
 + [Preventing Misuse of Signed Cookies](#private-content-signed-cookie-misuse)
@@ -62,13 +62,9 @@ Here's an overview of how you configure CloudFront for signed cookies and how Cl
 If you specify the `Domain` parameter in a `Set-Cookie` header, specify the most precise value possible to limit potential access by someone with the same root domain name\. For example, apex\.example\.com is preferable to example\.com, especially when you don't control example\.com\. This helps prevent someone from accessing your content from nadir\.example\.com\.
 
 To prevent this type of attack, do the following:
-
 + Exclude the `Expires` and `Max-Age` cookie attributes, so that the `Set-Cookie` header creates a session cookie\. Session cookies are automatically deleted when the user closes the browser, which reduces the possibility of someone getting unauthorized access to your content\.
-
 + Include the `Secure` attribute, so that the cookie is encrypted when a viewer includes it in a request\.
-
 + When possible, use a custom policy and include the IP address of the viewer\.
-
 + In the `CloudFront-Expires` attribute, specify the shortest reasonable expiration time based on how long you want users to have access to your content\.
 
 ## When Does CloudFront Check the Expiration Date and Time in a Signed Cookie?<a name="private-content-check-expiration-cookie"></a>
@@ -80,13 +76,9 @@ If a client uses Range GETs to get an object in smaller pieces, any GET request 
 ## Sample Code and Third\-Party Tools<a name="private-content-overview-sample-code-cookies"></a>
 
 The sample code for private content shows only how to create the signature for signed URLs\. However, the process for creating a signature for a signed cookie is very similar, so much of the sample code is still relevant\. For more information, see the following topics: 
-
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
-
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
-
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
-
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
 
 Additional sample code for creating signed URLs is available on the [Amazon CloudFront Sample Code & Libraries](http://aws.amazon.com/code/CloudFront?browse=1) page\.

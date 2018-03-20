@@ -1,21 +1,17 @@
 # Restricting the Geographic Distribution of Your Content<a name="georestrictions"></a>
 
 You can use *geo restriction*, also known as *geoblocking*, to prevent users in specific geographic locations from accessing content that you're distributing through a CloudFront web distribution\. To use geo restriction, you have two options:
-
 + Use the CloudFront geo restriction feature\. Use this option to restrict access to all of the files that are associated with a distribution and to restrict access at the country level\. 
-
 + Use a third\-party geolocation service\. Use this option to restrict access to a subset of the files that are associated with a distribution or to restrict access at a finer granularity than the country level\.
 
-
+**Topics**
 + [Using CloudFront Geo Restriction](#georestrictions-cloudfront)
 + [Using a Third\-Party Geolocation Service](#georestrictions-geolocation-service)
 
 ## Using CloudFront Geo Restriction<a name="georestrictions-cloudfront"></a>
 
 When a user requests your content, CloudFront typically serves the requested content regardless of where the user is located\. If you need to prevent users in specific countries from accessing your content, you can use the CloudFront geo restriction feature to do one of the following:
-
 + Allow your users to access your content only if they're in one of the countries on a whitelist of approved countries\. 
-
 + Prevent your users from accessing your content if they're in one of the countries on a blacklist of banned countries\. 
 
 For example, if a request comes from a country where, for copyright reasons, you are not authorized to distribute your content, you can use CloudFront geo restriction to block the request\.
@@ -82,9 +78,7 @@ The following task list explains how to control access to your files by using a 
    For more information, refer to the documentation for the geolocation service that you're using\.
 
 You can use a web server variable to get the IP addresses of the users who are visiting your website\. Note the following caveats:
-
 + If your web server is not connected to the internet through a load balancer, you can use a web server variable to get the remote IP address\. However, this IP address isn't always the user's IP address—it can also be the IP address of a proxy server, depending on how the user is connected to the internet\.
-
 + If your web server is connected to the internet through a load balancer, a web server variable might contain the IP address of the load balancer, not the IP address of the user\. In this configuration, we recommend that you use the last IP address in the `X-Forwarded-For` http header\. This header typically contains more than one IP address, most of which are for proxies or load balancers\. The last IP address in the list is the one most likely to be associated with the user's geographic location\.
 
 If your web server is not connected to a load balancer, we recommend that you use web server variables instead of the `X-Forwarded-For` header to avoid IP address spoofing\. 

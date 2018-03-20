@@ -18,9 +18,7 @@ If your bucket is in the US Standard region and you want Amazon S3 to route requ
 `bucket-name.s3-external-1.amazonaws.com` 
 
 Do not specify the name of the bucket using the following values:
-
 + The Amazon S3 path style, `s3.amazonaws.com/bucket-name`
-
 + The Amazon S3 CNAME, if any
 
 **Important**  

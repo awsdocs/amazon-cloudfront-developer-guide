@@ -7,7 +7,7 @@ You can use information in the CloudTrail log files to determine which requests 
 **Note**  
 CloudFront is a global service\. To view CloudFront requests in CloudTrail logs, you must update an existing trail to include global services\. For more information, see [Updating a Trail](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) and [About Global Service Events](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-global-service-events) in the *AWS CloudTrail User Guide*\. 
 
-
+**Topics**
 + [CloudFront Information in CloudTrail Log Files](#cloudfront_info_in_cloudtrail)
 + [Understanding CloudFront Log File Entries](#understanding_cloudfront_entries)
 
@@ -26,7 +26,7 @@ By default, your log files are encrypted by using Amazon S3 server\-side encrypt
 
 You can choose to have CloudTrail publish Amazon SNS notifications when new log files are delivered if you want to take quick action upon log file delivery\. For more information, see [Configuring Amazon SNS Notifications](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html) in the *AWS CloudTrail User Guide*\.
 
-You can also aggregate log files from multiple AWS regions and multiple AWS accounts into a single Amazon SNS bucket\. For more information, see [Aggregating CloudTrail Log Files to a Single Amazon S3 Bucket](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/aggregating_logs_top_level.html) in the *AWS CloudTrail User Guide*\. 
+You can also aggregate log files from multiple AWS regions and multiple AWS accounts into a single Amazon S3 bucket\. For more information, see [Aggregating CloudTrail Log Files to a Single Amazon S3 Bucket](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/aggregating_logs_top_level.html) in the *AWS CloudTrail User Guide*\. 
 
 ## Understanding CloudFront Log File Entries<a name="understanding_cloudfront_entries"></a>
 
@@ -37,15 +37,10 @@ The `eventName` element identifies the action that occurred and the API version 
 `UpdateDistribution2014_01_31`
 
 The following example shows a CloudTrail log entry that demonstrates five actions:
-
 + Updating a web distribution configuration\. The value of `eventName` is `UpdateDistribution`\.
-
 + Listing web distributions that are associated with the current account\. The value of `eventName` is `ListDistributions`\.
-
 + Getting the configuration for a specific web distribution\. The value of `eventName` is `GetDistribution`\.
-
 + Creating an invalidation batch request\. The value of `eventName` is `CreateInvalidation`\.
-
 + Listing origin access identities that are associated with the current account\. The value of `eventName` is `ListCloudFrontOriginAccessIdentities`\.
 
 ```

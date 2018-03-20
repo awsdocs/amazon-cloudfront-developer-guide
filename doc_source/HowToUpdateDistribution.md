@@ -19,11 +19,8 @@ In the CloudFront console, you can see the CloudFront distributions that are ass
    1. For web distribution settings, to update general settings, choose **Edit**\. Otherwise, choose the tab for the settings that you want to view or update: **Origins** or **Behaviors**\.
 
 1. Make the updates, and then, to save your changes, choose **Yes, Edit**\. For information about the fields, see the following topics: 
-
    + **General settings:** [Distribution Details](distribution-web-values-specify.md#DownloadDistValuesGeneral)
-
    + **Origin settings:** [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin)
-
    + **Cache behavior settings:** [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)
 
 1. If you want to delete an origin in your distribution, do the following:

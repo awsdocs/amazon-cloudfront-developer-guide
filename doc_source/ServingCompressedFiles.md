@@ -7,7 +7,7 @@ A viewer request must include `Accept-Encoding: gzip` in the request header, or 
 
 If you're using a custom origin, you can configure your origin to compress files with or without CloudFront compression\. Your origin can compress file types that CloudFront doesn't compress\. \(See [File Types that CloudFront Compresses](#compressed-content-cloudfront-file-types)\.\) If your origin returns a compressed file to CloudFront, CloudFront detects that the file is compressed based on the value of the `Content-Encoding` header and doesn't compress the file again\.
 
-
+**Topics**
 + [Using CloudFront to Compress Your Content](#compressed-content-cloudfront)
 + [Using a Custom Origin to Compress Your Content](#compressed-content-custom-origin)
 
@@ -32,13 +32,9 @@ If CloudFront has an uncompressed version of the file in the cache, it still for
 1. The origin server returns an uncompressed version of the requested file to CloudFront\.
 
 1. CloudFront determines whether the file is compressible:
-
    + The file must be of a type that CloudFront compresses\.
-
    + The file size must be between 1,000 and 10,000,000 bytes\.
-
    + The response must include a `Content-Length` header so CloudFront can determine whether the size of the file is in the range that CloudFront compresses\. If the `Content-Length` header is missing, CloudFront won't compress the file\.
-
    + The response must not include a `Content-Encoding` header\.
 
 1. If the file is compressible, CloudFront compresses it, returns the compressed file to the viewer, and adds it to the cache\. 
@@ -75,13 +71,9 @@ In rare cases, when a CloudFront edge location is unusually busy, some files mig
 ### Configuring a CloudFront Distribution to Compress Content<a name="compressed-content-cloudfront-configuring"></a>
 
 To configure a web distribution to compress your content, you update the applicable cache behaviors by using one of the following methods: 
-
 + **CloudFront console** – Update the **Compress objects automatically** setting\. For more information, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\.
-
 + **CloudFront API** – Change the value of the `Compress` element to `true`\. For more information, see [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html) \(to create a new distribution\) or [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) \(to update an existing distribution\)\.
-
 + **One of the AWS SDKs** – See the applicable SDK documentation on the [AWS Documentation](http://aws.amazon.com/documentation/) page\.
-
 + **The AWS CLI** – For more information, see [create\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-distribution.html) or [update\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/update-distribution.html) in the *AWS CLI Command Reference*\.
 
 ### File Types that CloudFront Compresses<a name="compressed-content-cloudfront-file-types"></a>

@@ -37,11 +37,8 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 1. Select your bucket in the **Buckets** pane, and choose **Upload**\.
 
 1. On the **Upload \- Select Files** page, choose **Add Files**, and add the following files:
-
    + jwplayer\.flash\.swf
-
    + jwplayer\.js
-
    + Your \.mp4 or \.flv media file\.  
 ![\[Upload files to your Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
 
@@ -103,13 +100,9 @@ Perform the following steps:
 1. Copy the HTML code below, and paste it into a text editor\.
 
 1. Review the comments in the HTML file, and replace the following placeholders with the applicable values:
-
    + WEB\-DISTRIBUTION\-DOMAIN\-NAME
-
    + RTMP\-DISTRIBUTION\-DOMAIN\-NAME
-
    + VIDEO\-FILE\-NAME
-
    + LICENSE\-KEY
 
 1. Save the file with a \.html filename extension, for example, `jwplayer-example.html`\.

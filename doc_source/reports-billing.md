@@ -18,7 +18,5 @@ Your monthly bill from AWS allocates your usage and dollar amounts by AWS servic
 You also incur a surcharge for HTTPS requests, and an additional surcharge for requests that also have field\-level encryption enabled\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
 
 AWS provides two usage reports for CloudFront:
-
 + The billing report is a high\-level view of all of the activity for the AWS services that you're using, including CloudFront\. For more information, see [AWS Billing Report for CloudFront](billing-report.md)\.
-
 + The usage report is a summary of activity for a specific service, aggregated by hour, day, or month\. It also includes usage charts the provide a graphical representation of your CloudFront usage\. For more information, see [AWS Usage Report for CloudFront](usage-report.md)\.

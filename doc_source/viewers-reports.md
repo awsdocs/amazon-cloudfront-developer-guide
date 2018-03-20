@@ -1,13 +1,9 @@
 # CloudFront Viewers Reports<a name="viewers-reports"></a>
 
 The CloudFront console can display four reports about the physical devices \(desktop computers, mobile devices\) and about the viewers \(typically web browsers\) that are accessing your content:
-
 + **Devices** – The type of the devices that your users use most frequently to access your content, for example, Desktop or Mobile\. 
-
 + **Browsers** – The name \(or the name and version\) of the browsers that your users use most frequently to access your content, for example, Chrome or Firefox\. The report lists the top 10 browsers\.
-
 + **Operating Systems** – The name \(or the name and version\) of the operating system that viewers run on most frequently when accessing your content, for example, Linux, Mac OS X, or Windows\. The report lists the top 10 operating systems\.
-
 + **Locations** – The locations, by country or by U\.S\. state/territory, of the viewers that access your content most frequently\. The report lists the top 50 countries or U\.S\. states/territories\.
 
 You can display all four Viewers reports for any date range in the previous 60 days\. For the Locations report, you can also display the report with data points every hour for any date range of up to 14 days in the previous 60 days\. 
@@ -15,7 +11,7 @@ You can display all four Viewers reports for any date range in the previous 60 d
 **Note**  
 You don't need to enable access logging to view Viewers charts and reports\.
 
-
+**Topics**
 + [Displaying Viewers Charts and Reports](#viewers-reports-displaying)
 + [Downloading Data in CSV Format](#viewer-csv)
 + [How Data in the Locations Report Is Related to Data in the CloudFront Access Logs](#viewers-reports-data)
@@ -33,9 +29,7 @@ To display CloudFront Viewers charts and reports, perform the following procedur
 1. In the **CloudFront Viewers** pane, for **Start Date** and **End Date**, select the date range for which you want to display viewer charts and reports\. 
 
    For the Locations chart, available ranges depend on the value that you select for **Granularity**:
-
    + **Daily** – To display charts with one data point per day, select any date range in the previous 60 days\.
-
    + **Hourly** – To display charts with one data point every hour, select any date range of up to 14 days within the previous 60 days\.
 
    Dates and times are in Coordinated Universal Time \(UTC\)\.
@@ -47,9 +41,7 @@ To display CloudFront Viewers charts and reports, perform the following procedur
 1. \(Locations chart only\) For **Details**, specify whether to display the top locations by countries or by U\.S\. states\.
 
 1. In the **Distribution** list, select the distribution for which you want to display data in the usage charts:
-
    + **An individual web distribution** – The charts display data for the selected CloudFront web distribution\. The **Distribution** list displays the distribution ID and an alternate domain name \(CNAME\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes an origin domain name for the distribution\.
-
    + **All Web Distributions \(excludes deleted\)** – The charts display summed data for all web distributions that are associated with the current AWS account, excluding web distributions that you have deleted\.
 
 1. Click **Update**\.
@@ -68,7 +60,7 @@ You can download each of the Viewer reports in CSV format\. This section explain
 
 1. In the **Opening *file name*** dialog box, choose whether to open or save the file\.
 
-
+**Topics**
 + [Information About the Reports](#viewer-csv-header)
 + [Devices Report](#viewer-devices-csv-data)
 + [Device Trends Report](#viewer-device-trends-csv-data)
@@ -169,13 +161,9 @@ An alternate domain name \(CNAME\) for the distribution, if any\. If a distribut
 
 **Group**  
 The browser or the browser and version that CloudFront received requests from, depending on the value of `Grouping`\. In addition to browser names, possible values include the following:  
-
 + **Bot/Crawler** – primarily requests from search engines that are indexing your content\.
-
 + **Empty** – requests for which the value of the `User-Agent` HTTP header was empty\.
-
 + **Other** – browsers that CloudFront identified but that aren't among the most popular\. If `Bot/Crawler`, `Empty`, and/or `Unknown` don't appear among the first nine values, then they're also included in `Other`\.
-
 + **Unknown** – requests for which the value of the `User-Agent` HTTP header was not associated with a standard browser\. Most requests in this category come from custom applications or scripts\.
 
 **Requests**  
@@ -199,13 +187,9 @@ The hour or the day that the data applies to, in Coordinated Universal Time \(UT
 
 **\(Browsers\)**  
 The remaining columns in the report list the browsers or the browsers and their versions, depending on the value of `Grouping`\. In addition to browser names, possible values include the following:  
-
 + **Bot/Crawler** – primarily requests from search engines that are indexing your content\.
-
 + **Empty** – requests for which the value of the `User-Agent` HTTP header was empty\.
-
 + **Other** – browsers that CloudFront identified but that aren't among the most popular\. If `Bot/Crawler`, `Empty`, and/or `Unknown` don't appear among the first nine values, then they're also included in `Other`\.
-
 + **Unknown** – requests for which the value of the `User-Agent` HTTP header was not associated with a standard browser\. Most requests in this category come from custom applications or scripts\.
 
 ### Operating Systems Report<a name="viewer-operating-system-csv-data"></a>
@@ -220,13 +204,9 @@ An alternate domain name \(CNAME\) for the distribution, if any\. If a distribut
 
 **Group**  
 The operating system or the operating system and version that CloudFront received requests from, depending on the value of `Grouping`\. In addition to operating system names, possible values include the following:  
-
 + **Bot/Crawler** – primarily requests from search engines that are indexing your content\.
-
 + **Empty** – requests for which the value of the `User-Agent` HTTP header was empty\.
-
 + **Other** – operating systems that CloudFront identified but that aren't among the most popular\. If `Bot/Crawler`, `Empty`, and/or `Unknown` don't appear among the first nine values, then they're also included in `Other`\.
-
 + **Unknown** – requests for which the value of the `User-Agent` HTTP header was not associated with a standard browser\. Most requests in this category come from custom applications or scripts\.
 
 **Requests**  
@@ -250,13 +230,9 @@ The hour or the day that the data applies to, in Coordinated Universal Time \(UT
 
 **\(Operating systems\)**  
 The remaining columns in the report list the operating systems or the operating systems and their versions, depending on the value of `Grouping`\. In addition to operating system names, possible values include the following:  
-
 + **Bot/Crawler** – primarily requests from search engines that are indexing your content\.
-
 + **Empty** – requests for which the value of the `User-Agent` HTTP header was empty\.
-
 + **Other** – operating systems that CloudFront identified but that aren't among the most popular\. If `Bot/Crawler`, `Empty`, and/or `Unknown` don't appear among the first nine values, then they're also included in `Other`\.
-
 + **Unknown** – requests for which the operating system isn't specified in the `User-Agent` HTTP header\.
 
 ### Locations Report<a name="viewer-locations-csv-data"></a>
@@ -307,24 +283,19 @@ The following list shows how data in the Locations report in the CloudFront cons
 **Location**  
 The country or U\.S\. state that the viewer is in\. In access logs, the `c-ip` column contains the IP address of the device that the viewer is running on\. We use geolocation data to identify the geographic location of the device based on the IP address\.  
 If you're displaying the **Locations** report by country, note that the country list is based on [ISO 3166\-2, *Codes for the representation of names of countries and their subdivisions – Part 2: Country subdivision code*](http://en.wikipedia.org/wiki/ISO_3166-2)\. The country list includes the following additional values:  
-
 + **Anonymous Proxy** – The request originated from an anonymous proxy\.
-
 + **Satellite Provider** – The request originated from a satellite provider that provides internet service to multiple countries\. Users might be in countries with a high risk of fraud\.
-
 + **Europe \(Unknown\)** – The request originated from an IP in a block that is used by multiple European countries\. The country that the request originated from cannot be determined\. CloudFront uses **Europe \(Unknown\)** as the default\. 
-
 + **Asia/Pacific \(Unknown\)** – The request originated from an IP in a block that is used by multiple countries in the Asia/Pacific region\. The country that the request originated from cannot be determined\. CloudFront uses **Asia/Pacific \(Unknown\)** as the default\. 
-If you're displaying the **Locations** report by U\.S\. state, note that the report can include U\.S\. territories and U\.S\. Armed Forces regions\.
+If you display the **Locations** report by U\.S\. state, note that the report can include U\.S\. territories and U\.S\. Armed Forces regions\.  
+If CloudFront can't determine a user's location, the location will appear as Unknown in viewer reports\.
 
 **Request Count**  
 The total number of requests from the country or U\.S\. state that the viewer is in, for the specified distribution and period\. This value generally corresponds closely with the number of `GET` requests from IP addresses in that country or state in CloudFront access logs\. 
 
 **Request %**  
 One of the following, depending on the value that you selected for **Details**:  
-
 + **Countries** – The requests from this country as a percentage of the total number of requests\. 
-
 + **U\.S\. States** – The requests from this state as a percentage of the total number of requests from the United States\.
 If requests came from more than 50 countries, then you can't calculate **Request %** based on the data in this table because the **Request Count** column doesn't include all of the requests during the specified period\.
 

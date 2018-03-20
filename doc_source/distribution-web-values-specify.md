@@ -1,143 +1,80 @@
 # Values That You Specify When You Create or Update a Web Distribution<a name="distribution-web-values-specify"></a>
 
 When you create a new web distribution or update an existing distribution, you specify the following values\. For information about creating or updating a web distribution using the CloudFront console, see the applicable topic:
-
 + [Working with Web Distributions](distribution-web.md)
-
 + [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)
 
 **[Delivery Method](#DownloadDistValuesMethod)**
 
 **[Origin Settings](#DownloadDistValuesOrigin)**
-
 + [Origin Domain Name](#DownloadDistValuesDomainName)
-
 + [Origin Path](#DownloadDistValuesOriginPath)
-
 + [Origin ID](#DownloadDistValuesId)
-
 + [Restrict Bucket Access \(Amazon S3 Only\)](#DownloadDistValuesOAIRestrictBucketAccess)
-
 + [Origin Access Identity \(Amazon S3 Only\)](#DownloadDistValuesOAI)
-
 + [Comment for New Identity \(Amazon S3 Only\)](#DownloadDistValuesOAIComment)
-
 + [Your Identities \(Amazon S3 Only\)](#DownloadDistValuesOAIYourIdentities)
-
 + [Grant Read Permissions on Bucket \(Amazon S3 Only\)](#DownloadDistValuesOAIGrantReadPermissions)
-
 + [Origin SSL Protocols \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginSSLProtocols)
-
 + [Origin Protocol Policy \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginProtocolPolicy)
-
 + [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginResponseTimeout)
-
 + [Origin Keep\-alive Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginKeepaliveTimeout)
-
 + [HTTP Port \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesHTTPPort)
-
 + [HTTPS Port \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesHTTPSPort)
-
 + [Origin Custom Headers](#DownloadDistValuesOriginCustomHeaders)
 
 **[Cache Behavior Settings](#DownloadDistValuesCacheBehavior)**
-
 + [Path Pattern](#DownloadDistValuesPathPattern)
-
 + [Origin \(Existing Distributions Only\)](#DownloadDistValuesTargetOriginId)
-
 + [Viewer Protocol Policy](#DownloadDistValuesViewerProtocolPolicy)
-
 + [Allowed HTTP Methods](#DownloadDistValuesAllowedHTTPMethods)
-
 + [Field Level Encryption](#DownloadDistValuesFieldLevelEncryption)
-
 + [Cached HTTP Methods](#DownloadDistValuesCachedHTTPMethods)
-
 + [Cache Based on Selected Request Headers](#DownloadDistValuesForwardHeaders)
-
 + [Whitelist Headers](#DownloadDistValuesWhitelistHeaders)
-
 + [Object Caching](#DownloadDistValuesObjectCaching)
-
 + [Minimum TTL](#DownloadDistValuesMinTTL)
-
 + [Maximum TTL](#DownloadDistValuesMaxTTL)
-
 + [Default TTL](#DownloadDistValuesDefaultTTL)
-
 + [Forward Cookies \(Amazon EC2 and Other Custom Origins Only\)](#DownloadDistValuesForwardCookies)
-
 + [Whitelist Cookies \(Amazon EC2 and Other Custom Origins Only\)](#DownloadDistValuesWhitelistCookies)
-
 + [Query String Forwarding and Caching](#DownloadDistValuesQueryString)
-
 + [Query String Whitelist](#DownloadDistValuesQueryStringWhiteList)
-
 + [Smooth Streaming](#DownloadDistValuesSmoothStreaming)
-
 + [Restrict Viewer Access \(Use Signed URLs\)](#DownloadDistValuesRestrictViewerAccess)
-
 + [Trusted Signers](#DownloadDistValuesTrustedSigners)
-
 + [AWS Account Numbers](#DownloadDistValuesAWSAccountNumbers)
-
 + [Compress Objects Automatically](#DownloadDistValuesCompressObjectsAutomatically)
-
 + [Event Type](#DownloadDistValuesEventType)
-
 + [Lambda Function ARN](#DownloadDistValuesLambdaFunctionARN)
 
 **[Distribution Details](#DownloadDistValuesGeneral)**
-
 + [Price Class](#DownloadDistValuesPriceClass)
-
 + [AWS WAF Web ACL](#DownloadDistValuesWAFWebACL)
-
 + [Alternate Domain Names \(CNAMEs\)](#DownloadDistValuesCNAME)
-
 + [SSL Certificate](#DownloadDistValuesSSLCertificate)
-
 + [Clients Supported](#DownloadDistValuesClientsSupported)
-
 + [Security Policy](#DownloadDistValues-security-policy)
-
 + Minimum SSL Security Protocol – See [Security Policy](#DownloadDistValues-security-policy)
-
 + [Supported HTTP Versions](#DownloadDistValuesSupportedHTTPVersions)
-
 + [Default Root Object](#DownloadDistValuesDefaultRootObject)
-
 + [Logging](#DownloadDistValuesLoggingOnOff)
-
 + [Bucket for Logs](#DownloadDistValuesLogBucket)
-
 + [Log Prefix](#DownloadDistValuesLogPrefix)
-
 + [Cookie Logging](#DownloadDistValuesCookieLogging)
-
 + [Enable IPv6](#DownloadDistValuesEnableIPv6)
-
 + [Comment](#DownloadDistValuesComment)
-
 + [Distribution State](#DownloadDistValuesEnabled)
 
 **[Custom Error Pages and Error Caching](#DownloadDistValuesErrorPages)**
-
 + [Error Code](#DownloadDistValuesErrorCode)
-
 + [Response Page Path](#DownloadDistValuesResponsePagePath)
-
 + [Response Code](#DownloadDistValuesResponseCode)
-
 + [Error Caching Minimum TTL](#DownloadDistValuesErrorCachingMinTTL)
 
 **[Restrictions](#DownloadDistValuesRestrictions)**
-
 + [Enable Geo Restriction](#DownloadDistValuesEnableGeoRestriction)
-
 + [Restriction Type](#DownloadDistValuesRestrictionType)
-
 + [Countries](#DownloadDistValuesCountries)
 
 ## Delivery Method<a name="DownloadDistValuesMethod"></a>
@@ -160,21 +97,15 @@ When you create or update a distribution, you specify the following values for e
 ### Origin Domain Name<a name="DownloadDistValuesDomainName"></a>
 
 The DNS domain name of the Amazon S3 bucket or HTTP server from which you want CloudFront to get objects for this origin, for example:
-
 + **Amazon S3 bucket** – `myawsbucket.s3.amazonaws.com`
-
 + **Amazon EC2 instance** – `ec2-203-0-113-25.compute-1.amazonaws.com`
-
 + **Elastic Load Balancing load balancer** – `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com`
 
 If your origin is an HTTP server, type the domain name of the resource\. The files must be publicly readable\.
 
 If your origin is an Amazon S3 bucket, in the CloudFront console, choose in the **Origin Domain Name** field, and a list enumerates the Amazon S3 buckets that are associated with the current AWS account\. Note the following:
-
 + If the bucket is configured as a website, enter the Amazon S3 static website hosting endpoint for your bucket; do not select the bucket name from the list in the **Origin Domain Name** field\. The static website hosting endpoint appears in the Amazon S3 console, on the **Properties** page under **Static Website Hosting**\.
-
 + If you configured Amazon S3 Transfer Acceleration for your bucket, do not specify the `s3-accelerate` endpoint for **Origin Domain Name**\.
-
 + If you're using a bucket from a different AWS account and if the bucket is not configured as a website, type the name in the following format:
 
   `bucket-name.s3.amazonaws.com` 
@@ -186,7 +117,6 @@ If your origin is an Amazon S3 bucket, in the CloudFront console, choose in the 
   If your bucket is in the EU \(Frankfurt\) region, you can also use the following format:
 
   `bucket-name.s3.eu-central-1.amazonaws.com` 
-
 + The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
@@ -201,11 +131,8 @@ Changing the origin does not require CloudFront to repopulate edge caches with o
 If you want CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin, enter the directory path, beginning with a /\. CloudFront appends the directory path to the value of **Origin Domain Name**, for example, **cf\-origin\.example\.com/production/images**\. Do not add a / at the end of the path\.
 
 For example, suppose you've specified the following values for your distribution:
-
 + **Origin Domain Name** – An Amazon S3 bucket named **myawsbucket**
-
 + **Origin Path** – **/production**
-
 + **Alternate Domain Names \(CNAMEs\)** – **example\.com**
 
 When a user enters **example\.com/index\.html** in a browser, CloudFront sends a request to Amazon S3 for **myawsbucket/production/index\.html**\.
@@ -264,11 +191,8 @@ The protocol policy that you want CloudFront to use when fetching objects from y
 If your Amazon S3 bucket is configured as a website endpoint, you must specify HTTP Only\. Amazon S3 doesn't support HTTPS connections in that configuration\.
 
 Choose the applicable value:
-
 + **HTTP Only:** CloudFront uses only HTTP to access the origin\.
-
 + **HTTPS Only:** CloudFront uses only HTTPS to access the origin\.
-
 + **Match Viewer:** CloudFront communicates with your origin using HTTP or HTTPS, depending on the protocol of the viewer request\. CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.
 **Important**  
 For HTTPS viewer requests that CloudFront forwards to this origin, one of the domain names in the SSL certificate on your origin server must match the domain name that you specify for **Origin Domain Name**\. Otherwise, CloudFront responds to the viewer requests with an HTTP status code 502 \(Bad Gateway\) instead of the requested object\. For more information, see [Requirements for Using SSL/TLS Certificates with CloudFront](cnames-and-https-requirements.md)\.
@@ -276,17 +200,16 @@ For HTTPS viewer requests that CloudFront forwards to this origin, one of the do
 ### Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesOriginResponseTimeout"></a>
 
  The origin response timeout , also known as the origin read timeout or origin request timeout, applies to both of the following values:
-
 + The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to a custom origin
-
 + The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
 
 The default timeout is 30 seconds\. You can change the value to between 4 and 60 seconds\. If you need a timeout value outside that range, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
+**Tip**  
+If you want to increase the origin response timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troublehooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
+
 CloudFront behavior depends on the HTTP method in the viewer request:
-
 + `GET` and `HEAD` requests – If the origin doesn't respond before the read timeout elapses or if the origin stops responding for the configured timeout, CloudFront drops the connection and tries two more times to contact the origin\. After the third try, if the origin doesn't respond before the read timeout elapses, CloudFront doesn't try again until it receives another request for content on the same origin\.
-
 + `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn't respond before the read timeout elapses, CloudFront drops the connection and doesn't try again to contact the origin\. The client can resubmit the request if necessary\.
 
 ### Origin Keep\-alive Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesOriginKeepaliveTimeout"></a>
@@ -323,17 +246,11 @@ For the current limit on the maximum number of custom headers that you can forwa
 ## Cache Behavior Settings<a name="DownloadDistValuesCacheBehavior"></a>
 
 A cache behavior lets you configure a variety of CloudFront functionality for a given URL path pattern for files on your website\. For example, one cache behavior might apply to all `.jpg` files in the `images` directory on a web server that you're using as an origin server for CloudFront\. The functionality you can configure for each cache behavior includes:
-
 + The path pattern\.
-
 + If you have configured multiple origins for your CloudFront distribution, which origin you want CloudFront to forward your requests to\.
-
 + Whether to forward query strings to your origin\.
-
 + Whether accessing the specified files requires signed URLs\.
-
 + Whether to require users to use HTTPS to access those files\.
-
 + The minimum amount of time that those files stay in the CloudFront cache regardless of the value of any `Cache-Control` headers that your origin adds to the files\.
 
 When you create a new distribution, you specify settings for the default cache behavior, which automatically forwards all requests to the origin that you specify when you create the distribution\. After you create a distribution, you can create additional cache behaviors that define how CloudFront responds when it receives a request for objects that match a path pattern, for example, `*.jpg`\. If you create additional cache behaviors, the default cache behavior is always the last to be processed\. Other cache behaviors are processed in the order in which they're listed in the CloudFront console or, if you're using the CloudFront API, the order in which they're listed in the `DistributionConfig` element for the distribution\. For more information, see [Path Pattern](#DownloadDistValuesPathPattern)\.
@@ -345,11 +262,8 @@ For the current limit on the number of cache behaviors that you can add to a dis
 ### Path Pattern<a name="DownloadDistValuesPathPattern"></a>
 
 A path pattern \(for example, `images/*.jpg`\) specifies which requests you want this cache behavior to apply to\. When CloudFront receives an end\-user request, the requested path is compared with path patterns in the order in which cache behaviors are listed in the distribution\. The first match determines which cache behavior is applied to that request\. For example, suppose you have three cache behaviors with the following three path patterns, in this order:
-
 + `images/*.jpg`
-
 + `images/*`
-
 + `*.gif`
 
 **Note**  
@@ -366,9 +280,7 @@ Define path patterns and their sequence carefully or you may give users undesire
 The path you specify applies to requests for all files in the specified directory and in subdirectories below the specified directory\. CloudFront does not consider query strings or cookies when evaluating the path pattern\. For example, if an `images` directory contains `product1` and `product2` subdirectories, the path pattern `images/*.jpg` applies to requests for any \.jpg file in the `images`, `images/product1`, and `images/product2` directories\. If you want to apply a different cache behavior to the files in the `images/product1` directory than the files in the `images` and `images/product2` directories, create a separate cache behavior for `images/product1` and move that cache behavior to a position above \(before\) the cache behavior for the `images` directory\.
 
 You can use the following wildcard characters in your path pattern:
-
 + `*` matches 0 or more characters\.
-
 + `?` matches exactly 1 character\.
 
 The following examples show how the wildcard characters work:
@@ -385,15 +297,11 @@ The following examples show how the wildcard characters work:
 | `*.doc*` | All files for which the filename extension begins with `.doc`, for example, `.doc`, `.docx`, and `.docm` files\. You can't use the path pattern `*.doc?` in this case, because that path pattern wouldn't apply to requests for `.doc` files; the `?` wildcard character replaces exactly one character\. | 
 
 The maximum length of a path pattern is 255 characters\. The value can contain any of the following characters:
-
 + A\-Z, a\-z
 
   Path patterns are case sensitive, so the path pattern `*.jpg` doesn't apply to the file `LOGO.JPG`\.
-
 + 0\-9
-
 + \_ \- \. \* $ / \~ " ' @ : \+
-
 + &, passed and returned as `&amp;`
 
 ### Origin \(Existing Distributions Only\)<a name="DownloadDistValuesTargetOriginId"></a>
@@ -403,11 +311,8 @@ Enter the value of **Origin ID** for an existing origin\. This identifies the or
 ### Viewer Protocol Policy<a name="DownloadDistValuesViewerProtocolPolicy"></a>
 
 Choose the protocol policy that you want viewers to use to access your content in CloudFront edge locations:
-
 + **HTTP and HTTPS**: Viewers can use both protocols\. 
-
 + **Redirect HTTP to HTTPS**: Viewers can use both protocols, but HTTP requests are automatically redirected to HTTPS requests\.
-
 + **HTTPS Only**: Viewers can only access your content if they're using HTTPS\.
 
 For more information, see [Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
@@ -421,11 +326,8 @@ For more information, see [Using Field\-Level Encryption to Help Protect Sensiti
 ### Allowed HTTP Methods<a name="DownloadDistValuesAllowedHTTPMethods"></a>
 
 Specify the HTTP methods that you want CloudFront to process and forward to your origin:
-
 + **GET, HEAD:** You can use CloudFront only to get objects from your origin or to get object headers\.
-
 + **GET, HEAD, OPTIONS:** You can use CloudFront only to get objects from your origin, get object headers, or retrieve a list of the options that your origin server supports\.
-
 + **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE:** You can use CloudFront to get, add, update, and delete objects, and to get object headers\. In addition, you can perform other POST operations such as submitting data from a web form\. 
 **Note**  
 CloudFront caches responses to `GET` and `HEAD` requests and, optionally, `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
@@ -444,22 +346,13 @@ Specify whether you want CloudFront to cache the response from your origin when 
 ### Cache Based on Selected Request Headers<a name="DownloadDistValuesForwardHeaders"></a>
 
 Specify whether you want CloudFront to cache objects based on the values of specified headers:
-
-+ **None \(Improves Caching\)** – CloudFront doesn't cache your objects based on header values\.
-
++ **None \(improves caching\)** – CloudFront doesn't cache your objects based on header values\.
 + **Whitelist** – CloudFront caches your objects based only on the values of the specified headers\. Use **Whitelist Headers** to choose the headers that you want CloudFront to base caching on\.
++ **All** – CloudFront doesn't cache the objects that are associated with this cache behavior\. Instead, CloudFront sends every request to the origin\. \(Not recommended for Amazon S3 origins\.\)
 
-  If you're using an Amazon S3 bucket as your origin, you can configure CloudFront to cache based only on the following headers: `Access-Control-Request-Headers`, `Access-Control-Request-Method`, and `Origin`\. 
+Regardless of the option that you choose, CloudFront forwards headers to your origin and takes specific actions based on the headers you use\. For more information about how CloudFront handles each specific header, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
-+ **All** – CloudFront doesn't cache the objects that are associated with this cache behavior\. Instead, CloudFront sends every request to the origin\.
-
-Regardless of which option you choose, CloudFront forwards headers to your origin based on whether the origin is an S3 bucket or a custom origin\. See the following documentation:
-
-+ **S3 bucket** – See [HTTP Request Headers That CloudFront Removes or Updates](RequestAndResponseBehaviorS3Origin.md#request-s3-removed-headers)
-
-+ **Custom origin** – See [HTTP Request Headers and CloudFront Behavior](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)
-
-For more information, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+For more information about how to configure caching in CloudFront by using request headers, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
 
 ### Whitelist Headers<a name="DownloadDistValuesWhitelistHeaders"></a>
 
@@ -515,9 +408,7 @@ For more information about forwarding cookies to the origin, go to [Configuring 
 If you chose **Whitelist** in the **Forward Cookies** list, then in the **Whitelist Cookies** field, enter the names of cookies that you want CloudFront to forward to your origin server for this cache behavior\. Enter each cookie name on a new line\.
 
 You can specify the following wildcards to specify cookie names:
-
 + **\*** matches 0 or more characters in the cookie name
-
 + **?** matches exactly one character in the cookie name
 
 For example, suppose viewer requests for an object include a cookie named:
@@ -569,9 +460,7 @@ For more information about trusted signers, see [Specifying the AWS Accounts Tha
 ### Trusted Signers<a name="DownloadDistValuesTrustedSigners"></a>
 
 Choose which AWS accounts you want to use as trusted signers for this cache behavior:
-
 + **Self:** Use the account with which you're currently signed into the AWS Management Console as a trusted signer\. If you're currently signed in as an IAM user, the associated AWS account is added as a trusted signer\. 
-
 + **Specify Accounts:** Enter account numbers for trusted signers in the **AWS Account Numbers** field\.
 
 To create signed URLs, an AWS account must have at least one active CloudFront key pair\.
@@ -582,13 +471,9 @@ If you're updating a distribution that you're already using to distribute conten
 ### AWS Account Numbers<a name="DownloadDistValuesAWSAccountNumbers"></a>
 
 If you want to create signed URLs using AWS accounts in addition to or instead of the current account, enter one AWS account number per line in this field\. Note the following:
-
 + The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating CloudFront Key Pairs for Your Trusted Signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
-
 + You can't create CloudFront key pairs for IAM users, so you can't use IAM users as trusted signers\.
-
 + For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](http://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
-
 + If you enter the account number for the current account, CloudFront automatically checks the **Self** checkbox and removes the account number from the **AWS Account Numbers** list\.
 
 ### Compress Objects Automatically<a name="DownloadDistValuesCompressObjectsAutomatically"></a>
@@ -598,13 +483,9 @@ If you want CloudFront to automatically compress files of certain types when vie
 ### Event Type<a name="DownloadDistValuesEventType"></a>
 
 You can choose to run a Lambda function when one or more of the following CloudFront events occur:
-
 + When CloudFront receives a request from a viewer \(viewer request\)
-
 + Before CloudFront forwards a request to the origin \(origin request\)
-
 + When CloudFront receives a response from the origin \(origin response\)
-
 + Before CloudFront returns the response to the viewer \(viewer response\)
 
 For more information, see [How to Decide Which CloudFront Event to Use to Trigger a Lambda Function](lambda-how-to-choose-event.md)\.
@@ -650,28 +531,22 @@ If you add a CNAME for `www.example.com` to your distribution, you also need to 
 
 For the current limit on the number of alternate domain names that you can add to a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
-For more information about alternate domain names, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Format of URLs for Objects](LinkFormat.md)\.
+For more information about alternate domain names, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Format of URLs for Objects](LinkFormat.md)\.
 
 ### SSL Certificate<a name="DownloadDistValuesSSLCertificate"></a>
 
 If you want viewers to use HTTPS to access your objects, choose the applicable setting\. In addition, if you choose **Custom SSL Certificate**, choose the certificate that you want to use:
-
 + **Default CloudFront Certificate \(\*\.cloudfront\.net\)** – If you want to use the CloudFront domain name in the URLs for your objects, such as `https://d111111abcdef8.cloudfront.net/image1.jpg`, choose this option\. Also choose this option if you want viewers to use HTTP to access your objects\. 
-
 + **Custom SSL Certificate** – If you want to use your own domain name in the URLs for your objects, such as `https://example.com/image1.jpg`, choose this option and then choose the applicable certificate\. The list can include certificates provided by AWS Certificate Manager, and certificates that you purchased from a third\-party certificate authority and uploaded to ACM or to the IAM certificate store\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
   If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(https://example\.com/logo\.jpg\)\. If you use your CloudFront distribution domain name \(https://d111111abcdef8\.cloudfront\.net/logo\.jpg\) and the viewer supports SNI, then CloudFront behaves normally\. However, a viewer that does not support SNI exhibits one of the following behaviors, depending on the value of **Clients Supported**:
-
   + **All Clients**: If the viewer doesn't support SNI, it displays a warning because the CloudFront domain name doesn't match the domain name in your SSL certificate\.
-
   + **Only Clients that Support Server Name Indication \(SNI\)**: CloudFront drops the connection with the viewer without returning the object\.
 
 ### Clients Supported<a name="DownloadDistValuesClientsSupported"></a>
 
 If you specified one or more alternate domain names and you specified an SSL certificate in the IAM certificate store, choose how you want CloudFront to serve HTTPS requests, either a method that works for all clients or one that works for most clients:
-
 + **All Clients:** Any client can access your content\. However, you must request permission to use this feature, and you incur additional monthly charges\.
-
 + **Only Clients that Support Server Name Indication \(SNI\):** All modern browsers can access your content because they all support SNI\. However, some browsers still in use don't support SNI\. Users with these browsers must access your content using some other method, for example, by getting your objects directly from the origin\.
 
 For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
@@ -679,17 +554,12 @@ For more information, see [Using Alternate Domain Names and HTTPS](using-https-a
 ### Security Policy<a name="DownloadDistValues-security-policy"></a>
 
 Specify the security policy that you want CloudFront to use for HTTPS connections\. A security policy determines two settings: 
-
 + The minimum SSL/TLS protocol that CloudFront uses to communicate with viewers
-
 + The cipher that CloudFront uses to encrypt the content that it returns to viewers
 
 The security policies that are available depend on the values that you specify for **SSL Certificate** and **Custom SSL Client Support**:
-
 + When **SSL Certificate** is **Default CloudFront Certificate \(\*\.cloudfront\.net\)**, CloudFront automatically sets the value of **Security Policy** to **TLSv1**\.
-
 + When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Only Clients that Support Server Name Indication \(SNI\)**, you must use TLSv1 or later\. We recommend that you choose **TLSv1\.1\_2016** unless your users are using browsers or devices that don't support TLSv1\.1 or later\.
-
 + When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **All Clients**, we recommend that you choose **TLSv1**\. In this configuration, the **TLSv1\_2016**, **TLSv1\.1\_2016**, and **TLSv1\.2\_2018** security policies aren't available\.
 
 For information about the relationship between the security policy that you choose and the protocols and ciphers that CloudFront uses to communicate with viewers, see [Supported SSL/TLS Protocols and Ciphers for Communication Between Viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
@@ -711,13 +581,9 @@ In general, configuring CloudFront to communicate with viewers using HTTP/2 redu
 Optional\. The object that you want CloudFront to request from your origin \(for example, `index.html`\) when a viewer requests the root URL of your distribution \(`http://www.example.com/`\) instead of an object in your distribution \(`http://www.example.com/product-description.html`\)\. Specifying a default root object avoids exposing the contents of your distribution\. 
 
 The maximum length of the name is 255 characters\. The name can contain any of the following characters:
-
 + A\-Z, a\-z
-
 + 0\-9
-
 + \_ \- \. \* $ / \~ " '
-
 + &, passed and returned as `&amp;`
 
 When you specify the default root object, enter only the object name, for example, `index.html`\. Do not add a `/` before the object name\.
@@ -754,9 +620,7 @@ IPv6 is a new version of the IP protocol\. It's the eventual replacement for IPv
 In general, you should enable IPv6 if you have users on IPv6 networks who want to access your content\. However, if you're using signed URLs or signed cookies to restrict access to your content, and if you're using a custom policy that includes the `IpAddress` parameter to restrict the IP addresses that can access your content, do not enable IPv6\. If you want to restrict access to some content by IP address and not restrict access to other content \(or restrict access but not by IP address\), you can create two distributions\. For information about creating signed URLs by using a custom policy, see [Creating a Signed URL Using a Custom Policy](private-content-creating-signed-url-custom-policy.md)\. For information about creating signed cookies by using a custom policy, see [Setting Signed Cookies Using a Custom Policy](private-content-setting-signed-cookie-custom-policy.md)\.
 
 If you're using an Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:
-
 + You enable IPv6 for the distribution
-
 + You're using alternate domain names in the URLs for your objects
 
 For more information, see [Routing Traffic to an Amazon CloudFront Web Distribution by Using Your Domain Name](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
@@ -776,11 +640,9 @@ Optional\. When you create a distribution, you can include a comment of up to 12
 ### Distribution State<a name="DownloadDistValuesEnabled"></a>
 
 Indicates whether you want the distribution to be enabled or disabled once it's deployed:
-
 + *Enabled* means that as soon as the distribution is fully deployed you can deploy links that use the distribution's domain name and users can retrieve content\. Whenever a distribution is enabled, CloudFront accepts and handles any end\-user requests for content that use the domain name associated with that distribution\. 
 
   When you create, modify, or delete a CloudFront distribution, it takes time for your changes to propagate to the CloudFront database\. An immediate request for information about a distribution might not show the change\. Propagation usually completes within minutes, but a high system load or network partition might increase this time\. 
-
 + *Disabled* means that even though the distribution might be deployed and ready to use, users can't use it\. Whenever a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
 You can toggle a distribution between disabled and enabled as often as you want\. Follow the process for updating a distribution's configuration\. For more information, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
@@ -799,9 +661,7 @@ The HTTP status code for which you want CloudFront to return a custom error page
 ### Response Page Path<a name="DownloadDistValuesResponsePagePath"></a>
 
 The path to the custom error page \(for example, `/4xx-errors/403-forbidden.html`\) that you want CloudFront to return to a viewer when your origin returns the HTTP status code that you specified for **Error Code** \(for example, 403\)\. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:
-
 + The value of **Path Pattern** matches the path to your custom error messages\. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named `/4xx-errors`\. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, **/4xx\-errors/\***\. 
-
 + The value of **Origin** specifies the value of **Origin ID** for the origin that contains your custom error pages\.
 
 ### Response Code<a name="DownloadDistValuesResponseCode"></a>
@@ -826,19 +686,13 @@ Whether you want to prevent users in selected countries from accessing your cont
 ### Restriction Type<a name="DownloadDistValuesRestrictionType"></a>
 
 How you want to specify the countries from which your users can access your content:
-
 + **Whitelist:** The **Countries** list includes all of the countries from which you *do* want your users to access your content\.
-
 + **Blacklist:** The **Countries** list includes all of the countries from which you *do not* want your users to access your content\.
 
 ### Countries<a name="DownloadDistValuesCountries"></a>
 
 The countries that you want to add to your whitelist or blacklist\. To add a country, select it in the list on the left and choose **Add**\. Note the following:
-
 + To add multiple consecutive countries, select the first country, press and hold the Shift key, select the last country, and choose **Add**\. 
-
 + To add multiple non\-consecutive countries, select the first country, press and hold the Ctrl key, select the remaining countries, and choose **Add**\.
-
 + To find a country in the left list, enter the first few characters of the country's full name\. 
-
 + The two\-letter code before the name of each country is the value that you enter if you want to create or update a distribution by using the CloudFront API\. We use the International Organization for Standardization country codes\. For an easy\-to\-use list, sortable by code and by country name, see the Wikipedia entry [ISO 3166\-1 alpha\-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)\.

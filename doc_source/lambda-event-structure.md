@@ -2,7 +2,7 @@
 
 The examples in this section show request and response events that CloudFront passes to or returns from a Lambda@Edge function when it's triggered\.
 
-
+**Topics**
 + [Content\-Based Routing](#lambda-event-content-based-routing)
 + [Request Event](#lambda-event-structure-request)
 + [Response Event](#lambda-event-structure-response)
@@ -119,11 +119,8 @@ The query string, if any, that CloudFront received in the viewer request\. If th
 
 **uri \(read/write\)**  
 The relative path of the requested object\. Note the following:  
-
 + The new relative path must begin with a slash \(like this: /\)\.
-
 + If a function changes the URI for a request, that changes the object that the viewer is requesting\. 
-
 + If a function changes the URI for a request, that doesn't change the cache behavior for the request or the origin that the request is forwarded to\.
 
 **Request Values \- Custom Origin**
@@ -160,11 +157,8 @@ You can specify either a custom origin or an Amazon S3 origin in a single reques
 
 **authMethod**  
 Set to `origin-access-identity` if your Amazon S3 bucket has an origin access identity \(OAI\) set up, or `none` if you aren’t using OAI\. If you set authMethod to `origin-access-identity`, there are several requirements:   
-
 + You must specify a region in your header\.
-
 + You must use the same OAI when you switch from one Amazon S3 origin to another\.
-
 + You can’t use an OAI when you switch from a custom origin to an Amazon S3 origin\.
 For more information about using an OAI, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
 
@@ -248,13 +242,9 @@ The ID of the distribution that's associated with the request\.
 
 **headers**  
 Headers that you want CloudFront to return in the generated response\. Note the following:  
-
 + The keys in the `headers` object are lowercase versions of standard HTTP header names\. Using lowercase keys gives you case\-insensitive access to the header values\.
-
 + Each header \(for example, `headers["accept"]` or `headers["host"]`\) is an array of key\-value pairs\. For a given header, the array contains one key\-value pair for each value in the generated response\.
-
 + Specify `key` as the case\-sensitive name of the header as it appears in an HTTP request; for example, `accept` or `host`\.
-
 + Specify `value` as a header value\.
 For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\.
 
@@ -262,16 +252,12 @@ For information about restrictions on header usage, see [Headers](lambda-require
 An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as the `x-edge-request-id`\. For more information, see [Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 **request – One of the following:**  
-
 + Viewer response – The request that CloudFront received from the viewer and that might have been modified by the Lambda function that was triggered by a viewer request event
-
 + Origin response – The request that CloudFront forwarded to the origin and that might have been modified by the Lambda function that was triggered by an origin request event
 If the Lambda function modifies the request object, the changes are ignored\.
 
 **response – One of the following:**  
-
 + Viewer response – The response that CloudFront will return to the viewer for viewer response events\.
-
 + Origin response – The response that CloudFront received from the origin for origin response events\.
 
 **status**  

@@ -10,30 +10,23 @@ To create a signed URL using a canned policy, perform the following procedure\.<
 **![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the object***  
 The base URL is the CloudFront URL that you would use to access the object if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Format of URLs for Objects](LinkFormat.md)\.  
 The following examples show values that you specify for web distributions\.  
-
    + The following CloudFront URL is for an object in a web distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the object in the URL must match the path to the object on your HTTP server or in your Amazon S3 bucket\.
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg`
-
    + The following CloudFront URL includes a query string:
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
-
    + The following CloudFront URLs are for objects in a web distribution\. Both use an alternate domain name; the second one includes a query string:
 
      `http://www.example.com/images/image.jpg`
 
      `http://www.example.com/images/image.jpg?color=red`
-
    + The following CloudFront URL is for an objects in a web distribution that uses an alternate domain name and the HTTPS protocol:
 
      `https://www.example.com/images/image.jpg`
 For RTMP distributions, the following examples are for objects in two different video formats, MP4 and FLV:  
-
    + **MP4** – `mp4:sydney-vacation.mp4`
-
    + **FLV** – `sydney-vacation`
-
    + **FLV** – `sydney-vacation.flv`
 For \.flv files, whether you include the `.flv` filename extension depends on your player\. To serve MP3 audio files or H\.264/MPEG\-4 video files, you might need to prefix the file name with `mp3:` or `mp4:`\. Some media players can be configured to add the prefix automatically\. The media player might also require you to specify the file name without the file extension \(for example, sydney\-vacation instead of sydney\-vacation\.mp4\)\.  
 **![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) **?****  
@@ -52,9 +45,7 @@ A hashed, signed, and base64\-encoded version of the JSON policy statement\. For
 **![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=`*active CloudFront key pair Id for the key pair that you're using to generate the signature***  
 The ID for an active CloudFront key pair, for example, APKA9ONS7QCOWEXAMPLE\. The CloudFront key pair ID tells CloudFront which public key to use to validate the signed URL\. CloudFront compares the information in the signature with the information in the policy statement to verify that the URL has not been tampered with\.  
 The key pair ID that you include in CloudFront signed URLs must be the ID of an active key pair for one of your trusted signers:  
-
    + **Web distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the applicable cache behavior\.
-
    + **RTMP distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the distribution\.
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, and if you're generating signed URLs programmatically, you must update your application to use a new active key pair for one of your trusted signers\. If you're generating signed URLs manually, you must create new signed URLs\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
@@ -111,11 +102,8 @@ You can specify only one value for `Resource`\.
 The base URL including your query strings, if any, but excluding the CloudFront `Expires`, `Signature`, and `Key-Pair-Id` parameters, for example:  
 `http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
 Note the following:  
-
 + **Protocol** – The value must begin with `http://` or `https://`\. 
-
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
-
 + **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.  
 **RTMP distributions**  
 Include only the stream name\. For example, if the full URL for a streaming video is:  
@@ -151,17 +139,12 @@ When you use the following example policy statement in a signed URL, a user can 
 ### Creating a Signature for a Signed URL That Uses a Canned Policy<a name="private-content-canned-policy-signing-policy-statement"></a>
 
 To create the value for the `Signature` parameter in a signed URL, you hash and sign the policy statement that you created in [Creating a Policy Statement for a Signed URL That Uses a Canned Policy](#private-content-canned-policy-creating-policy-statement)\. There are two versions of this procedure\. Perform the applicable procedure:
-
 + [Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a canned policy](#private-content-canned-policy-creating-signature-download-procedure)
-
 + [Option 2: To create a signature for an RTMP distribution by using a canned policy \(Adobe Flash Player\)](#private-content-canned-policy-creating-signature-streaming-flash-procedure)
 
 For additional information and examples of how to hash, sign, and encode the policy statement, see:
-
 + [Using a Linux Command and OpenSSL for Base64\-Encoding and Encryption](private-content-linux-openssl.md)
-
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-canned-policy-creating-signature-download-procedure"></a>
 
 **Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a canned policy**

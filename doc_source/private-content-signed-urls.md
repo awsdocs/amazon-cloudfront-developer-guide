@@ -1,6 +1,6 @@
 # Using Signed URLs<a name="private-content-signed-urls"></a>
 
-
+**Topics**
 + [Choosing Between Canned and Custom Policies for Signed URLs](#private-content-choosing-canned-custom-policy)
 + [How Signed URLs Work](#private-content-how-signed-urls-work)
 + [Choosing How Long Signed URLs Are Valid](#private-content-overview-choosing-duration)
@@ -42,9 +42,7 @@ Here's an overview of how you configure CloudFront and Amazon S3 for signed URLs
    For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.
 
 1. You develop your application to determine whether a user should have access to your content and to create signed URLs for the objects or parts of your application that you want to restrict access to\. For more information, see the applicable topic:
-
    + [Creating a Signed URL Using a Canned Policy](private-content-creating-signed-url-canned-policy.md)
-
    + [Creating a Signed URL Using a Custom Policy](private-content-creating-signed-url-custom-policy.md)
 
 1. A user requests an object for which you want to require signed URLs\.
@@ -72,23 +70,17 @@ You can also distribute private content using a signed URL that is valid for a l
 ## When Does CloudFront Check the Expiration Date and Time in a Signed URL?<a name="private-content-check-expiration"></a>
 
 When CloudFront checks the expiration date and time in a signed URL to determine whether the URL is still valid depends on whether the URL is for a web distribution or an RTMP distribution:
-
 + **Web distributions** – CloudFront checks the expiration date and time in a signed URL at the time of the HTTP request\. If a client begins to download a large object immediately before the expiration time, the download should complete even if the expiration time passes during the download\. If the TCP connection drops and the client tries to restart the download after the expiration time passes, the download will fail\.
 
   If a client uses Range GETs to get an object in smaller pieces, any GET request that occurs after the expiration time passes will fail\. For more information about Range GETs, see [How CloudFront Processes Partial Requests for an Object \(Range GETs\)](RangeGETs.md)\.
-
 + **RTMP distributions** – CloudFront checks the expiration time in a signed URL at the start of a play event\. If a client starts to play a media file before the expiration time passes, CloudFront allows the entire media file to play\. However, depending on the media player, pausing and restarting might trigger another play event\. Skipping to another position in the media file will trigger another play event\. If the subsequent play event occurs after the expiration time passes, CloudFront won't serve the media file\.
 
 ## Sample Code and Third\-Party Tools<a name="private-content-overview-sample-code"></a>
 
 For sample code that creates the hashed and signed part of signed URLs, see the following topics:
-
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
-
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
-
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
-
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
 
 Additional sample code for creating signed URLs is available on the [Amazon CloudFront Sample Code & Libraries](http://aws.amazon.com/code/CloudFront?browse=1) page\.

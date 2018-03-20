@@ -5,7 +5,7 @@ With Amazon CloudFront live streaming, you can use any live encoder, such as Ele
 **Note**  
 This tutorial assumes that you have already set up your live encoder\.
 
-
+**Topics**
 + [Creating a New CloudFront Distribution for Live Streaming](#live-streaming-http-origin-creating-distribution)
 + [Configuring Web Players to Play the Live Stream](#live-streaming-http-origin-configuring-web-players)
 + [\(Optional\) Deleting an AWS CloudFormation Stack for Live Streaming](#live-streaming-http-origin-deleting-stack)

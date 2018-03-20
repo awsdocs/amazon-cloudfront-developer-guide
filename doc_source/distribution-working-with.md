@@ -1,13 +1,14 @@
 # Working with Distributions<a name="distribution-working-with"></a>
 
-
+**Topics**
 + [Overview of Web and RTMP Distributions](distribution-overview.md)
 + [Creating Web and RTMP Distributions](distribution-create.md)
 + [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)
 + [Deleting a Distribution](HowToDeleteDistribution.md)
-+ [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)
++ [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)
 + [Choosing the Price Class for a CloudFront Distribution](PriceClass.md)
 + [Using CloudFront with Amazon S3](MigrateS3ToCloudFront.md)
++ [Tracking Configuration Changes with AWS Config](TrackingChanges.md)
 + [Changes to the CloudFront API](APIChanges.md)
 
 The following table lists the actions you can perform on a distribution and provides links to the corresponding documentation on how to perform the actions using the CloudFront console and the CloudFront API\.

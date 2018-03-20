@@ -3,9 +3,7 @@
 If you no longer want to use a distribution, use the following procedure to delete it using the CloudFront console\. 
 
 You can also delete a distribution using the CloudFront API:
-
 + To delete a web distribution, use the `DELETE Distribution` API action\. For more information, go to [DELETE Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/DeleteDistribution.html) in the *Amazon CloudFront API Reference*\.
-
 + To delete an RTMP distribution, use the `DELETE Streaming Distribution` API action\. For more information, go to [DELETE Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/DeleteStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 **Note**  

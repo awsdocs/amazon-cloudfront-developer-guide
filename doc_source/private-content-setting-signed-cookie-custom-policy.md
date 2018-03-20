@@ -1,6 +1,6 @@
 # Setting Signed Cookies Using a Custom Policy<a name="private-content-setting-signed-cookie-custom-policy"></a>
 
-
+**Topics**
 + [Creating a Policy Statement for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-cookies)
 + [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)
 + [Creating a Signature for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-signature-cookies)
@@ -104,15 +104,10 @@ To create a policy statement for a custom policy, perform the following procedur
    ```
 
    Note the following:
-
    + You can include only one statement\.
-
    + Use UTF\-8 character encoding\.
-
    + Include all punctuation and parameter names exactly as specified\. Abbreviations for parameter names are not accepted\.
-
    + The order of the parameters in the `Condition` section doesn't matter\.
-
    + For information about the values for `Resource`, `DateLessThan`, `DateGreaterThan`, and `IpAddress`, see [Values That You Specify in the Policy Statement for a Custom Policy for Signed Cookies](#private-content-custom-policy-statement-cookies-values)\.
 
 1. Remove all whitespace \(including tabs and newline characters\) from the policy statement\. You might have to include escape characters in the string in application code\.
@@ -137,23 +132,16 @@ The base URL including your query strings, if any:
 If you omit the `Resource` parameter, users can access all of the objects associated with any distribution that is associated with the key pair that you use to create the signed URL\.
 You can specify only one value for `Resource`\.  
 Note the following:  
-
 + **Protocol** – The value must begin with `http://` or `https://`\.
-
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
-
 + **Wildcards** – You can use the wildcard character that matches zero or more characters \(\*\) or the wild\-card character that matches exactly one character \(?\) anywhere in the string\. For example, the value:
 
   `http://d111111abcdef8.cloudfront.net/*game_download.zip*`
 
   would include \(for example\) the following objects:
-
   + `http://d111111abcdef8.cloudfront.net/game_download.zip`
-
   + `http://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
-
   + `http://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
-
 + **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.
 
 **DateLessThan**  
@@ -166,15 +154,11 @@ An optional start date and time for the URL in Unix time format \(in seconds\) a
 
 **IpAddress \(Optional\)**  
 The IP address of the client making the GET request\. Note the following:  
-
 + To allow any IP address to access the object, omit the `IpAddress` parameter\.
-
 + You can specify either one IP address or one IP address range\. For example, you can't set the policy to allow access if the client's IP address is in one of two separate ranges\.
-
 + To allow access from a single IP address, you specify:
 
   `"`*IPv4 IP address*`/32"`
-
 + You must specify IP address ranges in standard IPv4 CIDR format \(for example, `192.0.2.0/24`\)\. For more information, go to *RFC 4632, Classless Inter\-domain Routing \(CIDR\): The Internet Address Assignment and Aggregation Plan*, [http://tools\.ietf\.org/html/rfc4632](http://tools.ietf.org/html/rfc4632)\.
 **Important**  
 IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, are not supported\. 
@@ -189,7 +173,7 @@ If you copy and paste any of these examples, remove any whitespace \(including t
 
 For more information, see [Values That You Specify in the Policy Statement for a Custom Policy for Signed Cookies](#private-content-custom-policy-statement-cookies-values)\.
 
-
+**Topics**
 + [Example Policy Statement: Accessing One Object from a Range of IP Addresses](#private-content-custom-policy-statement-signed-cookies-example-one-object)
 + [Example Policy Statement: Accessing All Objects in a Directory from a Range of IP Addresses](#private-content-custom-policy-statement-signed-cookies-example-all-objects)
 + [Example Policy Statement: Accessing All Objects Associated with a Key Pair ID from One IP Address](#private-content-custom-policy-statement-signed-cookies-example-one-ip)
@@ -264,11 +248,8 @@ The signed cookie also includes a key pair ID, which must be associated with a t
 The signature for a signed cookie that uses a custom policy is a hashed, signed, and base64\-encoded version of the policy statement\. 
 
 For additional information and examples of how to hash, sign, and encode the policy statement, see:
-
 + [Using a Linux Command and OpenSSL for Base64\-Encoding and Encryption](private-content-linux-openssl.md)
-
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-custom-policy-signature-cookies-procedure"></a>
 
 **To create a signature for a signed cookie by using a custom policy**

@@ -13,9 +13,7 @@ To set up AWS Lambda to run Lambda functions that are based on CloudFront events
 1. In the region list at the top of the page, choose **US East \(N\. Virginia\)**\.
 
 1. Create a function using your own code or create a function starting with a CloudFront blueprint\.
-
    + To create a function using your own code, choose **Author from scratch**\. 
-
    + To display a list of blueprints for CloudFront, type **cloudfront** in the filter field, and then press **Enter**\.
 
      If you find a blueprint that you want to use, choose the name of the blueprint\.
@@ -56,11 +54,8 @@ Why add triggers later? Generally it's best to test and debug the function befor
 1. Choose **Publish**\.
 
 1. Test and debug the function\. For more information, see the following in the *AWS Lambda Developer Guide*:
-
    + [Using Amazon CloudWatch](http://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
-
    + [Using AWS X\-Ray](http://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html)
-
    + [Test Your Serverless Applications Locally Using SAM Local \(Public Beta\)](http://docs.aws.amazon.com/lambda/latest/dg/test-sam-local.html)
 
 1. When you're ready to have the function execute for CloudFront events, publish another version and edit the function to add triggers\. For more information, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.

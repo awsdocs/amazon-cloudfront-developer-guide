@@ -3,24 +3,20 @@
 You can control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin\. Reducing the duration allows you to serve dynamic content\. Increasing the duration means your users get better performance because your objects are more likely to be served directly from the edge cache\. A longer duration also reduces the load on your origin\.
 
 Typically, CloudFront serves an object from an edge location until the cache duration that you specified passes—that is, until the object expires\. After it expires, the next time the edge location gets a user request for the object, CloudFront forwards the request to the origin server to verify that the cache contains the latest version of the object\. The response from the origin depends on whether the object has changed:
-
 + If the CloudFront cache already has the latest version, the origin returns a 304 status code \(Not Modified\)\.
-
 + If the CloudFront cache does not have the latest version, the origin returns a 200 status code \(OK\) and the latest version of the object\.
 
 If an object in an edge location isn't frequently requested, CloudFront might evict the object—remove the object before its expiration date—to make room for objects that have been requested more recently\.
 
 By default, each object automatically expires after 24 hours\. For web distributions, you can change the default behavior in two ways:
-
 + To change the cache duration for all objects that match the same path pattern, you can change the CloudFront settings for **Minimum TTL**, **Maximum TTL**, and **Default TTL** for a cache behavior\. For information about the individual settings, see [Minimum TTL](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMinTTL), [Maximum TTL](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMaxTTL), and [Default TTL](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDefaultTTL)\. To use these settings, you must choose the **Customize** option for the [Object Caching](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesObjectCaching) setting\. 
-
 + To change the cache duration for an individual object, you can configure your origin to add a `Cache-Control max-age` or `Cache-Control s-maxage` directive, or an `Expires` header field to the object\. For more information, see [Using Headers to Control Cache Duration for Individual Objects](#expiration-individual-objects)\.
 
 For more information about how **Minimum TTL**, **Default TTL**, and **Maximum TTL** interact with `Cache-Control max-age` and `Cache-Control s-maxage` directives and the `Expires` header field, see [Specifying the Amount of Time that CloudFront Caches Objects for Web Distributions](#ExpirationDownloadDist)\.
 
 You can also control how long errors \(for example, 404, Not Found\) stay in a CloudFront cache before CloudFront tries again to get the requested object by forwarding another request to your origin\. For more information, see [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)\.
 
-
+**Topics**
 + [Using Headers to Control Cache Duration for Individual Objects](#expiration-individual-objects)
 + [Specifying the Amount of Time that CloudFront Caches Objects for Web Distributions](#ExpirationDownloadDist)
 + [Specifying the Minimum Time that CloudFront Caches Objects for RTMP Distributions](#expiration-rtmp-distribution)
@@ -29,7 +25,6 @@ You can also control how long errors \(for example, 404, Not Found\) stay in a C
 ## Using Headers to Control Cache Duration for Individual Objects<a name="expiration-individual-objects"></a>
 
 You can use the `Cache-Control` and `Expires` headers to control how long objects stay in the cache\. Settings for **Minimum TTL**, **Default TTL**, and **Maximum TTL ** also affect cache duration, but here's an overview of how headers can affect cache duration: 
-
 + The `Cache-Control max-age` directive lets you specify how long \(in seconds\) that you want an object to remain in the cache before CloudFront gets the object again from the origin server\. The minimum expiration time CloudFront supports is 0 seconds for web distributions and 3600 seconds for RTMP distributions\. The maximum value is 100 years\. Specify the value in the following format:
 
   `Cache-Control: max-age=`*seconds*
@@ -39,7 +34,6 @@ You can use the `Cache-Control` and `Expires` headers to control how long object
   `Cache-Control: max-age=3600`
 
   If you want objects to stay in CloudFront edge caches for a different duration than they stay in browser caches, you can use the `Cache-Control max-age` and `Cache-Control s-maxage` directives together\. For more information, see [Specifying the Amount of Time that CloudFront Caches Objects for Web Distributions](#ExpirationDownloadDist)\.
-
 + The `Expires` header field lets you specify an expiration date and time using the format specified in [RFC 2616, Hypertext Transfer Protocol \-\- HTTP/1\.1 Section 3\.3\.1, Full Date](http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1), for example:
 
   `Sat, 27 Jun 2015 23:59:59 GMT`
@@ -51,9 +45,7 @@ For more information, see [Specifying the Amount of Time that CloudFront Caches 
 You cannot use the HTTP `Cache-Control` or `Pragma` header fields in a `GET` request from a viewer to force CloudFront to go back to the origin server for the object\. CloudFront ignores those header fields in viewer requests\.
 
 For more information about the `Cache-Control` and `Expires` header fields, see the following sections in *RFC 2616, Hypertext Transfer Protocol \-\- HTTP/1\.1*: 
-
 + [Section 14\.9 Cache Control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-
 + [Section 14\.21 Expires](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21)
 
 For an example of how to add `Cache-Control` and `Expires` header fields using the AWS SDK for PHP, see [Upload an Object Using the AWS SDK for PHP](http://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpPHP.html) in the *Amazon Simple Storage Service Developer Guide*\. Some third\-party tools are also able to add these fields\.
@@ -102,11 +94,9 @@ Using the Amazon S3 console, you can only add headers to one object at a time, b
 1. In the **Key** list, choose **Cache\-Control** or **Expires**, as applicable\. 
 
 1. In the **Value** field, type the applicable value:
-
    + For a `Cache-Control` field, type:
 
      `max-age=number of seconds that you want objects to stay in a CloudFront edge cache`
-
    + For an **Expires** field, type a date and time in HTML format\.
 
 1. Choose **Save**\.

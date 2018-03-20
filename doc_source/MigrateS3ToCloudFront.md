@@ -2,7 +2,7 @@
 
 You can store your content in an Amazon S3 bucket and use CloudFront to distribute the content\. This topic explains how to use CloudFront with your S3 bucket, and how to update your CloudFront distribution if you move the S3 bucket to a different region\. 
 
-
+**Topics**
 + [Adding CloudFront When You're Distributing Content from Amazon S3](#adding-cloudfront-to-s3)
 + [Moving an Amazon S3 Bucket to a Different Region](#move-s3-bucket-different-region)
 
@@ -20,9 +20,7 @@ If you currently distribute content directly from your Amazon S3 bucket using yo
 **To add CloudFront when you're already distributing your content from Amazon S3**
 
 1. Create a CloudFront distribution using the procedure described in the applicable topic:
-
    + [Task List for Creating a Web Distribution](distribution-web-creating.md)
-
    + [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)
 
    When you create the distribution, specify the name of your Amazon S3 bucket as the origin server\.
@@ -49,16 +47,14 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 **Note**  
 If you're using Route 53 as your DNS service, you can use either a CNAME resource record set or an alias resource record set\. For information about editing resource record sets, see [Editing Resource Record Sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html)\. For information about alias resource record sets, see [Choosing Between Alias and Non\-Alias Resource Record Sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html)\. Both topics are in the *Amazon Route 53 Developer Guide*\.
 
-   For more information about using CNAMEs with CloudFront, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+   For more information about using CNAMEs with CloudFront, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
    After you update the CNAME resource record set, it can take up to 72 hours for the change to propagate throughout the DNS system, although it usually happens faster\. During this time, some requests for your content will continue to be routed to your Amazon S3 bucket, and others will be routed to CloudFront\. 
 
 ## Moving an Amazon S3 Bucket to a Different Region<a name="move-s3-bucket-different-region"></a>
 
 If you're using Amazon S3 as the origin for a CloudFront distribution and you move the bucket to a different region, CloudFront can take up to an hour to update its records to include the change of region when both of the following are true:
-
 + You're using a CloudFront origin access identity \(OAI\) to restrict access to the bucket
-
 + You move the bucket to an Amazon S3 region that requires Signature Version 4 for authentication
 
 When you're using OAIs, CloudFront uses the region \(among other values\) to calculate the signature that it uses to request objects from your bucket\. For more information about OAIs, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\. For a list of Amazon S3 regions and the signature versions that they support, see [Amazon Simple Storage Service \(Amazon S3\)](http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the "Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.

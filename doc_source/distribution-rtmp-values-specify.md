@@ -2,7 +2,7 @@
 
 To stream media files using CloudFront, you create an RTMP distribution and specify the following values\. 
 
-
+**Topics**
 + [Origin Domain Name \(Amazon S3 Bucket\)](#StreamingDistValuesDNSName)
 + [Restrict Bucket Access \(Amazon S3 Only\)](#StreamingDistValuesOAIRestrictBucketAccess)
 + [Origin Access Identity \(Amazon S3 Only\)](#StreamingDistValuesOAI)
@@ -80,7 +80,7 @@ For more information about price classes and about how your choice of price clas
 
 ## Alternate Domain Names \(CNAMEs\)<a name="StreamingDistValuesCNAME"></a>
 
-Optional\. You can associate one or more CNAME aliases with a distribution so that you can use your domain name \(for example, example\.com\) in the URLs for your objects instead of using the domain name that CloudFront assigned when you created your distribution\. For more information, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+Optional\. You can associate one or more CNAME aliases with a distribution so that you can use your domain name \(for example, example\.com\) in the URLs for your objects instead of using the domain name that CloudFront assigned when you created your distribution\. For more information, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
 ## Logging<a name="StreamingDistValuesLoggingOnOff"></a>
 
@@ -104,11 +104,9 @@ Optional\. When you create a distribution, you can include a comment of up to 12
 ## Distribution State<a name="StreamingDistValuesEnabled"></a>
 
 When you create a distribution, you must specify whether you want the distribution to be enabled or disabled after it's created:
-
 + *Enabled* means that as soon as the distribution is fully deployed you can deploy links that use the distribution's domain name and end users can retrieve content\. Whenever a distribution is enabled, CloudFront accepts and processes any end\-user requests for content that use the domain name associated with that distribution\.
 
   When you create, modify, or delete a CloudFront distribution, it takes time for your changes to propagate to the CloudFront database\. An immediate request for information about a distribution might not show the change\. Propagation usually completes within minutes, but a high system load or network partition might increase this time\. 
-
 + *Disabled* means that even though the distribution might be deployed and ready to use, end users can't use it\. When a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
 You can toggle a distribution between disabled and enabled as often as you want\. For information about updating a distribution's configuration, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
@@ -122,9 +120,7 @@ For more information about trusted signers, see [Specifying the AWS Accounts Tha
 ## Trusted Signers<a name="StreamingDistValuesTrustedSigners"></a>
 
 Choose which AWS accounts you want to use as trusted signers for this distribution:
-
 + **Self:** Use the account with which you're currently signed into the AWS Management Console as a trusted signer\. If you're currently signed in as an IAM user, the associated AWS account is added as a trusted signer\. 
-
 + **Specify Accounts:** Enter account numbers for trusted signers in the **AWS Account Numbers** field\.
 
 To create signed URLs, an AWS account must have at least one active CloudFront key pair\.
@@ -135,11 +131,7 @@ If you're updating a distribution that you're already using to distribute conten
 ## AWS Account Numbers<a name="StreamingDistValuesAWSAccountNumbers"></a>
 
 If you want to create signed URLs using AWS accounts in addition to or instead of the current account, enter one AWS account number per line in this field\. Note the following:
-
 + The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating CloudFront Key Pairs for Your Trusted Signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
-
 + You can't create CloudFront key pairs for IAM users, so you can't use IAM users as trusted signers\.
-
 + For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](http://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
-
 + If you enter the account number for the current account, CloudFront automatically checks the **Self** checkbox and removes the account number from the **AWS Account Numbers** list\.

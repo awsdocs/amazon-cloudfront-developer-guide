@@ -4,7 +4,7 @@ See the following sections for examples of using Lambda functions with CloudFron
 
 Note that each Lambda@Edge function must contain the `callback` parameter to successfully process a request or return a response\. For more information, see [Writing and Creating a Lambda@Edge Function](lambda-edge-create-function.md)\.
 
-
+**Topics**
 + [General Examples](#lambda-examples-general-examples)
 + [Generating Responses \- Examples](#lambda-examples-generated-response-examples)
 + [Working with Query Strings \- Examples](#lambda-examples-query-string-examples)
@@ -277,9 +277,7 @@ exports.handler = (event, context, callback) => {
 ### Example: Normalizing Query String Parameters to Improve the Cache Hit Ratio<a name="lambda-examples-normalize-query-string-parameters"></a>
 
 The following example shows how to improve your cache hit ratio by making the following changes to query strings before CloudFront forwards requests to your origin:
-
 + Alphabetize key\-value pairs by the name of the parameter
-
 + Change the case of key\-value pairs to lowercase
 
 For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
@@ -378,15 +376,11 @@ exports.handler = (event, context, callback) => {
 ### Example: Redirecting Viewer Requests to a Country\-Specific URL<a name="lambda-examples-redirect-based-on-country"></a>
 
 The following example shows how to generate an HTTP redirect response with a country\-specific URL and return the response to the viewer\. This is useful when you want to provide country\-specific responses\. For example:
-
 + If you have country\-specific subdomains, such as us\.example\.com and tw\.example\.com, you can generate a redirect response when a viewer requests example\.com\.
-
 + If you're streaming video but you don't have rights to stream the content in a specific country, you can redirect users in that country to a page that explains why they can't view the video\. 
 
 Note the following:
-
 + You must configure your distribution to cache based on the `CloudFront-Viewer-Country` header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
-
 + CloudFront adds the `CloudFront-Viewer-Country` header after the viewer request event\. To use this example, you must create a trigger for the origin request event\.
 
 ```
@@ -436,9 +430,7 @@ exports.handler = (event, context, callback) => {
 ### Example: Serving Different Versions of an Object Based on the Device<a name="lambda-examples-vary-on-device-type"></a>
 
 The following example shows how to serve different versions of an object based on the type of device that the user is using, for example, a mobile device or a tablet\. Note the following:
-
 + You must configure your distribution to cache based on the `CloudFront-Is-*-Viewer` headers\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
-
 + CloudFront adds the `CloudFront-Is-*-Viewer` headers after the viewer request event\. To use this example, you must create a trigger for the origin request event\.
 
 ```
@@ -531,34 +523,73 @@ This function demonstrates how an origin\-request trigger can be used to change 
 
 This function demonstrates how an origin\-request trigger can be used to change the Amazon S3 origin from which the content is fetched, based on request properties\.
 
-In this example, we check to see if a region is provided as a parameter in the query string, and if present, we update the S3 bucket domain name to a bucket in that region\. This can be useful in several ways:
-
+In this example, we use the value of the CloudFront\-Viewer\-Country header to update the S3 bucket domain name to a bucket in a region that is closer to the viewer\. This can be useful in several ways:
 + It reduces latencies when the region specified is nearer to the viewer's country\.
-
 + It provides data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
+
+In order to use this example, you must do the following:
++ You must configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\. 
++ CloudFront adds the CloudFront\-Viewer\-Country header after the viewer request event\. To use this example, you must create a trigger for this function in the origin request event\.
 
 ```
 'use strict';
 
-const querystring = require('querystring');
- 
- exports.handler = (event, context, callback) => {
-     const request = event.Records[0].cf.request;
-     const params = querystring.parse(request.querystring);
- 
-     if (params.region) {
-         /**
-          * If you've set up OAI, the bucket policy in the destination bucket
-          * should allow the OAI GetObject operation, as configured by default
-          * for an S3 origin with OAI. Another requirement with OAI is to provide
-          * the region so it can be used for the SIGV4 signature. Otherwise, the
-          * region is not required.
-          */
-         request.origin.s3.region = params.region;
-         const domainName = `my-bucket-in-${params.region}.s3.amazonaws.com`;
-         request.origin.s3.domainName = domainName;
-         request.headers['host'] = [{ key: 'host', value: domainName }];
-     }
+exports.handler = (event, context, callback) => {
+    const request = event.Records[0].cf.request;
+
+    /**
+     * This blueprint demonstrates how an origin-request trigger can be used to
+     * change the origin from which the content is fetched, based on request properties.
+     * In this example, we use the value of the CloudFront-Viewer-Country header
+     * to update the S3 bucket domain name to a bucket in a region that is closer to
+     * the viewer.
+     * 
+     * This can be useful in several ways:
+     *      1) Reduces latencies when the region specified is nearer to the viewer’s
+     *         country.
+     *      2) Provides data sovereignty by making sure that data is served from an
+     *         origin that’s in the same country that the request came from.
+     * 
+     * NOTE: 1. You must configure your distribution to cache based on the
+     *          CloudFront-Viewer-Country header. For more information, see
+     *          http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+     *       2. CloudFront adds the CloudFront-Viewer-Country header after the viewer
+     *          request event. To use this example, you must create a trigger for the
+     *          origin request event.
+     */
+
+    const countryToRegion = {
+        'DE': 'eu-central-1',
+        'IE': 'eu-west-1',
+        'GB': 'eu-west-2',
+        'FR': 'eu-west-3',
+        'JP': 'ap-northeast-1',
+        'IN': 'ap-south-1',
+        'CN': 'cn-north-1'
+    };
+
+    if (request.headers['cloudfront-viewer-country']) {
+        const countryCode = request.headers['cloudfront-viewer-country'][0].value;
+        const region = countryToRegion[countryCode];
+        
+        /**
+         * If the viewer's country is not in the list you specify, the request
+         * goes to the default S3 bucket you've configured.
+         */  
+        if (region) {
+            /**
+             * If you’ve set up OAI, the bucket policy in the destination bucket
+             * should allow the OAI GetObject operation, as configured by default
+             * for an S3 origin with OAI. Another requirement with OAI is to provide
+             * the region so it can be used for the SIGV4 signature. Otherwise, the
+             * region is not required.
+             */
+            request.origin.s3.region = region;
+            const domainName = `my-bucket-in-${region}.s3.amazonaws.com`;
+            request.origin.s3.domainName = domainName;
+            request.headers['host'] = [{ key: 'host', value: domainName }];
+        }
+    }
 
     callback(null, request);
 };
@@ -644,15 +675,13 @@ if (randomNumber <= BLUE_TRAFFIC_PERCENTAGE) {
 
 ### Example: Using an Origin\-Request Trigger to Change the Origin Domain Name Based on the Country Header<a name="lambda-examples-content-based-geo-header"></a>
 
-This function demonstrates how to you can change the origin domain name based on the CloudFront\-Viewer\-Country header, so content is served from an origin closer to the viewer's country\.
+This function demonstrates how you can change the origin domain name based on the CloudFront\-Viewer\-Country header, so content is served from an origin closer to the viewer's country\.
 
-Based on the value of the CloudFront\-Viewer\-Country header, you can change the origin domain name so content is served from an origin nearer to viewer's country\. This can have advantages such as the following:
+Implementing this functionality for your distribution can have advantages such as the following:
++ Reducing latencies when the region specified is nearer to the viewer's country\.
++ Providing data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
 
-+ It reduces latencies when the region specified is nearer to the viewer's country\.
-
-+ It provides data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
-
-Note that to enable this functionality, you must configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+Note that to enable this functionality you must configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
 
 ```
 'use strict';
@@ -678,9 +707,7 @@ exports.handler = (event, context, callback) => {
 ### Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK<a name="lambda-examples-custom-error-static-body"></a>
 
 This function demonstrates how you can update the response status to 200 and generate static body content to return to the viewer in the following scenario:
-
 + The function is triggered in an origin response
-
 + The response status from the origin server is an error status code \(4xx or 5xx\)
 
 ```
@@ -709,9 +736,7 @@ exports.handler = (event, context, callback) => {
 ### Example: Using an Origin\-Response Trigger to Update the Error Status Code to 302\-Found<a name="lambda-examples-custom-error-new-site"></a>
 
 This function demonstrates how you can update the HTTP status code to 302 to redirect to another path \(cache behavior\) that has a different origin configured\. Note the following:
-
 + The function is triggered in an origin response
-
 + The response status from the origin server is an error status code \(4xx or 5xx\)
 
 ```

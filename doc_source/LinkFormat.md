@@ -1,9 +1,7 @@
 # Format of URLs for Objects<a name="LinkFormat"></a>
 
 The domain name that you use in the URLs for objects on your web pages or in your web application can be either of the following:
-
 + The domain name, such as `d111111abcdef8.cloudfront.net`, that CloudFront automatically assigns when you create a distribution
-
 + Your own domain name, such as `example.com`
 
 For example, you might use one of the following URLs to return the file `image.jpg`:
@@ -19,7 +17,7 @@ The URL format depends in part on the value that you specify for **Origin Path**
 
 For more information about URL formats, see the following sections\.
 
-
+**Topics**
 + [Using Your Own Domain Name \(Example\.com\)](#LinkFormat_OwnDomain)
 + [Using a Trailing Slash \(/\) in URLs](#LinkFormat_TrailingSlash)
 + [Creating URLs for Streaming](#LinkFormat_StreamingURLs)

@@ -17,15 +17,12 @@ You can configure CloudFront to forward to your origin some or all of the cookie
 If you configure CloudFront to forward cookies to your origin, CloudFront caches based on cookie values\. This is true even if your origin ignores the cookie values in the request and, in the previous example, always returns the same version of `locations.html` to CloudFront\. As a result, CloudFront forwards more requests to your origin server for the same object, which slows performance and increases the load on your origin server\. If your origin server does not vary its response based on the value of a given cookie, we recommend that you do not configure CloudFront to forward that cookie to your origin\.
 
 You can configure each cache behavior in a web distribution to do one of the following:
-
 + **Forward all cookies to your origin – ** CloudFront forwards viewer requests to your origin, including all cookies\. When your origin returns a response, CloudFront caches the response, and the cookies and cookie values in the viewer request\. \(If your origin returns cookies that were not in the viewer request, CloudFront does not cache them\.\) CloudFront returns to the viewer the requested object and all cookies and cookie values, including cookies that were not in the viewer request\.
-
 + **Forward a whitelist of cookies that you specify – ** CloudFront removes any cookies that aren't on the whitelist before forwarding requests to your origin\. CloudFront caches the response from your origin as well as the specified cookies and their values\. \(If your origin returns both whitelisted cookies and cookies that aren't on your whitelist, CloudFront caches only the whitelisted cookies\.\) CloudFront also returns to the viewer the object, including the specified cookies and cookie values\. If the response from the origin includes cookies that aren't on the whitelist, CloudFront returns those cookies to the viewer, too\.
 
   For information about specifying wildcards in cookie names, see [Whitelist Cookies \(Amazon EC2 and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesWhitelistCookies)\.
 
   For the current limit on the number of cookie names that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
-
 + **Don't forward cookies to your origin – **CloudFront doesn't cache your objects based on cookie values\. In addition, CloudFront removes the `Cookie` header from requests that it forwards to your origin and removes the `Set-Cookie` header from responses that it returns to your viewers\.
 
 Note the following about specifying the cookies that you want to forward:

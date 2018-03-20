@@ -1,6 +1,6 @@
 # Setting Signed Cookies Using a Canned Policy<a name="private-content-setting-signed-cookie-canned-policy"></a>
 
-
+**Topics**
 + [Creating a Signature for a Signed Cookie That Uses a Canned Policy](#private-content-canned-policy-signature-cookies)
 
 To set a signed cookie using a canned policy, perform the following procedure\.<a name="private-content-setting-signed-cookie-canned-policy-procedure"></a>
@@ -119,11 +119,8 @@ The base URL including your query strings, if any, for example:
 `http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
 You can specify only one value for `Resource`\.  
 Note the following:  
-
 + **Protocol** – The value must begin with `http://` or `https://`\.
-
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
-
 + **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.
 
 **DateLessThan**  
@@ -156,11 +153,8 @@ When you use the following example policy statement in a signed cookie, a user c
 To create the value for the `CloudFront-Signature` attribute in a `Set-Cookie` header, you hash and sign the policy statement that you created in [To create a policy statement for a signed cookie that uses a canned policy](#private-content-canned-policy-statement-cookies-procedure)\. 
 
 For additional information and examples of how to hash, sign, and encode the policy statement, see the following topics:
-
 + [Using a Linux Command and OpenSSL for Base64\-Encoding and Encryption](private-content-linux-openssl.md)
-
 + [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-canned-policy-cookie-creating-signature-procedure"></a>
 
 **To create a signature for a signed cookie using a canned policy**

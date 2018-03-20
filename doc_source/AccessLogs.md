@@ -2,7 +2,7 @@
 
 You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These access logs are available for both web and RTMP distributions\. If you enable logging, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\. 
 
-
+**Topics**
 + [How Logging Works](#AccessLogsOverview)
 + [Choosing an Amazon S3 Bucket for Your Access Logs](#access-logs-choosing-s3-bucket)
 + [Permissions Required to Configure Logging and to Access Your Log Files](#AccessLogsBucketAndFileOwnership)
@@ -43,11 +43,8 @@ If no users access your content during a given hour, you don't receive any log f
 ## Permissions Required to Configure Logging and to Access Your Log Files<a name="AccessLogsBucketAndFileOwnership"></a>
 
 Your AWS account must have the following permissions for the bucket that you specify for log files:
-
 + The S3 access control list \(ACL\) for the bucket must grant you `FULL_CONTROL`\. If you're the bucket owner, your account has this permission by default\. If you're not, the bucket owner must update the ACL for the bucket\.
-
 + `s3:GetBucketAcl`
-
 + `s3:PutBucketAcl`
 
 Note the following:
@@ -114,11 +111,8 @@ We recommend that you use the logs to understand the nature of the requests for 
 You can enable or disable logging, change the Amazon S3 bucket where your logs are stored, and change the prefix for log files by using the CloudFront console or the CloudFront API\. Your changes to logging settings take effect within 12 hours\.
 
 For more information, see the following topics:
-
 + Updating a web or an RTMP distribution using the CloudFront console: [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
-
 + Updating a web distribution using the CloudFront API: [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
-
 + Updating an RTMP distribution using the CloudFront API: [PUT Streaming Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutStreamingDistConfig.html) in the *Amazon CloudFront API Reference*\.
 
 To use the CloudFront API to change access log settings for web distributions, you must use the 2009\-04\-02 or later version of the API\. To use the CloudFront API to change access log settings for RTMP distributions, you must use the 2010\-05\-01 or later version of the API\. 
@@ -126,29 +120,21 @@ To use the CloudFront API to change access log settings for web distributions, y
 ## Deleting Log Files from an Amazon S3 Bucket<a name="DeletingLogFiles"></a>
 
 CloudFront does not automatically delete log files from your Amazon S3 bucket\. For information about deleting log files from an Amazon S3 bucket, see the following topics:
-
 + Using the Amazon S3 console: [Deleting an Object](http://docs.aws.amazon.com/AmazonS3/latest/UG/DeletinganObject.html) in the *Amazon Simple Storage Service Console User Guide*\.
-
 + Using the REST API: [DELETE Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) in the *Amazon Simple Storage Service API Reference*\.
-
 + Using the SOAP API: [DeleteObject](http://docs.aws.amazon.com/AmazonS3/latest/API/SOAPDeleteObject.html) in the *Amazon Simple Storage Service API Reference*\.
 
 ## Log File Format<a name="LogFileFormat"></a>
 
-
+**Topics**
 + [Web Distribution Log File Format](#BasicDistributionFileFormat)
 + [RTMP Distribution Log File Format](#StreamingDistributionLogFileFormat)
 
 Each entry in a log file gives details about a single user request\. The log files for web and for RTMP distributions are not identical, but they share the following characteristics:
-
 + Use the W3C extended log file format\. \(For more information, go to [http://www\.w3\.org/TR/WD\-logfile\.html](http://www.w3.org/TR/WD-logfile.html)\.\)
-
 + Contain tab\-separated values\.
-
 + Contain records that are not necessarily in chronological order\.
-
 + Contain two header lines: one with the file\-format version, and another that lists the W3C fields included in each record\.
-
 + Substitute URL\-encoded equivalents for spaces and non\-standard characters in field values\.
 
   These non\-standard characters consist of all ASCII codes below 32 and above 127, plus the characters in the following table\. The URL encoding standard is RFC 1738\. For more information, go to [http://www\.ietf\.org/rfc/rfc1738\.txt](http://www.ietf.org/rfc/rfc1738.txt)\. 

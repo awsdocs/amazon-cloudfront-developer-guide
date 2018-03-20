@@ -19,11 +19,8 @@ In general, use the following format:
 If your bucket is in the US Standard region and you want Amazon S3 to route requests to a facility in Northern Virginia, use the following format:  
 `bucket-name.s3-external-1.amazonaws.com`   
 When you specify the bucket name in this format, you can use the following CloudFront features:  
-
 + Configure CloudFront to communicate with your Amazon S3 bucket using SSL\. For more information, see [Using HTTPS with CloudFront](using-https.md)\.
-
 + Use an origin access identity to require that your users access your content using CloudFront URLs, not by using Amazon S3 URLs\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
-
 + Update the content of your bucket by submitting `POST` and `PUT` requests to CloudFront\. For more information, see [HTTP Methods](RequestAndResponseBehaviorS3Origin.md#RequestS3HTTPMethods) in the topic [How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server](RequestAndResponseBehaviorS3Origin.md#RequestBehaviorS3Origin)\.
 
 **The bucket is configured as a website endpoint**  
@@ -31,9 +28,7 @@ Enter the Amazon S3 static website hosting endpoint for your bucket\. This value
 When you specify the bucket name in this format, you can use Amazon S3 redirects and Amazon S3 custom error documents\. \(CloudFront also provides custom error pages\. For more information, see [Customizing Error Responses](custom-error-pages.md)\.\) For more information about Amazon S3 features, see the [Amazon S3 documentation](http://aws.amazon.com/documentation/s3/)\.
 
 Do not specify the bucket using the following formats:
-
 + The Amazon S3 path style, `s3.amazonaws.com/bucket-name`
-
 + The Amazon S3 CNAME, if any
 
 ## Using Amazon EC2 or Other Custom Origins<a name="concept_CustomOrigin"></a>
@@ -41,9 +36,7 @@ Do not specify the bucket using the following formats:
 A custom origin is an HTTP server, for example, a web server\. The HTTP server can be an Amazon EC2 instance or an HTTP server that you manage privately\. When you use a custom origin, you specify the DNS name of the server, along with the HTTP and HTTPS ports and the protocol that you want CloudFront to use when fetching objects from your origin\. 
 
 Most CloudFront features are supported when you use a custom origin with the following exceptions:
-
 + **RTMP distributions**—Not supported\.
-
 + **Private content**—Although you can use a signed URL to distribute content from a custom origin, for CloudFront to access the custom origin, the origin must remain publicly accessible\. For more information, see [Serving Private Content through CloudFront](PrivateContent.md)\.
 
 For information about requirements and recommendations when using custom origins, see [Requirements and Recommendations for Using Amazon EC2 and Other Custom Origins](CustomOriginBestPractices.md)\.

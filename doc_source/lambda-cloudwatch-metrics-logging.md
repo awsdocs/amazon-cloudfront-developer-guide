@@ -2,7 +2,7 @@
 
 You can use CloudWatch metrics to monitor, in real time, the CloudFront requests that trigger Lambda functions\. You can also use CloudWatch Logs to get aggregate data\. There's no additional charge for metrics or logs\.
 
-
+**Topics**
 + [CloudWatch Metrics](#lambda-cloudwatch-metrics)
 + [CloudWatch Logs](#lambda-cloudwatch-logs)
 

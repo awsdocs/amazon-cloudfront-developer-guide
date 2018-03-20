@@ -7,11 +7,8 @@ openssl x509 -in path and filename of SSL/TLS certificate -text -noout
 ```
 
 where:
-
 + `-in` specifies the path and filename of your SSL/TLS certificate\.
-
 + `-text` causes OpenSSL to display the length of the public key in bits\.
-
 + `-noout` prevents OpenSSL from displaying the public key\.
 
 Example output:

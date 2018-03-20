@@ -11,9 +11,7 @@ If you choose a price class that does not include all edge locations, CloudFront
 You can choose a price class when you create or update a CloudFront web distribution or RTMP distribution\. To find the applicable topic about creating or updating a web or an RTMP distribution using the CloudFront console or API, see [Working with Distributions](distribution-working-with.md)\. 
 
 If you're creating or updating a distribution by using the CloudFront API, one of the AWS SDKs, or AWS CloudFormation, see the applicable topic for a list of valid values \(search for `PriceClass`\):
-
 + **Web distributions** – [DistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html)
-
 + **RTMP distributions** – [StreamingDistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_StreamingDistributionConfig.html)
 
 For more information about CloudFront pricing and price classes, go to [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.

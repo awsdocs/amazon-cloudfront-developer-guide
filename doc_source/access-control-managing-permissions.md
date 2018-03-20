@@ -5,7 +5,7 @@ This topic provides examples of identity\-based policies that demonstrate how an
 **Important**  
 We recommend that you first review the introductory topics that explain the basic concepts and options to manage access to your CloudFront resources\. For more information, see [Overview of Managing Access Permissions to Your CloudFront Resources](access-control-overview.md)\. 
 
-
+**Topics**
 + [Permissions Required to Use the CloudFront Console](#console-required-permissions)
 + [AWS Managed \(Predefined\) Policies for CloudFront](#access-policy-examples-aws-managed)
 + [Customer Managed Policy Examples](#access-policy-examples-for-sdk-cli)
@@ -94,9 +94,7 @@ This permission isn't required if you aren't using the CloudFront console\.
 
 **`s3:ListAllMyBuckets`**  
 When you're creating and updating web and RTMP distributions, lets you perform the following operations:  
-
 + View a list of S3 buckets in the list of available origins
-
 + View a list of S3 buckets that you can save access logs in
 This permission isn't required if you aren't using the CloudFront console\.
 
@@ -115,11 +113,9 @@ These permissions aren't required if you aren't using the CloudFront console\.
 ## AWS Managed \(Predefined\) Policies for CloudFront<a name="access-policy-examples-aws-managed"></a>
 
 AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. For CloudFront, IAM provides two managed policies: 
-
 + **CloudFrontFullAccess** – Grants full access to CloudFront resources\.
 **Important**  
 If you want CloudFront to create and save access logs, you need to grant additional permissions\. For more information, see [Permissions Required to Configure Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
-
 + **CloudFrontReadOnlyAccess** – Grants read\-only access to CloudFront resources\.
 
 **Note**  
@@ -129,7 +125,7 @@ You can review these permissions policies by signing in to the IAM console and s
 
 You can create your own custom IAM policies to allow permissions for CloudFront API actions\. You can attach these custom policies to the IAM users or groups that require the specified permissions\. These policies work when you are using the CloudFront API, the AWS SDKs, or the AWS CLI\. The following examples show permissions for a few common use cases\. For the policy that grants a user full access to CloudFront, see [Permissions Required to Use the CloudFront Console](#console-required-permissions)\.
 
-
+**Topics**
 + [Example 1: Allow Read Access to All Web Distributions](#access-policy-example-allow-read-hosted-zones)
 + [Example 2: Allow Creation, Updating, and Deletion of Web Distributions](#access-policy-example-allow-create-delete-hosted-zones)
 + [Example 3: Allow Creation and Listing of Invalidations](#access-policy-example-allow-change-resource-record-sets)

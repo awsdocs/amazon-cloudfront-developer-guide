@@ -7,39 +7,27 @@ When you apply tags to CloudFront distributions or other AWS resources \(such as
 For the current limit on the number of tags that you can add to a distribution, see [Limits](cloudfront-limits.md)\. To request a higher limit, [create a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\.
 
 Note the following:
-
 + You can tag web and RTMP distributions, but you can't tag origin access identities or invalidations\.
-
 + [Tag Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html) and [Resource Groups](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html) are currently not supported for CloudFront\.
 
 You can also apply tags to resources by using the CloudFront API, AWS CLI, SDKs, and AWS Tools for Windows PowerShell\. For more information, see the following documentation:
-
 + CloudFront API – See [Actions on Tags](http://docs.aws.amazon.com/cloudfront/latest/APIReference/actions-tags.html) in the *Amazon CloudFront API Reference*
-
 + AWS CLI – See [cloudfront](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/index.html) in the *AWS CLI Command Reference*
-
 + SDKs – See the applicable SDK documentation on the [AWS Documentation](http://docs.aws.amazon.com/) page
-
 + Tools for Windows PowerShell – See [Amazon CloudFront](http://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudFront_cmdlets.html) in the [AWS Tools for PowerShell Cmdlet Reference](http://docs.aws.amazon.com/powershell/latest/reference/)
 
-
+**Topics**
 + [Tag Restrictions](#tagging-restrictions)
 + [Adding, Editing, and Deleting Tags for Distributions](#tagging-add-edit-delete)
 
 ## Tag Restrictions<a name="tagging-restrictions"></a>
 
 The following basic restrictions apply to tags:
-
 + Maximum number of tags per resource – 10
-
 + Maximum key length – 128 Unicode characters
-
 + Maximum value length – 256 Unicode characters
-
 + Valid values for key and value – a\-z, A\-Z, 0\-9, space, and the following characters: \_ \. : / = \+ \- and @
-
 + Tag keys and values are case sensitive
-
 + Don't use `aws:` as a prefix for keys; it's reserved for AWS use
 
 ## Adding, Editing, and Deleting Tags for Distributions<a name="tagging-add-edit-delete"></a>

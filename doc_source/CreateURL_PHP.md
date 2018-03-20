@@ -87,11 +87,7 @@ function get_custom_policy_stream_name($video_path, $private_key_filename, $key_
 For more information about the OpenSSL implementation of SHA\-1, see [The Open Source Toolkit for SSL/TLS](http://www.openssl.org/)\.
 
 See also
-
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
-
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
-
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-
 + [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)

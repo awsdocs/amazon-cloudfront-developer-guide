@@ -1,12 +1,10 @@
 # Requirements for Using SSL/TLS Certificates with CloudFront<a name="cnames-and-https-requirements"></a>
 
 The requirements for SSL/TLS certificates are described in this topic\. They apply, except as noted, to both of the following:
-
 + Certificates for using HTTPS between viewers and CloudFront 
-
 + Certificates for using HTTPS between CloudFront and your origin
 
-
+**Topics**
 + [Certificate Issuer](#https-requirements-certificate-issuer)
 + [AWS Region that You Request a Certificate In \(for AWS Certificate Manager\)](#https-requirements-aws-region)
 + [Certificate Format](#https-requirements-certificate-format)
@@ -24,9 +22,7 @@ The requirements for SSL/TLS certificates are described in this topic\. They app
 ## Certificate Issuer<a name="https-requirements-certificate-issuer"></a>
 
 The certificate issuer you must use depends on whether you want to require HTTPS between viewers and CloudFront or between CloudFront and your origin:
-
 + **HTTPS between viewers and CloudFront** – You can use a certificate that was issued by a trusted certificate authority \(CA\) such as Comodo, DigiCert, or Symantec; you can use a certificate provided by AWS Certificate Manager \(ACM\); or you can use a self\-signed certificate\.
-
 + **HTTPS between CloudFront and a custom origin** – If the origin is *not* an ELB load balancer, such as Amazon EC2, the certificate must be issued by a trusted CA such as Comodo, DigiCert, or Symantec\. If your origin is an ELB load balancer, you can also use a certificate provided by ACM\.
 **Important**  
 When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted CA\. CloudFront supports the same certificate authorities as Mozilla; for the current list, see [Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. You cannot use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
@@ -68,11 +64,8 @@ CloudFront supports only RSA public/private key pairs\.
 ## Private Key<a name="https-requirements-private-key"></a>
 
 If you're using a certificate from a third\-party certificate authority \(CA\), note the following: 
-
 + The private key must match the public key that is in the certificate\.
-
 + The private key also must be an RSA private key in PEM format, where the PEM header is `BEGIN RSA PRIVATE KEY` and the footer is `END RSA PRIVATE KEY`\.
-
 + The private key cannot be encrypted with a password\.
 
 If AWS Certificate Manager \(ACM\) provided the certificate, ACM doesn't release the private key\. The private key is stored in ACM for use by AWS services that are integrated with ACM\.
@@ -86,9 +79,7 @@ If you're using AWS Certificate Manager \(ACM\), we recommend that you use AWS I
 ## Size of the Public Key<a name="https-requirements-size-of-public-key"></a>
 
 The length of the public key for a certificate depends on where you're storing it\.
-
 + Importing a certificate into AWS Certificate Manager \(ACM\): public key length must be 1024 or 2048 bits\.
-
 + Uploading a certificate to the AWS Identity and Access Management \(IAM\) certificate store: maximum size of the public key is 2048 bits\.
 
 We recommend using 2048 bits\.
@@ -100,15 +91,10 @@ For information about how to determine the size of the public key, see [Determin
 ## Supported Types of Certificates<a name="https-requirements-supported-types"></a>
 
 CloudFront supports all types of certificates, including the following:
-
 + Domain\-validated certificates
-
 + Extended validation \(EV\) certificates
-
 + High\-assurance certificates
-
 + Wildcard certificates \(`*.example.com`\)
-
 + Subject alternative name \(SAN\) certificates \(`example.com` and `example.net`\)
 
 ## Certificate Expiration Date and Renewal<a name="https-requirements-cert-expiration"></a>

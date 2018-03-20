@@ -2,7 +2,7 @@
 
 CloudFront entities are subject to the following limits\.
 
-
+**Topics**
 + [General Limits](#limits-general)
 + [General Limits on Web Distributions](#limits-web-distributions)
 + [Limits on Whitelisted Cookies \(Web Distributions Only\)](#limits-whitelisted-cookies)
@@ -40,7 +40,7 @@ CloudFront entities are subject to the following limits\.
 | Maximum file size for HTTP GET, POST, and PUT requests | 20 GB | 
 | Response timeout per origin For more information, see [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 4\-60 seconds [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | File compression: range of file sizes that CloudFront compresses For more information, see [Serving Compressed Files](ServingCompressedFiles.md)\.  | 1,000 to 10,000,000 bytes | 
-| Alternate domain names \(CNAMEs\) per distribution For more information, see [Using Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.  | 100 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Alternate domain names \(CNAMEs\) per distribution For more information, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.  | 100 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Origins per distribution | 25 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Cache behaviors per distribution | 25 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
