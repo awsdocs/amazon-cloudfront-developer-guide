@@ -3,15 +3,15 @@
 The examples in this section show request and response events that CloudFront passes to or returns from a Lambda@Edge function when it's triggered\.
 
 **Topics**
-+ [Content\-Based Routing](#lambda-event-content-based-routing)
++ [Content\-Based Dynamic Origin Selection](#lambda-event-content-based-routing)
 + [Request Event](#lambda-event-structure-request)
 + [Response Event](#lambda-event-structure-response)
 
-## Content\-Based Routing<a name="lambda-event-content-based-routing"></a>
+## Content\-Based Dynamic Origin Selection<a name="lambda-event-content-based-routing"></a>
 
 You can use the path pattern in a cache behavior to route requests to an origin, based on the path and name of the requested object, such as images/\*\.jpg\. Using Lambda@Edge, you can also route requests to an origin based on other characteristics, such as the values in request headers\. 
 
-There are a number of ways this content\-based dynamic origin selection can be useful\. For example, you can distribute requests across origins in different geographic areas to help with global load balancing\. Or you can selectively route requests to different origins that each serve a particular function: bot handling, SEO optimization, authentication, and so on\. For code samples that demonstrate how to use this feature, see [ Example Functions for Content\-Based Routing](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-examples.html#lambda-examples-content-based-routing-examples)\.
+There are a number of ways this content\-based dynamic origin selection can be useful\. For example, you can distribute requests across origins in different geographic areas to help with global load balancing\. Or you can selectively route requests to different origins that each serve a particular function: bot handling, SEO optimization, authentication, and so on\. For code samples that demonstrate how to use this feature, see [ Example Functions for Content\-Based Dynamic Origin Selection](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-examples.html#lambda-examples-content-based-routing-examples)\.
 
 In the CloudFront origin request event, the origin element in the event structure contains information about the Amazon S3 or custom origin that the request would be routed to, based on the path pattern\. You can update the values in the origin object to route a request to a different origin\. The origin doesn't need to be defined in the distribution, and you can replace an Amazon S3 origin object with a custom origin object and vice versa\. 
 

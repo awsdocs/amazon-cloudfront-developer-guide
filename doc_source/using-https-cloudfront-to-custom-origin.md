@@ -47,9 +47,9 @@ The TLSv1 handshake is both backwards and forwards compatible with SSLv3, but TL
 
 You can use an SSL/TLS certificate from the following sources on your custom origin:
 + If your origin is an Elastic Load Balancing load balancer, you can use a certificate provided by AWS Certificate Manager \(ACM\)\. You also can use a certificate that is signed by a trusted third\-party certificate authority and imported into ACM\.
-+ For origins other than ELB load balancers, you must use a certificate that is signed by a trusted third\-party certificate authority, for example, Comodo, DigiCert, or Symantec\.
++ For origins other than ELB load balancers, you must use a certificate that is signed by a trusted third\-party certificate authority \(CA\), for example, Comodo, DigiCert, or Symantec\.
 
-When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted certificate authority\. CloudFront supports the same certificate authorities as Mozilla; for the current list, see [Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. You can't use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
+When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted certificate authority\. CloudFront supports the same certificate authorities that Mozilla does\. For the current list, see [Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. You can't use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
 
 **Important**  
 If the origin server returns an expired certificate, an invalid certificate, or a self\-signed certificate, or if the origin server returns the certificate chain in the wrong order, CloudFront drops the TCP connection, returns HTTP status code 502 \(Bad Gateway\), and sets the `X-Cache` header to `Error from cloudfront`\. Also, if the full chain of certificates, including the intermediate certificate, is not present, CloudFront drops the TCP connection\. 
@@ -61,6 +61,8 @@ One of the domain names in the certificate must match one or both of the followi
 ## About RSA and ECDSA Ciphers<a name="using-https-cloudfront-to-origin-about-ciphers"></a>
 
 The encryption strength of a communications connection depends on the key size and strength of the algorithm that you choose for your origin server’s certificate\. The two options that CloudFront supports for connections with a custom origin are RSA and Elliptic Curve Digital Signature Algorithm \(ECDSA\)\.
+
+For lists of the RSA and ECDSA ciphers supported by CloudFront, see [Supported SSL/TLS Protocols and Ciphers for Communication Between CloudFront and Your Origin](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers-cloudfront-to-origin)\.
 
 ### How RSA Ciphers Work<a name="using-https-cloudfront-to-origin-which-cipher-rsa"></a>
 
@@ -80,6 +82,14 @@ Sample tests that we have run to compare, for example, 2048\-bit RSA to 256\-bit
 
 CloudFront continues to support RSA for SSL/TLS connections\. However, if you have concerns about the strength of your current encryption for SSL/TLS authentication for your origin servers, ECDSA could be a better option\. The effort to enable ECDSA digital certificates compared to the security benefit that ECDSA brings is a trade\-off that you will have to weigh in making your decision\. In addition to enabling stronger encryption, the reduction in computational cost of cryptography while using ECDSA at your origin servers is an added advantage\.
 
-### Switching From Using RSA Ciphers to ECDSA<a name="using-https-cloudfront-to-origin-switch-ciphers"></a>
+### Using ECDSA Ciphers<a name="using-https-cloudfront-to-origin-switch-ciphers"></a>
 
-To use ECDSA for communications between CloudFront and your origin, generate a private key by using either of the supported curves \(prime256v1 or secp384r1\)\. Then generate an ECDSA Digital Certificate with a trusted CA in the X\.509 PEM format and set up your origin to prefer this certificate\. You don’t have to change any settings in the CloudFront console or APIs to use this feature, and there is no additional fee\.
+To use ECDSA for communications between CloudFront and your origin, do the following: 
+
+1. Generate a private key by using either of the supported curves \(prime256v1 or secp384r1\)\.
+
+1. Generate an ECDSA Digital Certificate in the X\.509 PEM format with a trusted certificate authority\.
+
+1. Set up your origin to prefer the ECDSA certificate\.
+
+Using ECDSA doesn't require any settings changes in the CloudFront console or APIs, and there is no additional fee\.

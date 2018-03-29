@@ -151,7 +151,7 @@ Each entry in a log file gives details about a single user request\. The log fil
 | %25 | % | 
 | %7B | \{ | 
 | %7D | \} | 
-| %7C | | | 
+| %7C | \| | 
 | %255C | \\ | 
 | %5E | ^ | 
 | %7E | \~ | 

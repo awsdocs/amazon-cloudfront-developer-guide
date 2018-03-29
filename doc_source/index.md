@@ -16,8 +16,9 @@ Amazon's trademarks and trade dress may not be used in
 ## Contents
 + [What Is Amazon CloudFront?](Introduction.md)
    + [How CloudFront Delivers Content](HowCloudFrontWorks.md)
-   + [How CloudFront Works with Regional Edge Caches](CloudFrontRegionaledgecaches.md)
    + [Locations and IP Address Ranges of CloudFront Edge Servers](LocationsOfEdgeServers.md)
+   + [Accessing CloudFront](introduction-accessing-cloudfront.md)
+   + [CloudFront Pricing](CloudFrontPricing.md)
    + [CloudFront Compliance](compliance.md)
 + [AWS Billing and Usage Reports for CloudFront](reports-billing.md)
    + [AWS Billing Report for CloudFront](billing-report.md)

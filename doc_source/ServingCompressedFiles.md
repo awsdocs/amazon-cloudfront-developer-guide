@@ -116,7 +116,7 @@ CloudFront does not compress a file if the response includes a `Content-Encoding
 
 ### Serving Compressed Files When Your Origin Server Is Running IIS<a name="serving-compressed-files-iis"></a>
 
-By default, IIS does not serve compressed content for requests that come through proxy servers such as CloudFront\. If you're using IIS and if you configured IIS to compress content by using the `httpCompressionelement`, change the value of the `noCompressionForProxies` attribute to `false` so IIS will return compressed content to CloudFront\.
+By default, IIS does not serve compressed content for requests that come through proxy servers such as CloudFront\. If you're using IIS and if you configured IIS to compress content by using the `httpCompression` element, change the value of the `noCompressionForProxies` attribute to `false` so IIS will return compressed content to CloudFront\.
 
 In addition, if you have compressed objects that are requested less frequently than every few seconds, you might have to change the values of `frequentHitThreshold` and `frequentHitTimePeriod`\.
 

@@ -72,7 +72,7 @@ Add the applicable alternate domain names\. Separate domain names with commas, o
 **SSL Certificate \(Web Distributions Only\)**  
 Choose **Custom SSL Certificate**, and choose a certificate from the list\.  
 Up to 100 certificates are listed here\. If you have more than 100 certificates and you don't see the certificate that you want to add, you can type a certificate ARN in the field to choose it\.  
-If you uploaded a certificate to the IAM certificate store but it doesn't appear in the list, review the procedure [Importing an SSL/TLS Certificate](#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\.   
+If you uploaded a certificate to the IAM certificate store but it's not listed, and you can't choose it by typing the name in the field, review the procedure [Importing an SSL/TLS Certificate](#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\.   
 After you associate your SSL/TLS certificate with your CloudFront distribution, do not delete the certificate from ACM or the IAM certificate store until you remove the certificate from all distributions and until the status of the distributions has changed to **Deployed**\.  
 **Clients Supported \(Web Distributions Only\)**  
 Choose the applicable option:  

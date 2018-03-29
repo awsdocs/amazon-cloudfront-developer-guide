@@ -9,7 +9,7 @@ Note that each Lambda@Edge function must contain the `callback` parameter to suc
 + [Generating Responses \- Examples](#lambda-examples-generated-response-examples)
 + [Working with Query Strings \- Examples](#lambda-examples-query-string-examples)
 + [Personalize Content by Country or Device Type Headers \- Examples](#lambda-examples-redirecting-examples)
-+ [Content\-Based Routing \- Examples](#lambda-examples-content-based-routing-examples)
++ [Content\-Based Dynamic Origin Selection \- Examples](#lambda-examples-content-based-routing-examples)
 + [Updating Error Statuses \- Examples](#lambda-examples-update-error-status-examples)
 
 ## General Examples<a name="lambda-examples-general-examples"></a>
@@ -476,7 +476,7 @@ exports.handler = (event, context, callback) => {
 };
 ```
 
-## Content\-Based Routing \- Examples<a name="lambda-examples-content-based-routing-examples"></a>
+## Content\-Based Dynamic Origin Selection \- Examples<a name="lambda-examples-content-based-routing-examples"></a>
 
 ### Example: Using an Origin\-Request Trigger to Change From a Custom Origin to an Amazon S3 Origin<a name="lambda-examples-content-based-S3-origin-based-on-query"></a>
 
@@ -527,9 +527,9 @@ In this example, we use the value of the CloudFront\-Viewer\-Country header to u
 + It reduces latencies when the region specified is nearer to the viewer's country\.
 + It provides data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
 
-In order to use this example, you must do the following:
-+ You must configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\. 
-+ CloudFront adds the CloudFront\-Viewer\-Country header after the viewer request event\. To use this example, you must create a trigger for this function in the origin request event\.
+To use this example, you must do the following:
++ Configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\. 
++ Create a trigger for this function in the origin request event\. CloudFront adds the CloudFront\-Viewer\-Country header after the viewer request event, so to use this example, you must make sure the function executes for an origin request\.
 
 ```
 'use strict';

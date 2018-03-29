@@ -38,10 +38,12 @@ For information about using the CloudFront console to update a distribution so C
 
 ### Selecting the Headers on Which You Want CloudFront to Base Caching<a name="header-caching-web-selecting"></a>
 
-The headers that you can forward to the origin and that CloudFront bases caching on depend on whether you're using an Amazon S3 bucket or a custom origin\.
-+ **Amazon S3 – **You can configure CloudFront to forward and to cache your objects based based on a number of headers \(see a list of exceptions below\)\. However, we recommend that you avoid whitelisting headers with an Amazon S3 origin unless you need to implement cross\-origin resource sharing \(CORS\) or you want to personalize content by using Lambda@Edge in origin\-facing events\.
+The headers that you can forward to the origin and that CloudFront bases caching on depend on whether your origin is an Amazon S3 bucket or a custom origin\.
++ **Amazon S3 – **You can configure CloudFront to forward and to cache your objects based on a number of specific headers \(see a list of exceptions below\)\. However, we recommend that you avoid whitelisting headers with an Amazon S3 origin unless you need to implement cross\-origin resource sharing \(CORS\) or you want to personalize content by using Lambda@Edge in origin\-facing events\.
   + To configure CORS, you must forward headers that allow CloudFront to distribute content for websites that are enabled for cross\-origin resource sharing \(CORS\)\. For more information, see [Configuring CloudFront to Respect Cross\-Origin Resource Sharing \(CORS\) Settings](#header-caching-web-cors)\. 
-  + To personalize content by using headers that you forward to your Amazon S3 origin, you write and add Lambda@Edge functions and associate them with your CloudFront distribution to be triggered by an origin\-facing event\. We recommend that you avoid whitelisting headers that are not used for personalizing content because forwarding extra headers can reduce your cache\-hit ratio\. For more information about working with headers to personalize content, see [Personalize Content by Country or Device Type Headers \- Examples](lambda-examples.md#lambda-examples-redirecting-examples)\.
+  + To personalize content by using headers that you forward to your Amazon S3 origin, you write and add Lambda@Edge functions and associate them with your CloudFront distribution to be triggered by an origin\-facing event\. For more information about working with headers to personalize content, see [Personalize Content by Country or Device Type Headers \- Examples](lambda-examples.md#lambda-examples-redirecting-examples)\.
+
+    We recommend that you avoid whitelisting headers that you aren't using to personalize content because forwarding extra headers can reduce your cache hit ratio\. That is, CloudFront won’t be able to serve as many requests from edge caches, as a proportion of all requests\.
 + **Custom origin ** – You can configure CloudFront to cache based on the value of any request header except the following:
   + `Accept-Encoding`
   + `Connection`
@@ -57,13 +59,13 @@ For a full list of HTTP request headers and how CloudFront processes them, see [
 
 ### Configuring CloudFront to Respect Cross\-Origin Resource Sharing \(CORS\) Settings<a name="header-caching-web-cors"></a>
 
-If you enabled cross\-origin resource sharing \(CORS\) on an Amazon S3 bucket or a custom origin, you ust choose specific headers to forward, to respect the CORS settings\. The headers that you must forward differ depending on the origin \(Amazon S3 or custom\) and whether you want to cache `OPTIONS` responses\.
+If you have enabled cross\-origin resource sharing \(CORS\) on an Amazon S3 bucket or a custom origin, you must choose specific headers to forward, to respect the CORS settings\. The headers that you must forward differ depending on the origin \(Amazon S3 or custom\) and whether you want to cache `OPTIONS` responses\.
 
 **Amazon S3**
 + If you want `OPTIONS` responses to be cached, do the following:
   + Choose the options for default cache behavior settings that enable caching for `OPTIONS` responses\. 
   + Configure CloudFront to forward the following headers: `Origin`, `Access-Control-Request-Headers`, and `Access-Control-Request-Method`\.
-+ When you don't want `OPTIONS` responses to be cached, configure CloudFront to forward just the `Origin` header together with any other headers required by your origin\.
++ If you don't want `OPTIONS` responses to be cached, configure CloudFront to forward the `Origin` header, together with any other headers required by your origin\.
 
 **Custom origins** – Forward the `Origin` header along with any other headers required by your origin\.
 

@@ -34,6 +34,6 @@ nslookup OriginDomainName NameServerFromAbove
 
 ## CloudFront Caused the Error Due to Limited Resources at the Edge Location<a name="http-503-service-unavailable-limited-resources-at-edge-location"></a>
 
-You will receive this error in the rare case that CloudFront has the ability to route requests to the next best available edge location\. In rare cases, CloudFront might be unable to satisfy the request\. If this happens, contact [AWS Support](https://console.aws.amazon.com/support/home)\.
+You will receive this error in the rare situation that CloudFront can't route requests to the next best available edge location, and so can't satisfy a request\. This error is common when you perform load testing on your CloudFront distribution\. To help prevent this, follow the [Load Testing CloudFront](load-testing.md) guidelines for avoiding 503 \(Capacity Exceeded\) errors\.
 
-This error is common when you perform load testing on your CloudFront distribution\. To avoid this, follow the [Load Testing CloudFront](load-testing.md) guidelines to avoid 503 \(Capacity Exceeded\) errors\. This type of error typically means that the edge location didn't have enough capacity at the time of the request to serve the object\.
+If this happens in your production environment, contact [AWS Support](https://console.aws.amazon.com/support/home)\.

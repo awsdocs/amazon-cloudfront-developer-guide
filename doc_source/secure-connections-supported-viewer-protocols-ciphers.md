@@ -2,9 +2,7 @@
 
 You can choose HTTPS settings both for communication between viewers and CloudFront, and between CloudFront and your origin:
 + **Between viewers and CloudFront** – If you require HTTPS between viewers and CloudFront, you also choose a security policy, which determines the protocols that viewers and CloudFront can use to communicate\. In addition, a security policy determines which ciphers CloudFront can use to encrypt the content that it returns to viewers\.
-+ **Between CloudFront and your origin** – If you require HTTPS between CloudFront and your origin, you also choose the protocols that CloudFront and your origin use to communicate\. The protocols that you choose determine which ciphers your origin can use to encrypt content that it returns to CloudFront
-
-See the applicable topic\.
++ **Between CloudFront and your origin** – If you require HTTPS between CloudFront and your origin, you also choose the protocols that CloudFront and your origin use to communicate\. The protocols that you choose determine which ciphers your origin can use to encrypt content that it returns to CloudFront\.
 
 **Topics**
 + [Supported SSL/TLS Protocols and Ciphers for Communication Between Viewers and CloudFront](#secure-connections-supported-ciphers)
@@ -50,7 +48,7 @@ A viewer must support at least one of the supported ciphers to establish an HTTP
 
 ### OpenSSL and RFC Cipher Names<a name="secure-connections-openssl-rfc-cipher-names"></a>
 
-OpenSSL and IETF RFC 5246, [The Transport Layer Security \(TLS\) Protocol Version 1\.2](https://tools.ietf.org/html/rfc5246), use different names for the same ciphers\. The following table maps the OpenSSL name to the RFC name for each cipher that CloudFront supports\. 
+OpenSSL and IETF RFC 5246, [The Transport Layer Security \(TLS\) Protocol Version 1\.2](https://tools.ietf.org/html/rfc5246), use different names for the same ciphers\. The following table maps the OpenSSL name to the RFC name for each cipher\. 
 
 
 ****  
@@ -75,12 +73,14 @@ OpenSSL and IETF RFC 5246, [The Transport Layer Security \(TLS\) Protocol Versio
 
 If you choose to [require HTTPS between CloudFront and your origin](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginProtocolPolicy), you can decided [which SSL/TLS protocol to allow](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginSSLProtocols) for the secure connection, and then pick any supported cipher for CloudFront \(see the following tables\) to establish an HTTPS connection to your origin\.
 
-CloudFront can forward HTTPS requests to the origin server by using the following ECDSA or RSA ciphers listed in this section\. Your origin server must support at least one of these ciphers for CloudFront to establish an HTTPS connection to your origin\. To learn more about the two types of ciphers that CloudFront supports, see [ About RSA and ECDSA Ciphers](using-https-cloudfront-to-custom-origin.md#using-https-cloudfront-to-origin-about-ciphers)\.
+CloudFront can forward HTTPS requests to the origin server by using the ECDSA or RSA ciphers listed in this section\. Your origin server must support at least one of these ciphers for CloudFront to establish an HTTPS connection to your origin\. To learn more about the two types of ciphers that CloudFront supports, see [ About RSA and ECDSA Ciphers](using-https-cloudfront-to-custom-origin.md#using-https-cloudfront-to-origin-about-ciphers)\.
 
 **Note**  
 The following curves are supported for elliptic\-curve\-based ciphers:  
 prime256v1
 secp384r1
+
+OpenSSL and IETF RFC 5246, [The Transport Layer Security \(TLS\) Protocol Version 1\.2](https://tools.ietf.org/html/rfc5246), use different names for the same ciphers\. The following tables map the OpenSSL name to the RFC name for each cipher\. 
 
 **Supported RSA Ciphers**
 

@@ -125,7 +125,7 @@ Select **Enabled** if you want CloudFront to begin processing requests as soon a
 
 1. Choose **Create Distribution**\.
 
-1. After CloudFront has created your distribution, the value of the **Status** column for your distribution will change from **InProgress** to **Deployed**\. If you chose to enable the distribution, it will then be ready to process requests\. This should take less than 15 minutes\.
+1. After CloudFront has created your distribution, the value of the **Status** column for your distribution will change from **InProgress** to **Deployed**\. If you chose to enable the distribution, it will then be ready to process requests\. This typically takes between 20 and 40 minutes\.
 
    The domain name that CloudFront assigns to your distribution appears in the list of distributions\. \(It also appears on the **General** tab for a selected distribution\.\)
 

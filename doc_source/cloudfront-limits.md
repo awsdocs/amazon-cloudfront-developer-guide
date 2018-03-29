@@ -139,8 +139,8 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 | --- | --- | 
 | Distributions per AWS account that you can create triggers for |  25 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Triggers per distribution |  25 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Requests per second  |  10,000 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Concurrent executions For more information, see [Lambda Function Concurrent Executions](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html) in the *AWS Lambda Developer Guide*\.  |  1000 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Requests per second  |  10,000 \(per account\) [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Concurrent executions For more information, see [Lambda Function Concurrent Executions](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(per account\) [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 
 ## Limits on RTMP Distributions<a name="limits-rtmp-distributions"></a>
 

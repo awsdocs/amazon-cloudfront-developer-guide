@@ -10,6 +10,9 @@ You can store your content in an Amazon S3 bucket and use CloudFront to distribu
 
 If you store your objects in an Amazon S3 bucket, you can either have your users get your objects directly from S3, or you can configure CloudFront to get your objects from S3 and distribute them to your users\.
 
+**Note**  
+To learn more about using Amazon S3 buckets for your origin with CloudFront, including when you have an Amazon S3 bucket configured as a website endpoint, see [Using Amazon S3 Origins and Custom Origins for Web Distributions](DownloadDistS3AndCustomOrigins.md)\.
+
 Using CloudFront can be more cost effective if your users access your objects frequently because, at higher usage, the price for CloudFront data transfer is lower than the price for Amazon S3 data transfer\. In addition, downloads are faster with CloudFront than with Amazon S3 alone because your objects are stored closer to your users\.
 
 **Note**  

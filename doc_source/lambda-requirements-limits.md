@@ -84,8 +84,6 @@ Read\-only headers can be read but not edited\. You can use them as input to Clo
 + Via
 
 #### Read\-only Headers for CloudFront Origin Response Events<a name="lambda-read-only-headers-origin-response-events"></a>
-+ Content\-Encoding
-+ Content\-Length
 + Transfer\-Encoding
 + Via
 

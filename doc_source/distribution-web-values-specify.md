@@ -104,7 +104,7 @@ The DNS domain name of the Amazon S3 bucket or HTTP server from which you want C
 If your origin is an HTTP server, type the domain name of the resource\. The files must be publicly readable\.
 
 If your origin is an Amazon S3 bucket, in the CloudFront console, choose in the **Origin Domain Name** field, and a list enumerates the Amazon S3 buckets that are associated with the current AWS account\. Note the following:
-+ If the bucket is configured as a website, enter the Amazon S3 static website hosting endpoint for your bucket; do not select the bucket name from the list in the **Origin Domain Name** field\. The static website hosting endpoint appears in the Amazon S3 console, on the **Properties** page under **Static Website Hosting**\.
++ If the bucket is configured as a website, enter the Amazon S3 static website hosting endpoint for your bucket; do not select the bucket name from the list in the **Origin Domain Name** field\. The static website hosting endpoint appears in the Amazon S3 console, on the **Properties** page under **Static Website Hosting**\. For more information, see [Using Amazon S3 Buckets Configured as Website Endpoints for Your Origin](DownloadDistS3AndCustomOrigins.md#concept_S3Origin_website)\.
 + If you configured Amazon S3 Transfer Acceleration for your bucket, do not specify the `s3-accelerate` endpoint for **Origin Domain Name**\.
 + If you're using a bucket from a different AWS account and if the bucket is not configured as a website, type the name in the following format:
 
@@ -206,7 +206,7 @@ For HTTPS viewer requests that CloudFront forwards to this origin, one of the do
 The default timeout is 30 seconds\. You can change the value to between 4 and 60 seconds\. If you need a timeout value outside that range, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
 **Tip**  
-If you want to increase the origin response timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troublehooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
+If you want to increase the origin response timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troubleshooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
 
 CloudFront behavior depends on the HTTP method in the viewer request:
 + `GET` and `HEAD` requests – If the origin doesn't respond before the read timeout elapses or if the origin stops responding for the configured timeout, CloudFront drops the connection and tries two more times to contact the origin\. After the third try, if the origin doesn't respond before the read timeout elapses, CloudFront doesn't try again until it receives another request for content on the same origin\.
@@ -350,7 +350,7 @@ Specify whether you want CloudFront to cache objects based on the values of spec
 + **Whitelist** – CloudFront caches your objects based only on the values of the specified headers\. Use **Whitelist Headers** to choose the headers that you want CloudFront to base caching on\.
 + **All** – CloudFront doesn't cache the objects that are associated with this cache behavior\. Instead, CloudFront sends every request to the origin\. \(Not recommended for Amazon S3 origins\.\)
 
-Regardless of the option that you choose, CloudFront forwards headers to your origin and takes specific actions based on the headers you use\. For more information about how CloudFront handles each specific header, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
+Regardless of the option that you choose, CloudFront forwards certain headers to your origin and takes specific actions based on the headers you forward\. For more information about how CloudFront handles header forwarding, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
 For more information about how to configure caching in CloudFront by using request headers, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
 

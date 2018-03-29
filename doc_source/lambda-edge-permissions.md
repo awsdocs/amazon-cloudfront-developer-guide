@@ -3,7 +3,7 @@
 To configure Lambda@Edge, you need IAM permissions and an IAM execution role:
 
 **IAM Permissions Required to Associate Lambda Functions with CloudFront Distributions**  
-In addition to the IAM permissions that you need to use AWS Lambda, the IAM user needs the following IAM permissions to associate Lambda functions with CloudFront distributions:  
+In addition to the IAM permissions that you need to use AWS Lambda, the IAM user needs the following IAM permissions to associate Lambda functions with CloudFront distributions\.  
 + `lambda:GetFunction`
 
   For the resource, specify the ARN of the function version that you want to execute when a CloudFront event occurs, as shown in the following example:
@@ -26,6 +26,7 @@ For more information, see the following documentation:
 
 **Execution Role**  
 You must create an IAM role that can be assumed by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. This role is assumed by the service principals when they execute your function\. For more information, see [Creating the Roles and Attaching the Policies \(Console\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#access_policies_job-functions_create-policies) in the topic "AWS Managed Policies for Job Functions" in the *IAM User Guide*\.  
+You add this role under the **Trust Relationship** tab in IAM \(do not add it under the **Permissions** tab\)\.  
 Here's an example role trust policy:  
 
 ```

@@ -1,11 +1,14 @@
 # CloudFront Compliance<a name="compliance"></a>
 
-CloudFront is compliant with the PCI DSS and HIPAA standards\.
+For information about CloudFront compliance with various security compliance regulations and audits standards, see the following pages:
++ [AWS Cloud Compliance](https://aws.amazon.com/compliance/)
++ [AWS Services in Scope by Compliance Program](https://aws.amazon.com/compliance/services-in-scope/)
 
-**Topics**
-+ [PCI DSS](#compliance-pci)
-+ [HIPAA](#compliance-hipaa)
-+ [Logging CloudFront Usage Data for Auditing](#compliance-logging)
+If you run PCI or HIPAA\-compliant workloads, based on the [AWS Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/), we recommend that you log your CloudFront usage data for the last 365 days for future auditing purposes\. To log usage data, you can do the following:
++ Enable CloudFront access logs\. For more information, see [Access Logs](AccessLogs.md)\.
++ Capture requests that are sent to the CloudFront API\. For more information, see [Using AWS CloudTrail to Capture Requests Sent to the CloudFront API](logging_using_cloudtrail.md)\.
+
+In addition, see the following for details about how CloudFront is compliant with the PCI DSS and HIPAA standards\.
 
 ## PCI DSS<a name="compliance-pci"></a>
 
@@ -15,10 +18,4 @@ As a security best practice, we recommend that you don't cache credit card infor
 
 ## HIPAA<a name="compliance-hipaa"></a>
 
-AWS has expanded its HIPAA compliance program to include CloudFront as a HIPAA Eligible Service\. If you have an executed Business Associate Agreement \(BAA\) with AWS, you can use CloudFront to deliver content containing protected health information \(PHI\)\. For more information, see [HIPAA Compliance\.](https://aws.amazon.com/compliance/hipaa-compliance/) 
-
-## Logging CloudFront Usage Data for Auditing<a name="compliance-logging"></a>
-
-If you run PCI or HIPAA\-compliant workloads, based on the [AWS Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/), we recommend that you log your CloudFront usage data for the last 365 days for future auditing purposes\. To log usage data, you can do the following:
-+ Enable CloudFront access logs\. For more information, see [Access Logs](AccessLogs.md)\.
-+ Capture requests that are sent to the CloudFront API\. For more information, see [Using AWS CloudTrail to Capture Requests Sent to the CloudFront API](logging_using_cloudtrail.md)\.
+The AWS HIPAA compliance program includes CloudFront as a HIPAA Eligible Service\. If you have an executed Business Associate Agreement \(BAA\) with AWS, you can use CloudFront to deliver content containing protected health information \(PHI\)\. For more information, see [HIPAA Compliance\.](https://aws.amazon.com/compliance/hipaa-compliance/) 
