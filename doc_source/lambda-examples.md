@@ -470,6 +470,7 @@ exports.handler = (event, context, callback) => {
     } else if (headers['cloudfront-is-smarttv-viewer']
                && headers['cloudfront-is-smarttv-viewer'][0].value === 'true') {
         request.uri = smarttvPath + request.uri;
+    }
     console.log(`Request uri set to "${request.uri}"`);
 
     callback(null, request);
