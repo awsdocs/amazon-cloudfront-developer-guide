@@ -319,7 +319,7 @@ For more information, see [Requiring HTTPS for Communication Between Viewers and
 
 ### Field Level Encryption<a name="DownloadDistValuesFieldLevelEncryption"></a>
 
-If you want to enforce field\-level encryption on specific data fields, in the dropdown lits, choose a field\-level encryption configuration\.
+If you want to enforce field\-level encryption on specific data fields, in the dropdown list, choose a field\-level encryption configuration\.
 
 For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.
 
