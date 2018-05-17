@@ -54,3 +54,6 @@ For information about the permissions that you need to grant to the execution ro
 **AWSServiceRoleForLambdaReplicator Role**  
 When you first create a trigger, a role named AWSServiceRoleForLambdaReplicator is automatically created to allow Lambda to replicate Lambda@Edge functions to AWS Regions\. This role is required to use Lambda@Edge\. The ARN for the AWSServiceRoleForLambdaReplicator role looks like this:  
 `arn:aws:iam::123456789012:role/aws-service-role/replicator.lambda.amazonaws.com/AWSServiceRoleForLambdaReplicator`
+
+If you need to manually provision the AWSServiceRoleForLambdaReplicator service linked role, you can run the following from the command line:
+`aws iam create-service-linked-role --aws-service-name replicator.lambda.amazonaws.com`
