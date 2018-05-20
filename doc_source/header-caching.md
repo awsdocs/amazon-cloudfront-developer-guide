@@ -23,7 +23,7 @@ If you configure CloudFront to forward all headers to your origin, CloudFront do
 
 For the current limit on the number of headers that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
-For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing web distribution, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing web distribution, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_PutConfig.html) in the *Amazon CloudFront API Reference*\.
 
 **Topics**
 + [Selecting the Headers on Which You Want CloudFront to Base Caching](#header-caching-web-selecting)

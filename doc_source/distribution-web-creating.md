@@ -18,7 +18,7 @@ You are responsible for ensuring the security of your origin server\. You must e
 
 1. Create your CloudFront web distribution:
    + For more information about creating a web distribution using the CloudFront console, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\.
-   + For information about creating a web distribution using the CloudFront API, go to [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
+   + For information about creating a web distribution using the CloudFront API, go to [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 1. Optional: If you created your distribution using the CloudFront console, create more cache behaviors or origins for your distribution\. For more information, see [To Update CloudFront Distributions Using the CloudFront Console](HowToUpdateDistribution.md#HowToUpdateDistributionProcedure)\.
 

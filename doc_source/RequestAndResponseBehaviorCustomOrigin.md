@@ -99,7 +99,7 @@ You can require viewers to use HTTPS to send requests to CloudFront and require 
 
 CloudFront forwards HTTPS requests to the origin server using the SSLv3, TLSv1\.0, TLSv1\.1, and TLSv1\.2 protocols\. For custom origins, you can choose the SSL protocols that you want CloudFront to use when communicating with your origin:
 + If you're using the CloudFront console, choose protocols by using the **Origin SSL Protocols** check boxes\. For more information, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\. 
-+ If you're using the CloudFront API, specify protocols by using the `OriginSslProtocols` element\. For more information, see [DistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/DistributionConfigDatatype.html) in the *Amazon CloudFront API Reference*\.
++ If you're using the CloudFront API, specify protocols by using the `OriginSslProtocols` element\. For more information, see [DistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfigDatatype.html) in the *Amazon CloudFront API Reference*\.
 
 If the origin is an Amazon S3 bucket, CloudFront always uses TLSv1\.2\.
 
@@ -227,10 +227,10 @@ If you specify **HTTP Only** or **HTTPS Only**, CloudFront forwards requests to 
 
 If you specify **Match Viewer**, CloudFront forwards requests to the origin server using the protocol in the viewer request\. Note that CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.
 
-**Important**  
+**Important**
 If CloudFront forwards a request to the origin using the HTTPS protocol, and if the origin server returns an invalid certificate or a self\-signed certificate, CloudFront drops the TCP connection\.
 
-For information about how to update a distribution using the CloudFront console, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\. 
+For information about how to update a distribution using the CloudFront console, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_PutConfig.html) in the *Amazon CloudFront API Reference*\.
 
 ### Query Strings<a name="RequestCustomQueryStrings"></a>
 

@@ -72,7 +72,7 @@ In rare cases, when a CloudFront edge location is unusually busy, some files mig
 
 To configure a web distribution to compress your content, you update the applicable cache behaviors by using one of the following methods: 
 + **CloudFront console** – Update the **Compress objects automatically** setting\. For more information, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\.
-+ **CloudFront API** – Change the value of the `Compress` element to `true`\. For more information, see [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html) \(to create a new distribution\) or [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) \(to update an existing distribution\)\.
++ **CloudFront API** – Change the value of the `Compress` element to `true`\. For more information, see [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) \(to create a new distribution\) or [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_PutConfig.html) \(to update an existing distribution\)\.
 + **One of the AWS SDKs** – See the applicable SDK documentation on the [AWS Documentation](http://aws.amazon.com/documentation/) page\.
 + **The AWS CLI** – For more information, see [create\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-distribution.html) or [update\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/update-distribution.html) in the *AWS CLI Command Reference*\.
 

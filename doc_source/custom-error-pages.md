@@ -82,7 +82,7 @@ When CloudFront returns a custom error page to a viewer, you pay the standard Cl
 
 ## Configuring Error Response Behavior<a name="custom-error-pages-procedure"></a>
 
-You can use either the CloudFront API or console to configure CloudFront error responses\. For information about using the CloudFront API to configure error responses, go to [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*, and see the `CustomErrorResponses` element\. 
+You can use either the CloudFront API or console to configure CloudFront error responses\. For information about using the CloudFront API to configure error responses, go to [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_PutConfig.html) in the *Amazon CloudFront API Reference*, and see the `CustomErrorResponses` element\.
 
 **To configure CloudFront error responses using the console**
 
