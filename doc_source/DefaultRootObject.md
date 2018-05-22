@@ -45,7 +45,7 @@ To avoid exposing the contents of your web distribution or returning an error, p
 
 1. Upload the default root object to the origin that your distribution points to\.
 
-   The file can be any type supported by CloudFront\. For a list of constraints on the file name, see the description of the `DefaultRootObject` element in [DistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/DistributionConfigDatatype.html)\.
+   The file can be any type supported by CloudFront\. For a list of constraints on the file name, see the description of the `DefaultRootObject` element in [DistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfigDatatype.html)\.
 **Note**  
 If the file name of the default root object is too long or contains an invalid character, CloudFront returns the error `HTTP 400 Bad Request - InvalidDefaultRootObject`\. In addition, CloudFront caches the code for five minutes and writes the results to the access logs\.
 
@@ -69,7 +69,7 @@ If the file name of the default root object is too long or contains an invalid c
 
    1. To save your changes, choose **Yes, Edit**\.
 
-   To update your configuration using the CloudFront API, you specify a value for the `DefaultRootObject` element in your distribution\. For information about using the CloudFront API to specify a default root object, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+   To update your configuration using the CloudFront API, you specify a value for the `DefaultRootObject` element in your distribution\. For information about using the CloudFront API to specify a default root object, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_PutConfig.html) in the *Amazon CloudFront API Reference*\.
 
 1. Confirm that you have enabled the default root object by requesting your root URL\. If your browser doesn't display the default root object, perform the following steps:
 

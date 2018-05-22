@@ -193,7 +193,7 @@ When you submit an invalidation request to CloudFront, CloudFront forwards the r
 
 ### Listing Invalidations Using the CloudFront Console<a name="listing-invalidations-console"></a>
 
-Using the console, you can display a list of the last 100 invalidations that you've created and run for a distribution\. If you want to get a list of more than 100 invalidations, use the GET Invalidation List API action\. For more information, see [GET Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
+Using the console, you can display a list of the last 100 invalidations that you've created and run for a distribution\. If you want to get a list of more than 100 invalidations, use the GET Invalidation List API action\. For more information, see [GET Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
 
 **To list invalidations using the CloudFront console**
 

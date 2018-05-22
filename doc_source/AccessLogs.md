@@ -112,8 +112,8 @@ You can enable or disable logging, change the Amazon S3 bucket where your logs a
 
 For more information, see the following topics:
 + Updating a web or an RTMP distribution using the CloudFront console: [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
-+ Updating a web distribution using the CloudFront API: [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
-+ Updating an RTMP distribution using the CloudFront API: [PUT Streaming Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutStreamingDistConfig.html) in the *Amazon CloudFront API Reference*\.
++ Updating a web distribution using the CloudFront API: [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_PutConfig.html) in the *Amazon CloudFront API Reference*\.
++ Updating an RTMP distribution using the CloudFront API: [PUT Streaming Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_PutStreamingDistConfig.html) in the *Amazon CloudFront API Reference*\.
 
 To use the CloudFront API to change access log settings for web distributions, you must use the 2009\-04\-02 or later version of the API\. To use the CloudFront API to change access log settings for RTMP distributions, you must use the 2010\-05\-01 or later version of the API\. 
 
