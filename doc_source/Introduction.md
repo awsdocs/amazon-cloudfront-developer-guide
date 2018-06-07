@@ -4,7 +4,7 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
 + If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately\.
 + If the content is not in that edge location, CloudFront retrieves it from an Amazon S3 bucket or an HTTP server \(for example, a web server\) that you have identified as the source for the definitive version of your content\.
 
-This concept is best illustrated by an example\. Suppose you're serving an image from a from a traditional web server, not from CloudFront\. For example, you might serve an image, sunsetphoto\.png, using the URL `http://example.com/sunsetphoto.png`\.
+This concept is best illustrated by an example\. Suppose you're serving an image from a traditional web server, not from CloudFront\. For example, you might serve an image, sunsetphoto\.png, using the URL `http://example.com/sunsetphoto.png`\.
 
 Your users can easily navigate to this URL and see the image\. But they probably don't know that their request was routed from one network to another—through the complex collection of interconnected networks that comprise the internet—until the image was found\. 
 

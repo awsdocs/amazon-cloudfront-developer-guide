@@ -6,18 +6,15 @@ Although fairly simple to use, CloudFront is rich in functionality\. The resourc
 + [Additional Amazon CloudFront Documentation](#resources-additional-cloudfront-documentation)
 + [Getting Support](#resources-cloudfront-support)
 + [CloudFront Developer Tools and SDKs](#resources-developer-tools)
-+ [Using CloudFront Logging](#resources-cloudfront-logging)
-+ [Additional Tips from the Amazon Web Services Blog](#resources-aws-blog-tips)
++ [Tips from the Amazon Web Services Blog](#resources-aws-blog-tips)
 + [Invalidating Objects](#resources-invalidation-tools)
-+ [Distributing Streaming Media](#resources-distributing-streaming-media)
 + [Tools and Code Examples for Configuring Private Content](#resources-distributing-private-content)
-+ [Using CloudFront with a Content Management System](#resources-content-management-system)
 
 ## Additional Amazon CloudFront Documentation<a name="resources-additional-cloudfront-documentation"></a>
 
 The following related resources can help you as you work with this service\.
 + [Amazon CloudFront API Reference](http://docs.aws.amazon.com/cloudfront/latest/APIReference/) – Gives complete descriptions of the API actions, parameters, and data types, and a list of errors that the service returns\.
-+ [Document History](WhatsNew.md) – A high\-level overview of current and previous releases with specific attention to new features, corrections, known issues, and documentation improvements\.
++ [CloudFront What's New](https://aws.amazon.com//cloudfront/whats-new/) – Announcements of new CloudFront features and recently added edge locations\. 
 + [Technical documentation for the Amazon Simple Storage Service \(S3\)](http://aws.amazon.com/documentation/s3/) – A detailed discussion of the Amazon S3 service, including the basics of getting started, an overview of the service, a programming reference, and an API reference\. 
 + [Amazon CloudFront product information](http://aws.amazon.com/cloudfront/) – The primary web page for information about CloudFront, including features and pricing information\.
 + [Terms of Use](http://aws.amazon.com/terms/) – Detailed information about our copyright and trademark; your account, license, and site access; and other topics\.
@@ -40,20 +37,11 @@ In addition, Amazon Web Services provides software development kits for accessin
 + [AWS SDK for PHP](http://aws.amazon.com/sdkforphp/) – Setup and other documentation
 + [AWS SDK for Ruby](http://aws.amazon.com/sdkforruby/) – Setup and other documentation
 
-## Using CloudFront Logging<a name="resources-cloudfront-logging"></a>
+## Tips from the Amazon Web Services Blog<a name="resources-aws-blog-tips"></a>
 
-The following AWS blog posts discuss enhancements to CloudFront logging as well as some ways to analyze access logs\.
-+ AWS Blog – [ Amazon CloudFront Request Logging](http://aws.typepad.com/aws/2009/05/amazon-cloudfront-request-logging.html) \(for content delivered via HTTP\)
-+ AWS Blog – [ Amazon CloudFront Now Supports Streaming Access Logs](http://aws.typepad.com/aws/2010/05/amazon-cloudfront-supports-streaming-access-logs.html) \(for content delivered via RTMP\)
-+ AWS Blog – [ Enhanced CloudFront Logs, Now With Query Strings](http://aws.typepad.com/aws/2010/07/enhanced-cloudfront-logs-now-with-query-strings.html)
-
-## Additional Tips from the Amazon Web Services Blog<a name="resources-aws-blog-tips"></a>
-
-The AWS Blog has a number of posts to help you use CloudFront:
-+ Improving website performance – [Improving Global Application Performance](http://aws.typepad.com/aws/2010/05/improving-global-application-performance.html)
-+ Creating secure connections using HTTPS – [ Amazon CloudFront: HTTPS Access, Another Edge Location, Price Reduction](http://aws.typepad.com/aws/2010/06/amazon-cloudfront-support-for-https-access.html)
-+ Using custom origins – [ New Amazon CloudFront Feature: Custom Origins](http://aws.typepad.com/aws/2010/11/amazon-cloudfront-support-for-custom-origins.html)
-+ Learning more about third\-party tools for Amazon CloudFront – [ CloudFront Management Tool Roundup](http://aws.typepad.com/aws/2009/01/cloudfront-management-tools.html)
+The AWS Blog has a number of posts to help you use CloudFront\. For example, see the following blog posts about using Drupal and WordPress with CloudFront\.
++ [ Accelerating your Drupal Content with Amazon CloudFront](https://aws.amazon.com/blogs/networking-and-content-delivery/accelerating-your-drupal-content-with-amazon-cloudfront/)
++ [ How to accelerate your WordPress site with Amazon CloudFront](https://aws.amazon.com/blogs/startups/how-to-accelerate-your-wordpress-site-with-amazon-cloudfront/)
 
 ## Invalidating Objects<a name="resources-invalidation-tools"></a>
 
@@ -69,17 +57,6 @@ These tools were developed by third\-party vendors who are not associated with A
 
 You can also search for code samples on Github, [https://github\.com](https://github.com)\. Search for the phrase *CloudFront invalidation*\.
 
-## Distributing Streaming Media<a name="resources-distributing-streaming-media"></a>
-
-The following third\-party sources provide additional information on distributing streaming media\.
-+ StreamingMedia\.com – [ How To Get Started With Amazon CloudFront Streaming](http://www.streamingmedia.com/Articles/Editorial/Featured-Articles/How-To-Get-Started-With-Amazon-Cloudfront-Streaming-65769.aspx)
-+ Ioncannon\.net –
-  + [ iPhone Windowed HTTP Live Streaming Using Amazon S3 and CloudFront Proof of Concept](http://www.ioncannon.net/programming/475/iphone-windowed-http-live-streaming-using-amazon-s3-and-cloudfront-proof-of-concept/)
-  + [ HTTP Live Video Stream Segmenter and Distributor](http://www.ioncannon.net/projects/http-live-video-stream-segmenter-and-distributor/)
-  + [ iPhone Windowed HTTP Live Streaming Server](http://www.ioncannon.net/meta/564/iphone-windowed-http-live-streaming-server/)
-+ Flowplayer\.org – [Flowplayer demos for streaming video](http://demos.flowplayer.org)
-+ JW Player – [About RTMP Streaming](http://support.jwplayer.com/customer/portal/articles/1430349-about-rtmp-streaming)
-
 ## Tools and Code Examples for Configuring Private Content<a name="resources-distributing-private-content"></a>
 
 In addition to the methods provided by CloudFront, the following third\-party tools provide web forms for configuring your distribution for private content\. Some of the tools also provide web forms for creating signed URLs\.
@@ -89,22 +66,6 @@ In addition to the methods provided by CloudFront, the following third\-party to
 
   For information on setting a default root object, see [How to set CloudFront Default Object with CloudBerry S3 Explorer](http://blog.cloudberrylab.com/2010/08/how-to-set-cloudfront-default-object.html)\.
 
-For more information about private content, see the blog post [New Amazon CloudFront Feature: Private Content](http://aws.typepad.com/aws/2009/11/new-amazon-cloudfront-feature-private-content.html) on the AWS blog\.
+For more information about private content, see the blog post [New Amazon CloudFront Feature: Private Content](https://aws.amazon.com/blogs/aws/new-amazon-cloudfront-feature-private-content/) on the AWS blog\.
 
 For an example of how to use signed cookies, use your domain name in object URLs, and still use the SSL certificate for the cloudfront\.net domain, see the Space Vatican blog post [Using CloudFront Signed Cookies](http://www.spacevatican.org/2015/5/1/using-cloudfront-signed-cookies/)\. This allows you to use an alternate domain name with HTTPS without incurring the expense of dedicated IP addresses or the limitations of SNI, as documented in [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
-
-## Using CloudFront with a Content Management System<a name="resources-content-management-system"></a>
-
-You can use CloudFront with several popular content management systems\. The following links tell you how\.
-
-**Drupal**
-+ Drupal\.org – [CloudFront Installation](http://drupal.org/node/552934)
-+ DrupalModules\.com – [CloudFront Drupal Module](http://drupalmodules.com/module/cloudfront)
-
-**WordPress**
-+ om4\.com – [Using Amazon CloudFront with WordPress and WordPress MU](http://om4.com.au/using-amazon-cloudfront-with-wordpress-and-wordpress-mu/)
-+ WordPress\.org – [W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/)
-+ WordPress\.org – [Simple Amazon S3 Upload Form](http://wordpress.org/extend/plugins/amazon-s3-simple-upload-form/)
-+ WordPress\.org – [OSSDL CDN Off\-linker](http://wordpress.org/extend/plugins/ossdl-cdn-off-linker/)
-+ WordPress\.org – [My CDN](http://wordpress.org/extend/plugins/my-cdn/)
-+ Inquisiter\.com – [Amazon CloudFront CDN with a WordPress Blog](http://www.inquisitr.com/41869/amazon-cloudfront-cdn-with-a-wordpress-blog/)

@@ -5,4 +5,3 @@ Troubleshoot common problems you might encounter with Amazon CloudFront and find
 **Topics**
 + [Troubleshooting Distribution Issues](troubleshooting-distributions.md)
 + [Troubleshooting Error Responses from Your Origin](troubleshooting-response-errors.md)
-+ [Troubleshooting Lambda@Edge](troubleshooting-lambda.md)

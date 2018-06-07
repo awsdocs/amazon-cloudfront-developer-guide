@@ -8,7 +8,7 @@ If you run PCI or HIPAA\-compliant workloads, based on the [AWS Shared Responsib
 + Enable CloudFront access logs\. For more information, see [Access Logs](AccessLogs.md)\.
 + Capture requests that are sent to the CloudFront API\. For more information, see [Using AWS CloudTrail to Capture Requests Sent to the CloudFront API](logging_using_cloudtrail.md)\.
 
-In addition, see the following for details about how CloudFront is compliant with the PCI DSS and HIPAA standards\.
+In addition, see the following for details about how CloudFront is compliant with the PCI DSS, HIPAA, and SOC standards\.
 
 ## PCI DSS<a name="compliance-pci"></a>
 
@@ -19,3 +19,7 @@ As a security best practice, we recommend that you don't cache credit card infor
 ## HIPAA<a name="compliance-hipaa"></a>
 
 The AWS HIPAA compliance program includes CloudFront as a HIPAA Eligible Service\. If you have an executed Business Associate Agreement \(BAA\) with AWS, you can use CloudFront to deliver content containing protected health information \(PHI\)\. For more information, see [HIPAA Compliance\.](https://aws.amazon.com/compliance/hipaa-compliance/) 
+
+## SOC 1, SOC 2, and SOC 3<a name="compliance-soc"></a>
+
+Amazon CloudFront is compliant with SOC \(System and Organization Control\) measures\. SOC Reports are independent third\-party examination reports that demonstrate how AWS achieves key compliance controls and objectives\. These audits ensure that the appropriate safeguards and procedures are in place to protect against risks that may affect the security, confidentiality, and availability of customer and company data\. The results of these third\-party audits are available on the [AWS SOC Compliance website](https://aws.amazon.com/compliance/soc-faqs/), where customers can view the published reports to get more information about the controls established to support AWS operations and compliance\.

@@ -1,8 +1,11 @@
 # Adding Triggers for a Lambda@Edge Function<a name="lambda-edge-add-triggers"></a>
 
-You specify one or more CloudFront events, known as triggers, that cause a Lambda function to execute\. For example, you can create a trigger that causes the function to execute when CloudFront receives a request from a viewer\.
+A Lambda@Edge trigger is one combination of CloudFront distribution, cache behavior, and event that causes a function to execute\. You can specify one or more CloudFront triggers that cause the function to run\. For example, you can create a trigger that causes the function to execute when CloudFront receives a request from a viewer for a specific cache behavior you set up for your distribution\.
 
-At the time that you create a Lambda function, you can specify only one trigger—that is, only one combination of CloudFront distribution, cache behavior, and event that causes the function to execute\. But you can add more triggers to the same function later by using the Lambda console or by editing the distribution in the CloudFront console\.
+**Tip**  
+If you're not familiar with CloudFront cache behaviors, here's a brief overview\. When you create a CloudFront distribution, you specify settings that tell CloudFront how to respond when it receives different requests\. The default settings are called the default cache behavior for the distribution\. You can set up additional cache behaviors that define how CloudFront responds under specific circumstances, for example, when it receives a request for a specific file type\. For more information, see [Cache Behavior Settings](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior)\.
+
+At the time that you create a Lambda function, you can specify only one trigger\. But you can add more triggers to the same function later in one of two ways: by using the Lambda console or by editing the distribution in the CloudFront console\.
 + Using the Lambda console works well if you want to add more triggers to a function for the same CloudFront distribution\.
 + Using the CloudFront console can be better if you want to add triggers for multiple distributions because it's easier to find the distribution that you want to update\. You can also update other CloudFront settings at the same time\.
 

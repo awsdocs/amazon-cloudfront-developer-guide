@@ -24,7 +24,7 @@ Media files in a Flash Video container must include the \.flv filename extension
 
 1. Create an RTMP distribution for your media files:
    + For more information about creating a web distribution using the CloudFront console, see [Creating an RTMP Distribution Using the CloudFront Console](distribution-rtmp-creating-console.md)\.
-   + For information about creating a web distribution using the CloudFront API, go to [POST Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
+   + For information about creating a web distribution using the CloudFront API, go to [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 1. Configure your media player\. For more information, see [Configuring the Media Player](Streaming_URLs.md)\.
 

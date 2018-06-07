@@ -1,17 +1,20 @@
-# Configuring On\-Demand Smooth Streaming<a name="on-demand-streaming-smooth"></a>
+# Configuring On\-Demand Microsoft Smooth Streaming<a name="on-demand-streaming-smooth"></a>
 
-You can use CloudFront for on\-demand streaming of media files that you've transcoded into the Microsoft Smooth Streaming format\. To distribute Smooth Streaming content on demand, you have two options:
-+ As the origin for your distribution, specify a web server that can stream files that have been transcoded into Microsoft Smooth Streaming format\.
+You can use CloudFront for providing on\-demand video by using files that you've transcoded into the Microsoft Smooth Streaming format\. To distribute Smooth Streaming content on demand, you have two options:
++ As the origin for your distribution, specify a web server running Microsoft IIS that can stream files that have been transcoded into Microsoft Smooth Streaming format\.
 + Enable Smooth Streaming in a CloudFront distribution\. Smooth Streaming is a property of cache behaviors, which means that you can use one distribution to distribute Smooth Streaming media files as well as other content\. 
 
-If you enable Smooth Streaming, note the following:
+**Important**  
+If your origin is a web server running Microsoft IIS, do not enable Smooth Streaming when you create your CloudFront distribution\. CloudFront can't use a Microsoft IIS server as an origin if you enable Smooth Streaming\.
+
+If you enable Smooth Streaming for an origin server \(that is, you do not have a server that is running Microsoft IIS\), note the following:
 + You can still distribute other content using the same cache behavior if the content matches the value of **Path Pattern** for that cache behavior\.
 + CloudFront can use either an Amazon S3 bucket or a custom origin for Smooth Streaming media files\. However, CloudFront cannot use a Microsoft IIS Server as an origin if the server is configured for Smooth Streaming\. 
 + You cannot invalidate media files in the Smooth Streaming format\. If you want to update files before they expire, you must rename them\. For more information, see [Adding, Removing, or Replacing Objects in a Distribution](AddRemoveReplaceObjects.md)\.
 
 For information about Smooth Streaming clients, see [Smooth Streaming Primer](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-primer) on the Microsoft website\.
 
-To use CloudFront to stream media files that have been encoded in the Microsoft Smooth Streaming format without using a web server that can stream files in Smooth Streaming format, perform the following tasks:
+To use CloudFront to stream media files that have been encoded in the Microsoft Smooth Streaming format without using a Microsoft IIS web server that can stream files in Smooth Streaming format, do the following:
 
 1. Transcode your media files into Smooth Streaming fragmented\-MP4 format\. For a list of applications that can transcode into Smooth Streaming format, see [Smooth Streaming Primer](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-primer) on the Microsoft website\.
 

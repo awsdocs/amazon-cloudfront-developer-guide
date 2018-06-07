@@ -98,8 +98,12 @@ When you create or update a distribution, you specify the following values for e
 
 The DNS domain name of the Amazon S3 bucket or HTTP server from which you want CloudFront to get objects for this origin, for example:
 + **Amazon S3 bucket** – `myawsbucket.s3.amazonaws.com`
++ **Amazon S3 bucket configured as a website** – `http://bucket-name.s3-website-us-west-2.amazonaws.com`
++ **AWS Elemental MediaStore container** – `mymediastore.data.mediastore.us-west-1.amazonaws.com`
++ **AWS Elemental MediaPackage endpoint** – `mymediapackage.mediapackage.us-west-1.amazon.com`
 + **Amazon EC2 instance** – `ec2-203-0-113-25.compute-1.amazonaws.com`
 + **Elastic Load Balancing load balancer** – `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com`
++ **Your own web server** – `https://example.com`
 
 If your origin is an HTTP server, type the domain name of the resource\. The files must be publicly readable\.
 
@@ -128,7 +132,7 @@ Changing the origin does not require CloudFront to repopulate edge caches with o
 
 ### Origin Path<a name="DownloadDistValuesOriginPath"></a>
 
-If you want CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin, enter the directory path, beginning with a /\. CloudFront appends the directory path to the value of **Origin Domain Name**, for example, **cf\-origin\.example\.com/production/images**\. Do not add a / at the end of the path\.
+If you want CloudFront to request your content from a directory in your AWS resource or your custom origin, enter the directory path, beginning with a slash \(/\)\. CloudFront appends the directory path to the value of **Origin Domain Name**, for example, **cf\-origin\.example\.com/production/images**\. Do not add a slash \(/\) at the end of the path\.
 
 For example, suppose you've specified the following values for your distribution:
 + **Origin Domain Name** – An Amazon S3 bucket named **myawsbucket**
@@ -277,6 +281,8 @@ When you create a new distribution, the value of **Path Pattern** for the defaul
 **Important**  
 Define path patterns and their sequence carefully or you may give users undesired access to your content\. For example, suppose a request matches the path pattern for two cache behaviors\. The first cache behavior does not require signed URLs and the second cache behavior does require signed URLs\. Users will be able to access the objects without using a signed URL because CloudFront processes the cache behavior associated with the first match\. 
 
+If you're working with an AWS Elemental MediaPackage channel, you must include specific path patterns for the cache behavior that you define for the endpoint type for your origin\. For example, for a DASH endpoint, you type `*.mpd` for **Path Pattern**\. For more information and specific instructions, see [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)\.
+
 The path you specify applies to requests for all files in the specified directory and in subdirectories below the specified directory\. CloudFront does not consider query strings or cookies when evaluating the path pattern\. For example, if an `images` directory contains `product1` and `product2` subdirectories, the path pattern `images/*.jpg` applies to requests for any \.jpg file in the `images`, `images/product1`, and `images/product2` directories\. If you want to apply a different cache behavior to the files in the `images/product1` directory than the files in the `images` and `images/product2` directories, create a separate cache behavior for `images/product1` and move that cache behavior to a position above \(before\) the cache behavior for the `images` directory\.
 
 You can use the following wildcard characters in your path pattern:
@@ -315,11 +321,11 @@ Choose the protocol policy that you want viewers to use to access your content i
 + **Redirect HTTP to HTTPS**: Viewers can use both protocols, but HTTP requests are automatically redirected to HTTPS requests\.
 + **HTTPS Only**: Viewers can only access your content if they're using HTTPS\.
 
-For more information, see [Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
+For more information, see [ Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
 
 ### Field Level Encryption<a name="DownloadDistValuesFieldLevelEncryption"></a>
 
-If you want to enforce field\-level encryption on specific data fields, in the dropdown lits, choose a field\-level encryption configuration\.
+If you want to enforce field\-level encryption on specific data fields, in the drop\-down list, choose a field\-level encryption configuration\.
 
 For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.
 
@@ -350,7 +356,7 @@ Specify whether you want CloudFront to cache objects based on the values of spec
 + **Whitelist** – CloudFront caches your objects based only on the values of the specified headers\. Use **Whitelist Headers** to choose the headers that you want CloudFront to base caching on\.
 + **All** – CloudFront doesn't cache the objects that are associated with this cache behavior\. Instead, CloudFront sends every request to the origin\. \(Not recommended for Amazon S3 origins\.\)
 
-Regardless of the option that you choose, CloudFront forwards certain headers to your origin and takes specific actions based on the headers you forward\. For more information about how CloudFront handles header forwarding, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
+Regardless of the option that you choose, CloudFront forwards certain headers to your origin and takes specific actions based on the headers that you forward\. For more information about how CloudFront handles header forwarding, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
 For more information about how to configure caching in CloudFront by using request headers, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
 
@@ -442,12 +448,14 @@ If you chose **Forward all, cache based on whitelist** for [Query String Forward
 
 ### Smooth Streaming<a name="DownloadDistValuesSmoothStreaming"></a>
 
-Choose **Yes** if you want to distribute media files in the Microsoft Smooth Streaming format using the origin that is associated with this cache behavior\. Otherwise, choose **No**\.
+Choose **Yes** if you want to distribute media files in the Microsoft Smooth Streaming format and you do not have an IIS server\.
+
+Choose **No** if you have a Microsoft IIS server that you want to use as an origin to distribute media files in the Microsoft Smooth Streaming format, or if you are not distributing Smooth Streaming media files\.
 
 **Note**  
-If you specify **Yes**, you can still distribute other content using this cache behavior if the content matches the value of **Path Pattern**\.
+If you specify **Yes**, you can still distribute other content using this cache behavior if that content matches the value of **Path Pattern**\.
 
-For more information, see [Configuring On\-Demand Smooth Streaming](on-demand-streaming-smooth.md)\.
+For more information, see [Configuring On\-Demand Microsoft Smooth Streaming](on-demand-streaming-smooth.md)\.
 
 ### Restrict Viewer Access \(Use Signed URLs\)<a name="DownloadDistValuesRestrictViewerAccess"></a>
 

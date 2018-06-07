@@ -13,6 +13,7 @@ See the following sections for requirements and restrictions on using Lambda fun
 + [Microsoft Smooth Streaming](#lambda-requirements-microsoft-smooth-streaming)
 + [Network Access](#lambda-requirements-network-access)
 + [Query String Parameters](#lambda-requirements-query-strings)
++ [Tagging](#lambda-requirements-tagging)
 + [URI](#lambda-requirements-uri)
 + [URI and Query String Encoding](#lambda-requirements-encoding)
 
@@ -37,7 +38,6 @@ Note the following requirements and restrictions on using headers with Lambda@Ed
 **Topics**
 + [Blacklisted Headers](#lambda-blacklisted-headers)
 + [Read\-only Headers](#lambda-read-only-headers)
-+ [Restricted Headers for CloudFront Origin Request Events](#lambda-restricted-headers)
 + [CloudFront\-\* Headers](#lambda-cloudfront-star-headers)
 
 ### Blacklisted Headers<a name="lambda-blacklisted-headers"></a>
@@ -94,20 +94,6 @@ Read\-only headers can be read but not edited\. You can use them as input to Clo
 + Warning
 + Via
 
-### Restricted Headers for CloudFront Origin Request Events<a name="lambda-restricted-headers"></a>
-
-By default, CloudFront removes the following headers from viewer requests\. You can add or edit these headers in CloudFront origin request events only if the CloudFront distribution is configured to cache based on the headers\. This causes CloudFront to forward the headers to your origin instead of removing them\.
-
-If a Lambda function adds or changes a restricted header and the CloudFront distribution is not configured to cache based on that header, the request fails CloudFront validation\. CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\. 
-
-For information about how to configure CloudFront to cache based on specified headers, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders) in the topic [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
-+ Accept
-+ Accept\-Charset
-+ Accept\-Language
-+ Authorization
-+ Referer
-+ TE
-
 ### CloudFront\-\* Headers<a name="lambda-cloudfront-star-headers"></a>
 
 A Lambda function can read, edit, remove, or add any of the following headers\. 
@@ -133,7 +119,7 @@ For more information, see the following examples:
 CloudFront doesn't execute Lambda functions for viewer response events if the origin returns HTTP status code 400 or higher\.
 
 ## Lambda Function Configuration and Execution Environment<a name="lambda-requirements-lambda-function-configuration"></a>
-+ You must create functions with the `nodejs6.10` runtime property\.
++ You must create functions with the `nodejs6.10` or `nodejs8.10` runtime property\.
 + You can't configure your Lambda function to access resources inside your VPC\.
 + You can't associate your Lambda function to a CloudFront distribution owned by another AWS account\. 
 + The Dead Letter Queue \(DLQ\) isn't supported\.
@@ -164,6 +150,10 @@ Functions triggered by origin request and response events as well as functions t
 + The total size of the URI \(`event.Records[0].cf.request.uri`\) and the query string \(`event.Records[0].cf.request.querystring`\) must be less than 8,192 characters\.
 
 For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
+
+## Tagging<a name="lambda-requirements-tagging"></a>
+
+Some AWS services, including Amazon CloudFront and AWS Lambda, support [ adding tags to resources within the service](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\. However, at this time, you cannot apply tags to Lambda@Edge resources\. To learn more about tagging in CloudFront, see [Tagging Amazon CloudFront Distributions](tagging.md)\.
 
 ## URI<a name="lambda-requirements-uri"></a>
 

@@ -178,10 +178,10 @@ You can add trusted signers to your distribution using either the CloudFront con
 You can use the CloudFront API to add the AWS account IDs for trusted signers to an existing distribution or to create a new distribution that includes trusted signers\. In either case, specify the applicable values in the `TrustedSigners` element\. For web distributions, add the `TrustedSigners` element to one or more cache behaviors\. For RTMP distributions, add the `TrustedSigners` element to the distribution\.
 
 See the applicable topic in the *Amazon CloudFront API Reference*:
-+ **Create a new web distribution** – [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html)
-+ **Update an existing web distribution** – [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html)
-+ **Create a new RTMP distribution** – [POST Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateStreamingDistribution.html)
-+ **Update an existing RTMP distribution** – [PUT Streaming Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutStreamingDistConfig.html)
++ **Create a new web distribution** – [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
++ **Update an existing web distribution** – [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
++ **Create a new RTMP distribution** – [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)
++ **Update an existing RTMP distribution** – [UpdateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html)
 
 ## Verifying that Trusted Signers Are Active \(Optional\)<a name="private-content-verifying-trusted-signers-active"></a>
 
@@ -195,8 +195,8 @@ To display a list of active trusted signers for a distribution, you currently mu
 ### Verifying that Trusted Signers Are Active Using the CloudFront API<a name="private-content-verifying-trusted-signers-active-api"></a>
 
 To determine which trusted signers have active key pairs \(are active trusted signers\), you get the distribution and review the values in the `ActiveTrustedSigners` element\. This element lists the AWS account ID of each account that the distribution identifies as a trusted signer\. If the trusted signer has one or more active CloudFront key pairs, the `ActiveTrustedSigners` element also lists the key pair IDs\. For more information, see the applicable topic in the *Amazon CloudFront API Reference*:
-+ **Web distributions** – [GET Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/GetDistribution.html)
-+ **RTMP distributions** – [GET Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/GetStreamingDistribution.html)
++ **Web distributions** – [ GetDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html)
++ **RTMP distributions** – [ GetStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetStreamingDistribution.html)
 
 ## Rotating CloudFront Key Pairs<a name="private-content-rotating-key-pairs"></a>
 

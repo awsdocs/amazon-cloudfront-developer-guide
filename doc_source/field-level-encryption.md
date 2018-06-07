@@ -84,7 +84,7 @@ After you add at least one public key to CloudFront, create a profile that tells
 **Profile name**  
 Type a unique name for the profile\. The name can't have spaces and can include only alphanumeric characters, underscores \(\_\), and hyphens \(\-\)\. The maximum number of characters is 128\.  
 **Public key name**  
-In the dropdown list, choose the name of a public key that you added to CloudFront in step 2\. CloudFront uses the key to encrypt the fields that you specify in this profile\.  
+In the drop\-down list, choose the name of a public key that you added to CloudFront in step 2\. CloudFront uses the key to encrypt the fields that you specify in this profile\.  
 **Provider name**  
 Type a phrase to help identify the key, such as the provider where you got the key pair\. This information, along with the private key, will be needed when applications decrypt data fields\. The provider name can't have spaces and can include only alphanumeric characters, colons \(:\), underscores \(\_\), and hyphens \(\-\)\. The maximum number of characters is 128\.  
 **Field name pattern to match**  
@@ -122,9 +122,9 @@ You can create up to 10 configurations for a single account, and then associate 
 
 1. Fill in the following fields to specify the profile to use\. \(Some fields can't be changed\.\)   
 **Content type \(can't be changed\)**  
-The content format is set to `application/x-www-form-urlencoded` and can’t be changed\.  
+The content type is set to `application/x-www-form-urlencoded` and can’t be changed\.  
 **Default profile ID \(optional\)**  
-In the dropdown list, choose the profile that you want to map to the content type in the **Content type** field\.  
+In the drop\-down list, choose the profile that you want to map to the content type in the **Content type** field\.  
 **Content format \(can't be changed\)**  
 The content format is set to `URLencoded` and can’t be changed\.
 
@@ -139,7 +139,7 @@ Select the check box if you want to allow a profile provided in a query argument
 Type the value that you want to include in URLs for the `fle-profile` query argument\. This value tells CloudFront to use the profile ID \(that you specify in the next field\) associated with this query argument for field\-level encryption for this query\.  
 The maximum number of characters that you can use is 128\. The value can’t include spaces, and must use only alphanumeric or the following characters: dash \(\-\), period \(\.\), underscore \(\_\), asterisk \(\*\), plus\-sign \(\+\), percent \(%\)\.  
 **Profile ID**  
-In the dropdown list, choose the profile that you want to associate with the value that you typed for **Query argument**\.  
+In the drop\-down list, choose the profile that you want to associate with the value that you typed for **Query argument**\.  
 **Forward request to origin when the profile specified in a query argument does not exist**  
 Select the check box if you want to allow the request to go to your origin *if the profile specified in a query argument isn't defined in CloudFront*\.
 

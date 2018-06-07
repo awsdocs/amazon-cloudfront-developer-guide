@@ -11,7 +11,10 @@ Note the following:
 + [Tag Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html) and [Resource Groups](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html) are currently not supported for CloudFront\.
 
 You can also apply tags to resources by using the CloudFront API, AWS CLI, SDKs, and AWS Tools for Windows PowerShell\. For more information, see the following documentation:
-+ CloudFront API – See [Actions on Tags](http://docs.aws.amazon.com/cloudfront/latest/APIReference/actions-tags.html) in the *Amazon CloudFront API Reference*
++ CloudFront API – See the following operations in the *Amazon CloudFront API Reference*:
+  + [ListTagsForResource](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListTagsForResource.html) 
+  + [TagResource](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html) 
+  + [UntagResource](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UntagResource.html) 
 + AWS CLI – See [cloudfront](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/index.html) in the *AWS CLI Command Reference*
 + SDKs – See the applicable SDK documentation on the [AWS Documentation](http://docs.aws.amazon.com/) page
 + Tools for Windows PowerShell – See [Amazon CloudFront](http://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudFront_cmdlets.html) in the [AWS Tools for PowerShell Cmdlet Reference](http://docs.aws.amazon.com/powershell/latest/reference/)

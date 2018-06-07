@@ -19,7 +19,7 @@ There are many uses for Lambda@Edge processing\. For example:
 For sample code and additional examples, see [Lambda@Edge Example Functions](lambda-examples.md)\.
 
 **Topics**
-+ [Overview of Creating and Using Lambda@Edge Functions](lambda-edge-how-it-works.md)
++ [Get Started Creating and Using Lambda@Edge Functions](lambda-edge-how-it-works.md)
 + [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)
 + [Writing and Creating a Lambda@Edge Function](lambda-edge-create-function.md)
 + [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)

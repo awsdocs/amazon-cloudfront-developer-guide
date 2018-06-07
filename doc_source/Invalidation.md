@@ -118,7 +118,7 @@ The following are some examples:
 + To invalidate all of the objects in a distribution:
 
   `/*`
-The maximum length of a path is 4,000 characters\.  
+The maximum length of a path is 4,000 characters\. You can't use a wildcard within the path; only at the end of the path\.  
 For information about invalidating objects if you use a Lambda function to change the URI, see [Changing the URI Using a Lambda Function](#invalidation-lambda-at-edge)\.  
 The charge to submit an invalidation path is the same regardless of the number of objects you're invalidating: a single object \(`/images/logo.jpg`\) or all of the objects that are associated with a distribution \(`/*`\)\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.  
 If the invalidation path is a directory and if you have not standardized on a method for specifying directories—with or without a trailing slash \(/\)—we recommend that you invalidate the directory both with and without a trailing slash, for example, `/images` and `/images/`\. 
@@ -134,7 +134,7 @@ See the applicable topic:
 + [Invalidating Objects Using the CloudFront Console](#invalidating-objects-console)
 + [Copying, Editing, and Rerunning an Existing Invalidation Using the CloudFront Console](#invalidating-objects-copy-console)
 + [Canceling Invalidations](#canceling-invalidations)
-+ [Listing Invalidations Using the CloudFront Console](#listing-invalidations-console)
++ [Listing Invalidations \(Console\)](#listing-invalidations-console)
 + [Displaying Information about an Invalidation Using the CloudFront Console](#invalidation-details-console)
 + [Invalidating Objects and Displaying Information about Invalidations Using the CloudFront API](#invalidating-objects-api)
 
@@ -191,9 +191,9 @@ If you copy an invalidation that is still in progress, update the list of invali
 
 When you submit an invalidation request to CloudFront, CloudFront forwards the request to all edge locations within a few seconds, and each edge location starts processing the invalidation immediately\. As a result, you can't cancel an invalidation after you submit it\.
 
-### Listing Invalidations Using the CloudFront Console<a name="listing-invalidations-console"></a>
+### Listing Invalidations \(Console\)<a name="listing-invalidations-console"></a>
 
-Using the console, you can display a list of the last 100 invalidations that you've created and run for a distribution\. If you want to get a list of more than 100 invalidations, use the GET Invalidation List API action\. For more information, see [GET Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
+Using the console, you can display a list of the last 100 invalidations that you've created and run for a distribution\. If you want to get a list of more than 100 invalidations, use the ListInvalidations API action\. For more information, see [ListInvalidations](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
 
 **To list invalidations using the CloudFront console**
 
@@ -226,9 +226,9 @@ You can display detailed information about an invalidation, including distributi
 ### Invalidating Objects and Displaying Information about Invalidations Using the CloudFront API<a name="invalidating-objects-api"></a>
 
 For information about invalidating objects and about displaying information about invalidations using the CloudFront API, see the applicable topic in the *Amazon CloudFront API Reference*:
-+ Invalidating objects: [POST Invalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html) 
-+ Getting a list of your invalidations: [GET Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html)
-+ Getting information about a specific invalidation: [GET Invalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetInvalidation.html)
++ Invalidating objects: [CreateInvalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html) 
++ Getting a list of your invalidations: [ListInvalidations](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html)
++ Getting information about a specific invalidation: [ GetInvalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetInvalidation.html)
 
 ## Third\-Party Tools for Invalidating Objects<a name="InvalidationTools"></a>
 

@@ -164,7 +164,7 @@ exports.handler = (event, context, callback) => {
 
 This function demonstrates how to use a Lambda function to serve static website content as gzip compressed content, which reduces the load on the origin server and reduces overall latency\.
 
-You can generate HTTP responses for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)
+You can generate HTTP responses for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
 
 ```
 'use strict';
@@ -240,7 +240,7 @@ exports.handler = (event, context, callback) => {
 
 ### Example: Adding a Header Based on a Query String Parameter<a name="lambda-examples-header-based-on-query-string"></a>
 
-The following example shows how to get the key\-value pair of a query string parameter and add a header based on those values\.
+The following example shows how to get the key\-value pair of a query string parameter, and then add a header based on those values\.
 
 ```
 'use strict';
@@ -470,6 +470,7 @@ exports.handler = (event, context, callback) => {
     } else if (headers['cloudfront-is-smarttv-viewer']
                && headers['cloudfront-is-smarttv-viewer'][0].value === 'true') {
         request.uri = smarttvPath + request.uri;
+    }
     console.log(`Request uri set to "${request.uri}"`);
 
     callback(null, request);

@@ -5,7 +5,7 @@ You can configure one or more cache behaviors in your CloudFront distribution to
 
   To change the value of **Viewer Protocol Policy** by using the CloudFront console, see the procedure later in this section\.
 
-  For information about how to use the CloudFront API to change the value of the `ViewerProtocolPolicy` element, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+  For information about how to use the CloudFront API to change the value of the `ViewerProtocolPolicy` element, see [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 + If you're using your own domain name, such as example\.com, you need to change several CloudFront settings\. You also need to use an SSL/TLS certificate provided by AWS Certificate Manager \(ACM\), import a certificate from a third\-party certificate authority into ACM or the IAM certificate store, or create and import a self\-signed certificate\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
 **Note**  

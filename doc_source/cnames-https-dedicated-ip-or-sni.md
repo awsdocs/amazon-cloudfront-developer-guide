@@ -1,8 +1,12 @@
 # Choosing How CloudFront Serves HTTPS Requests<a name="cnames-https-dedicated-ip-or-sni"></a>
 
-If you want your viewers to use HTTPS and to use alternate domain names for your objects, you need to choose how CloudFront serves HTTPS requests\. When you configure CloudFront to use alternate domain names, CloudFront can serve HTTPS requests either by using a dedicated IP address in each edge location or by using Server Name Indication \(SNI\)\. This section explains how each option works\. 
+If you want your viewers to use HTTPS and to use alternate domain names for your objects, you need to choose one of the following options for how CloudFront serves HTTPS requests:
++ Use a dedicated IP address in each edge location
++ Use Server Name Indication \(SNI\)
 
-## Serving HTTPS Requests Using Dedicated IP Addresses \(Works for All Clients\)<a name="cnames-https-dedicated-ip"></a>
+This section explains how each option works\.
+
+## Using a Dedicated IP Addresses to Serve HTTPS Requests \(Works for All Clients\)<a name="cnames-https-dedicated-ip"></a>
 
 If you configure CloudFront to serve HTTPS requests using dedicated IP addresses, CloudFront associates your alternate domain name with a dedicated IP address in each CloudFront edge location\. When a viewer submits an HTTPS request for your content, here's what happens:
 
@@ -19,7 +23,7 @@ This method works for every HTTPS request, regardless of the browser or other vi
 **Important**  
 If you configure CloudFront to serve HTTPS requests using dedicated IP addresses, you incur an additional monthly charge\. The charge begins when you associate your SSL/TLS certificate with a distribution and you enable the distribution\. For more information about CloudFront pricing, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing)\. In addition, see [Using the Same Certificate for Multiple CloudFront Distributions](cnames-and-https-limits.md#cnames-and-https-same-certificate-multiple-distributions)\.
 
-## Serving HTTPS Requests Using SNI \(Works for Most Clients\)<a name="cnames-https-sni"></a>
+## Using SNI to Serve HTTPS Requests \(Works for Most Clients\)<a name="cnames-https-sni"></a>
 
 If you configure CloudFront to serve HTTPS requests using Server Name Indication \(SNI\), CloudFront associates your alternate domain name with an IP address for each edge location, but the IP address is not dedicated to your distribution\. When a viewer submits an HTTPS request for your content, DNS routes the request to the IP address for the applicable edge location\. However, because the IP address isn't dedicated to your distribution, CloudFront can't determine, based on the IP address, which domain the request is for\. 
 

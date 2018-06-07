@@ -2,7 +2,7 @@
 
 AWS WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to CloudFront, and lets you control access to your content\. Based on conditions that you specify, such as the IP addresses that requests originate from or the values of query strings, CloudFront responds to requests either with the requested content or with an HTTP 403 status code \(Forbidden\)\. You can also configure CloudFront to return a custom error page when a request is blocked\. For more information about AWS WAF, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/)\. 
 
-After you create an AWS WAF web access control list \(web ACL\), you create or update a web distribution and associate the distribution with a web ACL\. You can associate as many CloudFront distributions as you want with the same web ACL or with different web ACLs\. For information about creating a web distribution and associating it with a web ACL, see [Creating or Updating a Web Distribution Using the CloudFront Console](distribution-web-creating-console.md)\.
+After you create an AWS WAF web access control list \(web ACL\), you create or update a web distribution and associate the distribution with a web ACL\. You can associate as many CloudFront distributions as you want with the same web ACL or with different web ACLs\. For information about creating a web distribution and associating it with a web ACL, see [Creating a Web Distribution](distribution-web-creating-console.md)\.
 
 To associate or disassociate a web ACL and an existing distribution, or change the web ACL that is associated with a distribution, perform the following procedure\.<a name="distribution-web-awswaf-procedure"></a>
 

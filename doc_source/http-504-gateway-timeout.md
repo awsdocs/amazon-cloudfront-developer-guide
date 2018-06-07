@@ -95,4 +95,4 @@ In addition, consider the following tuning steps to help avoid timeouts:
 
 ### If needed, adjust the CloudFront timeout value<a name="http-504-gateway-timeout-slow-application-adjust-timeout"></a>
 
-If you have evaluated and addressed slow application performance, origin server capacity, and other issues, but viewers are still experiencing HTTP 504 errors, then you should consider changing the time that is specified in your web distribution for origin response timeout\. To learn more, see [ Origin Response Timeout](url-cf-dev;distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout/)\.
+If you have evaluated and addressed slow application performance, origin server capacity, and other issues, but viewers are still experiencing HTTP 504 errors, then you should consider changing the time that is specified in your web distribution for origin response timeout\. To learn more, see [ Origin Response Timeout](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout)\.

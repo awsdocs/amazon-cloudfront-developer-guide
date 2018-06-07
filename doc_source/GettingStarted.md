@@ -46,20 +46,21 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 1. Select your bucket in the **Buckets** pane, and choose **Upload**\.
 
-1. On the **Upload \- Select Files** page, choose **Add Files**, and choose the files that you want to upload\.  
-![\[Upload files to your Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/s3-add-files.png)
+1. On the **Upload \- Select Files** page, choose **Add Files**, and choose the files that you want to upload\.
 
 1. Enable public read privileges for each object that you upload to your Amazon S3 bucket\. 
 
-   1. Choose **Set Details**\.
+   1. Choose **Next** to set permissions\.
 
-   1. On the **Set Details** page, choose **Set Permissions**\.
+   1. In the **Manage public permissions** drop\-down list, choose **Grant public read access to this object\(s\)**\.
 
-   1. On the **Set Permissions** page, choose **Make everything public**\.
+   1. Choose **Next**\.
 
-1. Choose **Start Upload**\.
+1. Set any properties that you want for the object, such as encryption or tagging, and then Choose **Next**\.
 
-   After the upload completes, you can navigate to this item by its URL\. In the case of the previous example, the URL would be:
+1. Choose **Upload**\.
+
+   After the upload completes, you can navigate to the item by using its URL\. In the case of the previous example, the URL would be:
 
    `http://s3.amazonaws.com/example-myawsbucket/filename`
 

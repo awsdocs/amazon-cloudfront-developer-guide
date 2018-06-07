@@ -73,17 +73,17 @@ To create a CloudFront origin access identity using the CloudFront API, use the 
 + **Id element** – You use the value of the `Id` element to associate an origin access ID with your distribution\.
 + **S3CanonicalUserId element** – You use the value of the `S3CanonicalUserId` element when you give CloudFront access to your Amazon S3 bucket or objects\. 
 
-For more information about the `POST Origin Access Identity API` action, go to [POST Origin Access Identity](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateOAI.html) in the *Amazon CloudFront API Reference*\. For a list of other actions that you can perform on origin access identities, go to [Actions on Origin Access Identities](http://docs.aws.amazon.com/cloudfront/latest/APIReference/Actions_OAI.html), also in the *Amazon CloudFront API Reference*\.
+For more information, see [CreateCloudFrontOriginAccessIdentity](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html) in the *Amazon CloudFront API Reference*\.  
 
 ### Adding an Origin Access Identity to Your Distribution Using the CloudFront API<a name="private-content-adding-oai-api"></a>
 
 You can use the CloudFront API to add a CloudFront origin access identity to an existing distribution or to create a new distribution that includes an origin access identity\. In either case, include an `OriginAccessIdentity` element\. This element contains the value of the `Id` element that the `POST Origin Access Identity` API action returned when you created the origin access identity\. For web distributions, add the `OriginAccessIdentity` element to one or more origins\. For RTMP distributions, add the `OriginAccessIdentity` element to the distribution\.
 
 See the applicable topic in the *Amazon CloudFront API Reference*:
-+ **Create a new web distribution** – [POST Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateDistribution.html)
-+ **Update an existing web distribution** – [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html)
-+ **Create a new RTMP distribution** – [POST Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/CreateStreamingDistribution.html)
-+ **Update an existing RTMP distribution** – [PUT Streaming Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutStreamingDistConfig.html)
++ **Create a new web distribution** – [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
++ **Update an existing web distribution** – [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
++ **Create a new RTMP distribution** – [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)
++ **Update an existing RTMP distribution** – [UpdateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html)
 
 ## Granting the Origin Access Identity Permission to Read Objects in Your Amazon S3 Bucket<a name="private-content-granting-permissions-to-oai"></a>
 

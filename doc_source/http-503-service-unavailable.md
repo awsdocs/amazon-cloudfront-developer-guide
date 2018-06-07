@@ -6,6 +6,7 @@ An HTTP 503 status code \(Service Unavailable\) typically indicates a performanc
 + [Origin Server Does Not Have Enough Capacity to Support the Request Rate](#http-503-service-unavailable-not-enough-origin-capacity)
 + [CloudFront Was Not Able to Resolve Your Origin Domain Due to DNS Issues](#http-503-service-unavailable-origin-domain-dns-issues)
 + [CloudFront Caused the Error Due to Limited Resources at the Edge Location](#http-503-service-unavailable-limited-resources-at-edge-location)
++ [Lambda Function Associated with Your Distribution is Invalid](#http-503-service-unavailable-lambda-function-invalid)
 
 ## Origin Server Does Not Have Enough Capacity to Support the Request Rate<a name="http-503-service-unavailable-not-enough-origin-capacity"></a>
 
@@ -37,3 +38,9 @@ nslookup OriginDomainName NameServerFromAbove
 You will receive this error in the rare situation that CloudFront can't route requests to the next best available edge location, and so can't satisfy a request\. This error is common when you perform load testing on your CloudFront distribution\. To help prevent this, follow the [Load Testing CloudFront](load-testing.md) guidelines for avoiding 503 \(Capacity Exceeded\) errors\.
 
 If this happens in your production environment, contact [AWS Support](https://console.aws.amazon.com/support/home)\.
+
+## Lambda Function Associated with Your Distribution is Invalid<a name="http-503-service-unavailable-lambda-function-invalid"></a>
+
+CloudFront returns this error when a Lambda@Edge function that is configured on a cache behavior for your distribution returns an error during runtime and exits before the CloudFront request is fulfilled\.
+
+To troubleshoot this issue, examine the execution logs for your Lambda function\. Make sure you look at the log files in the region where the function executed\. For more information, see [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)\.

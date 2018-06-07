@@ -27,7 +27,9 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
     {
       "cf": {
         "config": {
+          "distributionDomainName": "d123.cloudfront.net",
           "distributionId": "EDFDVBD6EXAMPLE",
+          "eventType": "viewer-request",
           "requestId": "MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE=="
         },
         "request": {
@@ -94,15 +96,21 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
 
 Request events include the following values:
 
-**Config Values**
+***Config Values***
+
+**distributionDomainName \(read\-only\)**  
+The domain name of the distribution that's associated with the request\.
 
 **distributionID \(read\-only\)**  
 The ID of the distribution that's associated with the request\.
 
+**eventType \(read\-only\)**  
+The type of trigger that's associated with the request\.
+
 **requestId \(read\-only, viewer request events only\)**  
 An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
-**Request Values \- General**
+***Request Values \- General***
 
 **clientIp \(read\-only\)**  
 The IP address of the viewer that made the request\. If the viewer used an HTTP proxy or a load balancer to send the request, the value is the IP address of the proxy or load balancer\.
@@ -123,7 +131,7 @@ The relative path of the requested object\. Note the following:
 + If a function changes the URI for a request, that changes the object that the viewer is requesting\. 
 + If a function changes the URI for a request, that doesn't change the cache behavior for the request or the origin that the request is forwarded to\.
 
-**Request Values \- Custom Origin**
+***Request Values \- Custom Origin***
 
 You can specify either a custom origin or an Amazon S3 origin in a single request; not both\.
 
@@ -151,9 +159,9 @@ How long, in seconds, CloudFront should wait for a response after forwarding a r
 **sslProtocols**  
 The SSL protocols that CloudFront can use when establishing an HTTPS connection with your origin\. Values can be the following: `TLSv1.2`, `TLSv1.1`, `TLSv1`, `SSLv3`\.
 
-**Request Values \- Amazon S3 Origin**
+***Request Values \- Amazon S3 Origin***
 
-You can specify either a custom origin or an Amazon S3 origin in a single request; not both\.
+You can specify either a custom origin or an Amazon S3 origin in a single request, but not both\.
 
 **authMethod**  
 Set to `origin-access-identity` if your Amazon S3 bucket has an origin access identity \(OAI\) set up, or `none` if you aren’t using OAI\. If you set authMethod to `origin-access-identity`, there are several requirements:   
@@ -184,7 +192,9 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
         {
             "cf": {
                 "config": {
+                    "distributionDomainName": "d123.cloudfront.net",
                     "distributionId": "EDFDVBD6EXAMPLE",
+                    "eventType": "viewer-response",
                     "requestId": "xGN7KWpVEmB9Dp7ctcVFQC4E-nrcOcEKS3QyAez--06dV7TEXAMPLE=="
                 },
                 "request": {
@@ -239,6 +249,9 @@ Response events include the values that appear in the corresponding request even
 
 **distributionID \(read\-only\)**  
 The ID of the distribution that's associated with the request\.
+
+**eventType \(read\-only\)**  
+The type of trigger that's associated with the response\.
 
 **headers**  
 Headers that you want CloudFront to return in the generated response\. Note the following:  

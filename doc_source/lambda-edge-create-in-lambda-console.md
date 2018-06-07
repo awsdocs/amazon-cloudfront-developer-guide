@@ -43,7 +43,7 @@ Why add triggers later? Generally it's best to test and debug the function befor
 
 1. On the **Configuration** tab, choose the applicable **Code entry type**\. Then follow the prompts to edit or upload your code\.
 
-1. For **Runtime**, accept the default value of **Node\.js 6\.10**\.
+1. For **Runtime**, choose the value based on your function's code\.
 
 1. In the **Tags** section, add any applicable tags\.
 

@@ -1,8 +1,6 @@
 # Using Alternate Domain Names and HTTPS<a name="using-https-alternate-domain-names"></a>
 
-By default, you can deliver your content to viewers over HTTPS by using your CloudFront distribution domain name in your URLs, for example, `https://d111111abcdef8.cloudfront.net/image.jpg`\. For more information, see [Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
-
-If you want your viewers to use HTTPS and you want to use your own domain name in the URLs for your objects \(for example, `https://www.example.com/image.jpg`\), you need to perform several additional steps, as explained in this topic\.
+If you want your viewers to use HTTPS and you want to use your own domain name in the URLs for your objects \(for example, `https://www.example.com/image.jpg`\), you need to perform several additional steps, as explained in this topic\. If you simply use your CloudFront distribution domain name in your URLs, for example, `https://d111111abcdef8.cloudfront.net/image.jpg`, follow the guidance in the following topic instead: [ Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
 
 **Important**  
 When you add a certificate to your distribution, CloudFront immediately propagates the certificate to all of its edge locations\. As new edge locations become available, CloudFront will propagate the certificate to those locations, too\. You can't restrict the edge locations that CloudFront propagates the certificates to\.

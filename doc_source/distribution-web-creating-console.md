@@ -1,8 +1,8 @@
-# Creating or Updating a Web Distribution Using the CloudFront Console<a name="distribution-web-creating-console"></a>
+# Creating a Web Distribution<a name="distribution-web-creating-console"></a>
 
 You can create or update a web distribution by using the CloudFront console or programmatically\. This topic is about working with web distributions by using the console\.
 
-If you want to create or update a web distribution by using the CloudFront API, go to [ Create Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [Update Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
+If you want to create or update a web distribution by using the CloudFront API, see [ CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
 
 **Note**  
 To see the current limit on the number of web distributions that you can create for each AWS account, or to request a higher limit, [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.<a name="CreatingDownloadDistributionsConsoleProcedure"></a>
@@ -25,6 +25,6 @@ To see the current limit on the number of web distributions that you can create 
 **Tip**  
 You can use an alternate domain name, instead of the name assigned to you by CloudFront; by following the steps in [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
-1. When your distribution is deployed, confirm that you can access your content using your new CloudFront URL or CNAME\. For more information, see [Testing Your Web Distribution](distribution-web-testing.md)\.
+1. When your distribution is deployed, confirm that you can access your content using your new CloudFront URL or CNAME\. For more information, see [Testing a Web Distribution](distribution-web-testing.md)\.
 
 To update a web distribution \(for example, to add or change cache behaviors\), see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.

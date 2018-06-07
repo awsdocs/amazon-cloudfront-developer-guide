@@ -10,7 +10,7 @@ For web distributions, CloudFront lets you choose whether you want CloudFront to
 
 By default, CloudFront doesn't consider headers when caching your objects in edge locations\. If your origin returns two objects and they differ only by the values in the request headers, CloudFront caches only one version of the object\.
 
-You can configure CloudFront to forward headers to the origin, which causes CloudFront to cache multiple versions of an object based on the values in one or more request headers\. To configure CloudFront to cache objects based on the values of specific headers, you specify cache behavior settings for your distribution\. For more information, see [ Cache Based on Selected Request Headers](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesForwardHeaders)\.
+You can configure CloudFront to forward headers to the origin, which causes CloudFront to cache multiple versions of an object based on the values in one or more request headers\. To configure CloudFront to cache objects based on the values of specific headers, you specify cache behavior settings for your distribution\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
 
  For example, suppose viewer requests for `logo.jpg` contain a custom `Product` header that has a value of either `Acme` or `Apex`\. When you configure CloudFront to cache your objects based on the value of the `Product` header, CloudFront forwards requests for `logo.jpg` to the origin and includes the `Product` header and header values\. CloudFront caches `logo.jpg` once for requests in which the value of the `Product` header is `Acme` and once for requests in which the value is `Apex`\.
 
@@ -23,7 +23,7 @@ If you configure CloudFront to forward all headers to your origin, CloudFront do
 
 For the current limit on the number of headers that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
-For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing web distribution, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing web distribution, see [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 **Topics**
 + [Selecting the Headers on Which You Want CloudFront to Base Caching](#header-caching-web-selecting)

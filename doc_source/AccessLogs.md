@@ -1,6 +1,8 @@
 # Access Logs<a name="AccessLogs"></a>
 
-You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These access logs are available for both web and RTMP distributions\. If you enable logging, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\. 
+You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These access logs are available for both web and RTMP distributions\. If you enable logging, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\.
+
+You can enable logging as an option that you specify when you're creating a distribution\. For more information, see the [Logging](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesLoggingOnOff) section of the **Values That You Specify When You Create or Update a Web Distribution ** topic\.
 
 **Topics**
 + [How Logging Works](#AccessLogsOverview)
@@ -51,8 +53,18 @@ Note the following:
 
 **ACL for the bucket**  
 When you create or update a distribution and enable logging, CloudFront uses these permissions to update the ACL for the bucket to give the awsdatafeeds account `FULL_CONTROL` permission\. The awsdatafeeds account writes log files to the bucket\. If your account doesn't have the required permissions, creating or updating the distribution will fail\.  
-If you update the ACL for the bucket to remove permissions for the awsdatafeeds account, CloudFront won't be able to save logs to the S3 bucket any longer\. 
 In some circumstances, if you programmatically submit a request to create a bucket but a bucket with the specified name already exists, S3 resets permissions on the bucket to the default value\. If you configured CloudFront to save access logs in an S3 bucket and you stop getting logs in that bucket, check permissions on the bucket to ensure that CloudFront has the necessary permissions\.
+
+**Restoring the ACL for the bucket**  
+If you remove permissions for the awsdatafeeds account, CloudFront won't be able to save logs to the S3 bucket\. To enable CloudFront to start again to save logs for your distribution, restore the ACL permission by doing one of the following:  
+
+1. Disable logging for your distribution in CloudFront, and then enable it again\. For more information, see [Logging](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesLoggingOnOff) in the **Values That You Specify When You Create or Update a Web Distribution ** topic\.
+
+1. Add the ACL permission for awsdatafeeds manually by navigating to the S3 bucket in the Amazon S3 console and adding permission\. To add the ACL for awsdatafeeds, you must provide the canonical name for the account, which is the following: 
+
+   `c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0`
+
+   For more information about adding ACLs to S3 buckets, see [Setting ACL Bucket Permissions](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-bucket-permissions.html) in the **Amazon Simple Storage Service Console User Guide**\.
 
 **ACL for each log file**  
 In addition to the ACL on the bucket, there's an ACL on each log file\. The bucket owner has `FULL_CONTROL` permission on each log file, the distribution owner \(if different from the bucket owner\) has no permission, and the awsdatafeeds account has read and write permissions\. 
@@ -112,8 +124,8 @@ You can enable or disable logging, change the Amazon S3 bucket where your logs a
 
 For more information, see the following topics:
 + Updating a web or an RTMP distribution using the CloudFront console: [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
-+ Updating a web distribution using the CloudFront API: [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
-+ Updating an RTMP distribution using the CloudFront API: [PUT Streaming Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutStreamingDistConfig.html) in the *Amazon CloudFront API Reference*\.
++ Updating a web distribution using the CloudFront API: [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
++ Updating an RTMP distribution using the CloudFront API: [UpdateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 To use the CloudFront API to change access log settings for web distributions, you must use the 2009\-04\-02 or later version of the API\. To use the CloudFront API to change access log settings for RTMP distributions, you must use the 2010\-05\-01 or later version of the API\. 
 

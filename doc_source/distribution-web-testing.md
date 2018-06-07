@@ -1,4 +1,4 @@
-# Testing Your Web Distribution<a name="distribution-web-testing"></a>
+# Testing a Web Distribution<a name="distribution-web-testing"></a>
 
 After you've created your distribution, CloudFront knows where your origin server is, and you know the domain name associated with the distribution\. You can create links to your objects using the CloudFront domain name, and CloudFront will serve the objects to your web page or application\.
 

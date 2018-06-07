@@ -1,8 +1,12 @@
 # Requiring HTTPS for Communication Between CloudFront and Your Custom Origin<a name="using-https-cloudfront-to-custom-origin"></a>
 
+If you want to require HTTPS for communication between CloudFront and your custom origin, *and* you're using the domain name that CloudFront assigned to your distribution in the URLs for your objects \(for example, https://d111111abcdef8\.cloudfront\.net/logo\.jpg\), follow the procedures in this topic to do the following:
++ Change the **Origin Protocol Policy** setting for the applicable origins in your distribution
++ Install an SSL/TLS certificate on your custom origin server \(this isn't required when you use an Amazon S3 origin\)
+
 If you're using an Amazon S3 bucket as your origin, see [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)\.
 
-If you want to require HTTPS for communication between CloudFront and your custom origin, and you're using the domain name that CloudFront assigned to your distribution in the URLs for your objects \(for example, https://d111111abcdef8\.cloudfront\.net/logo\.jpg\), perform the following procedures to change the **Origin Protocol Policy** setting for the applicable origins in your distribution, and install an SSL/TLS certificate on your custom origin server\.
+If you're using an alternate domain instead of the domain that CloudFront assigned to your distribution, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
 **Topics**
 + [Changing CloudFront Settings](#using-https-cloudfront-to-origin-distribution-setting)
@@ -11,7 +15,7 @@ If you want to require HTTPS for communication between CloudFront and your custo
 
 ## Changing CloudFront Settings<a name="using-https-cloudfront-to-origin-distribution-setting"></a>
 
-The following procedure explains how to configure CloudFront to use HTTPS to communicate with an Elastic Load Balancing load balancer, an Amazon EC2 instance, or another custom origin\. For information about using the CloudFront API to update a web distribution, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\. <a name="using-https-cloudfront-to-custom-origin-procedure"></a>
+The following procedure explains how to configure CloudFront to use HTTPS to communicate with an Elastic Load Balancing load balancer, an Amazon EC2 instance, or another custom origin\. For information about using the CloudFront API to update a web distribution, see [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. <a name="using-https-cloudfront-to-custom-origin-procedure"></a>
 
 **To configure CloudFront to require HTTPS between CloudFront and your custom origin**
 
@@ -66,15 +70,15 @@ For lists of the RSA and ECDSA ciphers supported by CloudFront, see [Supported S
 
 ### How RSA Ciphers Work<a name="using-https-cloudfront-to-origin-which-cipher-rsa"></a>
 
-CloudFront and origin servers typically use RSA 2048\-bit asymmetric keys for SSL/TLS termination\. RSA algorithms use the product of two large prime numbers, with another number added to it to create a public key\. The private key is a related number\. The strength of RSA relies on the presumed difficulty of breaking a key that requires factoring the product of two large prime numbers\. However, improvements in computer technology have weakened RSA algorithms because faster computer calculations mean it’s now easier to break the encryption\.
+CloudFront and origin servers typically use RSA 2048\-bit asymmetric keys for SSL/TLS termination\. RSA algorithms use the product of two large prime numbers, with another number added to it to create a public key\. The private key is a related number\. The strength of RSA relies on the presumed difficulty of breaking a key that requires factoring the product of two large prime numbers\. However, improvements in computer technology have weakened RSA algorithms because faster computer calculations mean that it’s now easier to break the encryption\.
 
 If you want to maintain encryption strength while continuing to use RSA, one option would be to increase the size of your RSA keys\. However, this approach isn’t easily scalable because using larger keys increases the compute cost for cryptography\.
 
 ### How ECDSA Ciphers Work<a name="using-https-cloudfront-to-origin-which-cipher-ecdsa"></a>
 
-Alternatively, you could use an ECDSA certificate\. ECDSA bases its security on a more complex mathematical problem than RSA that is harder to solve, which means it takes more computer processing time to break ECDSA encryption\. ECDSA is built on the principle that it is difficult to solve for the discrete logarithm of a random elliptic curve when its base is known, also known as the Elliptic Curve Discrete Logarithm Problem \(ECDLP\)\. This means that you can use shorter key lengths to achieve the equivalent security of using RSA with much larger key sizes\.
+Alternatively, you could use an ECDSA certificate\. ECDSA bases its security on a more complex mathematical problem than RSA that is harder to solve, which means that it takes more computer processing time to break ECDSA encryption\. ECDSA is built on the principle that it is difficult to solve for the discrete logarithm of a random elliptic curve when its base is known, also known as the Elliptic Curve Discrete Logarithm Problem \(ECDLP\)\. This means that you can use shorter key lengths to achieve the equivalent security of using RSA with much larger key sizes\.
 
-In addition to providing better security, using ECDSA's smaller keys enables faster computing of algorithms, smaller digital certificates, and fewer bits to transmit during the SSL/TLS handshake\. As a result, the smaller keys reduce the time it takes for you to create and sign digital certificates for SSL/TLS termination on origin servers\. Using a smaller key size therefore can increase throughput by reducing the compute cycles needed for cryptography, freeing up server resources to process other work\.
+In addition to providing better security, using ECDSA's smaller keys enables faster computing of algorithms, smaller digital certificates, and fewer bits to transmit during the SSL/TLS handshake\. As a result, the smaller keys reduce the time that it takes for you to create and sign digital certificates for SSL/TLS termination on origin servers\. Using a smaller key size therefore can increase throughput by reducing the compute cycles needed for cryptography, freeing up server resources to process other work\.
 
 ### Choosing Between RSA and ECDSA Ciphers<a name="using-https-cloudfront-to-origin-which-cipher-choosing"></a>
 

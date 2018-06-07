@@ -1,13 +1,10 @@
 # Setting Signed Cookies Using a Canned Policy<a name="private-content-setting-signed-cookie-canned-policy"></a>
 
-**Topics**
-+ [Creating a Signature for a Signed Cookie That Uses a Canned Policy](#private-content-canned-policy-signature-cookies)
-
-To set a signed cookie using a canned policy, perform the following procedure\.<a name="private-content-setting-signed-cookie-canned-policy-procedure"></a>
+To set a signed cookie by using a canned policy, complete the following steps\. To create the signature, see [ Creating a Signature for a Signed Cookie That Uses a Canned Policy](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-canned-policy.html#private-content-canned-policy-signature-cookies)\.<a name="private-content-setting-signed-cookie-canned-policy-procedure"></a>
 
 **To set a signed cookie using a canned policy**
 
-1. If you're using \.NET or Java to create signed URLs, and if you haven't reformatted the private key for your key pair from the default \.pem format to a format compatible with \.NET or with Java, do so now\. For more information, see [Reformatting the CloudFront Private Key \(\.NET and Java Only\)](private-content-trusted-signers.md#private-content-reformatting-private-key)\.
+1. If you're using \.NET or Java to create signed cookies, and if you haven't reformatted the private key for your key pair from the default \.pem format to a format compatible with \.NET or with Java, do so now\. For more information, see [Reformatting the CloudFront Private Key \(\.NET and Java Only\)](private-content-trusted-signers.md#private-content-reformatting-private-key)\.
 
 1. Program your application to send three `Set-Cookie` headers to approved viewers\. You need three `Set-Cookie` headers because each `Set-Cookie` header can contain only one name\-value pair, and a CloudFront signed cookie requires three name\-value pairs\. The name\-value pairs are: `CloudFront-Expires`, `CloudFront-Signature`, and `CloudFront-Key-Pair-Id`\. The values must be present on the viewer before a user makes the first request for an object that you want to control access to\. 
 **Note**  
@@ -59,7 +56,7 @@ The key pair ID that you include in CloudFront signed cookies must be associated
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, you must update your application to use a new active key pair for one of your trusted signers\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
 
-Example `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your objects:
+The following example shows `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your objects:
 
 ```
 Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly; CloudFront-Expires=1426500000
@@ -67,7 +64,7 @@ Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOn
 Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
 ```
 
-Example `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your objects:
+The following example shows `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your objects:
 
 ```
 Set-Cookie: Domain=example.org; Path=/images/*; Secure; HttpOnly; CloudFront-Expires=1426500000
@@ -79,7 +76,7 @@ If you want to use an alternate domain name such as example\.com in URLs, you mu
 
 ## Creating a Signature for a Signed Cookie That Uses a Canned Policy<a name="private-content-canned-policy-signature-cookies"></a>
 
-To create the signature for a signed cookie that uses a canned policy, you perform the following tasks:
+To create the signature for a signed cookie that uses a canned policy, do the following:
 
 1. Create a policy statement\. See [Creating a Policy Statement for a Signed Cookie That Uses a Canned Policy](#private-content-canned-policy-statement-cookies)\.
 
