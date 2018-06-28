@@ -1,6 +1,6 @@
-# Authentication and Access Control for CloudFront<a name="auth-and-access-control"></a>
+# AWS Authentication and Access Control for CloudFront<a name="auth-and-access-control"></a>
 
-To perform any operation on CloudFront resources, such as creating a web distribution or an invalidation, [AWS Identity and Access Management \(IAM\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) requires you to authenticate that you're an approved AWS user\. If you're using the CloudFront console, you authenticate your identity by providing your AWS user name and a password\. If you're accessing CloudFront programmatically, your application authenticates your identity for you by using access keys or by signing requests\.
+To perform any operation on CloudFront resources, such as creating a web distribution or invalidating an object, [AWS Identity and Access Management \(IAM\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) requires you to authenticate that you're an approved AWS user\. If you're using the CloudFront console, you authenticate your identity by providing your AWS user name and a password\. If you're accessing CloudFront programmatically, your application authenticates your identity for you by using access keys or by signing requests\.
 
 After you authenticate your identity, IAM controls your access to AWS by verifying that you have permissions to perform operations and access resources\. If you are an account administrator, you can use IAM to control the access of other users to the resources that are associated with your account\.
 

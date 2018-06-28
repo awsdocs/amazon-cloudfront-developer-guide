@@ -17,7 +17,7 @@ You can configure CloudFront to include custom headers whenever it forwards a re
 To configure a web distribution to forward custom headers to your origin, you update the configuration of the applicable origins by using one of the following methods: 
 
 **CloudFront console**  
-When you create or update a distribution, specify header names and values in the **Origin Custom Headers** settings\. For more information, see [Creating a Web Distribution](distribution-web-creating-console.md)\.
+When you create or update a distribution, specify header names and values in the **Origin Custom Headers** settings\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
 
 **CloudFront API**  
 For each origin that you want to forward custom headers to, add header names and values to the `CustomHeaders` section of the `DistributionConfig` complex type\. For more information, see [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) \(to create a new distribution\) or [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) \(to update an existing distribution\)\. 
@@ -55,7 +55,7 @@ You can configure CloudFront to always forward the applicable headers to your or
 
 ## Using Custom Headers to Restrict Access to Your Content on a Custom Origin<a name="forward-custom-headers-restrict-access"></a>
 
-If you're using a custom origin, you can use custom headers to prevent users from bypassing CloudFront and requesting content directly from your origin\. You can also optionally restrict access to your content by requiring that your users access your objects by using either signed URLs or signed cookies\. For more information about private content, see [Serving Private Content through CloudFront](PrivateContent.md)\.
+If you're using a custom origin, you can use custom headers to prevent users from bypassing CloudFront and requesting content directly from your origin\. You can also optionally restrict access to your content by requiring that your users access your objects by using either signed URLs or signed cookies\. For more information about private content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
 
 To require that users access your content through CloudFront, change the following settings in your CloudFront distributions:
 

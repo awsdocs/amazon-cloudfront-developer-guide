@@ -108,7 +108,7 @@ The ID of the distribution that's associated with the request\.
 The type of trigger that's associated with the request\.
 
 **requestId \(read\-only, viewer request events only\)**  
-An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
+An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 ***Request Values \- General***
 
@@ -123,7 +123,7 @@ For information about restrictions on header usage, see [Headers](lambda-require
 The HTTP method of the viewer request\.
 
 **querystring**  
-The query string, if any, that CloudFront received in the viewer request\. If the viewer request doesn't include a query string, the event structure still includes `querystring` with an empty value\. For more information about query strings, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
+The query string, if any, that CloudFront received in the viewer request\. If the viewer request doesn't include a query string, the event structure still includes `querystring` with an empty value\. For more information about query strings, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
 **uri \(read/write\)**  
 The relative path of the requested object\. Note the following:  
@@ -168,7 +168,7 @@ Set to `origin-access-identity` if your Amazon S3 bucket has an origin access id
 + You must specify a region in your header\.
 + You must use the same OAI when you switch from one Amazon S3 origin to another\.
 + You can’t use an OAI when you switch from a custom origin to an Amazon S3 origin\.
-For more information about using an OAI, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+For more information about using an OAI, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **customHeaders**  
 You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can't Forward to Your Origin](forward-custom-headers.md#forward-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
@@ -262,7 +262,7 @@ Headers that you want CloudFront to return in the generated response\. Note the 
 For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\.
 
 **requestId \(read\-only, viewer response events only\)**  
-An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as the `x-edge-request-id`\. For more information, see [Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
+An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as the `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 **request – One of the following:**  
 + Viewer response – The request that CloudFront received from the viewer and that might have been modified by the Lambda function that was triggered by a viewer request event

@@ -1,17 +1,13 @@
-# Configuring CloudFront to Cache Objects Based on Cookies<a name="Cookies"></a>
+# Caching Content Based on Cookies<a name="Cookies"></a>
 
-For web distributions, you can choose whether you want CloudFront to forward cookies to your origin and to cache separate versions of your objects based on cookie values in viewer requests\. 
-
-For Real Time Messaging Protocol \(RTMP\) distributions, you cannot configure CloudFront to process cookies\. When CloudFront requests an object from the origin server, it removes any cookies before forwarding the request to your origin\. If your origin returns any cookies along with the object, CloudFront removes them before returning the object to the viewer\. For RTMP distributions, CloudFront does not cache cookies in edge caches\.
+For web distributions, CloudFront by default doesn't consider cookies when caching your objects in edge locations\. If your origin returns two objects and they differ only by the values in the `Set-Cookie` header, CloudFront caches only one version of the object\. \(For RTMP distributions, you cannot configure CloudFront to process cookies and CloudFront does not cache cookies in edge caches\.\)
 
 **Important**  
 Amazon S3 and some HTTP servers do not process cookies\. Do not configure CloudFront cache behaviors to forward cookies to an origin that doesn't process cookies, or you'll adversely affect cacheability and, therefore, performance\. For more information about cache behaviors, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.
 
-For HTTP and HTTPS web distributions, you can choose whether you want CloudFront to forward cookies to your origin\. For RTMP distributions, you cannot configure CloudFront to process cookies\.
+You can configure CloudFront to forward to your origin some or all of the cookies in viewer requests, and to cache separate versions of your objects based on cookie values in viewer requests\. CloudFront uses the cookies in viewer requests to uniquely identify an object in the cache\. 
 
-For web distributions, CloudFront by default doesn't consider cookies when caching your objects in edge locations\. If your origin returns two objects and they differ only by the values in the `Set-Cookie` header, CloudFront caches only one version of the object\. 
-
-You can configure CloudFront to forward to your origin some or all of the cookies in viewer requests\. CloudFront uses the cookies in viewer requests to uniquely identify an object in the cache\. For example, suppose that requests for `locations.html` contain a `country` cookie that has a value of either `uk` or `fr`\. When you configure CloudFront to cache your objects based on the value of the `country` cookie, CloudFront forwards requests for `locations.html` to the origin and includes the `country` cookie and cookie values\. Your origin returns `locations.html`, and CloudFront caches the object once for requests in which the value of the `country` cookie is `uk` and once for requests in which the value is `fr`\.
+For example, suppose that requests for `locations.html` contain a `country` cookie that has a value of either `uk` or `fr`\. When you configure CloudFront to cache your objects based on the value of the `country` cookie, CloudFront forwards requests for `locations.html` to the origin and includes the `country` cookie and cookie values\. Your origin returns `locations.html`, and CloudFront caches the object once for requests in which the value of the `country` cookie is `uk` and once for requests in which the value is `fr`\.
 
 **Note**  
 If you configure CloudFront to forward cookies to your origin, CloudFront caches based on cookie values\. This is true even if your origin ignores the cookie values in the request and, in the previous example, always returns the same version of `locations.html` to CloudFront\. As a result, CloudFront forwards more requests to your origin server for the same object, which slows performance and increases the load on your origin server\. If your origin server does not vary its response based on the value of a given cookie, we recommend that you do not configure CloudFront to forward that cookie to your origin\.
@@ -28,7 +24,7 @@ You can configure each cache behavior in a web distribution to do one of the fol
 Note the following about specifying the cookies that you want to forward:
 
 **Access Logs**  
-If you configure CloudFront to log requests and to log cookies, CloudFront logs all cookies and all cookie attributes, even if you configure CloudFront not to forward cookies to your origin or if you configure CloudFront to forward only a specified list of cookies\. For more information about CloudFront logging, see [Access Logs](AccessLogs.md)\.
+If you configure CloudFront to log requests and to log cookies, CloudFront logs all cookies and all cookie attributes, even if you configure CloudFront not to forward cookies to your origin or if you configure CloudFront to forward only a specified list of cookies\. For more information about CloudFront logging, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 **Case Sensitivity**  
 Cookie names and values are both case sensitive\. For example, if two cookies for the same object are identical except for case, CloudFront will cache the object twice\.
@@ -48,4 +44,4 @@ The total number of bytes in all of the cookie names that you configure CloudFro
 `512 – (the number of cookies that you're forwarding)`  
 For example, if you configure CloudFront to forward 10 cookies to your origin, the combined length of the names of the 10 cookies can't exceed 502 bytes \(512 – 10\)\. If you configure CloudFront to forward all cookies to your origin, the length of cookie names doesn't matter\.
 
-For information about using the CloudFront console to update a distribution so CloudFront forwards cookies to the origin, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update a distribution, see [ UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
+For information about using the CloudFront console to update a distribution so CloudFront forwards cookies to the origin, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update a distribution, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.

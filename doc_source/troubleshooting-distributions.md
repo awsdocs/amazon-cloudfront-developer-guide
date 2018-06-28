@@ -14,7 +14,7 @@ To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both Clo
 
 If you are using CloudFront with an Amazon S3 origin, the original versions of your content are stored in an Amazon S3 bucket\. The easiest way to use CloudFront with Amazon S3 is to make all your objects publicly readable in Amazon S3\. To do this, you must explicitly enable public read privileges for each object that you upload to Amazon S3\.
 
-If your content is not publicly readable, you must create a CloudFront origin access identity so that CloudFront can access it\. For more information about CloudFront origin access identities, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+If your content is not publicly readable, you must create a CloudFront origin access identity so that CloudFront can access it\. For more information about CloudFront origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 Object properties and bucket properties are independent\. You must explicitly grant privileges to each object in Amazon S3\. Objects do not inherit properties from buckets, and object properties must be set independently of the bucket\.
 
@@ -43,7 +43,7 @@ The following example shows a dig request for a domain name called `images.examp
 14. 	...
 ```
 
-For more information about CNAMEs, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+For more information about CNAMEs, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
 ### Are You Referencing the Correct URL for Your CloudFront Distribution?<a name="Troubleshooting.URL"></a>
 

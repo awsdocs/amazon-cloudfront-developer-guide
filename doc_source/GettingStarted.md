@@ -1,34 +1,34 @@
 # Getting Started with CloudFront<a name="GettingStarted"></a>
 
-The example in this topic gives you a quick overview of how to use CloudFront to:
-+ Store the original versions of your objects in one Amazon Simple Storage Service \(Amazon S3\) bucket\.
-+ Distribute download content such as text or graphics\. 
-+ Make your objects accessible to everyone\.
-+ Use the CloudFront domain name in URLs for your objects \(for example, `http://d111111abcdef8.cloudfront.net/image.jpg`\) instead of your own domain name \(for example, `http://www.example.com/image.jpg`\)\.
-+ Keep your objects in CloudFront edge locations for the default duration of 24 hours\. \(The minimum duration is 0 seconds\.\)
+The example in this topic gives you a quick overview of how to use CloudFront to set up a basic configuration that:
++ Stores the original versions of your objects in one Amazon Simple Storage Service \(Amazon S3\) bucket
++ Distributes content such as text or graphics
++ Makes your objects accessible to everyone
++ Uses the CloudFront domain name in URLs for your objects \(for example, `http://d111111abcdef8.cloudfront.net/image.jpg`\)
++ Keeps your objects in CloudFront edge locations for the default duration of 24 hours \(the minimum duration is 0 seconds\)
 
-For information about how to use CloudFront when you want to use other options, see [Task List for Creating a Web Distribution](distribution-web-creating.md) or [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\.
+\(Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can limit who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.\)
 
-You only need to perform a few basic steps to start delivering your content using CloudFront\. The first step is signing up\. After that, you create a CloudFront distribution, and then use the CloudFront domain name to reference content in your web pages or applications\.
+You only have to complete a few basic steps to start delivering your content by using CloudFront\. The first step is signing up\. After that, you create a CloudFront distribution, and then use the CloudFront domain name in URLs in your web pages or applications to reference the content\.
 
 **Topics**
-+ [Step 1: Sign up for Amazon Web Services](#GettingStartedSignup)
-+ [Step 2: Upload your content to Amazon S3 and grant object permissions](#GettingStartedUploadContent)
-+ [Step 3: Create a CloudFront Web Distribution](#GettingStartedCreateDistribution)
-+ [Step 4: Test your links](#GettingStartedAccessingDistributions)
++ [Prerequisites](#GettingStartedSignup)
++ [Step 1: Upload your content to Amazon S3 and grant object permissions](#GettingStartedUploadContent)
++ [Step 2: Create a CloudFront distribution](#GettingStartedCreateDistribution)
++ [Step 3: Test your links](#GettingStartedAccessingDistributions)
 
-## Step 1: Sign up for Amazon Web Services<a name="GettingStartedSignup"></a>
+## Prerequisites<a name="GettingStartedSignup"></a>
 
-If you haven't already done so, sign up for Amazon Web Services at [http://aws\.amazon\.com](http://aws.amazon.com)\. Just choose **Sign Up Now** and enter any required information\. 
+Before you begin, make sure that you've completed the steps in [Setting Up Amazon CloudFront](setting-up-cloudfront.md)\.
 
-## Step 2: Upload your content to Amazon S3 and grant object permissions<a name="GettingStartedUploadContent"></a>
+## Step 1: Upload your content to Amazon S3 and grant object permissions<a name="GettingStartedUploadContent"></a>
 
 An Amazon S3 bucket is a container that can contain objects or folders\. CloudFront can distribute almost any type of object for you using an Amazon S3 bucket as the source, for example, text, images, and videos\. You can create multiple buckets, and there is no limit to the amount of data that you can store on Amazon S3\.
 
 By default, your Amazon S3 bucket and all of the objects in it are private—only the AWS account that created the bucket has permission to read or write the objects in it\. If you want to allow anyone to access the objects in your Amazon S3 bucket using CloudFront URLs, you must grant public read permissions to the objects\. \(This is one of the most common mistakes when working with CloudFront and Amazon S3\. You must explicitly grant privileges to each object in an Amazon S3 bucket\.\)
 
 **Note**  
-If you want to restrict who can download your content, you can use the CloudFront private content feature\. For more information about distributing private content, see [Serving Private Content through CloudFront](PrivateContent.md)\.
+If you want to restrict who can download your content, you can use the CloudFront private content feature\. For more information about distributing private content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
 
 **To upload your content to Amazon S3 and grant read permission to everyone**
 
@@ -66,9 +66,9 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    Use your Amazon S3 URL to verify that your content is publicly accessible, but remember that this is not the URL you will use when you are ready to distribute your content\.
 
-## Step 3: Create a CloudFront Web Distribution<a name="GettingStartedCreateDistribution"></a><a name="GettingStartedCreateDistributionProcedure"></a>
+## Step 2: Create a CloudFront distribution<a name="GettingStartedCreateDistribution"></a><a name="GettingStartedCreateDistributionProcedure"></a>
 
-**To create a CloudFront web distribution**
+**To create a CloudFront distribution**
 
 1. Open the CloudFront console at [ https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
@@ -108,7 +108,7 @@ to look like this:
 instead of like this:  
 `http://d111111abcdef8.cloudfront.net/images/image.jpg`  
 you would create a CNAME for `www.example.com`\.  
-If you add a CNAME for `www.example.com` to your distribution, you also need to create \(or update\) a CNAME record with your DNS service to route queries for `www.example.com` to `d111111abcdef8.cloudfront.net`\. You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, but you may also be developing an application for the domain owner\. For more information about CNAMEs, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+If you add a CNAME for `www.example.com` to your distribution, you also need to create \(or update\) a CNAME record with your DNS service to route queries for `www.example.com` to `d111111abcdef8.cloudfront.net`\. You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, but you may also be developing an application for the domain owner\. For more information about CNAMEs, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 For the current limit on the number of alternate domain names that you can add to a distribution or request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.  
 **SSL Certificate**  
 Accept the default value, **Default CloudFront Certificate**\.   
@@ -130,7 +130,7 @@ Select **Enabled** if you want CloudFront to begin processing requests as soon a
 
    The domain name that CloudFront assigns to your distribution appears in the list of distributions\. \(It also appears on the **General** tab for a selected distribution\.\)
 
-## Step 4: Test your links<a name="GettingStartedAccessingDistributions"></a>
+## Step 3: Test your links<a name="GettingStartedAccessingDistributions"></a>
 
 After you've created your distribution, CloudFront knows where your Amazon S3 origin server is, and you know the domain name associated with the distribution\. You can create a link to your Amazon S3 bucket content with that domain name, and have CloudFront serve it\. 
 

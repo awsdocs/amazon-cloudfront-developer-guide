@@ -1,6 +1,7 @@
 # Request and Response Behavior for Amazon S3 Origins<a name="RequestAndResponseBehaviorS3Origin"></a>
 
 **Topics**
++ [How CloudFront Processes HTTP and HTTPS Requests](HTTPandHTTPSRequests.md)
 + [How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server](#RequestBehaviorS3Origin)
 + [How CloudFront Processes Responses from Your Amazon S3 Origin Server](#ResponseBehaviorS3Origin)
 
@@ -31,7 +32,7 @@ For web distributions, to control how long your objects stay in a CloudFront cac
 + Specify a value for Minimum TTL in CloudFront cache behaviors\.
 + Use the default value of 24 hours\.
 
-For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 ### Client IP Addresses<a name="RequestS3IPAddresses"></a>
 
@@ -60,7 +61,7 @@ Amazon S3 doesn't process cookies\. If you configure a cache behavior to forward
 
 ### Cross\-Origin Resource Sharing \(CORS\)<a name="RequestS3-cors"></a>
 
-If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward selected headers to Amazon S3\. For more information, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward selected headers to Amazon S3\. For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
 
 ### GET Requests That Include a Body<a name="RequestS3-get-body"></a>
 
@@ -81,10 +82,10 @@ CloudFront always caches responses to `GET` and `HEAD` requests\. You can also c
 
 If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 regions and `PUT` requests in those regions require an additional header\. For more information, see [Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
 
-If you want to use multi\-part uploads to add objects to an Amazon S3 bucket, you must add a CloudFront origin access identity to your distribution and grant the origin access identity the applicable permissions\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+If you want to use multi\-part uploads to add objects to an Amazon S3 bucket, you must add a CloudFront origin access identity to your distribution and grant the origin access identity the applicable permissions\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
-If you configure CloudFront to accept and forward to Amazon S3 all of the HTTP methods that CloudFront supports, you must create a CloudFront origin access identity to restrict access to your Amazon S3 content and grant the origin access identity the applicable permissions\. For example, if you configure CloudFront to accept and forward these methods because you want to use `PUT`, you must configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately so viewers can't delete resources that you don't want them to\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+If you configure CloudFront to accept and forward to Amazon S3 all of the HTTP methods that CloudFront supports, you must create a CloudFront origin access identity to restrict access to your Amazon S3 content and grant the origin access identity the applicable permissions\. For example, if you configure CloudFront to accept and forward these methods because you want to use `PUT`, you must configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately so viewers can't delete resources that you don't want them to\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 For information about the operations supported by Amazon S3, see the [Amazon S3 documentation](http://aws.amazon.com/documentation/s3/)\.
 
@@ -115,7 +116,7 @@ If your Amazon S3 bucket is configured as a website endpoint, you cannot configu
 
 ### Query Strings<a name="RequestS3QueryStrings"></a>
 
-For web distributions, you can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For RTMP distributions, CloudFront does not forward query string parameters\. For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
+For web distributions, you can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For RTMP distributions, CloudFront does not forward query string parameters\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
 ### Origin Response Timeout<a name="RequestS3RequestTimeout"></a>
 
@@ -154,7 +155,7 @@ If an object is not in the edge cache, and if a viewer terminates a session \(fo
 ### HTTP Response Headers That CloudFront Removes or Updates<a name="response-s3-removed-headers"></a>
 
 CloudFront removes or updates the following header fields before forwarding the response from your Amazon S3 origin to the viewer: 
-+ `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
++ `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Caching Content Based on Cookies](Cookies.md)\.
 + `Trailer`
 + `Transfer-Encoding` – If your Amazon S3 origin returns this header field, CloudFront sets the value to `chunked` before returning the response to the viewer\.
 + `Upgrade`
@@ -175,7 +176,7 @@ The maximum size of a response body that CloudFront will return to the viewer is
 You can configure an Amazon S3 bucket to redirect all requests to another host name; this can be another Amazon S3 bucket or an HTTP server\. If you configure a bucket to redirect all requests and if the bucket is the origin for a CloudFront distribution, we recommend that you configure the bucket to redirect all requests to a CloudFront distribution using either the domain name for the distribution \(for example, d111111abcdef8\.cloudfront\.net\) or an alternate domain name \(a CNAME\) that is associated with a distribution \(for example, example\.com\)\. Otherwise, viewer requests bypass CloudFront, and the objects are served directly from the new origin\.
 
 **Note**  
-If you redirect requests to an alternate domain name, you must also update the DNS service for your domain by adding a CNAME record\. For more information, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+If you redirect requests to an alternate domain name, you must also update the DNS service for your domain by adding a CNAME record\. For more information, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
 Here's what happens when you configure a bucket to redirect all requests:
 

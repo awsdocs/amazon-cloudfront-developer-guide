@@ -60,7 +60,7 @@ If the origin server returns an expired certificate, an invalid certificate, or 
 
 One of the domain names in the certificate must match one or both of the following values:
 + The value that you specified for **Origin Domain Name** for the applicable origin in your distribution\.
-+ If you configured CloudFront to forward the `Host` header to your origin, the value of the `Host` header\. For more information about forwarding headers to your origin, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
++ If you configured CloudFront to forward the `Host` header to your origin, the value of the `Host` header\. For more information about forwarding headers to your origin, see [Caching Content Based on Request Headers](header-caching.md)\.
 
 ## About RSA and ECDSA Ciphers<a name="using-https-cloudfront-to-origin-about-ciphers"></a>
 

@@ -1,12 +1,12 @@
-# Adding and Moving Alternate Domain Names \(CNAMEs\)<a name="CNAMEs"></a>
+# Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)<a name="CNAMEs"></a>
 
-In CloudFront, an alternate domain name, also known as a CNAME, lets you use your own domain name \(for example, `www.example.com`\) for links to your objects instead of using the domain name that CloudFront assigns to your distribution\. Both web and RTMP distributions support alternate domain names\.
+In CloudFront, an alternate domain name, also known as a CNAME, lets you use your own domain name \(for example, `www.example.com`\) for links to your files instead of using the domain name that CloudFront assigns to your distribution\. Both web and RTMP distributions support alternate domain names\.
 
 When you create a distribution, CloudFront returns a domain name for the distribution, for example:
 
 `d111111abcdef8.cloudfront.net`
 
-When you use the CloudFront domain name for your objects, the URL for an object called `/images/image.jpg` is:
+When you use the CloudFront domain name for your files, the URL for a file called `/images/image.jpg` is:
 
 `http://d111111abcdef8.cloudfront.net/images/image.jpg`
 
@@ -111,7 +111,7 @@ Follow these steps to move the subdomain name\.<a name="MovingASubDomainToNewDis
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
-1. If you don’t have a new distribution to move the domain name to, create one\. For more information, see [Creating a Web Distribution](distribution-web-creating-console.md)\.
+1. If you don’t have a new distribution to move the domain name to, create one\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
 
 1. Add to the distribution an alternate domain name that includes a wildcard for the alias record set or CNAME record\. For example, if the subdomain name that you want to move to the new distribution is `marketing.example.com`, add the alternate domain name `*.example.com`\. For more information, see [Using the \* Wildcard in Alternate Domain Names](#alternate-domain-names-wildcard)\.
 **Note**  
@@ -157,7 +157,7 @@ You can’t add a wildcard to a top level domain name, such as `*.com`, so if yo
 
 For second\-level domain names, like example\.com, you must contact AWS Support to move the domain name to another CloudFront distribution\. The extra steps are required because moving a domain yourself, as described in the previous procedure, requires setting up domain routing using a wildcard for part of the domain name\. For second\-level domains, for this step, you would have to set up routing as \*\.com, which isn’t allowed\.
 
-Before you get started, if you don’t have a new distribution to move the domain name to, create one\. For more, information see [Creating a Web Distribution](distribution-web-creating-console.md)\.
+Before you get started, if you don’t have a new distribution to move the domain name to, create one\. For more, information see [Creating a Distribution](distribution-web-creating-console.md)\.
 
 Moving a domain name like example\.com to a new distribution takes two steps: 
 
@@ -271,7 +271,7 @@ To correct this, sign in to your DNS provider and remove the existing DNS record
 **Adding an Alternate Domain Name at the Top Node \(Zone Apex\) for a Domain**  
 When you add an alternate domain name to a distribution, you typically create a CNAME record in your DNS configuration to route DNS queries for the domain name to your CloudFront distribution\. However, you can't create a CNAME record for the top node of a DNS namespace, also known as the zone apex; the DNS protocol doesn't allow it\. For example, if you register the DNS name `example.com`, the zone apex is `example.com`\. You can't create a CNAME record for `example.com`, but you can create CNAME records for `www.example.com`, `newproduct.example.com`, and so on\.  
 If you're using Route 53 as your DNS service, you can create an alias resource record set, which has two advantages over CNAME records\. You can create an alias resource record set for a domain name at the top node \(example\.com\)\. In addition, when you use an alias resource record set, you don't pay for Route 53 queries\.  
-If you enable IPv6, you must create two alias resource record sets: one to route IPv4 traffic \(an A record\) and one to route IPv6 traffic \(an AAAA record\)\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\. 
+If you enable IPv6, you must create two alias resource record sets: one to route IPv4 traffic \(an A record\) and one to route IPv6 traffic \(an AAAA record\)\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\. 
 For more information, see [Routing Queries to an Amazon CloudFront Distribution](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
 
 **Alternate Domain Names and HTTPS**  

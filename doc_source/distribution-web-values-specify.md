@@ -1,10 +1,10 @@
-# Values That You Specify When You Create or Update a Web Distribution<a name="distribution-web-values-specify"></a>
+# Values That You Specify When You Create or Update a Distribution<a name="distribution-web-values-specify"></a>
 
-When you create a new web distribution or update an existing distribution, you specify the following values\. For information about creating or updating a web distribution using the CloudFront console, see the applicable topic:
-+ [Working with Web Distributions](distribution-web.md)
-+ [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)
+When you create a new distribution or update an existing distribution, you specify the following values\. For information about creating or updating a distribution by using the CloudFront console, see [Creating a Distribution](distribution-web-creating-console.md) or [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
 
 **[Delivery Method](#DownloadDistValuesMethod)**
+
+Specify the delivery method: Web or RTMP\. For more information, see [Delivery Method](#DownloadDistValuesMethod)\.
 
 **[Origin Settings](#DownloadDistValuesOrigin)**
 + [Origin Domain Name](#DownloadDistValuesDomainName)
@@ -79,7 +79,7 @@ When you create a new web distribution or update an existing distribution, you s
 
 ## Delivery Method<a name="DownloadDistValuesMethod"></a>
 
-You specify the delivery method when you create a distribution\. For a web distribution, this value is always **Web**\. You can't change the delivery method for an existing distribution\. 
+You specify the delivery method when you create a distribution\. Unless you're using Adobe Flash Media Server with RTMP, this value is always **Web**\. You can't change the delivery method for an existing distribution\. 
 
 ## Origin Settings<a name="DownloadDistValuesOrigin"></a>
 
@@ -121,7 +121,7 @@ If your origin is an Amazon S3 bucket, in the CloudFront console, choose in the 
   If your bucket is in the EU \(Frankfurt\) region, you can also use the following format:
 
   `bucket-name.s3.eu-central-1.amazonaws.com` 
-+ The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
++ The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
 If the origin is an Amazon S3 bucket, the bucket name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
@@ -153,13 +153,13 @@ Choose **Yes** if you want to require users to access objects in an Amazon S3 bu
 
 Choose **No** if you want users to be able to access objects using either CloudFront URLs or Amazon S3 URLs\.
 
-For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 For information about how to require users to access objects on a custom origin by using only CloudFront URLs, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
 
 ### Origin Access Identity \(Amazon S3 Only\)<a name="DownloadDistValuesOAI"></a>
 
-If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 ### Comment for New Identity \(Amazon S3 Only\)<a name="DownloadDistValuesOAIComment"></a>
 
@@ -338,11 +338,11 @@ Specify the HTTP methods that you want CloudFront to process and forward to your
 **Note**  
 CloudFront caches responses to `GET` and `HEAD` requests and, optionally, `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
 
-If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 regions and `PUT` requests in those regions require an additional header\. For more information, see [Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
+If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 regions and `PUT` requests in those regions require an additional header\. For more information, see [Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\. 
 
 **Important**  
 If you choose **GET, HEAD, OPTIONS** or **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**, you might need to restrict access to your Amazon S3 bucket or to your custom origin to prevent users from performing operations that you don't want them to perform\. The following examples explain how to restrict access:  
-**If you're using Amazon S3 as an origin for your distribution:** Create a CloudFront origin access identity to restrict access to your Amazon S3 content, and grant the origin access identity the applicable permissions\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `PUT`, you must still configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+**If you're using Amazon S3 as an origin for your distribution:** Create a CloudFront origin access identity to restrict access to your Amazon S3 content, and grant the origin access identity the applicable permissions\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `PUT`, you must still configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 **If you're using a custom origin:** Configure your origin server to handle all methods\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `POST`, you must still configure your origin server to handle `DELETE` requests appropriately\. 
 
 ### Cached HTTP Methods<a name="DownloadDistValuesCachedHTTPMethods"></a>
@@ -358,7 +358,7 @@ Specify whether you want CloudFront to cache objects based on the values of spec
 
 Regardless of the option that you choose, CloudFront forwards certain headers to your origin and takes specific actions based on the headers that you forward\. For more information about how CloudFront handles header forwarding, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
-For more information about how to configure caching in CloudFront by using request headers, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+For more information about how to configure caching in CloudFront by using request headers, see [Caching Content Based on Request Headers](header-caching.md)\.
 
 ### Whitelist Headers<a name="DownloadDistValuesWhitelistHeaders"></a>
 
@@ -372,7 +372,7 @@ If your origin server is adding a `Cache-Control` header to your objects to cont
 
 To specify a minimum and maximum time that your objects stay in the CloudFront cache regardless of `Cache-Control` headers, and a default time that your objects stay in the CloudFront cache when the `Cache-Control` header is missing from an object, choose **Customize**\. Then, in the **Minimum TTL**, **Default TTL**, and **Maximum TTL** fields, specify the applicable value\.
 
-For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 ### Minimum TTL<a name="DownloadDistValuesMinTTL"></a>
 
@@ -383,11 +383,11 @@ If you configure CloudFront to forward all headers to your origin for a cache be
 
 To specify a value for **Minimum TTL**, you must choose the **Customize** option for the **Object Caching** setting\.
 
-For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 ### Maximum TTL<a name="DownloadDistValuesMaxTTL"></a>
 
-Specify the maximum amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated\. The value that you specify for **Maximum TTL** applies only when your origin adds HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+Specify the maximum amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated\. The value that you specify for **Maximum TTL** applies only when your origin adds HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 To specify a value for **Maximum TTL**, you must choose the **Customize** option for the **Object Caching** setting\.
 
@@ -395,7 +395,7 @@ The default value for **Maximum TTL** is 31536000 seconds \(one year\)\. If you 
 
 ### Default TTL<a name="DownloadDistValuesDefaultTTL"></a>
 
-Specify the default amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated\. The value that you specify for **Default TTL** applies only when your origin does *not* add HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+Specify the default amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated\. The value that you specify for **Default TTL** applies only when your origin does *not* add HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 To specify a value for **Default TTL**, you must choose the **Customize** option for the **Object Caching** setting\.
 
@@ -407,7 +407,7 @@ Specify whether you want CloudFront to forward cookies to your origin server and
 
 Amazon S3 doesn't process cookies, and forwarding cookies to the origin reduces cacheability\. For cache behaviors that are forwarding requests to an Amazon S3 origin, choose **None** for **Forward Cookies**\.
 
-For more information about forwarding cookies to the origin, go to [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
+For more information about forwarding cookies to the origin, go to [Caching Content Based on Cookies](Cookies.md)\.
 
 ### Whitelist Cookies \(Amazon EC2 and Other Custom Origins Only\)<a name="DownloadDistValuesWhitelistCookies"></a>
 
@@ -440,7 +440,7 @@ Choose this option if your origin server returns different versions of your obje
 **Forward all, cache based on all**  
 Choose this option if your origin server returns different versions of your objects for all query string parameters\. 
 
-For more information about caching based on query string parameters, including how to improve performance, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
+For more information about caching based on query string parameters, including how to improve performance, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
 ### Query String Whitelist<a name="DownloadDistValuesQueryStringWhiteList"></a>
 
@@ -455,7 +455,7 @@ Choose **No** if you have a Microsoft IIS server that you want to use as an orig
 **Note**  
 If you specify **Yes**, you can still distribute other content using this cache behavior if that content matches the value of **Path Pattern**\.
 
-For more information, see [Configuring On\-Demand Microsoft Smooth Streaming](on-demand-streaming-smooth.md)\.
+For more information, see [Configuring On\-Demand Microsoft Smooth Streaming](on-demand-video.md#on-demand-streaming-smooth)\.
 
 ### Restrict Viewer Access \(Use Signed URLs\)<a name="DownloadDistValuesRestrictViewerAccess"></a>
 
@@ -539,7 +539,7 @@ If you add a CNAME for `www.example.com` to your distribution, you also need to 
 
 For the current limit on the number of alternate domain names that you can add to a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
-For more information about alternate domain names, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Format of URLs for Objects](LinkFormat.md)\.
+For more information about alternate domain names, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 
 ### SSL Certificate<a name="DownloadDistValuesSSLCertificate"></a>
 
@@ -596,22 +596,22 @@ The maximum length of the name is 255 characters\. The name can contain any of t
 
 When you specify the default root object, enter only the object name, for example, `index.html`\. Do not add a `/` before the object name\.
 
-For more information, see [Specifying a Default Root Object \(Web Distributions Only\)](DefaultRootObject.md)\.
+For more information, see [Specifying a Default Root Object](DefaultRootObject.md)\.
 
 ### Logging<a name="DownloadDistValuesLoggingOnOff"></a>
 
-Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
+Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 ### Bucket for Logs<a name="DownloadDistValuesLogBucket"></a>
 
-If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myawslogbucket.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
+If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myawslogbucket.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 **Note**  
 You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions Required to Configure Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
 
 ### Log Prefix<a name="DownloadDistValuesLogPrefix"></a>
 
-Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log filenames for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
+Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log filenames for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 ### Cookie Logging<a name="DownloadDistValuesCookieLogging"></a>
 
@@ -619,7 +619,7 @@ If you want CloudFront to include cookies in access logs, choose **On**\. If you
 
 Amazon S3 doesn't process cookies, so unless your distribution also includes an Amazon EC2 or other custom origin, we recommend that you choose **Off** for the value of **Cookie Logging**\.
 
-For more information about cookies, go to [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
+For more information about cookies, go to [Caching Content Based on Cookies](Cookies.md)\.
 
 ### Enable IPv6<a name="DownloadDistValuesEnableIPv6"></a>
 
@@ -635,7 +635,7 @@ For more information, see [Routing Traffic to an Amazon CloudFront Web Distribut
 
 If you created a CNAME resource record set, either with Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record will route traffic to your distribution regardless of the IP address format of the viewer request\.
 
-If you enable IPv6 and CloudFront access logs, the `c-ip` column will include values in IPv4 and IPv6 format\. For more information, see [Access Logs](AccessLogs.md)\.
+If you enable IPv6 and CloudFront access logs, the `c-ip` column will include values in IPv4 and IPv6 format\. For more information, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 **Note**  
 To maintain high customer availability, CloudFront will respond to viewer requests by using IPv4 if our data suggests that IPv4 will provide a better user experience\. To find out what percentage of requests CloudFront is serving over IPv6, enable CloudFront logging for your distribution and parse the `c-ip` column, which contains the IP address of the viewer that made the request\. This percentage should grow over time, but it will remain a minority of traffic as IPv6 is not yet supported by all viewer networks globally\. Some viewer networks have excellent IPv6 support, but others don't support IPv6 at all\. \(A viewer network is analogous to your home internet or wireless carrier\.\)  
@@ -653,11 +653,11 @@ Indicates whether you want the distribution to be enabled or disabled once it's 
   When you create, modify, or delete a CloudFront distribution, it takes time for your changes to propagate to the CloudFront database\. An immediate request for information about a distribution might not show the change\. Propagation usually completes within minutes, but a high system load or network partition might increase this time\. 
 + *Disabled* means that even though the distribution might be deployed and ready to use, users can't use it\. Whenever a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
-You can toggle a distribution between disabled and enabled as often as you want\. Follow the process for updating a distribution's configuration\. For more information, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
+You can toggle a distribution between disabled and enabled as often as you want\. Follow the process for updating a distribution's configuration\. For more information, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
 
 ## Custom Error Pages and Error Caching<a name="DownloadDistValuesErrorPages"></a>
 
-You can have CloudFront return an object to the viewer \(for example, an HTML file\) when your Amazon S3 or custom origin returns an HTTP 4xx or 5xx status code to CloudFront\. You can also specify how long an error response from your origin or a custom error page is cached in CloudFront edge caches\. For more information, see [Customizing Error Responses](custom-error-pages.md)\.
+You can have CloudFront return an object to the viewer \(for example, an HTML file\) when your Amazon S3 or custom origin returns an HTTP 4xx or 5xx status code to CloudFront\. You can also specify how long an error response from your origin or a custom error page is cached in CloudFront edge caches\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
 
 **Note**  
 The following values aren't included in the Create Distribution wizard, so you can configure custom error pages only when you update a distribution\.

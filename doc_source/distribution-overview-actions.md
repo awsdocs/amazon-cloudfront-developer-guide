@@ -1,0 +1,13 @@
+# Actions You Can Use with Distributions<a name="distribution-overview-actions"></a>
+
+The following table lists the CloudFront actions that you can take to work with distributions and provides links to the corresponding documentation on how to do the actions with the CloudFront console and the CloudFront API\.
+
+
+| Action | Using the CloudFront Console | Using the CloudFront API: Web Distributions | Using the CloudFront API: RTMP Distributions | 
+| --- | --- | --- | --- | 
+| Create a distribution |  **Web Distributions:** See [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md) **RTMP Distributions:** See [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)  | Go to [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) | Go to [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html) | 
+| List your distributions | See [Viewing and Updating Distributions](HowToUpdateDistribution.md) | Go to [ListDistributions](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributions.html)  | Go to [ListStreamingDistributions](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListStreamingDistributions.html) | 
+| Get all information about a distribution | See [Viewing and Updating Distributions](HowToUpdateDistribution.md) | Go to [GetDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html) | Go to [GetStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetStreamingDistribution.html) | 
+| Get the distribution configuration | See [Viewing and Updating Distributions](HowToUpdateDistribution.md) | Go to [GetDistributionConfig](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetConfig.html) | Go to [GetStreamingDistributionConfig](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetStreamingDistConfig.html) | 
+| Update a distribution | See [Viewing and Updating Distributions](HowToUpdateDistribution.md) | Go to [UpdateDistributionConfig](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) | Go to [UpdateStreamingDistributionConfig](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html) | 
+| Delete a distribution | See [Deleting a Distribution](HowToDeleteDistribution.md) | Go to [Delete Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteDistribution.html) | Go to [Delete Streaming Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteStreamingDistribution.html) | 

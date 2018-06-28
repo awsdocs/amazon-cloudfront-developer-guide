@@ -1,7 +1,11 @@
-# Adding, Removing, or Replacing Objects in a Distribution<a name="AddRemoveReplaceObjects"></a>
+# Adding, Removing, or Replacing Content That CloudFront Distributes<a name="AddRemoveReplaceObjects"></a>
 
-For information about adding objects to a distribution, see [Adding Objects that You Want CloudFront to Distribute](AddingObjects.md)\.
+This section explains how to make sure CloudFront can access the content that you want to be served to your viewers, how to specify the objects in your website or in your application, and how to remove or replace content\.
 
-When you replace objects in your distribution, we recommend that you use versioned object names\. For more information, see [Updating Existing Objects Using Versioned Object Names](ReplacingObjects.md)\. You can also replace objects with objects that have the same name\. See [Updating Existing Objects Using the Same Object Names](ReplacingObjectsSameName.md)\. Regardless of how you choose to replace objects in your distribution, we recommend that you specify when objects should be removed from the CloudFront cache\. For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\. 
-
-If you need to quickly remove objects from a distribution, you can invalidate them\. For more information, see [Invalidating Objects \(Web Distributions Only\)](Invalidation.md)\.
+**Topics**
++ [Adding and Accessing Content That CloudFront Distributes](AddingObjects.md)
++ [Updating Existing Content with a CloudFront Distribution](UpdatingExistingObjects.md)
++ [Removing Content so CloudFront Won't Distribute It](RemovingObjects.md)
++ [Customizing the URL Format for Files in CloudFront](LinkFormat.md)
++ [Invalidating Files](Invalidation.md)
++ [Serving Compressed Files](ServingCompressedFiles.md)

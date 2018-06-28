@@ -147,7 +147,7 @@ Select the check box if you want to allow the request to go to your origin *if t
 
 To use field\-level encryption, link a configuration to a cache behavior for a distribution by adding the configuration ID as a value for your distribution\. Note that the Viewer Protocol Policy and Origin Protocol Policy must be HTTPS in order for you to link a configuration to a cache behavior\.
 
-For more information, see [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
+For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ## Decrypting Data Fields at Your Origin<a name="field-level-encryption-decrypt"></a>
 

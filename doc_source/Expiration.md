@@ -1,4 +1,4 @@
-# Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)<a name="Expiration"></a>
+# Managing How Long Content Stays in an Edge Cache \(Expiration\)<a name="Expiration"></a>
 
 You can control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin\. Reducing the duration allows you to serve dynamic content\. Increasing the duration means your users get better performance because your objects are more likely to be served directly from the edge cache\. A longer duration also reduces the load on your origin\.
 
@@ -55,7 +55,7 @@ For an example of how to add `Cache-Control` and `Expires` header fields using t
 For web distributions, you can use `Cache-Control` or `Expires` headers, and CloudFront minimum, maximum, and default TTL values to control the amount of time in seconds that CloudFront keeps an object in the cache before forwarding another request to the origin\. Headers values also determine how long a browser keeps an object in the cache before forwarding another request to CloudFront\. 
 
 **Important**  
-If you configure CloudFront to forward all headers to your origin for a cache behavior, CloudFront never caches the associated objects\. Instead, CloudFront forwards all requests for those objects to the origin\. In that configuration, the value of minimum TTL must be 0\. For more information, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+If you configure CloudFront to forward all headers to your origin for a cache behavior, CloudFront never caches the associated objects\. Instead, CloudFront forwards all requests for those objects to the origin\. In that configuration, the value of minimum TTL must be 0\. For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
 
 To specify values for [Minimum TTL](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMinTTL), [Maximum TTL](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMaxTTL), and [Default TTL](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDefaultTTL), you must choose the **Customize** option for the [Object Caching](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesObjectCaching) setting\.
 
@@ -70,7 +70,7 @@ To specify values for [Minimum TTL](http://docs.aws.amazon.com/AmazonCloudFront/
 | **The origin adds an `Expires` header to objects** |  **CloudFront caching** CloudFront caches objects until the date in the `Expires` header or for the value of the CloudFront maximum TTL, whichever is sooner\. **Browser caching** Browsers cache objects until the date in the `Expires` header\.  |  **CloudFront caching** CloudFront caching depends on the values of the CloudFront minimum TTL and maximum TTL and the `Expires` header: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html) **Browser caching** Browsers cache objects until the date and time in the `Expires` header\.  | 
 | **Origin adds `Cache-Control: no-cache`, `no-store`, and/or `private` directives to objects** | CloudFront and browsers respect the headers\. For an exception to how CloudFront handles the `Cache-Control: no-cache` header, see [Simultaneous Requests for the Same Object \(Traffic Spikes\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-traffic-spikes)\. |  **CloudFront caching** CloudFront caches objects for the value of the CloudFront minimum TTL\. **Browser caching** Browsers respect the headers\.  | 
 
-For information about how to change settings for web distributions using the CloudFront console, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about how to change settings for web distributions using the CloudFront API, see [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\. 
+For information about how to change settings for web distributions using the CloudFront console, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\. For information about how to change settings for web distributions using the CloudFront API, see [PUT Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html)\. 
 
 ## Specifying the Minimum Time that CloudFront Caches Objects for RTMP Distributions<a name="expiration-rtmp-distribution"></a>
 

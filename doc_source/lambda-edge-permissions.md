@@ -28,7 +28,7 @@ In addition to the IAM permissions that you need to use AWS Lambda, the IAM user
   Choose `cloudfront:UpdateDistribution` to update a distribution or `cloudfront:CreateDistribution` to create a distribution\.
 
 For more information, see the following documentation:
-+ [Authentication and Access Control for CloudFront](auth-and-access-control.md) in this guide\.
++ [AWS Authentication and Access Control for CloudFront](auth-and-access-control.md) in this guide\.
 + [Authentication and Access Control for AWS Lambda](http://docs.aws.amazon.com/lambda/latest/dg/auth-and-access-control.html) in the *AWS Lambda Developer Guide*
 
 ## Function Execution Role for Service Principals<a name="lambda-edge-permissions-function-execution"></a>

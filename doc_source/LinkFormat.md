@@ -1,4 +1,6 @@
-# Format of URLs for Objects<a name="LinkFormat"></a>
+# Customizing the URL Format for Files in CloudFront<a name="LinkFormat"></a>
+
+After you set up your origin with the objects \(content\) that you want CloudFront to serve to your viewers, you must use the correct URLs to reference those objects in your website or application code so that CloudFront can serve it\.
 
 The domain name that you use in the URLs for objects on your web pages or in your web application can be either of the following:
 + The domain name, such as `d111111abcdef8.cloudfront.net`, that CloudFront automatically assigns when you create a distribution
@@ -16,12 +18,6 @@ You use the same URL format whether you store the content in Amazon S3 buckets o
 The URL format depends in part on the value that you specify for **Origin Path** in your distribution\. This value gives CloudFront a top directory path for your objects\. For more information about setting the origin path when you create a web distribution, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.
 
 For more information about URL formats, see the following sections\.
-
-**Topics**
-+ [Using Your Own Domain Name \(Example\.com\)](#LinkFormat_OwnDomain)
-+ [Using a Trailing Slash \(/\) in URLs](#LinkFormat_TrailingSlash)
-+ [Creating URLs for Streaming](#LinkFormat_StreamingURLs)
-+ [Creating Signed URLs for Restricted Content](#LinkFormat_SignedURLs)
 
 ## Using Your Own Domain Name \(Example\.com\)<a name="LinkFormat_OwnDomain"></a>
 
@@ -45,10 +41,10 @@ Both formats work to link to CloudFront objects, but being consistent can help p
 
 It’s inconvenient to have to invalidate both URL formats, and it can lead to additional costs\. That’s because if you must double up invalidations to cover both types of URLs, you might reach the limit for free invalidations for the month\. And if that happens, you'll have to pay for all the invalidations, even if only one format for each directory URL exists in CloudFront\.
 
-## Creating URLs for Streaming<a name="LinkFormat_StreamingURLs"></a>
-
-If your CloudFront distribution serves streaming content, you must include additional characters in the URLs for your objects\. For more information, see [Configuring the Media Player](Streaming_URLs.md)\.
-
 ## Creating Signed URLs for Restricted Content<a name="LinkFormat_SignedURLs"></a>
 
-If you have content that you want to restrict access to, you can create signed URLs\. For example, if you want to distribute your content only to users who have authenticated, you can create URLs that are valid only for a specified time period or that are available only from a specified IP address\. For more information, see [Serving Private Content through CloudFront](PrivateContent.md)\.
+If you have content that you want to restrict access to, you can create signed URLs\. For example, if you want to distribute your content only to users who have authenticated, you can create URLs that are valid only for a specified time period or that are available only from a specified IP address\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+
+## Creating URLs for RTMP Distribution Media Files<a name="LinkFormat_StreamingURLs"></a>
+
+If you use an RTMP distribution to serve streaming content, you must include additional characters in the URLs for your files\. For more information, see [Configuring the Media Player](Streaming_URLs.md)\.

@@ -1,4 +1,4 @@
-# Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content<a name="private-content-restricting-access-to-s3"></a>
+# Restricting Access to Amazon S3 Content by Using an Origin Access Identity<a name="private-content-restricting-access-to-s3"></a>
 
 **Topics**
 + [Creating a CloudFront Origin Access Identity and Adding it to Your Distribution](#private-content-creating-oai)
@@ -41,29 +41,29 @@ If you didn't create an origin access identity when you created your distributio
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
-1. Click the ID of the distribution that you want to add an origin access identity to\.
+1. Click the ID of a distribution that has an S3 origin, and then choose **Distribution Settings**\.
 
-1. Change to edit mode:
-   + **Web distributions** – Click the **Origins** tab, select the origin that you want to edit, and click **Edit**\. You can only create an origin access identity for origins for which **Origin Type** is **S3 Origin**\.
-   + **RTMP distributions** – Click **Edit**\.
+1. Choose the **Origins** tab\.
 
-1. For **Restrict Bucket Access**, click **Yes**\.
+1. Choose an origin, and the choose **Edit**\.
+
+1. For **Restrict Bucket Access**, choose **Yes**\.
 
 1. If you already have an origin access identity that you want to use, click **Use an Existing Identity**\. Then select the identity in the **Your Identities** list\.
 **Note**  
 If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. 
 
-   If you want to create an identity, click **Create a New Identity**\. Then enter a description for the identity in the **Comment** field\.
+   If you want to create an identity, click **Create a New Identity**\. If you like, you can replace the bucket name in the **Comment** field with a custom description\.
 
 1. If you want CloudFront to automatically give the origin access identity permission to read the objects in the Amazon S3 bucket specified in **Origin Domain Name**, click **Yes, Update Bucket Policy**\.
 **Important**  
-If you click **Yes, Update Bucket Policy**, CloudFront updates bucket permissions to grant the specified origin access identity the permission to read objects in your bucket\. However, CloudFront does not remove existing permissions\. If users currently have permission to access the objects in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket permissions\. To view or remove existing bucket permissions, use a method provided by Amazon S3\. For more information, see [Granting the Origin Access Identity Permission to Read Objects in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
+If you choose **Yes, Update Bucket Policy**, CloudFront updates bucket permissions to grant the specified origin access identity the permission to read objects in your bucket\. However, CloudFront does not remove existing permissions\. If users currently have permission to access the objects in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket permissions\. To view or remove existing bucket permissions, use a method provided by Amazon S3\. For more information, see [Granting the Origin Access Identity Permission to Read Objects in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
 
-   If you want to manually update permissions on your Amazon S3 bucket, click **No, I Will Update Permissions**\.
+   If you want to manually update permissions on your Amazon S3 bucket, choose **No, I Will Update Permissions**\.
 
-1. Click **Yes, Edit**\.
+1. Choose **Yes, Edit**\.
 
-1. If you're adding an origin access identity to a web distribution and you have more than one origin, repeat step 3 through step 7 as applicable\.
+1. If you have more than one origin, repeat the steps to add an origin access identity for one\.
 
 ### Creating an Origin Access Identity Using the CloudFront API<a name="private-content-creating-oai-api"></a>
 

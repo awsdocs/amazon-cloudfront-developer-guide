@@ -105,7 +105,7 @@ A Lambda function can read, edit, remove, or add any of the following headers\.
 + CloudFront\-Viewer\-Country
 
 Note the following:
-+ If you want CloudFront to add these headers, you must configure CloudFront to cache based on these headers\. For information about configuring CloudFront to cache based on specified headers, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders) in the topic [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
++ If you want CloudFront to add these headers, you must configure CloudFront to cache based on these headers\. For information about configuring CloudFront to cache based on specified headers, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 + CloudFront adds the headers after the viewer request event\. 
 + If the viewer adds headers that have these names, CloudFront overwrites the header values\.
 + For viewer events, CloudFront\-Viewer\-Country is blacklisted\. Blacklisted headers aren't exposed and can't be added by Lambda@Edge functions\. If your Lambda function adds a blacklisted header, the request fails CloudFront validation, and CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
@@ -149,7 +149,7 @@ Functions triggered by origin request and response events as well as functions t
 + We recommend that you use percent encoding for the URI and query string\. For more information, see [URI and Query String Encoding](#lambda-requirements-encoding)\.
 + The total size of the URI \(`event.Records[0].cf.request.uri`\) and the query string \(`event.Records[0].cf.request.querystring`\) must be less than 8,192 characters\.
 
-For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
+For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
 ## Tagging<a name="lambda-requirements-tagging"></a>
 

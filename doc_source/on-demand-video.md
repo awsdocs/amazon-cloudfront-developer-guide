@@ -1,48 +1,65 @@
-# Delivering On\-Demand Video with CloudFront and AWS Media Services<a name="on-demand-video"></a>
+# Delivering On\-Demand Video with CloudFront<a name="on-demand-video"></a>
 
-To use AWS products to deliver on\-demand video streaming, you can use Amazon S3 to store the content in its original format, [AWS Elemental MediaConvert](http://docs.aws.amazon.com/mediaconvert/latest/ug/getting-started.html) to transcode the video files into streaming formats, and CloudFront to deliver the video to viewers\.
+To deliver on\-demand video streaming, you can use Amazon S3 to store the content in its original format, use a transcoder, such as [AWS Elemental MediaConvert](http://docs.aws.amazon.com/mediaconvert/latest/ug/getting-started.html), to transcode the video into streaming formats, store the transcoded video in an S3 bucket, and then use CloudFront to deliver the video to viewers\. If you want to use Microsoft Smooth Streaming, see [Configuring On\-Demand Microsoft Smooth Streaming](#on-demand-streaming-smooth)\.
 
 To create the solution, follow these steps:
 + **Step 1:** Upload your content to an Amazon S3 bucket\. To learn more about working with S3, see [the Amazon Simple Storage Service Developer Guide](http://docs.aws.amazon.com/AmazonS3/latest/dev/)\.
-+ **Step 2:**Use AWS Elemental MediaConvert to convert your video into the formats required by the players your viewers will be using\. You can also create assets of that vary in size and quality for adaptive bitrate streaming, which adjusts the viewing quality depending on the viewer's available bandwidth\. AWS Elemental MediaConvert takes content that you upload to an S3 bucket, transcodes it, and stores the result in another S3 bucket\. 
-+ **Step 3:** Deliver the converted content by using a CloudFront distribution, so viewers can watch it on any device, whenever they like\. First, you put all segments and manifest files together in a single directory\. Then you set up a CloudFront distribution to serve the content \(see [Configuring On\-Demand Video with AWS Elemental MediaStore](#on-demand-streaming-mediastore)\)\. 
++ **Step 2:** Use AWS Elemental MediaConvert to convert your video into the formats required by the players your viewers will be using\. You can also create assets that vary in resolution and bitrate for adaptive bitrate streaming, which adjusts the viewing quality depending on the viewer's available bandwidth\. AWS Elemental MediaConvert outputs the transcoded video to an S3 bucket\. 
++ **Step 3:** Deliver the converted content by using a CloudFront distribution, so viewers can watch it on any device, whenever they like\. 
 
 **Tip**  
-To learn more about best practices when you implement a video on\-demand workflow with AWS Cloud services, see [Video on Demand on AWS](aws.amazon.comanswers/media-entertainment/video-on-demand-on-aws/)\.  
-You can also explore how to use an AWS CloudFormation template to deploy a video\-on\-demand AWS solution together with all the associated components\. To see the steps for using the template, see [Video on Demand Automated Deployment](aws.amazon.comsolutions/latest/video-on-demand/deployment.html)\.
+To learn more about best practices when you implement a video on\-demand workflow with AWS Cloud services, see [Video on Demand on AWS](https://aws.amazon.com/answers/media-entertainment/video-on-demand-on-aws/)\.  
+You can also explore how to use an AWS CloudFormation template to deploy a video\-on\-demand AWS solution together with all the associated components\. To see the steps for using the template, see [Video on Demand Automated Deployment](https://aws.amazon.com/solutions/latest/video-on-demand/deployment.html)\.
 
-## Configuring On\-Demand Video with AWS Elemental MediaStore<a name="on-demand-streaming-mediastore"></a>
+**Topics**
++ [Configuring On\-Demand Microsoft Smooth Streaming](#on-demand-streaming-smooth)
 
-If you store on\-demand videos in [AWS Elemental MediaStore](http://docs.aws.amazon.com/mediastore/latest/ug/getting-started.html), you can create a CloudFront distribution to serve the content\.
+## Configuring On\-Demand Microsoft Smooth Streaming<a name="on-demand-streaming-smooth"></a>
 
-To get started, you grant CloudFront access to your AWS Elemental MediaStore container\. Then you create a CloudFront distribution and configure it to work with AWS Elemental MediaStore\.
+You can use CloudFront for providing on\-demand video by using files that you've transcoded into the Microsoft Smooth Streaming format\. To distribute Smooth Streaming content on demand, you have two options:
++ As the origin for your distribution, specify a web server running Microsoft IIS that can stream files that have been transcoded into Microsoft Smooth Streaming format\.
++ Enable Smooth Streaming in a CloudFront distribution\. Smooth Streaming is a property of cache behaviors, which means that you can use one distribution to distribute Smooth Streaming media files as well as other content\. 
 
-1. Follow the procedure at [ Allowing Amazon CloudFront to Access Your AWS Elemental MediaStore Container](http://docs.aws.amazon.com/mediastore/latest/ug/cdns-allowing-cloudfront-to-access-mediastore.html), and then return to these steps to create your distribution\.
+**Important**  
+If your origin is a web server running Microsoft IIS, do not enable Smooth Streaming when you create your CloudFront distribution\. CloudFront can't use a Microsoft IIS server as an origin if you enable Smooth Streaming\.
 
-1. Create a distribution with the following settings:  
-**Origin Domain Name**  
-The data endpoint that is assigned to your AWS Elemental MediaStore container\. From the dropdown list, choose the AWS Elemental MediaStore container for your live video\. The format of an AWS Elemental MediaStore origin is Container\-OriginEndpointURL\. For example, mymediastore\.data\.mediastore\.us\-east\-1\.amazonaws\.com\. For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
-**Origin Path**  
-The folder structure in the AWS Elemental MediaStore container where your objects are stored\. For more information, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.  
-**Origin Custom Headers**  
-Add header names and values if you want CloudFront to include custom headers when it forwards requests to your origin\.  
-**Object Caching**  
-If the transcoder that you use can't set cache controls on all objects, choose **Customize**\. If your transcoder can set cache controls on all objects, choose **Origin Cache Headers**\.   
-**Minimum TTL, Maximum TTL, and Default TTL**  
-Set as appropriate for your caching needs and segment durations\.  
-**Error Caching Minimum TTL**  
-Set to 5 seconds or less, to help prevent serving stale content\.
+If you enable Smooth Streaming for an origin server \(that is, you do not have a server that is running Microsoft IIS\), note the following:
++ You can still distribute other content using the same cache behavior if the content matches the value of **Path Pattern** for that cache behavior\.
++ CloudFront can use either an Amazon S3 bucket or a custom origin for Smooth Streaming media files\. However, CloudFront cannot use a Microsoft IIS Server as an origin if the server is configured for Smooth Streaming\. 
++ You cannot invalidate media files in the Smooth Streaming format\. If you want to update files before they expire, you must rename them\. For more information, see [Adding, Removing, or Replacing Content That CloudFront Distributes](AddRemoveReplaceObjects.md)\.
 
-   For the other settings, you can set specific values based on other technical requirements or the needs of your business\. For a list of all the options for web distributions and information about setting them, see [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
+For information about Smooth Streaming clients, see [Smooth Streaming Primer](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-primer) on the Microsoft website\.
 
-1. After you create your distribution and it’s been provisioned, edit the cache behavior to set up cross\-origin resource sharing \(CORS\) for your origin:
+To use CloudFront to stream media files that have been encoded in the Microsoft Smooth Streaming format without using a Microsoft IIS web server that can stream files in Smooth Streaming format, do the following:
 
-   1. Select the distribution, and then choose **Distribution Settings**\.
+1. Transcode your media files into Smooth Streaming fragmented\-MP4 format\.
 
-   1. Choose **Behaviors**, select your origin, and then choose **Edit**\.
+1. Do one of the following:
+   + **If you're using the CloudFront console:** When you create a web distribution, enable Smooth Streaming in the default cache behavior\. Alternatively, you can enable Smooth Streaming in the default cache behavior and/or one or more custom cache behaviors in an existing CloudFront web distribution\. 
+   + **If you're using the CloudFront API:** Add the `SmoothStreaming` element to the `DistributionConfig` complex type for the default cache behavior and/or one or more custom cache behaviors\. 
 
-   1. Under **Cache Based on Selected Request Headers**, choose **Whitelist**, and then, under **Whitelist Headers**, select **Origin**\.
+1. Upload the files in your Smooth Streaming presentations to your origin\.
 
-   To learn more about CORS, see *Configuring CloudFront to Respect Cross\-Origin Resource Sharing \(CORS\) Settings* in [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+1. Create either a `clientaccesspolicy.xml` or a `crossdomainpolicy.xml` file, and add it to a location that is accessible at the root of your distribution, for example, `http://d111111abcdef8.cloudfront.net/clientaccesspolicy.xml`\. The following is an example policy:
 
-1. For links in your application \(for example, a media player\), specify the name of the media file in the same format that you use for other objects that you're distributing using CloudFront\.
+   ```
+   <?xml version="1.0" encoding="utf-8"?>
+   <access-policy>
+   <cross-domain-access>
+   <policy>
+   <allow-from http-request-headers="*">
+   <domain uri="*"/>
+   </allow-from>
+   <grant-to>
+   <resource path="/" include-subpaths="true"/>
+   </grant-to>
+   </policy>
+   </cross-domain-access>
+   </access-policy>
+   ```
+
+   For more information, see [Making a Service Available Across Domain Boundaries](http://msdn.microsoft.com/en-us/library/cc197955(v=vs.95).aspx) on the Microsoft Developer Network website\. 
+
+1. For links in your application, specify the client manifest in the following format:
+
+   `http://d111111abcdef8.cloudfront.net/video/presentation.ism/Manifest`

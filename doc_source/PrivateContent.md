@@ -1,14 +1,13 @@
-# Serving Private Content through CloudFront<a name="PrivateContent"></a>
+# Serving Private Content with Signed URLs and Signed Cookies<a name="PrivateContent"></a>
 
-Many companies that distribute content via the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee\. To securely serve this private content using CloudFront, you can do the following:
+Many companies that distribute content via the internet want to restrict access to documents, business data, media streams, or content that is intended for selected users, for example, users who have paid a fee\. To securely serve this private content by using CloudFront, you can do the following:
 + Require that your users access your private content by using special CloudFront signed URLs or signed cookies\. 
-+ Require that your users access your Amazon S3 content using CloudFront URLs, not Amazon S3 URLs\. Requiring CloudFront URLs isn't required, but we recommend it to prevent users from bypassing the restrictions that you specify in signed URLs or signed cookies\.
++ Require that your users access your Amazon S3 content by using CloudFront URLs, not Amazon S3 URLs\. Requiring CloudFront URLs isn't necessary, but we recommend it to prevent users from bypassing the restrictions that you specify in signed URLs or signed cookies\.
 
 **Topics**
 + [Overview of Private Content](#private-content-overview)
 + [Using an HTTP Server for Private Content](#private-content-overview-choosing-origin)
 + [Task List: Serving Private Content](private-content-task-list.md)
-+ [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)
 + [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)
 + [Choosing Between Signed URLs and Signed Cookies](private-content-choosing-signed-urls-cookies.md)
 + [Using Signed URLs](private-content-signed-urls.md)

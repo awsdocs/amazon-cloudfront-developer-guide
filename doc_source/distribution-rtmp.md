@@ -1,6 +1,9 @@
 # Working with RTMP Distributions<a name="distribution-rtmp"></a>
 
+This section describes how you configure and manage RTMP distributions\. RTMP distributions stream media files using Adobe Media Server and the Adobe Real\-Time Messaging Protocol \(RTMP\)\. For information about how to create an RTMP distribution, see [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\.
+
 **Topics**
++ [RTMP Distributions](distribution-overview-rtmp.md)
 + [How RTMP Distributions Work](HowStreamingDistributionsWork.md)
 + [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)
 + [Creating an RTMP Distribution Using the CloudFront Console](distribution-rtmp-creating-console.md)
@@ -12,5 +15,3 @@
 + [Restricting Access Using Crossdomain\.xml](Streaming_CrossDomain.md)
 + [Error Codes for RTMP Distributions](Streaming_FMSErrors.md)
 + [Troubleshooting RTMP Distributions](Streaming_Troubleshooting.md)
-
-This section describes how you configure and manage RTMP distributions\. For information about how to create an RTMP distribution, see [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\.

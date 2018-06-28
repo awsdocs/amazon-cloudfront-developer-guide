@@ -1,10 +1,10 @@
-# Configuring CloudFront to Cache Based on Query String Parameters<a name="QueryStringParameters"></a>
+# Caching Content Based on Query String Parameters<a name="QueryStringParameters"></a>
 
-Some web applications use query strings to send information to the origin\. A query string is the part of a web request that appears after a `?` character; the string can contain one or more parameters separated by & characters\. In the following example, the query string includes two parameters, *color=red* and *size=large*:
+Some web applications use query strings to send information to the origin\. A query string is the part of a web request that appears after a `?` character; the string can contain one or more parameters, separated by & characters\. In the following example, the query string includes two parameters, *color=red* and *size=large*:
 
 `http://d111111abcdef8.cloudfront.net/images/image.jpg?color=red&size=large`
 
-For web distributions, you can choose whether you want CloudFront to forward query strings to your origin and, if so, whether to cache your content based on all parameters or on selected parameters\.
+For web distributions, you can choose whether you want CloudFront to forward query strings to your origin and, if so, whether to cache your content based on all parameters or on selected parameters\. Why might this be useful? Consider the following example\.
 
 Suppose your website is available in five languages\. The directory structure and file names for all five versions of the website are identical\. As a user views your website, requests that are forwarded to CloudFront include a language query string parameter based on the language that the user chose\. You can configure CloudFront to forward query strings to the origin and to cache based on the language parameter\. If you configure your web server to return the version of a given page that corresponds with the selected language, CloudFront will cache each language version separately, based on the value of the language query string parameter\.
 
@@ -16,9 +16,11 @@ In this example, if the main page for your website is main\.html, the following 
 + `http://d111111abcdef8.cloudfront.net/main.html?language=jp`
 
 Note the following:
-+ For RTMP distributions, you cannot configure CloudFront to forward query string parameters to your origin\. Before CloudFront forwards a request to the origin server, it removes any query string parameters\.
++ For RTMP distributions, you cannot configure CloudFront to forward query string parameters to your origin\. If you have an RTMP distribution, before CloudFront forwards a request to the origin server, it removes any query string parameters\.
 + Some HTTP servers don't process query string parameters and, therefore, don't return different versions of an object based on parameter values\. For these origins, if you configure CloudFront to forward query string parameters to the origin, CloudFront will still cache based on the parameter values even though the origin returns identical versions of the object to CloudFront for every parameter value\.
-+ You must use the & character as the delimiter between query string parameters\. If you use a different delimiter, caching depends on which parameters you want CloudFront to use as a basis for caching and the order in which they appear in the query string\. The following examples show what happens if you configure CloudFront to cache based only on the `color` parameter: 
++ For query string parameters to work as described in the example above with the languages, you must use the & character as the delimiter between query string parameters\. If you use a different delimiter, you may get unexpected results, depending on which parameters you specify for CloudFront to use as a basis for caching, and the order in which the parameters appear in the query string\. 
+
+  The following examples show what happens if you use a different delimiter and you configure CloudFront to cache based only on the `color` parameter: 
   + In the following request, CloudFront caches your content based on the value of the `color` parameter, but CloudFront interprets the value as *red;size=large*:
 
     `http://d111111abcdef8.cloudfront.net/images/image.jpg?color=red;size=large`
@@ -26,7 +28,7 @@ Note the following:
 
     `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large;color=red`
 
-You can configure CloudFront do to one of the following:
+You can configure CloudFront do one of the following:
 + Don't forward query strings to the origin at all\. If you don't forward query strings, CloudFront doesn't cache based on query string parameters\.
 + Forward query strings to the origin, and cache based on all parameters in the query string\.
 + Forward query strings to the origin, and cache based on specified parameters in the query string\.
@@ -40,11 +42,11 @@ For more information, see [Optimizing Caching](#query-string-parameters-optimizi
 
 ## Console and API Settings for Query String Forwarding and Caching<a name="query-string-parameters-console"></a>
 
-To configure query string forwarding and caching in the CloudFront console, see the following settings in [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md):
+To configure query string forwarding and caching in the CloudFront console, see the following settings in [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md):
 + [Query String Forwarding and Caching](distribution-web-values-specify.md#DownloadDistValuesQueryString)
 + [Query String Whitelist](distribution-web-values-specify.md#DownloadDistValuesQueryStringWhiteList)
 
-To configure query string forwarding and caching with the CloudFront API, see the following settings in [DistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html) and in [DistributionConfigWithTags Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfigWithTags.html) in the *Amazon CloudFront API Reference*:
+To configure query string forwarding and caching with the CloudFront API, see the following settings in [DistributionConfig Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/DistributionConfigDatatype.html) and in [DistributionConfigWithTags Complex Type](http://docs.aws.amazon.com/cloudfront/latest/APIReference/DistributionConfigWithTagsDatatype.html) in the *Amazon CloudFront API Reference*:
 + `QueryString`
 + `QueryStringCacheKeys`
 
@@ -80,4 +82,4 @@ If you're using signed URLs and you want to configure CloudFront to forward quer
 
 ## Query String Parameters and CloudFront Access Logs<a name="query-string-parameters-access-logs"></a>
 
-For web and RTMP distributions, if you enable logging, CloudFront logs the full URL, including query string parameters\. For web distributions, this is true regardless of whether you have configured CloudFront to forward query strings to the origin\. For more information about CloudFront logging, see [Access Logs](AccessLogs.md)\.
+For web and RTMP distributions, if you enable logging, CloudFront logs the full URL, including query string parameters\. For web distributions, this is true regardless of whether you have configured CloudFront to forward query strings to the origin\. For more information about CloudFront logging, see [Configuring and Using Access Logs](AccessLogs.md)\.

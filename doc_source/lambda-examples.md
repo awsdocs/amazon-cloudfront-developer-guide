@@ -280,7 +280,7 @@ The following example shows how to improve your cache hit ratio by making the fo
 + Alphabetize key\-value pairs by the name of the parameter
 + Change the case of key\-value pairs to lowercase
 
-For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
+For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
 ```
 'use strict';
@@ -565,8 +565,7 @@ exports.handler = (event, context, callback) => {
         'GB': 'eu-west-2',
         'FR': 'eu-west-3',
         'JP': 'ap-northeast-1',
-        'IN': 'ap-south-1',
-        'CN': 'cn-north-1'
+        'IN': 'ap-south-1'
     };
 
     if (request.headers['cloudfront-viewer-country']) {

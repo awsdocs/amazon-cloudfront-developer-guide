@@ -57,7 +57,7 @@ CloudFront does the following:
 
    If your origin returns a 4xx status code, CloudFront returns the status code, not the requested object, to the viewer\. 
 
-1. After the error caching minimum TTL has elapsed, CloudFront tries again to get the requested object by forwarding another request to your origin\. Note that if the object is not requested frequently, CloudFront might evict it from the edge cache while your origin server is still returning 5xx responses\. For information about how long objects stay in CloudFront edge caches, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+1. After the error caching minimum TTL has elapsed, CloudFront tries again to get the requested object by forwarding another request to your origin\. Note that if the object is not requested frequently, CloudFront might evict it from the edge cache while your origin server is still returning 5xx responses\. For information about how long objects stay in CloudFront edge caches, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 ## How CloudFront Processes Errors When You Have Not Configured Custom Error Pages<a name="HTTPStatusCodes-no-custom-error-pages"></a>
 
@@ -93,7 +93,7 @@ CloudFront does the following:
 
    If your origin returns a 4xx status code, CloudFront returns the status code, not the requested object, to the viewer\. 
 
-1. After the error caching minimum TTL has elapsed, CloudFront tries again to get the requested object by forwarding another request to your origin\. Note that if the object is not requested frequently, CloudFront might evict it from the edge cache while your origin server is still returning 5xx responses\. For information about how long objects stay in CloudFront edge caches, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+1. After the error caching minimum TTL has elapsed, CloudFront tries again to get the requested object by forwarding another request to your origin\. Note that if the object is not requested frequently, CloudFront might evict it from the edge cache while your origin server is still returning 5xx responses\. For information about how long objects stay in CloudFront edge caches, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 ## HTTP 4xx and 5xx Status Codes that CloudFront Caches<a name="HTTPStatusCodes-cached-errors"></a>
 

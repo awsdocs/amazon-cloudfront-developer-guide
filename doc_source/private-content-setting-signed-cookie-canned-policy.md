@@ -39,7 +39,7 @@ In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. E
 **\(Optional\) `Domain`**  
 The domain name for the requested object\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
 You can specify the domain name that CloudFront assigned to your distribution, for example, d111111abcdef8\.cloudfront\.net, but you can't specify \*\.cloudfront\.net for the domain name\.  
-If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.  
+If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
 **\(Optional\) `Path`**  
 The path for the requested object\. If you don't specify a `Path` attribute, the default value is the path in the URL\.  
 **`Secure`**  
@@ -72,7 +72,7 @@ Set-Cookie: Domain=example.org; Path=/images/*; Secure; HttpOnly; CloudFront-Sig
 Set-Cookie: Domain=example.org; Path=/images/*; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
 ```
 
-If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
+If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ## Creating a Signature for a Signed Cookie That Uses a Canned Policy<a name="private-content-canned-policy-signature-cookies"></a>
 

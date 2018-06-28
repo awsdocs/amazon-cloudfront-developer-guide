@@ -107,7 +107,7 @@ The number of viewer requests for which the HTTP status code was a 5xx value \(s
 
 ## How Data in the Popular Objects Report Is Related to Data in the CloudFront Access Logs<a name="popular-objects-data"></a>
 
-The following list shows how values in the Popular Objects report in the CloudFront console correspond with values in CloudFront access logs\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
+The following list shows how values in the Popular Objects report in the CloudFront console correspond with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 **URL**  
 The last 500 characters of the URL that viewers use to access the object\.

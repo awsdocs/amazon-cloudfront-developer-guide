@@ -36,11 +36,11 @@ CloudFront entities have the following limits\. Note that Lambda@Edge has specif
 
 | Entity | Limit | 
 | --- | --- | 
-| Web distributions per AWS account For more information, see [Working with Web Distributions](distribution-web.md)\.  | 200 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Web distributions per AWS account For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Maximum file size for HTTP GET, POST, and PUT requests | 20 GB | 
 | Response timeout per origin For more information, see [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 4\-60 seconds [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | File compression: range of file sizes that CloudFront compresses For more information, see [Serving Compressed Files](ServingCompressedFiles.md)\.  | 1,000 to 10,000,000 bytes | 
-| Alternate domain names \(CNAMEs\) per distribution For more information, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.  | 100 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Alternate domain names \(CNAMEs\) per distribution For more information, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.  | 100 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Origins per distribution | 25 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Cache behaviors per distribution | 25 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
@@ -51,7 +51,7 @@ CloudFront entities have the following limits\. Note that Lambda@Edge has specif
 
 | Entity | Limit | 
 | --- | --- | 
-| Whitelisted cookies per cache behavior For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Whitelisted cookies per cache behavior For more information, see [Caching Content Based on Cookies](Cookies.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Total number of bytes in whitelisted cookie names \(doesn't apply if you configure CloudFront to forward all cookies to the origin\) | 512 minus the number of whitelisted cookies | 
 
 ## Limits on Whitelisted Query Strings \(Web Distributions Only\)<a name="limits-whitelisted-query-strings"></a>
@@ -63,7 +63,7 @@ CloudFront entities have the following limits\. Note that Lambda@Edge has specif
 | --- | --- | 
 | Maximum number of characters in a whitelisted query string  | 128 characters  | 
 | Maximum number of characters total for all whitelisted query strings in the same parameter  | 512 characters  | 
-| Whitelisted query strings per cache behavior For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Whitelisted query strings per cache behavior For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
 ## Limits on Custom Headers \(Web Distributions Only\)<a name="limits-custom-headers"></a>
 
@@ -72,7 +72,7 @@ CloudFront entities have the following limits\. Note that Lambda@Edge has specif
 
 | Entity | Limit | 
 | --- | --- | 
-| Whitelisted headers per cache behavior For more information, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Whitelisted headers per cache behavior For more information, see [Caching Content Based on Request Headers](header-caching.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Custom headers: maximum number of custom headers that you can configure CloudFront to forward to the origin For more information, see [Forwarding Custom Headers to Your Origin \(Web Distributions Only\)](forward-custom-headers.md)\.  | 10 name/value pairs [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Custom headers: maximum length of a header name | 256 characters | 
 | Custom headers: maximum length of a header value | 1,783 characters | 
@@ -95,7 +95,7 @@ CloudFront entities have the following limits\. Note that Lambda@Edge has specif
 
 | Entity | Limit | 
 | --- | --- | 
-| Object invalidation: maximum number of objects allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Objects \(Web Distributions Only\)](Invalidation.md)\.  | 3,000 | 
+| Object invalidation: maximum number of objects allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  | 3,000 | 
 | Object invalidation: maximum number of active wildcard invalidations allowed | 15 | 
 | Object invalidation: maximum number of objects that one wildcard invalidation can process | Unlimited | 
 
@@ -107,7 +107,7 @@ CloudFront entities have the following limits\. Note that Lambda@Edge has specif
 | Entity | Limit | 
 | --- | --- | 
 | Maximum length of a field to encrypt For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.  | 16 KB | 
-| Maximum number of fields in a request body when field\-level encryption encryption is configured | 10 | 
+| Maximum number of fields in a request body when field\-level encryption is configured | 10 | 
 | Maximum length of a request body when field\-level encryption is configured | 1 MB | 
 | Maximum number of field\-level encryption configurations that can be associated with one AWS account | 10 | 
 | Maximum number of field\-level encryption profiles that can be associated with one AWS account | 10 | 

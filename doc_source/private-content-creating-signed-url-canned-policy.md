@@ -8,7 +8,7 @@ To create a signed URL using a canned policy, perform the following procedure\.<
 
 1. Concatenate the following values in the specified order, and remove the whitespace \(including tabs and newline characters\) between the parts\. You might have to include escape characters in the string in application code\. All values have a type of String\. Each part is keyed by number \(![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)\) to the two examples that follow\.  
 **![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the object***  
-The base URL is the CloudFront URL that you would use to access the object if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Format of URLs for Objects](LinkFormat.md)\.  
+The base URL is the CloudFront URL that you would use to access the object if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
 The following examples show values that you specify for web distributions\.  
    + The following CloudFront URL is for an object in a web distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the object in the URL must match the path to the object on your HTTP server or in your Amazon S3 bucket\.
 

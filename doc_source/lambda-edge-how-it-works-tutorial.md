@@ -126,7 +126,7 @@ Choose the **Versions** tab, and then choose a version that isn't $LATEST, such 
 **Distribution**  
 The CloudFront distribution ID to associate with your function\. In the drop\-down list, choose the distribution ID\.  
 **Cache behavior**  
-The cache behavior to use with the trigger\. For this example, leave the value set to \*, which applies your distribution's default cache behavior to all requests\. For more information, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md) topic\.  
+The cache behavior to use with the trigger\. For this example, leave the value set to \*, which applies your distribution's default cache behavior to all requests\. For more information, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
 **CloudFront event**  
 The trigger that specifies when your function will run\. We want the security headers function to run whenever CloudFront returns a response from the origin\. So in the drop\-down list, choose **Origin response**\. For more information, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.   
 **Enable trigger and replicate**  
@@ -150,7 +150,7 @@ Now that you've created your Lambda function and added a trigger to run it for a
 
 1. In a browser, type the URL for a file in your S3 bucket\. For example, you might use a URL similar to `http://d111111abcdef8.cloudfront.net/image.jpg`\.
 
-   For more information about the CloudFront domain name to use in the file URL, see [Format of URLs for Objects](LinkFormat.md)\.
+   For more information about the CloudFront domain name to use in the file URL, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 
 1. Open your browser’s Web Developer toolbar\. For example, in your browser window in Chrome, open the context \(right\-click\) menu, and then choose **Inspect**\.
 
@@ -225,5 +225,5 @@ Before you delete a CloudFront distribution, you must disable it\. A disabled di
 
 Now that you have a basic idea of how Lambda@Edge functions work, learn more by reading the following:
 + [Lambda@Edge Example Functions](lambda-examples.md)
-+ [ Lambda@Edge Design Best Practices](aws.amazon.comblogs/networking-and-content-delivery/lambdaedge-design-best-practices/)
-+ [ Reducing Latency and Shifting Compute to the Edge with Lambda@Edge](aws.amazon.comblogs/networking-and-content-delivery/reducing-latency-and-shifting-compute-to-the-edge-with-lambdaedge/)
++ [ Lambda@Edge Design Best Practices](https://aws.amazon.com/blogs/networking-and-content-delivery/lambdaedge-design-best-practices/)
++ [ Reducing Latency and Shifting Compute to the Edge with Lambda@Edge](https://aws.amazon.com/blogs/networking-and-content-delivery/reducing-latency-and-shifting-compute-to-the-edge-with-lambdaedge/)

@@ -32,7 +32,7 @@ If your bucket is in the US Standard region and you want Amazon S3 to route requ
 
 If you configured Amazon S3 Transfer Acceleration for your bucket, do not specify the `s3-accelerate` endpoint for **Origin Domain Name**\.
 
-The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
 The bucket name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
@@ -49,11 +49,11 @@ Click **Yes** if you want to require end users to access objects in an Amazon S3
 
 Click **No** if you want end users to be able to access objects using either CloudFront URLs or Amazon S3 URLs\.
 
-For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 ## Origin Access Identity \(Amazon S3 Only\)<a name="StreamingDistValuesOAI"></a>
 
-If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.
+If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 ## Comment for New Identity\(Amazon S3 Only\)<a name="StreamingDistValuesOAIComment"></a>
 
@@ -80,22 +80,22 @@ For more information about price classes and about how your choice of price clas
 
 ## Alternate Domain Names \(CNAMEs\)<a name="StreamingDistValuesCNAME"></a>
 
-Optional\. You can associate one or more CNAME aliases with a distribution so that you can use your domain name \(for example, example\.com\) in the URLs for your objects instead of using the domain name that CloudFront assigned when you created your distribution\. For more information, see [Adding and Moving Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+Optional\. You can associate one or more CNAME aliases with a distribution so that you can use your domain name \(for example, example\.com\) in the URLs for your objects instead of using the domain name that CloudFront assigned when you created your distribution\. For more information, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
 
 ## Logging<a name="StreamingDistValuesLoggingOnOff"></a>
 
-Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
+Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 ## Bucket for Logs<a name="StreamingDistValuesLogBucket"></a>
 
-If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myawslogbucket.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
+If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myawslogbucket.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 **Note**  
 You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions Required to Configure Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
 
 ## Log Prefix<a name="StreamingDistValuesLogPrefix"></a>
 
-Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log filenames for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Access Logs](AccessLogs.md)\.
+Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log filenames for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 ## Comment<a name="StreamingDistValuesComment"></a>
 
@@ -109,7 +109,7 @@ When you create a distribution, you must specify whether you want the distributi
   When you create, modify, or delete a CloudFront distribution, it takes time for your changes to propagate to the CloudFront database\. An immediate request for information about a distribution might not show the change\. Propagation usually completes within minutes, but a high system load or network partition might increase this time\. 
 + *Disabled* means that even though the distribution might be deployed and ready to use, end users can't use it\. When a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
-You can toggle a distribution between disabled and enabled as often as you want\. For information about updating a distribution's configuration, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\.
+You can toggle a distribution between disabled and enabled as often as you want\. For information about updating a distribution's configuration, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
 
 ## Restrict Viewer Access \(Use Signed URLs\)<a name="StreamingDistValuesRestrictViewerAccess"></a>
 

@@ -113,7 +113,7 @@ One of the domain names in the certificate must match the domain name that you s
 
 If you're using dedicated IP addresses, you can choose the minimum SSL protocol version for the connection between viewers and CloudFront by choosing a security policy\.
 
-For more information, see [Security Policy](distribution-web-values-specify.md#DownloadDistValues-security-policy) in the topic [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
+For more information, see [Security Policy](distribution-web-values-specify.md#DownloadDistValues-security-policy) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ## Supported HTTP Versions<a name="https-requirements-supported-http-versions"></a>
 

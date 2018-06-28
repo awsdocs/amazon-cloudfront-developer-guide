@@ -48,7 +48,7 @@ For web distributions, to control how long your objects stay in a CloudFront cac
 + Specify a value for Minimum TTL in CloudFront cache behaviors\.
 + Use the default value of 24 hours\.
 
-For more information, see [Specifying How Long Objects Stay in a CloudFront Edge Cache \(Expiration\)](Expiration.md)\.
+For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
 ### Client IP Addresses<a name="RequestCustomIPAddresses"></a>
 
@@ -85,11 +85,11 @@ The origin uses this information to determine whether the object has been update
 
 ### Cookies<a name="RequestCustomCookies"></a>
 
-You can configure CloudFront to forward cookies to your origin\. For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
+You can configure CloudFront to forward cookies to your origin\. For more information, see [Caching Content Based on Cookies](Cookies.md)\.
 
 ### Cross\-Origin Resource Sharing \(CORS\)<a name="request-custom-cors"></a>
 
-If you want CloudFront to respect cross\-origin resource sharing settings, configure CloudFront to forward the `Origin` header to your origin\. For more information, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+If you want CloudFront to respect cross\-origin resource sharing settings, configure CloudFront to forward the `Origin` header to your origin\. For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
 
 ### Encryption<a name="RequestCustomEncryption"></a>
 
@@ -98,7 +98,7 @@ You can require viewers to use HTTPS to send requests to CloudFront and require 
 + [Origin Protocol Policy \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)
 
 CloudFront forwards HTTPS requests to the origin server using the SSLv3, TLSv1\.0, TLSv1\.1, and TLSv1\.2 protocols\. For custom origins, you can choose the SSL protocols that you want CloudFront to use when communicating with your origin:
-+ If you're using the CloudFront console, choose protocols by using the **Origin SSL Protocols** check boxes\. For more information, see [Creating a Web Distribution](distribution-web-creating-console.md)\. 
++ If you're using the CloudFront console, choose protocols by using the **Origin SSL Protocols** check boxes\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\. 
 + If you're using the CloudFront API, specify protocols by using the `OriginSslProtocols` element\. For more information, see [ OriginSslProtocols](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) and [ DistributionConfig](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html) in the *Amazon CloudFront API Reference*\.
 
 If the origin is an Amazon S3 bucket, CloudFront always uses TLSv1\.2\.
@@ -138,7 +138,7 @@ The following table lists HTTP request headers that you can forward to both cust
 
   You can configure CloudFront to cache objects based on values in the `Date` and `User-Agent` headers, but we don't recommend it\. These headers have a lot of possible values, and caching based on their values would cause CloudFront to forward significantly more requests to your origin\. 
 
-For more information about caching based on header values, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+For more information about caching based on header values, see [Caching Content Based on Request Headers](header-caching.md)\.
 
 
 ****  
@@ -161,7 +161,7 @@ For more information about caching based on header values, see [Configuring Clou
 | `Content-Length` | CloudFront forwards the header to your origin\. | No | 
 | `Content-MD5` | CloudFront forwards the header to your origin\. | Yes | 
 | `Content-Type` | CloudFront forwards the header to your origin\. | Yes | 
-| `Cookie` | If you configure CloudFront to forward cookies, it will forward the `Cookie` header field to your origin\. If you don't, CloudFront removes the `Cookie` header field\. For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\. | No | 
+| `Cookie` | If you configure CloudFront to forward cookies, it will forward the `Cookie` header field to your origin\. If you don't, CloudFront removes the `Cookie` header field\. For more information, see [Caching Content Based on Cookies](Cookies.md)\. | No | 
 | `Date` | CloudFront forwards the header to your origin\. | Yes, but not recommended | 
 | `Expect` | CloudFront removes the header\. | Yes | 
 | `From` | CloudFront forwards the header to your origin\. | Yes | 
@@ -215,7 +215,7 @@ The performance improvement of OCSP stapling is more pronounced when CloudFront 
 
 When CloudFront gets a response from your origin, it tries to maintain the connection for several seconds in case another request arrives during that period\. Maintaining a persistent connection saves the time required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. 
 
-For more information, including how to configure the duration of persistent connections, see [Origin Keep\-alive Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
+For more information, including how to configure the duration of persistent connections, see [Origin Keep\-alive Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ### Protocols<a name="RequestCustomProtocols"></a>
 
@@ -230,11 +230,11 @@ If you specify **Match Viewer**, CloudFront forwards requests to the origin serv
 **Important**  
 If CloudFront forwards a request to the origin using the HTTPS protocol, and if the origin server returns an invalid certificate or a self\-signed certificate, CloudFront drops the TCP connection\.
 
-For information about how to update a distribution using the CloudFront console, see [Viewing and Updating CloudFront Distributions](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
+For information about how to update a distribution using the CloudFront console, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
 
 ### Query Strings<a name="RequestCustomQueryStrings"></a>
 
-You can configure whether CloudFront forwards query string parameters to your origin\. For more information, see [Configuring CloudFront to Cache Based on Query String Parameters](QueryStringParameters.md)\.
+You can configure whether CloudFront forwards query string parameters to your origin\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
 ### Origin Response Timeout<a name="request-custom-request-timeout"></a>
 
@@ -242,7 +242,7 @@ The origin response timeout, also known as the origin request timeout or origin 
 + The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to a custom origin
 + The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
 
-For more information, including how to configure the origin response timeout, see [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout) in the section [Values That You Specify When You Create or Update a Web Distribution](distribution-web-values-specify.md)\.
+For more information, including how to configure the origin response timeout, see [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ### Simultaneous Requests for the Same Object \(Traffic Spikes\)<a name="request-custom-traffic-spikes"></a>
 
@@ -256,7 +256,7 @@ If you want CloudFront to cache different versions of your objects based on the 
 + `CloudFront-Is-SmartTV-Viewer`
 + `CloudFront-Is-Tablet-Viewer`
 
-Based on the value of the `User-Agent` header, CloudFront sets the value of these headers to `true` or `false` before forwarding the request to your origin\. If a device falls into more than one category, more than one value might be `true`\. For example, for some tablet devices, CloudFront might set both `CloudFront-Is-Mobile-Viewer` and `CloudFront-Is-Tablet-Viewer` to `true`\. For more information about configuring CloudFront to cache based on request headers, see [Configuring CloudFront to Cache Objects Based on Request Headers](header-caching.md)\.
+Based on the value of the `User-Agent` header, CloudFront sets the value of these headers to `true` or `false` before forwarding the request to your origin\. If a device falls into more than one category, more than one value might be `true`\. For example, for some tablet devices, CloudFront might set both `CloudFront-Is-Mobile-Viewer` and `CloudFront-Is-Tablet-Viewer` to `true`\. For more information about configuring CloudFront to cache based on request headers, see [Caching Content Based on Request Headers](header-caching.md)\.
 
 You can configure CloudFront to cache objects based on values in the `User-Agent` header, but we don't recommend it\. The `User-Agent` header has a lot of possible values, and caching based on those values would cause CloudFront to forward significantly more requests to your origin\. 
 
@@ -304,7 +304,7 @@ If your origin returns `Vary:*` in the response, and if the value of **Minimum T
 
 ### Cookies<a name="ResponseCustomCookies"></a>
 
-If you enable cookies for a cache behavior, and if the origin returns cookies with an object, CloudFront caches both the object and the cookies\. Note that this reduces cacheability for an object\. For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
+If you enable cookies for a cache behavior, and if the origin returns cookies with an object, CloudFront caches both the object and the cookies\. Note that this reduces cacheability for an object\. For more information, see [Caching Content Based on Cookies](Cookies.md)\.
 
 ### Dropped TCP Connections<a name="ResponseCustomDroppedTCPConnections"></a>
 
@@ -318,7 +318,7 @@ We recommend that you configure your HTTP server to add a `Content-Length` heade
 ### HTTP Response Headers that CloudFront Removes or Updates<a name="ResponseCustomRemovedHeaders"></a>
 
 CloudFront removes or updates the following header fields before forwarding the response from your origin to the viewer: 
-+ `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Configuring CloudFront to Cache Objects Based on Cookies](Cookies.md)\.
++ `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Caching Content Based on Cookies](Cookies.md)\.
 + `Trailer`
 + `Transfer-Encoding` – If your origin returns this header field, CloudFront sets the value to `chunked` before returning the response to the viewer\.
 + `Upgrade`

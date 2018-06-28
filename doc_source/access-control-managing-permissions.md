@@ -10,7 +10,7 @@ We recommend that you first review the introductory topics that explain the basi
 + [AWS Managed \(Predefined\) Policies for CloudFront](#access-policy-examples-aws-managed)
 + [Customer Managed Policy Examples](#access-policy-examples-for-sdk-cli)
 
-The following shows a permissions policy\. The `Sid`, or statement ID, is optional:
+The following shows a permissions policy\. The `Sid`, or statement ID, is optional\.
 
 ```
 {
@@ -99,7 +99,7 @@ When you're creating and updating web and RTMP distributions, lets you perform t
 This permission isn't required if you aren't using the CloudFront console\.
 
 **`S3:PutBucketPolicy`**  
-When you're creating or updating distributions that restrict access to S3 buckets, lets a user update the bucket policy to grant access to the CloudFront origin access identity\. For more information, see [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content](private-content-restricting-access-to-s3.md)\.  
+When you're creating or updating distributions that restrict access to S3 buckets, lets a user update the bucket policy to grant access to the CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.  
 This permission isn't required if you aren't using the CloudFront console\.
 
 **`sns:ListSubscriptionsByTopic` and `sns:ListTopics`**  

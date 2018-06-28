@@ -1,0 +1,3 @@
+# How CloudFront Responds When a Custom Error Page Is Unavailable<a name="custom-error-pages-unavailable"></a>
+
+If you configure CloudFront to return a custom error page for an HTTP status code but the custom error page isn't available, CloudFront returns to the viewer the status code that CloudFront received from the origin that contains the custom error pages\. For example, suppose your custom origin returns a 500 status code and you have configured CloudFront to get a custom error page for a 500 status code from an Amazon S3 bucket\. However, someone accidentally deleted the custom error page from your bucket\. CloudFront will return an HTTP 404 status code \(not found\) to the viewer that requested the object\.
