@@ -2,6 +2,9 @@
 
 You can use AWS Config to record configuration changes for CloudFront distribution settings changes\. For example, you can capture changes to distribution states, price classes, origins, geo restriction settings, and Lambda@Edge configurations\. 
 
+**Note**  
+AWS Config does not record key–value tags for CloudFront distribution and CloudFront streaming distribution.
+
 ## Set Up AWS Config with CloudFront<a name="TrackingChangesSettings"></a>
 
 When you set up AWS Config, you can choose to record all supported AWS resources, or you can specify only certain resources to record configuration changes for, such as just recording changes for CloudFront\. To see the specific resources supported for CloudFront, see the list of [ Supported AWS Resource Types](http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources) in the *AWS Config Developer Guide*\. 
