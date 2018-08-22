@@ -192,7 +192,7 @@ If the origin is an Amazon S3 bucket, CloudFront always uses TLSv1\.2\.
 The protocol policy that you want CloudFront to use when fetching objects from your origin server\. 
 
 **Important**  
-If your Amazon S3 bucket is configured as a website endpoint, you must specify HTTP Only\. Amazon S3 doesn't support HTTPS connections in that configuration\.
+If your Amazon S3 bucket is configured as a website endpoint, you must specify **HTTP Only**\. Amazon S3 doesn't support HTTPS connections in that configuration\.
 
 Choose the applicable value:
 + **HTTP Only:** CloudFront uses only HTTP to access the origin\.

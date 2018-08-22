@@ -13,6 +13,7 @@ See the following sections for requirements and restrictions on using Lambda fun
 + [Microsoft Smooth Streaming](#lambda-requirements-microsoft-smooth-streaming)
 + [Network Access](#lambda-requirements-network-access)
 + [Query String Parameters](#lambda-requirements-query-strings)
++ [Size Limits for Body with the Include Body Option](#lambda-requirements-size-body-access)
 + [Tagging](#lambda-requirements-tagging)
 + [URI](#lambda-requirements-uri)
 + [URI and Query String Encoding](#lambda-requirements-encoding)
@@ -116,7 +117,9 @@ For more information, see the following examples:
 
 ## HTTP Status Codes<a name="lambda-requirements-http-status-codes"></a>
 
-CloudFront doesn't execute Lambda functions for viewer response events if the origin returns HTTP status code 400 or higher\.
+CloudFront doesn't execute Lambda functions for viewer response events if the origin returns HTTP status code 400 or higher\. 
+
+You can, however, execute Lambda functions for *origin* response errors, including HTTP status codes 4xx and 5xx\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
 
 ## Lambda Function Configuration and Execution Environment<a name="lambda-requirements-lambda-function-configuration"></a>
 + You must create functions with the `nodejs6.10` or `nodejs8.10` runtime property\.
@@ -150,6 +153,34 @@ Functions triggered by origin request and response events as well as functions t
 + The total size of the URI \(`event.Records[0].cf.request.uri`\) and the query string \(`event.Records[0].cf.request.querystring`\) must be less than 8,192 characters\.
 
 For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+
+## Size Limits for Body with the Include Body Option<a name="lambda-requirements-size-body-access"></a>
+
+When you choose the **Include Body** option to expose the request body to your Lambda function, be aware of the following size limits for portions of the body that are exposed or replaced\.
+
+Note the following:
++ The body is always base64 encoded by Lambda@Edge before it is exposed\.
++ If the request body is large, Lambda@Edge truncates it before exposing it\.
+
+### Limit when Exposing Body to a Lambda Function<a name="lambda-requirements-size-body-access-body-exposed"></a>
+
+Lambda@Edge truncates the body that it exposes to the Lambda function as follows:
++ For viewer requests, the body is truncated at 40KB\.
++ For origin requests, the body is truncated at 1MB\.
+
+### Limit when Returning a Request Body from a Lambda Function<a name="lambda-requirements-size-body-access-body-returned"></a>
+
+If you access the request body as read\-only, the full original request body is returned to the origin\.
+
+However, if you choose to replace the request body, the following body size limits apply when it's returned from a Lambda function:
+
+
+****  
+
+| Type of body encoding | Allowed body size: Viewer request | Allowed body size: Origin request | 
+| --- | --- | --- | 
+| text | 40KB | 1MB | 
+| base64 | 53\.2KB | 1\.33MB | 
 
 ## Tagging<a name="lambda-requirements-tagging"></a>
 

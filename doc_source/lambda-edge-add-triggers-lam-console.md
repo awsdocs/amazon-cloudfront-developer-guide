@@ -31,6 +31,8 @@ Choose the ID of the distribution that you want to add the trigger to\.
 Choose the cache behavior that specifies the objects that you want to execute the function on\.  
 **CloudFront event**  
 Choose the CloudFront event that causes the function to execute\.  
+**Include body**  
+Select this check box if you want to access the request body in your function\.   
 **Enable trigger and replicate**  
 Select this check box so that AWS Lambda replicates the function to regions globally\. 
 

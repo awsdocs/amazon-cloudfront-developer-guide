@@ -1,20 +1,24 @@
 # Troubleshooting Distribution Issues<a name="troubleshooting-distributions"></a>
 
-Use the information here to help you diagnose and fix access\-denied issues or other common issues that you might encounter when working with Amazon CloudFront distributions\.
+Use the information here to help you diagnose and fix access\-denied issues or other common issues that you might encounter when setting up your website or application with Amazon CloudFront distributions\.
 
-## I Can't View the Files in My Web Distribution<a name="troubleshooting-web-distribution"></a>
+**Important**  
+If you're a customer trying to access a website or application, and you've gotten an error from CloudFront, there's probably just unusually high traffic to the site you're trying to access\. Please wait a little while, and then try accessing the site \(or running the application\) again\. If you still get an error, please contact the website or application distributor directly for support\.   
+**Why is this error coming from CloudFront?** CloudFront helps websites speed up delivery of content, like images or web pages, to customers by storing copies in servers located around the world\. But when there's a lot of internet traffic to a website and the site can't keep up, an error is returned when anyone tries to access the site\. When CloudFront can't access content that you've requested from a website, it passes on the error from the site or application that you're trying to use\. 
 
-If you can't view the files in your CloudFront web distribution, see the following topics for some common solutions\.
+## I Can't View the Files in My Distribution<a name="troubleshooting-web-distribution"></a>
+
+If you can't view the files in your CloudFront distribution, see the following topics for some common solutions\.
 
 ### Did You Sign Up for Both CloudFront and Amazon S3?<a name="Troubleshooting.SigningUp"></a>
 
-To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both CloudFront and Amazon S3, separately\. For more information about signing up for CloudFront and Amazon S3, see [Getting Started with CloudFront](GettingStarted.md)\.
+To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both CloudFront and Amazon S3, separately\. For more information about signing up for CloudFront and Amazon S3, see [Setting Up Amazon CloudFront](setting-up-cloudfront.md)\.
 
 ### Are Your Amazon S3 Bucket and Object Permissions Set Correctly?<a name="Troubleshooting.Permissions"></a>
 
-If you are using CloudFront with an Amazon S3 origin, the original versions of your content are stored in an Amazon S3 bucket\. The easiest way to use CloudFront with Amazon S3 is to make all your objects publicly readable in Amazon S3\. To do this, you must explicitly enable public read privileges for each object that you upload to Amazon S3\.
+If you are using CloudFront with an Amazon S3 origin, the original versions of your content are stored in an S3 bucket\. The easiest way to use CloudFront with Amazon S3 is to make all of your objects publicly readable in Amazon S3\. To do this, you must explicitly enable public read privileges for each object that you upload to Amazon S3\.
 
-If your content is not publicly readable, you must create a CloudFront origin access identity so that CloudFront can access it\. For more information about CloudFront origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
+If your content is not publicly readable, you must create a CloudFront origin access identity \(OAI\) so that CloudFront can access it\. For more information about CloudFront origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 Object properties and bucket properties are independent\. You must explicitly grant privileges to each object in Amazon S3\. Objects do not inherit properties from buckets, and object properties must be set independently of the bucket\.
 

@@ -35,7 +35,6 @@ You can't configure CloudFront to forward the following custom headers to your o
 
 |  |  | 
 | --- |--- |
-| Accept\-Encoding | Proxy\-Authenticate | 
 | Cache\-Control | Proxy\-Authorization | 
 | Connection | Proxy\-Connection | 
 | Content\-Length | Range | 
@@ -51,7 +50,7 @@ You can't configure CloudFront to forward the following custom headers to your o
 
 ## Using Custom Headers for Cross\-Origin Resource Sharing \(CORS\)<a name="forward-custom-headers-cors"></a>
 
-You can configure CloudFront to always forward the applicable headers to your origin to accommodate viewers that don't automatically include those headers in requests\. You also need to configure CloudFront to respect CORS settings\. For more information, see [Configuring CloudFront to Respect Cross\-Origin Resource Sharing \(CORS\) Settings](header-caching.md#header-caching-web-cors)\.
+You can configure CloudFront to always forward the applicable headers to your origin to accommodate viewers that don't automatically include those headers in requests\. You also need to configure CloudFront to respect CORS settings\. For more information, see [Configuring CloudFront to Respect CORS Settings](header-caching.md#header-caching-web-cors)\.
 
 ## Using Custom Headers to Restrict Access to Your Content on a Custom Origin<a name="forward-custom-headers-restrict-access"></a>
 

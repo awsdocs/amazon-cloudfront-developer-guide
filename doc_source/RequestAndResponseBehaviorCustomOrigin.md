@@ -73,7 +73,7 @@ CloudFront does not support client authentication with client\-side SSL certific
 
 ### Compression<a name="RequestCustomCompression"></a>
 
-CloudFront forwards requests that have the `Accept-Encoding` field values `"identity"` and `"gzip"`\. For more information, see [Serving Compressed Files](ServingCompressedFiles.md)\.
+CloudFront forwards requests that have the `Accept-Encoding` field values `"identity"` and `"gzip"`\. For more information, see [Serving Compressed Files](ServingCompressedFiles.md)\. 
 
 ### Conditional Requests<a name="RequestCustomConditionalGETs"></a>
 
@@ -148,14 +148,14 @@ For more information about caching based on header values, see [Caching Content 
 | Other\-defined headers | CloudFront forwards the headers to your origin\. | Yes | 
 | `Accept` | CloudFront removes the header\. | Yes | 
 | `Accept-Charset` | CloudFront removes the header\. | Yes | 
-| `Accept-Encoding` | If the value contains `gzip`, CloudFront forwards `Accept-Encoding: gzip` to your origin\. If the value does not contain `gzip`, CloudFront removes the `Accept-Encoding` header field before forwarding the request to your origin\. | No | 
+| `Accept-Encoding` | If the value contains `gzip`, CloudFront forwards `Accept-Encoding: gzip` to your origin\. If the value does not contain `gzip`, CloudFront removes the `Accept-Encoding` header field before forwarding the request to your origin\. | Yes | 
 | `Accept-Language` | CloudFront removes the header\. | Yes | 
 | `Authorization` |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html)  | Yes | 
 | `Cache-Control` | CloudFront forwards the header to your origin\. | No | 
-| `CloudFront-Forwarded-Proto` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring CloudFront to Cache Objects Based on the Protocol of the Request](header-caching.md#header-caching-web-protocol)\. | Yes | 
-| `CloudFront-Is-Desktop-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring CloudFront to Cache Objects Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes | 
-| `CloudFront-Is-Mobile-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring CloudFront to Cache Objects Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes | 
-| `CloudFront-Is-Tablet-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring CloudFront to Cache Objects Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes | 
+| `CloudFront-Forwarded-Proto` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring Caching Based on the Protocol of the Request](header-caching.md#header-caching-web-protocol)\. | Yes | 
+| `CloudFront-Is-Desktop-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring Caching Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes | 
+| `CloudFront-Is-Mobile-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring Caching Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes | 
+| `CloudFront-Is-Tablet-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring Caching Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes | 
 | `CloudFront-Viewer-Country` | CloudFront does not add the header before forwarding the request to your origin\. | Yes | 
 | `Connection` | CloudFront replaces this header with `Connection: Keep-Alive` before forwarding the request to your origin\. | No | 
 | `Content-Length` | CloudFront forwards the header to your origin\. | No | 
@@ -184,7 +184,7 @@ For more information about caching based on header values, see [Caching Content 
 | `Trailer` | CloudFront removes the header\. | No | 
 | `Transfer-Encoding` | CloudFront forwards the header to your origin\. | No | 
 | `Upgrade` | CloudFront removes the header\. | No | 
-| `User-Agent` | CloudFront replaces the value of this header field with `Amazon CloudFront`\. If you want CloudFront to cache your content based on the device the user is using, see [Configuring CloudFront to Cache Objects Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes, but not recommended | 
+| `User-Agent` | CloudFront replaces the value of this header field with `Amazon CloudFront`\. If you want CloudFront to cache your content based on the device the user is using, see [Configuring Caching Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes, but not recommended | 
 | `Via` | CloudFront forwards the header to your origin\. | Yes | 
 | `Warning` | CloudFront forwards the header to your origin\. | Yes | 
 | `X-Amz-Cf-Id` | CloudFront adds the header to the viewer request before forwarding the request to your origin\. The header value contains an encrypted string that uniquely identifies the request\. | No | 
@@ -323,7 +323,7 @@ CloudFront removes or updates the following header fields before forwarding the 
 + `Transfer-Encoding` – If your origin returns this header field, CloudFront sets the value to `chunked` before returning the response to the viewer\.
 + `Upgrade`
 + `Vary` – Note the following:
-  + If you configure CloudFront to forward any of the device\-specific headers to your origin \(`CloudFront-Is-Desktop-Viewer`, `CloudFront-Is-Mobile-Viewer`, `CloudFront-Is-SmartTV-Viewer`, `CloudFront-Is-Tablet-Viewer`\) and you configure your origin to return `Vary:User-Agent` to CloudFront, CloudFront returns `Vary:User-Agent` to the viewer\. For more information, see [Configuring CloudFront to Cache Objects Based on the Device Type](header-caching.md#header-caching-web-device)\.
+  + If you configure CloudFront to forward any of the device\-specific headers to your origin \(`CloudFront-Is-Desktop-Viewer`, `CloudFront-Is-Mobile-Viewer`, `CloudFront-Is-SmartTV-Viewer`, `CloudFront-Is-Tablet-Viewer`\) and you configure your origin to return `Vary:User-Agent` to CloudFront, CloudFront returns `Vary:User-Agent` to the viewer\. For more information, see [Configuring Caching Based on the Device Type](header-caching.md#header-caching-web-device)\.
   + If you configure your origin to include either `Accept-Encoding` or `Cookie` in the `Vary` header, CloudFront includes the values in the response to the viewer\.
   + If you configure CloudFront to forward a whitelist of headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those value to the viewer\.
   + For information about how CloudFront processes a value of `*` in the `Vary` header, see [Content Negotiation](#ResponseCustomContentNegotiation)\.

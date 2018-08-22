@@ -5,7 +5,7 @@ Specific IAM permissions and an IAM execution role are required so that you can 
 **Topics**
 + [IAM Permissions Required to Associate Lambda Functions with CloudFront Distributions](#lambda-edge-permissions-required)
 + [Function Execution Role for Service Principals](#lambda-edge-permissions-function-execution)
-+ [Service\-Linked Role for Lambda@Edge](#using-service-linked-roles)
++ [Service\-Linked Roles for Lambda@Edge](#using-service-linked-roles)
 
 ## IAM Permissions Required to Associate Lambda Functions with CloudFront Distributions<a name="lambda-edge-permissions-required"></a>
 
@@ -63,17 +63,21 @@ For information about the permissions that you need to grant to the execution ro
   For more information about CloudWatch Logs, see [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)\. 
 + If your Lambda function code accesses other AWS resources, such as reading an object from an S3 bucket, the execution role needs permission to perform that operation\. 
 
-## Service\-Linked Role for Lambda@Edge<a name="using-service-linked-roles"></a>
+## Service\-Linked Roles for Lambda@Edge<a name="using-service-linked-roles"></a>
 
-Lambda@Edge uses an AWS Identity and Access Management \(IAM\)[ service\-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role)\. A service\-linked role is a unique type of IAM role that is linked directly to Lambda@Edge\. The service\-linked role is predefined by Lambda@Edge and includes all of the permissions that the service requires so it can call other AWS services on your behalf\. 
+Lambda@Edge uses AWS Identity and Access Management \(IAM\)[ service\-linked roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role)\. A service\-linked role is a unique type of IAM role that is linked directly to Lambda@Edge\. Service\-linked roles are predefined by Lambda@Edge and include all of the permissions that the service requires to call other AWS services on your behalf\.
+
+Lambda@Edge uses two IAM service\-linked roles:
++ **AWSServiceRoleForLambdaReplicator**–Lambda@Edge uses this role to allow Lambda@Edge to replicate functions to AWS Regions\.
++ **AWSServiceRoleForLambdaReplicator**–Lambda@Edge uses this role to allow Lambda@Edge to replicate functions to AWS Regions\.
 
 When you first add a Lambda@Edge trigger in CloudFront, a role named AWSServiceRoleForLambdaReplicator is automatically created to allow Lambda@Edge to replicate functions to AWS Regions\. This role is required for using Lambda@Edge functions\. The ARN for the AWSServiceRoleForLambdaReplicator role looks like this:
 
 `arn:aws:iam::123456789012:role/aws-service-role/replicator.lambda.amazonaws.com/AWSServiceRoleForLambdaReplicator`
 
-A service\-linked role makes setting up Lambda@Edge easier because you don’t have to manually add the necessary permissions\. Lambda@Edge defines the permissions of its service\-linked role, and only Lambda@Edge can assume the role\. The defined permissions include the trust policy and the permissions policy\. The permissions policy cannot be attached to any other IAM entity\.
+A service\-linked role makes setting up Lambda@Edge easier because you don’t have to manually add the necessary permissions\. Lambda@Edge defines the permissions of its service\-linked roles, and only Lambda@Edge can assume the roles\. The defined permissions include the trust policy and the permissions policy\. The permissions policy cannot be attached to any other IAM entity\.
 
-You must remove any associated CloudFront or Lambda@Edge resources before you can delete the service\-linked role\. This protects your Lambda@Edge resources because you can't inadvertently remove permission to access the resources\.
+You must remove any associated CloudFront or Lambda@Edge resources before you can delete a service\-linked role\. This protects your Lambda@Edge resources because you can't inadvertently remove permission to access the resources\.
 
 For information about other services that support service\-linked roles, see [AWS Services That Work with IAM](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html) and look for the services that have **Yes **in the **Service\-Linked Role** column\.
 

@@ -42,7 +42,7 @@ For more information, see [Caching Content Based on Cookies](Cookies.md)\. If yo
 ## Caching Based on Request Headers<a name="cache-hit-ratio-request-headers"></a>
 
 If you configure CloudFront to cache based on request headers, you can improve caching if you do the following:
-+ Configure CloudFront to forward and cache based only specified headers instead of forwarding and caching based on all headers\. For the headers that you specify, CloudFront forwards every combination of header name and value and separately caches the objects that your origin returns even if they're all identical\.
++ Configure CloudFront to forward and cache based on only specified headers instead of forwarding and caching based on all headers\. For the headers that you specify, CloudFront forwards every combination of header name and value and separately caches the objects that your origin returns even if they're all identical\.
 **Note**  
 CloudFront always forwards to your origin the headers specified in the following topics:  
 How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server > [HTTP Request Headers That CloudFront Removes or Updates](RequestAndResponseBehaviorS3Origin.md#request-s3-removed-headers)

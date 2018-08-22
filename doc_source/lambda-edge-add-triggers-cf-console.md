@@ -34,6 +34,10 @@ You can add triggers only to a numbered version, not to **$LATEST**\.
 
 1. Paste the ARN of the Lambda function that you want to execute when the chosen event occurs\. This is the value that you copied in step 1\.
 
+1. Select **Include Body** if you want to access the request body in your function\.
+
+   Note that you don't need to select this option if you just want to replace the request body\.
+
 1. To execute the same function for more event types, choose **\+** and repeat steps 6 and 7\.
 
 1. Choose **Yes, Edit**\.

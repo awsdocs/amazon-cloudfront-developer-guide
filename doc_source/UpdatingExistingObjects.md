@@ -1,6 +1,10 @@
 # Updating Existing Content with a CloudFront Distribution<a name="UpdatingExistingObjects"></a>
 
-There are two ways to update existing content in a CloudFront distribution: update objects \(files\) using the same name or update by using a version identifier in the name\. We recommend that you use a version identifier in file names or in folder names, to help give you more control over managing the content that CloudFront serves\.
+There are two ways to update existing content that CloudFront is set up to distribute for you: 
++ Update files by using the same name
++ Update by using a version identifier in the file name
+
+We recommend that you use a version identifier in file names or in folder names, to help give you more control over managing the content that CloudFront serves\.
 
 ## Updating Existing Files Using Versioned File Names<a name="ReplacingObjects"></a>
 

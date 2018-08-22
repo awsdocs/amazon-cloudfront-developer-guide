@@ -4,7 +4,11 @@ An HTTP 504 status code \(Gateway Timeout\) indicates that when CloudFront forwa
 + The origin returned an HTTP 504 status code to CloudFront\.
 + The origin didn’t respond before the request expired\.
 
-An origin will return an HTTP 504 status code if CloudFront traffic is blocked to the origin by a firewall or security group, or if the origin isn’t accessible on the internet\. Check for those issues first\. Then, if access isn’t the problem, explore application delays and server timeouts to help you identify and fix the issues\.
+**Important**  
+If you're a customer trying to access a website or application, and you've gotten this error, there's probably just unusually high traffic to the site\. Please wait a little while, and then try accessing the site \(or running the application\) again\. If you still get an error, please contact the website or application distributor directly for support\.   
+**Why is this error coming from CloudFront?** CloudFront helps websites speed up delivery of content, like images or web pages, to customers by storing copies in servers located around the world\. But when there's a lot of internet traffic to a website and the site can't keep up, an error is returned when anyone tries to access the site\. When CloudFront can't access content that you've requested from a website, it passes on the error from the site or application that you're trying to use\. 
+
+CloudFront will return an HTTP 504 status code if traffic is blocked to the origin by a firewall or security group, or if the origin isn’t accessible on the internet\. Check for those issues first\. Then, if access isn’t the problem, explore application delays and server timeouts to help you identify and fix the issues\.
 
 **Topics**
 + [Configure the Firewall on Your Origin Server to Allow CloudFront Traffic](#http-504-gateway-timeout-configure-firewall)

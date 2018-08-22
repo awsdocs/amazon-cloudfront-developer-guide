@@ -5,11 +5,14 @@ You can configure CloudFront to automatically compress files of certain types an
 **Important**  
 A viewer request must include `Accept-Encoding: gzip` in the request header, or CloudFront won't compress the requested file\. 
 
-If you're using a custom origin, you can configure your origin to compress files with or without CloudFront compression\. Your origin can compress file types that CloudFront doesn't compress\. \(See [File Types that CloudFront Compresses](#compressed-content-cloudfront-file-types)\.\) If your origin returns a compressed file to CloudFront, CloudFront detects that the file is compressed based on the value of the `Content-Encoding` header and doesn't compress the file again\.
+If you're using a custom or Amazon S3 origin, you can configure your origin to compress files with or without CloudFront compression\. Your origin can compress file types that CloudFront doesn't compress\. \(See [File Types that CloudFront Compresses](#compressed-content-cloudfront-file-types)\.\) If your origin returns a compressed file to CloudFront, CloudFront detects that the file is compressed based on the value of the `Content-Encoding` header and doesn't compress the file again\.
 
 **Topics**
 + [Using CloudFront to Compress Your Content](#compressed-content-cloudfront)
 + [Using a Custom Origin to Compress Your Content](#compressed-content-custom-origin)
++ [Using an Amazon S3 Origin to Compress Your Content](#compressed-content-S3-origin)
++ [Serving Compressed Files When Your Origin Server Is Running IIS](#serving-compressed-files-iis)
++ [Serving Compressed Files When Your Origin Server Is Running NGINX](#serving-compressed-files-nginx)
 
 ## Using CloudFront to Compress Your Content<a name="compressed-content-cloudfront"></a>
 
@@ -44,7 +47,7 @@ If CloudFront has an uncompressed version of the file in the cache, it still for
 Note the following:
 
 **File types that CloudFront compresses**  
-CloudFront compresses files in a large number of file types\. For a complete list, see [File Types that CloudFront Compresses](#compressed-content-cloudfront-file-types)\.
+CloudFront compresses files for a large number of file types\. For a complete list, see [File Types that CloudFront Compresses](#compressed-content-cloudfront-file-types)\.
 
 **Size of files that CloudFront compresses**  
 CloudFront compresses files that are between 1,000 bytes and 10,000,000 bytes in size\.
@@ -59,7 +62,7 @@ If you configure CloudFront to compress content, CloudFront removes the `ETag` r
 CloudFront compresses files in each edge location when it gets the files from your origin\. When you configure CloudFront to compress your content, it doesn't compress files that are already in edge locations\. In addition, when a file expires in an edge location and CloudFront forwards another request for the file to your origin, CloudFront doesn't compress the file if your origin returns an HTTP status code 304, which means that the edge location already has the latest version of the file\. If you want CloudFront to compress the files that are already in edge locations, you'll need to invalidate those files\. For more information, see [Invalidating Files](Invalidation.md)\.
 
 **Custom origin is already configured to compress files**  
-If you configure CloudFront to compress files and CloudFront is forwarding requests to a custom origin that is also configured to compress files, the custom origin will include a `Content-Encoding: gzip` header, which indicates that the file that the origin returned to CloudFront has already been compressed\. CloudFront returns the cached file to the viewer and caches it in the edge location\.  
+If you configure CloudFront to compress files and CloudFront is forwarding requests to a custom origin that is also configured to compress files, the custom origin will include a `Content-Encoding` header, which indicates that the file that the origin returned to CloudFront has already been compressed\. CloudFront returns the cached file to the viewer and caches it in the edge location\.  
 CloudFront does not compress a file if the response includes a `Content-Encoding` header, regardless of the value\.
 
 **Request doesn't include Accept\-Encoding: gzip**  
@@ -70,10 +73,10 @@ In rare cases, when a CloudFront edge location is unusually busy, some files mig
 
 ### Configuring a CloudFront Distribution to Compress Content<a name="compressed-content-cloudfront-configuring"></a>
 
-To configure a web distribution to compress your content, you update the applicable cache behaviors by using one of the following methods: 
+To configure a distribution to compress your content, update the cache behaviors that you want to serve the compressed content by using one of the following methods: 
 + **CloudFront console** – Update the **Compress objects automatically** setting\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
-+ **CloudFront API** – Change the value of the `Compress` element to `true`\. For more information, see [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) \(to create a new distribution\) or [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) \(to update an existing distribution\)\.
-+ **One of the AWS SDKs** – See the applicable SDK documentation on the [AWS Documentation](http://aws.amazon.com/documentation/) page\.
++ **CloudFront API** – Change the value of the `Compress` element to `true`\. For more information, see [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\.
++ **One of the AWS SDKs** – See the SDK documentation on the [AWS Documentation](http://aws.amazon.com/documentation/) page\.
 + **The AWS CLI** – For more information, see [create\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-distribution.html) or [update\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/update-distribution.html) in the *AWS CLI Command Reference*\.
 
 ### File Types that CloudFront Compresses<a name="compressed-content-cloudfront-file-types"></a>
@@ -109,12 +112,22 @@ If you configure CloudFront to compress your content, CloudFront compresses file
 
 ## Using a Custom Origin to Compress Your Content<a name="compressed-content-custom-origin"></a>
 
-If you want to compress file types that CloudFront doesn't compress, you can configure your custom origin to compress files of those types using gzip\. CloudFront doesn't support other compression algorithms\. When your origin returns the compressed file to CloudFront, it will include a `Content-Encoding: gzip` header, which indicates to CloudFront that the file is already compressed\. 
+CloudFront can compress some types of files for you \(see [File Types that CloudFront Compresses](#compressed-content-cloudfront-file-types)\), by using gzip\. But if you want to compress other file types, or if you want to use a compression algorithm that isn’t gzip, such as brotli, you can compress the files on your own server, and then serve the files by using CloudFront\.
 
-**Note**  
-CloudFront does not compress a file if the response includes a `Content-Encoding` header, regardless of the value\.
+To use CloudFront to serve a file with a compression algorithm that isn’t gzip, set up CloudFront to cache based on the `Accept-Encoding` header\. When you do this, CloudFront does not make any changes to the `Accept-Encoding` header and your origin can return an appropriate compressed file for the viewer\.
 
-### Serving Compressed Files When Your Origin Server Is Running IIS<a name="serving-compressed-files-iis"></a>
+When your origin returns a compressed file to CloudFront, include a `Content-Encoding` header to indicate to CloudFront that the file is already compressed\. Then CloudFront simply returns the compressed file to the viewer\.
+
+## Using an Amazon S3 Origin to Compress Your Content<a name="compressed-content-S3-origin"></a>
+
+When you use Amazon S3 to store your content, you can use CloudFront to compress content if you want to use the gzip compression algorithm\. But you might want to use other compression algorithms, such as brotli, instead of gzip, or in addition to gzip\.
+
+After you compress the files, you can serve them with CloudFront by doing the following, for example:
++ Configure CloudFront to cache based on the `Accept-Encoding` header\.
++ Using a Lambda@Edge function that triggers on origin requests, change the URI to point to the compressed file that you want to return, based on the `Accept-Encoding` header\.
++ Add content\-encoding metadata to files that you store on S3 so that the viewer can determine the format of the compressed file\. For more information, see [How Do I Add Metadata to an S3 Object?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-object-metadata.html) in the Amazon Simple Storage Service Console User Guide\.
+
+## Serving Compressed Files When Your Origin Server Is Running IIS<a name="serving-compressed-files-iis"></a>
 
 By default, IIS does not serve compressed content for requests that come through proxy servers such as CloudFront\. If you're using IIS and if you configured IIS to compress content by using the `httpCompression` element, change the value of the `noCompressionForProxies` attribute to `false` so IIS will return compressed content to CloudFront\.
 
@@ -122,6 +135,6 @@ In addition, if you have compressed objects that are requested less frequently t
 
 For more information, refer to the IIS documentation on the Microsoft website\.
 
-### Serving Compressed Files When Your Origin Server Is Running NGINX<a name="serving-compressed-files-nginx"></a>
+## Serving Compressed Files When Your Origin Server Is Running NGINX<a name="serving-compressed-files-nginx"></a>
 
 When CloudFront forwards a request to the origin server, it includes a `Via` header\. This causes NGINX to interpret the request as proxied and, by default, NGINX disables compression for proxied requests\. If your version of NGINX includes the `gzip_proxied` setting, change the value to `any` so that NGINX will return compressed content to CloudFront\. For more information, see the NGINX documentation for the module `ngx_http_gzip_module`\. 

@@ -33,6 +33,12 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
           "requestId": "MRVMF7KydIvxMWfJIglgwHQwZsbG2IhRJ07sn9AkKUFSHS9EXAMPLE=="
         },
         "request": {
+          "body": {
+            "action": "read-only",
+            "data": "eyJ1c2VybmFtZSI6IkxhbWJkYUBFZGdlIiwiY29tbWVudCI6IlRoaXMgaXMgcmVxdWVzdCBib2R5In0=",
+            "encoding": "base64",
+            "inputTruncated": false
+          },
           "clientIp": "2001:0db8:85a3:0:0:8a2e:0370:7334",
           "querystring": "size=large",
           "uri": "/picture.jpg",
@@ -116,7 +122,16 @@ An encrypted string that uniquely identifies a request\. The `requestId` value a
 The IP address of the viewer that made the request\. If the viewer used an HTTP proxy or a load balancer to send the request, the value is the IP address of the proxy or load balancer\.
 
 **headers \(read/write\)**  
-The headers in the request\. The keys in the `headers` object are lowercase versions of the header names in the HTTP request\. These lowercase keys give you case\-insensitive access to the header values\. Each header \(for example, `headers["accept"]` or `headers["host"]`\) is an array of key\-value pairs, where `key` is the case\-sensitive name of the header as it appears in an HTTP request and `value` is a header value\. The number of elements in the array is the number of times that a header is repeated in an HTTP request\.  
+The headers in the request\. Note the following:  
++ The keys in the `headers` object are lowercase versions of standard HTTP header names\. Using lowercase keys gives you case\-insensitive access to the header values\.
++ Each header \(for example, `headers["accept"]` or `headers["host"]`\) is an array of key\-value pairs\. For a given header, the array contains one key\-value pair for each value in the generated response\.
++ `key` \(optional\) is the case\-sensitive name of the header as it appears in an HTTP request; for example, `accept` or `host`\.
++ Specify `value` as a header value\.
++ If you do not include the header key portion of the key\-value pair, Lambda@Edge will automatically insert a header key using the header name that you provide\. Regardless of how you've formatted the header name, the header key that is inserted automatically will be formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
+
+  For example, you can add a header like the following, without a header key: `'content-type': [{ value: 'text/html;charset=UTF-8' }]`
+
+  In this example, Lambda@Edge creates the following header key: `Content-Type`\.
 For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\.
 
 **method \(read\-only\)**  
@@ -130,6 +145,23 @@ The relative path of the requested object\. Note the following:
 + The new relative path must begin with a slash \(like this: /\)\.
 + If a function changes the URI for a request, that changes the object that the viewer is requesting\. 
 + If a function changes the URI for a request, that doesn't change the cache behavior for the request or the origin that the request is forwarded to\.
+
+***Request Values \- Body***
+
+**inputTruncated \(read\-only\)**  
+A Boolean flag that indicates if the body was truncated by Lambda@Edge\. For more information, see [Size Limits for Body with the Include Body Option](lambda-requirements-limits.md#lambda-requirements-size-body-access)\.
+
+**action \(read/write\)**  
+The action that you intend to take with the body\. The options for `action` are the following:  
++ **read\-only:** This is the default\. When returning the response from the Lambda function, if `action` is read\-only, Lambda@Edge ignores any changes to `encoding` or `data`\.
++ **replace:** Specify this when you want to replace the body sent to the origin\.
+
+**encoding \(read/write\)**  
+The encoding for the body\. When Lambda@Edge exposes the body to the Lambda function, it first converts the body to base64 encoding\. If you choose `replace` for the `action` to replace the body, you can opt to use `text` or `base64` \(the default\) encoding\.  
+If you specify `encoding` as `base64` but the body is not valid base64, CloudFront returns an error\.
+
+**data \(read/write\)**  
+The request body content\. 
 
 ***Request Values \- Custom Origin***
 
@@ -150,7 +182,7 @@ The directory path at the server where the request should locate content\. The p
 **port**  
 The port at your custom origin\. The port must be 80 or 443, or a number in the range of 1024 to 65535\.
 
-**protocol**  
+**protocol \(origin requests only\)**  
 The origin protocol policy that CloudFront should use when fetching objects from your origin\. The value can be `http` or `https`\.
 
 **readTimeout**  
@@ -245,7 +277,7 @@ Here's the format of the event object that CloudFront passes to a Lambda functio
 }
 ```
 
-Response events include the values that appear in the corresponding request event, and in addition, the following values\. If your Lambda@Edge function generates an HTTP response, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)\.
+Response events include the values that appear in the corresponding request event, and in addition, the following values\. If your Lambda@Edge function generates an HTTP response, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses-in-requests.md)\.
 
 **distributionID \(read\-only\)**  
 The ID of the distribution that's associated with the request\.
@@ -257,8 +289,13 @@ The type of trigger that's associated with the response\.
 Headers that you want CloudFront to return in the generated response\. Note the following:  
 + The keys in the `headers` object are lowercase versions of standard HTTP header names\. Using lowercase keys gives you case\-insensitive access to the header values\.
 + Each header \(for example, `headers["accept"]` or `headers["host"]`\) is an array of key\-value pairs\. For a given header, the array contains one key\-value pair for each value in the generated response\.
-+ Specify `key` as the case\-sensitive name of the header as it appears in an HTTP request; for example, `accept` or `host`\.
++ `key` \(optional\) is the case\-sensitive name of the header as it appears in an HTTP request; for example, `accept` or `host`\.
 + Specify `value` as a header value\.
++ If you do not include the header key portion of the key\-value pair, Lambda@Edge will automatically insert a header key using the header name that you provide\. Regardless of how you've formatted the header name, the header key that is inserted automatically will be formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
+
+  For example, you can add a header like the following, without a header key: `'content-type': [{ value: 'text/html;charset=UTF-8' }]`
+
+  In this example, Lambda@Edge creates the following header key: `Content-Type`\.
 For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\.
 
 **requestId \(read\-only, viewer response events only\)**  

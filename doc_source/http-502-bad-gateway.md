@@ -2,6 +2,10 @@
 
 An HTTP 502 status code \(Bad Gateway\) indicates that CloudFront wasn't able to serve the requested object because it couldn't connect to the origin server\. 
 
+**Important**  
+If you're a customer trying to access a website or application, and you've gotten this error, there's probably just unusually high traffic to the site\. Please wait a little while, and then try accessing the site \(or running the application\) again\. If you still get an error, please contact the website or application distributor directly for support\.   
+**Why is this error coming from CloudFront?** CloudFront helps websites speed up delivery of content, like images or web pages, to customers by storing copies in servers located around the world\. But when there's a lot of internet traffic to a website and the site can't keep up, an error is returned when anyone tries to access the site\. When CloudFront can't access content that you've requested from a website, it passes on the error from the site or application that you're trying to use\. 
+
 **Topics**
 + [SSL/TLS Negotiation Failure Between CloudFront and a Custom Origin Server](#ssl-negotitation-failure)
 + [Origin Is Not Responding with Supported Ciphers/Protocols](#origin-not-responding-with-supported-ciphers-protocols)

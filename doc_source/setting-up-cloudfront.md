@@ -27,6 +27,9 @@ This might be unavailable in your browser if you previously signed into the AWS 
 
 Note your AWS account number, because you'll need it later\.
 
+**Tip**  
+If you plan to use CloudFront to distribute content that you store in an S3 bucket, make sure that you also complete the steps to sign up for S3\. For more information, see [Sign Up for Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/gsg/SigningUpforS3.html)\.
+
 ## Access Your Account<a name="setting-up-access-account"></a>
 
 You use AWS services by using any of the following options:
@@ -69,13 +72,13 @@ We strongly recommend that you adhere to the best practice of using the **Admini
 
 1. Choose **Next: Permissions**\.
 
-1. On the **Set permissions for user** page, choose **Add user to group**\.
+1. On the **Set permissions** page, choose **Add user to group**\.
 
 1. Choose **Create group**\.
 
-1. In the **Create group** dialog box, type **Administrators**\.
+1. In the **Create group** dialog box, for **Group name** type **Administrators**\.
 
-1. For **Filter**, choose **Job function**\.
+1. For **Filter policies**, select the check box for **AWS managed \- job function**\.
 
 1. In the policy list, select the check box for **AdministratorAccess**\. Then choose **Create group**\.
 

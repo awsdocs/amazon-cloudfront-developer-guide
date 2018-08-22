@@ -13,6 +13,7 @@ Most codes in both columns include a two\-letter abbreviation that indicates the
 + **JP:** Japan
 + **SA:** South America
 + **US:** United States
++ **ZA:** South Africa
 
 For more information about pricing by region, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
 

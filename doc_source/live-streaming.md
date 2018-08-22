@@ -60,7 +60,9 @@ If you've used AWS Elemental MediaPackage to format a live stream for viewing, y
 
 To stream the video with CloudFront, create a web distribution for the channel, and then add each AWS Elemental MediaPackage endpoint as an origin for the distribution\. For each origin, you must configure cache behaviors to route the video content correctly\.
 
-Follow these steps:
+When you save a channel in AWS Elemental MediaPackage, you can choose to also automatically create a distribution in CloudFront\. For more information, see [Creating a Distribution from AWS Elemental MediaPackage](http://docs.aws.amazon.com/mediapackage/latest/ug/cdns-create-mp.html) in the AWS Elemental MediaPackage User Guide\.
+
+To create a CloudFront distribution for AWS Elemental MediaPackage in CloudFront, follow these steps:
 
 **Topics**
 + [Step 1: Create and Configure a CloudFront Distribution for Live Video](#live-streaming-with-mediapackage-create-dist)

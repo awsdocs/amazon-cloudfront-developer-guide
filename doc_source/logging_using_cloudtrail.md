@@ -8,25 +8,27 @@ You can use information in the CloudTrail log files to determine which requests 
 CloudFront is a global service\. To view CloudFront requests in CloudTrail logs, you must update an existing trail to include global services\. For more information, see [Updating a Trail](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) and [About Global Service Events](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-global-service-events) in the *AWS CloudTrail User Guide*\. 
 
 **Topics**
-+ [CloudFront Information in CloudTrail Log Files](#cloudfront_info_in_cloudtrail)
++ [CloudFront Information in CloudTrail](#service-name-info-in-cloudtrail)
 + [Understanding CloudFront Log File Entries](#understanding_cloudfront_entries)
 
-## CloudFront Information in CloudTrail Log Files<a name="cloudfront_info_in_cloudtrail"></a>
+## CloudFront Information in CloudTrail<a name="service-name-info-in-cloudtrail"></a>
 
-When you enable CloudTrail, CloudTrail captures every request that you make to every AWS service that CloudTrail supports\. \(For a list of supported services, see [Supported Services](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_supported_services.html) in the *AWS CloudTrail User Guide*\.\) The log files aren't organized or sorted by service; each log file might contain records from more than one service\. CloudTrail determines when to create a new log file\.
+CloudTrail is enabled on your AWS account when you create the account\. When activity occurs in CloudFront, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. Because CloudFront is a global service, events for the service are logged in US East \(N\. Virginia\)\. For more information, see [Viewing Events with CloudTrail Event History](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
-**Note**  
-CloudTrail supports all CloudFront API actions\.
+For an ongoing record of events in your AWS account, including events for CloudFront, create a trail\. Your trail must include global service events\. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket\. By default, when you create a trail in the console, the trail applies to all regions and includes global service events\. The trail logs events from all regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you specify\. Additionally, you can configure other AWS services to further analyze and act upon the event data collected in CloudTrail logs\. For more information, see: 
++ [Overview for Creating a Trail](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html)
++ [CloudTrail Supported Services and Integrations](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations)
++ [Configuring Amazon SNS Notifications for CloudTrail](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)
++ [Receiving CloudTrail Log Files from Multiple Regions](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) and [Receiving CloudTrail Log Files from Multiple Accounts](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)
 
-Every log file entry contains information about who made the request\. The user identity information in the log file helps you determine whether the request was made using root or IAM user credentials, using temporary security credentials for a role or federated user, or by another AWS service\. For more information, see [userIdentity Element](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/event_reference_user_identity.html) in the *AWS CloudTrail User Guide*\.
+All CloudFront API actions are logged by CloudTrail and are documented in the [Amazon CloudFront API Reference](http://docs.aws.amazon.com/cloudfront/latest/APIReference/)\. For example, calls to the `CreateDistribution`, `GetDistribution` and `ListInvalidations ` APIs generate entries in the CloudTrail log files\. 
 
-You can store log files for as long as you want\. You can also define Amazon S3 lifecycle rules to archive or delete log files automatically\.
+Every event or log entry contains information about who generated the request\. The identity information helps you determine the following: 
++ Whether the request was made with root or IAM user credentials\.
++ Whether the request was made with temporary security credentials for a role or federated user\.
++ Whether the request was made by another AWS service\.
 
-By default, your log files are encrypted by using Amazon S3 server\-side encryption \(SSE\)\.
-
-You can choose to have CloudTrail publish Amazon SNS notifications when new log files are delivered if you want to take quick action upon log file delivery\. For more information, see [Configuring Amazon SNS Notifications](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html) in the *AWS CloudTrail User Guide*\.
-
-You can also aggregate log files from multiple AWS regions and multiple AWS accounts into a single Amazon S3 bucket\. For more information, see [Aggregating CloudTrail Log Files to a Single Amazon S3 Bucket](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/aggregating_logs_top_level.html) in the *AWS CloudTrail User Guide*\. 
+For more information, see the [CloudTrail userIdentity Element](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
 
 ## Understanding CloudFront Log File Entries<a name="understanding_cloudfront_entries"></a>
 

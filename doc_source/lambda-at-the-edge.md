@@ -27,7 +27,6 @@ For sample code and additional examples, see [Lambda@Edge Example Functions](lam
 + [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)
 + [Deleting Lambda@Edge Functions and Replicas](lambda-edge-delete-replicas.md)
 + [Lambda@Edge Event Structure](lambda-event-structure.md)
-+ [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses.md)
-+ [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)
++ [Working with Requests and Responses](lambda-generating-http-responses.md)
 + [Lambda@Edge Example Functions](lambda-examples.md)
 + [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)
