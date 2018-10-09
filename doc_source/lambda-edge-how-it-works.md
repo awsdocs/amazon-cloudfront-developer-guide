@@ -1,9 +1,9 @@
 # Get Started Creating and Using Lambda@Edge Functions<a name="lambda-edge-how-it-works"></a>
 
-You can use Lambda@Edge functions to do lots of useful things, but it can seem a little complicated when you're getting started\. This section explains, at a high level, how Lambda@Edge works with CloudFront and [provides a tutorial](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works-tutorial.html) that steps through a simple example\.
+You can use Lambda@Edge functions to do lots of useful things, but it can seem a little complicated when you're getting started\. This section explains, at a high level, how Lambda@Edge works with CloudFront and [provides a tutorial](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works-tutorial.html) that steps through a simple example\.
 
 **Tip**  
-After you're familiar with how Lambda@Edge works and you've created a Lambda@Edge function, learn more about how you can use Lambda@Edge for your own custom solutions\. Learn more about [ creating and updating functions](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-create-function.html), [ the event structure](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html), and [ adding CloudFront triggers](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-add-triggers.html)\. You can also find more ideas and get code samples in [Lambda@Edge Example Functions](lambda-examples.md)\.
+After you're familiar with how Lambda@Edge works and you've created a Lambda@Edge function, learn more about how you can use Lambda@Edge for your own custom solutions\. Learn more about [ creating and updating functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-create-function.html), [ the event structure](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html), and [ adding CloudFront triggers](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-add-triggers.html)\. You can also find more ideas and get code samples in [Lambda@Edge Example Functions](lambda-examples.md)\.
 
 Here's an overview of how to create and use Lambda functions with CloudFront:
 

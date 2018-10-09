@@ -8,5 +8,5 @@ You can create, update, or delete a distribution by completing the steps in the 
 + [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)
 + [Values That CloudFront Displays in the Console](distribution-web-values-returned.md)
 + [Testing a Distribution](distribution-web-testing.md)
-+ [Viewing and Updating Distributions](HowToUpdateDistribution.md)
++ [Updating a Distribution](HowToUpdateDistribution.md)
 + [Deleting a Distribution](HowToDeleteDistribution.md)

@@ -1,8 +1,8 @@
 # Creating an RTMP Distribution Using the CloudFront Console<a name="distribution-rtmp-creating-console"></a>
 
-The following procedure explains how to create an RTMP distribution using the CloudFront console\. If you want to create an RTMP distribution using the CloudFront API, go to [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\. 
+The following procedure explains how to create an RTMP distribution using the CloudFront console\. If you want to create an RTMP distribution using the CloudFront API, go to [CreateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\. 
 
-For the current limit on the number of RTMP distributions that you can create for each AWS account, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.<a name="distribution-rtmp-creating-console-procedure"></a>
+For the current limit on the number of RTMP distributions that you can create for each AWS account, see [Amazon CloudFront Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.<a name="distribution-rtmp-creating-console-procedure"></a>
 
 **To create an RTMP distribution using the CloudFront console**
 

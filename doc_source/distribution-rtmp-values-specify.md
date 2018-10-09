@@ -35,7 +35,7 @@ If you configured Amazon S3 Transfer Acceleration for your bucket, do not specif
 The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
-The bucket name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+The bucket name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 When you change the bucket from which CloudFront gets objects for the current origin, CloudFront immediately begins replicating the change to CloudFront edge locations\. Until the distribution configuration is updated in a given edge location, CloudFront will continue to forward requests to the previous Amazon S3 bucket\. As soon as the distribution configuration is updated in that edge location, CloudFront begins to forward requests to the new Amazon S3 bucket\.
 
@@ -109,7 +109,7 @@ When you create a distribution, you must specify whether you want the distributi
   When you create, modify, or delete a CloudFront distribution, it takes time for your changes to propagate to the CloudFront database\. An immediate request for information about a distribution might not show the change\. Propagation usually completes within minutes, but a high system load or network partition might increase this time\. 
 + *Disabled* means that even though the distribution might be deployed and ready to use, end users can't use it\. When a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
-You can toggle a distribution between disabled and enabled as often as you want\. For information about updating a distribution's configuration, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
+You can toggle a distribution between disabled and enabled as often as you want\. For information about updating a distribution's configuration, see [Updating a Distribution](HowToUpdateDistribution.md)\.
 
 ## Restrict Viewer Access \(Use Signed URLs\)<a name="StreamingDistValuesRestrictViewerAccess"></a>
 
@@ -133,5 +133,5 @@ If you're updating a distribution that you're already using to distribute conten
 If you want to create signed URLs using AWS accounts in addition to or instead of the current account, enter one AWS account number per line in this field\. Note the following:
 + The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating CloudFront Key Pairs for Your Trusted Signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
 + You can't create CloudFront key pairs for IAM users, so you can't use IAM users as trusted signers\.
-+ For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](http://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
++ For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](https://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
 + If you enter the account number for the current account, CloudFront automatically checks the **Self** checkbox and removes the account number from the **AWS Account Numbers** list\.

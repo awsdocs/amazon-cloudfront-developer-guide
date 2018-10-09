@@ -1,6 +1,6 @@
 # Configuring Error Response Behavior<a name="custom-error-pages-procedure"></a>
 
-You can use either the CloudFront API or console to configure CloudFront error responses\. For information about using the CloudFront API to configure error responses, go to [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*, and see the `CustomErrorResponses` element\. 
+You can use either the CloudFront API or console to configure CloudFront error responses\. For information about using the CloudFront API to configure error responses, go to [PUT Distribution Config](https://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*, and see the `CustomErrorResponses` element\. 
 
 **To configure CloudFront error responses using the console**
 
@@ -10,7 +10,7 @@ You can use either the CloudFront API or console to configure CloudFront error r
 
 1. Confirm that you have granted CloudFront at least `read` permission to your custom error page objects\.
 
-   For more information about Amazon S3 permissions, see [Access Control](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAuthAccess.html) in the *Amazon Simple Storage Service Developer Guide*\. For information on using the Amazon S3 console to update permissions, go to the [http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html](http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html)\. 
+   For more information about Amazon S3 permissions, see [Access Control](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAuthAccess.html) in the *Amazon Simple Storage Service Developer Guide*\. For information on using the Amazon S3 console to update permissions, go to the [http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html](http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html)\. 
 
 1. \(Optional\) Configure your origin server to add `Cache-Control` directives or an `Expires` header along with the error response for specific objects, if applicable\. For more information, see [Controlling How Long CloudFront Caches Errors](custom-error-pages-expiration.md)\.
 

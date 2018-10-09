@@ -2,7 +2,7 @@
 
 You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These access logs are available for both web and RTMP distributions\. If you enable logging, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\.
 
-You can enable logging as an option that you specify when you're creating a distribution\. For more information, see the [Logging](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesLoggingOnOff) section of the **Values That You Specify When You Create or Update a Web Distribution ** topic\.
+You can enable logging as an option that you specify when you're creating a distribution\. For more information, see the [Logging](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesLoggingOnOff) section of the **Values That You Specify When You Create or Update a Web Distribution ** topic\.
 
 **Topics**
 + [How Logging Works](#AccessLogsOverview)
@@ -58,13 +58,13 @@ In some circumstances, if you programmatically submit a request to create a buck
 **Restoring the ACL for the bucket**  
 If you remove permissions for the awslogsdelivery account, CloudFront won't be able to save logs to the S3 bucket\. To enable CloudFront to start again to save logs for your distribution, restore the ACL permission by doing one of the following:  
 
-1. Disable logging for your distribution in CloudFront, and then enable it again\. For more information, see [Logging](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesLoggingOnOff) in the **Values That You Specify When You Create or Update a Web Distribution ** topic\.
+1. Disable logging for your distribution in CloudFront, and then enable it again\. For more information, see [Logging](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesLoggingOnOff) in the **Values That You Specify When You Create or Update a Web Distribution ** topic\.
 
 1. Add the ACL permission for awslogsdelivery manually by navigating to the S3 bucket in the Amazon S3 console and adding permission\. To add the ACL for awslogsdelivery, you must provide the canonical name for the account, which is the following: 
 
    `c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0`
 
-   For more information about adding ACLs to S3 buckets, see [Setting ACL Bucket Permissions](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-bucket-permissions.html) in the **Amazon Simple Storage Service Console User Guide**\.
+   For more information about adding ACLs to S3 buckets, see [Setting ACL Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-bucket-permissions.html) in the **Amazon Simple Storage Service Console User Guide**\.
 
 **ACL for each log file**  
 In addition to the ACL on the bucket, there's an ACL on each log file\. The bucket owner has `FULL_CONTROL` permission on each log file, the distribution owner \(if different from the bucket owner\) has no permission, and the awslogsdelivery account has read and write permissions\. 
@@ -123,9 +123,9 @@ We recommend that you use the logs to understand the nature of the requests for 
 You can enable or disable logging, change the Amazon S3 bucket where your logs are stored, and change the prefix for log files by using the CloudFront console or the CloudFront API\. Your changes to logging settings take effect within 12 hours\.
 
 For more information, see the following topics:
-+ Updating a web or an RTMP distribution using the CloudFront console: [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
-+ Updating a web distribution using the CloudFront API: [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
-+ Updating an RTMP distribution using the CloudFront API: [UpdateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
++ Updating a web or an RTMP distribution using the CloudFront console: [Updating a Distribution](HowToUpdateDistribution.md)\.
++ Updating a web distribution using the CloudFront API: [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
++ Updating an RTMP distribution using the CloudFront API: [UpdateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 To use the CloudFront API to change access log settings for web distributions, you must use the 2009\-04\-02 or later version of the API\. To use the CloudFront API to change access log settings for RTMP distributions, you must use the 2010\-05\-01 or later version of the API\. 
 
@@ -133,8 +133,8 @@ To use the CloudFront API to change access log settings for web distributions, y
 
 CloudFront does not automatically delete log files from your Amazon S3 bucket\. For information about deleting log files from an Amazon S3 bucket, see the following topics:
 + Using the Amazon S3 console: [Deleting an Object](http://docs.aws.amazon.com/AmazonS3/latest/UG/DeletinganObject.html) in the *Amazon Simple Storage Service Console User Guide*\.
-+ Using the REST API: [DELETE Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) in the *Amazon Simple Storage Service API Reference*\.
-+ Using the SOAP API: [DeleteObject](http://docs.aws.amazon.com/AmazonS3/latest/API/SOAPDeleteObject.html) in the *Amazon Simple Storage Service API Reference*\.
++ Using the REST API: [DELETE Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) in the *Amazon Simple Storage Service API Reference*\.
++ Using the SOAP API: [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPDeleteObject.html) in the *Amazon Simple Storage Service API Reference*\.
 
 ## Log File Format<a name="LogFileFormat"></a>
 
@@ -206,7 +206,7 @@ The log file for a web distribution includes the following fields in the listed 
 | 22 | ssl\-cipher | When `cs-protocol` in field 17 is `https`, the SSL cipher that the client and CloudFront negotiated for encrypting the request and response\. When `cs-protocol` is `http`, the value for `ssl-cipher` is a hyphen \(\-\)\. Possible values include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 23 | x\-edge\-response\-result\-type | How CloudFront classified the response just before returning the response to the viewer\. See also `x-edge-result-type` in field 14\.  Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 24 | cs\-protocol\-version | The HTTP version that the viewer specified in the request\. Possible values include HTTP/0\.9, HTTP/1\.0, HTTP/1\.1, and HTTP/2\.0\. | 
-| 25 | fle\-status | When [field\-level encryption](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, a code that indicates whether the request body was successfully processed\. If field\-level encryption is not configured for the distribution, the value of `fle-status` is a hyphen \(`-`\)\. When CloudFront successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of the `fle-status` column is `Processed`\. The value of `x-edge-result-type`, column 14, can still indicate a client\-side or server\-side error\. If the request exceeds a field\-level encryption limit, `fle-status` contains one of the following error codes, and CloudFront returns HTTP status code 400 to the viewer\. For a list of the current limits on field\-level encryption, see [Limits on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) Other possible values for fle\-status include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
+| 25 | fle\-status | When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, a code that indicates whether the request body was successfully processed\. If field\-level encryption is not configured for the distribution, the value of `fle-status` is a hyphen \(`-`\)\. When CloudFront successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of the `fle-status` column is `Processed`\. The value of `x-edge-result-type`, column 14, can still indicate a client\-side or server\-side error\. If the request exceeds a field\-level encryption limit, `fle-status` contains one of the following error codes, and CloudFront returns HTTP status code 400 to the viewer\. For a list of the current limits on field\-level encryption, see [Limits on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) Other possible values for fle\-status include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 26 | fle\-encrypted\-fields | The number of fields that CloudFront encrypted and forwarded to the origin\. CloudFront streams the processed request to the origin as it encrypts data, so `fle-encrypted-fields` can have a value even if the value of `fle-status` is an error\. If field\-level encryption is not configured for the distribution, the value of `fle-encrypted-fields` is a hyphen \(`-`\)\.  | 
 
 **Note**  

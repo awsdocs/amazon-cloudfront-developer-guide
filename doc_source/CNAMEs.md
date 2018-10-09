@@ -50,7 +50,7 @@ Choose an option, depending on whether you want viewers to use HTTPS to access y
      + **All Clients**: If the viewer doesn't support SNI, it displays a warning because the CloudFront domain name doesn't match the domain name in your SSL/TLS certificate\.
      + **Only Clients that Support Server Name Indication \(SNI\)**: CloudFront drops the connection with the viewer without returning the object\.  
 **Clients Supported \(Web Distributions Only\)**  
-Choose the applicable options:  
+Choose an option:  
    + **All Clients**: CloudFront serves your HTTPS content using dedicated IP addresses\. If you select this option, you incur additional charges when you associate your SSL/TLS certificate with a distribution that is enabled\. For more information, see [http://aws\.amazon\.com/cloudfront/pricing](http://aws.amazon.com/cloudfront/pricing)\.
    + **Only Clients that Support Server Name Indication \(SNI\)**: Older browsers or other clients that don't support SNI must use another method to access your content\.
 For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)\.
@@ -63,7 +63,7 @@ For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames
 **Note**  
  If your DNS record already points to a distribution that is not the distribution that you are creating, then you can't add the alternate domain name to your distribution without updating your DNS\. For more information, see [Restrictions on Using Alternate Domain Names](#alternate-domain-names-restrictions)\.   
 **Route 53**  
-Create an alias resource record set\. With an alias resource record set, you don't pay for Route 53 queries\. In addition, you can create an alias resource record set for the root domain name \(example\.com\), which DNS doesn't allow for CNAMEs\. For more information, see [ Routing Queries to an Amazon CloudFront Distribution](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.  
+Create an alias resource record set\. With an alias resource record set, you don't pay for Route 53 queries\. In addition, you can create an alias resource record set for the root domain name \(example\.com\), which DNS doesn't allow for CNAMEs\. For more information, see [ Routing Queries to an Amazon CloudFront Distribution](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.  
 **Another DNS service provider**  
 Use the method provided by your DNS service provider to add a CNAME resource record set to the hosted zone for your domain\. This new CNAME resource record set will redirect DNS queries from your domain \(for example, www\.example\.com\) to the CloudFront domain name for your distribution \(for example, d111111abcdef8\.cloudfront\.net\)\. For more information, see the documentation provided by your DNS service provider\.  
 If you already have an existing CNAME record for your domain name, update that resource record set or replace it with a new one that points to the CloudFront domain name for your distribution\.   
@@ -120,7 +120,7 @@ You can’t add a wildcard to a top level domain name, such as `*.com`, so if yo
 1. Update the DNS configuration for your subdomain to point to the new distribution\. For example, you would update the DNS service for the subdomain `marketing.example.com` to route traffic to the CloudFront domain name for your distribution, `d111111abcdef8.cloudfront.net`\.
 
    To update the configuration, do one of the following: 
-   + **If you're using Route 53,** update alias records or CNAME records, depending how you set up the alternate domain name originally\. For more information, see [ Editing Records](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html) in the *Amazon Route 53 Developer Guide*\.
+   + **If you're using Route 53,** update alias records or CNAME records, depending how you set up the alternate domain name originally\. For more information, see [ Editing Records](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html) in the *Amazon Route 53 Developer Guide*\.
    + **If you're using another DNS service provider,** use the method provided by the DNS service provider to update the CNAME record that directs traffic to CloudFront\. For more information, see the documentation provided by your DNS service provider\.
 
 1. Using dig or a similar tool, confirm that the resource record set that you created in step 4 points to the domain name for your distribution\. For more information about dig, go to [http://www\.kloth\.net/services/dig\.php](http://www.kloth.net/services/dig.php)\.
@@ -218,7 +218,7 @@ If you want to remove the alternate domain name from this distribution so you ca
 1. To start, route internet traffic for your domain to another resource that isn’t your CloudFront distribution, such as an Elastic Load Balancing load balancer\. Or you can delete the DNS record that’s routing traffic to CloudFront\.
 
    Do one of the following, depending on the DNS service for your domain:
-   + **If you're using Route 53**, update or delete alias records or CNAME records\. For more information, see [Editing Records](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html) or [Deleting Records](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-deleting.html)\.
+   + **If you're using Route 53**, update or delete alias records or CNAME records\. For more information, see [Editing Records](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html) or [Deleting Records](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-deleting.html)\.
    + **If you're using another DNS service provider**, use the method provided by the DNS service provider to update or delete the CNAME record that directs traffic to CloudFront\. For more information, see the documentation provided by your DNS service provider\.
 
 1. After you update your domain's DNS records, wait until the changes have propagated and DNS resolvers are routing traffic to the new resource\. You can check to see when this is complete by creating some test links that use your domain in the URL\.
@@ -262,7 +262,8 @@ If you're adding alternate domain names to your distribution, you must create CN
 
 **Duplicate and Overlapping Alternate Domain Names**  
 You cannot add an alternate domain name to a CloudFront distribution if the alternate domain name already exists in another CloudFront distribution, even if your AWS account owns the other distribution\.  
-However, you can add a wildcard alternate domain name, such as `*.example.com`, that includes \(that overlaps with\) a non\-wildcard alternate domain name, such as `www.example.com`\. Overlapping domain names can be in the same distribution or in separate distributions as long as both distributions were created by using the same AWS account\.
+However, you can add a wildcard alternate domain name, such as `*.example.com`, that includes \(that overlaps with\) a non\-wildcard alternate domain name, such as `www.example.com`\. Overlapping domain names can be in the same distribution or in separate distributions as long as both distributions were created by using the same AWS account\.  
+If you have overlapping alternate domain names in two distributions, CloudFront sends the request to the distribution with the more specific name match, regardless of the distribution that the DNS record points to\. For example, example\.domain\.com is more specific than \*\.domain\.com\.
 
 **Alternate Domain Names that Already Point to a Distribution**  
 If your DNS record points to a distribution that is not the distribution that you are creating or modifying, then you can't add the alternate domain name to your distribution\. In this scenario, you must update your DNS at your DNS provider before you can add the domain name for your CloudFront distribution\.   
@@ -272,7 +273,7 @@ To correct this, sign in to your DNS provider and remove the existing DNS record
 When you add an alternate domain name to a distribution, you typically create a CNAME record in your DNS configuration to route DNS queries for the domain name to your CloudFront distribution\. However, you can't create a CNAME record for the top node of a DNS namespace, also known as the zone apex; the DNS protocol doesn't allow it\. For example, if you register the DNS name `example.com`, the zone apex is `example.com`\. You can't create a CNAME record for `example.com`, but you can create CNAME records for `www.example.com`, `newproduct.example.com`, and so on\.  
 If you're using Route 53 as your DNS service, you can create an alias resource record set, which has two advantages over CNAME records\. You can create an alias resource record set for a domain name at the top node \(example\.com\)\. In addition, when you use an alias resource record set, you don't pay for Route 53 queries\.  
 If you enable IPv6, you must create two alias resource record sets: one to route IPv4 traffic \(an A record\) and one to route IPv6 traffic \(an AAAA record\)\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\. 
-For more information, see [Routing Queries to an Amazon CloudFront Distribution](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
+For more information, see [Routing Queries to an Amazon CloudFront Distribution](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
 
 **Alternate Domain Names and HTTPS**  
 If you want viewers to use HTTPS with an alternate domain names, additional configuration is required\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.

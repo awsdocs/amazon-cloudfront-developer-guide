@@ -11,6 +11,7 @@ If you're a customer trying to access a website or application, and you've gotte
 + [Origin Is Not Responding with Supported Ciphers/Protocols](#origin-not-responding-with-supported-ciphers-protocols)
 + [SSL/TLS Certificate on the Origin Is Expired, Invalid, Self\-signed, or the Certificate Chain Is in the Wrong Order](#ssl-certificate-expired)
 + [Origin Is Not Responding on Specified Ports in Origin Settings](#origin-not-responding-on-specified-ports)
++ [Lambda Function Associated with Your Distribution Includes Execution Errors](#http-502-bad-gateway-lambda-function-invalid)
 
 ## SSL/TLS Negotiation Failure Between CloudFront and a Custom Origin Server<a name="ssl-negotitation-failure"></a>
 
@@ -23,7 +24,7 @@ If the domain names don't match, the SSL/TLS handshake fails, and CloudFront ret
 To determine whether domain names in the certificate match the **Origin Domain Name** in the distribution or the `Host` header, you can use an online SSL checker or OpenSSL\. If the domain names don't match, you have two options:
 + Get a new SSL/TLS certificate that includes the applicable domain names\. 
 
-  If you use AWS Certificate Manager \(ACM\), see [Request a Certificate](http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request.html) in the *AWS Certificate Manager User Guide* to request a new certificate\.
+  If you use AWS Certificate Manager \(ACM\), see [Request a Certificate](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request.html) in the *AWS Certificate Manager User Guide* to request a new certificate\.
 + Change the distribution configuration so CloudFront no longer tries to use SSL to connect with your origin\.
 
 ### Online SSL Checker<a name="troubleshooting-ssl-negotiation-failure-online-ssl-checker"></a>
@@ -56,7 +57,7 @@ CloudFront connects to origin servers using ciphers and protocols\. For a list o
   After the test is finished, find the **Protocols** and **Cipher Suites** sections in the test results to see which ciphers or protocols are supported by your origin\. Compare them with the list of [Supported Ciphers and Protocols](secure-connections-supported-viewer-protocols-ciphers.md)\.
 
 **Note**  
-If you're using Elastic Load Balancing, see [SSL Security Policies for Elastic Load Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/elb-security-policy-options.html) in the *Elastic Load Balancing User Guide* to learn how to set the ciphers and protocols\. Using the Predefined Security Policy *ELBSecurityPolicy\-2016\-08* gives CloudFrontaccess to your elastic load balancer\. If you want to restrict it further using a custom policy, you must allow the ciphers that CloudFront supports\.
+If you're using Elastic Load Balancing, see [SSL Security Policies for Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/elb-security-policy-options.html) in the *Elastic Load Balancing User Guide* to learn how to set the ciphers and protocols\. Using the Predefined Security Policy *ELBSecurityPolicy\-2016\-08* gives CloudFrontaccess to your elastic load balancer\. If you want to restrict it further using a custom policy, you must allow the ciphers that CloudFront supports\.
 
 ## SSL/TLS Certificate on the Origin Is Expired, Invalid, Self\-signed, or the Certificate Chain Is in the Wrong Order<a name="ssl-certificate-expired"></a>
 
@@ -75,4 +76,10 @@ For information about installing an SSL/TLS certificate on your custom origin se
 
 When you create an origin on your CloudFront distribution, you can set the ports that CloudFront connects to the origin with for HTTP and HTTPS traffic\. By default, these are TCP 80/443\. You have the option to modify these ports\. If your origin is rejecting traffic on these ports for any reason, or if your backend server isn't responding on the ports, CloudFront will fail to connect\.
 
-To troubleshoot these issues, check any firewalls running in your infrastructure and validate that they are not blocking the supported IP ranges\. For more information, see [AWS IP Address Ranges](http://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) in the *Amazon Web Services General Reference*\. Additionally, verify whether your web server is running on the origin\.
+To troubleshoot these issues, check any firewalls running in your infrastructure and validate that they are not blocking the supported IP ranges\. For more information, see [AWS IP Address Ranges](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) in the *Amazon Web Services General Reference*\. Additionally, verify whether your web server is running on the origin\.
+
+## Lambda Function Associated with Your Distribution Includes Execution Errors<a name="http-502-bad-gateway-lambda-function-invalid"></a>
+
+When a Lambda@Edge function has execution errors, CloudFront may return an HTTP 502 error\.
+
+To troubleshoot this issue, examine the access logs to look for errors returned by your Lambda function\. Make sure you look at the log files in the region where the function executed\. For more information, see [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)\.

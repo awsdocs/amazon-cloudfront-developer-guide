@@ -22,7 +22,7 @@ For RTMP distributions, you cannot configure CloudFront to cache your content ba
 
 By default, CloudFront doesn't consider headers when caching your objects in edge locations\. If your origin returns two objects and they differ only by the values in the request headers, CloudFront caches only one version of the object\.
 
-You can configure CloudFront to forward headers to the origin, which causes CloudFront to cache multiple versions of an object based on the values in one or more request headers\. To configure CloudFront to cache objects based on the values of specific headers, you specify cache behavior settings for your distribution\. For more information, see [ Cache Based on Selected Request Headers](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesForwardHeaders)\.
+You can configure CloudFront to forward headers to the origin, which causes CloudFront to cache multiple versions of an object based on the values in one or more request headers\. To configure CloudFront to cache objects based on the values of specific headers, you specify cache behavior settings for your distribution\. For more information, see [ Cache Based on Selected Request Headers](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesForwardHeaders)\.
 
  For example, suppose viewer requests for `logo.jpg` contain a custom `Product` header that has a value of either `Acme` or `Apex`\. When you configure CloudFront to cache your objects based on the value of the `Product` header, CloudFront forwards requests for `logo.jpg` to the origin and includes the `Product` header and header values\. CloudFront caches `logo.jpg` once for requests in which the value of the `Product` header is `Acme` and once for requests in which the value is `Apex`\.
 
@@ -33,9 +33,9 @@ If you configure CloudFront to forward all headers to your origin, CloudFront do
 + Forward a whitelist of headers that you specify\. CloudFront caches your objects based on the values in all of the specified headers\. CloudFront also forwards the headers that it forwards by default, but it caches your objects based only on the headers that you specify\. 
 + Forward only the default headers\. In this configuration, CloudFront doesn't cache your objects based on the values in the request headers\.
 
-For the current limit on the number of headers that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+For the current limit on the number of headers that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
-For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing web distribution, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing web distribution, see [PUT Distribution Config](https://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
 
 ## Selecting the Headers to Base Caching On<a name="header-caching-web-selecting"></a>
 
@@ -69,7 +69,7 @@ If you have enabled cross\-origin resource sharing \(CORS\) on an Amazon S3 buck
 
 **Custom origins** – Forward the `Origin` header along with any other headers required by your origin\.
 
-For more information about CORS and Amazon S3, see [Enabling Cross\-Origin Resource Sharing](http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information about CORS and Amazon S3, see [Enabling Cross\-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 ## Configuring Caching Based on the Device Type<a name="header-caching-web-device"></a>
 

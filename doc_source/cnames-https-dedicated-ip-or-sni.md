@@ -46,7 +46,7 @@ If you want to use SNI but some of your users' browsers don't support SNI, you h
   If you use the default CloudFront certificate, viewers must support the SSL protocol TLSv1 or later\. CloudFront doesn't support SSLv3 with the default CloudFront certificate\.
 
   You also need to change the SSL/TLS certificate that CloudFront is using from a custom certificate to the default CloudFront certificate:
-  + If you haven't used your distribution to distribute your content, you can just change the configuration\. For more information, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
+  + If you haven't used your distribution to distribute your content, you can just change the configuration\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
   + If you have used your distribution to distribute your content, you need to create a new CloudFront distribution and change the URLs for your objects to reduce or eliminate the amount of time that your content is unavailable\. For more information, see [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)\.
 + If you can control which browser your users use, have them upgrade their browser to one that supports SNI\.
 + Use HTTP instead of HTTPS\.

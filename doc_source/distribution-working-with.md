@@ -8,5 +8,5 @@ If you are using Adobe Flash Media Server's RTMP protocol, you set up a differen
 **Topics**
 + [Overview of Distributions](distribution-overview.md)
 + [Creating, Updating, and Deleting Distributions](distribution-create-delete.md)
-+ [Using Amazon S3 Origins, AWS Elemental MediaPackage Channels, and Custom Origins for Web Distributions](DownloadDistS3AndCustomOrigins.md)
++ [Using Amazon S3 Origins, MediaPackage Channels, and Custom Origins for Web Distributions](DownloadDistS3AndCustomOrigins.md)
 + [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)

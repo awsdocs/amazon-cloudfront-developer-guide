@@ -1,6 +1,6 @@
 # Setting Signed Cookies Using a Canned Policy<a name="private-content-setting-signed-cookie-canned-policy"></a>
 
-To set a signed cookie by using a canned policy, complete the following steps\. To create the signature, see [ Creating a Signature for a Signed Cookie That Uses a Canned Policy](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-canned-policy.html#private-content-canned-policy-signature-cookies)\.<a name="private-content-setting-signed-cookie-canned-policy-procedure"></a>
+To set a signed cookie by using a canned policy, complete the following steps\. To create the signature, see [ Creating a Signature for a Signed Cookie That Uses a Canned Policy](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-canned-policy.html#private-content-canned-policy-signature-cookies)\.<a name="private-content-setting-signed-cookie-canned-policy-procedure"></a>
 
 **To set a signed cookie using a canned policy**
 

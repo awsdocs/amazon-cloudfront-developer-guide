@@ -11,4 +11,4 @@ For example, you can use IAM with CloudFront to control which users in your AWS 
 For general information about IAM, see the following:
 + [AWS Authentication and Access Control for CloudFront](auth-and-access-control.md)
 + [Identity and Access Management \(IAM\)](https://aws.amazon.com/iam/)
-+ [IAM User Guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/)
++ [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)

@@ -21,7 +21,7 @@ For more information about URL formats, see the following sections\.
 
 ## Using Your Own Domain Name \(Example\.com\)<a name="LinkFormat_OwnDomain"></a>
 
-Instead of using the default domain name that CloudFront assigns for you when you create a distribution, you can [add an alternate domain name](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCNAME) that's easier to work with, like `example.com`\. By setting up your own domain name with CloudFront, you can use a URL like this for objects in your distribution:
+Instead of using the default domain name that CloudFront assigns for you when you create a distribution, you can [add an alternate domain name](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCNAME) that's easier to work with, like `example.com`\. By setting up your own domain name with CloudFront, you can use a URL like this for objects in your distribution:
 
 `http://example.com/images/image.jpg`
 

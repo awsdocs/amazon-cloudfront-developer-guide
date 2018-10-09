@@ -75,9 +75,9 @@ In rare cases, when a CloudFront edge location is unusually busy, some files mig
 
 To configure a distribution to compress your content, update the cache behaviors that you want to serve the compressed content by using one of the following methods: 
 + **CloudFront console** – Update the **Compress objects automatically** setting\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
-+ **CloudFront API** – Change the value of the `Compress` element to `true`\. For more information, see [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\.
++ **CloudFront API** – Change the value of the `Compress` element to `true`\. For more information, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\.
 + **One of the AWS SDKs** – See the SDK documentation on the [AWS Documentation](http://aws.amazon.com/documentation/) page\.
-+ **The AWS CLI** – For more information, see [create\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-distribution.html) or [update\-distribution](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/update-distribution.html) in the *AWS CLI Command Reference*\.
++ **The AWS CLI** – For more information, see [create\-distribution](https://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-distribution.html) or [update\-distribution](https://docs.aws.amazon.com/cli/latest/reference/cloudfront/update-distribution.html) in the *AWS CLI Command Reference*\.
 
 ### File Types that CloudFront Compresses<a name="compressed-content-cloudfront-file-types"></a>
 
@@ -125,7 +125,7 @@ When you use Amazon S3 to store your content, you can use CloudFront to compress
 After you compress the files, you can serve them with CloudFront by doing the following, for example:
 + Configure CloudFront to cache based on the `Accept-Encoding` header\.
 + Using a Lambda@Edge function that triggers on origin requests, change the URI to point to the compressed file that you want to return, based on the `Accept-Encoding` header\.
-+ Add content\-encoding metadata to files that you store on S3 so that the viewer can determine the format of the compressed file\. For more information, see [How Do I Add Metadata to an S3 Object?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-object-metadata.html) in the Amazon Simple Storage Service Console User Guide\.
++ Add content\-encoding metadata to files that you store on S3 so that the viewer can determine the format of the compressed file\. For more information, see [How Do I Add Metadata to an S3 Object?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-object-metadata.html) in the Amazon Simple Storage Service Console User Guide\.
 
 ## Serving Compressed Files When Your Origin Server Is Running IIS<a name="serving-compressed-files-iis"></a>
 

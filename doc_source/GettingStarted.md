@@ -7,7 +7,7 @@ The example in this topic gives you a quick overview of how to use CloudFront to
 + Uses the CloudFront domain name in URLs for your objects \(for example, `http://d111111abcdef8.cloudfront.net/image.jpg`\)
 + Keeps your objects in CloudFront edge locations for the default duration of 24 hours \(the minimum duration is 0 seconds\)
 
-\(Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can limit who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.\)
+Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can limit who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.
 
 You only have to complete a few basic steps to start delivering your content by using CloudFront\. The first step is signing up\. After that, you create a CloudFront distribution, and then use the CloudFront domain name in URLs in your web pages or applications to reference the content\.
 
@@ -38,7 +38,7 @@ If you want to restrict who can download your content, you can use the CloudFron
 
 1. In the **Create Bucket** dialog, enter a bucket name\.
 **Important**  
-For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 1. Select a region for your bucket\. By default, Amazon S3 creates buckets in the US East \(N\. Virginia\) region\. We recommend that you choose a region close to you to optimize latency, minimize costs, or to address regulatory requirements\.
 
@@ -62,9 +62,9 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    After the upload completes, you can navigate to the item by using its URL\. In the case of the previous example, the URL would be:
 
-   `http://s3.amazonaws.com/example-myawsbucket/filename`
+   `http://s3-myregion.amazonaws.com/example-myawsbucket/filename`
 
-   Use your Amazon S3 URL to verify that your content is publicly accessible, but remember that this is not the URL you will use when you are ready to distribute your content\.
+   Use your Amazon S3 URL to verify that your content is publicly accessible, but remember that this is not the URL you'll use when you're ready to distribute your content with CloudFront\.
 
 ## Step 2: Create a CloudFront distribution<a name="GettingStartedCreateDistribution"></a><a name="GettingStartedCreateDistributionProcedure"></a>
 
@@ -94,7 +94,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
    For more information about cache behavior options, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.  
 ![\[Define cache behavior.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-3-cache-behavior-get-started.png)
 
-1. Under **Distribution Settings**, enter the applicable values:  
+1. Under **Distribution Settings**, choose the values for your distribution:  
 **Price Class**  
 Select the price class that corresponds with the maximum price that you want to pay for CloudFront service\. By default, CloudFront serves your objects from edge locations in all CloudFront regions\.   
 For more information about price classes and about how your choice of price class affects CloudFront performance for your distribution, go to [Choosing the Price Class for a CloudFront Distribution](PriceClass.md)\. For information about CloudFront pricing, including how price classes map to CloudFront regions, go to [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.  

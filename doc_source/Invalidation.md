@@ -191,7 +191,7 @@ When you submit an invalidation request to CloudFront, CloudFront forwards the r
 
 ### Listing Invalidations<a name="listing-invalidations-console"></a>
 
-You can display a list of the last 100 invalidations that you've created and run for a distribution by using the CloudFront console\. If you want to get a list of more than 100 invalidations, use the Invalidation List API action\. For more information, see [Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
+You can display a list of the last 100 invalidations that you've created and run for a distribution by using the CloudFront console\. If you want to get a list of more than 100 invalidations, use the Invalidation List API action\. For more information, see [Invalidation List](https://docs.aws.amazon.com/cloudfront/latest/APIReference/ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
 
 **To list invalidations**
 
@@ -227,9 +227,9 @@ You can display detailed information about an invalidation, including distributi
 ## Invalidating Files Using the CloudFront API<a name="invalidating-objects-api"></a>
 
 For information about invalidating objects and about displaying information about invalidations using the CloudFront API, see the following topics in the *Amazon CloudFront API Reference*:
-+ Invalidating files: [Invalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html) 
-+ Getting a list of your invalidations: [Invalidation List](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html)
-+ Getting information about a specific invalidation: [Invalidation](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetInvalidation.html)
++ Invalidating files: [Invalidation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html) 
++ Getting a list of your invalidations: [Invalidation List](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html)
++ Getting information about a specific invalidation: [Invalidation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetInvalidation.html)
 
 ## Third\-Party Tools for Invalidating Files<a name="InvalidationTools"></a>
 

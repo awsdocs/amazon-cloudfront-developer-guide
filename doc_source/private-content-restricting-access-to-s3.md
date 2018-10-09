@@ -73,17 +73,17 @@ To create a CloudFront origin access identity using the CloudFront API, use the 
 + **Id element** – You use the value of the `Id` element to associate an origin access ID with your distribution\.
 + **S3CanonicalUserId element** – You use the value of the `S3CanonicalUserId` element when you give CloudFront access to your Amazon S3 bucket or objects\. 
 
-For more information, see [CreateCloudFrontOriginAccessIdentity](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html) in the *Amazon CloudFront API Reference*\.  
+For more information, see [CreateCloudFrontOriginAccessIdentity](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html) in the *Amazon CloudFront API Reference*\.  
 
 ### Adding an Origin Access Identity to Your Distribution Using the CloudFront API<a name="private-content-adding-oai-api"></a>
 
 You can use the CloudFront API to add a CloudFront origin access identity to an existing distribution or to create a new distribution that includes an origin access identity\. In either case, include an `OriginAccessIdentity` element\. This element contains the value of the `Id` element that the `POST Origin Access Identity` API action returned when you created the origin access identity\. For web distributions, add the `OriginAccessIdentity` element to one or more origins\. For RTMP distributions, add the `OriginAccessIdentity` element to the distribution\.
 
 See the applicable topic in the *Amazon CloudFront API Reference*:
-+ **Create a new web distribution** – [CreateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
-+ **Update an existing web distribution** – [UpdateDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
-+ **Create a new RTMP distribution** – [CreateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)
-+ **Update an existing RTMP distribution** – [UpdateStreamingDistribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html)
++ **Create a new web distribution** – [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
++ **Update an existing web distribution** – [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
++ **Create a new RTMP distribution** – [CreateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)
++ **Update an existing RTMP distribution** – [UpdateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html)
 
 ## Granting the Origin Access Identity Permission to Read Objects in Your Amazon S3 Bucket<a name="private-content-granting-permissions-to-oai"></a>
 
@@ -113,9 +113,9 @@ You can update the Amazon S3 bucket policy using either the AWS Management Conso
   To specify an origin access identity, use the value of **Amazon S3 Canonical User ID** on the **Origin Access Identity** page in the CloudFront console\. If you're using the CloudFront API, use the value of the `S3CanonicalUserId` element that was returned when you created the origin access identity\.
 + Deny access to anyone that you don't want to have access using Amazon S3 URLs\.
 
-For more information, go to [Using Bucket Policies and User Policies](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucketPolicies.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information, go to [Using Bucket Policies and User Policies](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucketPolicies.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-For an example, see "Granting Permission to an Amazon CloudFront Origin Identity" in the topic [Bucket Policy Examples](http://docs.aws.amazon.com/AmazonS3/latest/dev/AccessPolicyLanguage_UseCases_s3_a.html), also in the *Amazon Simple Storage Service Developer Guide*\.
+For an example, see "Granting Permission to an Amazon CloudFront Origin Identity" in the topic [Bucket Policy Examples](https://docs.aws.amazon.com/AmazonS3/latest/dev/AccessPolicyLanguage_UseCases_s3_a.html), also in the *Amazon Simple Storage Service Developer Guide*\.
 
 ### Updating Amazon S3 ACLs<a name="private-content-updating-s3-acls"></a>
 
@@ -127,13 +127,13 @@ Using either the AWS Management Console or the Amazon S3 API, change the Amazon 
 
 If another AWS account uploads objects to your bucket, that account is the owner of those objects\. Bucket policies only apply to objects that the bucket owner owns\. This means that if another account uploads objects to your bucket, the bucket policy that you created for your OAI will not be evaluated for those objects\.
 
-For more information, see [Managing Access with ACLs](http://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information, see [Managing Access with ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 You can also change the ACLs programmatically by using one of the AWS SDKs\. For an example, see the downloadable sample code in [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)\.
 
 ## Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication<a name="private-content-origin-access-identity-signature-version-4"></a>
 
-Newer Amazon S3 regions require that you use signature version 4 for authenticated requests\. \(For the versions of signature supported in each Amazon S3 region, see [Amazon Simple Storage Service \(S3\)](http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the topic [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.\) However, when you create an origin access identity and add it to a CloudFront distribution, CloudFront typically uses signature version 4 for authentication when it requests objects in your Amazon S3 bucket\. If you're using an origin access identity and if your bucket is in one of the regions that requires signature version 4 for authentication, note the following:
+Newer Amazon S3 regions require that you use signature version 4 for authenticated requests\. \(For the versions of signature supported in each Amazon S3 region, see [Amazon Simple Storage Service \(S3\)](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the topic [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.\) However, when you create an origin access identity and add it to a CloudFront distribution, CloudFront typically uses signature version 4 for authentication when it requests objects in your Amazon S3 bucket\. If you're using an origin access identity and if your bucket is in one of the regions that requires signature version 4 for authentication, note the following:
 + `DELETE`, `GET`, `HEAD`, `OPTIONS`, and `PATCH` requests are supported without qualifications\.
-+ If you want to submit `PUT` requests to CloudFront to upload objects to your Amazon S3 bucket, you must add an `x-amz-content-sha256` header to the request, and the header value must contain a SHA256 hash of the body of the request\. For more information, see the documentation about the `x-amz-content-sha256` header on the [Common Request Headers](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html) page in the *Amazon Simple Storage Service API Reference*\.
++ If you want to submit `PUT` requests to CloudFront to upload objects to your Amazon S3 bucket, you must add an `x-amz-content-sha256` header to the request, and the header value must contain a SHA256 hash of the body of the request\. For more information, see the documentation about the `x-amz-content-sha256` header on the [Common Request Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html) page in the *Amazon Simple Storage Service API Reference*\.
 + `POST` requests are not supported\.

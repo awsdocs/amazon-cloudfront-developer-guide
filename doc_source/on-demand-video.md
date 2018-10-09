@@ -1,15 +1,15 @@
 # Delivering On\-Demand Video with CloudFront<a name="on-demand-video"></a>
 
-To deliver on\-demand video streaming, you can use Amazon S3 to store the content in its original format, use a transcoder, such as [AWS Elemental MediaConvert](http://docs.aws.amazon.com/mediaconvert/latest/ug/getting-started.html), to transcode the video into streaming formats, store the transcoded video in an S3 bucket, and then use CloudFront to deliver the video to viewers\. If you want to use Microsoft Smooth Streaming, see [Configuring On\-Demand Microsoft Smooth Streaming](#on-demand-streaming-smooth)\.
+To deliver on\-demand video streaming, you can use Amazon S3 to store the content in its original format, use a transcoder, such as [AWS Elemental MediaConvert](https://docs.aws.amazon.com/mediaconvert/latest/ug/getting-started.html), to transcode the video into streaming formats, store the transcoded video in an S3 bucket, and then use CloudFront to deliver the video to viewers\. If you want to use Microsoft Smooth Streaming, see [Configuring On\-Demand Microsoft Smooth Streaming](#on-demand-streaming-smooth)\.
 
 To create the solution, follow these steps:
-+ **Step 1:** Upload your content to an Amazon S3 bucket\. To learn more about working with S3, see [the Amazon Simple Storage Service Developer Guide](http://docs.aws.amazon.com/AmazonS3/latest/dev/)\.
-+ **Step 2:** Use AWS Elemental MediaConvert to convert your video into the formats required by the players your viewers will be using\. You can also create assets that vary in resolution and bitrate for adaptive bitrate streaming, which adjusts the viewing quality depending on the viewer's available bandwidth\. AWS Elemental MediaConvert outputs the transcoded video to an S3 bucket\. 
++ **Step 1:** Upload your content to an Amazon S3 bucket\. To learn more about working with S3, see [the Amazon Simple Storage Service Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/)\.
++ **Step 2:** Use MediaConvert to convert your video into the formats required by the players your viewers will be using\. You can also create assets that vary in resolution and bitrate for adaptive bitrate streaming, which adjusts the viewing quality depending on the viewer's available bandwidth\. MediaConvert outputs the transcoded video to an S3 bucket\. 
 + **Step 3:** Deliver the converted content by using a CloudFront distribution, so viewers can watch it on any device, whenever they like\. 
 
 **Tip**  
 To learn more about best practices when you implement a video on\-demand workflow with AWS Cloud services, see [Video on Demand on AWS](https://aws.amazon.com/answers/media-entertainment/video-on-demand-on-aws/)\.  
-You can also explore how to use an AWS CloudFormation template to deploy a video\-on\-demand AWS solution together with all the associated components\. To see the steps for using the template, see [Video on Demand Automated Deployment](https://aws.amazon.com/solutions/latest/video-on-demand/deployment.html)\.
+You can also explore how to use an AWS CloudFormation template to deploy a video\-on\-demand AWS solution together with all the associated components\. To see the steps for using the template, see [Video on Demand Automated Deployment](https://docs.aws.amazon.com/solutions/latest/video-on-demand/deployment.html)\.
 
 **Topics**
 + [Configuring On\-Demand Microsoft Smooth Streaming](#on-demand-streaming-smooth)

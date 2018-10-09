@@ -119,10 +119,10 @@ CloudFront is subject to the following limits\. Note that Lambda@Edge has specif
 
 ## Limits on Lambda@Edge<a name="limits-lambda-at-edge"></a>
 
-The limits in this section apply to Lambda@Edge\. These limits are in addition to the default CloudFront and Lambda limits, which also apply\. See the default Lambda limits in the [Limits](http://docs.aws.amazon.com/lambda/latest/dg/limits.html) section of the *AWS Lambda Developer Guide*\. 
+The limits in this section apply to Lambda@Edge\. These limits are in addition to the default CloudFront and Lambda limits, which also apply\. See the default Lambda limits in the [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) section of the *AWS Lambda Developer Guide*\. 
 
 **Note**  
-Lambda dynamically scales capacity in response to increased traffic, within your account’s limits\. For more information, see the [Scaling](http://docs.aws.amazon.com/lambda/latest/dg/scaling.html) section of the *AWS Lambda Developer Guide*\.
+Lambda dynamically scales capacity in response to increased traffic, within your account’s limits\. For more information, see the [Scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) section of the *AWS Lambda Developer Guide*\.
 
 In addition, be aware that there are some other restrictions when using Lambda@Edge functions\. For more information, see [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)\.
 
@@ -144,7 +144,7 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 | Distributions per AWS account that you can create triggers for |  25 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Triggers per distribution |  25 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Requests per second  |  10,000 \(in each region\) [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Concurrent executions For more information, see [Lambda Function Concurrent Executions](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(in each region\) [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Concurrent executions For more information, see [Lambda Function Concurrent Executions](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(in each region\) [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 
 ## Request Timeout<a name="limits-request-timeout"></a>
 
@@ -153,7 +153,7 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 
 | Entity | Limit | 
 | --- | --- | 
-| Request timeout  |  30 seconds [ Request a higher limit](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
+| Request timeout  |  30 seconds [ Request a higher limit](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
 
 ## Limits on RTMP Distributions<a name="limits-rtmp-distributions"></a>
 

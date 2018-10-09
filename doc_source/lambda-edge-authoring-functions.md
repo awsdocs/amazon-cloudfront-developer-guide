@@ -5,7 +5,7 @@ There are several resources to help you with writing Lambda@Edge functions:
 + To learn about the event structure to use with Lambda@Edge functions, see [Lambda@Edge Event Structure](lambda-event-structure.md)\.
 + To see examples of Lambda@Edge functions, such as functions for A/B testing and generating an HTTP redirect, see [Lambda@Edge Example Functions](lambda-examples.md)\.
 
-The programming model for using Node\.js with Lambda@Edge is the same as using Lambda in an AWS Region\. For more information, see [Programming Model\(Node\.js\)](http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html)\.
+The programming model for using Node\.js with Lambda@Edge is the same as using Lambda in an AWS Region\. For more information, see [Programming Model\(Node\.js\)](https://docs.aws.amazon.com/lambda/latest/dg/programming-model.html)\.
 
 In your Lambda@Edge code, include the `callback` parameter and return the applicable object for request or response events:
 + **Request events** – Include the `cf.request` object in the response\.

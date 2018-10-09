@@ -2,10 +2,12 @@
 
 You can create or update a distribution by using the CloudFront console or programmatically\. This topic is about working with distributions by using the console\.
 
-If you want to create or update a distribution by using the CloudFront API, see [ Create Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [Update Distribution](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
+If you want to create or update a distribution by using the CloudFront API, see [ Create Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [Update Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
 
-**Note**  
-To see the current limit on the number of distributions that you can create for each AWS account, or to request a higher limit, [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.<a name="CreatingDownloadDistributionsConsoleProcedure"></a>
+**Important**  
+When you update your distribution, be aware that a number of additional fields are required that are not required to create a distribution\. To help make sure that all of the required fields are included when you update your distribution by using the CloudFront API, follow the steps described in the *Amazon CloudFront API Reference*\.
+
+To see the current limit on the number of distributions that you can create for each AWS account, or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.<a name="CreatingDownloadDistributionsConsoleProcedure"></a>
 
 **To create a CloudFront web distribution \(console\)**
 
@@ -27,4 +29,4 @@ You can use an alternate domain name, instead of the name assigned to you by Clo
 
 1. When your distribution is deployed, confirm that you can access your content using your new CloudFront URL or CNAME\. For more information, see [Testing a Distribution](distribution-web-testing.md)\.
 
-To update a distribution \(for example, to add or change cache behaviors\), see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
+To update a distribution \(for example, to add or change cache behaviors\), see [Updating a Distribution](HowToUpdateDistribution.md)\.

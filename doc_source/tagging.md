@@ -2,22 +2,22 @@
 
 Tags are words or phrases that you can use to identify and organize your AWS resources\. You can add multiple tags to each resource, and each tag includes a key and a value that you define\. For example, the key might be "domain" and the value might be "example\.com"\. You can search and filter your resources based on the tags you add\. 
 
-When you apply tags to CloudFront distributions or other AWS resources \(such as Amazon EC2 instances or Amazon S3 buckets\) and activate the tags, AWS generates a cost allocation report as a comma\-separated value \(CSV file\) with your usage and costs aggregated by your active tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information about using tags for cost allocation, see [Use Cost Allocation Tags](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the [AWS Billing and Cost Management User Guide](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)\.
+When you apply tags to CloudFront distributions or other AWS resources \(such as Amazon EC2 instances or Amazon S3 buckets\) and activate the tags, AWS generates a cost allocation report as a comma\-separated value \(CSV file\) with your usage and costs aggregated by your active tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information about using tags for cost allocation, see [Use Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the [AWS Billing and Cost Management User Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)\.
 
 For the current limit on the number of tags that you can add to a distribution, see [Limits](cloudfront-limits.md)\. To request a higher limit, [create a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\.
 
 Note the following:
 + You can tag web and RTMP distributions, but you can't tag origin access identities or invalidations\.
-+ [Tag Editor](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html) and [Resource Groups](http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html) are currently not supported for CloudFront\.
++ [Tag Editor](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html) and [Resource Groups](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html) are currently not supported for CloudFront\.
 
 You can also apply tags to resources by using the CloudFront API, AWS CLI, SDKs, and AWS Tools for Windows PowerShell\. For more information, see the following documentation:
 + CloudFront API – See the following operations in the *Amazon CloudFront API Reference*:
-  + [ListTagsForResource](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListTagsForResource.html) 
-  + [TagResource](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html) 
-  + [UntagResource](http://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UntagResource.html) 
-+ AWS CLI – See [cloudfront](http://docs.aws.amazon.com/cli/latest/reference/cloudfront/index.html) in the *AWS CLI Command Reference*
-+ SDKs – See the applicable SDK documentation on the [AWS Documentation](http://docs.aws.amazon.com/) page
-+ Tools for Windows PowerShell – See [Amazon CloudFront](http://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudFront_cmdlets.html) in the [AWS Tools for PowerShell Cmdlet Reference](http://docs.aws.amazon.com/powershell/latest/reference/)
+  + [ListTagsForResource](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListTagsForResource.html) 
+  + [TagResource](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html) 
+  + [UntagResource](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UntagResource.html) 
++ AWS CLI – See [cloudfront](https://docs.aws.amazon.com/cli/latest/reference/cloudfront/index.html) in the *AWS CLI Command Reference*
++ SDKs – See the applicable SDK documentation on the [AWS Documentation](https://docs.aws.amazon.com/) page
++ Tools for Windows PowerShell – See [Amazon CloudFront](https://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudFront_cmdlets.html) in the [AWS Tools for PowerShell Cmdlet Reference](https://docs.aws.amazon.com/powershell/latest/reference/)
 
 **Topics**
 + [Tag Restrictions](#tagging-restrictions)

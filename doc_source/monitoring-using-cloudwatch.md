@@ -1,6 +1,6 @@
 # Monitoring CloudFront Activity Using CloudWatch<a name="monitoring-using-cloudwatch"></a>
 
-Amazon CloudFront integrates with Amazon CloudWatch metrics so that you can monitor your website or application\. CloudFront currently provides six free metrics, and these metrics don't count against [CloudWatch limits](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_limits.html)\. When viewing metrics, you can specify a time interval of as little as one minute for time periods in the previous two weeks\.
+Amazon CloudFront integrates with Amazon CloudWatch metrics so that you can monitor your website or application\. CloudFront currently provides six free metrics, and these metrics don't count against [CloudWatch limits](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_limits.html)\. When viewing metrics, you can specify a time interval of as little as one minute for time periods in the previous two weeks\.
 
 ## Viewing Metrics for a Distribution<a name="viewing-metrics"></a><a name="monitoring-using-cloudwatch-procedure"></a>
 

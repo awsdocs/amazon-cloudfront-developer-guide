@@ -30,7 +30,7 @@ If the CloudFront IP address range is whitelisted on your origin server, make su
 
 ## Configure the Security Groups on Your Origin Server to Allow CloudFront Traffic<a name="http-504-gateway-timeout-configure-security-groups"></a>
 
-If your origin uses Elastic Load Balancing, review the [ ELB security groups](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html) and make sure that the security groups allow inbound traffic from CloudFront\.
+If your origin uses Elastic Load Balancing, review the [ ELB security groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html) and make sure that the security groups allow inbound traffic from CloudFront\.
 
 You can also use AWS Lambda to [ automatically update your security groups](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html) to allow inbound traffic from CloudFront\.
 
@@ -38,7 +38,7 @@ You can also use AWS Lambda to [ automatically update your security groups](http
 
 If CloudFront can’t access your custom origin server because it isn’t publicly available on the internet, CloudFront returns an HTTP 504 error\.
 
-CloudFront edge locations connect to origin servers through the internet\. If your custom origin is on a private network, CloudFront can’t reach it\. Because of this, you can’t use private servers, including [ internal Classic Load Balancers](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-internal-load-balancers.html), as origin servers with CloudFront\.
+CloudFront edge locations connect to origin servers through the internet\. If your custom origin is on a private network, CloudFront can’t reach it\. Because of this, you can’t use private servers, including [ internal Classic Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-internal-load-balancers.html), as origin servers with CloudFront\.
 
 To check that internet traffic can connect to your origin server, run the following commands \(where OriginDomainName is the domain name for your server\):
 
@@ -82,14 +82,14 @@ As you measure and evaluate the latency of an application that runs on your serv
   You can run the following Linux command to check the memory that is used by Apache processes:
 
   `watch -n 1 "echo -n 'Apache Processes: ' && ps -C apache2 --no-headers | wc -l && free -m"`
-+ High CPU utilization on the server can significantly reduce an application’s performance\. If you use an Amazon EC2 instance for your backend server, review the CloudWatch metrics for the server to check the CPU utilization\. For more information, see the [ Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)\. Or if you’re using your own server, refer to the server Help documentation for instructions on how to check CPU utilization\.
++ High CPU utilization on the server can significantly reduce an application’s performance\. If you use an Amazon EC2 instance for your backend server, review the CloudWatch metrics for the server to check the CPU utilization\. For more information, see the [ Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)\. Or if you’re using your own server, refer to the server Help documentation for instructions on how to check CPU utilization\.
 + Check for other potential issues under high loads, such as database queries that run slowly when there’s a high volume of requests\.
 
 ### Add resources, and tune servers and databases<a name="http-504-gateway-timeout-slow-application-add-resources"></a>
 
 After you evaluate the responsiveness of your applications and servers, make sure that you have sufficient resources in place for typical traffic and high load situations:
 + If you have your own server, make sure it has enough CPU, memory, and disk space to handle viewer requests, based on your evaluation\.
-+ If you use an Amazon EC2 instance as your backend server, make sure that the instance type has the appropriate resources to fulfill incoming requests\. For more information, see [ Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the Amazon EC2 User Guide\. 
++ If you use an Amazon EC2 instance as your backend server, make sure that the instance type has the appropriate resources to fulfill incoming requests\. For more information, see [ Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) in the Amazon EC2 User Guide\. 
 
 In addition, consider the following tuning steps to help avoid timeouts:
 + If the Time to First Byte value that is returned by the curl command seems high, take steps to improve the performance of your application\. Improving application responsiveness will in turn help reduce timeout errors\.
@@ -99,4 +99,4 @@ In addition, consider the following tuning steps to help avoid timeouts:
 
 ### If needed, adjust the CloudFront timeout value<a name="http-504-gateway-timeout-slow-application-adjust-timeout"></a>
 
-If you have evaluated and addressed slow application performance, origin server capacity, and other issues, but viewers are still experiencing HTTP 504 errors, then you should consider changing the time that is specified in your web distribution for origin response timeout\. To learn more, see [ Origin Response Timeout](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout)\.
+If you have evaluated and addressed slow application performance, origin server capacity, and other issues, but viewers are still experiencing HTTP 504 errors, then you should consider changing the time that is specified in your web distribution for origin response timeout\. To learn more, see [ Origin Response Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout)\.

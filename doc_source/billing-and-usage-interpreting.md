@@ -11,6 +11,7 @@ Most codes in both columns include a two\-letter abbreviation that indicates the
 + **EU:** Europe
 + **IN:** India
 + **JP:** Japan
++ **ME:** Middle East
 + **SA:** South America
 + **US:** United States
 + **ZA:** South Africa
@@ -31,6 +32,6 @@ This table doesn't include charges for transferring your objects from an Amazon 
 |  *region***\-Requests\-Tier2\-HTTPS** **Web distributions only:** Number of HTTPS `GET` and `HEAD` requests  |  *region***\-Requests\-HTTPS\-Static** Number of HTTPS `GET` and `HEAD` requests served for objects with TTL ≥ 3600 seconds *region***\-Requests\-HTTPS\-Dynamic** Number of HTTPS `GET` and `HEAD` requests served for objects with TTL < 3600 seconds  | 
 |  *region***\-Requests\-HTTP\-Proxy** **Web distributions only:** Number of HTTP `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests that CloudFront forwards to your origin  |  *region***\-Requests\-HTTP\-Proxy** Same as the corresponding item in your CloudFront bill  | 
 |  *region***\-Requests\-HTTPS\-Proxy** **Web distributions only:** Number of HTTPS `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests that CloudFront forwards to your origin  |  *region***\-Requests\-HTTPS\-Proxy** Same as the corresponding item in your CloudFront bill  | 
-|  *region***\-Requests\-HTTPS\-Proxy\-FLE** **Web distributions only:** Number of HTTPS `DELETE`, `OPTIONS`, `PATCH`, and `POST` requests that CloudFront forwards to your origin which were processed with [field\-level encryption](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html)\.   |  *region***\-Requests\-HTTPS\-Proxy\-FLE** Same as the corresponding item in your CloudFront bill  | 
+|  *region***\-Requests\-HTTPS\-Proxy\-FLE** **Web distributions only:** Number of HTTPS `DELETE`, `OPTIONS`, `PATCH`, and `POST` requests that CloudFront forwards to your origin which were processed with [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html)\.   |  *region***\-Requests\-HTTPS\-Proxy\-FLE** Same as the corresponding item in your CloudFront bill  | 
 |  **Invalidations** **Web distributions only:** The charge for invalidating objects \(removing the objects from CloudFront edge locations\); for more information, see [Paying for File Invalidation](Invalidation.md#PayingForInvalidation)\.  |  **Invalidations** Same as the corresponding item in your CloudFront bill  | 
 |  **SSL\-Cert\-Custom** **Web distributions only:** The charge for using an SSL certificate with a CloudFront alternate domain name such as example\.com instead of using the default CloudFront SSL certificate and the domain name that CloudFront assigned to your distribution\.  |  **SSL\-Cert\-Custom** Same as the corresponding item in your CloudFront bill  | 

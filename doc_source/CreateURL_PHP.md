@@ -1,6 +1,6 @@
 # Create a URL Signature Using PHP<a name="CreateURL_PHP"></a>
 
-Any web server that runs PHP can use the PHP demo code to create policy statements and signatures for private CloudFront RTMP distributions\. The example creates a functioning web page with signed URL links that play a video stream using CloudFront streaming\. To get the example, download [Signature Code for Video Streaming in PHP](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/demo-php.zip)\.
+Any web server that runs PHP can use the PHP demo code to create policy statements and signatures for private CloudFront RTMP distributions\. The example creates a functioning web page with signed URL links that play a video stream using CloudFront streaming\. To get the example, download [Signature Code for Video Streaming in PHP](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/demo-php.zip)\.
 
 You can also create signed URLs by using the `UrlSigner` class in the AWS SDK for PHP\. For more information, see [Class UrlSigner](http://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.CloudFront.UrlSigner.html) in the *AWS SDK for PHP API Reference*\.
 

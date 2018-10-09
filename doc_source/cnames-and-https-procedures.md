@@ -27,7 +27,7 @@ You can only associate a single SSL/TLS certificate to a CloudFront distribution
 ## Getting an SSL/TLS Certificate<a name="cnames-and-https-getting-certificates"></a>
 
 Get an SSL/TLS certificate if you don't already have one\. For more information, see the applicable documentation:
-+ To use a certificate provided by AWS Certificate Manager \(ACM\), see the [AWS Certificate Manager User Guide](http://docs.aws.amazon.com/acm/latest/userguide/)\. Then skip to [Updating Your CloudFront Distribution](#cnames-and-https-updating-cloudfront)\.
++ To use a certificate provided by AWS Certificate Manager \(ACM\), see the [AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)\. Then skip to [Updating Your CloudFront Distribution](#cnames-and-https-updating-cloudfront)\.
 **Note**  
 We recommend that you use ACM to provision, manage, and deploy SSL/TLS certificates on AWS managed resources\. 
 + To get a certificate from a third\-party certificate authority \(CA\), see the documentation provided by the certificate authority\. When you have the certificate, continue with the next procedure\.
@@ -38,10 +38,10 @@ We recommend that you use ACM to provision, manage, and deploy SSL/TLS certifica
 If you got your certificate from a third\-party CA, import the certificate into ACM or upload it to the IAM certificate store:
 
 **ACM \(Recommended\)**  
-ACM lets you import third\-party certificates from the ACM console, as well as programmatically\. For information about importing a certificate to ACM, see [Importing Certificates into AWS Certificate Manager](http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*\.
+ACM lets you import third\-party certificates from the ACM console, as well as programmatically\. For information about importing a certificate to ACM, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*\.
 
 **IAM certificate store**  
-If ACM is not available in your region, use the following AWS CLI command to upload your third\-party certificate to the IAM certificate store\. \(For a list of the regions where ACM is available, see [AWS Certificate Manager](http://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region) in the "AWS Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.\)  
+If ACM is not available in your region, use the following AWS CLI command to upload your third\-party certificate to the IAM certificate store\. \(For a list of the regions where ACM is available, see [AWS Certificate Manager](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region) in the "AWS Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.\)  
 
 ```
 aws iam upload-server-certificate --server-certificate-name CertificateName --certificate-body file://public_key_certificate_file --private-key file://privatekey.pem --certificate-chain file://certificate_chain_file --path /cloudfront/path/
@@ -52,7 +52,7 @@ Note the following:
 + **Existing certificates** – You must specify values for the `--server-certificate-name` and `--path` parameters that are different from the values that are associated with existing certificates\.
 + **Using the CloudFront Console** – The value that you specify for the `--server-certificate-name` parameter in the AWS CLI, for example, `myServerCertificate`, appears in the **SSL Certificate** list in the CloudFront console\.
 + **Using the CloudFront API** – Make note of the alphanumeric string that the AWS CLI returns, for example, `AS1A2M3P4L5E67SIIXR3J`\. This is the value that you will specify in the `IAMCertificateId` element\. You don't need the IAM ARN, which is also returned by the CLI\.
-For more information about the AWS CLI, see the [AWS Command Line Interface User Guide](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) and the [AWS CLI Command Reference](http://docs.aws.amazon.com/cli/latest/reference/)\.
+For more information about the AWS CLI, see the [AWS Command Line Interface User Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) and the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)\.
 
 ## Updating Your CloudFront Distribution<a name="cnames-and-https-updating-cloudfront"></a>
 

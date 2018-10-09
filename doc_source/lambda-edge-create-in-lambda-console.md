@@ -23,7 +23,7 @@ To set up AWS Lambda to run Lambda functions that are based on CloudFront events
 Type a name for your function\.  
 **Role**  
 Choose **Create new role from template\(s\)**\.  
-Choosing this value will get your started quickly\. Or you can choose **Choose an existing role** or **Create a custom role**\. If you choose one of these, follow the prompts to complete the information for this section\.  
+Choosing this value will get you started quickly\. Or you can choose **Choose an existing role** or **Create a custom role**\. If you choose one of these, follow the prompts to complete the information for this section\.  
 **Role name**  
 Type a name for the role\.  
 **Policy templates**  
@@ -54,8 +54,8 @@ Why add triggers later? Generally it's best to test and debug the function befor
 1. Choose **Publish**\.
 
 1. Test and debug the function\. For more information, see the following in the *AWS Lambda Developer Guide*:
-   + [Using Amazon CloudWatch](http://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
-   + [Using AWS X\-Ray](http://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html)
-   + [Test Your Serverless Applications Locally Using SAM Local \(Public Beta\)](http://docs.aws.amazon.com/lambda/latest/dg/test-sam-local.html)
+   + [Using Amazon CloudWatch](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
+   + [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html)
+   + [Test Your Serverless Applications Locally Using SAM Local \(Public Beta\)](https://docs.aws.amazon.com/lambda/latest/dg/test-sam-local.html)
 
 1. When you're ready to have the function execute for CloudFront events, publish another version and edit the function to add triggers\. For more information, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.

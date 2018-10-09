@@ -1,0 +1,3 @@
+# HTTP 503 Status Code \(Lambda Limit Exceeded\)<a name="http-503-lambda-limit-execeeded-error"></a>
+
+If you're using Lambda@Edge, an HTTP 503 status code can indicate that the Lambda service returned an error because you reached a limit Lambda sets to throttle executions in each Region\. For more information about troubleshooting Lambda errors in CloudFront, see [Testing and Debugging Lambda@Edge Functions](lambda-edge-testing-debugging.md)\.

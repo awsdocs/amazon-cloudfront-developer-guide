@@ -18,7 +18,7 @@ You can configure each cache behavior in a web distribution to do one of the fol
 
   For information about specifying wildcards in cookie names, see [Whitelist Cookies \(Amazon EC2 and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesWhitelistCookies)\.
 
-  For the current limit on the number of cookie names that you can whitelist for each cache behavior, see [Amazon CloudFront Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront) in the *Amazon Web Services General Reference*\. To request a higher limit, go to [https://console\.aws\.amazon\.com/support/home\#/case/create?issueType=service\-limit\-increase&limitType=service\-code\-cloudfront\-distributions](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+  For the current limit on the number of cookie names that you can whitelist for each cache behavior, or to request a higher limit, see [Limits on Whitelisted Query Strings \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-query-strings)\.
 + **Don't forward cookies to your origin – **CloudFront doesn't cache your objects based on cookie values\. In addition, CloudFront removes the `Cookie` header from requests that it forwards to your origin and removes the `Set-Cookie` header from responses that it returns to your viewers\.
 
 Note the following about specifying the cookies that you want to forward:
@@ -44,4 +44,4 @@ The total number of bytes in all of the cookie names that you configure CloudFro
 `512 – (the number of cookies that you're forwarding)`  
 For example, if you configure CloudFront to forward 10 cookies to your origin, the combined length of the names of the 10 cookies can't exceed 502 bytes \(512 – 10\)\. If you configure CloudFront to forward all cookies to your origin, the length of cookie names doesn't matter\.
 
-For information about using the CloudFront console to update a distribution so CloudFront forwards cookies to the origin, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update a distribution, see [PUT Distribution Config](http://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+For information about using the CloudFront console to update a distribution so CloudFront forwards cookies to the origin, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update a distribution, see [PUT Distribution Config](https://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.

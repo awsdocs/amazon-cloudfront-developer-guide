@@ -27,7 +27,7 @@ The certificate issuer you must use depends on whether you want to require HTTPS
 **Important**  
 When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted CA\. CloudFront supports the same certificate authorities as Mozilla; for the current list, see [Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. You cannot use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
 
-  For more information about getting and installing an SSL/TLS certificate, refer to the documentation for your HTTP server software and to the documentation for the certificate authority\. For information about ACM, see the [AWS Certificate Manager User Guide](http://docs.aws.amazon.com/acm/latest/userguide/)\.
+  For more information about getting and installing an SSL/TLS certificate, refer to the documentation for your HTTP server software and to the documentation for the certificate authority\. For information about ACM, see the [AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)\.
 
 ## AWS Region that You Request a Certificate In \(for AWS Certificate Manager\)<a name="https-requirements-aws-region"></a>
 

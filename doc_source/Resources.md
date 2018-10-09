@@ -13,7 +13,7 @@ Although fairly simple to use, CloudFront is rich in functionality\. The resourc
 ## Additional Amazon CloudFront Documentation<a name="resources-additional-cloudfront-documentation"></a>
 
 The following related resources can help you as you work with this service\.
-+ [Amazon CloudFront API Reference](http://docs.aws.amazon.com/cloudfront/latest/APIReference/) – Gives complete descriptions of the API actions, parameters, and data types, and a list of errors that the service returns\.
++ [Amazon CloudFront API Reference](https://docs.aws.amazon.com/cloudfront/latest/APIReference/) – Gives complete descriptions of the API actions, parameters, and data types, and a list of errors that the service returns\.
 + [CloudFront What's New](https://aws.amazon.com//cloudfront/whats-new/) – Announcements of new CloudFront features and recently added edge locations\. 
 + [Technical documentation for the Amazon Simple Storage Service \(S3\)](http://aws.amazon.com/documentation/s3/) – A detailed discussion of the Amazon S3 service, including the basics of getting started, an overview of the service, a programming reference, and an API reference\. 
 + [Amazon CloudFront product information](http://aws.amazon.com/cloudfront/) – The primary web page for information about CloudFront, including features and pricing information\.

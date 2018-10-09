@@ -2,14 +2,14 @@
 
 The C\# examples in this section implement an example application that demonstrates how to create the signatures for CloudFront private distributions using canned and custom policy statements\. The examples includes utility functions based on the [AWS \.NET SDK](http://aws.amazon.com/sdkfornet/) that can be useful in \.NET applications\. 
 
-You can also create signed URLs and signed cookies by using the AWS SDK for \.NET\. In the [AWS SDK for \.NET API Reference](http://docs.aws.amazon.com/sdkfornet/v3/apidocs/), see the following topics:
+You can also create signed URLs and signed cookies by using the AWS SDK for \.NET\. In the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/), see the following topics:
 + **Signed URLs** – Amazon\.CloudFront > AmazonCloudFrontUrlSigner
 + **Signed cookies** – Amazon\.CloudFront > AmazonCloudFrontCookieSigner
 
 **Note**  
 Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the entire process, see [Using Signed URLs](private-content-signed-urls.md)\.
 
-To download the code, go to [Signature Code in C\#](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\.
+To download the code, go to [Signature Code in C\#](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\.
 
 To use the RSA keys provided by [AWS Account/Security](http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key) in the \.NET framework, you must convert the AWS\-supplied \.pem files to the XML format that the \.NET framework uses\.  
 
@@ -58,7 +58,7 @@ The following C\# code creates a signed URL that uses a canned policy by perform
 + Base64\-encodes the hashed and signed policy statement and replaces special characters to make the string safe to use as a URL request parameter\.
 + Concatenates the applicable values\.
 
-For the complete implementation, see the example at [Signature Code in C\#](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
+For the complete implementation, see the example at [Signature Code in C\#](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
 
 **Example Canned Policy Signing Method in C\#**  <a name="ExampleCannedPolicySigningMethod-CSharp"></a>
 
@@ -148,7 +148,7 @@ The following C\# code creates a signed URL that uses a custom policy by perform
 
 1. Concatenates the applicable values\.
 
-For the complete implementation, see the example at [Signature Code in C\#](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
+For the complete implementation, see the example at [Signature Code in C\#](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
 
 **Example Custom Policy Signing Method in C\#**  <a name="ExampleCustomPolicySigningMethod-CSharp"></a>
 

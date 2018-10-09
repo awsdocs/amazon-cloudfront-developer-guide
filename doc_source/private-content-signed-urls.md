@@ -61,6 +61,9 @@ Here's an overview of how you configure CloudFront and Amazon S3 for signed URLs
 
    If the request meets the requirements in the policy statement, CloudFront performs the standard operations: determines whether the object is already in the edge cache, forwards the request to the origin if necessary, and returns the object to the user\.
 
+**Note**  
+Signed CloudFront URLs cannot contain extra query string arguments\. If you add a query string to a signed URL after you create it, the URL returns an HTTP 403 status\. 
+
 ## Choosing How Long Signed URLs Are Valid<a name="private-content-overview-choosing-duration"></a>
 
 You can distribute private content using a signed URL that is valid for only a short time—possibly for as little as a few minutes\. Signed URLs that are valid for such a short period are good for distributing content on\-the\-fly to a user for a limited purpose, such as distributing movie rentals or music downloads to customers on demand\. If your signed URLs will be valid for just a short period, you'll probably want to generate them automatically using an application that you develop\. When the user starts to download an object or starts to play a media file, CloudFront compares the expiration time in the URL with the current time to determine whether the URL is still valid\.

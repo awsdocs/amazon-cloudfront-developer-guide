@@ -26,11 +26,11 @@ See the following sections for requirements and restrictions on using Lambda fun
 ## CloudFront Triggers for Lambda Functions<a name="lambda-requirements-cloudfront-triggers"></a>
 + You can add triggers only for a numbered version, not for `$LATEST` or for aliases\.
 + You can add triggers only for functions in the US East \(N\. Virginia\) Region\.
-+ To add triggers, the IAM execution role associated with your Lambda function must be assumable by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](http://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html#lambda-edge-permissions) in the *IAM User Guide*\.
++ To add triggers, the IAM execution role associated with your Lambda function must be assumable by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html#lambda-edge-permissions) in the *IAM User Guide*\.
 
 ## CloudWatch Logs<a name="lambda-requirements-cloudwatch-logs"></a>
 
-For information about Amazon CloudWatch Logs limits, see [CloudWatch Logs Limits](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) in the *Amazon CloudWatch User Guide*\.
+For information about Amazon CloudWatch Logs limits, see [CloudWatch Logs Limits](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) in the *Amazon CloudWatch User Guide*\.
 
 ## Headers<a name="lambda-header-restrictions"></a>
 
@@ -132,7 +132,7 @@ You can, however, execute Lambda functions for *origin* response errors, includi
 
 For information about limits, see the following documentation:
 + [Limits on Lambda@Edge](cloudfront-limits.md#limits-lambda-at-edge) in this guide
-+ [AWS Lambda Limits](http://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*
++ [AWS Lambda Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*
 
 ## Microsoft Smooth Streaming<a name="lambda-requirements-microsoft-smooth-streaming"></a>
 

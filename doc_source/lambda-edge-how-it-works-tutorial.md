@@ -7,8 +7,8 @@ This example illustrates, step by step, how you create and configure a Lambda@Ed
 **Topics**
 + [Step 1: Sign Up for an AWS Account](#lambda-edge-how-it-works-tutorial-AWS)
 + [Step 2: Create a CloudFront Distribution](#lambda-edge-how-it-works-tutorial-cloudfront)
-+ [Step 3: Create and Publish Your Function](#lambda-edge-how-it-works-tutorial-create-function)
-+ [Step 4: Add a CloudFront Trigger that Runs the Function](#lambda-edge-how-it-works-tutorial-add-trigger)
++ [Step 3: Create Your Function](#lambda-edge-how-it-works-tutorial-create-function)
++ [Step 4: Add a CloudFront Trigger to Run the Function](#lambda-edge-how-it-works-tutorial-add-trigger)
 + [Step 5: Verify that the Function Runs](#lambda-edge-how-it-works-tutorial-verify)
 + [Step 6: Troubleshoot Issues](#lambda-edge-how-it-works-tutorial-troubleshoot)
 + [Step 7: Clean Up Your Example Resources](#lambda-edge-how-it-works-tutorial-cleanup-resources)
@@ -22,25 +22,25 @@ If you haven't already done so, sign up for Amazon Web Services at https://aws\.
 
 Before you create the example Lambda@Edge function, you must have a CloudFront environment to work with that includes an origin to serve content from\.
 
-**Are you new to CloudFront?** CloudFront delivers content through a worldwide network of edge locations\. When you set up a Lambda function with CloudFront, the function can customize content closer to viewers, improving performance\. If you’re not familiar with CloudFront, take a few minutes before you complete the tutorial to [read a short overview](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/introduction.html) and [learn a bit about how CloudFront caches and serves content](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)\.
+**Are you new to CloudFront?** CloudFront delivers content through a worldwide network of edge locations\. When you set up a Lambda function with CloudFront, the function can customize content closer to viewers, improving performance\. If you’re not familiar with CloudFront, take a few minutes before you complete the tutorial to [read a short overview](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/introduction.html) and [learn a bit about how CloudFront caches and serves content](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)\.
 
 For this example, you create a CloudFront distribution that is set up with an Amazon S3 bucket, the origin for your CloudFront distribution\. If you already have an environment to use, you can skip this step\.<a name="lambda-edge-how-it-works-tutorial-cf-proc"></a>
 
 **To create a CloudFront distribution with an Amazon S3 origin**
 
-1. Create an Amazon S3 bucket with a file or two, such as image files, for sample content\. You can follow the steps in [Upload your content to Amazon S3](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.html#GettingStartedUploadContent)\. Make sure that you set permissions to grant public read access to the objects in your bucket\.
+1. Create an Amazon S3 bucket with a file or two, such as image files, for sample content\. You can follow the steps in [Upload your content to Amazon S3](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.html#GettingStartedUploadContent)\. Make sure that you set permissions to grant public read access to the objects in your bucket\.
 
-1. Create a CloudFront distribution and add your S3 bucket as an origin, by following the steps in [Create a CloudFront web distribution](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.html#GettingStartedCreateDistribution)\. If you already have a distribution, you can add the bucket as an origin for that distribution instead\.
+1. Create a CloudFront distribution and add your S3 bucket as an origin, by following the steps in [Create a CloudFront web distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStarted.html#GettingStartedCreateDistribution)\. If you already have a distribution, you can add the bucket as an origin for that distribution instead\.
 **Tip**  
 Make a note of your distribution ID\. Later in this tutorial when you add a CloudFront trigger for your function, you must choose the ID for your distribution in a drop\-down list—for example, E653W22221KDDL\.
 
-## Step 3: Create and Publish Your Function<a name="lambda-edge-how-it-works-tutorial-create-function"></a>
+## Step 3: Create Your Function<a name="lambda-edge-how-it-works-tutorial-create-function"></a>
 
 In this step, you create a Lambda function, starting with a blueprint template that's provided in the Lambda Console\. The function adds code to update security headers in your CloudFront distribution\. 
 
-**Are you new to Lambda or Lambda@Edge?** Lambda@Edge lets you use CloudFront triggers to invoke a Lambda function\. When you associate a CloudFront distribution with a Lambda function, CloudFront [intercepts requests and responses](http://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) at CloudFront edge locations and runs the function\. Lambda functions can improve security or customize information close to your viewers, to improve performance\. In this tutorial, the function we create updates the security headers in a CloudFront response\.
+**Are you new to Lambda or Lambda@Edge?** Lambda@Edge lets you use CloudFront triggers to invoke a Lambda function\. When you associate a CloudFront distribution with a Lambda function, CloudFront [intercepts requests and responses](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) at CloudFront edge locations and runs the function\. Lambda functions can improve security or customize information close to your viewers, to improve performance\. In this tutorial, the function that we create updates the security headers in a CloudFront response\.
 
-There are several steps to take when you create a Lambda function\. In this tutorial, you use a blueprint template as the basis for your function, and then update the function with code that sets the security headers\. Finally, you save a new version of the function, which is a required step before you can add a CloudFront trigger to the function\.<a name="lambda-edge-how-it-works-tutorial-create-function-blueprint-proc"></a>
+There are several steps to take when you create a Lambda function\. In this tutorial, you use a blueprint template as the basis for your function, and then update the function with code that sets the security headers\. Finally, you add and deploy a CloudFront trigger to run the function\.<a name="lambda-edge-how-it-works-tutorial-create-function-blueprint-proc"></a>
 
 **To create a Lambda function**
 
@@ -63,21 +63,19 @@ Choose how to set the permissions for your function\. It's easiest to get starte
 **Role name**  
 Type a name for the role that will be created from the policy template, which you choose next, under **Policy templates**\.  
 **Policy templates**  
-In the drop\-down list, choose **Basic Edge Lambda permissions**\. This template adds execution role permissions that allow CloudFront to run your Lambda function for you in CloudFront locations around the world\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)\.  
-![\[Choose a policy template for Lambda function.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-create-function-policy-list.png)
+ The policy template **Basic Edge Lambda permissions** is automatically added for you, because you chose a CloudFront blueprint as the basis for your function\. This policy template adds execution role permissions that allow CloudFront to run your Lambda function for you in CloudFront locations around the world\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)\.
 
-1. In the **CloudFront trigger** section, choose **Remove**\. After you create and test your function, you will associate the function with your distribution and add a trigger so that the function will run\. 
-
-   For example, to add security headers, we will set the function to run when there's a CloudFront origin response\. For more information about triggers, see [CloudFront Events That Can Trigger a Lambda Function](lambda-cloudfront-trigger-events.md)\.  
-![\[Remove the CloudFront trigger box when creating your Lambda function.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-cloudfront-trigger-remove-box.png)
-
-1. Choose **Create function**\. Lambda creates the function, and on the next page, you see a Congratulations\! success message box\. In the next step, you'll update the function code, and then add a CloudFront trigger\.  
+1. Choose **Create function**\. Lambda creates the function, and on the next page, you see a Congratulations\! success message box\.  
 ![\[Code editing and configuration page for a function in the Lambda console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-after-choose-create-function.png)
 
-   On the **Configuration** tab, there are three main areas: A diagram showing your function by name \(for example, in our example, UpdateSecurityHeaders\), any triggers you've added \(there are none at this point\), and logging information\. There's also a list of trigger types you can choose from, and, at the bottom, the **Function code** section for adding or updating code\.  
-![\[Page where you can add code or triggers for a function in the Lambda console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-function-update-page-full.png)
+   On the **Configuration** tab, there are three main areas: A diagram with boxes for your function by name \(in our example, UpdateSecurityHeaders\), any triggers for the function, and logging information\. There's also section on the bottom that changes to allow different options, depending on which box you choose in the main area—for example, the function name, a trigger, or Amazon CloudWatch Logs\. 
 
-1. In the **Function code** section, replace the template code with a function that modifies security headers that are returned from your origin\. For example, you could use code similar to the following:
+   In addition, on the left, there's list of trigger types that you can choose from\. Because you chose a CloudFront blueprint when you created your function, a CloudFront trigger was automatically added for the function\.
+
+   Now you can update the function code to modify security headers, and then, in the next step, configure and deploy the CloudFront trigger to run the code\.  
+![\[Lambda console page where you can add code or triggers for a function.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-function-update-page-full-with-cf.png)
+
+1. Choose the box with your function name, and then in the **Function code** section, replace the template code with a function that modifies security headers that are returned from your origin\. For example, you could use code similar to the following:
 
    ```
    'use strict';
@@ -103,37 +101,31 @@ In the drop\-down list, choose **Basic Edge Lambda permissions**\. This template
 
 1. Choose **Save** to save your updated code\.
 
-1. In the **Actions** drop\-down list, choose **Publish new version**\. 
+## Step 4: Add a CloudFront Trigger to Run the Function<a name="lambda-edge-how-it-works-tutorial-add-trigger"></a>
 
-   When you edit a Lambda function, you work with the $LATEST version\. But you can’t add a CloudFront trigger for the $LATEST version, so you must publish a new numbered version of the function, and then add the trigger\.
+Now that you have a Lambda function to update security headers, configure the CloudFront trigger to run your function to add the headers in any response that CloudFront receives from the origin for your distribution\. <a name="lambda-edge-how-it-works-tutorial-add-trigger-proc"></a>
 
-## Step 4: Add a CloudFront Trigger that Runs the Function<a name="lambda-edge-how-it-works-tutorial-add-trigger"></a>
+**To configure the CloudFront trigger for your function**
 
-Now that you have a Lambda function to update security headers, you create a CloudFront trigger that runs your function to add the headers in any response that CloudFront receives from the origin for your distribution\. 
+1. Choose the CloudFront box to highlight it\.
 
-**Tip**  
-Make sure that you're working in a numbered version for your function\. If you left the console and then came back and opened your function again, your version will be $LATEST—even if you previously published a new version\. To open a version that you can add a trigger to, do the following:  
-Choose **Qualifiers**\.
-Choose the **Versions** tab, and then choose a version that isn't $LATEST, such as **1**\.
+1. Below, in the **Configure triggers** section, choose **Deploy to Lambda@Edge** to open a page where you can define the trigger, and then deploy it\.  
+![\[Lambda console page where you have the option to go configure and deploy a CloudFront trigger.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-function-configure-triggers.png)
 
-![\[Drop-down option to choose a numbered version for a function in the Lambda console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-after-choose-qualifiers-and-versions.png)<a name="lambda-edge-how-it-works-tutorial-add-trigger-proc"></a>
-
-**To create a CloudFront trigger for your function**
-
-1. Under **Add triggers**, choose **CloudFront**\.
-
-1. Under **Configure triggers**, enter the following information:  
+1. On the **Deploy to Lambda@Edge** page, under **Configure CloudFront trigger**, enter the following information:  
 **Distribution**  
 The CloudFront distribution ID to associate with your function\. In the drop\-down list, choose the distribution ID\.  
 **Cache behavior**  
 The cache behavior to use with the trigger\. For this example, leave the value set to \*, which applies your distribution's default cache behavior to all requests\. For more information, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
 **CloudFront event**  
 The trigger that specifies when your function will run\. We want the security headers function to run whenever CloudFront returns a response from the origin\. So in the drop\-down list, choose **Origin response**\. For more information, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.   
-**Enable trigger and replicate**  
-Select this check box to add the trigger and replicate the function to AWS locations worldwide\.
+**\(Optional\) Include body**  
+Select this check box if you want to access the request body in your function, for viewer request or origin request events\. For more information, see [Accessing the Request Body by Choosing the Include Body Option](lambda-include-body-access.md)\.   
+![\[Lambda console page where you can add code or triggers for a function.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-function-configure-trigger-dialog.png)
 
-1. Choose **Add**, and then choose **Save**\.  
-![\[A CloudFront trigger has been added to the function in the Lambda console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-after-trigger-added.png)
+1. Under **Confirm deploy to Lambda@Edge**, select the check box to acknowledge that the trigger will be deployed and run your function in all AWS Regions\.
+
+1. Choose **Deploy** to add the trigger and replicate the function to AWS Regions worldwide\.
 
 1. Wait for the function to replicate\. This typically takes a few minutes but can take up to 15 minutes\.
 
@@ -144,7 +136,7 @@ Select this check box to add the trigger and replicate the function to AWS locat
 
 ## Step 5: Verify that the Function Runs<a name="lambda-edge-how-it-works-tutorial-verify"></a>
 
-Now that you've created your Lambda function and added a trigger to run it for a CloudFront distribution, check to make sure that the function is accomplishing what you expect it to\. In this example, we check the HTTP headers that are returned from the origin, to make sure that the security headers are added\.<a name="lambda-edge-how-it-works-tutorial-verify-proc"></a>
+Now that you've created your Lambda function and configured a trigger to run it for a CloudFront distribution, check to make sure that the function is accomplishing what you expect it to\. In this example, we check the HTTP headers that are returned from the origin, to make sure that the security headers are added\.<a name="lambda-edge-how-it-works-tutorial-verify-proc"></a>
 
 **To verify that your Lambda@Edge function adds security headers**
 
@@ -203,7 +195,7 @@ Before you delete your S3 bucket, make sure that logging is disabled for the buc
 
 1. Choose **Save**\.
 
-Now, you can delete your bucket\. For more information, see [How Do I Delete an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html) in the *Amazon Simple Storage Service Console User Guide*\.
+Now, you can delete your bucket\. For more information, see [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html) in the *Amazon Simple Storage Service Console User Guide*\.
 
 ### Delete the CloudFront Distribution<a name="lambda-edge-how-it-works-tutorial-delete-distribution"></a>
 

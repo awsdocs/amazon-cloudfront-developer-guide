@@ -2,7 +2,7 @@
 
 The [Open source Java toolkit for Amazon S3 and CloudFront](http://jets3t.s3.amazonaws.com/index.html) provides example code and information about CloudFront development in Java\. For information about private distributions, go to Private Distributions at [Programmer Guide: Code Samples](http://jets3t.s3.amazonaws.com/toolkit/code-samples.html#cloudfront-private-distributions)\. 
 
-You can also create signed URLs by using the `CloudFrontUrlSigner` class in the AWS SDK for Java\. For more information, see [Class UrlSigner](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/cloudfront/CloudFrontUrlSigner.html) in the *AWS SDK for Java API Reference*\.
+You can also create signed URLs by using the `CloudFrontUrlSigner` class in the AWS SDK for Java\. For more information, see [Class UrlSigner](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/cloudfront/CloudFrontUrlSigner.html) in the *AWS SDK for Java API Reference*\.
 
 **Note**  
 Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the entire process, see [Using Signed URLs](private-content-signed-urls.md)\.

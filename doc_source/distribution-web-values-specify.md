@@ -1,6 +1,6 @@
 # Values That You Specify When You Create or Update a Distribution<a name="distribution-web-values-specify"></a>
 
-When you create a new distribution or update an existing distribution, you specify the following values\. For information about creating or updating a distribution by using the CloudFront console, see [Creating a Distribution](distribution-web-creating-console.md) or [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
+When you create a new distribution or update an existing distribution, you specify the following values\. For information about creating or updating a distribution by using the CloudFront console, see [Creating a Distribution](distribution-web-creating-console.md) or [Updating a Distribution](HowToUpdateDistribution.md)\.
 
 **[Delivery Method](#DownloadDistValuesMethod)**
 
@@ -99,8 +99,8 @@ When you create or update a distribution, you specify the following values for e
 The DNS domain name of the Amazon S3 bucket or HTTP server from which you want CloudFront to get objects for this origin, for example:
 + **Amazon S3 bucket** – `myawsbucket.s3.amazonaws.com`
 + **Amazon S3 bucket configured as a website** – `http://bucket-name.s3-website-us-west-2.amazonaws.com`
-+ **AWS Elemental MediaStore container** – `mymediastore.data.mediastore.us-west-1.amazonaws.com`
-+ **AWS Elemental MediaPackage endpoint** – `mymediapackage.mediapackage.us-west-1.amazon.com`
++ **MediaStore container** – `mymediastore.data.mediastore.us-west-1.amazonaws.com`
++ **MediaPackage endpoint** – `mymediapackage.mediapackage.us-west-1.amazon.com`
 + **Amazon EC2 instance** – `ec2-203-0-113-25.compute-1.amazonaws.com`
 + **Elastic Load Balancing load balancer** – `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com`
 + **Your own web server** – `https://example.com`
@@ -124,7 +124,7 @@ If your origin is an Amazon S3 bucket, in the CloudFront console, choose in the 
 + The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
-If the origin is an Amazon S3 bucket, the bucket name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+If the origin is an Amazon S3 bucket, the bucket name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 When you change the value of **Origin Domain Name** for an origin, CloudFront immediately begins replicating the change to CloudFront edge locations\. Until the distribution configuration is updated in a given edge location, CloudFront will continue to forward requests to the previous HTTP server or Amazon S3 bucket\. As soon as the distribution configuration is updated in that edge location, CloudFront begins to forward requests to the new HTTP server or Amazon S3 bucket\.
 
@@ -149,7 +149,7 @@ A string that uniquely distinguishes this origin from other origins in this dist
 
 ### Restrict Bucket Access \(Amazon S3 Only\)<a name="DownloadDistValuesOAIRestrictBucketAccess"></a>
 
-Choose **Yes** if you want to require users to access objects in an Amazon S3 bucket by using only CloudFront URLs, not by using Amazon S3 URLs\. Then specify the applicable values\.
+Choose **Yes** if you want to require users to access objects in an Amazon S3 bucket by using only CloudFront URLs, not by using Amazon S3 URLs\. Then specify additional values\.
 
 Choose **No** if you want users to be able to access objects using either CloudFront URLs or Amazon S3 URLs\.
 
@@ -194,7 +194,7 @@ The protocol policy that you want CloudFront to use when fetching objects from y
 **Important**  
 If your Amazon S3 bucket is configured as a website endpoint, you must specify **HTTP Only**\. Amazon S3 doesn't support HTTPS connections in that configuration\.
 
-Choose the applicable value:
+Choose one of the following values:
 + **HTTP Only:** CloudFront uses only HTTP to access the origin\.
 + **HTTPS Only:** CloudFront uses only HTTPS to access the origin\.
 + **Match Viewer:** CloudFront communicates with your origin using HTTP or HTTPS, depending on the protocol of the viewer request\. CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.
@@ -281,7 +281,7 @@ When you create a new distribution, the value of **Path Pattern** for the defaul
 **Important**  
 Define path patterns and their sequence carefully or you may give users undesired access to your content\. For example, suppose a request matches the path pattern for two cache behaviors\. The first cache behavior does not require signed URLs and the second cache behavior does require signed URLs\. Users will be able to access the objects without using a signed URL because CloudFront processes the cache behavior associated with the first match\. 
 
-If you're working with an AWS Elemental MediaPackage channel, you must include specific path patterns for the cache behavior that you define for the endpoint type for your origin\. For example, for a DASH endpoint, you type `*.mpd` for **Path Pattern**\. For more information and specific instructions, see [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)\.
+If you're working with an MediaPackage channel, you must include specific path patterns for the cache behavior that you define for the endpoint type for your origin\. For example, for a DASH endpoint, you type `*.mpd` for **Path Pattern**\. For more information and specific instructions, see [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)\.
 
 The path you specify applies to requests for all files in the specified directory and in subdirectories below the specified directory\. CloudFront does not consider query strings or cookies when evaluating the path pattern\. For example, if an `images` directory contains `product1` and `product2` subdirectories, the path pattern `images/*.jpg` applies to requests for any \.jpg file in the `images`, `images/product1`, and `images/product2` directories\. If you want to apply a different cache behavior to the files in the `images/product1` directory than the files in the `images` and `images/product2` directories, create a separate cache behavior for `images/product1` and move that cache behavior to a position above \(before\) the cache behavior for the `images` directory\.
 
@@ -342,7 +342,7 @@ If you use an Amazon S3 bucket as the origin for your distribution and if you us
 
 **Important**  
 If you choose **GET, HEAD, OPTIONS** or **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**, you might need to restrict access to your Amazon S3 bucket or to your custom origin to prevent users from performing operations that you don't want them to perform\. The following examples explain how to restrict access:  
-**If you're using Amazon S3 as an origin for your distribution:** Create a CloudFront origin access identity to restrict access to your Amazon S3 content, and grant the origin access identity the applicable permissions\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `PUT`, you must still configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
+**If you're using Amazon S3 as an origin for your distribution:** Create a CloudFront origin access identity to restrict access to your Amazon S3 content, and grant permissions to the origin access identity\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `PUT`, you must still configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 **If you're using a custom origin:** Configure your origin server to handle all methods\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `POST`, you must still configure your origin server to handle `DELETE` requests appropriately\. 
 
 ### Cached HTTP Methods<a name="DownloadDistValuesCachedHTTPMethods"></a>
@@ -370,7 +370,7 @@ For the current limit on the number of headers that you can whitelist for each c
 
 If your origin server is adding a `Cache-Control` header to your objects to control how long the objects stay in the CloudFront cache and if you don't want to change the `Cache-Control` value, choose **Use Origin Cache Headers**\.
 
-To specify a minimum and maximum time that your objects stay in the CloudFront cache regardless of `Cache-Control` headers, and a default time that your objects stay in the CloudFront cache when the `Cache-Control` header is missing from an object, choose **Customize**\. Then, in the **Minimum TTL**, **Default TTL**, and **Maximum TTL** fields, specify the applicable value\.
+To specify a minimum and maximum time that your objects stay in the CloudFront cache regardless of `Cache-Control` headers, and a default time that your objects stay in the CloudFront cache when the `Cache-Control` header is missing from an object, choose **Customize**\. Then specify values in the **Minimum TTL**, **Default TTL**, and **Maximum TTL** fields\.
 
 For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
 
@@ -421,7 +421,7 @@ For example, suppose viewer requests for an object include a cookie named:
 
 `userid_member-number`
 
-where each of your users has a unique value for *member\-number*\. You want CloudFront to cache a separate version of the object for each member\. You could accomplish this by forwarding all cookies to your origin, but viewer requests include some cookies that you don't want CloudFront to cache\. Alternatively, you could specify the following value as a cookie name, which causes CloudFront to forward to the applicable origin all of the cookies that begin with `userid_`:
+where each of your users has a unique value for *member\-number*\. You want CloudFront to cache a separate version of the object for each member\. You could accomplish this by forwarding all cookies to your origin, but viewer requests include some cookies that you don't want CloudFront to cache\. Alternatively, you could specify the following value as a cookie name, which causes CloudFront to forward to the origin all of the cookies that begin with `userid_`:
 
 `userid_*`
 
@@ -429,7 +429,7 @@ For the current limit on the number of cookie names that you can whitelist for e
 
 ### Query String Forwarding and Caching<a name="DownloadDistValuesQueryString"></a>
 
-CloudFront can cache different versions of your content based on the values of query string parameters\. Choose the applicable option:
+CloudFront can cache different versions of your content based on the values of query string parameters\. Choose one of the following options:
 
 **None \(Improves Caching\)**  
 Choose this option if your origin returns the same version of an object regardless of the values of query string parameters\. This increases the likelihood that CloudFront can serve a request from the cache, which improves performance and reduces the load on your origin\.
@@ -481,7 +481,7 @@ If you're updating a distribution that you're already using to distribute conten
 If you want to create signed URLs using AWS accounts in addition to or instead of the current account, enter one AWS account number per line in this field\. Note the following:
 + The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating CloudFront Key Pairs for Your Trusted Signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
 + You can't create CloudFront key pairs for IAM users, so you can't use IAM users as trusted signers\.
-+ For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](http://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
++ For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](https://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
 + If you enter the account number for the current account, CloudFront automatically checks the **Self** checkbox and removes the account number from the **AWS Account Numbers** list\.
 
 ### Compress Objects Automatically<a name="DownloadDistValuesCompressObjectsAutomatically"></a>
@@ -500,7 +500,7 @@ For more information, see [How to Decide Which CloudFront Event to Use to Trigge
 
 ### Lambda Function ARN<a name="DownloadDistValuesLambdaFunctionARN"></a>
 
-Specify the Amazon Resource Name \(ARN\) of the Lambda function that you want to add a trigger for\. To learn how to get the ARN for a function, see step 1 of the procedure [ Adding Triggers by Using the CloudFront Console](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-add-triggers.html#lambda-edge-add-triggers-cf-console)\.
+Specify the Amazon Resource Name \(ARN\) of the Lambda function that you want to add a trigger for\. To learn how to get the ARN for a function, see step 1 of the procedure [ Adding Triggers by Using the CloudFront Console](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-add-triggers.html#lambda-edge-add-triggers-cf-console)\.
 
 ## Distribution Details<a name="DownloadDistValuesGeneral"></a>
 
@@ -543,9 +543,9 @@ For more information about alternate domain names, see [Using Custom URLs for Fi
 
 ### SSL Certificate<a name="DownloadDistValuesSSLCertificate"></a>
 
-If you want viewers to use HTTPS to access your objects, choose the applicable setting\. In addition, if you choose **Custom SSL Certificate**, choose the certificate that you want to use:
+If you want viewers to use HTTPS to access your objects, choose the settings that support that\. In addition, if you choose **Custom SSL Certificate**, choose the certificate that you want to use:
 + **Default CloudFront Certificate \(\*\.cloudfront\.net\)** – If you want to use the CloudFront domain name in the URLs for your objects, such as `https://d111111abcdef8.cloudfront.net/image1.jpg`, choose this option\. Also choose this option if you want viewers to use HTTP to access your objects\. 
-+ **Custom SSL Certificate** – If you want to use your own domain name in the URLs for your objects, such as `https://example.com/image1.jpg`, choose this option and then choose the applicable certificate\. The list can include certificates provided by AWS Certificate Manager, and certificates that you purchased from a third\-party certificate authority and uploaded to ACM or to the IAM certificate store\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
++ **Custom SSL Certificate** – If you want to use your own domain name in the URLs for your objects, such as `https://example.com/image1.jpg`, choose this option and then choose the certificate to use\. The list can include certificates provided by AWS Certificate Manager, and certificates that you purchased from a third\-party certificate authority and uploaded to ACM or to the IAM certificate store\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
   If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(https://example\.com/logo\.jpg\)\. If you use your CloudFront distribution domain name \(https://d111111abcdef8\.cloudfront\.net/logo\.jpg\) and the viewer supports SNI, then CloudFront behaves normally\. However, a viewer that does not support SNI exhibits one of the following behaviors, depending on the value of **Clients Supported**:
   + **All Clients**: If the viewer doesn't support SNI, it displays a warning because the CloudFront domain name doesn't match the domain name in your SSL certificate\.
@@ -631,7 +631,7 @@ If you're using an Route 53 alias resource record set to route traffic to your 
 + You enable IPv6 for the distribution
 + You're using alternate domain names in the URLs for your objects
 
-For more information, see [Routing Traffic to an Amazon CloudFront Web Distribution by Using Your Domain Name](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
+For more information, see [Routing Traffic to an Amazon CloudFront Web Distribution by Using Your Domain Name](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
 
 If you created a CNAME resource record set, either with Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record will route traffic to your distribution regardless of the IP address format of the viewer request\.
 
@@ -653,7 +653,7 @@ Indicates whether you want the distribution to be enabled or disabled once it's 
   When you create, modify, or delete a CloudFront distribution, it takes time for your changes to propagate to the CloudFront database\. An immediate request for information about a distribution might not show the change\. Propagation usually completes within minutes, but a high system load or network partition might increase this time\. 
 + *Disabled* means that even though the distribution might be deployed and ready to use, users can't use it\. Whenever a distribution is disabled, CloudFront doesn't accept any end\-user requests that use the domain name associated with that distribution\. Until you switch the distribution from disabled to enabled \(by updating the distribution's configuration\), no one can use it\.
 
-You can toggle a distribution between disabled and enabled as often as you want\. Follow the process for updating a distribution's configuration\. For more information, see [Viewing and Updating Distributions](HowToUpdateDistribution.md)\.
+You can toggle a distribution between disabled and enabled as often as you want\. Follow the process for updating a distribution's configuration\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
 
 ## Custom Error Pages and Error Caching<a name="DownloadDistValuesErrorPages"></a>
 
