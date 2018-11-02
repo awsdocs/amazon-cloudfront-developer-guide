@@ -10,6 +10,7 @@ Note that each Lambda@Edge function must contain the `callback` parameter to suc
 + [Working with Query Strings \- Examples](#lambda-examples-query-string-examples)
 + [Personalize Content by Country or Device Type Headers \- Examples](#lambda-examples-redirecting-examples)
 + [Content\-Based Dynamic Origin Selection \- Examples](#lambda-examples-content-based-routing-examples)
++ [Wildcard Origin Replaceement \- Examples](#lambda-examples-wildcard-origin)
 + [Updating Error Statuses \- Examples](#lambda-examples-update-error-status-examples)
 
 ## General Examples<a name="lambda-examples-general-examples"></a>
@@ -702,7 +703,344 @@ exports.handler = (event, context, callback) => {
     callback(null, request);
 };
 ```
+## Wildcard Origin Replacement \- Examples<a name="lambda-examples-wildcard-origin"></a>
 
+### Example: Using an Origin\-Request Trigger to Change Origin to a DNS name<a name="lambda-examples-wildcard-origin-example"></a>
+
+This function demonstrates how an origin\-request trigger can be used to emulate a regex replacement for the origin based 
+on the DNS name being used to access CloudFront\.
+
+This example allows a CloudFront distribution to handle multiple domains by having matching CName entries, with one pointing
+to the CloudFront distribution and the other pointing to the actual server which creates the content.
+
+```javascript
+'use strict';
+
+/**
+ * Lambda@Edge that matches on a CName of "my.domain.com" and replaces the origin domain to be "origin-<host>"
+ * 
+ * This will result in a request of "foo.my.domain.com" using the origin of "origin-foo.my.domain.com" which
+ * allows for hosting multiple domains via CName.
+ * 
+ * @param {type} event
+ * @param {type} context
+ * @param {type} callback
+ * @returns {undefined}
+ */
+exports.handler = (event, context, callback) => {
+    console.log('Received event:', JSON.stringify(event, null, 2));
+    console.log('Context:', JSON.stringify(context, null, 2));
+    const request = event.Records[0].cf.request;
+    console.log('request', request);
+    // Assume host is always in this location of headers ...
+    const host = request.headers.host[0].value;
+    console.log('host', host);
+    if (host.endsWith('my.domainname.com')){
+        const new_origin = 'origin-' + host;
+        console.log('new_origin', new_origin);
+        /* Set custom origin fields*/
+        request.origin.custom.domainName = new_origin;
+    }
+    console.log('request.origin', request.origin);
+    console.log('request.headers', request.headers);
+
+    callback(null, request);
+
+};
+
+```
+This Lambda can be embedded in a CloudFormation template that creates the distribution with the wildcard CName in the
+Aliases, and uses the same value for the Lambda.
+
+```yaml
+AWSTemplateFormatVersion: 2010-09-09
+Description: The template for the AWS CloudFront wildcard origin
+Parameters: 
+    
+  # Base Origin is what the cluster uses by default
+  BaseOrigin: 
+    Type: String
+    Description: The origin to use when the Lambda doesn't trigger a modified origin.
+  
+  # A host to use for testing
+  TestOrigin:
+    Type: String
+    Description: A hostname to test the distribution with
+    
+  # The zone we are wildcarding for 
+  WildCardZone: 
+    Type: String
+    Description: Enter the zone that this wildcard will be using. This determines both the certificate used, and the zone for the Lambda to key on.
+
+  # The ARN of the wildcard certificate - none means we try to create one
+  ACMARN:
+    Type: String
+    Default: "none"
+    Description: Enter the ARN of an existing certificate in ACM. If this is set to "none", we will create a new cert.
+    # Pattern should allowr an ARN in us-east-1, or the value "none" ...
+    AllowedPattern: "(arn:aws:acm:us-east-1:\\d+:certificate/.+|none)"
+  
+  # Flag as to whether we add the wildcard to the aliases.
+  AddAlias:
+    Type: String
+    Default: "No"
+    AllowedValues:
+        - "Yes"
+        - "No"
+    Description: "Add the wildcard alias to the distribution. Yes = add the *.WildCardZone to the CNames"
+    
+  # Flag as to whether we add the test host to the distribution
+  AddTest:
+    Type: String
+    Default: "No"
+    AllowedValues:
+        - "Yes"
+        - "No"
+    Description: "Add the test alias to the distribution. Yes = add the test hostname to the CNames"
+
+  # Trigger to update the version with the second Lambda
+  UpdateVersion:
+    Description: Change this string when code is updated.
+    Type: String
+    Default: "initial"
+
+  # Flag as to whether we add the Lambda to the stack
+  BuildLambda:
+    Type: String
+    Default: "No"
+    AllowedValues:
+        - "Yes"
+        - "No"
+    Description: "Add the Lambda to the stack. Yes = add the Lambda"
+
+Conditions:
+    CreateCertificate: !Equals [!Ref ACMARN, "none"]
+    AddCName: !Equals [!Ref AddAlias, "Yes"]
+    AddLambda: !Equals [!Ref BuildLambda, "Yes"]
+    AddTestCName: 
+      Fn::And:
+        - !Equals [ !Ref AddTest, "Yes" ]
+        - !Not [ !Equals [!Ref AddAlias, "Yes"] ]
+    
+    
+Resources:
+  
+  ## Log group
+  WildCardOriginLogGroup:
+    Type: 'AWS::Logs::LogGroup'
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/WildCardOrigin/${AWS::StackName}"
+      RetentionInDays: 7
+    
+  ## Lambda for modifying the origin request ...
+  ModifyOrigin:
+    Type: "AWS::Lambda::Function"
+    Properties: 
+        Handler: "index.RequestOriginTrigger"
+        Role: 
+            Fn::GetAtt: 
+              - "WildCardOriginEdgeRole"
+              - "Arn"
+        Code: 
+            ZipFile: 
+              Fn::Sub:
+                |
+                
+                    /* global response */
+
+                    'use strict';
+
+                    /**
+                     * Entry point for Lambda
+                     * 
+                     * @param {type} event
+                     * @param {type} context
+                     * @param {type} callback
+                     * @returns {undefined}
+                     */
+                    exports.RequestOriginTrigger = (event, context, callback) => {
+                        try {
+                            console.log('Received event:', JSON.stringify(event, null, 2));
+                            console.log('Context:', JSON.stringify(context, null, 2));
+                            const request = event.Records[0].cf.request;
+                            console.log('request', request);
+                            // Assume host is always in this location of headers ...
+                            const host = request.headers.host[0].value;
+                            console.log('host', host);
+                            // See if the host is in our zone
+                            if (host.endsWith('${WildCardZone}')){
+                                const new_origin = 'origin-' + host;
+                                console.log('new_origin', new_origin);
+                                /* Set custom origin fields*/
+                                request.origin.custom.domainName = new_origin;
+                            }
+                            console.log('request.origin', request.origin);
+                            console.log('request.headers', request.headers);
+
+                            callback(null, request);
+                        } catch (error) {
+                            console.log(error, error.stack); // an error occurred
+                            var responseBody = {
+                                Status: "FAILED",
+                                Reason: error.message + " " + error.stack,
+                                Data: error
+                            };
+                            // Tell CFN that we failed ...
+                            response.send(event, context, response.ERROR, responseBody);
+                            // Process the callback ...
+                            callback(responseBody, null);
+
+                        }
+                    };
+        # For some reason Zipfile doesn't support a runtime of 8, so we go back to 6
+        Runtime: "nodejs6.10"
+        Timeout: "3"
+    DependsOn:
+        - WildCardOriginLogGroup
+        - WildCardOriginEdgeRole
+
+  ## Need a version for the Lambda@Edge bit to work
+  LambdaVersion:
+    Type: 'AWS::Lambda::Version'
+    Properties:
+      FunctionName: !Ref ModifyOrigin
+      Description: Modify Request Origin for CloudFront Distribution
+
+  ## Generates the certificate for our zone ...
+  ## NOTE: this zone must exist, and the DNS validation must already be there
+  WildCardCertificate:
+    Type: "AWS::CertificateManager::Certificate"
+    # Only create if we didn't get an ARN passed in as a parameter
+    Condition: CreateCertificate
+    Properties: 
+      DomainName: !Sub "*.${WildCardZone}"   
+      DomainValidationOptions:
+        - DomainName: !Sub "*.${WildCardZone}"
+          ValidationDomain: !Sub "${WildCardZone}"
+
+  ## Specifying the CloudFront Distribution 
+  CloudFrontDistribution:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Comment: !Sub "CDN for *.${WildCardZone}"
+        ## The defined origin for the distro
+        Origins:
+          - DomainName: !Sub "${BaseOrigin}"
+            ## An identifier for the origin which must be unique within the distribution
+            Id: WebApp
+            CustomOriginConfig:
+              HTTPPort: 80
+              HTTPSPort: 443
+              OriginProtocolPolicy: match-viewer
+              #OriginSSLProtocols: ["TLSv1.2", "TLSv1.1", "TLSv1"]
+              OriginSSLProtocols: ["TLSv1.2"]
+        Enabled: 'true'
+        ## Default cache behavior
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - DELETE
+            - GET
+            - HEAD
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
+          ## The origin id defined above
+          TargetOriginId: WebApp
+          
+          ## Defining if and how the QueryString and Cookies are forwarded to the origin which in this case is S3
+          ForwardedValues:
+            QueryString: 'true'
+            Headers: ["Host","Authorization"]
+            Cookies:
+              Forward: all
+          ViewerProtocolPolicy: redirect-to-https
+          ## Connect to the lambda function we have for origin wildcarding
+          LambdaFunctionAssociations:
+            - EventType: origin-request
+              LambdaFunctionARN: !Ref LambdaVersion
+        
+        # CName / Alias for distribution
+        ## This is the CNames in the console
+        Aliases:
+            Fn::If:
+              - AddTestCName
+              -
+                - !Sub "${TestOrigin}.${WildCardZone}"
+              # No value if the AddCName is not "Yes"
+              - !Ref "AWS::NoValue"
+                
+            Fn::If:
+              - AddCName
+              - 
+                - !Sub "*.${WildCardZone}"
+              # No value if the AddCName is not "Yes"
+              - !Ref "AWS::NoValue"
+          
+        PriceClass: PriceClass_All
+        HttpVersion: 'http2'
+          
+        ## The certificate to use when viewers use HTTPS to request objects.
+        ViewerCertificate:
+          AcmCertificateArn: 
+            Fn::If:
+               - CreateCertificate
+               - !Ref WildCardCertificate
+               - !Ref ACMARN
+  
+            
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: 'TLSv1.1_2016'
+
+
+  WildCardOriginEdgeRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      Path: "/wf/lambda/edge/"
+      RoleName: !Sub "WildCardOriginEdgeRole-${AWS::StackName}"
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+                - edgelambda.amazonaws.com
+            Action: 'sts:AssumeRole'
+      Policies:
+        - PolicyName: WildCardOriginEdgePolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                  - 'logs:DescribeLogGroups'
+                  - 'logs:PutRetentionPolicy'
+                Resource: 'arn:aws:logs:*:*:log-group:*'
+              - Effect: Allow
+                Action:
+                  - 'logs:CreateLogGroup'
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - 'logs:PutLogEvents'
+                Resource: 'arn:aws:logs:*:*:log-group:*:*:*'
+
+              - Effect: Allow
+                Action:
+                  - 'ec2:CreateNetworkInterface'
+                  - 'ec2:DescribeNetworkInterfaces'
+                  - 'ec2:DeleteNetworkInterface'
+                Resource: '*'
+Outputs:
+  LambdaVersion:
+    Description: Current Lambda function version
+    Value: !Ref LambdaVersion
+
+```
 ## Updating Error Statuses \- Examples<a name="lambda-examples-update-error-status-examples"></a>
 
 ### Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK<a name="lambda-examples-custom-error-static-body"></a>
