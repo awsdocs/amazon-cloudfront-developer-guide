@@ -121,7 +121,7 @@ You can generate HTTP responses for viewer request and origin request events\. F
 ```
 'use strict';
 
-let content = `
+const content = `
 <\!DOCTYPE html>
 <html lang="en">
   <head>
@@ -172,7 +172,7 @@ You can generate HTTP responses for viewer request and origin request events\. F
 
 const zlib = require('zlib');
 
-let content = `
+const content = `
 <\!DOCTYPE html>
 <html lang="en">
   <head>
