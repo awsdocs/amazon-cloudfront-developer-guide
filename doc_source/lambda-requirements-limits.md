@@ -26,7 +26,7 @@ See the following sections for requirements and restrictions on using Lambda fun
 ## CloudFront Triggers for Lambda Functions<a name="lambda-requirements-cloudfront-triggers"></a>
 + You can add triggers only for a numbered version, not for `$LATEST` or for aliases\.
 + You can add triggers only for functions in the US East \(N\. Virginia\) Region\.
-+ To add triggers, the IAM execution role associated with your Lambda function must be assumable by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html#lambda-edge-permissions) in the *IAM User Guide*\.
++ To add triggers, the IAM execution role associated with your Lambda function must be assumable by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. For more information, [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)\.
 
 ## CloudWatch Logs<a name="lambda-requirements-cloudwatch-logs"></a>
 
@@ -127,6 +127,7 @@ You can, however, execute Lambda functions for *origin* response errors, includi
 + You can't associate your Lambda function to a CloudFront distribution owned by another AWS account\. 
 + The Dead Letter Queue \(DLQ\) isn't supported\.
 + Environment variables aren't supported\.
++ Functions with Layers aren't supported\.
 
 ## Limits<a name="lambda-requirements-see-limits"></a>
 
@@ -140,7 +141,7 @@ You can't create triggers for a CloudFront distribution that you're using for on
 
 ## Network Access<a name="lambda-requirements-network-access"></a>
 
-Functions triggered by origin request and response events as well as functions triggered by viewer request and response events can make network calls to resources on the internet, and to services in AWS regions such as Amazon S3 buckets, DynamoDB tables, or Amazon EC2 instances\.
+Functions triggered by origin request and response events as well as functions triggered by viewer request and response events can make network calls to resources on the internet, and to AWS services such as Amazon S3 buckets, DynamoDB tables, or Amazon EC2 instances\.
 
 ## Query String Parameters<a name="lambda-requirements-query-strings"></a>
 + To access a query string in a Lambda function, use `event.Records[0].cf.request.querystring`\.

@@ -95,7 +95,7 @@ If you want CloudFront to respect cross\-origin resource sharing settings, confi
 
 You can require viewers to use HTTPS to send requests to CloudFront and require CloudFront to forward requests to your custom origin by using the protocol that is used by the viewer\. For more information, see the following distribution settings:
 + [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)
-+ [Origin Protocol Policy \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)
++ [Origin Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)
 
 CloudFront forwards HTTPS requests to the origin server using the SSLv3, TLSv1\.0, TLSv1\.1, and TLSv1\.2 protocols\. For custom origins, you can choose the SSL protocols that you want CloudFront to use when communicating with your origin:
 + If you're using the CloudFront console, choose protocols by using the **Origin SSL Protocols** check boxes\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\. 
@@ -215,7 +215,7 @@ The performance improvement of OCSP stapling is more pronounced when CloudFront 
 
 When CloudFront gets a response from your origin, it tries to maintain the connection for several seconds in case another request arrives during that period\. Maintaining a persistent connection saves the time required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. 
 
-For more information, including how to configure the duration of persistent connections, see [Origin Keep\-alive Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information, including how to configure the duration of persistent connections, see [Origin Keep\-alive Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ### Protocols<a name="RequestCustomProtocols"></a>
 
@@ -242,7 +242,7 @@ The origin response timeout, also known as the origin request timeout or origin 
 + The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to a custom origin
 + The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
 
-For more information, including how to configure the origin response timeout, see [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information, including how to configure the origin response timeout, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ### Simultaneous Requests for the Same Object \(Traffic Spikes\)<a name="request-custom-traffic-spikes"></a>
 

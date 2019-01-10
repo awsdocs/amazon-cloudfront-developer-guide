@@ -20,7 +20,7 @@ When you create a signed cookie, you write a policy statement in JSON format tha
 
 | Description | Canned Policy | Custom Policy | 
 | --- | --- | --- | 
-| You can reuse the policy statement for multiple objects\. To reuse the policy statement, you must use wildcard characters in the `Resource` object\. For more information, see [Values That You Specify in the Policy Statement for a Custom Policy for Signed Cookies](private-content-setting-signed-cookie-custom-policy.md#private-content-custom-policy-statement-cookies-values)\.\)  | No | Yes | 
+| You can reuse the policy statement for multiple files\. To reuse the policy statement, you must use wildcard characters in the `Resource` object\. For more information, see [Values That You Specify in the Policy Statement for a Custom Policy for Signed Cookies](private-content-setting-signed-cookie-custom-policy.md#private-content-custom-policy-statement-cookies-values)\.\)  | No | Yes | 
 | You can specify the date and time that users can begin to access your content | No | Yes \(optional\) | 
 | You can specify the date and time that users can no longer access your content | Yes | Yes | 
 | You can specify the IP address or range of IP addresses of the users who can access your content | No | Yes \(optional\) | 
@@ -41,13 +41,13 @@ Here's an overview of how you configure CloudFront for signed cookies and how Cl
 
    Typically, your CloudFront distribution will have at least two cache behaviors, one that doesn't require authentication and one that does\. The error page for the secure portion of the site includes a redirector or a link to a login page\.
 
-   If you configure your distribution to cache objects based on cookies, CloudFront doesn't cache separate objects based on the attributes in signed cookies\.
+   If you configure your distribution to cache files based on cookies, CloudFront doesn't cache separate files based on the attributes in signed cookies\.
 
 1. A user signs in to your website and either pays for content or meets some other requirement for access\.
 
 1. Your application returns the `Set-Cookie` headers in the response, and the viewer stores the name\-value pairs\.
 
-1. The user requests an object\.
+1. The user requests an file\.
 
    The user's browser or other viewer gets the name\-value pairs from step 4 and adds them to the request in a `Cookie` header\. This is the signed cookie\. 
 
@@ -55,7 +55,7 @@ Here's an overview of how you configure CloudFront for signed cookies and how Cl
 
    If the signature in the cookie is valid, CloudFront looks at the policy statement in the cookie \(or constructs one if you're using a canned policy\) to confirm that the request is still valid\. For example, if you specified a beginning and ending date and time for the cookie, CloudFront confirms that the user is trying to access your content during the time period that you want to allow access\.
 
-   If the request meets the requirements in the policy statement, CloudFront serves your content as it does for content that isn't restricted: it determines whether the object is already in the edge cache, forwards the request to the origin if necessary, and returns the object to the user\.
+   If the request meets the requirements in the policy statement, CloudFront serves your content as it does for content that isn't restricted: it determines whether the file is already in the edge cache, forwards the request to the origin if necessary, and returns the file to the user\.
 
 ## Preventing Misuse of Signed Cookies<a name="private-content-signed-cookie-misuse"></a>
 
@@ -69,9 +69,9 @@ To prevent this type of attack, do the following:
 
 ## When Does CloudFront Check the Expiration Date and Time in a Signed Cookie?<a name="private-content-check-expiration-cookie"></a>
 
-To determine whether a signed cookie is still valid, CloudFront checks the expiration date and time in the cookie at the time of the HTTP request\. If a client begins to download a large object immediately before the expiration time, the download should complete even if the expiration time passes during the download\. If the TCP connection drops and the client tries to restart the download after the expiration time passes, the download will fail\.
+To determine whether a signed cookie is still valid, CloudFront checks the expiration date and time in the cookie at the time of the HTTP request\. If a client begins to download a large file immediately before the expiration time, the download should complete even if the expiration time passes during the download\. If the TCP connection drops and the client tries to restart the download after the expiration time passes, the download will fail\.
 
-If a client uses Range GETs to get an object in smaller pieces, any GET request that occurs after the expiration time passes will fail\. For more information about Range GETs, see [How CloudFront Processes Partial Requests for an Object \(Range GETs\)](RangeGETs.md)\.
+If a client uses Range GETs to get a file in smaller pieces, any GET request that occurs after the expiration time passes will fail\. For more information about Range GETs, see [How CloudFront Processes Partial Requests for an Object \(Range GETs\)](RangeGETs.md)\.
 
 ## Sample Code and Third\-Party Tools<a name="private-content-overview-sample-code-cookies"></a>
 

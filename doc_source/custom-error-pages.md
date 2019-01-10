@@ -1,6 +1,10 @@
 # Creating a Custom Error Page for Specific HTTP Status Codes<a name="custom-error-pages"></a>
 
-If you'd rather display a custom error message instead of the default message—for example, a page that uses the same formatting as the rest of your website—you can have CloudFront return to the viewer an object \(such as an HTML file\) that contains your custom error message\. 
+If you'd rather display a custom error message instead of the default message—for example, a page that uses the same formatting as the rest of your website—you can have CloudFront return to the viewer an object \(such as an HTML file\) that contains your custom error message\.
+
+To specify the specific file that you want to return and the errors for which the file should be returned, you update your CloudFront distribution to specify those values\. For more information, see [Custom Error Pages and Error Caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\. 
+
+For example, the following is a customized error message:
 
 ![\[AWS 404 page.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
 
@@ -15,6 +19,6 @@ The HTTP status codes for which CloudFront can return a custom error page includ
 + 500, 501, 502, 503, 504
 
 **Note**  
-You can create a custom error page for HTTP status code 416 \(Requested Range Not Satisfiable\), and you can change the HTTP status code that CloudFront returns to viewers when your origin returns a status code 416 to CloudFront\. \(For more information, see [Changing Response Codes](custom-error-pages-response-code.md)\.\) However, CloudFront doesn't cache status code 416 responses, so you can specify a value for **Error Caching Minimum TTL** for status code 416, but CloudFront doesn't use it\. 
+You can create a custom error page for HTTP status code 416 \(Requested Range Not Satisfiable\), and you can change the HTTP status code that CloudFront returns to viewers when your origin returns a status code 416 to CloudFront\. \(For more information, see [Changing Response Codes Returned by CloudFront](custom-error-pages-response-code.md)\.\) However, CloudFront doesn't cache status code 416 responses, so you can specify a value for **Error Caching Minimum TTL** for status code 416, but CloudFront doesn't use it\. 
 
 For a detailed explanation of how CloudFront handles error responses from your origin, see [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)\.

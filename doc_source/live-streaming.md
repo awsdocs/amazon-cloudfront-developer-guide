@@ -28,7 +28,7 @@ To get started, you grant CloudFront access to your MediaStore container\. Then 
 
 1. Create a distribution with the following settings:  
 **Origin Domain Name**  
-The data endpoint that is assigned to your MediaStore container\. From the dropdown list, choose the MediaStore container for your live video\. The format of an MediaStore origin is Container\-OriginEndpointURL\. For example, mymediastore\.data\.mediastore\.us\-east\-1\.amazonaws\.com\. For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
+The data endpoint that is assigned to your MediaStore container\. From the dropdown list, choose the MediaStore container for your live video\. The format of a MediaStore origin is Container\-OriginEndpointURL\. For example, mymediastore\.data\.mediastore\.us\-east\-1\.amazonaws\.com\. For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
 **Origin Path**  
 The folder structure in the MediaStore container where your objects are stored\. For more information, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.  
 **Origin Custom Headers**  
@@ -84,7 +84,7 @@ Complete the following procedure to set up a CloudFront distribution for the liv
 
 1. Choose the settings for the distribution, including the following:  
 **Origin Domain Name**  
-The origin where your MediaPackage live video channel and endpoints are\. From the dropdown list, choose the MediaPackage channel for your live video\. The format of an MediaPackage origin is ChannelID\-OriginEndpointID\-OriginEndpointURL\. You can map one channel to several origin endpoints\.  
+The origin where your MediaPackage live video channel and endpoints are\. From the dropdown list, choose the MediaPackage channel for your live video\. The format of a MediaPackage origin is ChannelID\-OriginEndpointID\-OriginEndpointURL\. You can map one channel to several origin endpoints\.  
 If you created your channel using another AWS account, type the origin URL value into the field\. The origin must be an HTTPS URL\.  
 For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
 **Origin Path**  
@@ -107,7 +107,7 @@ Repeat the steps here to add each endpoint\.<a name="live-streaming-with-mediapa
 
 1. On the **Origins** tab, choose **Create Origin**\.
 
-1. For **Origin Domain Name**, in the dropdown list, choose an MediaPackage endpoint for your channel\. The **Origin Path** field will be automatically filled in for you\.
+1. For **Origin Domain Name**, in the dropdown list, choose a MediaPackage endpoint for your channel\. The **Origin Path** field will be automatically filled in for you\.
 
 1. For the other settings, set the values based on other technical requirements or the needs of your business\. For more information, see [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.
 
@@ -147,7 +147,7 @@ For all endpoint formats except for a Microsoft Smooth Streaming endpoint, you m
 Choose **Redirect HTTP to HTTPS**\.  
 **Cache Based on Selected Request Headers**  
 Choose **None \(improves caching\)**\.  
-For more information about improving caching, see [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches](cache-hit-ratio.md)\.  
+For more information about improving caching, see [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches \(Cache Hit Ratio\)](cache-hit-ratio.md)\.  
 **Query String Forwarding and Caching**  
 Choose **Forward all, cache based on whitelist**\.  
 **Query String Whitelist**  

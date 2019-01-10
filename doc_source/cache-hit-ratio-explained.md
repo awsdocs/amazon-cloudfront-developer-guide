@@ -6,4 +6,4 @@ The more requests that CloudFront is able to serve from edge caches as a proport
 
 You can view the percentage of viewer requests that are hits, misses, and errors in the CloudFront console\. For more information, see [CloudFront Cache Statistics Reports](cache-statistics.md)\. 
 
-A number of factors affect the cache hit ratio\. You can adjust your CloudFront distribution configuration to improve the cache hit ratio by following the guidance in [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches](cache-hit-ratio.md)\.
+A number of factors affect the cache hit ratio\. You can adjust your CloudFront distribution configuration to improve the cache hit ratio by following the guidance in [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches \(Cache Hit Ratio\)](cache-hit-ratio.md)\.

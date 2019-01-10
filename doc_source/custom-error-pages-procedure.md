@@ -23,6 +23,6 @@ You can use either the CloudFront API or console to configure CloudFront error r
 
 1. Enter the applicable values\. For more information, see [Custom Error Pages and Error Caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages)\.
 
-1. If you configured CloudFront to return custom error pages, add or update the applicable cache behaviors\. For more information, see [Creating or Updating a Cache Behavior for Custom Error Pages](custom-error-pages-cache-behavior.md)\.
+1. If you configured CloudFront to return custom error pages, add or update the applicable cache behaviors\. For more information, see [Storing Objects and Custom Error Pages in Different Locations](custom-error-pages-cache-behavior.md)\.
 
 1. To save your changes, choose **Yes, Edit**\.

@@ -11,6 +11,7 @@ If you're a customer trying to access a website or application, and you've gotte
 + [Origin Is Not Responding with Supported Ciphers/Protocols](#origin-not-responding-with-supported-ciphers-protocols)
 + [SSL/TLS Certificate on the Origin Is Expired, Invalid, Self\-signed, or the Certificate Chain Is in the Wrong Order](#ssl-certificate-expired)
 + [Origin Is Not Responding on Specified Ports in Origin Settings](#origin-not-responding-on-specified-ports)
++ [CloudFront Was Not Able to Resolve Your Origin Domain Due to DNS Issues](#http-502-service-unavailable-origin-domain-dns-issues)
 + [Lambda Function Associated with Your Distribution Includes Execution Errors](#http-502-bad-gateway-lambda-function-invalid)
 
 ## SSL/TLS Negotiation Failure Between CloudFront and a Custom Origin Server<a name="ssl-negotitation-failure"></a>
@@ -29,7 +30,7 @@ To determine whether domain names in the certificate match the **Origin Domain N
 
 ### Online SSL Checker<a name="troubleshooting-ssl-negotiation-failure-online-ssl-checker"></a>
 
-To find an SSL test tool, search the Internet for "online ssl checker\." Typically, you specify the name of your domain, and the tool returns a variety of information about your SSL/TLS certificate\. Confirm that the certificate contains your domain name in the **Common Names** or **Subject Alternative Names** fields\.
+To find an SSL test tool, search the internet for "online ssl checker\." Typically, you specify the name of your domain, and the tool returns a variety of information about your SSL/TLS certificate\. Confirm that the certificate contains your domain name in the **Common Names** or **Subject Alternative Names** fields\.
 
 ### OpenSSL<a name="troubleshooting-ssl-negotiation-failure-openssl"></a>
 
@@ -38,7 +39,7 @@ To determine whether CloudFront is able to establish a connection with your orig
 The command that you use depends on whether you use a client that supports [SNI \(Server Name Indication\)](http://en.wikipedia.org/wiki/Server_Name_Indication)\.
 
 **Client supports SNI**  
-`openssl s_client –connect domainname:443 –servername domainname`
+`openssl s_client -connect domainname:443 -servername domainname`
 
 **Client doesn't support SNI**  
 `openssl s_client –connect domainname:443`
@@ -77,6 +78,24 @@ For information about installing an SSL/TLS certificate on your custom origin se
 When you create an origin on your CloudFront distribution, you can set the ports that CloudFront connects to the origin with for HTTP and HTTPS traffic\. By default, these are TCP 80/443\. You have the option to modify these ports\. If your origin is rejecting traffic on these ports for any reason, or if your backend server isn't responding on the ports, CloudFront will fail to connect\.
 
 To troubleshoot these issues, check any firewalls running in your infrastructure and validate that they are not blocking the supported IP ranges\. For more information, see [AWS IP Address Ranges](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) in the *Amazon Web Services General Reference*\. Additionally, verify whether your web server is running on the origin\.
+
+## CloudFront Was Not Able to Resolve Your Origin Domain Due to DNS Issues<a name="http-502-service-unavailable-origin-domain-dns-issues"></a>
+
+When CloudFront receives a request for an object that is expired or is not stored in its cache, it makes a request to the origin to get the updated object\. To make a successful request to the origin, CloudFront performs a DNS resolution on the origin domain name\. However, when the DNS service that hosts your domain is experiencing issues, CloudFront cannot resolve the domain name to get the IP address, resulting in a 502 error\. To fix this issue, contact your DNS provider, or, if you are using Amazon Route 53, see [Amazon Route 53 DNS](https://aws.amazon.com/premiumsupport/knowledge-center/route-53-dns-website-unreachable/)\.
+
+To further troubleshoot this issue, ensure that the [authoritative name servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-concepts.html#route-53-concepts-authoritative-name-server) of your origin's root domain or zone apex \(such as `example.com`\) are functioning correctly\. Your authoritative name servers then receive the request and return the IP address that is associated with the domain, and are the same as the DNS servers that you used to set up your CloudFront distribution\. Use the following commands to find the name servers for your apex origin:
+
+```
+dig OriginAPEXDomainName NS +short 
+nslookup –query=NS OriginAPEXDomainName
+```
+
+When you have the names of your name servers, use the following commands to query the domain name of your origin against them to make sure that each responds with an answer:
+
+```
+dig OriginDomainName @NameServerFromAbove
+nslookup OriginDomainName NameServerFromAbove
+```
 
 ## Lambda Function Associated with Your Distribution Includes Execution Errors<a name="http-502-bad-gateway-lambda-function-invalid"></a>
 

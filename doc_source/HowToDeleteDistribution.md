@@ -23,7 +23,7 @@ CloudFront lets you create up to 200 web distributions and 100 RTMP distribution
 
 1. In the right pane of the CloudFront console, check the check box for the distribution that you want to delete\.
 
-1. Click **Disabled** to disable the distribution, and click **Yes, Disable** to confirm\. Then click **Close**\.
+1. Click **Disable** to disable the distribution, and click **Yes, Disable** to confirm\. Then click **Close**\.
 
 1. The value of the **State** column immediately changes to **Disabled**\. Wait until the value of the **Status** column changes to **Deployed**\.
 

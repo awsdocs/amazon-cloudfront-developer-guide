@@ -8,7 +8,7 @@ Use signed URLs in the following cases:
 + Your users are using a client \(for example, a custom HTTP client\) that doesn't support cookies\.
 
 Use signed cookies in the following cases:
-+ You want to provide access to multiple restricted files, for example, all of the files for a video in HLS format or all of the files in the subscribers' area of a website\.
++ You want to provide access to multiple restricted files, for example, all of the files for a video in HLS format or all of the files in the subscribers' area of website\.
 + You don't want to change your current URLs\.
 
 If you are not currently using signed URLs and if your URLs contain any of the following query string parameters, you cannot use either signed URLs or signed cookies:
@@ -21,4 +21,4 @@ CloudFront assumes that URLs that contain any of those query string parameters a
 
 ## Using Both Signed URLs and Signed Cookies<a name="private-content-using-signed-urls-and-cookies"></a>
 
-If you use both signed URLs and signed cookies to control access to the same objects and a viewer uses a signed URL to request an object, CloudFront determines whether to return the object to the viewer based only on the signed URL\.
+If you use both signed URLs and signed cookies to control access to the same files and a viewer uses a signed URL to request a file, CloudFront determines whether to return the file to the viewer based only on the signed URL\.

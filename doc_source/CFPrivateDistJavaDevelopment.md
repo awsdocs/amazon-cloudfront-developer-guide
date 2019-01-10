@@ -34,7 +34,7 @@ byte[] derPrivateKey = ServiceUtils.readInputStreamToBytes(new
     FileInputStream(privateKeyFilePath));
 
 // Generate a "canned" signed URL to allow access to a 
-// specific distribution and object
+// specific distribution and file
 
 String signedUrlCanned = CloudFrontService.signUrlCanned(
     "http://" + distributionDomain + "/" + s3ObjectKey, // Resource URL or Path

@@ -188,24 +188,3 @@ CloudFront supports using service\-linked roles in the following regions\.
 | EU \(Frankfurt\) | eu\-central\-1 | Yes | 
 | EU \(London\) | eu\-west\-2 | Yes | 
 | South America \(São Paulo\) | sa\-east\-1 | Yes | 
-
-### Supported Regions for CloudFront Service\-Linked Roles<a name="slr-regions"></a>
-
-CloudFront supports using service\-linked roles in the following regions\.
-
-
-****  
-
-| Region name | Region identity | Support in CloudFront | 
-| --- | --- | --- | 
-| US East \(N\. Virginia\) | us\-east\-1 | Yes | 
-| US East \(Ohio\) | us\-west\-2 | Yes | 
-| US West \(Oregon\) | us\-west\-2 | Yes | 
-| Asia Pacific \(Mumbai\) | ap\-south\-1 | Yes | 
-| Asia Pacific \(Tokyo\) | ap\-northeast\-1 | Yes | 
-| Asia Pacific \(Seoul\) | ap\-northeast\-2 | Yes | 
-| Asia Pacific \(Singapore\) | ap\-southeast\-1 | Yes | 
-| Asia Pacific \(Sydney\) | ap\-southeast\-2 | Yes | 
-| EU \(Frankfurt\) | eu\-central\-1 | Yes | 
-| EU \(London\) | eu\-west\-2 | Yes | 
-| South America \(São Paulo\) | sa\-east\-1 | Yes | 

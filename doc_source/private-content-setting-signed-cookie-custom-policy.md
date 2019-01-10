@@ -11,7 +11,7 @@ To set a signed cookie that uses a custom policy, perform the following procedur
 
 1. If you're using \.NET or Java to create signed URLs, and if you haven't reformatted the private key for your key pair from the default \.pem format to a format compatible with \.NET or with Java, do so now\. For more information, see [Reformatting the CloudFront Private Key \(\.NET and Java Only\)](private-content-trusted-signers.md#private-content-reformatting-private-key)\.
 
-1. Program your application to send three `Set-Cookie` headers to approved viewers\. You need three `Set-Cookie` headers because each `Set-Cookie` header can contain only one name\-value pair, and a CloudFront signed cookie requires three name\-value pairs\. The name\-value pairs are: `CloudFront-Policy`, `CloudFront-Signature`, and `CloudFront-Key-Pair-Id`\. The values must be present on the viewer before a user makes the first request for an object that you want to control access to\. 
+1. Program your application to send three `Set-Cookie` headers to approved viewers\. You need three `Set-Cookie` headers because each `Set-Cookie` header can contain only one name\-value pair, and a CloudFront signed cookie requires three name\-value pairs\. The name\-value pairs are: `CloudFront-Policy`, `CloudFront-Signature`, and `CloudFront-Key-Pair-Id`\. The values must be present on the viewer before a user makes the first request for a file that you want to control access to\. 
 **Note**  
 In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. This causes the browser to delete the cookie when the user closes the browser, which reduces the possibility of someone getting unauthorized access to your content\. For more information, see [Preventing Misuse of Signed Cookies](private-content-signed-cookies.md#private-content-signed-cookie-misuse)\.
 
@@ -42,18 +42,18 @@ In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. T
    CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature
    ```  
 **\(Optional\) `Domain`**  
-The domain name for the requested object\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
+The domain name for the requested file\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
 You can specify the domain name that CloudFront assigned to your distribution, for example, d111111abcdef8\.cloudfront\.net, but you can't specify \*\.cloudfront\.net for the domain name\.  
 If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
 **\(Optional\) `Path`**  
-The path for the requested object\. If you don't specify a `Path` attribute, the default value is the path in the URL\.  
+The path for the requested file\. If you don't specify a `Path` attribute, the default value is the path in the URL\.  
 **`Secure`**  
 Requires that the viewer encrypt cookies before sending a request\. We recommend that you send the `Set-Cookie` header over an HTTPS connection to ensure that the cookie attributes are protected from man\-in\-the\-middle attacks\.  
 **`HttpOnly`**  
 Requires that the viewer send the cookie only in HTTP or HTTPS requests\.  
 **`CloudFront-Policy`**  
 Your policy statement in JSON format, with white space removed, then base64 encoded\. For more information, see [Creating a Signature for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-signature-cookies)\.  
-The policy statement controls the access that a signed cookie grants to a user: the objects that the user can access, an expiration date and time, an optional date and time that the URL becomes valid, and an optional IP address or range of IP addresses that are allowed to access the object\.  
+The policy statement controls the access that a signed cookie grants to a user: the files that the user can access, an expiration date and time, an optional date and time that the URL becomes valid, and an optional IP address or range of IP addresses that are allowed to access the file\.  
 **`CloudFront-Signature`**  
 A hashed, signed, and base64\-encoded version of the JSON policy statement\. For more information, see [Creating a Signature for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-signature-cookies)\.  
 **`CloudFront-Key-Pair-Id`**  
@@ -62,7 +62,7 @@ The key pair ID that you include in CloudFront signed cookies must be associated
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, you must update your application to use a new active key pair for one of your trusted signers\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
 
-Example `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your objects:
+Example `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your files:
 
 ```
 Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly; CloudFront-Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cDovL2QxMTExMTFhYmNkZWY4LmNsb3VkZnJvbnQubmV0L2dhbWVfZG93bmxvYWQuemlwIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIxOTIuMC4yLjAvMjQifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0MjY1MDAwMDB9fX1dfQ__
@@ -70,7 +70,7 @@ Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly; Clou
 Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
 ```
 
-Example `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your objects:
+Example `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your files:
 
 ```
 Set-Cookie: Domain=example.org; Path=/; Secure; HttpOnly; CloudFront-Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cDovL2QxMTExMTFhYmNkZWY4LmNsb3VkZnJvbnQubmV0L2dhbWVfZG93bmxvYWQuemlwIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIxOTIuMC4yLjAvMjQifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0MjY1MDAwMDB9fX1dfQ__
@@ -82,7 +82,7 @@ If you want to use an alternate domain name such as example\.com in URLs, you mu
 
 ## Creating a Policy Statement for a Signed Cookie That Uses a Custom Policy<a name="private-content-custom-policy-statement-cookies"></a>
 
-To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to objects in a variety of ways, see [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)\.<a name="private-content-custom-policy-statement-cookies-procedure"></a>
+To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to files in a variety of ways, see [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)\.<a name="private-content-custom-policy-statement-cookies-procedure"></a>
 
 **To create the policy statement for a signed cookie that uses a custom policy**
 
@@ -92,7 +92,7 @@ To create a policy statement for a custom policy, perform the following procedur
    {
       "Statement": [
          {
-            "Resource":"URL of the object",
+            "Resource":"URL of the file",
             "Condition":{
                "DateLessThan":{"AWS:EpochTime":required ending date and time in Unix time format and UTC},
                "DateGreaterThan":{"AWS:EpochTime":optional beginning date and time in Unix time format and UTC},
@@ -129,7 +129,7 @@ When you create a policy statement for a custom policy, you specify the followin
 **Resource**  
 The base URL including your query strings, if any:  
 `http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
-If you omit the `Resource` parameter, users can access all of the objects associated with any distribution that is associated with the key pair that you use to create the signed URL\.
+If you omit the `Resource` parameter, users can access all of the files associated with any distribution that is associated with the key pair that you use to create the signed URL\.
 You can specify only one value for `Resource`\.  
 Note the following:  
 + **Protocol** – The value must begin with `http://` or `https://`\.
@@ -138,11 +138,11 @@ Note the following:
 
   `http://d111111abcdef8.cloudfront.net/*game_download.zip*`
 
-  would include \(for example\) the following objects:
+  would include \(for example\) the following files:
   + `http://d111111abcdef8.cloudfront.net/game_download.zip`
   + `http://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
   + `http://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
-+ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.
++ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the file in your web page or application\. Do not specify the Amazon S3 URL for the file\.
 
 **DateLessThan**  
 The expiration date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Do not enclose the value in quotation marks\.  
@@ -150,11 +150,11 @@ For example, March 16, 2015 10:00 am UTC converts to 1426500000 in Unix time for
 For more information, see [When Does CloudFront Check the Expiration Date and Time in a Signed Cookie?](private-content-signed-cookies.md#private-content-check-expiration-cookie)\.
 
 **DateGreaterThan \(Optional\)**  
-An optional start date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Users are not allowed to access the object before the specified date and time\. Do not enclose the value in quotation marks\. 
+An optional start date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Users are not allowed to access the file before the specified date and time\. Do not enclose the value in quotation marks\. 
 
 **IpAddress \(Optional\)**  
 The IP address of the client making the GET request\. Note the following:  
-+ To allow any IP address to access the object, omit the `IpAddress` parameter\.
++ To allow any IP address to access the file, omit the `IpAddress` parameter\.
 + You can specify either one IP address or one IP address range\. For example, you can't set the policy to allow access if the client's IP address is in one of two separate ranges\.
 + To allow access from a single IP address, you specify:
 
@@ -167,20 +167,20 @@ IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, ar
 
 ## Example Policy Statements for a Signed Cookie That Uses a Custom Policy<a name="private-content-custom-policy-statement-signed-cookies-examples"></a>
 
-The following example policy statements show how to control access to a specific object, all of the objects in a directory, or all of the objects associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed cookie after a specified date and time\.
+The following example policy statements show how to control access to a specific file, all of the files in a directory, or all of the files associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed cookie after a specified date and time\.
 
 If you copy and paste any of these examples, remove any whitespace \(including tabs and newline characters\), replace the applicable values with your own values, and include a newline character after the closing brace \( \} \)\.
 
 For more information, see [Values That You Specify in the Policy Statement for a Custom Policy for Signed Cookies](#private-content-custom-policy-statement-cookies-values)\.
 
 **Topics**
-+ [Example Policy Statement: Accessing One Object from a Range of IP Addresses](#private-content-custom-policy-statement-signed-cookies-example-one-object)
-+ [Example Policy Statement: Accessing All Objects in a Directory from a Range of IP Addresses](#private-content-custom-policy-statement-signed-cookies-example-all-objects)
-+ [Example Policy Statement: Accessing All Objects Associated with a Key Pair ID from One IP Address](#private-content-custom-policy-statement-signed-cookies-example-one-ip)
++ [Example Policy Statement: Accessing One File from a Range of IP Addresses](#private-content-custom-policy-statement-signed-cookies-example-one-object)
++ [Example Policy Statement: Accessing All Files in a Directory from a Range of IP Addresses](#private-content-custom-policy-statement-signed-cookies-example-all-objects)
++ [Example Policy Statement: Accessing All Files Associated with a Key Pair ID from One IP Address](#private-content-custom-policy-statement-signed-cookies-example-one-ip)
 
-### Example Policy Statement: Accessing One Object from a Range of IP Addresses<a name="private-content-custom-policy-statement-signed-cookies-example-one-object"></a>
+### Example Policy Statement: Accessing One File from a Range of IP Addresses<a name="private-content-custom-policy-statement-signed-cookies-example-one-object"></a>
 
-The following example custom policy in a signed cookie specifies that a user can access the object `http://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
+The following example custom policy in a signed cookie specifies that a user can access the file `http://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
 
 ```
 {
@@ -196,9 +196,9 @@ The following example custom policy in a signed cookie specifies that a user can
 }
 ```
 
-### Example Policy Statement: Accessing All Objects in a Directory from a Range of IP Addresses<a name="private-content-custom-policy-statement-signed-cookies-example-all-objects"></a>
+### Example Policy Statement: Accessing All Files in a Directory from a Range of IP Addresses<a name="private-content-custom-policy-statement-signed-cookies-example-all-objects"></a>
 
-The following example custom policy allows you to create signed cookies for any object in the `training` directory, as indicated by the \* wildcard character in the `Resource` parameter\. Users can access the object from an IP address in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
+The following example custom policy allows you to create signed cookies for any file in the `training` directory, as indicated by the \* wildcard character in the `Resource` parameter\. Users can access the file from an IP address in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
 
 ```
 { 
@@ -214,13 +214,13 @@ The following example custom policy allows you to create signed cookies for any 
 }
 ```
 
-Each signed cookie in which you use this policy includes a base URL that identifies a specific object, for example:
+Each signed cookie in which you use this policy includes a base URL that identifies a specific file, for example:
 
 `http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 
-### Example Policy Statement: Accessing All Objects Associated with a Key Pair ID from One IP Address<a name="private-content-custom-policy-statement-signed-cookies-example-one-ip"></a>
+### Example Policy Statement: Accessing All Files Associated with a Key Pair ID from One IP Address<a name="private-content-custom-policy-statement-signed-cookies-example-one-ip"></a>
 
-The following sample custom policy allows you to set signed cookies for any object associated with any distribution, as indicated by the \* wildcard character in the `Resource` parameter\. The user must use the IP address `192.0.2.10/32`\. \(The value `192.0.2.10/32` in CIDR notation refers to a single IP address, `192.0.2.10`\.\) The objects are available only from January 1, 2013 10:00 am UTC until January 2, 2013 10:00 am UTC:
+The following sample custom policy allows you to set signed cookies for any file associated with any distribution, as indicated by the \* wildcard character in the `Resource` parameter\. The user must use the IP address `192.0.2.10/32`\. \(The value `192.0.2.10/32` in CIDR notation refers to a single IP address, `192.0.2.10`\.\) The files are available only from January 1, 2013 10:00 am UTC until January 2, 2013 10:00 am UTC:
 
 ```
 { 
@@ -237,7 +237,7 @@ The following sample custom policy allows you to set signed cookies for any obje
 }
 ```
 
-Each signed cookie in which you use this policy includes a base URL that identifies a specific object in a specific CloudFront distribution, for example:
+Each signed cookie in which you use this policy includes a base URL that identifies a specific file in a specific CloudFront distribution, for example:
 
 `http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 

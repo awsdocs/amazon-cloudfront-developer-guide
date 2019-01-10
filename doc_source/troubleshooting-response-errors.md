@@ -9,7 +9,7 @@ If you're a customer trying to access a website or application, and you've gotte
 **Topics**
 + [HTTP 502 Status Code \(Bad Gateway\)](http-502-bad-gateway.md)
 + [HTTP 503 Status Code \(Service Unavailable\)](http-503-service-unavailable.md)
-+ [HTTP 503 Status Code \(Lambda Validation Error\)](http-503-service-unavailable-lambda-function-invalid.md)
-+ [HTTP 503 Status Code \(Lambda Execution Error\)](http-503-lambda-execution-error.md)
++ [HTTP 500 Status Code \(Lambda Execution Error\)](http-503-lambda-execution-error.md)
++ [HTTP 502 Status Code \(Lambda Validation Error\)](http-503-service-unavailable-lambda-function-invalid.md)
 + [HTTP 503 Status Code \(Lambda Limit Exceeded\)](http-503-lambda-limit-execeeded-error.md)
 + [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)

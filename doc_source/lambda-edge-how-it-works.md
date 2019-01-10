@@ -17,7 +17,7 @@ Here's an overview of how to create and use Lambda functions with CloudFront:
 
 1. When you create a trigger, Lambda replicates the function to AWS locations around the world\.
 
-![\[Conceptual graphic that shows how you create Lambda functions that integrate with CloudFront.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-creation-workflow.png)
+![\[Conceptual graphic that shows how you create Lambda functions that integrate with CloudFront.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-creation-workflow-aws-location.png)
 
 **Topics**
 + [Tutorial: Creating a Simple Lambda@Edge Function](lambda-edge-how-it-works-tutorial.md)

@@ -10,17 +10,23 @@ Specify the delivery method: Web or RTMP\. For more information, see [Delivery M
 + [Origin Domain Name](#DownloadDistValuesDomainName)
 + [Origin Path](#DownloadDistValuesOriginPath)
 + [Origin ID](#DownloadDistValuesId)
-+ [Restrict Bucket Access \(Amazon S3 Only\)](#DownloadDistValuesOAIRestrictBucketAccess)
-+ [Origin Access Identity \(Amazon S3 Only\)](#DownloadDistValuesOAI)
-+ [Comment for New Identity \(Amazon S3 Only\)](#DownloadDistValuesOAIComment)
-+ [Your Identities \(Amazon S3 Only\)](#DownloadDistValuesOAIYourIdentities)
-+ [Grant Read Permissions on Bucket \(Amazon S3 Only\)](#DownloadDistValuesOAIGrantReadPermissions)
-+ [Origin SSL Protocols \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginSSLProtocols)
-+ [Origin Protocol Policy \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginProtocolPolicy)
-+ [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginResponseTimeout)
-+ [Origin Keep\-alive Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesOriginKeepaliveTimeout)
-+ [HTTP Port \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesHTTPPort)
-+ [HTTPS Port \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](#DownloadDistValuesHTTPSPort)
+
+The following values are for Amazon S3 origins only:
++ [Restrict Bucket Access](#DownloadDistValuesOAIRestrictBucketAccess)
++ [Origin Access Identity](#DownloadDistValuesOAI)
++ [Comment for New Identity](#DownloadDistValuesOAIComment)
++ [Your Identities](#DownloadDistValuesOAIYourIdentities)
++ [Grant Read Permissions on Bucket](#DownloadDistValuesOAIGrantReadPermissions)
+
+The following values are for custom origins only, such as Amazon EC2, Elastic Load Balancing, Amazon S3 buckets configured as website endpoints, or your own web server:
++ [Origin SSL Protocols](#DownloadDistValuesOriginSSLProtocols)
++ [Origin Protocol Policy](#DownloadDistValuesOriginProtocolPolicy)
++ [Origin Response Timeout](#DownloadDistValuesOriginResponseTimeout)
++ [Origin Keep\-alive Timeout](#DownloadDistValuesOriginKeepaliveTimeout)
++ [HTTP Port](#DownloadDistValuesHTTPPort)
++ [HTTPS Port](#DownloadDistValuesHTTPSPort)
+
+The following value is for all types of origins:
 + [Origin Custom Headers](#DownloadDistValuesOriginCustomHeaders)
 
 **[Cache Behavior Settings](#DownloadDistValuesCacheBehavior)**
@@ -36,8 +42,8 @@ Specify the delivery method: Web or RTMP\. For more information, see [Delivery M
 + [Minimum TTL](#DownloadDistValuesMinTTL)
 + [Maximum TTL](#DownloadDistValuesMaxTTL)
 + [Default TTL](#DownloadDistValuesDefaultTTL)
-+ [Forward Cookies \(Amazon EC2 and Other Custom Origins Only\)](#DownloadDistValuesForwardCookies)
-+ [Whitelist Cookies \(Amazon EC2 and Other Custom Origins Only\)](#DownloadDistValuesWhitelistCookies)
++ [Forward Cookies](#DownloadDistValuesForwardCookies)
++ [Whitelist Cookies](#DownloadDistValuesWhitelistCookies)
 + [Query String Forwarding and Caching](#DownloadDistValuesQueryString)
 + [Query String Whitelist](#DownloadDistValuesQueryStringWhiteList)
 + [Smooth Streaming](#DownloadDistValuesSmoothStreaming)
@@ -124,7 +130,7 @@ If your origin is an Amazon S3 bucket, in the CloudFront console, choose in the 
 + The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
-If the origin is an Amazon S3 bucket, the bucket name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+If the origin is an Amazon S3 bucket, the bucket name must conform to DNS naming requirements\. For more information, go to [ Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 When you change the value of **Origin Domain Name** for an origin, CloudFront immediately begins replicating the change to CloudFront edge locations\. Until the distribution configuration is updated in a given edge location, CloudFront will continue to forward requests to the previous HTTP server or Amazon S3 bucket\. As soon as the distribution configuration is updated in that edge location, CloudFront begins to forward requests to the new HTTP server or Amazon S3 bucket\.
 
@@ -145,91 +151,128 @@ When a user enters **example\.com/acme/index\.html** in a browser, CloudFront se
 
 ### Origin ID<a name="DownloadDistValuesId"></a>
 
-A string that uniquely distinguishes this origin from other origins in this distribution\. If you create cache behaviors in addition to the default cache behavior, you use the origin ID that you specify here to identify the origin to which you want CloudFront to route a request when the request matches the path pattern for that cache behavior\. For more information, see [Cache Behavior Settings](#DownloadDistValuesCacheBehavior)\.
+A string that uniquely distinguishes this origin or origin group in this distribution\. If you create cache behaviors in addition to the default cache behavior, you use the ID that you specify here to identify the origin or origin group that you want CloudFront to route a request to when the request matches the path pattern for that cache behavior\. 
 
-### Restrict Bucket Access \(Amazon S3 Only\)<a name="DownloadDistValuesOAIRestrictBucketAccess"></a>
+For more information, see the following:
++ **Origins that you can specify:** [Using CloudFront Origin Groups](DownloadDistS3AndCustomOrigins.md#concept_origin_groups)
++ **Creating origin groups:** [Creating an Origin Group](high_availability_origin_failover.md#concept_origin_groups.creating)
++ **Working with cache behaviors:** [Cache Behavior Settings](#DownloadDistValuesCacheBehavior)
+
+### Restrict Bucket Access<a name="DownloadDistValuesOAIRestrictBucketAccess"></a>
+
+**Note**  
+Applies only to Amazon S3 bucket origins \(except if configured as website endpoints\)\.
 
 Choose **Yes** if you want to require users to access objects in an Amazon S3 bucket by using only CloudFront URLs, not by using Amazon S3 URLs\. Then specify additional values\.
 
-Choose **No** if you want users to be able to access objects using either CloudFront URLs or Amazon S3 URLs\.
+Choose **No** if you want users to be able to access objects by using either CloudFront URLs or Amazon S3 URLs\.
 
 For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 For information about how to require users to access objects on a custom origin by using only CloudFront URLs, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
 
-### Origin Access Identity \(Amazon S3 Only\)<a name="DownloadDistValuesOAI"></a>
+### Origin Access Identity<a name="DownloadDistValuesOAI"></a>
+
+**Note**  
+Applies only to Amazon S3 bucket origins \(except if configured as website endpoints\)\.
 
 If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
-### Comment for New Identity \(Amazon S3 Only\)<a name="DownloadDistValuesOAIComment"></a>
+### Comment for New Identity<a name="DownloadDistValuesOAIComment"></a>
+
+**Note**  
+Applies only to Amazon S3 bucket origins \(except if configured as website endpoints\)\.
 
 If you chose **Create a New Identity** for **Origin Access Identity**, enter a comment that identifies the new origin access identity\. CloudFront will create the origin access identity when you create this distribution\.
 
-### Your Identities \(Amazon S3 Only\)<a name="DownloadDistValuesOAIYourIdentities"></a>
+### Your Identities<a name="DownloadDistValuesOAIYourIdentities"></a>
+
+**Note**  
+Applies only to Amazon S3 bucket origins \(except if configured as website endpoints\)\.
 
 If you chose **Use an Existing Identity** for **Origin Access Identity**, choose the origin access identity that you want to use\. You cannot use an origin access identity that is associated with another AWS account\.
 
-### Grant Read Permissions on Bucket \(Amazon S3 Only\)<a name="DownloadDistValuesOAIGrantReadPermissions"></a>
+### Grant Read Permissions on Bucket<a name="DownloadDistValuesOAIGrantReadPermissions"></a>
+
+**Note**  
+Applies only to Amazon S3 bucket origins \(except if configured as website endpoints\)\.
 
 If you want CloudFront to automatically grant the origin access identity the permission to read objects in your Amazon S3 bucket, choose **Yes, Update Bucket Policy**\. 
 
 **Important**  
-If you choose **Yes, Update Bucket Policy**, CloudFront updates the bucket policy to grant the specified origin access identity the permission to read objects in your bucket\. However, CloudFront does not remove existing permissions in the bucket policy or permissions on individual objects\. If users currently have permission to access the objects in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket policy\. To view or change the existing bucket policy and the existing permissions on the objects in your bucket, use a method provided by Amazon S3\. For more information, see [Granting the Origin Access Identity Permission to Read Objects in Your Amazon S3 Bucket](private-content-restricting-access-to-s3.md#private-content-granting-permissions-to-oai)\.
+If you choose **Yes, Update Bucket Policy**, CloudFront updates the bucket policy to grant the specified origin access identity the permission to read objects in your bucket\. However, CloudFront does not remove existing permissions in the bucket policy or permissions on individual objects\. If users currently have permission to access the objects in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket policy\. To view or change the existing bucket policy and the existing permissions on the objects in your bucket, use a method provided by Amazon S3\. For more information, see [Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket](private-content-restricting-access-to-s3.md#private-content-granting-permissions-to-oai)\.
 
 If you want to update permissions manually, for example, if you want to update ACLs on your objects instead of updating bucket permissions, choose **No, I will Update Permissions**\.
 
-### Origin SSL Protocols \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesOriginSSLProtocols"></a>
+### Origin SSL Protocols<a name="DownloadDistValuesOriginSSLProtocols"></a>
+
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 Choose the SSL protocols that CloudFront can use when establishing an HTTPS connection with your origin\. The SSLv3 protocol is less secure, so we recommend that you choose SSLv3 only if your origin doesn't support TLSv1 or later\. 
 
 **Note**  
-If you select SSLv3, CloudFront does not attempt to make a connection to the Origin using TLS\.
+If you select SSLv3, CloudFront does not attempt to make a connection to the origin using TLS\.
 
 If the origin is an Amazon S3 bucket, CloudFront always uses TLSv1\.2\.
 
-### Origin Protocol Policy \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesOriginProtocolPolicy"></a>
+### Origin Protocol Policy<a name="DownloadDistValuesOriginProtocolPolicy"></a>
+
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 The protocol policy that you want CloudFront to use when fetching objects from your origin server\. 
 
-**Important**  
-If your Amazon S3 bucket is configured as a website endpoint, you must specify **HTTP Only**\. Amazon S3 doesn't support HTTPS connections in that configuration\.
-
 Choose one of the following values:
 + **HTTP Only:** CloudFront uses only HTTP to access the origin\.
+**Important**  
+If your origin is an Amazon S3 bucket configured as a website endpoint, you must choose this option\. Amazon S3 doesn't support HTTPS connections for website endpoints\.
 + **HTTPS Only:** CloudFront uses only HTTPS to access the origin\.
 + **Match Viewer:** CloudFront communicates with your origin using HTTP or HTTPS, depending on the protocol of the viewer request\. CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.
 **Important**  
-For HTTPS viewer requests that CloudFront forwards to this origin, one of the domain names in the SSL certificate on your origin server must match the domain name that you specify for **Origin Domain Name**\. Otherwise, CloudFront responds to the viewer requests with an HTTP status code 502 \(Bad Gateway\) instead of the requested object\. For more information, see [Requirements for Using SSL/TLS Certificates with CloudFront](cnames-and-https-requirements.md)\.
+For HTTPS viewer requests that CloudFront forwards to this origin, one of the domain names in the SSL certificate on your origin server must match the domain name that you specify for **Origin Domain Name**\. Otherwise, CloudFront responds to the viewer requests with an HTTP status code 502 \(Bad Gateway\) instead of returning the requested object\. For more information, see [Requirements for Using SSL/TLS Certificates with CloudFront](cnames-and-https-requirements.md)\.
 
-### Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesOriginResponseTimeout"></a>
+### Origin Response Timeout<a name="DownloadDistValuesOriginResponseTimeout"></a>
 
- The origin response timeout , also known as the origin read timeout or origin request timeout, applies to both of the following values:
-+ The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to a custom origin
-+ The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
-The default timeout is 30 seconds\. You can change the value to between 4 and 60 seconds\. If you need a timeout value outside that range, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+The origin response timeout, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following values:
++ How long \(in seconds\) CloudFront waits for a response after forwarding a request to a custom origin
++ How long \(in seconds\) CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
+
+The default timeout is 30 seconds\. You can change the value to be from 4 to 60 seconds\. If you need a timeout value outside that range, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
 **Tip**  
-If you want to increase the origin response timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troubleshooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
+If you want to increase the timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troubleshooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
 
 CloudFront behavior depends on the HTTP method in the viewer request:
 + `GET` and `HEAD` requests – If the origin doesn't respond before the read timeout elapses or if the origin stops responding for the configured timeout, CloudFront drops the connection and tries two more times to contact the origin\. After the third try, if the origin doesn't respond before the read timeout elapses, CloudFront doesn't try again until it receives another request for content on the same origin\.
 + `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn't respond before the read timeout elapses, CloudFront drops the connection and doesn't try again to contact the origin\. The client can resubmit the request if necessary\.
 
-### Origin Keep\-alive Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesOriginKeepaliveTimeout"></a>
+### Origin Keep\-alive Timeout<a name="DownloadDistValuesOriginKeepaliveTimeout"></a>
 
-The amount of time, in seconds, that CloudFront tries to maintain a connection to your custom origin after it gets the last packet of a response\. Maintaining a persistent connection saves the time that is required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. Increasing the keep\-alive timeout helps improve the request\-per\-connection metric for distributions\.
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+
+How long \(in seconds\) CloudFront tries to maintain a connection to your custom origin after it gets the last packet of a response\. Maintaining a persistent connection saves the time that is required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. Increasing the keep\-alive timeout helps improve the request\-per\-connection metric for distributions\.
 
 **Note**  
 For the **Origin Keep\-alive Timeout** value to have an effect, your origin must be configured to allow persistent connections\.
 
-The default timeout is 5 seconds\. You can change the value to between 1 and 60 seconds\. If you need a keep\-alive timeout longer than 60 seconds, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+The default timeout is 5 seconds\. You can change the value to a number from 1 to 60 seconds\. If you need a keep\-alive timeout longer than 60 seconds, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
-### HTTP Port \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesHTTPPort"></a>
+### HTTP Port<a name="DownloadDistValuesHTTPPort"></a>
+
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 Optional\. The HTTP port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 80\.
 
-### HTTPS Port \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)<a name="DownloadDistValuesHTTPSPort"></a>
+### HTTPS Port<a name="DownloadDistValuesHTTPSPort"></a>
+
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 Optional\. The HTTPS port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 443\.
 
@@ -243,13 +286,13 @@ The name of a header that you want CloudFront to forward to your origin\.
 **Value**  
 The value for the header that you specified in the **Custom Header** field\.
 
-For more information, see [Forwarding Custom Headers to Your Origin \(Web Distributions Only\)](forward-custom-headers.md)\. 
+For more information, see [Forwarding Custom Headers to Your Origin](forward-custom-headers.md)\. 
 
 For the current limit on the maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the total length of all header names and values, see [Limits](cloudfront-limits.md)\.
 
 ## Cache Behavior Settings<a name="DownloadDistValuesCacheBehavior"></a>
 
-A cache behavior lets you configure a variety of CloudFront functionality for a given URL path pattern for files on your website\. For example, one cache behavior might apply to all `.jpg` files in the `images` directory on a web server that you're using as an origin server for CloudFront\. The functionality you can configure for each cache behavior includes:
+A cache behavior lets you configure a variety of CloudFront functionality for a given URL path pattern for files on your website\. For example, one cache behavior might apply to all `.jpg` files in the `images` directory on a web server that you're using as an origin server for CloudFront\. The functionality that you can configure for each cache behavior includes:
 + The path pattern\.
 + If you have configured multiple origins for your CloudFront distribution, which origin you want CloudFront to forward your requests to\.
 + Whether to forward query strings to your origin\.
@@ -281,7 +324,7 @@ When you create a new distribution, the value of **Path Pattern** for the defaul
 **Important**  
 Define path patterns and their sequence carefully or you may give users undesired access to your content\. For example, suppose a request matches the path pattern for two cache behaviors\. The first cache behavior does not require signed URLs and the second cache behavior does require signed URLs\. Users will be able to access the objects without using a signed URL because CloudFront processes the cache behavior associated with the first match\. 
 
-If you're working with an MediaPackage channel, you must include specific path patterns for the cache behavior that you define for the endpoint type for your origin\. For example, for a DASH endpoint, you type `*.mpd` for **Path Pattern**\. For more information and specific instructions, see [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)\.
+If you're working with a MediaPackage channel, you must include specific path patterns for the cache behavior that you define for the endpoint type for your origin\. For example, for a DASH endpoint, you type `*.mpd` for **Path Pattern**\. For more information and specific instructions, see [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)\.
 
 The path you specify applies to requests for all files in the specified directory and in subdirectories below the specified directory\. CloudFront does not consider query strings or cookies when evaluating the path pattern\. For example, if an `images` directory contains `product1` and `product2` subdirectories, the path pattern `images/*.jpg` applies to requests for any \.jpg file in the `images`, `images/product1`, and `images/product2` directories\. If you want to apply a different cache behavior to the files in the `images/product1` directory than the files in the `images` and `images/product2` directories, create a separate cache behavior for `images/product1` and move that cache behavior to a position above \(before\) the cache behavior for the `images` directory\.
 
@@ -401,7 +444,10 @@ To specify a value for **Default TTL**, you must choose the **Customize** option
 
 The default value for **Default TTL** is 86400 seconds \(one day\)\. If you change the value of **Minimum TTL** to more than 86400 seconds, then the default value of **Default TTL** changes to the value of **Minimum TTL**\. 
 
-### Forward Cookies \(Amazon EC2 and Other Custom Origins Only\)<a name="DownloadDistValuesForwardCookies"></a>
+### Forward Cookies<a name="DownloadDistValuesForwardCookies"></a>
+
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 Specify whether you want CloudFront to forward cookies to your origin server and, if so, which ones\. If you choose to forward only selected cookies \(a whitelist of cookies\), enter the cookie names in the **Whitelist Cookies** field\. If you choose **All**, CloudFront forwards all cookies regardless of how many your application uses\.
 
@@ -409,7 +455,10 @@ Amazon S3 doesn't process cookies, and forwarding cookies to the origin reduces 
 
 For more information about forwarding cookies to the origin, go to [Caching Content Based on Cookies](Cookies.md)\.
 
-### Whitelist Cookies \(Amazon EC2 and Other Custom Origins Only\)<a name="DownloadDistValuesWhitelistCookies"></a>
+### Whitelist Cookies<a name="DownloadDistValuesWhitelistCookies"></a>
+
+**Note**  
+Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 If you chose **Whitelist** in the **Forward Cookies** list, then in the **Whitelist Cookies** field, enter the names of cookies that you want CloudFront to forward to your origin server for this cache behavior\. Enter each cookie name on a new line\.
 

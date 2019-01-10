@@ -1,6 +1,6 @@
 # Creating Lambda Functions and CloudFront Triggers Programmatically<a name="lambda-edge-create-programmatically"></a>
 
-You can set up Lambda@Edge functions and CloudFront triggers programmatically instead of by using the AWS console\. For more information, see the following:
+You can set up Lambda@Edge functions and CloudFront triggers programmatically by using API actions instead of by using the AWS console\. For more information, see the following:
 + [API Reference](https://docs.aws.amazon.com/lambda/latest/dg/API_Reference.html) in the *AWS Lambda Developer Guide*
 + [Amazon CloudFront API Reference](https://docs.aws.amazon.com/cloudfront/latest/APIReference/)
 + **AWS CLI**

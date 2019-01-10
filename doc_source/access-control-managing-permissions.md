@@ -221,6 +221,7 @@ The following permissions policy allows users to create and list invalidations\.
          "Action":[
             "acm:ListCertificates", 
             "cloudfront:GetDistribution",
+            "cloudfront:GetStreamingDistribution",
             "cloudfront:GetDistributionConfig",
             "cloudfront:ListDistributions",
             "cloudfront:ListCloudFrontOriginAccessIdentities",

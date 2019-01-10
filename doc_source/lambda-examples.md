@@ -525,8 +525,8 @@ This function demonstrates how an origin\-request trigger can be used to change 
 
 This function demonstrates how an origin\-request trigger can be used to change the Amazon S3 origin from which the content is fetched, based on request properties\.
 
-In this example, we use the value of the CloudFront\-Viewer\-Country header to update the S3 bucket domain name to a bucket in a region that is closer to the viewer\. This can be useful in several ways:
-+ It reduces latencies when the region specified is nearer to the viewer's country\.
+In this example, we use the value of the CloudFront\-Viewer\-Country header to update the S3 bucket domain name to a bucket in a Region that is closer to the viewer\. This can be useful in several ways:
++ It reduces latencies when the Region specified is nearer to the viewer's country\.
 + It provides data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
 
 To use this example, you must do the following:
@@ -543,11 +543,11 @@ exports.handler = (event, context, callback) => {
      * This blueprint demonstrates how an origin-request trigger can be used to
      * change the origin from which the content is fetched, based on request properties.
      * In this example, we use the value of the CloudFront-Viewer-Country header
-     * to update the S3 bucket domain name to a bucket in a region that is closer to
+     * to update the S3 bucket domain name to a bucket in a Region that is closer to
      * the viewer.
      * 
      * This can be useful in several ways:
-     *      1) Reduces latencies when the region specified is nearer to the viewer’s
+     *      1) Reduces latencies when the Region specified is nearer to the viewer’s
      *         country.
      *      2) Provides data sovereignty by making sure that data is served from an
      *         origin that’s in the same country that the request came from.
@@ -582,8 +582,8 @@ exports.handler = (event, context, callback) => {
              * If you’ve set up OAI, the bucket policy in the destination bucket
              * should allow the OAI GetObject operation, as configured by default
              * for an S3 origin with OAI. Another requirement with OAI is to provide
-             * the region so it can be used for the SIGV4 signature. Otherwise, the
-             * region is not required.
+             * the Region so it can be used for the SIGV4 signature. Otherwise, the
+             * Region is not required.
              */
             request.origin.s3.region = region;
             const domainName = `my-bucket-in-${region}.s3.amazonaws.com`;
@@ -679,7 +679,7 @@ if (randomNumber <= BLUE_TRAFFIC_PERCENTAGE) {
 This function demonstrates how you can change the origin domain name based on the CloudFront\-Viewer\-Country header, so content is served from an origin closer to the viewer's country\.
 
 Implementing this functionality for your distribution can have advantages such as the following:
-+ Reducing latencies when the region specified is nearer to the viewer's country\.
++ Reducing latencies when the Region specified is nearer to the viewer's country\.
 + Providing data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
 
 Note that to enable this functionality you must configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.

@@ -5,6 +5,7 @@ CloudFront is subject to the following limits\. Note that Lambda@Edge has specif
 **Topics**
 + [General Limits](#limits-general)
 + [General Limits on Web Distributions](#limits-web-distributions)
++ [Limit on WebSocket Connections](#limits-websockets)
 + [Limits on Whitelisted Cookies \(Web Distributions Only\)](#limits-whitelisted-cookies)
 + [Limits on Whitelisted Query Strings \(Web Distributions Only\)](#limits-whitelisted-query-strings)
 + [Limits on Custom Headers \(Web Distributions Only\)](#limits-custom-headers)
@@ -25,7 +26,7 @@ CloudFront is subject to the following limits\. Note that Lambda@Edge has specif
 | Data transfer rate per distribution | 40 Gbps [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Requests per second per distribution | 100,000 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Tags that can be added to a CloudFront web or RTMP distribution | 50 | 
-| Objects that you can serve per distribution | Unlimited | 
+| Files that you can serve per distribution | Unlimited | 
 | Maximum length of a request, including headers and query strings | 20,480 bytes | 
 | Maximum length of a URL | 8,192 bytes | 
 | Active CloudFront key pairs for trusted signers For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  | 2 | 
@@ -39,11 +40,21 @@ CloudFront is subject to the following limits\. Note that Lambda@Edge has specif
 | --- | --- | 
 | Web distributions per AWS account For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Maximum file size for HTTP GET, POST, and PUT requests | 20 GB | 
-| Response timeout per origin For more information, see [Origin Response Timeout \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 4\-60 seconds [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Response timeout per origin For more information, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 4\-60 seconds [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | File compression: range of file sizes that CloudFront compresses For more information, see [Serving Compressed Files](ServingCompressedFiles.md)\.  | 1,000 to 10,000,000 bytes | 
 | Alternate domain names \(CNAMEs\) per distribution For more information, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.  | 100 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Origins per distribution | 25 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Origin groups per distribution | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Cache behaviors per distribution | 25 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+
+## Limit on WebSocket Connections<a name="limits-websockets"></a>
+
+
+****  
+
+| Entity | Limit | 
+| --- | --- | 
+| Origin response timeout \(idle timeout\) | 10 minutes If CloudFront hasn't detected any bytes sent from the origin to the client within the past 10 minutes, the connection is assumed to be idle and is closed\. | 
 
 ## Limits on Whitelisted Cookies \(Web Distributions Only\)<a name="limits-whitelisted-cookies"></a>
 
@@ -74,7 +85,7 @@ CloudFront is subject to the following limits\. Note that Lambda@Edge has specif
 | Entity | Limit | 
 | --- | --- | 
 | Whitelisted headers per cache behavior For more information, see [Caching Content Based on Request Headers](header-caching.md)\.  | 10 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Custom headers: maximum number of custom headers that you can configure CloudFront to forward to the origin For more information, see [Forwarding Custom Headers to Your Origin \(Web Distributions Only\)](forward-custom-headers.md)\.  | 10 name/value pairs [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Custom headers: maximum number of custom headers that you can configure CloudFront to forward to the origin For more information, see [Forwarding Custom Headers to Your Origin](forward-custom-headers.md)\.  | 10 name/value pairs [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Custom headers: maximum length of a header name | 256 characters | 
 | Custom headers: maximum length of a header value | 1,783 characters | 
 | Custom headers: maximum length of all header values and names combined | 10,240 characters | 
@@ -96,9 +107,9 @@ CloudFront is subject to the following limits\. Note that Lambda@Edge has specif
 
 | Entity | Limit | 
 | --- | --- | 
-| Object invalidation: maximum number of objects allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  | 3,000 | 
-| Object invalidation: maximum number of active wildcard invalidations allowed | 15 | 
-| Object invalidation: maximum number of objects that one wildcard invalidation can process | Unlimited | 
+| File invalidation: maximum number of files allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  | 3,000 | 
+| File invalidation: maximum number of active wildcard invalidations allowed | 15 | 
+| File invalidation: maximum number of files that one wildcard invalidation can process | Unlimited | 
 
 ## Limits on Field\-Level Encryption<a name="limits-field-level-encryption"></a>
 

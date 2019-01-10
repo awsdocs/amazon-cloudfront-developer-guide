@@ -1,4 +1,4 @@
-# Changing Response Codes<a name="custom-error-pages-response-code"></a>
+# Changing Response Codes Returned by CloudFront<a name="custom-error-pages-response-code"></a>
 
 You can choose the HTTP status code CloudFront returns along with a custom error page for a given HTTP status code\. For example, if your origin returns a 500 status code to CloudFront, you might want CloudFront to return a custom error page and a 200 status code \(OK\) to the viewer\. There are a variety of reasons that you might want CloudFront to return a status code to the viewer that is different from the one that your origin returned to CloudFront:
 + Some internet devices \(some firewalls and corporate proxies, for example\) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer\. If you substitute `200`, the response typically won't be intercepted\.

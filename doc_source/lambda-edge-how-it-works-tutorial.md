@@ -46,11 +46,13 @@ There are several steps to take when you create a Lambda function\. In this tuto
 
 1. Sign in to the AWS Management Console and open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\. 
 **Important**  
-Make sure that you’re in the US\-East\-1 \(N\. Virginia\) Region\. You must be in this region to create Lambda@Edge functions\.
+Make sure that you’re in the US\-East\-1 \(N\. Virginia\) Region\. You must be in this Region to create Lambda@Edge functions\.
 
 1. Choose **Create function**\.
 
-1. On the **Create function** page, choose **Blueprints**, and then filter for the CloudFront blueprints\. Type `cloudfront` in the search field, and the press **Return**\. The keyword `cloudfront` is shown, and all the blueprints that are tagged for CloudFront are listed\.  
+1. On the **Create function** page, choose **Blueprints**, and then filter for the CloudFront blueprints\. Type `cloudfront` in the search field, and the press **Return**\. The keyword `cloudfront` is shown, and all the blueprints that are tagged for CloudFront are listed\.
+**Note**  
+CloudFront blueprints are only available in the US\-East\-1 \(N\. Virginia\) Region\.  
 ![\[Filter for CloudFront blueprints in the Lambda console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-modify-response-headers.png)
 
 1. Choose the **cloudfront\-modify\-response\-header** blueprint to use as the template for your function\.
@@ -121,11 +123,11 @@ The cache behavior to use with the trigger\. For this example, leave the value s
 The trigger that specifies when your function will run\. We want the security headers function to run whenever CloudFront returns a response from the origin\. So in the drop\-down list, choose **Origin response**\. For more information, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.   
 **\(Optional\) Include body**  
 Select this check box if you want to access the request body in your function, for viewer request or origin request events\. For more information, see [Accessing the Request Body by Choosing the Include Body Option](lambda-include-body-access.md)\.   
-![\[Lambda console page where you can add code or triggers for a function.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-function-configure-trigger-dialog.png)
+![\[Lambda console page where you can add code or triggers for a function.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-function-configure-trigger-dialog-no-options.png)
 
-1. Under **Confirm deploy to Lambda@Edge**, select the check box to acknowledge that the trigger will be deployed and run your function in all AWS Regions\.
+1. Under **Confirm deploy to Lambda@Edge**, select the check box to acknowledge that the trigger will be deployed and run your function in all AWS locations\.
 
-1. Choose **Deploy** to add the trigger and replicate the function to AWS Regions worldwide\.
+1. Choose **Deploy** to add the trigger and replicate the function to AWS locations worldwide\.
 
 1. Wait for the function to replicate\. This typically takes a few minutes but can take up to 15 minutes\.
 
@@ -165,7 +167,7 @@ For example, if you view the file from London, try changing the Region in the Cl
 
 1. Sign in to the AWS Management Console and open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
 
-1. Change **Region** to the region where the function is executing; that is, the location that is shown when you view the file in your browser\.
+1. Change **Region** to the Region where the function is executing; that is, the location that is shown when you view the file in your browser\.
 
 1. In the left pane, choose **Logs** to view the logs for your distribution\. 
 

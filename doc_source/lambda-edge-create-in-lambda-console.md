@@ -53,9 +53,6 @@ Why add triggers later? Generally it's best to test and debug the function befor
 
 1. Choose **Publish**\.
 
-1. Test and debug the function\. For more information, see the following in the *AWS Lambda Developer Guide*:
-   + [Using Amazon CloudWatch](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
-   + [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html)
-   + [Test Your Serverless Applications Locally Using SAM Local \(Public Beta\)](https://docs.aws.amazon.com/lambda/latest/dg/test-sam-local.html)
+1. Test and debug the function\. For more information, see the *Tools to Create and Test Lambda Functions* section under [Getting Started](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html) in the *AWS Lambda Developer Guide*\.
 
 1. When you're ready to have the function execute for CloudFront events, publish another version and edit the function to add triggers\. For more information, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.

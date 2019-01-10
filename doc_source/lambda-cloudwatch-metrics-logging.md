@@ -8,7 +8,7 @@ You can use CloudWatch metrics to monitor, in real time, the CloudFront requests
 
 ## CloudWatch Metrics<a name="lambda-cloudwatch-metrics"></a>
 
-When you create a trigger for a CloudFront event, Lambda begins to send metrics to CloudWatch automatically\. Metrics are available for all Lambda regions\. The name of each metric is `/aws/lambda/us-east-1`\.*function\-name*, where *function\-name* is the name that you gave to the function when you created it\. CloudWatch sends metrics to the region that's closest to the location where the function is executed\.
+When you create a trigger for a CloudFront event, Lambda begins to send metrics to CloudWatch automatically\. Metrics are available for all Lambda Regions\. The name of each metric is `/aws/lambda/us-east-1`\.*function\-name*, where *function\-name* is the name that you gave to the function when you created it\. CloudWatch sends metrics to the Region that's closest to the location where the function is executed\.
 
 For more information about CloudWatch metrics, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 

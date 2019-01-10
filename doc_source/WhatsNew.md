@@ -1,5 +1,5 @@
 # Document History<a name="WhatsNew"></a>
-+ **API Version:** 2018\-06\-18
++ **API Version:** 2018\-11\-05
 + **Latest documentation update:**October 9, 2018
 
 
@@ -7,6 +7,8 @@
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+|  Updated PDF filename  |  The new filename for the Amazon CloudFront Developer Guide is: AmazonCloudFront\_DevGuide\. The previous name was: cf\-dg\.  |  January 7, 2019  | 
+|  New features  |  CloudFront now supports WebSocket, a TCP\-based protocol that is useful when you need long\-lived connections between clients and servers\. You can also now set up CloudFront with origin failover for scenarios that require high availability\. For more information, see [ Using WebSocket with CloudFront Distributions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-working-with.websockets.html) and [ Optimizing High Availability with CloudFront Origin Failover](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/high_availability_origin_failover.html)\.  |  November 20, 2018  | 
 |  New feature  |  CloudFront now supports detailed error logging for HTTP requests that run Lambda functions\. You can store the logs in CloudWatch and use them to help troubleshoot HTTP 5xx errors when your function returns an invalid response\. For more information, see [ CloudWatch Metrics and CloudWatch Logs for Lambda Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-cloudwatch-metrics-logging.html)\.  |  October 8, 2018  | 
 |  New feature  |  You can now opt to have Lambda@Edge expose the body in a request for writable HTTP methods \(POST, PUT, DELETE, and so on\), so that you can access it in your Lambda function\. You can choose read\-only access, or you can specify that you’ll replace the body\. For more information, see [ Accessing the Request Body by Choosing the Include Body Option](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-include-body-access.html)\.  |  August 14, 2018  | 
 |  New feature  |  CloudFront now supports serving content compressed by using brotli or other compression algorithms, in addition to or instead of gzip\. For more information, see [Serving Compressed Files](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html)\.  |  July 25, 2018  | 

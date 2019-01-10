@@ -1,16 +1,16 @@
 # Managing How Long Content Stays in an Edge Cache \(Expiration\)<a name="Expiration"></a>
 
-You can control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin\. Reducing the duration allows you to serve dynamic content\. Increasing the duration means your users get better performance because your objects are more likely to be served directly from the edge cache\. A longer duration also reduces the load on your origin\.
+You can control how long your files stay in a CloudFront cache before CloudFront forwards another request to your origin\. Reducing the duration allows you to serve dynamic content\. Increasing the duration means your users get better performance because your files are more likely to be served directly from the edge cache\. A longer duration also reduces the load on your origin\.
 
-Typically, CloudFront serves an object from an edge location until the cache duration that you specified passes—that is, until the object expires\. After it expires, the next time the edge location gets a user request for the object, CloudFront forwards the request to the origin server to verify that the cache contains the latest version of the object\. The response from the origin depends on whether the object has changed:
+Typically, CloudFront serves a file from an edge location until the cache duration that you specified passes—that is, until the file expires\. After it expires, the next time the edge location gets a user request for the file, CloudFront forwards the request to the origin server to verify that the cache contains the latest version of the file\. The response from the origin depends on whether the file has changed:
 + If the CloudFront cache already has the latest version, the origin returns a 304 status code \(Not Modified\)\.
-+ If the CloudFront cache does not have the latest version, the origin returns a 200 status code \(OK\) and the latest version of the object\.
++ If the CloudFront cache does not have the latest version, the origin returns a 200 status code \(OK\) and the latest version of the file\.
 
-If an object in an edge location isn't frequently requested, CloudFront might evict the object—remove the object before its expiration date—to make room for objects that have been requested more recently\.
+If a file in an edge location isn't frequently requested, CloudFront might evict the file—remove the file before its expiration date—to make room for files that have been requested more recently\.
 
-By default, each object automatically expires after 24 hours\. For web distributions, you can change the default behavior in two ways:
-+ To change the cache duration for all objects that match the same path pattern, you can change the CloudFront settings for **Minimum TTL**, **Maximum TTL**, and **Default TTL** for a cache behavior\. For information about the individual settings, see [Minimum TTL](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMinTTL), [Maximum TTL](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMaxTTL), and [Default TTL](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDefaultTTL)\. To use these settings, you must choose the **Customize** option for the [Object Caching](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesObjectCaching) setting\. 
-+ To change the cache duration for an individual object, you can configure your origin to add a `Cache-Control max-age` or `Cache-Control s-maxage` directive, or an `Expires` header field to the object\. For more information, see [Using Headers to Control Cache Duration for Individual Objects](#expiration-individual-objects)\.
+By default, each file automatically expires after 24 hours\. For web distributions, you can change the default behavior in two ways:
++ To change the cache duration for all files that match the same path pattern, you can change the CloudFront settings for **Minimum TTL**, **Maximum TTL**, and **Default TTL** for a cache behavior\. For information about the individual settings, see [Minimum TTL](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMinTTL), [Maximum TTL](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesMaxTTL), and [Default TTL](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDefaultTTL)\. To use these settings, you must choose the **Customize** option for the [Object Caching](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesObjectCaching) setting\. 
++ To change the cache duration for an individual file, you can configure your origin to add a `Cache-Control max-age` or `Cache-Control s-maxage` directive, or an `Expires` header field to the file\. For more information, see [Using Headers to Control Cache Duration for Individual Objects](#expiration-individual-objects)\.
 
 For more information about how **Minimum TTL**, **Default TTL**, and **Maximum TTL** interact with `Cache-Control max-age` and `Cache-Control s-maxage` directives and the `Expires` header field, see [Specifying the Amount of Time that CloudFront Caches Objects for Web Distributions](#ExpirationDownloadDist)\.
 
@@ -79,21 +79,21 @@ For RTMP distributions, CloudFront keeps objects in edge caches for 24 hours by 
 ## Adding Headers to Your Objects Using the Amazon S3 Console<a name="ExpirationAddingHeadersInS3"></a>
 
 **Note**  
-Using the Amazon S3 console, you can only add headers to one object at a time, but with some third\-party tools, you can add headers to multiple Amazon S3 objects at a time\. For more information about third\-party tools that support Amazon S3, perform a web search on **AWS S3 third party tools**\.
+On the Amazon S3 console, you can only add headers to one object at a time, but with some third\-party tools, you can add headers to multiple Amazon S3 objects at a time\. For more information about third\-party tools that support Amazon S3, search on the web for **AWS S3 third party tools**\.
 
 **To add a `Cache-Control` or `Expires` header field to Amazon S3 objects using the Amazon S3 console**
 
 1. Sign in to the AWS Management Console and open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3](https://console.aws.amazon.com/s3)\.
 
-1. In the Amazon S3 console, in the buckets list, choose the name of the bucket that contains the files\.
+1. In the Amazon S3 console, in the **Bucket name** list, choose the name of the bucket that contains the files\.
 
-1. In the list of objects, select the check box for one or more objects that you want to add a header to\.
+1. In the **Name** list, choose the name of the object that you want to add a header to\.
 
-1. Choose **More** and choose **Change metadata**\.
+1. Choose **Properties**, and then choose **Metadata**\.
 
-1. In the **Key** list, choose **Cache\-Control** or **Expires**, as applicable\. 
+1. Choose **Add Metadata**, and then in the **Key** menu, choose **Cache\-Control** or **Expires**\. 
 
-1. In the **Value** field, type the applicable value:
+1. In the **Value** field, type one of the following:
    + For a `Cache-Control` field, type:
 
      `max-age=number of seconds that you want objects to stay in a CloudFront edge cache`

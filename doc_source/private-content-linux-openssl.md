@@ -4,13 +4,13 @@ You can use the following Linux command\-line command and OpenSSL to hash and si
 
 For information about OpenSSL, go to [http://www\.openssl\.org](http://www.openssl.org)\.
 
-`![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) cat policy | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) tr -d "\n" | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png) openssl sha1 -sign private-key.pem | ![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) openssl base64 | ![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) tr -- '+=/' '-_~' `
+`![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) cat policy | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) tr -d "\n" | tr -d " \t\n\r" | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png) openssl sha1 -sign private-key.pem | ![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) openssl base64 | ![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) tr -- '+=/' '-_~' `
 
 where:
 
 ![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) `cat` reads the `policy` file\.
 
-![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) `tr -d "\n"` removes a newline character that was added by `cat`\.
+![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) `tr -d "\n" | tr -d " \t\n\r"` removes the white spaces and newline character that were added by `cat`\.
 
 ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png) OpenSSL hashes the file using SHA\-1 and signs it using RSA and the private key file `private-key.pem`\.
 

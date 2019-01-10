@@ -4,7 +4,7 @@ If you want to require HTTPS for communication between CloudFront and your custo
 + Change the **Origin Protocol Policy** setting for the applicable origins in your distribution
 + Install an SSL/TLS certificate on your custom origin server \(this isn't required when you use an Amazon S3 origin\)
 
-If you're using an Amazon S3 bucket as your origin, see [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)\.
+If you're using an Amazon S3 bucket as your origin, if you've configured your Amazon S3 bucket as a website endpoint, follow the guidance in this section\. If not, to use your Amazon S3 bucket with HTTPS, see [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)\.
 
 If you're using an alternate domain instead of the domain that CloudFront assigned to your distribution, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 

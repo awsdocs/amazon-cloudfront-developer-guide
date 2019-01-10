@@ -1,6 +1,6 @@
 # Configuring Alternate Domain Names and HTTPS<a name="cnames-and-https-procedures"></a>
 
-To use alternate domain names in the URLs for your objects and to use HTTPS between viewers and CloudFront, perform the applicable procedures\.
+To use alternate domain names in the URLs for your files and to use HTTPS between viewers and CloudFront, perform the applicable procedures\.
 
 **Topics**
 + [Requesting Permission to Use Three or More SSL/TLS Certificates](#cnames-and-https-multiple-certificates)
@@ -90,9 +90,9 @@ For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames
 **Redirect HTTP to HTTPS**  
 Viewers can use both protocols, but HTTP requests are automatically redirected to HTTPS requests\. CloudFront returns HTTP status code 301 \(Moved Permanently\) along with the new HTTPS URL\. The viewer then resubmits the request to CloudFront using the HTTPS URL\.  
 CloudFront doesn't redirect `DELETE`, `OPTIONS`, `PATCH`, `POST`, or `PUT` requests from HTTP to HTTPS\. If you configure a cache behavior to redirect to HTTPS, CloudFront responds to HTTP `DELETE`, `OPTIONS`, `PATCH`, `POST`, or `PUT` requests for that cache behavior with HTTP status code 403 \(Forbidden\)\.
-When a viewer makes an HTTP request that is redirected to an HTTPS request, CloudFront charges for both requests\. For the HTTP request, the charge is only for the request and for the headers that CloudFront returns to the viewer\. For the HTTPS request, the charge is for the request, and for the headers and the object returned by your origin\.  
+When a viewer makes an HTTP request that is redirected to an HTTPS request, CloudFront charges for both requests\. For the HTTP request, the charge is only for the request and for the headers that CloudFront returns to the viewer\. For the HTTPS request, the charge is for the request, and for the headers and the file returned by your origin\.  
 **HTTPS Only**  
-Viewers can access your content only if they're using HTTPS\. If a viewer sends an HTTP request instead of an HTTPS request, CloudFront returns HTTP status code 403 \(Forbidden\) and does not return the object\.
+Viewers can access your content only if they're using HTTPS\. If a viewer sends an HTTP request instead of an HTTPS request, CloudFront returns HTTP status code 403 \(Forbidden\) and does not return the file\.
 
    1. Choose **Yes, Edit**\.
 

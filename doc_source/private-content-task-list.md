@@ -6,6 +6,8 @@ To configure CloudFront to serve private content, perform the following tasks:
    + **Amazon S3** – See [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
    + **Custom origin** – See [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
 
+   Custom origins include Amazon EC2, Amazon S3 buckets configured as website endpoints, Elastic Load Balancing, and your own HTTP web servers\.
+
 1. Specify the AWS accounts that you want to use to create signed URLs or signed cookies\. For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.
 
 1. Write your application to respond to requests from authorized users either with signed URLs or with `Set-Cookie` headers that set signed cookies\. Follow the steps in one of the following topics: 

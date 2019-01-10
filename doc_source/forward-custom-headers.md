@@ -1,6 +1,11 @@
-# Forwarding Custom Headers to Your Origin \(Web Distributions Only\)<a name="forward-custom-headers"></a>
+# Forwarding Custom Headers to Your Origin<a name="forward-custom-headers"></a>
 
-You can configure CloudFront to include custom headers whenever it forwards a request to your origin\. You can specify the names and values of custom headers for each origin, both for custom origins and for Amazon S3 buckets\. Custom headers have a variety of uses, such as the following: 
+You can configure CloudFront to include custom headers whenever it forwards a request to your origin\. You can specify the names and values of custom headers for each origin, both for custom origins and for Amazon S3 buckets\.
+
+**Note**  
+Forwarding custom headers only applies to web distributions\.
+
+Custom headers have a variety of uses, such as the following:
 + You can identify the requests that are forwarded to your custom origin by CloudFront\. This is useful if you want to know whether users are bypassing CloudFront or if you're using more than one CDN and you want information about which requests are coming from each CDN\. \(If you're using an Amazon S3 origin and you enable [Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html), the logs don't include header information\.\)
 + If you've configured more than one CloudFront distribution to use the same origin, you can specify different custom headers for the origins in each distribution and use the logs for your web server to distinguish between the requests that CloudFront forwards for each distribution\.
 + If some of your users use viewers that don't support cross\-origin resource sharing \(CORS\), you can configure CloudFront to forward the `Origin` header to your origin\. That will cause your origin to return the `Access-Control-Allow-Origin` header for every request\.
@@ -65,7 +70,7 @@ Configure CloudFront to forward custom headers to your origin\. See [Configuring
 Configure your distribution to require viewers to use HTTPS to access CloudFront\. See [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.
 
 **Origin Protocol Policy**  
-Configure your distribution to require CloudFront to use the same protocol as viewers to forward requests to the origin\. See [Origin Protocol Policy \(Amazon EC2, Elastic Load Balancing, and Other Custom Origins Only\)](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)\.
+Configure your distribution to require CloudFront to use the same protocol as viewers to forward requests to the origin\. See [Origin Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)\.
 
 The combination of **Viewer Protocol Policy** and **Origin Protocol Policy** ensure that your custom headers are encrypted between the viewer and your origin\. However, we recommend that you periodically perform the following tasks to rotate the custom headers that CloudFront forwards to your origin:
 

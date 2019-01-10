@@ -12,9 +12,10 @@ Your monthly bill from AWS allocates your usage and dollar amounts by AWS servic
 
 1. **Charge for storage in an Amazon S3 bucket\.** You pay normal Amazon S3 storage charges to store objects in your bucket\. The charges appear in the Amazon S3 portion of your AWS statement\.
 
-1. **Charge for serving objects from edge locations\.** You incur CloudFront charges when CloudFront responds to requests for your objects\. These charges are lower than the corresponding Amazon S3 charges\. The CloudFront charges appear in the CloudFront portion of your AWS statement\. 
+1. **Charge for serving objects from edge locations\.** You incur CloudFront charges when CloudFront responds to requests for your objects\. The charges include data transfer for WebSocket data from server to client\. The CloudFront charges appear in the CloudFront portion of your AWS statement as *region* *\-DataTransfer\-Out\-Bytes*\. 
 
-1. **Charge for submitting data to your origin\.** You incur CloudFront charges when users transfer data to your origin, which includes `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests\. The CloudFront charges appear in the CloudFront portion of your AWS statement\.
+1. **Charge for submitting data to your origin\.** You incur CloudFront charges when users transfer data to your origin, which includes `DELETE`, `OPTIONS`, `PATCH`, `POST`, and `PUT` requests\. The charges include data transfer for WebSocket data from client to server\. The CloudFront charges appear in the CloudFront portion of your AWS statement as *region* *\-DataTransfer\-Out\-OBytes*\.
 
-**Note**  
-You also incur a surcharge for HTTPS requests, and an additional surcharge for requests that also have field\-level encryption enabled\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
+Be aware of the following:
++ You also incur a surcharge for HTTPS requests, and an additional surcharge for requests that also have field\-level encryption enabled\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
++ You do not incur any additional CloudFront charges when you use origin groups\. You continue to pay the same request fees and data transfer rates as you do when you use CloudFront with any other AWS or non\-AWS origin\. For more information, see [Using CloudFront Origin Groups](DownloadDistS3AndCustomOrigins.md#concept_origin_groups)\.

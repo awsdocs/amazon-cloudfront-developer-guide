@@ -197,7 +197,7 @@ You can specify either a custom origin or an Amazon S3 origin in a single reques
 
 **authMethod**  
 Set to `origin-access-identity` if your Amazon S3 bucket has an origin access identity \(OAI\) set up, or `none` if you aren’t using OAI\. If you set authMethod to `origin-access-identity`, there are several requirements:   
-+ You must specify a region in your header\.
++ You must specify a Region in your header\.
 + You must use the same OAI when you switch from one Amazon S3 origin to another\.
 + You can’t use an OAI when you switch from a custom origin to an Amazon S3 origin\.
 For more information about using an OAI, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
@@ -206,13 +206,13 @@ For more information about using an OAI, see [Restricting Access to Amazon S3 Co
 You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can't Forward to Your Origin](forward-custom-headers.md#forward-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
 
 **domainName**  
-The domain name of the Amazon S3 origin server, like `my-bucket.s3.amazonaws.com`\. The domain name can't be empty, and must be an allowed bucket name \(as defined by Amazon S3\)\. Do not use a region\-specific endpoint, like `my-bucket.s3-eu-west-1.amazonaws.com`\. The name can be up to 128 characters, and must be all lowercase\.
+The domain name of the Amazon S3 origin server, like `my-bucket.s3.amazonaws.com`\. The domain name can't be empty, and must be an allowed bucket name \(as defined by Amazon S3\)\. Do not use a Region\-specific endpoint, like `my-bucket.s3-eu-west-1.amazonaws.com`\. The name can be up to 128 characters, and must be all lowercase\.
 
 **path**  
 The directory path at the server where the request should locate content\. The path should start with a slash \(/\) but should have no trailing / \(like path/\)\.
 
 **region**  
-The region for your Amazon S3 bucket\. This is required only if you use OAI\.
+The Region for your Amazon S3 bucket\. This is required only if you use OAI\.
 
 ## Response Event<a name="lambda-event-structure-response"></a>
 

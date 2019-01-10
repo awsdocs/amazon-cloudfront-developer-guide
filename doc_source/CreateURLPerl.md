@@ -438,25 +438,22 @@ sub create_url {
 # The second argument is the name of the private key file
 sub rsa_sha1_sign {
     my ($to_sign, $pvkFile) = @_;
+    print "openssl sha1 -sign $pvkFile $to_sign\n";
 
-    return write_to_program("openssl sha1 -sign $pvkFile", $to_sign);
+    return write_to_program($pvkFile, $to_sign);
 }
 
 # Helper function to write data to a program
 sub write_to_program {
-    my ($prog, $data) = @_;
+my ($keyfile, $data) = @_;
+unlink "temp_policy.dat" if (-e "temp_policy.dat");
+unlink "temp_sign.dat" if (-e "temp_sign.dat");
 
-    my $pid = open2(*README, *WRITEME, $prog);
-    print WRITEME $data;
-    close WRITEME;
+write_file("temp_policy.dat", $data);
 
-    # slurp entire contents of output into scalar
-    my $output;
-    local $/ = undef;
-    $output = <README>;
-    close README;
+system("openssl dgst -sha1 -sign \"$keyfile\" -out temp_sign.dat temp_policy.dat");
 
-    waitpid($pid, 0);
+my $output = read_file("temp_sign.dat");
 
     return $output;
 }

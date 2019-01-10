@@ -1,6 +1,6 @@
 # Troubleshooting<a name="Troubleshooting"></a>
 
-Troubleshoot common problems you might encounter when setting up Amazon CloudFront to distribute your content, and find possible solutions\.
+Troubleshoot common problems you might encounter when setting up Amazon CloudFront to distribute your content or when using Lambda@Edge, and find possible solutions\.
 
 **Important**  
 If you're a customer trying to access a website or application, and you've gotten an error from CloudFront, there's probably just unusually high traffic to the site you're trying to access\. Please wait a little while, and then try accessing the site \(or running the application\) again\. If you still get an error, please contact the website or application distributor directly for support\.   

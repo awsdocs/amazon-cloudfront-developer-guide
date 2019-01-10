@@ -42,5 +42,4 @@ For files not cached at both the edge location and the regional edge cache locat
 **Note**  
 Regional edge caches have feature parity with edge locations\. For example, a cache invalidation request removes an object from both edge caches and regional edge caches before it expires\. The next time a viewer requests the object, CloudFront returns to the origin to fetch the latest version of the object\.
 Proxy methods `PUT/POST/PATCH/OPTIONS/DELETE` go directly to the origin from the edge locations and do not proxy through the Regional Edge Caches\.
-Regional edge caches are used for custom origins, but not Amazon S3 origins\.
 Dynamic content, as determined at request time \(cache\-behavior configured to forward all headers\), does not flow through regional edge caches, but goes directly to the origin\.

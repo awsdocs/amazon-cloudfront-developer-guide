@@ -7,24 +7,24 @@ To create a signed URL using a canned policy, perform the following procedure\.<
 1. If you're using \.NET or Java to create signed URLs, and if you haven't reformatted the private key for your key pair from the default \.pem format to a format compatible with \.NET or with Java, do so now\. For more information, see [Reformatting the CloudFront Private Key \(\.NET and Java Only\)](private-content-trusted-signers.md#private-content-reformatting-private-key)\.
 
 1. Concatenate the following values in the specified order, and remove the whitespace \(including tabs and newline characters\) between the parts\. You might have to include escape characters in the string in application code\. All values have a type of String\. Each part is keyed by number \(![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)\) to the two examples that follow\.  
-**![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the object***  
-The base URL is the CloudFront URL that you would use to access the object if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
+**![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the file***  
+The base URL is the CloudFront URL that you would use to access the file if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
 The following examples show values that you specify for web distributions\.  
-   + The following CloudFront URL is for an object in a web distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the object in the URL must match the path to the object on your HTTP server or in your Amazon S3 bucket\.
+   + The following CloudFront URL is for a file in a web distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the file in the URL must match the path to the file on your HTTP server or in your Amazon S3 bucket\.
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg`
    + The following CloudFront URL includes a query string:
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
-   + The following CloudFront URLs are for objects in a web distribution\. Both use an alternate domain name; the second one includes a query string:
+   + The following CloudFront URLs are for files in a web distribution\. Both use an alternate domain name; the second one includes a query string:
 
      `http://www.example.com/images/image.jpg`
 
      `http://www.example.com/images/image.jpg?color=red`
-   + The following CloudFront URL is for an objects in a web distribution that uses an alternate domain name and the HTTPS protocol:
+   + The following CloudFront URL is for files in a web distribution that uses an alternate domain name and the HTTPS protocol:
 
      `https://www.example.com/images/image.jpg`
-For RTMP distributions, the following examples are for objects in two different video formats, MP4 and FLV:  
+For RTMP distributions, the following examples are for files in two different video formats, MP4 and FLV:  
    + **MP4** – `mp4:sydney-vacation.mp4`
    + **FLV** – `sydney-vacation`
    + **FLV** – `sydney-vacation.flv`
@@ -38,7 +38,7 @@ then add the parameters after the **?** \(see ![\[2\]](http://docs.aws.amazon.co
 Your parameters cannot be named `Expires`, `Signature`, or `Key-Pair-Id`\.
 If you add your own parameters, append an **&** after each one, including the last one\.  
 **![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) `Expires=`*date and time in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)***  
-The date and time that you want the URL to stop allowing access to the object\.  
+The date and time that you want the URL to stop allowing access to the file\.  
 Specify the expiration date and time in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. For example, January 1, 2013 10:00 am UTC converts to 1357034400 in Unix time format\. To use epoch time, use a 32\-bit integer for a date which can be no later than 2147483647 \(January 19th, 2038 at 03:14:07 UTC\)\. For information about UTC, see *RFC 3339, Date and Time on the Internet: Timestamps*, [http://tools\.ietf\.org/html/rfc3339](http://tools.ietf.org/html/rfc3339)\.  
 **![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) `&Signature=`*hashed and signed version of the policy statement***  
 A hashed, signed, and base64\-encoded version of the JSON policy statement\. For more information, see [Creating a Signature for a Signed URL That Uses a Canned Policy](#private-content-canned-policy-creating-signature)\.  
@@ -104,7 +104,7 @@ The base URL including your query strings, if any, but excluding the CloudFront 
 Note the following:  
 + **Protocol** – The value must begin with `http://` or `https://`\. 
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
-+ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.  
++ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the file in your web page or application\. Do not specify the Amazon S3 URL for the object\.  
 **RTMP distributions**  
 Include only the stream name\. For example, if the full URL for a streaming video is:  
 `rtmp://s5c39gqb8ow64r.cloudfront.net/videos/cfx/st/mp3_name.mp3`  
@@ -119,7 +119,7 @@ For more information, see [When Does CloudFront Check the Expiration Date and Ti
 
 #### Example Policy Statement for a Signed URL That Uses a Canned Policy<a name="private-content-canned-policy-creating-policy-statement-example"></a>
 
-When you use the following example policy statement in a signed URL, a user can access the object `http://d111111abcdef8.cloudfront.net/horizon.jpg` until January 1, 2013 10:00 am UTC:
+When you use the following example policy statement in a signed URL, a user can access the file `http://d111111abcdef8.cloudfront.net/horizon.jpg` until January 1, 2013 10:00 am UTC:
 
 ```
 {

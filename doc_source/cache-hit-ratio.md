@@ -1,4 +1,4 @@
-# Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches<a name="cache-hit-ratio"></a>
+# Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches \(Cache Hit Ratio\)<a name="cache-hit-ratio"></a>
 
 You can improve performance by increasing the proportion of your viewer requests that are served from CloudFront edge caches instead of going to your origin servers for content; that is, by improving the cache hit ratio for your distribution\. 
 

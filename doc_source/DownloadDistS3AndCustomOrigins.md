@@ -1,13 +1,14 @@
 # Using Amazon S3 Origins, MediaPackage Channels, and Custom Origins for Web Distributions<a name="DownloadDistS3AndCustomOrigins"></a>
 
-When you create a distribution, you specify where CloudFront sends requests for the files\. CloudFront supports using several AWS resources as origins\. For example, you can specify an Amazon S3 bucket or an MediaStore container, an MediaPackage channel, or a custom origin, such as an Amazon EC2 instance or your own HTTP web server\.
+When you create a distribution, you specify where CloudFront sends requests for the files\. CloudFront supports using several AWS resources as origins\. For example, you can specify an Amazon S3 bucket or a MediaStore container, a MediaPackage channel, or a custom origin, such as an Amazon EC2 instance or your own HTTP web server\.
 
 **Topics**
 + [Using Amazon S3 Buckets for Your Origin](#concept_S3Origin)
 + [Using Amazon S3 Buckets Configured as Website Endpoints for Your Origin](#concept_S3Origin_website)
-+ [Using an MediaStore Container or an MediaPackage Channel for Your Origin](#concept_AWS_Media)
++ [Using a MediaStore Container or a MediaPackage Channel for Your Origin](#concept_AWS_Media)
 + [Using Amazon EC2 or Other Custom Origins](#concept_CustomOrigin)
-+ [Adding CloudFront When You're Distributing Content from Amazon S3](#adding-cloudfront-to-s3)
++ [Using CloudFront Origin Groups](#concept_origin_groups)
++ [Adding CloudFront When You're Already Distributing Content from Amazon S3](#adding-cloudfront-to-s3)
 + [Moving an Amazon S3 Bucket to a Different Region](#move-s3-bucket-different-region)
 
 ## Using Amazon S3 Buckets for Your Origin<a name="concept_S3Origin"></a>
@@ -52,9 +53,9 @@ Using an Amazon S3 bucket as your CloudFront origin server doesn't change it in 
 **Note**  
 If you use the CloudFront API to create your distribution with an Amazon S3 bucket that is configured as a website endpoint, you must configure it by using `CustomOriginConfig`, even though the website is hosted in an Amazon S3 bucket\. For more information about creating distributions by using the CloudFront API, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
-## Using an MediaStore Container or an MediaPackage Channel for Your Origin<a name="concept_AWS_Media"></a>
+## Using a MediaStore Container or a MediaPackage Channel for Your Origin<a name="concept_AWS_Media"></a>
 
-To stream video by using CloudFront, you can set up an Amazon S3 bucket that is configured as an MediaStore container, or create a channel and endpoints with MediaPackage\. Then you create and configure a distribution in CloudFront to stream the video\.
+To stream video by using CloudFront, you can set up an Amazon S3 bucket that is configured as a MediaStore container, or create a channel and endpoints with MediaPackage\. Then you create and configure a distribution in CloudFront to stream the video\.
 
 For more information and step\-by\-step instructions, see the following topics:
 + [Serving Video Using AWS Elemental MediaStore as the Origin](live-streaming.md#video-streaming-mediastore)
@@ -87,7 +88,13 @@ If you use Amazon EC2 for your custom origins, we recommend that you do the foll
 
 1. When you create your CloudFront distribution, specify the URL of the load balancer for the domain name of your origin server\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
 
-## Adding CloudFront When You're Distributing Content from Amazon S3<a name="adding-cloudfront-to-s3"></a>
+## Using CloudFront Origin Groups<a name="concept_origin_groups"></a>
+
+You can specify an origin group for your CloudFront origin if, for example, you want to configure origin failover for scenarios when you need high availability\. Use origin failover to designate a primary origin for CloudFront plus a second origin that CloudFront automatically switches to when the primary origin returns specific HTTP status code failure responses\. 
+
+To see the steps for setting up an origin group and for more information, see [Optimizing High Availability with CloudFront Origin Failover](high_availability_origin_failover.md)\.
+
+## Adding CloudFront When You're Already Distributing Content from Amazon S3<a name="adding-cloudfront-to-s3"></a>
 
 If you store your objects in an Amazon S3 bucket, you can either have users get your objects directly from S3, or you can configure CloudFront to get your objects from S3 and then distribute them to your users\.
 

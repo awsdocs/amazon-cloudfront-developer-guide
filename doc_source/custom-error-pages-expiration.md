@@ -1,9 +1,9 @@
 # Controlling How Long CloudFront Caches Errors<a name="custom-error-pages-expiration"></a>
 
-By default, when your origin returns an HTTP 4xx or 5xx status code, CloudFront caches these error responses for five minutes and then submits the next request for the object to your origin to see whether the problem that caused the error has been resolved and the requested object is now available\.
+By default, when your origin returns an HTTP 4xx or 5xx status code, CloudFront caches these error responses for five minutes\. CloudFront then submits the next request for the object to your origin to see whether the problem that caused the error has been resolved and the requested object is now available\.
 
 **Note**  
-You can create a custom error page for HTTP status code 416 \(Requested Range Not Satisfiable\), and you can change the HTTP status code that CloudFront returns to viewers when your origin returns a status code 416 to CloudFront\. \(For more information, see [Changing Response Codes](custom-error-pages-response-code.md)\.\) However, CloudFront doesn't cache status code 416 responses, so you can specify a value for **Error Caching Minimum TTL** for status code 416, but CloudFront doesn't use it\. 
+You can create a custom error page for HTTP status code 416 \(Requested Range Not Satisfiable\), and you can change the HTTP status code that CloudFront returns to viewers when your origin returns a status code 416 to CloudFront\. \(For more information, see [Changing Response Codes Returned by CloudFront](custom-error-pages-response-code.md)\.\) However, CloudFront doesn't cache status code 416 responses, so although you can specify a value for **Error Caching Minimum TTL** for status code 416, CloudFront doesn't use it\. 
 
 You can specify the error\-caching duration—the **Error Caching Minimum TTL**—for each 4xx and 5xx status code that CloudFront caches\. For a procedure, see [Configuring Error Response Behavior](custom-error-pages-procedure.md)\. When you specify a duration, note the following:
 + If you specify a short error\-caching duration, CloudFront forwards more requests to your origin than if you specify a longer duration\. For 5xx errors, this may aggravate the problem that originally caused your origin to return an error\.

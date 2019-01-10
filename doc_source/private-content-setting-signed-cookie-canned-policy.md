@@ -6,7 +6,7 @@ To set a signed cookie by using a canned policy, complete the following steps\. 
 
 1. If you're using \.NET or Java to create signed cookies, and if you haven't reformatted the private key for your key pair from the default \.pem format to a format compatible with \.NET or with Java, do so now\. For more information, see [Reformatting the CloudFront Private Key \(\.NET and Java Only\)](private-content-trusted-signers.md#private-content-reformatting-private-key)\.
 
-1. Program your application to send three `Set-Cookie` headers to approved viewers\. You need three `Set-Cookie` headers because each `Set-Cookie` header can contain only one name\-value pair, and a CloudFront signed cookie requires three name\-value pairs\. The name\-value pairs are: `CloudFront-Expires`, `CloudFront-Signature`, and `CloudFront-Key-Pair-Id`\. The values must be present on the viewer before a user makes the first request for an object that you want to control access to\. 
+1. Program your application to send three `Set-Cookie` headers to approved viewers\. You need three `Set-Cookie` headers because each `Set-Cookie` header can contain only one name\-value pair, and a CloudFront signed cookie requires three name\-value pairs\. The name\-value pairs are: `CloudFront-Expires`, `CloudFront-Signature`, and `CloudFront-Key-Pair-Id`\. The values must be present on the viewer before a user makes the first request for an file that you want to control access to\. 
 **Note**  
 In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. Excluding the attributes causes the browser to delete the cookie when the user closes the browser, which reduces the possibility of someone getting unauthorized access to your content\. For more information, see [Preventing Misuse of Signed Cookies](private-content-signed-cookies.md#private-content-signed-cookie-misuse)\.
 
@@ -37,11 +37,11 @@ In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. E
    CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature
    ```  
 **\(Optional\) `Domain`**  
-The domain name for the requested object\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
+The domain name for the requested file\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
 You can specify the domain name that CloudFront assigned to your distribution, for example, d111111abcdef8\.cloudfront\.net, but you can't specify \*\.cloudfront\.net for the domain name\.  
 If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
 **\(Optional\) `Path`**  
-The path for the requested object\. If you don't specify a `Path` attribute, the default value is the path in the URL\.  
+The path for the requested file\. If you don't specify a `Path` attribute, the default value is the path in the URL\.  
 **`Secure`**  
 Requires that the viewer encrypt cookies before sending a request\. We recommend that you send the `Set-Cookie` header over an HTTPS connection to ensure that the cookie attributes are protected from man\-in\-the\-middle attacks\.  
 **`HttpOnly`**  
@@ -56,7 +56,7 @@ The key pair ID that you include in CloudFront signed cookies must be associated
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, you must update your application to use a new active key pair for one of your trusted signers\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
 
-The following example shows `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your objects:
+The following example shows `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your files:
 
 ```
 Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly; CloudFront-Expires=1426500000
@@ -64,7 +64,7 @@ Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOn
 Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
 ```
 
-The following example shows `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your objects:
+The following example shows `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your files:
 
 ```
 Set-Cookie: Domain=example.org; Path=/images/*; Secure; HttpOnly; CloudFront-Expires=1426500000
@@ -118,7 +118,7 @@ You can specify only one value for `Resource`\.
 Note the following:  
 + **Protocol** – The value must begin with `http://` or `https://`\.
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
-+ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.
++ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the file in your web page or application\. Do not specify the Amazon S3 URL for the file\.
 
 **DateLessThan**  
 The expiration date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Do not enclose the value in quotation marks\.  
@@ -128,7 +128,7 @@ For more information, see [When Does CloudFront Check the Expiration Date and Ti
 
 #### Example Policy Statement for a Canned Policy<a name="private-content-canned-policy-cookies-sample-policy-statement"></a>
 
-When you use the following example policy statement in a signed cookie, a user can access the object `http://d111111abcdef8.cloudfront.net/horizon.jpg` until March 16, 2015 10:00 am UTC:
+When you use the following example policy statement in a signed cookie, a user can access the file `http://d111111abcdef8.cloudfront.net/horizon.jpg` until March 16, 2015 10:00 am UTC:
 
 ```
 {

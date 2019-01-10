@@ -8,12 +8,12 @@
 + [Rotating CloudFront Key Pairs](#private-content-rotating-key-pairs)
 
 To create signed URLs or signed cookies, you need at least one AWS account that has an active CloudFront key pair\. This account is known as a trusted signer\. The trusted signer has two purposes:
-+ As soon as you add the AWS account ID for your trusted signer to your distribution, CloudFront starts to require that users use signed URLs or signed cookies to access your objects\.
-+ When you create signed URLs or signed cookies, you use the private key from the trusted signer's key pair to sign a portion of the URL or the cookie\. When someone requests a restricted object, CloudFront compares the signed portion of the URL or cookie with the unsigned portion to verify that the URL or cookie hasn't been tampered with\. CloudFront also verifies that the URL or cookie is valid, meaning, for example, that the expiration date and time hasn't passed\.
++ As soon as you add the AWS account ID for your trusted signer to your distribution, CloudFront starts to require that users use signed URLs or signed cookies to access your files\.
++ When you create signed URLs or signed cookies, you use the private key from the trusted signer's key pair to sign a portion of the URL or the cookie\. When someone requests a restricted file, CloudFront compares the signed portion of the URL or cookie with the unsigned portion to verify that the URL or cookie hasn't been tampered with\. CloudFront also verifies that the URL or cookie is valid, meaning, for example, that the expiration date and time hasn't passed\.
 
-When you specify trusted signers, you also indirectly specify the objects that require signed URLs or signed cookies:
-+ **Web distributions** – You add trusted signers to cache behaviors\. If your distribution has only one cache behavior, users must use signed URLs or signed cookies to access any object associated with the distribution\. If you create multiple cache behaviors and add trusted signers to some cache behaviors and not to others, you can require that users use signed URLs or signed cookies to access some objects and not others\.
-+ **RTMP distributions \(signed URLs only\)** – You add trusted signers to a distribution\. After you add trusted signers to an RTMP distribution, users must use signed URLs to access any object associated with the distribution\.
+When you specify trusted signers, you also indirectly specify the files that require signed URLs or signed cookies:
++ **Web distributions** – You add trusted signers to cache behaviors\. If your distribution has only one cache behavior, users must use signed URLs or signed cookies to access any file associated with the distribution\. If you create multiple cache behaviors and add trusted signers to some cache behaviors and not to others, you can require that users use signed URLs or signed cookies to access some files and not others\.
++ **RTMP distributions \(signed URLs only\)** – You add trusted signers to a distribution\. After you add trusted signers to an RTMP distribution, users must use signed URLs to access any file associated with the distribution\.
 
 **Note**  
 To specify trusted signers for a distribution, you must use the CloudFront console or CloudFront API version 2009\-09\-09 or later\.
@@ -114,18 +114,18 @@ If you're using \.NET or Java to create signed URLs or signed cookies, you canno
 ## Adding Trusted Signers to Your Distribution<a name="private-content-adding-trusted-signers"></a>
 
 Trusted signers are the AWS accounts that can create signed URLs and signed cookies for a distribution\. By default, no account, not even the account that created the distribution, is allowed to create signed URLs or signed cookies\. To specify the AWS accounts that you want to use as trusted signers, add the accounts to your distribution:
-+ **Web distributions** – Trusted signers are associated with cache behaviors\. This allows you to require signed URLs or signed cookies for some objects and not for others in the same distribution\. Trusted signers can only create signed URLs or cookies for objects that are associated with the corresponding cache behaviors\. For example, if you have one trusted signer for one cache behavior and a different trusted signer for a different cache behavior, neither trusted signer can create signed URLs or cookies for objects that are associated with the other cache behavior\.
++ **Web distributions** – Trusted signers are associated with cache behaviors\. This allows you to require signed URLs or signed cookies for some files and not for others in the same distribution\. Trusted signers can only create signed URLs or cookies for files that are associated with the corresponding cache behaviors\. For example, if you have one trusted signer for one cache behavior and a different trusted signer for a different cache behavior, neither trusted signer can create signed URLs or cookies for files that are associated with the other cache behavior\.
 + **RTMP distributions \(signed URLs only\)** – Trusted signers are associated with the distribution\. After you add trusted signers to an RTMP distribution, users must use signed URLs or signed cookies to access any of the objects associated with the distribution\.
 
 **Important**  
-Define path patterns and their sequence carefully so you don't either give users unintended access to your content or prevent them from accessing content that you want to be available to everyone\. For example, suppose a request matches the path pattern for two cache behaviors\. The first cache behavior does not require signed URLs or signed cookies and the second cache behavior does\. Users will be able to access the objects without using signed URLs or signed cookies because CloudFront processes the cache behavior that is associated with the first match\.
+Define path patterns and their sequence carefully so you don't either give users unintended access to your content or prevent them from accessing content that you want to be available to everyone\. For example, suppose a request matches the path pattern for two cache behaviors\. The first cache behavior does not require signed URLs or signed cookies and the second cache behavior does\. Users will be able to access the files without using signed URLs or signed cookies because CloudFront processes the cache behavior that is associated with the first match\.
 
 For more information about path patterns, see [Path Pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
 
 **Important**  
-If you're updating a distribution that you're already using to distribute content, add trusted signers only when you're ready to start generating signed URLs or signed cookies for your objects, or CloudFront will reject the requests:  
-**Web distributions** – After you add trusted signers to a cache behavior for a web distribution, users must use signed URLs or signed cookies to access the objects that are associated with the cache behavior\.
-**RTMP distributions \(signed URLs only\)** – After you add trusted signers to an RTMP distribution, users must use signed URLs to access any of the objects associated with the distribution\. 
+If you're updating a distribution that you're already using to distribute content, add trusted signers only when you're ready to start generating signed URLs or signed cookies for your files, or CloudFront will reject the requests:  
+**Web distributions** – After you add trusted signers to a cache behavior for a web distribution, users must use signed URLs or signed cookies to access the files that are associated with the cache behavior\.
+**RTMP distributions \(signed URLs only\)** – After you add trusted signers to an RTMP distribution, users must use signed URLs to access any of the files associated with the distribution\. 
 
 The maximum number of trusted signers depends on the type of distribution:
 + **Web distributions** – A maximum of five for each cache behavior

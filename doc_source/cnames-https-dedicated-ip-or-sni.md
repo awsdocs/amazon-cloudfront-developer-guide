@@ -1,6 +1,6 @@
 # Choosing How CloudFront Serves HTTPS Requests<a name="cnames-https-dedicated-ip-or-sni"></a>
 
-If you want your viewers to use HTTPS and to use alternate domain names for your objects, you need to choose one of the following options for how CloudFront serves HTTPS requests:
+If you want your viewers to use HTTPS and to use alternate domain names for your files, you need to choose one of the following options for how CloudFront serves HTTPS requests:
 + Use a dedicated IP address in each edge location
 + Use Server Name Indication \(SNI\)
 
@@ -41,12 +41,12 @@ For a current list of the browsers that support SNI, see the Wikipedia entry [Se
 
 If you want to use SNI but some of your users' browsers don't support SNI, you have several options:
 + Configure CloudFront to serve HTTPS requests by using dedicated IP addresses instead of SNI\.
-+ Use the CloudFront SSL/TLS certificate instead of a custom certificate\. This requires that you use the CloudFront domain name for your distribution in the URLs for your objects, for example, `https://d111111abcdef8.cloudfront.net/logo.png`\.
++ Use the CloudFront SSL/TLS certificate instead of a custom certificate\. This requires that you use the CloudFront domain name for your distribution in the URLs for your files, for example, `https://d111111abcdef8.cloudfront.net/logo.png`\.
 
   If you use the default CloudFront certificate, viewers must support the SSL protocol TLSv1 or later\. CloudFront doesn't support SSLv3 with the default CloudFront certificate\.
 
   You also need to change the SSL/TLS certificate that CloudFront is using from a custom certificate to the default CloudFront certificate:
   + If you haven't used your distribution to distribute your content, you can just change the configuration\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
-  + If you have used your distribution to distribute your content, you need to create a new CloudFront distribution and change the URLs for your objects to reduce or eliminate the amount of time that your content is unavailable\. For more information, see [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)\.
+  + If you have used your distribution to distribute your content, you need to create a new CloudFront distribution and change the URLs for your files to reduce or eliminate the amount of time that your content is unavailable\. For more information, see [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)\.
 + If you can control which browser your users use, have them upgrade their browser to one that supports SNI\.
 + Use HTTP instead of HTTPS\.

@@ -12,24 +12,24 @@ To create a signed URL using a custom policy, perform the following procedure\.<
 1. If you're using \.NET or Java to create signed URLs, and if you haven't reformatted the private key for your key pair from the default \.pem format to a format compatible with \.NET or with Java, do so now\. For more information, see [Reformatting the CloudFront Private Key \(\.NET and Java Only\)](private-content-trusted-signers.md#private-content-reformatting-private-key)\.
 
 1. Concatenate the following values in the specified order, and remove the whitespace \(including tabs and newline characters\) between the parts\. You might have to include escape characters in the string in application code\. All values have a type of String\. Each part is keyed by number \(![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)\) to the two examples that follow\.  
-**![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the object***  
-The base URL is the CloudFront URL that you would use to access the object if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
+**![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the file***  
+The base URL is the CloudFront URL that you would use to access the file if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
 The following examples show values that you specify for web distributions\.  
-   + The following CloudFront URL is for an object in a web distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the object in the URL must match the path to the object on your HTTP server or in your Amazon S3 bucket\.
+   + The following CloudFront URL is for a file in a web distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the file in the URL must match the path to the file on your HTTP server or in your Amazon S3 bucket\.
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg`
    + The following CloudFront URL includes a query string:
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
-   + The following CloudFront URLs are for objects in a web distribution\. Both use an alternate domain name; the second one includes a query string:
+   + The following CloudFront URLs are for files in a web distribution\. Both use an alternate domain name; the second one includes a query string:
 
      `http://www.example.com/images/image.jpg`
 
      `http://www.example.com/images/image.jpg?color=red`
-   + The following CloudFront URL is for an objects in a web distribution that uses an alternate domain name and the HTTPS protocol:
+   + The following CloudFront URL is for files in a web distribution that uses an alternate domain name and the HTTPS protocol:
 
      `https://www.example.com/images/image.jpg`
-For RTMP distributions, the following examples are for objects in two different video formats, MP4 and FLV:  
+For RTMP distributions, the following examples are for files in two different video formats, MP4 and FLV:  
    + **MP4** – `mp4:sydney-vacation.mp4`
    + **FLV** – `sydney-vacation`
    + **FLV** – `sydney-vacation.flv`
@@ -44,7 +44,7 @@ Your parameters cannot be named `Policy`, `Signature`, or `Key-Pair-Id`\.
 If you add your own parameters, append an **&** after each one, including the last one\.   
 **![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) `Policy=`*base64 encoded version of policy statement***  
 Your policy statement in JSON format, with white space removed, then base64 encoded\. For more information, see [Creating a Policy Statement for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement)\.  
-The policy statement controls the access that a signed URL grants to a user: the URL of the object \(for web distributions\) or the stream name \(for RTMP distributions\), an expiration date and time, an optional date and time that the URL becomes valid, and an optional IP address or range of IP addresses that are allowed to access the object\.  
+The policy statement controls the access that a signed URL grants to a user: the URL of the file \(for web distributions\) or the stream name \(for RTMP distributions\), an expiration date and time, an optional date and time that the URL becomes valid, and an optional IP address or range of IP addresses that are allowed to access the file\.  
 **![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) `&Signature=`*hashed and signed version of the policy statement***  
 A hashed, signed, and base64\-encoded version of the JSON policy statement\. For more information, see [Creating a Signature for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-creating-signature)\.  
 **![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=`*active CloudFront key pair Id for the key pair that you're using to sign the policy statement***  
@@ -65,7 +65,7 @@ Example signed URL for an RTMP distribution:
 
 ## Creating a Policy Statement for a Signed URL That Uses a Custom Policy<a name="private-content-custom-policy-statement"></a>
 
-To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to objects in a variety of ways, see [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)\.<a name="private-content-custom-policy-creating-policy-procedure"></a>
+To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to files in a variety of ways, see [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)\.<a name="private-content-custom-policy-creating-policy-procedure"></a>
 
 **To create the policy statement for a signed URL that uses a custom policy**
 
@@ -75,7 +75,7 @@ To create a policy statement for a custom policy, perform the following procedur
    {
       "Statement": [
          {
-            "Resource":"URL or stream name of the object",
+            "Resource":"URL or stream name of the file",
             "Condition":{
                "DateLessThan":{"AWS:EpochTime":required ending date and time in Unix time format and UTC},
                "DateGreaterThan":{"AWS:EpochTime":optional beginning date and time in Unix time format and UTC},
@@ -115,7 +115,7 @@ You can specify only one value for `Resource`\.
 **Web distributions \(optional but recommended\)**  
 The base URL including your query strings, if any, but excluding the CloudFront `Policy`, `Signature`, and `Key-Pair-Id` parameters, for example:  
 `http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
-If you omit the Resource parameter for a web distribution, users can access all of the objects associated with any distribution that is associated with the key pair that you use to create the signed URL\.
+If you omit the Resource parameter for a web distribution, users can access all of the files associated with any distribution that is associated with the key pair that you use to create the signed URL\.
 Note the following:  
 + **Protocol** – The value must begin with `http://`, `https://`, or `*`\. 
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
@@ -123,11 +123,11 @@ Note the following:
 
   `http://d111111abcdef8.cloudfront.net/*game_download.zip*`
 
-  would include \(for example\) the following objects:
+  would include \(for example\) the following files:
   + `http://d111111abcdef8.cloudfront.net/game_download.zip`
   + `http://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
   + `http://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
-+ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the object in your web page or application\. Do not specify the Amazon S3 URL for the object\.  
++ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the file in your web page or application\. Do not specify the Amazon S3 URL for the file\.  
 **RTMP distributions**  
 Include only the stream name\. For example, if the full URL for a streaming video is:  
 `rtmp://s5c39gqb8ow64r.cloudfront.net/videos/cfx/st/mp3_name.mp3`  
@@ -142,11 +142,11 @@ This is the only required parameter in the `Condition` section\. CloudFront requ
 For more information, see [When Does CloudFront Check the Expiration Date and Time in a Signed URL?](private-content-signed-urls.md#private-content-check-expiration)
 
 **DateGreaterThan \(Optional\)**  
-An optional start date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Users are not allowed to access the object before the specified date and time\. Do not enclose the value in quotation marks\. 
+An optional start date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Users are not allowed to access the file before the specified date and time\. Do not enclose the value in quotation marks\. 
 
 **IpAddress \(Optional\)**  
 The IP address of the client making the GET request\. Note the following:  
-+ To allow any IP address to access the object, omit the `IpAddress` parameter\.
++ To allow any IP address to access the file, omit the `IpAddress` parameter\.
 + You can specify either one IP address or one IP address range\. For example, you can't set the policy to allow access if the client's IP address is in one of two separate ranges\.
 + To allow access from a single IP address, you specify:
 
@@ -159,20 +159,20 @@ IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, ar
 
 ## Example Policy Statements for a Signed URL That Uses a Custom Policy<a name="private-content-custom-policy-statement-examples"></a>
 
-The following example policy statements show how to control access to a specific object, all of the objects in a directory, or all of the objects associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed URL after a specified date and time\.
+The following example policy statements show how to control access to a specific file, all of the files in a directory, or all of the files associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed URL after a specified date and time\.
 
 If you copy and paste any of these examples, remove any whitespace \(including tabs and newline characters\), replace the applicable values with your own values, and include a newline character after the closing brace \( \} \)\.
 
 For more information, see [Values that You Specify in the Policy Statement for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-values)\.
 
 **Topics**
-+ [Example Policy Statement: Accessing One Object from a Range of IP Addresses](#private-content-custom-policy-statement-example-one-object)
-+ [Example Policy Statement: Accessing All Objects in a Directory from a Range of IP Addresses](#private-content-custom-policy-statement-example-all-objects)
-+ [Example Policy Statement: Accessing All Objects Associated with a Key Pair ID from One IP Address](#private-content-custom-policy-statement-example-one-ip)
++ [Example Policy Statement: Accessing One File from a Range of IP Addresses](#private-content-custom-policy-statement-example-one-object)
++ [Example Policy Statement: Accessing All Files in a Directory from a Range of IP Addresses](#private-content-custom-policy-statement-example-all-objects)
++ [Example Policy Statement: Accessing All Files Associated with a Key Pair ID from One IP Address](#private-content-custom-policy-statement-example-one-ip)
 
-### Example Policy Statement: Accessing One Object from a Range of IP Addresses<a name="private-content-custom-policy-statement-example-one-object"></a>
+### Example Policy Statement: Accessing One File from a Range of IP Addresses<a name="private-content-custom-policy-statement-example-one-object"></a>
 
-The following example custom policy in a signed URL specifies that a user can access the object `http://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
+The following example custom policy in a signed URL specifies that a user can access the file `http://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
 
 ```
 {
@@ -188,9 +188,9 @@ The following example custom policy in a signed URL specifies that a user can ac
 }
 ```
 
-### Example Policy Statement: Accessing All Objects in a Directory from a Range of IP Addresses<a name="private-content-custom-policy-statement-example-all-objects"></a>
+### Example Policy Statement: Accessing All Files in a Directory from a Range of IP Addresses<a name="private-content-custom-policy-statement-example-all-objects"></a>
 
-The following example custom policy allows you to create signed URLs for any object in the `training` directory, as indicated by the \* wildcard character in the `Resource` parameter\. Users can access the object from an IP address in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
+The following example custom policy allows you to create signed URLs for any file in the `training` directory, as indicated by the \* wildcard character in the `Resource` parameter\. Users can access the file from an IP address in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
 
 ```
 { 
@@ -206,13 +206,13 @@ The following example custom policy allows you to create signed URLs for any obj
 }
 ```
 
-Each signed URL in which you use this policy includes a base URL that identifies a specific object, for example:
+Each signed URL in which you use this policy includes a base URL that identifies a specific file, for example:
 
 `http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 
-### Example Policy Statement: Accessing All Objects Associated with a Key Pair ID from One IP Address<a name="private-content-custom-policy-statement-example-one-ip"></a>
+### Example Policy Statement: Accessing All Files Associated with a Key Pair ID from One IP Address<a name="private-content-custom-policy-statement-example-one-ip"></a>
 
-The following sample custom policy allows you to create signed URLs for any object associated with any distribution, as indicated by the \* wildcard character in the `Resource` parameter\. The user must use the IP address `192.0.2.10/32`\. \(The value `192.0.2.10/32` in CIDR notation refers to a single IP address, `192.0.2.10`\.\) The objects are available only from January 1, 2013 10:00 am UTC until January 2, 2013 10:00 am UTC:
+The following sample custom policy allows you to create signed URLs for any file associated with any distribution, as indicated by the \* wildcard character in the `Resource` parameter\. The user must use the IP address `192.0.2.10/32`\. \(The value `192.0.2.10/32` in CIDR notation refers to a single IP address, `192.0.2.10`\.\) The files are available only from January 1, 2013 10:00 am UTC until January 2, 2013 10:00 am UTC:
 
 ```
 { 
@@ -229,7 +229,7 @@ The following sample custom policy allows you to create signed URLs for any obje
 }
 ```
 
-Each signed URL in which you use this policy includes a base URL that identifies a specific object in a specific CloudFront distribution, for example:
+Each signed URL in which you use this policy includes a base URL that identifies a specific file in a specific CloudFront distribution, for example:
 
 `http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 

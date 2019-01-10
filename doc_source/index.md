@@ -1,7 +1,7 @@
 # Amazon CloudFront Developer Guide
 
 -----
-*****Copyright &copy; 2018 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -40,6 +40,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Deleting a Distribution](HowToDeleteDistribution.md)
    + [Using Amazon S3 Origins, MediaPackage Channels, and Custom Origins for Web Distributions](DownloadDistS3AndCustomOrigins.md)
    + [Using Custom URLs for Files by Adding Alternate Domain Names (CNAMEs)](CNAMEs.md)
+   + [Using WebSocket with CloudFront Distributions](distribution-working-with.websockets.md)
 + [Adding, Removing, or Replacing Content That CloudFront Distributes](AddRemoveReplaceObjects.md)
    + [Adding and Accessing Content That CloudFront Distributes](AddingObjects.md)
    + [Updating Existing Content with a CloudFront Distribution](UpdatingExistingObjects.md)
@@ -84,13 +85,14 @@ Amazon's trademarks and trade dress may not be used in
          + [Create a URL Signature Using PHP](CreateURL_PHP.md)
          + [Create a URL Signature Using C# and the .NET Framework](CreateSignatureInCSharp.md)
          + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-+ [Optimizing Content Caching](ConfiguringCaching.md)
++ [Optimizing Content Caching and Availability](ConfiguringCaching.md)
    + [How Caching Works with CloudFront Edge Caches](cache-hit-ratio-explained.md)
-   + [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches](cache-hit-ratio.md)
+   + [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches (Cache Hit Ratio)](cache-hit-ratio.md)
    + [Caching Content Based on Query String Parameters](QueryStringParameters.md)
    + [Caching Content Based on Cookies](Cookies.md)
    + [Caching Content Based on Request Headers](header-caching.md)
    + [Managing How Long Content Stays in an Edge Cache (Expiration)](Expiration.md)
+   + [Optimizing High Availability with CloudFront Origin Failover](high_availability_origin_failover.md)
    + [How CloudFront Processes Partial Requests for an Object (Range GETs)](RangeGETs.md)
    + [Specifying a Default Root Object](DefaultRootObject.md)
 + [Troubleshooting](Troubleshooting.md)
@@ -98,8 +100,8 @@ Amazon's trademarks and trade dress may not be used in
    + [Troubleshooting Error Responses from Your Origin](troubleshooting-response-errors.md)
       + [HTTP 502 Status Code (Bad Gateway)](http-502-bad-gateway.md)
       + [HTTP 503 Status Code (Service Unavailable)](http-503-service-unavailable.md)
-      + [HTTP 503 Status Code (Lambda Validation Error)](http-503-service-unavailable-lambda-function-invalid.md)
-      + [HTTP 503 Status Code (Lambda Execution Error)](http-503-lambda-execution-error.md)
+      + [HTTP 500 Status Code (Lambda Execution Error)](http-503-lambda-execution-error.md)
+      + [HTTP 502 Status Code (Lambda Validation Error)](http-503-service-unavailable-lambda-function-invalid.md)
       + [HTTP 503 Status Code (Lambda Limit Exceeded)](http-503-lambda-limit-execeeded-error.md)
       + [HTTP 504 Status Code (Gateway Timeout)](http-504-gateway-timeout.md)
    + [Load Testing CloudFront](load-testing.md)
@@ -107,13 +109,14 @@ Amazon's trademarks and trade dress may not be used in
    + [Request and Response Behavior for Amazon S3 Origins](RequestAndResponseBehaviorS3Origin.md)
       + [How CloudFront Processes HTTP and HTTPS Requests](HTTPandHTTPSRequests.md)
    + [Request and Response Behavior for Custom Origins](RequestAndResponseBehaviorCustomOrigin.md)
-   + [Forwarding Custom Headers to Your Origin (Web Distributions Only)](forward-custom-headers.md)
+   + [Request and Response Behavior for Origin Groups](RequestAndResponseBehaviorOriginGroups.md)
+   + [Forwarding Custom Headers to Your Origin](forward-custom-headers.md)
    + [How CloudFront Processes HTTP 3xx Status Codes from Your Origin](http-3xx-status-codes.md)
    + [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)
 + [Generating Custom Error Responses](GeneratingCustomErrorResponses.md)
    + [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)
-   + [Creating or Updating a Cache Behavior for Custom Error Pages](custom-error-pages-cache-behavior.md)
-   + [Changing Response Codes](custom-error-pages-response-code.md)
+   + [Storing Objects and Custom Error Pages in Different Locations](custom-error-pages-cache-behavior.md)
+   + [Changing Response Codes Returned by CloudFront](custom-error-pages-response-code.md)
    + [Controlling How Long CloudFront Caches Errors](custom-error-pages-expiration.md)
    + [How CloudFront Responds When a Custom Error Page Is Unavailable](custom-error-pages-unavailable.md)
    + [Pricing for Custom Error Pages](custom-error-pages-charges.md)
@@ -153,6 +156,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Deleting Lambda@Edge Functions and Replicas](lambda-edge-delete-replicas.md)
    + [Lambda@Edge Event Structure](lambda-event-structure.md)
    + [Working with Requests and Responses](lambda-generating-http-responses.md)
+      + [Using Lambda@Edge Functions with Origin Failover](lambda-and-origin-failover.md)
       + [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses-in-requests.md)
       + [Updating HTTP Responses in Origin-Response Triggers](lambda-updating-http-responses.md)
       + [Accessing the Request Body by Choosing the Include Body Option](lambda-include-body-access.md)
