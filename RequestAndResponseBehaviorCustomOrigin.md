@@ -260,7 +260,7 @@ Based on the value of the `User-Agent` header, CloudFront sets the value of thes
 
 You can configure CloudFront to cache objects based on values in the `User-Agent` header, but we don't recommend it\. The `User-Agent` header has a lot of possible values, and caching based on those values would cause CloudFront to forward significantly more requests to your origin\. 
 
-If you do not configure CloudFront to cache objects based on values in the `User-Agent` header, CloudFront CloudFront adds a `User-Agent` header with the following value before it forwards a request to your origin:
+If you do not configure CloudFront to cache objects based on values in the `User-Agent` header, CloudFront adds a `User-Agent` header with the following value before it forwards a request to your origin:
 
 `User-Agent = Amazon CloudFront`
 
