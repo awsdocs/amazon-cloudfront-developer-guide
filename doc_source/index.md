@@ -183,6 +183,6 @@ Amazon's trademarks and trade dress may not be used in
    + [Using Identity-Based Policies (IAM Policies) for CloudFront](access-control-managing-permissions.md)
    + [CloudFront API Permissions: Actions, Resources, and Conditions Reference](cf-api-permissions-ref.md)
 + [Limits](cloudfront-limits.md)
-+ [Amazon CloudFront Resources](Resources.md)
++ [Amazon CloudFront Related Information](Resources.md)
 + [Document History](WhatsNew.md)
 + [AWS Glossary](glossary.md)

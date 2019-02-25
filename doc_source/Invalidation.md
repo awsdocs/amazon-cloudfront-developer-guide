@@ -5,7 +5,7 @@ If you need to remove a file from CloudFront edge caches before it expires, you 
 + Use file versioning to serve a different version of the file that has a different name\. For more information, see [Updating Existing Files Using Versioned File Names](UpdatingExistingObjects.md#ReplacingObjects)\.
 
 **Important**  
-You can invalidate most types of content that are served by a web distribution, but you cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior\. In addition, you cannot invalidate objects that are served by an RTMP distribution\.
+You cannot invalidate objects that are served by an RTMP distribution\.
 
 To invalidate files, you can specify either the path for individual files or a path that ends with the `*` wildcard, which might apply to one file or to many, as shown in the following examples:
 + `/images/image1.jpg`

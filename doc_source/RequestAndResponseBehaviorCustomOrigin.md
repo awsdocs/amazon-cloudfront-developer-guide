@@ -65,7 +65,7 @@ Some applications, such as load balancers \(including Elastic Load Balancing\), 
 `X-Forwarded-For: 192.0.2.2,192.0.2.199`
 
 **Note**  
-The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334\), as applicable\.
+The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334\)\.
 
 ### Client\-Side SSL Authentication<a name="RequestCustomClientSideSslAuth"></a>
 
@@ -250,7 +250,7 @@ When a CloudFront edge location receives a request for an object and either the 
 
 ### User\-Agent Header<a name="request-custom-user-agent-header"></a>
 
-If you want CloudFront to cache different versions of your objects based on the device a user is using to view your content, we recommend that you configure CloudFront to forward the applicable headers to your custom origin:
+If you want CloudFront to cache different versions of your objects based on the device that a user is using to view your content, we recommend that you configure CloudFront to forward one or more of the following headers to your custom origin:
 + `CloudFront-Is-Desktop-Viewer`
 + `CloudFront-Is-Mobile-Viewer`
 + `CloudFront-Is-SmartTV-Viewer`

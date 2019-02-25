@@ -35,6 +35,9 @@ CloudFront sorts the cookies in natural order by cookie name before forwarding t
 **If\-Modified\-Since and If\-None\-Match**  
 `If-Modified-Since` and `If-None-Match` conditional requests are not supported\.
 
+**Standard Name\-Value Pair Format Required**  
+CloudFront forwards a cookie header only if the value conforms to the [standard name\-value pair format](https://tools.ietf.org/html/rfc6265#section-4.1.1), for example: `"Cookie: key=value; sample=cookie"`\.
+
 **Suspending Caching Based on Cookies**  
 If you want CloudFront to temporarily stop caching cookies and cookie attributes, configure your origin server to add the following header in responses to CloudFront:  
 `no-cache="Set-Cookie"`

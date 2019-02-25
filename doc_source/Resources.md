@@ -1,6 +1,6 @@
-# Amazon CloudFront Resources<a name="Resources"></a>
+# Amazon CloudFront Related Information<a name="Resources"></a>
 
-Although fairly simple to use, CloudFront is rich in functionality\. The resources listed here can help you learn more about CloudFront\.
+Although fairly simple to use, CloudFront is rich in functionality\. The information and resources listed here can help you learn more about CloudFront\.
 
 **Topics**
 + [Additional Amazon CloudFront Documentation](#resources-additional-cloudfront-documentation)

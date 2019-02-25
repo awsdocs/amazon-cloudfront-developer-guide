@@ -21,7 +21,7 @@ When you review CloudWatch log files or metrics when you're troubleshooting erro
 There are two steps to testing your Lambda function: standalone testing and integration testing\.
 
 **Test standalone functionality**  
-Before you add your Lambda function to CloudFront, make sure to test the functionality first by using the testing capabilities in the Lambda console or by using other methods\. For more information, see [Create the Lambda Function and Test It Manually](https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-upload-deployment-pkg.html) in the AWS Lambda Developer Guide\.
+Before you add your Lambda function to CloudFront, make sure to test the functionality first by using the testing capabilities in the Lambda console or by using other methods\. For more information about testing in the Lambda console, see the *Invoke the Lambda Function and Verify Results, Logs, and Metrics* section in [ Create a Lambda Function with the Console](https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html) in the *AWS Lambda Developer Guide*\.
 
 **Test your function's operation in CloudFront**  
 It's important to complete integration testing, where your function is associated with a distribution and runs based on a CloudFront event\. Make sure that the function is triggered for the right event, and returns a response that is valid and correct for CloudFront\. For example, make sure that the event structure correct, that only valid headers are included, and so on\.  

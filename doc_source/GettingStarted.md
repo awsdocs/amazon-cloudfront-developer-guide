@@ -169,4 +169,4 @@ You must wait until the status of your distribution changes to **Deployed** befo
 
 The browser returns your page with the embedded image file, served from the edge location that CloudFront determined was appropriate to serve the object\. 
 
-For more information on using CloudFront, go to [Amazon CloudFront Resources](Resources.md)\.
+For more information on using CloudFront, go to [Amazon CloudFront Related Information](Resources.md)\.

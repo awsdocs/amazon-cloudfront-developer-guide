@@ -1,6 +1,6 @@
 # Customizing Content at the Edge with Lambda@Edge<a name="lambda-at-the-edge"></a>
 
-Lambda@Edge is an extension of AWS Lambda, a compute service that lets you execute functions that customize the content that CloudFront delivers\. You can author Node.js functions in one Region, US\-East\-1 \(N\. Virginia\), and then execute them in AWS locations globally that are closer to the viewer, without provisioning or managing servers\. Lambda@Edge scales automatically, from a few requests per day to thousands per second\. Processing requests at AWS locations closer to the viewer instead of on origin servers significantly reduces latency and improves the user experience\.
+Lambda@Edge is an extension of AWS Lambda, a compute service that lets you execute functions that customize the content that CloudFront delivers\. You can author Node\.js functions in one Region, US\-East\-1 \(N\. Virginia\), and then execute them in AWS locations globally that are closer to the viewer, without provisioning or managing servers\. Lambda@Edge scales automatically, from a few requests per day to thousands per second\. Processing requests at AWS locations closer to the viewer instead of on origin servers significantly reduces latency and improves the user experience\.
 
 When you associate a CloudFront distribution with a Lambda@Edge function, CloudFront intercepts requests and responses at CloudFront edge locations\. You can execute Lambda functions when the following CloudFront events occur:
 + When CloudFront receives a request from a viewer \(viewer request\)

@@ -119,7 +119,7 @@ For each endpoint, you must configure cache behaviors to add path patterns that 
 
 You typically set up two cache behaviors for each endpoint:
 + The parent manifest, which is the index to your files
-+ The child manifest, which is the video content itself<a name="live-streaming-with-mediapackage-create-cache-behavior-procedure"></a>
++ The segments, which are the files of the video content<a name="live-streaming-with-mediapackage-create-cache-behavior-procedure"></a>
 
 **To create a cache behavior for an endpoint**
 
@@ -130,10 +130,10 @@ You typically set up two cache behaviors for each endpoint:
 1. In the **Cache Behavior Settings** section, for **Path Pattern**, type the first path pattern for the endpoint type for this origin, using the following path pattern guidance\. For example, if it’s a DASH endpoint, type `*.mpd` for **Path Pattern**\.  
 **Path Patterns**  
 For an HLS endpoint, create the following two cache behaviors:  
-   + A cache behavior with a path pattern of `*.m3u8` \(for the parent manifest\)
+   + A cache behavior with a path pattern of `*.m3u8` \(for the parent and child manifests\)
    + A cache behavior with a path pattern of `*.ts` \(for the segments\)
 For a CMAF endpoint, create the following two cache behaviors:  
-   + A cache behavior with a path pattern of `*.m3u8` \(for the parent manifest\)
+   + A cache behavior with a path pattern of `*.m3u8` \(for the parent and child manifests\)
    + A cache behavior with a path pattern of `*.mp4` \(for the segments\)
 For a DASH endpoint, create the following two cache behaviors:  
    + A cache behavior with a path pattern of `*.mpd` \(for the parent manifest\)
@@ -154,7 +154,9 @@ Choose **Forward all, cache based on whitelist**\.
 Specify the letter m as the query string parameter that you want CloudFront to use as the basis for caching\. The AWS Elemental MediaPackage response always includes the tag `?m=###` to capture the modified time of the endpoint\. If content is already cached with a different value for this tag, CloudFront requests a new manifest instead of serving the cached version\.  
 If you’re using the time\-shifted viewing functionality in MediaPackage, specify `start` and `end` as additional query string parameters on the cache behavior for manifest requests \(`*.m3u8`, `*.mpd`, and `index.ism/*`\)\. This way, content is served that’s specific to the requested time period in the manifest request\. For more information about time\-shifted viewing and formatting content start and end request parameters, see [ Time\-shifted Viewing](https://docs.aws.amazon.com/mediapackage/latest/ug/time-shifted.html) in the AWS Elemental MediaPackage User Guide\.  
 **Object Caching**  
-MediaPackage sets default `Cache-Control` headers that ensure correct playback behavior\. If you want to use those values, choose Use Origin Cache Headers\. However, you can increase cache times for video segments\. For more information about customizing the time that objects stay in the CloudFront cache, see [Object Caching](distribution-web-values-specify.md#DownloadDistValuesObjectCaching) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.
+MediaPackage sets default `Cache-Control` headers that ensure correct playback behavior\. If you want to use those values, choose Use Origin Cache Headers\. However, you can increase cache times for video segments\. For more information about customizing the time that objects stay in the CloudFront cache, see [Object Caching](distribution-web-values-specify.md#DownloadDistValuesObjectCaching) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
+**Error Caching Minimum TTL**  
+Set to 5 seconds or less, to help prevent serving stale content\.
 
 1. Choose **Create**\.
 
