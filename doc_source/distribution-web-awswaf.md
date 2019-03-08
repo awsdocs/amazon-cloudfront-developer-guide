@@ -23,3 +23,6 @@ To associate or disassociate a web ACL and an existing distribution, or change t
 1. Repeat steps 2 through 5 for other distributions, if any, for which you want to add, delete, or change associations with AWS WAF web ACLs\.
 
 1. After you change settings, the value of the **Status** column for the distributions that you updated changes to **InProgress** while CloudFront propagates the changes to edge locations\. When **Status** changes to **Deployed** for a distribution, the distribution is ready to use AWS WAF when it processes requests\. \(The value of the **State** column for the distribution must also be **Enabled**\.\) This should take less than 15 minutes after you save the last change to a distribution\.
+
+**Note**  
+The [AWS Firewall Manager](https://aws.amazon.com/firewall-manager/) is a security management service that makes it easier to centrally configure and manage AWS WAF rules across your accounts and applications\. Using Firewall Manager, you can easily roll out AWS WAF rules to your Amazon CloudFront distributions (and Application Load Balancers) across accounts in AWS Organizations\. For more information about AWS Firewall Manager, see the [AWS Firewall Manager Developer Guide](https://docs-aws.amazon.com/waf/latest/developerguide/fms-chapter.html)\.
