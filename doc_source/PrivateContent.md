@@ -5,7 +5,7 @@ Many companies that distribute content over the internet want to restrict access
 + Require that your users access your Amazon S3 content by using CloudFront URLs, not Amazon S3 URLs\. Requiring CloudFront URLs isn't necessary, but we recommend it to prevent users from bypassing the restrictions that you specify in signed URLs or signed cookies\.
 
 **Important**  
-If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin and you can't use the origin access identity feature described in this topic\. You can restrict access to content on a custom origin by using custom headers\. For more information, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
+If you use an Amazon S3 bucket configured as a website endpoint, you must set up it up with CloudFront as a custom origin and you can't use the origin access identity feature described in this topic\. You can restrict access to content on a custom origin by using custom headers\. For more information, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
 
 **Topics**
 + [Overview of Private Content](#private-content-overview)
