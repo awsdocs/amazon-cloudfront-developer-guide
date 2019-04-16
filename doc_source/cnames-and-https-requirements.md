@@ -23,9 +23,11 @@ The requirements for SSL/TLS certificates are described in this topic\. They app
 
 The certificate issuer you must use depends on whether you want to require HTTPS between viewers and CloudFront or between CloudFront and your origin:
 + **HTTPS between viewers and CloudFront** – You can use a certificate that was issued by a trusted certificate authority \(CA\) such as Comodo, DigiCert, or Symantec; you can use a certificate provided by AWS Certificate Manager \(ACM\); or you can use a self\-signed certificate\.
+**Important**  
+If you want to use an alternate domain name with your CloudFront distribution, you must verify to CloudFront that you have authorized rights to use the alternate domain name\. To do this, you must attach a valid certificate to your distribution, and make sure that the certificate comes from a trusted CA that is listed on the [ Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. CloudFront does not allow you to use a self\-signed certificate to verify your authorized rights to use an alternate domain name\.
 + **HTTPS between CloudFront and a custom origin** – If the origin is *not* an ELB load balancer, such as Amazon EC2, the certificate must be issued by a trusted CA such as Comodo, DigiCert, or Symantec\. If your origin is an ELB load balancer, you can also use a certificate provided by ACM\.
 **Important**  
-When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted CA\. CloudFront supports the same certificate authorities as Mozilla; for the current list, see [Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. You cannot use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
+When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted CA\. CloudFront supports the same certificate authorities as Mozilla; for the current list, see [ Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)\. You cannot use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
 
   For more information about getting and installing an SSL/TLS certificate, refer to the documentation for your HTTP server software and to the documentation for the certificate authority\. For information about ACM, see the [AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)\.
 
@@ -106,6 +108,10 @@ If you're using ACM\-provided certificates, ACM manages certificate renewals for
 ## Domain Names in the CloudFront Distribution and in the Certificate<a name="https-requirements-domain-names-in-cert"></a>
 
 When you're using a custom origin, the SSL/TLS certificate on your origin includes a domain name in the Common Name field, and possibly several more in the Subject Alternative Names field\. \(CloudFront supports wildcard characters in certificate domain names\.\) 
+
+**Important**  
+When you add an alternate domain name to a distribution, CloudFront checks that the alternate domain name is covered by the certificate that you've attached\. The certificate must cover the alternate domain name in the subject alternate name \(SAN\) field of the certificate, by exactly matching the domain name or by including a wildcard at the same level of the alternate domain name that you're adding\.  
+For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
 
 One of the domain names in the certificate must match the domain name that you specify for Origin Domain Name\. If no domain name matches, CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
 

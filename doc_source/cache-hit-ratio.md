@@ -9,6 +9,7 @@ The following sections explain how to improve your cache hit ratio\.
 + [Caching Based on Query String Parameters](#cache-hit-ratio-query-string-parameters)
 + [Caching Based on Cookie Values](#cache-hit-ratio-cookies)
 + [Caching Based on Request Headers](#cache-hit-ratio-request-headers)
++ [Remove Accept\-Encoding Header When Compression is Not Needed](#cache-hit-ratio-remove-accept-encoding)
 + [Serving Media Content by Using HTTP](#cache-hit-ratio-http-streaming)
 
 ## Specifying How Long CloudFront Caches Your Objects<a name="cache-hit-ratio-duration"></a>
@@ -54,6 +55,16 @@ How CloudFront Processes and Forwards Requests to Your Custom Origin Server > [H
   For example, if you want to serve different sizes of an image based on the user's device, then don't configure CloudFront to cache based on the `User-Agent` header, which has an enormous number of possible values\. Instead, configure CloudFront to cache based on the CloudFront device\-type headers `CloudFront-Is-Desktop-Viewer`, `CloudFront-Is-Mobile-Viewer`, `CloudFront-Is-SmartTV-Viewer`, and `CloudFront-Is-Tablet-Viewer`\. In addition, if you're returning the same version of the image for tablets and desktops, then forward only the `CloudFront-Is-Tablet-Viewer` header, not the `CloudFront-Is-Desktop-Viewer` header\.
 
 For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
+
+## Remove Accept\-Encoding Header When Compression is Not Needed<a name="cache-hit-ratio-remove-accept-encoding"></a>
+
+By default, when CloudFront receives a request, it checks the value of the `Accept-Encoding` header\. If the value of the header contains `gzip`, then CloudFront adds the header and value `gzip`— `Accept-Encoding: gzip`—to the cache key, and then forwards it to the origin\. This behaviour ensures that CloudFront serves either an object or a compressed version of the object, based on the value of the `Accept-Encoding` header\.
+
+If compression is not enabled—because the origin doesn't support it, CloudFront doesn't support it, or the content is not compressible—you can increase the cache hit ratio by specifying different behaviour\. To do this, associate a cache behaviour in your distribution to an origin that sets the Custom Origin Header as follows:
++ **Header name**: `Accept-Encoding`
++ **Header value**: \(leave blank\)
+
+When you use this configuration, CloudFront removes the Accept\-Encoding header from the cache key without forwarding the header to the origin\. Note that when you specify this configuration, it applies to all content that CloudFront serves with the distribution from that origin\.
 
 ## Serving Media Content by Using HTTP<a name="cache-hit-ratio-http-streaming"></a>
 

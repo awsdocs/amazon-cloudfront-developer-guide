@@ -10,5 +10,5 @@ The programming model for using Node\.js with Lambda@Edge is the same as using L
 In your Lambda@Edge code, include the `callback` parameter and return the applicable object for request or response events:
 + **Request events** – Include the `cf.request` object in the response\.
 
-  If you're generating a response, include the `cf.response` object in the response\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses-in-requests.md)\.  
+  If you're generating a response, include the `cf.response` object in the response\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses-in-requests.md)\. 
 + **Response events** – Include the `cf.response` object in the response\.

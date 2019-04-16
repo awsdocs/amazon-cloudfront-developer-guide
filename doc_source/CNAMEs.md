@@ -10,7 +10,7 @@ When you use the CloudFront domain name for your files, the URL for a file calle
 
 `http://d111111abcdef8.cloudfront.net/images/image.jpg`
 
-If you want to use your own domain name, such as `www.example.com`, instead of the `cloudfront.net` domain name that CloudFront assigned to your distribution, you can add an alternate domain name to your distribution for `www.example.com`\. You can then use the following URL for `/images/image.jpg`:
+If you want to use your own domain name, such as `www.example.com`, instead of the `cloudfront.net` domain name, you can add an alternate domain name to your distribution, like `www.example.com`\. You can then use the following URL to view `/images/image.jpg`:
 
 `http://www.example.com/images/image.jpg`
 
@@ -18,17 +18,22 @@ If you want to use your own domain name, such as `www.example.com`, instead of t
 + [Adding an Alternate Domain Name](#CreatingCNAME)
 + [Moving an Alternate Domain Name to a Different CloudFront Distribution](#alternate-domain-names-move)
 + [Removing an Alternate Domain Name](#alternate-domain-names-remove-domain)
-+ [Using the \* Wildcard in Alternate Domain Names](#alternate-domain-names-wildcard)
++ [Using Wildcards in Alternate Domain Names That You Add to CloudFront](#alternate-domain-names-wildcard)
++ [Requirements for Using Alternate Domain Names](#alternate-domain-names-requirements)
 + [Restrictions on Using Alternate Domain Names](#alternate-domain-names-restrictions)
 
 ## Adding an Alternate Domain Name<a name="CreatingCNAME"></a>
 
-The following task list describes the process for using the CloudFront console to add an alternate domain name to your distribution so you can use your own domain name in your links instead of the CloudFront domain name that is automatically associated with your distribution\. For information about updating your distribution using the CloudFront API, see [Working with Distributions](distribution-working-with.md)\.
+The following task list describes how to use the CloudFront console to add an alternate domain name to your distribution so that you can use your own domain name in your links instead of the CloudFront domain name\. For information about updating your distribution using the CloudFront API, see [Working with Distributions](distribution-working-with.md)\.
 
 **Note**  
-If you want viewers to use HTTPS with your alternate domain name, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.<a name="CreatingCNAMEProcess"></a>
+If you want viewers to use HTTPS with your alternate domain name, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
-**Adding an Alternate Domain Name \(Console\)**
+**Before you begin:** Make sure that you do the following before you update your distribution to add an alternate domain name:
++ Register the domain name with Route 53 or another domain provider\.
++ Add a certificate from an authorized certificate authority \(CA\) to CloudFront that covers the domain name you plan to use with the distribution, to validate that you are authorized to use the domain\. For more information, see [ Requirements for Using Alternate Domain Names](#alternate-domain-names-requirements)\.<a name="CreatingCNAMEProcess"></a>
+
+**Adding an Alternate Domain Name**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
@@ -40,28 +45,28 @@ If you want viewers to use HTTPS with your alternate domain name, see [Using Alt
 **Alternate Domain Names \(CNAMEs\)**  
 Add your alternate domain names\. Separate domain names with commas, or type each domain name on a new line\.  
 **SSL Certificate \(Web Distributions Only\)**  
-Choose an option, depending on whether you want viewers to use HTTPS to access your content:  
+Choose an option from the following settings:  
    + **Don't use HTTPS** – Choose **Default CloudFront Certificate**\.
-   + **Use HTTPS** – Choose **Custom SSL Certificate**, and choose a certificate from the list\. The list can include certificates provisioned by AWS Certificate Manager \(ACM\), certificates that you purchased from another certificate authority and uploaded to ACM, and certificates that you purchased from another certificate authority and uploaded to the IAM certificate store\. 
+   + **Use HTTPS** – Choose **Custom SSL Certificate**, and choose a certificate from the list\. The list can include certificates provisioned by AWS Certificate Manager \(ACM\), certificates that you purchased from another CA and uploaded to ACM, and certificates that you purchased from another CA and uploaded to the IAM certificate store\. 
 
      If you uploaded a certificate to the IAM certificate store but it doesn't appear in the list, review the procedure [Importing an SSL/TLS Certificate](cnames-and-https-procedures.md#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\. 
 
-     If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(https://example\.com/logo\.jpg\)\. If you use your CloudFront distribution domain name \(https://d111111abcdef8\.cloudfront\.net/logo\.jpg\) and the viewer supports SNI, then CloudFront behaves normally\. However, a viewer that does not support SNI exhibits one of the following behaviors, depending on the value of **Clients Supported**:
+     If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(https://example\.com/logo\.jpg\)\. If you use your CloudFront distribution domain name \(https://d111111abcdef8\.cloudfront\.net/logo\.jpg\), a viewer might behave as follows, depending on the value that you choose for **Clients Supported**:
      + **All Clients**: If the viewer doesn't support SNI, it displays a warning because the CloudFront domain name doesn't match the domain name in your SSL/TLS certificate\.
      + **Only Clients that Support Server Name Indication \(SNI\)**: CloudFront drops the connection with the viewer without returning the object\.  
 **Clients Supported \(Web Distributions Only\)**  
 Choose an option:  
    + **All Clients**: CloudFront serves your HTTPS content using dedicated IP addresses\. If you select this option, you incur additional charges when you associate your SSL/TLS certificate with a distribution that is enabled\. For more information, see [http://aws\.amazon\.com/cloudfront/pricing](http://aws.amazon.com/cloudfront/pricing)\.
-   + **Only Clients that Support Server Name Indication \(SNI\)**: Older browsers or other clients that don't support SNI must use another method to access your content\.
+   + **Only Clients that Support Server Name Indication \(SNI\) \(Recommended\)**: Older browsers or other clients that don't support SNI must use another method to access your content\.
 For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)\.
 
 1. Choose **Yes, Edit**\.
 
 1. On the **General** tab for the distribution, confirm that **Distribution Status** has changed to **Deployed**\. If you try to use an alternate domain name before the updates to your distribution have been deployed, the links that you create in the following steps might not work\.
 
-1. Configure the DNS service for the domain to route traffic for the domain, such as example\.com, to the CloudFront domain name for your distribution, such as d111111abcdef8\.cloudfront\.net\. The method that you use depends on whether you're using Route 53 as the DNS service provider for the domain\.
+1. Configure the DNS service for the domain to route traffic for the domain, such as example\.com, to the CloudFront domain name for your distribution, such as d111111abcdef8\.cloudfront\.net\. The method that you use depends on whether you're using Route 53 as the DNS service provider for the domain or another provider\.
 **Note**  
- If your DNS record already points to a distribution that is not the distribution that you are creating, then you can't add the alternate domain name to your distribution without updating your DNS\. For more information, see [Restrictions on Using Alternate Domain Names](#alternate-domain-names-restrictions)\.   
+ If your DNS record already points to a distribution that is not the distribution that you are updating, then you can't add the alternate domain name to your distribution without updating your DNS\. For more information, see [Restrictions on Using Alternate Domain Names](#alternate-domain-names-restrictions)\.   
 **Route 53**  
 Create an alias resource record set\. With an alias resource record set, you don't pay for Route 53 queries\. In addition, you can create an alias resource record set for the root domain name \(example\.com\), which DNS doesn't allow for CNAMEs\. For more information, see [ Routing Queries to an Amazon CloudFront Distribution](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.  
 **Another DNS service provider**  
@@ -113,7 +118,7 @@ Follow these steps to move the subdomain name\.<a name="MovingASubDomainToNewDis
 
 1. If you don’t have a new distribution to move the domain name to, create one\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
 
-1. Add to the distribution an alternate domain name that includes a wildcard for the alias record set or CNAME record\. For example, if the subdomain name that you want to move to the new distribution is `marketing.example.com`, add the alternate domain name `*.example.com`\. For more information, see [Using the \* Wildcard in Alternate Domain Names](#alternate-domain-names-wildcard)\.
+1. Add to the distribution an alternate domain name that includes a wildcard for the alias record set or CNAME record\. For example, if the subdomain name that you want to move to the new distribution is `marketing.example.com`, add the alternate domain name `*.example.com`\. For more information, see [ Using Wildcards in Alternate Domain Names That You Add to CloudFront](#alternate-domain-names-wildcard)\.
 **Note**  
 You can’t add a wildcard to a top level domain name, such as `*.com`, so if you want to move a domain name like `example.com` to a new distribution, see [ Move a domain name, like example\.com, to another distribution](#alternate-domain-names-move-domain)\.
 
@@ -233,7 +238,7 @@ If you want to remove the alternate domain name from this distribution so you ca
 
    1. Choose **Yes, Edit**\.
 
-## Using the \* Wildcard in Alternate Domain Names<a name="alternate-domain-names-wildcard"></a>
+## Using Wildcards in Alternate Domain Names That You Add to CloudFront<a name="alternate-domain-names-wildcard"></a>
 
 When you add alternate domain names, you can use the \* wildcard at the beginning of a domain name instead of adding subdomains individually\. For example, with an alternate domain name of `*.example.com`, you can use any domain name that ends with example\.com in your object URLs, such as `www.example.com`, `product-name.example.com`, and `marketing.product-name.example.com`\. The name of an object is the same regardless of the domain name, for example: 
 
@@ -247,18 +252,42 @@ The alternate domain name must begin with an asterisk and a dot \( `*.` \)\. Y
 
 A wildcard alternate domain name, such as `*.example.com`, can include another alternate domain name, such as `example.com`, as long as they're both in the same CloudFront distribution or they're in distributions that were created by using the same AWS account\. 
 
+## Requirements for Using Alternate Domain Names<a name="alternate-domain-names-requirements"></a>
+
+When you add an alternate domain name to use with CloudFront, the following are requirements:
+
+**Alternate Domain Names Must be Lowercase**  
+All alternate domain names \(CNAMEs\) must be lowercase to be valid\.
+
+**Alternate Domain Names Must be Covered by a Valid SSL/TLS Certificate**  
+To add an alternate domain name \(CNAME\) to use with a CloudFront distribution, you must attach to your distribution a trusted, valid SSL/TLS certificate that covers the alternate domain name\. This ensures that only people with access to your domain's certificate can associate with CloudFront a CNAME related to your domain\.  
+A trusted certificate is one that is issued by ACM or by another valid certificate authority \(CA\); you can't use a self\-signed certificate\. CloudFront supports the same certificate authorities as Mozilla\. For the current list, see [ Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\.   
+To verify an alternate domain name by using the certificate that you attach, CloudFront checks the subject alternative name \(SAN\) on the certificate\. The alternate domain name that you're adding must be covered by the SAN\.  
+Only one certificate can be attached to a CloudFront distribution at a time\.
+You prove that you are authorized to add a specific alternate domain name to your distribution by doing one of the following:  
++ Attaching an individual certificate for each domain name, like `product-name.example.com`\.
++ Attaching a certificate that includes a \* wildcard at the beginning of a domain name, to cover multiple subdomains with one certificate\. When you specify a wildcard, you can add multiple subdomains as alternate domain names in CloudFront\.
+The following examples illustrate how using wildcards in domain names in a certificate work to authorize you to add specific alternate domain names in CloudFront\.  
++ You want to add `marketing.example.com` as an alternate domain name\. You list in your certificate the following domain name: `*.example.com`\. When you attach this certificate to CloudFront, you can add any alternate domain name for your distribution that replaces the wildcard at that level, including `marketing.example.com`\. You can also, for example, add the following alternate domain names:
+  + `product.example.com`
+  + `api.example.com`
+
+  However, you can’t add alternate domain names that are at levels higher or lower than the wildcard\. For example, you can’t add the alternate domain names `example.com` or `marketing.product.example.com`\. 
++ You want to add `example.com` as an alternate domain name\. To do this, you must list the domain name `example.com` itself on the certificate that you attach to your distribution\.
++ You want to add `marketing.product.example.com` as an alternate domain name\. To do this, you can list `*.product.example.com` on the certificate, or you can list `marketing.product.example.com` itself on the certificate\.
+
+**Permission to Change DNS Configuration**  
+When you add alternate domain names, you must create CNAME records to route DNS queries for the domain names to your CloudFront distribution\. To do this, you must have permission to create CNAME records with the DNS service provider for the alternate domain names that you're using\. Typically, this means that you own the domains, but you might be developing an application for the domain owner\. 
+
+**Alternate Domain Names and HTTPS**  
+If you want viewers to use HTTPS with an alternate domain names, you must complete some additional configuration\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+
 ## Restrictions on Using Alternate Domain Names<a name="alternate-domain-names-restrictions"></a>
 
 Note the following restrictions on using alternate domain names:
 
-**CNAMEs Must be Lowercase**  
-All CNAMES must be lowercase to be valid\.
-
 **Maximum Number of Alternate Domain Names**  
 For the current limit on the number of alternate domain names that you can add to a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
-
-**Permission to Change DNS Configuration**  
-If you're adding alternate domain names to your distribution, you must create CNAME records to route DNS queries for the domain names to your CloudFront distribution\. So you must have permission to create CNAME records with the DNS service provider for the domains you're using\. Typically, this means that you own the domains, but you might be developing an application for the domain owner\. 
 
 **Duplicate and Overlapping Alternate Domain Names**  
 You cannot add an alternate domain name to a CloudFront distribution if the alternate domain name already exists in another CloudFront distribution, even if your AWS account owns the other distribution\.  
@@ -267,13 +296,15 @@ If you have overlapping alternate domain names in two distributions, CloudFront 
 
 **Alternate Domain Names that Already Point to a Distribution**  
 If your DNS record points to a distribution that is not the distribution that you are creating or modifying, then you can't add the alternate domain name to your distribution\. In this scenario, you must update your DNS at your DNS provider before you can add the domain name for your CloudFront distribution\.   
-To correct this, sign in to your DNS provider and remove the existing DNS record, or contact your DNS provider to remove it for you\. Then create the correct DNS record for your distribution, following the steps for adding or changing the alternate domain name for a distribution\. For more information, see [Adding an Alternate Domain Name \(Console\)](#CreatingCNAMEProcess) or [ Moving an Alternate Domain Name to a Different CloudFront Distribution](#alternate-domain-names-move)\.
+To correct this, sign in to your DNS provider and remove the existing DNS record, or contact your DNS provider to remove it for you\. Then create the correct DNS record for your distribution, following the steps for adding or changing the alternate domain name for a distribution\. For more information, see [Adding an Alternate Domain Name](#CreatingCNAMEProcess) or [ Moving an Alternate Domain Name to a Different CloudFront Distribution](#alternate-domain-names-move)\.
+
+**Domain Fronting**  
+CloudFront includes protection against domain fronting occurring across different AWS accounts, a scenario in which a non\-standard client creates a TLS/SSL connection to a domain name in one AWS account, but then makes an HTTPS request for an unrelated name in another AWS account\. For example, the TLS connection might connect to www\.example\.com, and then issue a request for www\.example\.org\.  
+To prevent cases where domain fronting crosses different AWS accounts, CloudFront makes sure that the AWS account that owns the certificate that it serves for a specific connection always matches the AWS account that owns the request that it handles on that same connection\.  
+If the two AWS account numbers do not match, CloudFront will respond with a 421 Misdirected Request response to give the client a chance to connect using the correct domain\.
 
 **Adding an Alternate Domain Name at the Top Node \(Zone Apex\) for a Domain**  
 When you add an alternate domain name to a distribution, you typically create a CNAME record in your DNS configuration to route DNS queries for the domain name to your CloudFront distribution\. However, you can't create a CNAME record for the top node of a DNS namespace, also known as the zone apex; the DNS protocol doesn't allow it\. For example, if you register the DNS name `example.com`, the zone apex is `example.com`\. You can't create a CNAME record for `example.com`, but you can create CNAME records for `www.example.com`, `newproduct.example.com`, and so on\.  
 If you're using Route 53 as your DNS service, you can create an alias resource record set, which has two advantages over CNAME records\. You can create an alias resource record set for a domain name at the top node \(example\.com\)\. In addition, when you use an alias resource record set, you don't pay for Route 53 queries\.  
 If you enable IPv6, you must create two alias resource record sets: one to route IPv4 traffic \(an A record\) and one to route IPv6 traffic \(an AAAA record\)\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\. 
 For more information, see [Routing Queries to an Amazon CloudFront Distribution](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
-
-**Alternate Domain Names and HTTPS**  
-If you want viewers to use HTTPS with an alternate domain names, additional configuration is required\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.

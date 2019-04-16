@@ -128,7 +128,6 @@ Amazon's trademarks and trade dress may not be used in
       + [RTMP Distributions](distribution-overview-rtmp.md)
       + [How RTMP Distributions Work](HowStreamingDistributionsWork.md)
       + [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)
-      + [Creating an RTMP Distribution Using the CloudFront Console](distribution-rtmp-creating-console.md)
       + [Values that You Specify When You Create or Update an RTMP Distribution](distribution-rtmp-values-specify.md)
       + [Values that CloudFront Displays in the Console When You Create or Update an RTMP Distribution](distribution-rtmp-values-returned.md)
       + [Configuring the Media Player](Streaming_URLs.md)

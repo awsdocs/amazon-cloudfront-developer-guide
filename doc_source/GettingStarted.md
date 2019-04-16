@@ -23,9 +23,9 @@ Before you begin, make sure that you've completed the steps in [Setting Up Amazo
 
 ## Step 1: Upload your content to Amazon S3 and grant object permissions<a name="GettingStartedUploadContent"></a>
 
-An Amazon S3 bucket is a container that can contain objects or folders\. CloudFront can distribute almost any type of object for you using an Amazon S3 bucket as the source, for example, text, images, and videos\. You can create multiple buckets, and there is no limit to the amount of data that you can store on Amazon S3\.
+An Amazon S3 bucket is a container that can contain files \(objects\) or folders\. CloudFront can distribute almost any type of file for you using an Amazon S3 bucket as the source, for example, text, images, and videos\. You can create multiple buckets, and there is no limit to the amount of data that you can store on Amazon S3\.
 
-By default, your Amazon S3 bucket and all of the objects in it are private—only the AWS account that created the bucket has permission to read or write the objects in it\. If you want to allow anyone to access the objects in your Amazon S3 bucket using CloudFront URLs, you must grant public read permissions to the objects\. \(This is one of the most common mistakes when working with CloudFront and Amazon S3\. You must explicitly grant privileges to each object in an Amazon S3 bucket\.\)
+By default, your Amazon S3 bucket and all of the files in it are private—only the AWS account that created the bucket has permission to read or write the files in it\. If you want to allow anyone to access the files in your Amazon S3 bucket using CloudFront URLs, you must grant public read permissions to the objects\. \(This is one of the most common mistakes when working with CloudFront and Amazon S3\. You must explicitly grant privileges to each object in an Amazon S3 bucket\.\)
 
 **Note**  
 If you want to restrict who can download your content, you can use the CloudFront private content feature\. For more information about distributing private content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
@@ -36,19 +36,29 @@ If you want to restrict who can download your content, you can use the CloudFron
 
 1. In the Amazon S3 console, choose **Create Bucket**\.
 
-1. In the **Create Bucket** dialog, enter a bucket name\.
+1. In the **Create Bucket** dialog, on the **Name and region** page, enter a bucket name\.
 **Important**  
 For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-1. Select a region for your bucket\. By default, Amazon S3 creates buckets in the US East \(N\. Virginia\) region\. We recommend that you choose a region close to you to optimize latency, minimize costs, or to address regulatory requirements\.
+1. Select a region for your bucket\. By default, Amazon S3 creates buckets in the US East \(N\. Virginia\) region\. We recommend that you choose a region close to you to optimize latency and minimize costs, or you might choose another region to address regulatory requirements\.
 
-1. Choose **Create**\.
+1. Choose **Next**\.
 
-1. Select your bucket in the **Buckets** pane, and choose **Upload**\.
+1. On the **Configure options** page, choose options for versioning, tagging, and other features\.
 
-1. On the **Upload \- Select Files** page, choose **Add Files**, and choose the files that you want to upload\.
+1. Choose **Next**\.
 
-1. Enable public read privileges for each object that you upload to your Amazon S3 bucket\. 
+1. On the **Set permissions** page, clear the **Block new public ACLs and uploading public objects** checkbox\. You must allow public read access to the bucket and files so that CloudFront URLs can serve content from the bucket\. You can restrict access to specific content by using the CloudFront private content feature\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+
+1. Choose **Next**, and then choose **Create bucket**\.
+
+1. Choose your bucket in the **Buckets** pane, and then choose **Upload**\.
+
+1. On the **Select files** page, drag and drop your files to the bucket, or choose **Add files**, and choose the files that you want to upload\.
+
+1. Choose **Next**\.
+
+1. On the **Set permissions** page, grant public read privileges for each file that you upload to your Amazon S3 bucket\. 
 
    1. Choose **Next** to set permissions\.
 
@@ -56,7 +66,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    1. Choose **Next**\.
 
-1. Set any properties that you want for the object, such as encryption or tagging, and then Choose **Next**\.
+1. Set any properties that you want for the object, such as encryption or tagging, and then choose **Next**\.
 
 1. Choose **Upload**\.
 

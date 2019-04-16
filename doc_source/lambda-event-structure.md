@@ -302,8 +302,8 @@ For information about restrictions on header usage, see [Headers](lambda-require
 An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as the `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 **request – One of the following:**  
-+ Viewer response – The request that CloudFront received from the viewer and that might have been modified by the Lambda function that was triggered by a viewer request event
-+ Origin response – The request that CloudFront forwarded to the origin and that might have been modified by the Lambda function that was triggered by an origin request event
++ Viewer request – The request that CloudFront received from the viewer and that might have been modified by the Lambda function that was triggered by a viewer request event
++ Origin request – The request that CloudFront forwarded to the origin and that might have been modified by the Lambda function that was triggered by an origin request event
 If the Lambda function modifies the request object, the changes are ignored\.
 
 **response – One of the following:**  

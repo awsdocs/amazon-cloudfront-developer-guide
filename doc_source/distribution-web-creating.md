@@ -4,7 +4,7 @@ The following task list summarizes the process for creating a distribution\.<a n
 
 **To Create a Distribution**
 
-1. Create one or more Amazon S3 buckets or configure HTTP servers as your origin servers\. An origin is the location where you store the original version of your web content\. When CloudFront gets a request for your files, it goes to the origin to get the files that it distributes at edge locations\. You can use any combination of Amazon S3 buckets and HTTP servers as your origin servers\.
+1. Create one or more Amazon S3 buckets or configure HTTP servers as your origin servers\. An origin is the location where you store the original version of your content\. When CloudFront gets a request for your files, it goes to the origin to get the files that it distributes at edge locations\. You can use any combination of Amazon S3 buckets and HTTP servers as your origin servers\.
 
    If you're using Amazon S3, note that the name of your bucket must be all lowercase and cannot contain spaces\.
 

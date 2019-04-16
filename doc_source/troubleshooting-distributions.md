@@ -1,10 +1,38 @@
 # Troubleshooting Distribution Issues<a name="troubleshooting-distributions"></a>
 
-Use the information here to help you diagnose and fix access\-denied issues or other common issues that you might encounter when setting up your website or application with Amazon CloudFront distributions\.
+Use the information here to help you diagnose and fix certificate errors, access\-denied issues, or other common issues that you might encounter when setting up your website or application with Amazon CloudFront distributions\.
 
-**Important**  
-If you're a customer trying to access a website or application, and you've gotten an error from CloudFront, there's probably just unusually high traffic to the site you're trying to access\. Please wait a little while, and then try accessing the site \(or running the application\) again\. If you still get an error, please contact the website or application distributor directly for support\.   
-**Why is this error coming from CloudFront?** CloudFront helps websites speed up delivery of content, like images or web pages, to customers by storing copies in servers located around the world\. But when there's a lot of internet traffic to a website and the site can't keep up, an error is returned when anyone tries to access the site\. When CloudFront can't access content that you've requested from a website, it passes on the error from the site or application that you're trying to use\. 
+**Topics**
++ [CloudFront Returns an InvalidViewerCertificate Error When I Try to Add an Alternate Domain Name](#troubleshooting-distributions-certificates)
++ [I Can't View the Files in My Distribution](#troubleshooting-web-distribution)
++ [Error Message: Certificate: <certificate\-id> Is Being Used by CloudFront](#troubleshooting-certificate-error)
+
+## CloudFront Returns an InvalidViewerCertificate Error When I Try to Add an Alternate Domain Name<a name="troubleshooting-distributions-certificates"></a>
+
+If CloudFront returns an `InvalidViewerCertificate` error when you try to add an alternate domain name \(CNAME\) to your distribution, review the following information to help troubleshoot the problem\. This error can indicate that one of the following issues must be resolved before you can successfully add the alternate domain name\. 
+
+The following errors are listed in the order in which CloudFront checks for authorization to add an alternate domain name\. This can help you troubleshoot issues because based on the error that CloudFront returns, you can tell which verification checks have completed successfully\.
+
+**There's no certificate attached to your distribution\.**  
+To add an alternate domain name \(CNAME\), you must attach a trusted, valid certificate to your distribution\. Please review the requirements, obtain a valid certificate that meets them, attach it to your distribution, and then try again\. For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
+
+**There are too many certificates in the certificate chain for the certificate that you've attached\.**  
+You can only have up to five certificates in a certificate chain\. Reduce the number of certificates in the chain, and then try again\.
+
+**The certificate chain includes one or more certificates that aren't valid for the current date\.**  
+The certificate chain for a certificate that you have added has one or more certificates that aren't valid, either because a certificate isn't valid yet or a certificate has expired\. Check the **Not Valid Before** and **Not Valid After** fields in the certificates in your certificate chain to make sure that all of the certificates are valid based on the dates that you’ve listed\.
+
+**The certificate that you've attached isn't signed by a trusted Certificate Authority \(CA\)\.**  
+The certificate that you attach to CloudFront to verify an alternate domain name cannot be a self\-signed certificate\. It must be signed by a trusted CA\. For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
+
+**The certificate that you've attached isn't formatted correctly**  
+The domain name and IP address format that are included in the certificate, and the format of the certificate itself, must follow the standard for certificates\.
+
+**There was a CloudFront internal error\.**  
+CloudFront was blocked by an internal issue and couldn't make validation checks for certificates\. In this scenario, CloudFront returns an HTTP 500 status code and indicates that there is an internal CloudFront problem with attaching the certificate\. Wait a few minutes, and then try again to add the alternate domain name with the certificate\.
+
+**The certificate that you've attached doesn't cover the alternate domain name that you’re trying to add\.**  
+For each alternate domain name that you add, CloudFront requires that you attach a valid SSL/TLS certificate from a trusted Certificate Authority \(CA\) that covers the domain name, to validate your authorization to use it\. Please update your certificate to include a domain name that covers the CNAME that you’re trying to add\. For more information and examples of using domain names with wildcards, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
 
 ## I Can't View the Files in My Distribution<a name="troubleshooting-web-distribution"></a>
 
@@ -57,7 +85,7 @@ Make sure that the URL that you're referencing uses the domain name \(or CNAME\)
 
 If you need AWS to help you troubleshoot a custom origin, we probably will need to inspect the `X-Amz-Cf-Id` header entries from your requests\. If you are not already logging these entries, you might want to consider it for the future\. For more information, see [Using Amazon EC2 or Other Custom Origins](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\. For further help, see the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
-## I Can't View the Files in My RTMP Distribution<a name="Troubleshooting.Configuration"></a>
+### I Can't View the Files in My RTMP Distribution<a name="Troubleshooting.Configuration"></a>
 
 If you can't view the files in your RTMP distribution, are your URL and your playback client correctly configured? RTMP distributions require you to use an RTMP protocol instead of HTTP, and you must make a few minor configuration changes to your playback client\. For information about creating RTMP distributions, see [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\. 
 
@@ -65,6 +93,6 @@ If you can't view the files in your RTMP distribution, are your URL and your pla
 
 **Problem:** You're trying to delete an SSL/TLS certificate from the IAM certificate store, and you're getting the message "Certificate: <certificate\-id> is being used by CloudFront\."
 
-**Solution:** Every CloudFront web distribution must be associated either with the default CloudFront certificate or with a custom SSL/TLS certificate\. Before you can delete an SSL/TLS certificate, you must either rotate the certificate \(replace the current custom SSL/TLS certificate with another custom SSL/TLS certificate\) or revert from using a custom SSL/TLS certificate to using the default CloudFront certificate\. To do that, perform the procedure in the applicable section:
+**Solution:** Every CloudFront web distribution must be associated either with the default CloudFront certificate or with a custom SSL/TLS certificate\. Before you can delete an SSL/TLS certificate, you must either rotate the certificate \(replace the current custom SSL/TLS certificate with another custom SSL/TLS certificate\) or revert from using a custom SSL/TLS certificate to using the default CloudFront certificate\. To fix that, complete the steps in one of the following procedures:
 + [Rotating SSL/TLS Certificates](cnames-and-https-rotate-certificates.md)
 + [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)

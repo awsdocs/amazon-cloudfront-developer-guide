@@ -5,7 +5,7 @@ Your AWS bill for CloudFront service includes codes and abbreviations that might
 In addition, you can get an AWS usage report for CloudFront that contains more detail than the AWS bill for CloudFront\. The second column in the table lists items that appear in the usage report and shows the correlation between bill items and usage report items\.
 
 Most codes in both columns include a two\-letter abbreviation that indicates the location of the activity\. In the following table, *region* in a code is replaced in your AWS bill and in the usage report by one of the following two\-letter abbreviations :
-+ **AP:** Hong Kong, Philippines, South Korea, Singapore, and Taiwan \(Asia Pacific\)
++ **AP:** Hong Kong, Philippines, South Korea, Taiwan, and Singapore \(Asia Pacific\)
 + **AU:** Australia
 + **CA:** Canada
 + **EU:** Europe

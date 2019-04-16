@@ -183,14 +183,14 @@ For more information about caching based on header values, see [Caching Content 
 | `TE` | CloudFront removes the header\. | No | 
 | `Trailer` | CloudFront removes the header\. | No | 
 | `Transfer-Encoding` | CloudFront forwards the header to your origin\. | No | 
-| `Upgrade` | CloudFront removes the header\. | No | 
+| `Upgrade` | CloudFront removes the header, unless you've established a WebSocket connection\. | No \(except for WebSocket connections\) | 
 | `User-Agent` | CloudFront replaces the value of this header field with `Amazon CloudFront`\. If you want CloudFront to cache your content based on the device the user is using, see [Configuring Caching Based on the Device Type](header-caching.md#header-caching-web-device)\. | Yes, but not recommended | 
 | `Via` | CloudFront forwards the header to your origin\. | Yes | 
 | `Warning` | CloudFront forwards the header to your origin\. | Yes | 
 | `X-Amz-Cf-Id` | CloudFront adds the header to the viewer request before forwarding the request to your origin\. The header value contains an encrypted string that uniquely identifies the request\. | No | 
 | `X-Edge-*` | CloudFront removes all `X-Edge-*` headers\. | No | 
 | `X-Forwarded-For` | CloudFront forwards the header to your origin\. For more information, see [Client IP Addresses](#RequestCustomIPAddresses)\. | Yes | 
-| `X-Forwarded-Proto` | CloudFront removes the header\. | Yes | 
+| `X-Forwarded-Proto` | CloudFront removes the header\. | No | 
 | `X-Real-IP` | CloudFront removes the header\. | No | 
 
 ### HTTP Version<a name="RequestCustomHTTPVersion"></a>
