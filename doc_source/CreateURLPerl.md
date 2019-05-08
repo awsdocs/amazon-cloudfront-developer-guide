@@ -183,6 +183,7 @@ use warnings;
 # run perl -MCPAN -e "install <module>" to get them.
 # The openssl command line will also need to be in your $PATH.
 use File::Temp qw/tempfile/;
+use File::Slurp;
 use Getopt::Long;
 use IPC::Open2;
 use MIME::Base64 qw(encode_base64 decode_base64);
