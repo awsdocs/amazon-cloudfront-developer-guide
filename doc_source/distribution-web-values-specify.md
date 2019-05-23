@@ -316,7 +316,7 @@ A path pattern \(for example, `images/*.jpg`\) specifies which requests you want
 **Note**  
 You can optionally include a slash \(/\) at the beginning of the path pattern, for example, `/images/*.jpg`\. CloudFront behavior is the same with or without the leading /\.
 
-A request for the file `images/sample.gif` doesn't satisfy the first path pattern, so the associated cache behaviors are not be applied to the request\. The file does satisfy the second path pattern, so the cache behaviors associated with the second path pattern are applied even though the request also matches the third path pattern\.
+A request for the file `images/sample.gif` doesn't satisfy the first path pattern, so the associated cache behaviors are not applied to the request\. The file does satisfy the second path pattern, so the cache behaviors associated with the second path pattern are applied even though the request also matches the third path pattern\.
 
 **Note**  
 When you create a new distribution, the value of **Path Pattern** for the default cache behavior is set to **\*** \(all files\) and cannot be changed\. This value causes CloudFront to forward all requests for your objects to the origin that you specified in the [Origin Domain Name](#DownloadDistValuesDomainName) field\. If the request for an object does not match the path pattern for any of the other cache behaviors, CloudFront applies the behavior that you specify in the default cache behavior\.
