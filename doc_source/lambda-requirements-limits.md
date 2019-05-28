@@ -117,7 +117,7 @@ For more information, see the following examples:
 
 ## HTTP Status Codes<a name="lambda-requirements-http-status-codes"></a>
 
-CloudFront doesn't execute Lambda functions for viewer response events if the origin returns HTTP status code 400 or higher\. 
+CloudFront doesn't execute Lambda functions for viewer response events if the origin returns HTTP status code 400 or higher\. Nor is it possible to modify the http status code from a viewer response event for a successful request.
 
 You can, however, execute Lambda functions for *origin* response errors, including HTTP status codes 4xx and 5xx\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
 
