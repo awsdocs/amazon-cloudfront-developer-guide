@@ -19,7 +19,7 @@ The following values are for Amazon S3 origins only:
 + [Grant Read Permissions on Bucket](#DownloadDistValuesOAIGrantReadPermissions)
 
 The following values are for custom origins only, such as Amazon EC2, Elastic Load Balancing, Amazon S3 buckets configured as website endpoints, or your own web server:
-+ [Origin SSL Protocols](#DownloadDistValuesOriginSSLProtocols)
++ [Minimum Origin SSL Protocol](#DownloadDistValuesOriginSSLProtocols)
 + [Origin Protocol Policy](#DownloadDistValuesOriginProtocolPolicy)
 + [Origin Response Timeout](#DownloadDistValuesOriginResponseTimeout)
 + [Origin Keep\-alive Timeout](#DownloadDistValuesOriginKeepaliveTimeout)
@@ -103,8 +103,8 @@ When you create or update a distribution, you specify the following values for e
 ### Origin Domain Name<a name="DownloadDistValuesDomainName"></a>
 
 The DNS domain name of the Amazon S3 bucket or HTTP server from which you want CloudFront to get objects for this origin, for example:
-+ **Amazon S3 bucket** – `myawsbucket.s3.amazonaws.com`
-+ **Amazon S3 bucket configured as a website** – `http://bucket-name.s3-website-us-west-2.amazonaws.com`
++ **Amazon S3 bucket** – `myawsbucket.s3.us-west-2.amazonaws.com`
++ **Amazon S3 bucket configured as a website** – `https://bucket-name.s3-website.us-west-2.amazonaws.com`
 + **MediaStore container** – `mymediastore.data.mediastore.us-west-1.amazonaws.com`
 + **MediaPackage endpoint** – `mymediapackage.mediapackage.us-west-1.amazon.com`
 + **Amazon EC2 instance** – `ec2-203-0-113-25.compute-1.amazonaws.com`
@@ -116,17 +116,13 @@ Choose the domain name in the **Origin Domain Name** field, or type the name\. T
 If your origin is an Amazon S3 bucket, note the following:
 + If the bucket is configured as a website, enter the Amazon S3 static website hosting endpoint for your bucket; don't select the bucket name from the list in the **Origin Domain Name** field\. The static website hosting endpoint appears in the Amazon S3 console, on the **Properties** page under **Static Website Hosting**\. For more information, see [Using Amazon S3 Buckets Configured as Website Endpoints for Your Origin](DownloadDistS3AndCustomOrigins.md#concept_S3Origin_website)\.
 + If you configured Amazon S3 Transfer Acceleration for your bucket, do not specify the `s3-accelerate` endpoint for **Origin Domain Name**\.
-+ If you're using a bucket from a different AWS account and if the bucket is not configured as a website, type the name in the following format:
++ If you're using a bucket from a different AWS account and if the bucket is not configured as a website, enter the name, using the following format:
 
-  `bucket-name.s3.amazonaws.com` 
+  `bucket-name.s3.regionamazonaws.com` 
 
   If your bucket is in the US Standard region and you want Amazon S3 to route requests to a facility in Northern Virginia, use the following format:
 
-  `bucket-name.s3-external-1.amazonaws.com` 
-
-  If your bucket is in the EU \(Frankfurt\) region, you can also use the following format:
-
-  `bucket-name.s3.eu-central-1.amazonaws.com` 
+  `bucket-name.s3.us-east-1.amazonaws.com` 
 + The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
@@ -204,22 +200,19 @@ If you choose **Yes, Update Bucket Policy**, CloudFront updates the bucket polic
 
 If you want to update permissions manually, for example, if you want to update ACLs on your objects instead of updating bucket permissions, choose **No, I will Update Permissions**\.
 
-### Origin SSL Protocols<a name="DownloadDistValuesOriginSSLProtocols"></a>
+### Minimum Origin SSL Protocol<a name="DownloadDistValuesOriginSSLProtocols"></a>
+
+Choose the minimum TLS/SSL protocol that CloudFront can use when it establishes an HTTPS connection to your origin\. Lower TLS protocols are less secure, so we recommend that you choose the latest TLS protocol that your origin supports\. 
+
+If you use the CloudFront API to set the TLS/SSL protocol for CloudFront to use, you cannot set a minimum protocol\. Instead, you specify all of the TLS/SSL protocols that CloudFront can use with your origin\. For more information, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/OriginSslProtocols.html) in the *Amazon CloudFront API Reference*\.
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
-
-Choose the SSL protocols that CloudFront can use when establishing an HTTPS connection with your origin\. The SSLv3 protocol is less secure, so we recommend that you choose SSLv3 only if your origin doesn't support TLSv1 or later\. 
-
-**Note**  
-If you select SSLv3, CloudFront does not attempt to make a connection to the origin using TLS\.
-
-If the origin is an Amazon S3 bucket, CloudFront always uses TLSv1\.2\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\. If the origin is an Amazon S3 bucket not configured as a website endpoint, CloudFront always uses TLSv1\.2\.
 
 ### Origin Protocol Policy<a name="DownloadDistValuesOriginProtocolPolicy"></a>
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 The protocol policy that you want CloudFront to use when fetching objects from your origin server\. 
 
@@ -235,7 +228,7 @@ For HTTPS viewer requests that CloudFront forwards to this origin, one of the do
 ### Origin Response Timeout<a name="DownloadDistValuesOriginResponseTimeout"></a>
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 The origin response timeout, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following values:
 + How long \(in seconds\) CloudFront waits for a response after forwarding a request to a custom origin
@@ -253,7 +246,7 @@ CloudFront behavior depends on the HTTP method in the viewer request:
 ### Origin Keep\-alive Timeout<a name="DownloadDistValuesOriginKeepaliveTimeout"></a>
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 How long \(in seconds\) CloudFront tries to maintain a connection to your custom origin after it gets the last packet of a response\. Maintaining a persistent connection saves the time that is required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. Increasing the keep\-alive timeout helps improve the request\-per\-connection metric for distributions\.
 
@@ -265,14 +258,14 @@ The default timeout is 5 seconds\. You can change the value to a number from 1 t
 ### HTTP Port<a name="DownloadDistValuesHTTPPort"></a>
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 Optional\. The HTTP port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 80\.
 
 ### HTTPS Port<a name="DownloadDistValuesHTTPSPort"></a>
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 Optional\. The HTTPS port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 443\.
 
@@ -447,7 +440,7 @@ The default value for **Default TTL** is 86400 seconds \(one day\)\. If you chan
 ### Forward Cookies<a name="DownloadDistValuesForwardCookies"></a>
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 Specify whether you want CloudFront to forward cookies to your origin server and, if so, which ones\. If you choose to forward only selected cookies \(a whitelist of cookies\), enter the cookie names in the **Whitelist Cookies** field\. If you choose **All**, CloudFront forwards all cookies regardless of how many your application uses\.
 
@@ -458,7 +451,7 @@ For more information about forwarding cookies to the origin, go to [Caching Cont
 ### Whitelist Cookies<a name="DownloadDistValuesWhitelistCookies"></a>
 
 **Note**  
-Does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
+This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\.
 
 If you chose **Whitelist** in the **Forward Cookies** list, then in the **Whitelist Cookies** field, enter the names of cookies that you want CloudFront to forward to your origin server for this cache behavior\. Enter each cookie name on a new line\.
 

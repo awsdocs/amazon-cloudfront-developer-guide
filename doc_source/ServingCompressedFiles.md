@@ -88,6 +88,7 @@ If you configure CloudFront to compress your content, CloudFront compresses file
 
 |  |  | 
 | --- |--- |
+| application/dash\+xml | application/x\-opentype | 
 | application/eot | application/x\-otf | 
 | application/font | application/x\-perl | 
 | application/font\-sfnt | application/x\-ttf | 
@@ -99,16 +100,16 @@ If you configure CloudFront to compress your content, CloudFront compresses file
 | application/truetype | text/css | 
 | application/ttf | text/csv | 
 | application/vnd\.ms\-fontobject | text/html | 
-| application/xhtml\+xml | text/javascript | 
-| application/xml | text/js | 
-| application/xml\+rss | text/plain | 
-| application/x\-font\-opentype | text/richtext | 
-| application/x\-font\-truetype | text/tab\-separated\-values | 
-| application/x\-font\-ttf | text/xml | 
-| application/x\-httpd\-cgi | text/x\-script | 
-| application/x\-javascript | text/x\-component | 
-| application/x\-mpegurl | text/x\-java\-source | 
-| application/x\-opentype |   | 
+| application/vnd\.apple\.mpegurl | text/javascript | 
+| application/xhtml\+xml | text/js | 
+| application/xml | text/plain | 
+| application/xml\+rss | text/richtext | 
+| application/x\-font\-opentype | text/tab\-separated\-values | 
+| application/x\-font\-truetype | text/xml | 
+| application/x\-font\-ttf | text/x\-script | 
+| application/x\-httpd\-cgi | text/x\-component | 
+| application/x\-javascript | text/x\-java\-source | 
+| application/x\-mpegurl | vnd\.apple\.mpegurl | 
 
 ## Using a Custom Origin to Compress Your Content<a name="compressed-content-custom-origin"></a>
 

@@ -12,4 +12,4 @@ You can choose a price class when you create or update a CloudFront distribution
 
 If you're creating or updating a distribution by using the CloudFront API, one of the AWS SDKs, or AWS CloudFormation, see [DistributionConfig Complex Type](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html) \(search for `PriceClass`\)\.
 
-For more information about CloudFront pricing and price classes, go to [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
+For more information about CloudFront pricing and price classes, see [ Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.

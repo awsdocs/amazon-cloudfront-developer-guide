@@ -165,7 +165,7 @@ For more information about caching based on header values, see [Caching Content 
 | `Date` | CloudFront forwards the header to your origin\. | Yes, but not recommended | 
 | `Expect` | CloudFront removes the header\. | Yes | 
 | `From` | CloudFront forwards the header to your origin\. | Yes | 
-| `Host` | CloudFront sets the value to the domain name of the origin that is associated with the requested object\. You can't cache based on the Host header for Amazon S3 origins\. | Yes \(custom\) No \(S3\) | 
+| `Host` | CloudFront sets the value to the domain name of the origin that is associated with the requested object\. You can't cache based on the Host header for Amazon S3 or MediaStore origins\. | Yes \(custom\) No \(S3 and MediaStore\) | 
 | `If-Match` | CloudFront forwards the header to your origin\. | Yes | 
 | `If-Modified-Since` | CloudFront forwards the header to your origin\. | Yes | 
 | `If-None-Match` | CloudFront forwards the header to your origin\. | Yes | 

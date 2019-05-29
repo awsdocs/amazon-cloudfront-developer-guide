@@ -21,7 +21,6 @@ You also get increased reliability and availability because copies of your files
 + [How to Get Started with Amazon CloudFront](welcome-how-to-get-started.md)
 + [AWS Identity and Access Management](IAMCloudFront.md)
 + [CloudFront Pricing](CloudFrontPricing.md)
-+ [CloudFront Compliance](compliance.md)
 
 ## How You Set Up CloudFront to Deliver Content<a name="HowCloudFrontWorksOverview"></a>
 

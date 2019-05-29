@@ -48,7 +48,11 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 1. Choose **Next**\.
 
-1. On the **Set permissions** page, clear the **Block new public ACLs and uploading public objects** checkbox\. You must allow public read access to the bucket and files so that CloudFront URLs can serve content from the bucket\. You can restrict access to specific content by using the CloudFront private content feature\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+1. On the **Set permissions** page, clear the following two checkboxes:
+   + **Block new public ACLs and uploading public objects**
+   + **Remove public access granted through public ACLs**
+
+   You must allow public read access to the bucket and files so that CloudFront URLs can serve content from the bucket\. However, you can restrict access to specific content by using the CloudFront private content feature\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
 
 1. Choose **Next**, and then choose **Create bucket**\.
 

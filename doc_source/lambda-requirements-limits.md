@@ -117,17 +117,20 @@ For more information, see the following examples:
 
 ## HTTP Status Codes<a name="lambda-requirements-http-status-codes"></a>
 
-CloudFront doesn't execute Lambda functions for viewer response events if the origin returns HTTP status code 400 or higher\. Nor is it possible to modify the http status code from a viewer response event for a successful request.
+CloudFront doesn't execute Lambda functions for viewer response events if the origin returns HTTP status code 400 or higher\. You also can't modify the HTTP status code from a viewer response event for a successful request\.
 
 You can, however, execute Lambda functions for *origin* response errors, including HTTP status codes 4xx and 5xx\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
 
 ## Lambda Function Configuration and Execution Environment<a name="lambda-requirements-lambda-function-configuration"></a>
-+ You must create functions with the `nodejs6.10` or `nodejs8.10` runtime property\.
++ You must create functions with the `nodejs8.10` or `nodejs10.x` runtime property\.
+**Note**  
+If you have a function with the `nodejs6.10` property, you can still edit the function and associate it with a CloudFront distribution\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide*\.
 + You can't configure your Lambda function to access resources inside your VPC\.
 + You can't associate your Lambda function to a CloudFront distribution owned by another AWS account\. 
 + The Dead Letter Queue \(DLQ\) isn't supported\.
 + Environment variables aren't supported\.
 + Functions with Layers aren't supported\.
++ AWS X\-Ray isn't supported\.
 
 ## Limits<a name="lambda-requirements-see-limits"></a>
 

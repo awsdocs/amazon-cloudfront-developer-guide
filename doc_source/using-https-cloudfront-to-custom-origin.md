@@ -53,12 +53,12 @@ You can use an SSL/TLS certificate from the following sources on your custom ori
 + If your origin is an Elastic Load Balancing load balancer, you can use a certificate provided by AWS Certificate Manager \(ACM\)\. You also can use a certificate that is signed by a trusted third\-party certificate authority and imported into ACM\.
 + For origins other than ELB load balancers, you must use a certificate that is signed by a trusted third\-party certificate authority \(CA\), for example, Comodo, DigiCert, or Symantec\.
 
-When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted certificate authority\. CloudFront supports the same certificate authorities that Mozilla does\. For the current list, see [Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. You can't use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
+When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted certificate authority\. CloudFront supports the same certificate authorities that Mozilla does\. For the current list, see [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)\.  You can't use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
 
 **Important**  
 If the origin server returns an expired certificate, an invalid certificate, or a self\-signed certificate, or if the origin server returns the certificate chain in the wrong order, CloudFront drops the TCP connection, returns HTTP status code 502 \(Bad Gateway\), and sets the `X-Cache` header to `Error from cloudfront`\. Also, if the full chain of certificates, including the intermediate certificate, is not present, CloudFront drops the TCP connection\. 
 
-One of the domain names in the certificate must match one or both of the following values:
+The certificate must cover one or both of the following domains:
 + The value that you specified for **Origin Domain Name** for the applicable origin in your distribution\.
 + If you configured CloudFront to forward the `Host` header to your origin, the value of the `Host` header\. For more information about forwarding headers to your origin, see [Caching Content Based on Request Headers](header-caching.md)\.
 

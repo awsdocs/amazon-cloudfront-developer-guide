@@ -45,14 +45,13 @@ If you want viewers to use HTTPS with your alternate domain name, see [Using Alt
 **Alternate Domain Names \(CNAMEs\)**  
 Add your alternate domain names\. Separate domain names with commas, or type each domain name on a new line\.  
 **SSL Certificate \(Web Distributions Only\)**  
-Choose an option from the following settings:  
-   + **Don't use HTTPS** – Choose **Default CloudFront Certificate**\.
-   + **Use HTTPS** – Choose **Custom SSL Certificate**, and choose a certificate from the list\. The list can include certificates provisioned by AWS Certificate Manager \(ACM\), certificates that you purchased from another CA and uploaded to ACM, and certificates that you purchased from another CA and uploaded to the IAM certificate store\. 
+Choose the following setting:  
+   + **Use HTTPS** – Choose **Custom SSL Certificate**, and then choose a certificate from the list\. The list can include certificates provisioned by AWS Certificate Manager \(ACM\), certificates that you purchased from another CA and uploaded to ACM, and certificates that you purchased from another CA and uploaded to the IAM certificate store\. 
 
      If you uploaded a certificate to the IAM certificate store but it doesn't appear in the list, review the procedure [Importing an SSL/TLS Certificate](cnames-and-https-procedures.md#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\. 
 
-     If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(https://example\.com/logo\.jpg\)\. If you use your CloudFront distribution domain name \(https://d111111abcdef8\.cloudfront\.net/logo\.jpg\), a viewer might behave as follows, depending on the value that you choose for **Clients Supported**:
-     + **All Clients**: If the viewer doesn't support SNI, it displays a warning because the CloudFront domain name doesn't match the domain name in your SSL/TLS certificate\.
+     If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(`https://example.com/logo.jpg`\)\. If you use your CloudFront distribution domain name \(`https://d111111abcdef8.cloudfront.net/logo.jpg`\), a viewer might behave as follows, depending on the value that you choose for **Clients Supported**:
+     + **All Clients**: If the viewer doesn't support SNI, it displays a warning because the CloudFront domain name doesn't match the domain name in your TLS/SSL certificate\.
      + **Only Clients that Support Server Name Indication \(SNI\)**: CloudFront drops the connection with the viewer without returning the object\.  
 **Clients Supported \(Web Distributions Only\)**  
 Choose an option:  
@@ -248,7 +247,11 @@ When you add alternate domain names, you can use the \* wildcard at the beginnin
 
 `marketing.product-name.example.com/images/image.jpg`
 
-The alternate domain name must begin with an asterisk and a dot \( `*.` \)\. You *cannot* use a wildcard to replace part of a subdomain name, like this: `*domain.example.com`, and you cannot replace a subdomain in the middle of a domain name, like this: `subdomain.*.example.com`\. 
+Follow these requirements for alternate domain names that include wildcards:
++ The alternate domain name must begin with an asterisk and a dot \( `*.` \)\.
++ You *cannot* use a wildcard to replace part of a subdomain name, like this: `*domain.example.com`\.
++ You cannot replace a subdomain in the middle of a domain name, like this: `subdomain.*.example.com`\.
++ All alternate domain names, including alternate domain names that use wildcards, must be covered by the subject alternative name \(SAN\) on the certificate\.
 
 A wildcard alternate domain name, such as `*.example.com`, can include another alternate domain name, such as `example.com`, as long as they're both in the same CloudFront distribution or they're in distributions that were created by using the same AWS account\. 
 
@@ -262,7 +265,7 @@ All alternate domain names \(CNAMEs\) must be lowercase to be valid\.
 **Alternate Domain Names Must be Covered by a Valid SSL/TLS Certificate**  
 To add an alternate domain name \(CNAME\) to use with a CloudFront distribution, you must attach to your distribution a trusted, valid SSL/TLS certificate that covers the alternate domain name\. This ensures that only people with access to your domain's certificate can associate with CloudFront a CNAME related to your domain\.  
 A trusted certificate is one that is issued by ACM or by another valid certificate authority \(CA\); you can't use a self\-signed certificate\. CloudFront supports the same certificate authorities as Mozilla\. For the current list, see [ Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\.   
-To verify an alternate domain name by using the certificate that you attach, CloudFront checks the subject alternative name \(SAN\) on the certificate\. The alternate domain name that you're adding must be covered by the SAN\.  
+To verify an alternate domain name by using the certificate that you attach, including alternate domain names that include wildcards, CloudFront checks the subject alternative name \(SAN\) on the certificate\. The alternate domain name that you're adding must be covered by the SAN\.  
 Only one certificate can be attached to a CloudFront distribution at a time\.
 You prove that you are authorized to add a specific alternate domain name to your distribution by doing one of the following:  
 + Attaching an individual certificate for each domain name, like `product-name.example.com`\.
@@ -291,17 +294,17 @@ For the current limit on the number of alternate domain names that you can add t
 
 **Duplicate and Overlapping Alternate Domain Names**  
 You cannot add an alternate domain name to a CloudFront distribution if the alternate domain name already exists in another CloudFront distribution, even if your AWS account owns the other distribution\.  
-However, you can add a wildcard alternate domain name, such as `*.example.com`, that includes \(that overlaps with\) a non\-wildcard alternate domain name, such as `www.example.com`\. Overlapping domain names can be in the same distribution or in separate distributions as long as both distributions were created by using the same AWS account\.  
-If you have overlapping alternate domain names in two distributions, CloudFront sends the request to the distribution with the more specific name match, regardless of the distribution that the DNS record points to\. For example, example\.domain\.com is more specific than \*\.domain\.com\.
+However, you can add a wildcard alternate domain name, such as `*.example.com`, that includes \(that overlaps with\) a non\-wildcard alternate domain name, such as `www.example.com`\. Overlapping alternate domain names can be in the same distribution or in separate distributions as long as both distributions were created by using the same AWS account\.  
+If you have overlapping alternate domain names in two distributions, CloudFront sends the request to the distribution with the more specific name match, regardless of the distribution that the DNS record points to\. For example, `marketing.domain.com` is more specific than `*.domain.com`\.
 
 **Alternate Domain Names that Already Point to a Distribution**  
 If your DNS record points to a distribution that is not the distribution that you are creating or modifying, then you can't add the alternate domain name to your distribution\. In this scenario, you must update your DNS at your DNS provider before you can add the domain name for your CloudFront distribution\.   
 To correct this, sign in to your DNS provider and remove the existing DNS record, or contact your DNS provider to remove it for you\. Then create the correct DNS record for your distribution, following the steps for adding or changing the alternate domain name for a distribution\. For more information, see [Adding an Alternate Domain Name](#CreatingCNAMEProcess) or [ Moving an Alternate Domain Name to a Different CloudFront Distribution](#alternate-domain-names-move)\.
 
 **Domain Fronting**  
-CloudFront includes protection against domain fronting occurring across different AWS accounts, a scenario in which a non\-standard client creates a TLS/SSL connection to a domain name in one AWS account, but then makes an HTTPS request for an unrelated name in another AWS account\. For example, the TLS connection might connect to www\.example\.com, and then issue a request for www\.example\.org\.  
+CloudFront includes protection against domain fronting occurring across different AWS accounts, a scenario in which a non\-standard client creates a TLS/SSL connection to a domain name in one AWS account, but then makes an HTTPS request for an unrelated name in another AWS account\. For example, the TLS connection might connect to `www.example.com`, and then issue a request for `www.example.org`\.  
 To prevent cases where domain fronting crosses different AWS accounts, CloudFront makes sure that the AWS account that owns the certificate that it serves for a specific connection always matches the AWS account that owns the request that it handles on that same connection\.  
-If the two AWS account numbers do not match, CloudFront will respond with a 421 Misdirected Request response to give the client a chance to connect using the correct domain\.
+If the two AWS account numbers do not match, CloudFront responds with a 421 Misdirected Request response to give the client a chance to connect using the correct domain\.
 
 **Adding an Alternate Domain Name at the Top Node \(Zone Apex\) for a Domain**  
 When you add an alternate domain name to a distribution, you typically create a CNAME record in your DNS configuration to route DNS queries for the domain name to your CloudFront distribution\. However, you can't create a CNAME record for the top node of a DNS namespace, also known as the zone apex; the DNS protocol doesn't allow it\. For example, if you register the DNS name `example.com`, the zone apex is `example.com`\. You can't create a CNAME record for `example.com`, but you can create CNAME records for `www.example.com`, `newproduct.example.com`, and so on\.  

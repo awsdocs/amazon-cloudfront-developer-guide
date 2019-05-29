@@ -8,8 +8,10 @@ You can enable logging as an option that you specify when you're creating a dist
 + [How Logging Works](#AccessLogsOverview)
 + [Choosing an Amazon S3 Bucket for Your Access Logs](#access-logs-choosing-s3-bucket)
 + [Permissions Required to Configure Logging and to Access Your Log Files](#AccessLogsBucketAndFileOwnership)
++ [Required CMK Key Policy for Use with SSE\-KMS Buckets](#AccessLogsKMSPermissions)
 + [File Name Format](#AccessLogsFileNaming)
 + [Timing of Log File Delivery](#access-logs-timing)
++ [How Requests Are Logged When the Request URL or Headers Exceed Size Limits](#access-logs-request-URL-size)
 + [Analyzing Access Logs](#access-logs-analyzing)
 + [Editing Your Logging Settings](#ChangeSettings)
 + [Deleting Log Files from an Amazon S3 Bucket](#DeletingLogFiles)
@@ -64,6 +66,8 @@ If you remove permissions for the awslogsdelivery account, CloudFront won't be a
 
    `c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0`
 
+   
+
    For more information about adding ACLs to S3 buckets, see [Setting ACL Bucket Permissions](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-bucket-permissions.html) in the **Amazon Simple Storage Service Console User Guide**\.
 
 **ACL for each log file**  
@@ -72,11 +76,29 @@ In addition to the ACL on the bucket, there's an ACL on each log file\. The buck
 **Disabling logging**  
 If you disable logging, CloudFront doesn't delete the ACLs for either the bucket or the log files\. If you want, you can do that yourself\.
 
+## Required CMK Key Policy for Use with SSE\-KMS Buckets<a name="AccessLogsKMSPermissions"></a>
+
+If you enabled server\-side encryption for your Amazon S3 bucket using AWS KMS\-managed keys \(SSE\-KMS\) with a customer\-managed Customer Master Key \(CMK\), you must add the following to the key policy for your CMK to enable writing log files to the bucket\. You cannot use the default KMS because CloudFront won't be able to upload the log files to the bucket\.
+
+```
+{
+    "Sid": "Allow CloudFront Flow Logs to use the key",
+    "Effect": "Allow",
+    "Principal": {
+        "Service": [
+            "delivery.logs.amazonaws.com"
+        ]
+    },
+    "Action": "kms:GenerateDataKey*",
+    "Resource": "*"
+}
+```
+
 ## File Name Format<a name="AccessLogsFileNaming"></a>
 
 The name of each log file that CloudFront saves in your Amazon S3 bucket uses the following file name format: 
 
- `bucket-name.s3.amazonaws.com/optional-prefix/distribution-ID.YYYY-MM-DD-HH.unique-ID.gz ` 
+ `bucket-name.s3.amazonaws.com/optional-prefix/distribution-ID. YYYY-MM-DD-HH.unique-ID.gz ` 
 
 The date and time are in Coordinated Universal time \(UTC\)\.
 
@@ -100,6 +122,12 @@ CloudFront begins to reliably deliver access logs about four hours after you ena
 
 **Note**  
 If no users request your objects during the time period, you don't receive any log files for that period\.
+
+## How Requests Are Logged When the Request URL or Headers Exceed Size Limits<a name="access-logs-request-URL-size"></a>
+
+If a request URL that is too long or that includes headers, including cookies, that exceed size limits is sent to a CloudFront endpoint, the request might not be logged in the access logs\. Depending on what causes the URL to be too long, CloudFront does one of the following:
++ If the total size of all request headers, including cookies, exceeds 20KB or if the headers in a request cause the request URL to exceed the 8192 byte URL size limit, CloudFront can't parse the URL completely and can't log the request\. Because the request isn't logged, you won't see in the log files the HTTP error status code returned\.
++ If the body size exceeds the size limit, the request is logged, including the HTTP error status code\.
 
 ## Analyzing Access Logs<a name="access-logs-analyzing"></a>
 
@@ -196,7 +224,7 @@ The log file for a web distribution includes the following fields in the listed 
 | 12 | cs\-uri\-query | The query string portion of the URI, if any\. When a URI doesn't contain a query string, the value of `cs-uri-query` is a hyphen \(\-\)\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.  | 
 | 13 | cs\(Cookie\) | The cookie header in the request, including name\-value pairs and the associated attributes\. If you enable cookie logging, CloudFront logs the cookies in all requests regardless of which cookies you choose to forward to the origin: none, all, or a whitelist of cookie names\. When a request doesn't include a cookie header, the value of `cs(Cookie)` is a hyphen \(\-\)\.  For more information about cookies, see [Caching Content Based on Cookies](Cookies.md)\.  | 
 | 14 | x\-edge\-result\-type | How CloudFront classifies the response after the last byte left the edge location\. In some cases, the result type can change between the time that CloudFront is ready to send the response and the time that CloudFront has finished sending the response\.  For example, in HTTP streaming, suppose CloudFront finds a segment in the edge cache\. The value of `x-edge-response-result-type`, the result type immediately before CloudFront begins to respond to the request, is `Hit`\. However, if the user closes the viewer before CloudFront has delivered the entire segment, the final result type—the value of `x-edge-result-type`—changes to `Error`\.  As another example, WebSocket connections will appear as a `Miss` since the content is not cacheable and is proxied directly back to the origin server\.  Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 15 | x\-edge\-request\-id | An encrypted string that uniquely identifies a request\. | 
+| 15 | x\-edge\-request\-id | An encrypted string that uniquely identifies a request\. In the response header, this is x\-amz\-cf\-id\. | 
 | 16 | x\-host\-header | The value that the viewer included in the `Host` header for this request\. This is the domain name in the request: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 17 | cs\-protocol | The protocol that the viewer specified in the request: http, https, ws, or wss\. | 
 | 18 | cs\-bytes | The number of bytes of data that the viewer included in the request \(client to server bytes\), including headers\. For WebSocket connections, this is the total number of bytes sent from the client to the server on the connection\. | 

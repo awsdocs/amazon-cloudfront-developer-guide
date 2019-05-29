@@ -92,6 +92,9 @@ If an error is intermittent, you can use CloudFront access logs to find the requ
 
 If the problem is a Lambda execution error, it can be helpful to create logging statements for Lambda functions, to write messages to CloudWatch log files that monitor the execution of your function in CloudFront and determine if it's working as expected\. Then you can search for those statements in the CloudWatch log files to verify that your function is working\.
 
+**Note**  
+Even if you haven't changed your Lambda@Edge function, updates to the Lambda function execution environment might affect it and could return an execution error\. For information about testing and migrating to a later version, see [Upcoming updates to the AWS Lambda and AWS Lambda@Edge execution environment\.](https://aws.amazon.com/blogs/compute/upcoming-updates-to-the-aws-lambda-execution-environment/)
+
 ## Determining the Lambda@Edge Region<a name="lambda-edge-testing-debugging-determine-region"></a>
 
 You must review CloudWatch log files in the correct Region to see the log files created when CloudFront executed your Lambda function\. You can run the following AWS CLI script to determine a list of Regions where your Lambda@Edge function might be receiving traffic\. Those Regions are where you should look for the CloudWatch log files to help you debug errors\. Before you run the script, please review the following instructions to install and use AWS CLI: [AWS Command Line Interface](https://aws.amazon.com/cli/)\.

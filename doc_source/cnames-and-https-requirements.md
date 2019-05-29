@@ -22,7 +22,7 @@ The requirements for SSL/TLS certificates are described in this topic\. They app
 ## Certificate Issuer<a name="https-requirements-certificate-issuer"></a>
 
 The certificate issuer you must use depends on whether you want to require HTTPS between viewers and CloudFront or between CloudFront and your origin:
-+ **HTTPS between viewers and CloudFront** – You can use a certificate that was issued by a trusted certificate authority \(CA\) such as Comodo, DigiCert, or Symantec; you can use a certificate provided by AWS Certificate Manager \(ACM\); or you can use a self\-signed certificate\.
++ **HTTPS between viewers and CloudFront** – You can use a certificate that was issued by a trusted certificate authority \(CA\) such as Comodo, DigiCert, or Symantec, or you can use a certificate provided by AWS Certificate Manager \(ACM\)\.
 **Important**  
 If you want to use an alternate domain name with your CloudFront distribution, you must verify to CloudFront that you have authorized rights to use the alternate domain name\. To do this, you must attach a valid certificate to your distribution, and make sure that the certificate comes from a trusted CA that is listed on the [ Mozilla Included CA Certificate List](http://www.mozilla.org/en-US/about/governance/policies/security-group/certs/included/)\. CloudFront does not allow you to use a self\-signed certificate to verify your authorized rights to use an alternate domain name\.
 + **HTTPS between CloudFront and a custom origin** – If the origin is *not* an ELB load balancer, such as Amazon EC2, the certificate must be issued by a trusted CA such as Comodo, DigiCert, or Symantec\. If your origin is an ELB load balancer, you can also use a certificate provided by ACM\.

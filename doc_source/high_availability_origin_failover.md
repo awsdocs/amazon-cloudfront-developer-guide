@@ -28,7 +28,7 @@ For more information, see the following:
 
 ## Creating an Origin Group<a name="concept_origin_groups.creating"></a>
 
-You create an origin group with two origins\. You specify one as the primary origin, plus a second origin that CloudFront automatically switches to when the primary origin returns specific HTTP status code failure responses\.\. <a name="create-origin-groups-procedure"></a>
+You create an origin group with two origins\. You specify one as the primary origin, plus a second origin that CloudFront automatically switches to when the primary origin returns specific HTTP status code failure responses\. <a name="create-origin-groups-procedure"></a>
 
 **To create an origin group**
 

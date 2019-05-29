@@ -27,7 +27,7 @@ CloudFront is subject to the following limits\. Note that Lambda@Edge has specif
 | Requests per second per distribution | 100,000 [Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Tags that can be added to a CloudFront web or RTMP distribution | 50 | 
 | Files that you can serve per distribution | Unlimited | 
-| Maximum length of a request, including headers and query strings | 20,480 bytes | 
+| Maximum length of a request, including headers and query strings, but not including the body content | 20,480 bytes | 
 | Maximum length of a URL | 8,192 bytes | 
 | Active CloudFront key pairs for trusted signers For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  | 2 | 
 

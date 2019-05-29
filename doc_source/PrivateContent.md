@@ -5,7 +5,7 @@ Many companies that distribute content over the internet want to restrict access
 + Require that your users access your Amazon S3 content by using CloudFront URLs, not Amazon S3 URLs\. Requiring CloudFront URLs isn't necessary, but we recommend it to prevent users from bypassing the restrictions that you specify in signed URLs or signed cookies\.
 
 **Important**  
-If you use an Amazon S3 bucket configured as a website endpoint, you must set up it up with CloudFront as a custom origin and you can't use the origin access identity feature described in this topic\. You can restrict access to content on a custom origin by using custom headers\. For more information, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
+If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin and you can't use the origin access identity feature described in this topic\. You can restrict access to content on a custom origin by using custom headers\. For more information, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
 
 **Topics**
 + [Overview of Private Content](#private-content-overview)
@@ -41,7 +41,7 @@ One part of a signed URL or a signed cookie is hashed and signed using the priva
 
 ### Restricting Access to Files in Amazon S3 Buckets<a name="private-content-overview-s3"></a>
 
-You can optionally secure the content in your Amazon S3 bucket so users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs\. This prevents anyone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\. Be aware that this option is only available if you have not set up your Amazon S3 bucket as as website endpoint\.
+You can optionally secure the content in your Amazon S3 bucket so users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs\. This prevents anyone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\. Be aware that this option is only available if you have not set up your Amazon S3 bucket as a website endpoint\.
 
 To require that users access your content through CloudFront URLs, you perform the following tasks:
 + Create a special CloudFront user called an **origin access identity**\.

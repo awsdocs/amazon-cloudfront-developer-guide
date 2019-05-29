@@ -9,13 +9,13 @@ You can use the same Amazon S3 bucket for both RTMP and web distributions\.
 **Note**  
 After you create an RTMP distribution, you can't change its origin server\. If you need to change the Amazon S3 bucket for an RTMP distribution, you must create a new distribution that uses the new bucket and update either your links or your DNS records to use the domain name for the new distribution\. You can then delete the original distribution\. For more information, see [Deleting a Distribution](HowToDeleteDistribution.md)\.
 
-When you specify the name of the Amazon S3 bucket that you want CloudFront to get objects from, you generally use the following format:
+When you specify the Amazon S3 bucket that you want CloudFront to get objects from, we recommend that you use the following format to access the bucket:
+
+`bucket-name.s3.region.amazonaws.com`
+
+Another option might be to use the following more general format, but be aware that this format doesn't work for Regions launched in 2019 or later:
 
 `bucket-name.s3.amazonaws.com`
-
-If your bucket is in the US Standard region and you want Amazon S3 to route requests to a facility in Northern Virginia, use the following format:
-
-`bucket-name.s3-external-1.amazonaws.com` 
 
 Do not specify the name of the bucket using the following values:
 + The Amazon S3 path style, `s3.amazonaws.com/bucket-name`

@@ -20,13 +20,13 @@ Using an existing Amazon S3 bucket as your CloudFront origin server doesn't chan
 **Important**  
 For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-When you specify the Amazon S3 bucket that you want CloudFront to get objects from, in general, use the following format:
+When you specify the Amazon S3 bucket that you want CloudFront to get objects from, we recommend that you use the following format to access the bucket:
+
+`bucket-name.s3.region.amazonaws.com`
+
+Another option might be to use the following more general format, but be aware that this format doesn't work for Regions launched in 2019 or later:
 
 `bucket-name.s3.amazonaws.com`
-
-If your bucket is in the US Standard region and you want Amazon S3 to route requests to a facility in Northern Virginia, use the following format:
-
-`bucket-name.s3-external-1.amazonaws.com` 
 
 When you specify the bucket name in this format, you can use the following CloudFront features:
 + Configure CloudFront to communicate with your Amazon S3 bucket using SSL\. For more information, see [Using HTTPS with CloudFront](using-https.md)\.
@@ -42,7 +42,7 @@ Do not specify the bucket using the following formats:
 You can set up an Amazon S3 bucket that is configured as a website endpoint as custom origin with CloudFront\.
 + When you configure your CloudFront distribution, for the origin, enter the Amazon S3 static website hosting endpoint for your bucket\. This value appears in the Amazon S3 console, on the **Properties** page under **Static Website Hosting**\. For example:
 
-  `http://bucket-name.s3-website-us-west-2.amazonaws.com`
+  `https://bucket-name.s3-website.region.amazonaws.com`
 
 For more information about specifying Amazon S3 static website endpoints, see [Website Endpoints](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteEndpoints.html) in the Amazon S3 documentation\.
 
@@ -106,7 +106,7 @@ Using CloudFront can be more cost effective if your users access your objects fr
 **Note**  
 If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward the `Origin` header to Amazon S3\. For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
 
-If you currently distribute content directly from your Amazon S3 bucket using your own domain name \(such as example\.com\) instead of the domain name of your Amazon S3 bucket \(such as MyAWSBucket\.s3\.amazonaws\.com\), you can add CloudFront with no disruption by using the following procedure\.<a name="migrate-s3-to-cloudfront-process"></a>
+If you currently distribute content directly from your Amazon S3 bucket using your own domain name \(such as example\.com\) instead of the domain name of your Amazon S3 bucket \(such as MyAWSBucket\.s3\.us\-west\-2\.amazonaws\.com\), you can add CloudFront with no disruption by using the following procedure\.<a name="migrate-s3-to-cloudfront-process"></a>
 
 **To add CloudFront when you're already distributing your content from Amazon S3**
 
