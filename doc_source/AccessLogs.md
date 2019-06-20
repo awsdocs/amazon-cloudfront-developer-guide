@@ -307,4 +307,4 @@ The following is an example of a log file for an RTMP distribution:
 
 ## Charges for Access Logs<a name="AccessLogsCharges"></a>
 
-Access logging is an optional feature of CloudFront\. There is no extra charge for enabling access logging\. However, you accrue the usual Amazon S3 charges for storing and accessing the files on Amazon S3 \(you can delete them at any time\)\. For more information about charges for CloudFront, see [CloudFront Reports](reports.md)\.
+Access logging is an optional feature of CloudFront\. There is no extra charge for enabling access logging\. However, you accrue the usual Amazon S3 charges for storing and accessing the files on Amazon S3 \(you can delete them at any time\)\. For more information about charges for CloudFront, see [CloudFront Reports in the Console](reports.md)\.

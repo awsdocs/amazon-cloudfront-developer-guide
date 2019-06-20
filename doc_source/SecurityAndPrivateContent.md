@@ -5,8 +5,8 @@ For web distributions, CloudFront provides several options for securing content 
 **Topics**
 + [Using HTTPS with CloudFront](using-https.md)
 + [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)
-+ [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)
-+ [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)
-+ [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)
-+ [Restricting the Geographic Distribution of Your Content](georestrictions.md)
 + [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)
++ [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)
++ [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)
++ [Restricting the Geographic Distribution of Your Content](georestrictions.md)
++ [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)

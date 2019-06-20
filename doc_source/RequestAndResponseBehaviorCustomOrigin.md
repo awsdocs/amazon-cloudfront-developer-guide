@@ -328,11 +328,11 @@ CloudFront removes or updates the following header fields before forwarding the 
   + If you configure CloudFront to forward a whitelist of headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those value to the viewer\.
   + For information about how CloudFront processes a value of `*` in the `Vary` header, see [Content Negotiation](#ResponseCustomContentNegotiation)\.
   + If you configure your origin to include any other values in the `Vary` header, CloudFront removes the values before returning the response to the viewer\.
-+ `Via` – Regardless of whether your origin returns this header field to CloudFront, CloudFront sets the value to:
++ `Via` – CloudFront sets the value to the following in the response to the viewer:
 
-  `Via: 1.1 `*alphanumeric\-string*`.cloudfront.net (CloudFront)`
+  `Via: `*http\-version* *alphanumeric\-string*`.cloudfront.net (CloudFront)`
 
-  before returning the response to the viewer\. For example:
+  For example, if the client makes a request over HTTP/1\.1, the value is something like the following:
 
   `Via: 1.1 1026589cc7887e7a0dc7827b4example.cloudfront.net (CloudFront)`
 

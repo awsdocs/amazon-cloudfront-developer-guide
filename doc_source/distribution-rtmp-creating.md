@@ -1,8 +1,6 @@
 # Task List for Streaming Media Files Using RTMP<a name="distribution-rtmp-creating"></a>
 
-This section summarizes the general process for configuring on\-demand streaming using the Adobe RTMP protocol for any media player\.
-
-The following task list summarizes the process for creating a web distribution\.<a name="create-streaming-distribution-task-list"></a>
+The following task list summarizes the process for creating a distribution for on\-demand streaming using the Adobe RTMP protocol for any media player\.<a name="create-streaming-distribution-task-list"></a>
 
 **To Create an RTMP Distribution**
 
@@ -22,7 +20,9 @@ Media files in a Flash Video container must include the \.flv filename extension
 
    You can put media player files and media files in the same bucket\. 
 
-1. Create an RTMP distribution for your media files by using the CloudFront API\. For more information, see [CreateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
+1. Create an RTMP distribution for your media files:
+   + For more information about creating an RTMP distribution using the CloudFront console, see [Creating an RTMP Distribution Using the CloudFront Console](distribution-rtmp-creating-console.md)\.
+   + For information about creating an RTMP distribution using the CloudFront API, see [CreateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 1. Configure your media player\. For more information, see [Configuring the Media Player](Streaming_URLs.md)\.
 

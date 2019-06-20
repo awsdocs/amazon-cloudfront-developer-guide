@@ -27,17 +27,19 @@ To get started, you grant CloudFront access to your MediaStore container\. Then 
 1. Follow the procedure at [ Allowing Amazon CloudFront to Access Your MediaStore Container](https://docs.aws.amazon.com/mediastore/latest/ug/cdns-allowing-cloudfront-to-access-mediastore.html), and then return to these steps to create your distribution\.
 
 1. Create a distribution with the following settings:  
-**Origin Domain Name**  
+Origin Domain Name  
 The data endpoint that is assigned to your MediaStore container\. From the dropdown list, choose the MediaStore container for your live video\. The format of a MediaStore origin is Container\-OriginEndpointURL\. For example, mymediastore\.data\.mediastore\.us\-east\-1\.amazonaws\.com\. For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
-**Origin Path**  
+Origin Path  
 The folder structure in the MediaStore container where your objects are stored\. For more information, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.  
-**Origin Custom Headers**  
+Origin Custom Headers  
 Add header names and values if you want CloudFront to include custom headers when it forwards requests to your origin\.  
-**Object Caching**  
+Viewer Protocol Policy  
+Choose **Redirect HTTP to HTTPS**\. For more information, see [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.   
+Object Caching  
 If the transcoder that you use can't set cache controls on all objects, choose **Customize**\. If your transcoder can set cache controls on all objects, choose **Origin Cache Headers**\.   
-**Minimum TTL, Maximum TTL, and Default TTL**  
+Minimum TTL, Maximum TTL, and Default TTL  
 Set as appropriate for your caching needs and segment durations\.  
-**Error Caching Minimum TTL**  
+Error Caching Minimum TTL  
 Set to 5 seconds or less, to help prevent serving stale content\.
 
    For the other settings, you can set specific values based on other technical requirements or the needs of your business\. For a list of all the options for web distributions and information about setting them, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.

@@ -16,6 +16,9 @@ If you configure CloudFront to require HTTPS both to communicate with viewers an
 
 1. The viewer decrypts the response\.
 
+**Note**  
+To help thwart SSL renegotiation\-type attacks, CloudFront does not support renegotiation for viewer and origin requests\.
+
 For information about how to require HTTPS between viewers and CloudFront, and between CloudFront and your origin, see the following topics\.
 
 **Topics**

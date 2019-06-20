@@ -4,7 +4,7 @@ To configure CloudFront to serve private content, perform the following tasks:
 
 1. \(Optional but recommended\) Require your users to access your content only through CloudFront\. The method that you use depends on whether you're using Amazon S3 or custom origins:
    + **Amazon S3** – See [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
-   + **Custom origin** – See [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
+   + **Custom origin** – See [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
    Custom origins include Amazon EC2, Amazon S3 buckets configured as website endpoints, Elastic Load Balancing, and your own HTTP web servers\.
 

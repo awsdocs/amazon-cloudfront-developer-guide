@@ -159,11 +159,11 @@ CloudFront removes or updates the following header fields before forwarding the 
 + `Trailer`
 + `Transfer-Encoding` – If your Amazon S3 origin returns this header field, CloudFront sets the value to `chunked` before returning the response to the viewer\.
 + `Upgrade`
-+ `Via` – CloudFront sets the value to:
++ `Via` – CloudFront sets the value to the following in the response to the viewer:
 
-  `Via: 1.1 `*alphanumeric\-string*`.cloudfront.net (CloudFront)`
+  `Via: `*http\-version* *alphanumeric\-string*`.cloudfront.net (CloudFront)`
 
-  before returning the response to the viewer\. For example:
+  For example, if the client makes a request over HTTP/1\.1, the value is something like the following:
 
   `Via: 1.1 1026589cc7887e7a0dc7827b4example.cloudfront.net (CloudFront)`
 

@@ -165,7 +165,7 @@ Choose **No** if you want users to be able to access objects by using either Clo
 
 For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
-For information about how to require users to access objects on a custom origin by using only CloudFront URLs, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
+For information about how to require users to access objects on a custom origin by using only CloudFront URLs, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 ### Origin Access Identity<a name="DownloadDistValuesOAI"></a>
 
@@ -204,7 +204,7 @@ If you want to update permissions manually, for example, if you want to update A
 
 Choose the minimum TLS/SSL protocol that CloudFront can use when it establishes an HTTPS connection to your origin\. Lower TLS protocols are less secure, so we recommend that you choose the latest TLS protocol that your origin supports\. 
 
-If you use the CloudFront API to set the TLS/SSL protocol for CloudFront to use, you cannot set a minimum protocol\. Instead, you specify all of the TLS/SSL protocols that CloudFront can use with your origin\. For more information, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/OriginSslProtocols.html) in the *Amazon CloudFront API Reference*\.
+If you use the CloudFront API to set the TLS/SSL protocol for CloudFront to use, you cannot set a minimum protocol\. Instead, you specify all of the TLS/SSL protocols that CloudFront can use with your origin\. For more information, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) in the *Amazon CloudFront API Reference*\.
 
 **Note**  
 This option does not apply to an Amazon S3 bucket unless it's configured as a website endpoint\. If the origin is an Amazon S3 bucket not configured as a website endpoint, CloudFront always uses TLSv1\.2\.

@@ -1,13 +1,13 @@
-# CloudFront Reports<a name="reports"></a>
+# CloudFront Reports in the Console<a name="reports"></a>
 
-The CloudFront console includes a variety of reports: 
+The CloudFront console includes a variety of reports about your CloudFront activity, including the following: 
 + [CloudFront Cache Statistics Reports](#reports-overview-cache-statistics)
 + [CloudFront Popular Objects Report](#reports-overview-popular-objects)
 + [CloudFront Top Referrers Report](#reports-overview-top-referrers)
 + [CloudFront Usage Reports](#reports-overview-usage)
 + [CloudFront Viewers Reports](#reports-overview-viewers)
 
-Most of these reports are based on the data in CloudFront access logs, which contain detailed information about every user request that CloudFront receives\. You don't need to enable access logs to view the reports\. For more information, see [Configuring and Using Access Logs](AccessLogs.md)\. The CloudFront usage report is based on the AWS usage report for CloudFront, which also doesn't require any special configuration\. For more information, see [AWS Usage Report for CloudFront](usage-report.md)\.
+Most of these reports are based on the data in CloudFront access logs, which contain detailed information about every user request that CloudFront receives\. You don't need to enable access logs to view the reports\. For more information, see [Configuring and Using Access Logs](AccessLogs.md)\. The CloudFront usage report is based on the AWS usage report for CloudFront, which also doesn't require any special configuration\. For more information, see [AWS Usage Report for CloudFront](reports-billing.md#usage-report)\.
 
 **CloudFront Cache Statistics Reports**
 

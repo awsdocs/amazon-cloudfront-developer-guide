@@ -54,7 +54,7 @@ You can download each of the Viewer reports in CSV format\. This section explain
 
 **To download the Viewer reports in CSV format**
 
-1. While viewing the applicable Viewer report, click **CSV**\.
+1. While viewing the Viewer report, click **CSV**\.
 
 1. Choose the data that you want to download, for example, **Devices** or **Devices Trends**\.
 

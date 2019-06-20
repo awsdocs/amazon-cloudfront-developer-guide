@@ -1,30 +1,110 @@
-# Monitoring CloudFront Activity Using CloudWatch<a name="monitoring-using-cloudwatch"></a>
+# Monitoring CloudFront and Setting Alarms<a name="monitoring-using-cloudwatch"></a>
 
-Amazon CloudFront integrates with Amazon CloudWatch metrics so that you can monitor your website or application\. CloudFront currently provides six free metrics, and these metrics don't count against [CloudWatch limits](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_limits.html)\. When viewing metrics, you can specify a time interval of as little as one minute for time periods in the previous two weeks\.
+Amazon CloudFront is integrated with CloudWatch, and automatically publishes 10 operational metrics per distribution, displayed in a set of graphs in the CloudFront console in the AWS Management Console or accessible by using the CloudFront API or CLI\. These metrics don't count against [CloudWatch limits](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_limits.html)\.
 
-## Viewing Metrics for a Distribution<a name="viewing-metrics"></a><a name="monitoring-using-cloudwatch-procedure"></a>
+In the console, you can monitor your CloudFront distributions and the Lambda functions associated with them, as well as troubleshoot issues, by viewing metrics and using other functionality, such as access to regional log files, to help you track and debug issues\.
 
-**To view metrics for a distribution in the CloudWatch console**
+The following metrics are included for no additional cost:
++ Requests
++ Bytes downloaded
++ Bytes uploaded
++ 4xx error rate
++ 5xx error rate
++ 5xx error rate for Lambda@Edge
++ Total error rate
++ Lambda execution errors
++ Lambda invalid responses
++ Lambda throttles
+
+The **Monitoring** page in the console includes the following:
++ A list of all of your CloudFront distributions and a list of all of the Lambda@Edge functions that are associated with your distributions\. You can choose a distribution or function to select, and then view metrics associated with it\.
++ A view of distribution metrics that includes aggregated Lambda@Edge function HTTP 5xx errors, grouped by distribution, to help you see whether CloudFront HTTP 5xx errors are caused by your origins or by a Lambda@Edge function\.
++ A group of Lambda@Edge metrics graphs that show a regional breakdown of metrics by function execution errors, invalid function responses errors, and throttles\.
+
+To view graphs about the activity for a specific CloudFront distribution or Lambda function, choose one, and then choose to view the metrics\.
+
+You can also set alarms based on these metrics in the CloudFront console, or you can set alarms in the CloudWatch console with standard CloudWatch rates\. For example, you can set an alarm based on 5xxErrorRate metric in the CloudWatch console\. This metric represents the percentage of all requests for which the HTTP status code is 5xx\.
+
+**Topics**
++ [CloudFront Distribution Metrics](#monitoring-console.distributions)
++ [Lambda@Edge Function Metrics](#monitoring-console.lambda-at-edge)
++ [Setting Alarms to Receive Notifications](#receiving-notifications)
+
+## CloudFront Distribution Metrics<a name="monitoring-console.distributions"></a>
+
+Metrics for each CloudFront distribution are included on graphs on the **Overview** tab\. On each graph, the totals are displayed at 1\-minute granularity, and you can specify a time range and refresh rate\. You can also choose to download reports as CSV files \(see [Downloading Data in CSV Format](cloudwatch-csv.md)\)\.
+
+![\[Graphs for CloudFront distribution on the Monitoring page in the console\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+
+### Viewing Metrics for a Distribution<a name="viewing-metrics"></a>
+
+To view detailed graphs about a distribution, such as error rate metrics, follow these steps\.<a name="monitoring-using-cloudwatch-procedure"></a>
+
+**To view metrics for a distribution**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
-1. In the navigation pane, click **Monitoring and Alarms**\.
+1. In the navigation pane, click **Monitoring**, then choose a distribution\.
 
-1. In the **CloudFront Metrics and Alarms From CloudWatch** pane, specify the following values:   
-**From and To**  
-Select the date and time range for which you want to display CloudWatch metrics\.  
-**Granularity**  
-Specify the interval of the data points, for example, one per minute or one per hour\. Note that the time period that you choose affects the available granularity\. For example, if you choose to view data for two weeks, the finest granularity is one hour, and if you choose to view data for 24 hours, the finest granularity is one minute\.  
-**Web Distribution**  
-Select the distribution that you want to display metrics for\.
+1. Choose **View distribution metrics**\.
 
-1. Click **Update Graph** to refresh the graph based on the settings that you specified\.
+You can customize the graphs by doing the following:
++ To change the time range for the information displayed in the graphs, choose 1h \(1 hour\), 3h \(3 hours\), or another range, or specify a custom range\. 
++ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh interval\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
 
-## Receiving Notifications<a name="receiving-notifications"></a><a name="alarming-using-cloudwatch-procedure"></a>
+To view CloudFront graphs in the CloudWatch console, choose **Add to dashboard**\.
+
+#### Viewing Metrics for a Distribution<a name="viewing-metrics-tabs"></a>
+
+Metrics for distributions are shown on two tabs:
+
+*On the **Overview** tab*, graphs include metrics about total requests, data transfer, and the HTTP error rate, shown as a percentage of total requests\.
+
+*On the **Lambda@Edge errors** tab*, the console shows graphs for Lambda function execution errors, invalid function responses, and throttling by AWS Region for a distribution\. On the graphs are the number of errors returned by your Lambda@Edge functions for each type, grouped by AWS Region\. This gives you a starting point for troubleshooting specifically where an error comes from so that you can address it\.
+
+If you see a spike in errors that you want to investigate, for example, you can choose a function and then view log files by Region, until you determine which function is causing the problems and in which Region\. For more information about troubleshooting Lambda@Edge errors, see [How to Determine the Type of Failure](lambda-edge-testing-debugging.md#lambda-edge-testing-debugging-failure-type)\.
+
+For an example about how to use this information in troubleshooting HTTP errors, see [Four steps for debugging your content delivery on AWS](https://aws-blogs-prod.amazon.com/networking-and-content-delivery/four-steps-for-debugging-your-content-delivery-on-aws/)\.
+
+## Lambda@Edge Function Metrics<a name="monitoring-console.lambda-at-edge"></a>
+
+The **Monitoring** page in the AWS Management Console displays a list of all of the Lambda@Edge functions that are associated with the distributions in your account\. You choose a specific function, and then view several graphs about that function's activity\. For each graph, you can specify a time range and refresh rate\.
+
+![\[Choose a Lambda@Edge function on the Monitoring page in the console\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+
+The graphs for each Lambda function include the number of invocations, errors, throttles, and so on\. On each graph, the totals are displayed at 1\-minute granularity, grouped by AWS Region\.
+
+![\[Graphs about a specific Lambda@Edge function associated with a distribution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+
+### Viewing Metrics for a Function<a name="viewing-function-metrics"></a>
+
+To view detailed graphs about a function, such as invocations by Region, follow these steps\.<a name="monitoring-viewing-function-metrics-procedure"></a>
+
+**To view metrics for a function**
+
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+
+1. In the navigation pane, choose **Monitoring**\.
+
+1. Under **Lambda@Edge functions**, choose a function, and then choose **View function metrics**\.
+
+You can customize the graphs by doing the following:
++ To change the time range for the information displayed in the graphs, choose 1h \(1 hour\), 3h \(3 hours\), or another range, or specify a custom range\. 
++ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh interval\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
+
+To view the graphs in the CloudWatch console, choose **Add to dashboard**\.
+
+## Setting Alarms to Receive Notifications<a name="receiving-notifications"></a>
+
+In the CloudFront console, you can set alarms to notify you by Amazon Simple Notification Service based on specific CloudFront metrics\.<a name="alarming-using-cloudwatch-procedure"></a>
 
 **To receive an Amazon Simple Notification Service \(Amazon SNS\) notification based on a CloudFront metric**
 
-1. On the **CloudFront Metrics and Alarms From CloudWatch** page, expand the list of existing alarms to confirm that the alarm that you want to create doesn't already exist\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+
+1. In the navigation pane, click **Alarms**, then choose a distribution\.
+
+1. On the **Alarms** page, expand the list of existing alarms to confirm that the alarm that you want to create doesn't already exist\.
 
 1. Click **Create Alarm**\.
 
@@ -48,72 +128,6 @@ Note the following about specifying values for *value*:
 Specify how many consecutive time periods of the specified duration the metric must meet the criteria before CloudWatch sends notification\. When you choose a value, you need to find an appropriate balance between a value that produces frequent notifications for fleeting problems and delayed notifications for real problems\.
 
 1. If you created a new Amazon SNS topic, when you click **Create**, Amazon SNS sends you an email with information about the new topic\. Follow the instructions in the email\. 
-
-## Downloading Data in CSV Format<a name="cloudwatch-csv"></a>
-
-You can download the CloudWatch Metrics report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="cloudwatch-csv-procedure"></a>
-
-**To download the CloudWatch Metrics report in CSV format**
-
-1. While viewing the CloudWatch metrics, click **CSV**\.
-
-1. In the **Opening *file name*** dialog box, choose whether to open or save the file\.
-
-### Information About the Report<a name="cloudwatch-csv-header"></a>
-
-The first few rows of the report include the following information:
-
-**Version**  
-The CloudFront reporting version\.
-
-**Report**  
-The name of the report\.
-
-**DistributionID**  
-The ID of the distribution that you ran the report for\.
-
-**StartDateUTC**  
-The beginning of the date range for which you ran the report, in Coordinated Universal Time \(UTC\)\.
-
-**EndDateUTC**  
-The end of the date range for which you ran the report, in Coordinated Universal Time \(UTC\)\.
-
-**GeneratedTimeUTC**  
-The date and time on which you ran the report, in Coordinated Universal Time \(UTC\)\.
-
-**Granularity**  
-The time period for each row in the report, for example, ONE\_MINUTE\. 
-
-### Data in the CloudWatch Metrics Report<a name="cloudwatch-csv-data"></a>
-
-The report includes the following values:
-
-**DistributionID**  
-The ID of the distribution that you ran the report for\.
-
-**FriendlyName**  
-An alternate domain name \(CNAME\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes an origin domain name for the distribution\.
-
-**TimeBucket**  
-The hour or the day that data applies to, in Coordinated Universal Time \(UTC\)\.
-
-**Requests**  
-The total number of requests for all HTTP status codes \(for example, 200 or 404\) and all methods \(for example, GET, HEAD, or POST\) during the time period\.
-
-**BytesDownloaded**  
-The number of bytes that viewers downloaded for the specified distribution during the time period\.
-
-**BytesUploaded**  
-The number of bytes that viewers uploaded to your origin for the specified distribution during the time period\.
-
-**TotalErrorRatePct**  
-Requests for which the HTTP status code was a 4xx or 5xx error for the specified distribution during the time period\.
-
-**4xxErrorRatePct**  
-Requests for which the HTTP status code was a 4xx error for the specified distribution during the time period\.
-
-**5xxErrorRatePct**  
-Requests for which the HTTP status code was a 5xx error for the specified distribution during the time period\.
 
 ## Amazon CloudFront Metrics<a name="cloudfront-metrics"></a>
 

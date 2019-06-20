@@ -1,14 +1,21 @@
 # Restricting Access to Amazon S3 Content by Using an Origin Access Identity<a name="private-content-restricting-access-to-s3"></a>
 
+To restrict access to content that you serve from Amazon S3 buckets, you create CloudFront signed URLs or signed cookies to limit access to files in your Amazon S3 bucket, and then you create a special CloudFront user called an origin access identity \(OAI\) and associate it with your distribution\. Then you configure permissions so that CloudFront can use the OAI to access and serve files to your users, but users can't use a direct URL to the S3 bucket to access a file there\. Taking these steps help you maintain secure access to the files that you serve through CloudFront\.
+
+In general, if you're using an Amazon S3 bucket as the origin for a CloudFront distribution, you can either allow everyone to have access to the files there, or you can restrict access\. If you limit access by using, for example, CloudFront signed URLs or signed cookies, you also won't want people to be able to view files by simply using the direct URL for the file\. Instead, you want them to only access the files by using the CloudFront URL, so your protections work\. For more information about using signed URLs and signed cookies, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)
+
+This topic explains in detail how to set up the OAI and grant permissions to maintain secure access to your S3 files\.
+
+**Important**  
+If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin and you can't use the origin access identity feature described in this topic\. However, you *can* restrict access to content on a custom origin by setting up custom headers and configuring your origin to require them\. For more information, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
+
 **Topics**
++ [Overview of Origin Access Identity Setup](#private-content-restricting-access-to-s3-overview)
 + [Creating a CloudFront Origin Access Identity and Adding it to Your Distribution](#private-content-creating-oai)
 + [Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)
 + [Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication](#private-content-origin-access-identity-signature-version-4)
 
-If you're using an Amazon S3 bucket as the origin for a CloudFront distribution, you can either allow everyone to have access to the files there, or you can restrict access\. If you limit access by using, for example, CloudFront signed URLs or signed cookies, you also won't want people to be able to view files by simply using the direct URL for the file\. Instead, you want them to only access the files by using the CloudFront URL, so your protections work\.
-
-**Important**  
-If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin and you can't use the origin access identity feature described in this topic\. You can restrict access to content on a custom origin by using custom headers\. For more information, see [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](forward-custom-headers.md#forward-custom-headers-restrict-access)\.
+## Overview of Origin Access Identity Setup<a name="private-content-restricting-access-to-s3-overview"></a>
 
 When you first set up an Amazon S3 bucket as the origin for a CloudFront distribution, you grant everyone permission to read the files in your bucket\. This allows anyone to access your files either through CloudFront or using the Amazon S3 URL\. CloudFront doesn't expose Amazon S3 URLs, but your users might have those URLs if your application serves any files directly from Amazon S3 or if anyone gives out direct links to specific files in Amazon S3\.
 
@@ -20,10 +27,8 @@ To ensure that your users access your files using only CloudFront URLs, regardle
 
 1. Change the permissions either on your Amazon S3 bucket or on the files in your bucket so that only the origin access identity has read permission \(or read and download permission\)\. When your users access your Amazon S3 files through CloudFront, the CloudFront origin access identity gets the files on behalf of your users\. If your users request files directly by using Amazon S3 URLs, they're denied access\. The origin access identity has permission to access files in your Amazon S3 bucket, but users don't\. For more information, see [Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
 
-**Note**  
-To create origin access identities, you must use the CloudFront console or CloudFront API version 2009\-09\-09 or later\.
-
-For detailed information about setting up a private Amazon S3 bucket to use with CloudFront, see [ How to Set Up and Serve Private Content Using S3 and Amazon CloudFront](http://improve.dk/how-to-set-up-and-serve-private-content-using-s3/)\. 
+**Tip**  
+If you're just getting started with setting up CloudFront with private content on an S3 bucket, you might find it helpful to read through the following blog post for an end\-to\-end view of the process: [How to Set Up and Serve Private Content Using S3 and Amazon CloudFront](http://improve.dk/how-to-set-up-and-serve-private-content-using-s3/)\. 
 
 ## Creating a CloudFront Origin Access Identity and Adding it to Your Distribution<a name="private-content-creating-oai"></a>
 
@@ -34,6 +39,9 @@ If you didn't create an origin access identity and add it to your distribution w
 + **To use the CloudFront API** – You create an origin access identity, and then you add it to your distribution\. For step\-by\-step instructions, see the following:
   + [Creating an Origin Access Identity Using the CloudFront API](#private-content-creating-oai-api)
   + [Adding an Origin Access Identity to Your Distribution Using the CloudFront API](#private-content-adding-oai-api)
+
+**Note**  
+To create origin access identities, you must use the CloudFront console or CloudFront API version 2009\-09\-09 or later\.
 
 ### Creating an Origin Access Identity and Adding it to Your Distribution<a name="private-content-creating-oai-console"></a>
 

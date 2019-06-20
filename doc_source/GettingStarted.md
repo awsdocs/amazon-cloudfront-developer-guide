@@ -36,11 +36,13 @@ If you want to restrict who can download your content, you can use the CloudFron
 
 1. In the Amazon S3 console, choose **Create Bucket**\.
 
-1. In the **Create Bucket** dialog, on the **Name and region** page, enter a bucket name\.
+1. In the **Create Bucket** dialog, on the **Name and region** page, do the following:
+
+   1. Enter a bucket name\.
 **Important**  
 For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-1. Select a region for your bucket\. By default, Amazon S3 creates buckets in the US East \(N\. Virginia\) region\. We recommend that you choose a region close to you to optimize latency and minimize costs, or you might choose another region to address regulatory requirements\.
+   1. Select an AWS Region for your bucket\. By default, Amazon S3 creates buckets in the US East \(N\. Virginia\) Region\. We recommend that you choose a Region close to you to optimize latency and minimize costs, or you might choose another Region to address regulatory requirements\.
 
 1. Choose **Next**\.
 
@@ -48,9 +50,8 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 1. Choose **Next**\.
 
-1. On the **Set permissions** page, clear the following two checkboxes:
-   + **Block new public ACLs and uploading public objects**
-   + **Remove public access granted through public ACLs**
+1. On the **Set permissions** page, clear the following checkbox:
+   + **Block all public access**
 
    You must allow public read access to the bucket and files so that CloudFront URLs can serve content from the bucket\. However, you can restrict access to specific content by using the CloudFront private content feature\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
 
@@ -88,8 +89,9 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 1. Choose **Create Distribution**\.
 
-1. On the **Select a delivery method for your content** page, in the **Web** section, choose **Get Started**\.  
-![\[Select Web as the distribution type.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-1.png)
+1. On the **Select a delivery method for your content** page, in the **Web** section or the **RTMP** section, choose **Get Started**\.
+   + For most scenarios, you create a web distribution\.
+   + To create a distribution to stream media files using Adobe Media Server and the Adobe Real\-Time Messaging Protocol \(RTMP\), you create an RTMP distribution\. For more information, see [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\.
 
 1. On the **Create Distribution** page, under **Origin Settings**, choose the Amazon S3 bucket that you created earlier\. For **Origin ID**, **Origin Path**, **Restrict Bucket Access**, and **Origin Custom Headers**, accept the default values\.  
 ![\[Specify the Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-2-origin-s3-get-started.png)

@@ -15,7 +15,7 @@ When you create a distribution, you specify where CloudFront sends requests for 
 
 When you use Amazon S3 as an origin for your distribution, you place any objects that you want CloudFront to deliver in an Amazon S3 bucket\. You can use any method that is supported by Amazon S3 to get your objects into Amazon S3, for example, the Amazon S3 console or API, or a third\-party tool\. You can create a hierarchy in your bucket to store the objects, just as you would with any other Amazon S3 bucket\.
 
-Using an existing Amazon S3 bucket as your CloudFront origin server doesn't change the bucket in any way; you can still use it as you normally would to store and access Amazon S3 objects at the standard Amazon S3 price\. You incur regular Amazon S3 charges for storing the objects in the bucket\. For more information about the charges to use CloudFront, see [CloudFront Reports](reports.md)\.
+Using an existing Amazon S3 bucket as your CloudFront origin server doesn't change the bucket in any way; you can still use it as you normally would to store and access Amazon S3 objects at the standard Amazon S3 price\. You incur regular Amazon S3 charges for storing the objects in the bucket\. For more information about the charges to use CloudFront, see [CloudFront Reports in the Console](reports.md)\.
 
 **Important**  
 For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
@@ -48,7 +48,7 @@ For more information about specifying Amazon S3 static website endpoints, see [W
 
 When you specify the bucket name in this format as your origin, you can use Amazon S3 redirects and Amazon S3 custom error documents\. For more information about Amazon S3 features, see the [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html)\. \(CloudFront also provides custom error pages\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.\) 
 
-Using an Amazon S3 bucket as your CloudFront origin server doesn't change it in any way\. You can still use it as you normally would and you incur regular Amazon S3 charges\. For more information about the charges to use CloudFront, see [CloudFront Reports](reports.md)\.
+Using an Amazon S3 bucket as your CloudFront origin server doesn't change it in any way\. You can still use it as you normally would and you incur regular Amazon S3 charges\. For more information about the charges to use CloudFront, see [CloudFront Reports in the Console](reports.md)\.
 
 **Note**  
 If you use the CloudFront API to create your distribution with an Amazon S3 bucket that is configured as a website endpoint, you must configure it by using `CustomOriginConfig`, even though the website is hosted in an Amazon S3 bucket\. For more information about creating distributions by using the CloudFront API, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
@@ -77,7 +77,7 @@ Follow these guidelines for using Amazon EC2 instances and other custom origins 
 + Restrict access requests to the HTTP and HTTPS ports that your custom origin listens on\.
 + Synchronize the clocks of all servers in your implementation\. Note that CloudFront uses Coordinated Universal Time \(UTC\) for signed URLs and signed cookies, for access logs, and reports\. In addition, if you monitor CloudFront activity using CloudWatch metrics, note that CloudWatch also uses UTC\.
 + Use redundant servers to handle failures\.
-+ For information about using a custom origin to serve private content, see [Using an HTTP Server for Private Content](PrivateContent.md#private-content-overview-choosing-origin)\.
++ For information about using a custom origin to serve private content, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 + For information about request and response behavior and about supported HTTP status codes, see [Request and Response Behavior](RequestAndResponseBehavior.md)\.
 
 If you use Amazon EC2 for your custom origins, we recommend that you do the following:

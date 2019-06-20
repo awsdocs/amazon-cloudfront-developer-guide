@@ -85,7 +85,7 @@ The number of viewer requests for which the object isn't currently in an edge ca
 The value of `HitCount` as a percentage of the value of `RequestCount`\.
 
 **BytesFromMisses**  
-The number of bytes served to viewers for this object when the object was not in the applicable edge cache at the time of the request\. 
+The number of bytes served to viewers for this object when the object was not in the edge cache at the time of the request\. 
 
 **TotalBytes**  
 The total number of bytes served to viewers by CloudFront for this object in response to all requests for all HTTP methods\.
@@ -125,7 +125,7 @@ The number of viewer requests for which the object wasn't in an edge cache, so C
 The value of the **Hits** column as a percentage of the value of the **Requests** column\.
 
 **Bytes from Misses**  
-The number of bytes served to viewers for objects that were not in the applicable edge cache at the time of the request\. In CloudFront access logs, **Bytes from Misses** is the sum of the values in the `sc-bytes` column for requests for which the value of `x-edge-result-type` is `Miss`\. 
+The number of bytes served to viewers for objects that were not in the edge cache at the time of the request\. In CloudFront access logs, **Bytes from Misses** is the sum of the values in the `sc-bytes` column for requests for which the value of `x-edge-result-type` is `Miss`\. 
 
 **Total Bytes**  
 The total number of bytes that CloudFront served to viewers in response to all requests for the object for all HTTP methods\. In CloudFront access logs, **Total Bytes** is the sum of the values in the `sc-bytes` column for all of the requests during the same time period\.

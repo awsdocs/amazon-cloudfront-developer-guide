@@ -120,7 +120,7 @@ The number of viewer requests for which the HTTP status code was a 5xx value \(s
 The total number of bytes served to viewers by CloudFront in response to all requests for all HTTP methods\.
 
 **BytesFromMisses**  
-The number of bytes served to viewers for objects that were not in the applicable edge cache at the time of the request\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
+The number of bytes served to viewers for objects that were not in the edge cache at the time of the request\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
 
 ## How Cache Statistics Charts Are Related to Data in the CloudFront Access Logs<a name="cache-statistics-data"></a>
 
@@ -139,7 +139,7 @@ The chart does not include refresh hits—requests for objects that are in the e
 **Bytes Transferred to Viewers**  
 This chart shows two values:  
 + **Total Bytes** – The total number of bytes served to viewers by CloudFront in response to all requests for all HTTP methods\. In CloudFront access logs, **Total Bytes** is the sum of the values in the `sc-bytes` column for all of the requests during the same time period\.
-+ **Bytes from Misses** – The number of bytes served to viewers for objects that were not in the applicable edge cache at the time of the request\. In CloudFront access logs, **Bytes from Misses** is the sum of the values in the `sc-bytes` column for requests for which the value of `x-edge-result-type` is `Miss`\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
++ **Bytes from Misses** – The number of bytes served to viewers for objects that were not in the edge cache at the time of the request\. In CloudFront access logs, **Bytes from Misses** is the sum of the values in the `sc-bytes` column for requests for which the value of `x-edge-result-type` is `Miss`\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
 
 **HTTP Status Codes**  
 This chart shows viewer requests by HTTP status code\. In CloudFront access logs, status codes appear in the `sc-status` column:  

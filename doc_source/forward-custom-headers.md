@@ -9,14 +9,14 @@ Custom headers have a variety of uses, such as the following:
 + You can identify the requests that are forwarded to your custom origin by CloudFront\. This is useful if you want to know whether users are bypassing CloudFront or if you're using more than one CDN and you want information about which requests are coming from each CDN\. \(If you're using an Amazon S3 origin and you enable [Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html), the logs don't include header information\.\)
 + If you've configured more than one CloudFront distribution to use the same origin, you can specify different custom headers for the origins in each distribution and use the logs for your web server to distinguish between the requests that CloudFront forwards for each distribution\.
 + If some of your users use viewers that don't support cross\-origin resource sharing \(CORS\), you can configure CloudFront to forward the `Origin` header to your origin\. That will cause your origin to return the `Access-Control-Allow-Origin` header for every request\.
-+ You can use custom headers together and, optionally, signed URLs or signed cookies, to control access to content on a custom origin\. If you configure your custom origin to respond to requests only if they include a custom header, you can prevent users from bypassing CloudFront and submitting requests directly to your origin\. 
++ You can use custom headers and, optionally, signed URLs or signed cookies, to control access to content on a custom origin\. If you configure your custom origin to respond to requests only if they include a custom header, you can prevent users from bypassing CloudFront and submitting requests directly to your origin\. For more information, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 **Topics**
 + [Configuring CloudFront to Forward Custom Headers to Your Origin](#forward-custom-headers-configure)
 + [Custom Headers that CloudFront Can't Forward to Your Origin](#forward-custom-headers-blacklist)
-+ [Using Custom Headers for Cross\-Origin Resource Sharing \(CORS\)](#forward-custom-headers-cors)
++ [Use Custom Headers for Cross\-Origin Resource Sharing \(CORS\)](#forward-custom-headers-cors)
++ [Use Custom Headers to Restrict Access to Content](#forward-custom-headers-to-restrict-access)
 + [Configure CloudFront to Forward Authorization Headers](#forward-custom-headers-authorization-headers)
-+ [Using Custom Headers to Restrict Access to Your Content on a Custom Origin](#forward-custom-headers-restrict-access)
 
 ## Configuring CloudFront to Forward Custom Headers to Your Origin<a name="forward-custom-headers-configure"></a>
 
@@ -54,33 +54,14 @@ You can't configure CloudFront to forward the following custom headers to your o
 | Max\-Forwards | Headers that begin with X\-Edge\-\* | 
 | Pragma | X\-Real\-Ip | 
 
-## Using Custom Headers for Cross\-Origin Resource Sharing \(CORS\)<a name="forward-custom-headers-cors"></a>
+## Use Custom Headers for Cross\-Origin Resource Sharing \(CORS\)<a name="forward-custom-headers-cors"></a>
 
 You can configure CloudFront to always forward specific headers to your origin to accommodate viewers that don't automatically include those headers in requests\. You also need to configure CloudFront to respect CORS settings\. For more information, see [Configuring CloudFront to Respect CORS Settings](header-caching.md#header-caching-web-cors)\.
+
+## Use Custom Headers to Restrict Access to Content<a name="forward-custom-headers-to-restrict-access"></a>
+
+You can configure CloudFront to always forward specific headers to your origin as part of a configuration to restrict access to content on your origin\. For more information, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 ## Configure CloudFront to Forward Authorization Headers<a name="forward-custom-headers-authorization-headers"></a>
 
 When it forwards requests to your origin, CloudFront removes some headers by default, including authorization headers\. If you want to always forward authorization headers for a specific cache behavior, be sure that you whitelist the headers for that cache behavior\. To learn more, see [Whitelist Headers](distribution-web-values-specify.md#DownloadDistValuesWhitelistHeaders)\.
-
-## Using Custom Headers to Restrict Access to Your Content on a Custom Origin<a name="forward-custom-headers-restrict-access"></a>
-
-If you're using a custom origin, you can use custom headers to prevent users from bypassing CloudFront and requesting content directly from your origin\. You can also optionally restrict access to your content by requiring that your users access your objects by using either signed URLs or signed cookies\. For more information about private content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
-
-To require that users access your content through CloudFront, change the following settings in your CloudFront distributions:
-
-**Origin Custom Headers**  
-Configure CloudFront to forward custom headers to your origin\. See [Configuring CloudFront to Forward Custom Headers to Your Origin](#forward-custom-headers-configure)\.
-
-**Viewer Protocol Policy**  
-Configure your distribution to require viewers to use HTTPS to access CloudFront\. See [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.
-
-**Origin Protocol Policy**  
-Configure your distribution to require CloudFront to use the same protocol as viewers to forward requests to the origin\. See [Origin Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)\.
-
-The combination of **Viewer Protocol Policy** and **Origin Protocol Policy** ensure that your custom headers are encrypted between the viewer and your origin\. However, we recommend that you periodically perform the following tasks to rotate the custom headers that CloudFront forwards to your origin:
-
-1. Update your CloudFront distribution to begin forwarding a new header to your custom origin\.
-
-1. Update your application to accept the new header as confirmation that the request is coming from CloudFront\.
-
-1. When viewer requests no longer include the header that you're replacing, update your application to no longer accept the old header as confirmation that the request is coming from CloudFront\.
