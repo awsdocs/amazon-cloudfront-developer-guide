@@ -19,8 +19,6 @@ See the following sections for requirements and restrictions on using Lambda fun
 + [URI and Query String Encoding](#lambda-requirements-encoding)
 
 ## CloudFront Distributions and Associations<a name="lambda-requirements-distributions"></a>
-+ You can create triggers \(associations\) for Lambda functions for a maximum of 25 distributions per AWS account\.
-+ You can create a maximum of 100 triggers \(associations\) for a distribution\. 
 + You cannot associate a Lambda function with a CloudFront distribution owned by another AWS account\. 
 
 ## CloudFront Triggers for Lambda Functions<a name="lambda-requirements-cloudfront-triggers"></a>
@@ -122,7 +120,7 @@ CloudFront doesn't execute Lambda functions for viewer response events if the or
 You can, however, execute Lambda functions for *origin* response errors, including HTTP status codes 4xx and 5xx\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
 
 ## Lambda Function Configuration and Execution Environment<a name="lambda-requirements-lambda-function-configuration"></a>
-+ You must create functions with the `nodejs8.10` or `nodejs10.x` runtime property\.
++ You must create functions with the `nodejs8.10`, `nodejs10.x`, or `python3.7` runtime property\.
 **Note**  
 If you have a function with the `nodejs6.10` property, you can still edit the function and associate it with a CloudFront distribution\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide*\.
 + You can't configure your Lambda function to access resources inside your VPC\.

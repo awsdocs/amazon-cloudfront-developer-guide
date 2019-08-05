@@ -4,7 +4,7 @@ This section includes downloadable application examples that demonstrate how to 
 
 For an example of how to use cookies with Ruby on Rails, see [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content) in the topic [Amazon CloudFront Related Information](Resources.md)\.
 
-You can find example code for signed URLs and for signed cookies in a variety of programming languages\. Perform an internet search on `sample app` *language* `cloudfront signed URLs` or on `sample app` *language* `cloudfront signed cookies`\.
+You can find example code for signed URLs and for signed cookies in a variety of programming languages\. Do an internet search on `sample app` *language* `cloudfront signed URLs` or on `sample app` *language* `cloudfront signed cookies`\.
 
 **Topics**
 + [Create a URL Signature Using Perl](CreateURLPerl.md)

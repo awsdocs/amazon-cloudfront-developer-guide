@@ -277,7 +277,7 @@ This topic contains information about how CloudFront processes responses from yo
 + [Content Negotiation](#ResponseCustomContentNegotiation)
 + [Cookies](#ResponseCustomCookies)
 + [Dropped TCP Connections](#ResponseCustomDroppedTCPConnections)
-+ [HTTP Response Headers that CloudFront Removes or Updates](#ResponseCustomRemovedHeaders)
++ [HTTP Response Headers that CloudFront Removes or Replaces](#ResponseCustomRemovedHeaders)
 + [Maximum File Size](#ResponseCustomMaxFileSize)
 + [Origin Unavailable](#ResponseCustomOriginUnavailable)
 + [Redirects](#ResponseCustomRedirects)
@@ -300,7 +300,7 @@ If an object is not in the edge cache, and if a viewer terminates a session \(fo
 
 If your origin returns `Vary:*` in the response, and if the value of **Minimum TTL** for the corresponding cache behavior is **0**, CloudFront caches the object but still forwards every subsequent request for the object to the origin to confirm that the cache contains the latest version of the object\. CloudFront doesn't include any conditional headers, such as `If-None-Match` or `If-Modified-Since`\. As a result, your origin returns the object to CloudFront in response to every request\.
 
-If your origin returns `Vary:*` in the response, and if the value of **Minimum TTL** for the corresponding cache behavior is any other value, CloudFront processes the `Vary` header as described in [HTTP Response Headers that CloudFront Removes or Updates](#ResponseCustomRemovedHeaders)\.
+If your origin returns `Vary:*` in the response, and if the value of **Minimum TTL** for the corresponding cache behavior is any other value, CloudFront processes the `Vary` header as described in [HTTP Response Headers that CloudFront Removes or Replaces](#ResponseCustomRemovedHeaders)\.
 
 ### Cookies<a name="ResponseCustomCookies"></a>
 
@@ -315,7 +315,7 @@ If the TCP connection between CloudFront and your origin drops while your origin
 
 We recommend that you configure your HTTP server to add a `Content-Length` header to prevent CloudFront from caching partial objects\.
 
-### HTTP Response Headers that CloudFront Removes or Updates<a name="ResponseCustomRemovedHeaders"></a>
+### HTTP Response Headers that CloudFront Removes or Replaces<a name="ResponseCustomRemovedHeaders"></a>
 
 CloudFront removes or updates the following header fields before forwarding the response from your origin to the viewer: 
 + `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Caching Content Based on Cookies](Cookies.md)\.

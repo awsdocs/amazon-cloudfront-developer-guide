@@ -65,9 +65,11 @@ If you have enabled cross\-origin resource sharing \(CORS\) on an Amazon S3 buck
 + If you want `OPTIONS` responses to be cached, do the following:
   + Choose the options for default cache behavior settings that enable caching for `OPTIONS` responses\. 
   + Configure CloudFront to forward the following headers: `Origin`, `Access-Control-Request-Headers`, and `Access-Control-Request-Method`\.
-+ If you don't want `OPTIONS` responses to be cached, configure CloudFront to forward the `Origin` header, together with any other headers required by your origin\.
++ If you don't want `OPTIONS` responses to be cached, configure CloudFront to forward the `Origin` header, together with any other headers required by your origin \(for example, `Access-Control-Request-Headers`, `Access-Control-Request-Method`, or others\)\.
 
 **Custom origins** – Forward the `Origin` header along with any other headers required by your origin\.
+
+You configure CloudFront to forward headers by whitelisting the headers in a cache behavior for your CloudFront distribution\. For more information about working with header forwarding, see [Headers and Distributions \- Overview](#header-caching-web)\.
 
 For more information about CORS and Amazon S3, see [Enabling Cross\-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
@@ -113,4 +115,4 @@ When CloudFront caches based on header values, it doesn't consider the case of t
 
 Configuring CloudFront to forward and cache headers does not affect which headers CloudFront returns to the viewer\. CloudFront returns all of the headers that it gets from the origin with a few exceptions\. For more information, see the applicable topic:
 + **Amazon S3 origins – ** See [HTTP Response Headers That CloudFront Removes or Updates](RequestAndResponseBehaviorS3Origin.md#response-s3-removed-headers)\.
-+ **Custom origins – ** See [HTTP Response Headers that CloudFront Removes or Updates](RequestAndResponseBehaviorCustomOrigin.md#ResponseCustomRemovedHeaders)\.
++ **Custom origins – ** See [HTTP Response Headers that CloudFront Removes or Replaces](RequestAndResponseBehaviorCustomOrigin.md#ResponseCustomRemovedHeaders)\.

@@ -5,7 +5,7 @@
 + [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)
 + [Creating a Signature for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-signature-cookies)
 
-To set a signed cookie that uses a custom policy, perform the following procedure\.<a name="private-content-setting-signed-cookie-custom-policy-procedure"></a>
+To set a signed cookie that uses a custom policy, do the following procedure\.<a name="private-content-setting-signed-cookie-custom-policy-procedure"></a>
 
 **To set a signed cookie using a custom policy**
 
@@ -58,7 +58,7 @@ The policy statement controls the access that a signed cookie grants to a user: 
 A hashed, signed, and base64\-encoded version of the JSON policy statement\. For more information, see [Creating a Signature for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-signature-cookies)\.  
 **`CloudFront-Key-Pair-Id`**  
 The ID for an active CloudFront key pair, for example, APKA9ONS7QCOWEXAMPLE\. The CloudFront key pair ID tells CloudFront which public key to use to validate the signed cookie\. CloudFront compares the information in the signature with the information in the policy statement to verify that the URL has not been tampered with\.  
-The key pair ID that you include in CloudFront signed cookies must be associated with an AWS account that is one of the trusted signers for the applicable cache behavior\.  
+The key pair ID that you include in CloudFront signed cookies must be associated with an AWS account that is one of the trusted signers for the cache behavior\.  
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, you must update your application to use a new active key pair for one of your trusted signers\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
 
@@ -82,7 +82,7 @@ If you want to use an alternate domain name such as example\.com in URLs, you mu
 
 ## Creating a Policy Statement for a Signed Cookie That Uses a Custom Policy<a name="private-content-custom-policy-statement-cookies"></a>
 
-To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to files in a variety of ways, see [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)\.<a name="private-content-custom-policy-statement-cookies-procedure"></a>
+To create a policy statement for a custom policy, do the following procedure\. For several example policy statements that control access to files in a variety of ways, see [Example Policy Statements for a Signed Cookie That Uses a Custom Policy](#private-content-custom-policy-statement-signed-cookies-examples)\.<a name="private-content-custom-policy-statement-cookies-procedure"></a>
 
 **To create the policy statement for a signed cookie that uses a custom policy**
 
@@ -169,7 +169,7 @@ IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, ar
 
 The following example policy statements show how to control access to a specific file, all of the files in a directory, or all of the files associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed cookie after a specified date and time\.
 
-If you copy and paste any of these examples, remove any whitespace \(including tabs and newline characters\), replace the applicable values with your own values, and include a newline character after the closing brace \( \} \)\.
+If you copy and paste any of these examples, remove any whitespace \(including tabs and newline characters\), replace the values with your own values, and include a newline character after the closing brace \( \} \)\.
 
 For more information, see [Values That You Specify in the Policy Statement for a Custom Policy for Signed Cookies](#private-content-custom-policy-statement-cookies-values)\.
 
@@ -256,7 +256,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 1. Use the SHA\-1 hash function and RSA to hash and sign the JSON policy statement that you created in the procedure [To create the policy statement for a signed URL that uses a custom policy](private-content-creating-signed-url-custom-policy.md#private-content-custom-policy-creating-policy-procedure)\. Use the version of the policy statement that no longer includes whitespace but that has not yet been base64\-encoded\.
 
-   For the private key that is required by the hash function, use the private key that is associated with the applicable active trusted signer\.
+   For the private key that is required by the hash function, use the private key that is associated with the active trusted signer\.
 **Note**  
 The method that you use to hash and sign the policy statement depends on your programming language and platform\. For sample code, see [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)\.
 

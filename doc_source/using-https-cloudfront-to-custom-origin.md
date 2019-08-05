@@ -1,12 +1,18 @@
 # Requiring HTTPS for Communication Between CloudFront and Your Custom Origin<a name="using-https-cloudfront-to-custom-origin"></a>
 
-If you want to require HTTPS for communication between CloudFront and your custom origin, *and* you're using the domain name that CloudFront assigned to your distribution in the URLs for your objects \(for example, https://d111111abcdef8\.cloudfront\.net/logo\.jpg\), follow the procedures in this topic to do the following:
-+ Change the **Origin Protocol Policy** setting for the applicable origins in your distribution
+If you want to require HTTPS for communication between CloudFront and your custom origin, the steps you take depend on whether you're using the domain name that CloudFront assigned to your distribution \(like d111111abcdef8\.cloudfront\.net\) or your own alternate domain name \(like example\.com\)\. 
+
+**Note**  
+If you use an Amazon S3 bucket as your origin and you configure your bucket as a website endpoint, follow the guidance in this section\. If not, to use your Amazon S3 bucket with HTTPS, see [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)\.
+
+**Use the default CloudFront domain name**  
+If you're using the domain name that CloudFront assigned to your distribution in the URLs for your objects \(for example, https://d111111abcdef8\.cloudfront\.net/logo\.jpg\), you can require HTTPS by following the procedures in this topic to do the following:  
++ Change the **Origin Protocol Policy** setting for specific origins in your distribution
 + Install an SSL/TLS certificate on your custom origin server \(this isn't required when you use an Amazon S3 origin\)
 
-If you're using an Amazon S3 bucket as your origin, if you've configured your Amazon S3 bucket as a website endpoint, follow the guidance in this section\. If not, to use your Amazon S3 bucket with HTTPS, see [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)\.
-
-If you're using an alternate domain instead of the domain that CloudFront assigned to your distribution, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+**Use an alternate domain name**  
+Instead of using the default domain name with your distribution, you can add an alternate domain name that's easier to work with, like example\.com\.   
+To require HTTPS for communication when you use an alternate domain name, follow the steps and guidance in [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\. 
 
 **Topics**
 + [Changing CloudFront Settings](#using-https-cloudfront-to-origin-distribution-setting)
@@ -58,9 +64,7 @@ When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies 
 **Important**  
 If the origin server returns an expired certificate, an invalid certificate, or a self\-signed certificate, or if the origin server returns the certificate chain in the wrong order, CloudFront drops the TCP connection, returns HTTP status code 502 \(Bad Gateway\), and sets the `X-Cache` header to `Error from cloudfront`\. Also, if the full chain of certificates, including the intermediate certificate, is not present, CloudFront drops the TCP connection\. 
 
-The certificate must cover one or both of the following domains:
-+ The value that you specified for **Origin Domain Name** for the applicable origin in your distribution\.
-+ If you configured CloudFront to forward the `Host` header to your origin, the value of the `Host` header\. For more information about forwarding headers to your origin, see [Caching Content Based on Request Headers](header-caching.md)\.
+The certificate returned from the origin must cover the domain that you specified for **Origin Domain Name** for the corresponding origin in your distribution\. In addition, if you configured CloudFront to forward the `Host` header to your origin, the origin must respond with a certificate matching the domain in the `Host` header\.
 
 ## About RSA and ECDSA Ciphers<a name="using-https-cloudfront-to-origin-about-ciphers"></a>
 

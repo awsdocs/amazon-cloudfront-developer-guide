@@ -29,6 +29,7 @@ If you've already created one or more triggers, CloudFront is the default servic
 Choose the ID of the distribution that you want to add the trigger to\.  
 **Cache behavior**  
 Choose the cache behavior that specifies the objects that you want to execute the function on\.  
+If you specify `*` for the cache behavior, the Lambda function deploys to the default cache behavior\.  
 **CloudFront event**  
 Choose the CloudFront event that causes the function to execute\.  
 **Include body**  

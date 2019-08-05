@@ -153,7 +153,7 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 | Entity | Limit | 
 | --- | --- | 
 | Distributions per AWS account that you can create triggers for |  25 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Triggers per distribution |  25 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Triggers per distribution |  100 [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Requests per second  |  10,000 \(in each region\) [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Concurrent executions For more information, see [Lambda Function Concurrent Executions](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(in each region\) [ Request a higher limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 
@@ -164,7 +164,7 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 
 | Entity | Limit | 
 | --- | --- | 
-| Request timeout  |  30 seconds [ Request a higher limit](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
+| Request timeout For more information, see [Origin Response Timeout](RequestAndResponseBehaviorCustomOrigin.md#request-custom-request-timeout)\.  |  30 seconds [ Request a higher limit](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
 
 ## Limits on RTMP Distributions<a name="limits-rtmp-distributions"></a>
 

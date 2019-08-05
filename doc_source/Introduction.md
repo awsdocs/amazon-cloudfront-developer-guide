@@ -42,12 +42,12 @@ You create a CloudFront distribution to tell CloudFront where you want content t
 
 1. You create a CloudFront *distribution*, which tells CloudFront which origin servers to get your files from when users request the files through your web site or application\. At the same time, you specify details such as whether you want CloudFront to log all requests and whether you want the distribution to be enabled as soon as it's created\.
 
-1. CloudFront assigns a domain name to your new distribution that you can see in the CloudFront console, or that is returned in the response to a programmatic request, for example, an API request\.
+1. CloudFront assigns a domain name to your new distribution that you can see in the CloudFront console, or that is returned in the response to a programmatic request, for example, an API request\. If you like, you can add an alternate domain name to use instead\.
 
-1. CloudFront sends your distribution's configuration \(but not your content\) to all of its **edge locations**—collections of servers in geographically dispersed data centers where CloudFront caches copies of your objects\.
+1. CloudFront sends your distribution's configuration \(but not your content\) to all of its *edge locations* or *points of presence* \(POPs\)— collections of servers in geographically\-dispersed data centers where CloudFront caches copies of your files\.
 
-As you develop your website or application, you use the domain name that CloudFront provides for your URLs\. For example, if CloudFront returns `d111111abcdef8.cloudfront.net` as the domain name for your distribution, the URL for logo\.jpg in your Amazon S3 bucket \(or in the root directory on an HTTP server\) will be `http://d111111abcdef8.cloudfront.net/logo.jpg`\.
+As you develop your website or application, you use the domain name that CloudFront provides for your URLs\. For example, if CloudFront returns `d111111abcdef8.cloudfront.net` as the domain name for your distribution, the URL for logo\.jpg in your Amazon S3 bucket \(or in the root directory on an HTTP server\) is `http://d111111abcdef8.cloudfront.net/logo.jpg`\.
 
-Or you can configure your CloudFront distribution so you can use your own domain name\. In that case, the URL might be `http://www.example.com/logo.jpg`\.
+Or you can set up CloudFront to use your own domain name with your distribution\. In that case, the URL might be `http://www.example.com/logo.jpg`\.
 
-Optionally, you can configure your origin server to add headers to the files, to indicate how long you want the files to stay in the cache in CloudFront edge locations\. By default, each object stays in an edge location for 24 hours before it expires\. The minimum expiration time is 0 seconds; there isn't a maximum expiration time limit\. For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
+Optionally, you can configure your origin server to add headers to the files, to indicate how long you want the files to stay in the cache in CloudFront edge locations\. By default, each file stays in an edge location for 24 hours before it expires\. The minimum expiration time is 0 seconds; there isn't a maximum expiration time limit\. For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.

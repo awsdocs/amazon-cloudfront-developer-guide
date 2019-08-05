@@ -18,7 +18,7 @@ When you specify trusted signers, you also indirectly specify the files that req
 **Note**  
 To specify trusted signers for a distribution, you must use the CloudFront console or CloudFront API version 2009\-09\-09 or later\.
 
-To specify the accounts that are allowed to create signed URLs or signed cookies and to add the accounts to your CloudFront distribution, perform the following tasks:
+To specify the accounts that are allowed to create signed URLs or signed cookies and to add the accounts to your CloudFront distribution, do the following tasks:
 
 1. Decide which AWS accounts you want to use as trusted signers\. Most CloudFront customers use the account that they used to create the distribution\.
 
@@ -131,7 +131,7 @@ The maximum number of trusted signers depends on the type of distribution:
 + **Web distributions** – A maximum of five for each cache behavior
 + **RTMP distributions** – A maximum of five for the distribution
 
-You can add trusted signers to your distribution using either the CloudFront console or the CloudFront API\. See the applicable topic:
+You can add trusted signers to your distribution using either the CloudFront console or the CloudFront API\. See the following topic:
 + [Adding Trusted Signers to Your Distribution Using the CloudFront Console](#private-content-adding-trusted-signers-console)
 + [Adding Trusted Signers to Your Distribution Using the CloudFront API](#private-content-adding-trusted-signers-api)
 
@@ -163,21 +163,21 @@ You can add trusted signers to your distribution using either the CloudFront con
 
 1. For **Restrict Viewer Access \(Use Signed URLs or Signed Cookies\)**, click **Yes**\.
 
-1. For **Trusted Signers**, check the applicable check boxes:
-   + **Self** – Check this check box if you want to use the current account \(the account that you used to create the distribution\)\.
-   + **Specify Accounts** – Check this check box if you want to use other AWS accounts\.
+1. For **Trusted Signers**, select the check boxes for your scenario:
+   + **Self** – Select this check box if you want to use the current account \(the account that you used to create the distribution\)\.
+   + **Specify Accounts** – Select this check box if you want to use other AWS accounts\.
 
-1. If you checked the **Specify Accounts** check box, enter AWS account IDs in the **AWS Account Number** field\. These are the account IDs that you got in the first step of this procedure\. Enter one account ID per line\.
+1. If you selected the **Specify Accounts** check box, enter AWS account IDs in the **AWS Account Number** field\. These are the account IDs that you got in the first step of this procedure\. Enter one account ID per line\.
 
 1. Click **Yes, Edit**\.
 
-1. If you're adding trusted signers to a web distribution and you have more than one cache behavior, repeat steps 4 through 8 as applicable\.
+1. If you're adding trusted signers to a web distribution and you have more than one cache behavior, repeat steps 4 through 8\.
 
 ### Adding Trusted Signers to Your Distribution Using the CloudFront API<a name="private-content-adding-trusted-signers-api"></a>
 
-You can use the CloudFront API to add the AWS account IDs for trusted signers to an existing distribution or to create a new distribution that includes trusted signers\. In either case, specify the applicable values in the `TrustedSigners` element\. For web distributions, add the `TrustedSigners` element to one or more cache behaviors\. For RTMP distributions, add the `TrustedSigners` element to the distribution\.
+You can use the CloudFront API to add the AWS account IDs for trusted signers to an existing distribution or to create a new distribution that includes trusted signers\. In either case, specify the values in the `TrustedSigners` element\. For web distributions, add the `TrustedSigners` element to one or more cache behaviors\. For RTMP distributions, add the `TrustedSigners` element to the distribution\.
 
-See the applicable topic in the *Amazon CloudFront API Reference*:
+See the following topics in the *Amazon CloudFront API Reference*:
 + **Create a new web distribution** – [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
 + **Update an existing web distribution** – [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 + **Create a new RTMP distribution** – [CreateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)
@@ -194,13 +194,13 @@ To display a list of active trusted signers for a distribution, you currently mu
 
 ### Verifying that Trusted Signers Are Active Using the CloudFront API<a name="private-content-verifying-trusted-signers-active-api"></a>
 
-To determine which trusted signers have active key pairs \(are active trusted signers\), you get the distribution and review the values in the `ActiveTrustedSigners` element\. This element lists the AWS account ID of each account that the distribution identifies as a trusted signer\. If the trusted signer has one or more active CloudFront key pairs, the `ActiveTrustedSigners` element also lists the key pair IDs\. For more information, see the applicable topic in the *Amazon CloudFront API Reference*:
+To determine which trusted signers have active key pairs \(are active trusted signers\), you get the distribution and review the values in the `ActiveTrustedSigners` element\. This element lists the AWS account ID of each account that the distribution identifies as a trusted signer\. If the trusted signer has one or more active CloudFront key pairs, the `ActiveTrustedSigners` element also lists the key pair IDs\. For more information, see the following topics in the *Amazon CloudFront API Reference*:
 + **Web distributions** – [ GetDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistribution.html)
 + **RTMP distributions** – [ GetStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetStreamingDistribution.html)
 
 ## Rotating CloudFront Key Pairs<a name="private-content-rotating-key-pairs"></a>
 
-AWS recommends that you rotate \(change\) your active CloudFront key pairs every 90 days\. To rotate CloudFront key pairs that you're using to create signed URLs or signed cookies without invalidating URLs or cookies that haven't expired yet, perform the following tasks:
+AWS recommends that you rotate \(change\) your active CloudFront key pairs every 90 days\. To rotate CloudFront key pairs that you're using to create signed URLs or signed cookies without invalidating URLs or cookies that haven't expired yet, do the following tasks:
 
 1. Create a new key pair for each of the accounts that you're using to create signed URLs\. For more information, see [Creating CloudFront Key Pairs for Your Trusted Signers](#private-content-creating-cloudfront-key-pairs)\.
 
@@ -220,7 +220,7 @@ AWS recommends that you rotate \(change\) your active CloudFront key pairs every
 
    1. Expand **CloudFront Key Pairs**\.
 
-   1. For the applicable key pairs, click **Make Inactive**\.
+   1. Choose specific key pairs, and then choose **Make Inactive**\.
 
    1. Repeat steps a through d for each of the AWS accounts for which you want to make key pairs inactive\.
 
@@ -232,6 +232,6 @@ AWS recommends that you rotate \(change\) your active CloudFront key pairs every
 
    1. Expand **CloudFront Key Pairs**\.
 
-   1. For the applicable key pairs, click **Delete**\.
+   1. Choose specific key pairs, and then choose **Delete**\.
 
 1. Delete the old private keys from the location where you stored them\.

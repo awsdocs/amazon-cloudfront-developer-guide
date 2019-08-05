@@ -1,8 +1,8 @@
 # Using HTTPS with CloudFront<a name="using-https"></a>
 
-For web distributions, you can configure CloudFront to require that viewers use HTTPS to request your objects, so connections are encrypted when CloudFront communicates with viewers\. You also can configure CloudFront to use HTTPS to get objects from your origin, so connections are encrypted when CloudFront communicates with your origin\.
+For web distributions, you can configure CloudFront to require that viewers use HTTPS to request your objects, so that connections are encrypted when CloudFront communicates with viewers\. You also can configure CloudFront to use HTTPS to get objects from your origin, so that connections are encrypted when CloudFront communicates with your origin\.
 
-If you configure CloudFront to require HTTPS both to communicate with viewers and to communicate with your origin, here's what happens when CloudFront receives a request for an object\. The process works basically the same way whether your origin is an Amazon S3 bucket or a custom origin such as an HTTP/S server: 
+If you configure CloudFront to require HTTPS both to communicate with viewers and to communicate with your origin, here's what happens when CloudFront receives a request for an object:
 
 1. A viewer submits an HTTPS request to CloudFront\. There's some SSL/TLS negotiation here between the viewer and CloudFront\. In the end, the viewer submits the request in an encrypted format\.
 
@@ -15,6 +15,8 @@ If you configure CloudFront to require HTTPS both to communicate with viewers an
 1. CloudFront decrypts the response, re\-encrypts it, and forwards the object to the viewer\. CloudFront also saves the object in the edge cache so that the object is available the next time it's requested\.
 
 1. The viewer decrypts the response\.
+
+The process works basically the same way whether your origin is an Amazon S3 bucket, MediaStore, or a custom origin such as an HTTP/S server\.
 
 **Note**  
 To help thwart SSL renegotiation\-type attacks, CloudFront does not support renegotiation for viewer and origin requests\.

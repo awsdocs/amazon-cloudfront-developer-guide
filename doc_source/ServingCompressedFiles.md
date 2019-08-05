@@ -68,6 +68,9 @@ CloudFront does not compress a file if the response includes a `Content-Encoding
 **Request doesn't include Accept\-Encoding: gzip**  
 If the `Accept-Encoding` header is missing from the request, CloudFront serves uncompressed content\. If the `Accept-Encoding` header includes additional values such as `deflate` or `sdch`, CloudFront removes them before forwarding the request to the origin server\.
 
+**Request that uses HTTP 1\.0**  
+If a request to CloudFront uses HTTP 1\.0, CloudFront removes the `Accept-Encoding` header and serves uncompressed content\.
+
 **CloudFront is busy**  
 In rare cases, when a CloudFront edge location is unusually busy, some files might not be compressed\. 
 

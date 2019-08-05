@@ -47,7 +47,7 @@ Here's an overview of how you configure CloudFront for signed cookies and how Cl
 
 1. Your application returns the `Set-Cookie` headers in the response, and the viewer stores the name\-value pairs\.
 
-1. The user requests an file\.
+1. The user requests a file\.
 
    The user's browser or other viewer gets the name\-value pairs from step 4 and adds them to the request in a `Cookie` header\. This is the signed cookie\. 
 
@@ -61,7 +61,7 @@ Here's an overview of how you configure CloudFront for signed cookies and how Cl
 
 If you specify the `Domain` parameter in a `Set-Cookie` header, specify the most precise value possible to limit potential access by someone with the same root domain name\. For example, apex\.example\.com is preferable to example\.com, especially when you don't control example\.com\. This helps prevent someone from accessing your content from nadir\.example\.com\.
 
-To prevent this type of attack, do the following:
+To help prevent this type of attack, do the following:
 + Exclude the `Expires` and `Max-Age` cookie attributes, so that the `Set-Cookie` header creates a session cookie\. Session cookies are automatically deleted when the user closes the browser, which reduces the possibility of someone getting unauthorized access to your content\.
 + Include the `Secure` attribute, so that the cookie is encrypted when a viewer includes it in a request\.
 + When possible, use a custom policy and include the IP address of the viewer\.

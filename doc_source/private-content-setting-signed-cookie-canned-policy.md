@@ -52,7 +52,7 @@ Specify the expiration date and time in Unix time format \(in seconds\) and Coor
 A hashed, signed, and base64\-encoded version of a JSON policy statement\. For more information, see [Creating a Signature for a Signed Cookie That Uses a Canned Policy](#private-content-canned-policy-signature-cookies)\.  
 **`CloudFront-Key-Pair-Id`**  
 The ID for an active CloudFront key pair, for example, APKA9ONS7QCOWEXAMPLE\. The CloudFront key pair ID tells CloudFront which public key to use to validate the signed cookie\. CloudFront compares the information in the signature with the information in the policy statement to verify that the URL has not been tampered with\.  
-The key pair ID that you include in CloudFront signed cookies must be associated with an AWS account that is one of the trusted signers for the applicable cache behavior\.  
+The key pair ID that you include in CloudFront signed cookies must be associated with an AWS account that is one of the trusted signers for the cache behavior\.  
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, you must update your application to use a new active key pair for one of your trusted signers\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
 
@@ -84,7 +84,7 @@ To create the signature for a signed cookie that uses a canned policy, do the fo
 
 ### Creating a Policy Statement for a Signed Cookie That Uses a Canned Policy<a name="private-content-canned-policy-statement-cookies"></a>
 
-When you set a signed cookie that uses a canned policy, the `CloudFront-Signature` attribute is a hashed and signed version of a policy statement\. For signed cookies that use a canned policy, you don't include the policy statement in the `Set-Cookie` header, as you do for signed cookies that use a custom policy\. To create the policy statement, perform the following procedure\.<a name="private-content-canned-policy-statement-cookies-procedure"></a>
+When you set a signed cookie that uses a canned policy, the `CloudFront-Signature` attribute is a hashed and signed version of a policy statement\. For signed cookies that use a canned policy, you don't include the policy statement in the `Set-Cookie` header, as you do for signed cookies that use a custom policy\. To create the policy statement, do the following procedure\.<a name="private-content-canned-policy-statement-cookies-procedure"></a>
 
 **To create a policy statement for a signed cookie that uses a canned policy**
 
@@ -158,7 +158,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 1. Use the SHA\-1 hash function and RSA to hash and sign the policy statement that you created in the procedure [To create a policy statement for a signed cookie that uses a canned policy](#private-content-canned-policy-statement-cookies-procedure)\. Use the version of the policy statement that no longer includes whitespace\.
 
-   For the private key that is required by the hash function, use the private key that is associated with the applicable active trusted signer\.
+   For the private key that is required by the hash function, use the private key that is associated with the active trusted signer\.
 **Note**  
 The method that you use to hash and sign the policy statement depends on your programming language and platform\. For sample code, see [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)\.
 

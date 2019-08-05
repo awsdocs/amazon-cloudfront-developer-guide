@@ -5,7 +5,7 @@
 + [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)
 + [Creating a Signature for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-creating-signature)
 
-To create a signed URL using a custom policy, perform the following procedure\.<a name="private-content-creating-signed-url-custom-policy-procedure"></a>
+To create a signed URL using a custom policy, do the following procedure\.<a name="private-content-creating-signed-url-custom-policy-procedure"></a>
 
 **To create a signed URL using a custom policy**
 
@@ -50,7 +50,7 @@ A hashed, signed, and base64\-encoded version of the JSON policy statement\. For
 **![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=`*active CloudFront key pair Id for the key pair that you're using to sign the policy statement***  
 The ID for an active CloudFront key pair, for example, APKA9ONS7QCOWEXAMPLE\. The CloudFront key pair ID tells CloudFront which public key to use to validate the signed URL\. CloudFront compares the information in the signature with the information in the policy statement to verify that the URL has not been tampered with\.  
 The key pair ID that you include in CloudFront signed URLs must be the ID of an active key pair for one of your trusted signers:  
-   + **Web distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the applicable cache behavior\.
+   + **Web distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the cache behavior\.
    + **RTMP distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the distribution\.
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, and if you're generating signed URLs programmatically, you must update your application to use a new active key pair for one of your trusted signers\. If you're generating signed URLs manually, you must create new signed URLs\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
@@ -65,7 +65,7 @@ Example signed URL for an RTMP distribution:
 
 ## Creating a Policy Statement for a Signed URL That Uses a Custom Policy<a name="private-content-custom-policy-statement"></a>
 
-To create a policy statement for a custom policy, perform the following procedure\. For several example policy statements that control access to files in a variety of ways, see [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)\.<a name="private-content-custom-policy-creating-policy-procedure"></a>
+To create a policy statement for a custom policy, do the following procedure\. For several example policy statements that control access to files in a variety of ways, see [Example Policy Statements for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-examples)\.<a name="private-content-custom-policy-creating-policy-procedure"></a>
 
 **To create the policy statement for a signed URL that uses a custom policy**
 
@@ -110,7 +110,7 @@ To create a policy statement for a custom policy, perform the following procedur
 When you create a policy statement for a custom policy, you specify the following values\.
 
 **Resource**  
-The value that you specifies depends on whether you're creating signed URLs for web or RTMP distributions\.  
+The value that you specify depends on whether you're creating signed URLs for web or RTMP distributions\.  
 You can specify only one value for `Resource`\.  
 **Web distributions \(optional but recommended\)**  
 The base URL including your query strings, if any, but excluding the CloudFront `Policy`, `Signature`, and `Key-Pair-Id` parameters, for example:  
@@ -161,7 +161,7 @@ IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, ar
 
 The following example policy statements show how to control access to a specific file, all of the files in a directory, or all of the files associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed URL after a specified date and time\.
 
-If you copy and paste any of these examples, remove any whitespace \(including tabs and newline characters\), replace the applicable values with your own values, and include a newline character after the closing brace \( \} \)\.
+If you copy and paste any of these examples, remove any whitespace \(including tabs and newline characters\), replace the values with your own values, and include a newline character after the closing brace \( \} \)\.
 
 For more information, see [Values that You Specify in the Policy Statement for a Signed URL That Uses a Custom Policy](#private-content-custom-policy-statement-values)\.
 
@@ -237,7 +237,7 @@ The signed URL also includes a key pair ID, which must be associated with a trus
 
 ## Creating a Signature for a Signed URL That Uses a Custom Policy<a name="private-content-custom-policy-creating-signature"></a>
 
-The signature for a signed URL that uses a custom policy is a hashed, signed, and base64\-encoded version of the policy statement\. To create a signature for a custom policy, perform the applicable procedure\. The version that you choose depends on your distribution type \(web or RTMP\) and, for RTMP distributions, the media player that you're using \(Adobe Flash Player or another media player\):
+The signature for a signed URL that uses a custom policy is a hashed, signed, and base64\-encoded version of the policy statement\. To create a signature for a custom policy, follow the procedure for your scenario\. The version that you choose depends on your distribution type \(web or RTMP\) and, for RTMP distributions, the media player that you're using \(Adobe Flash Player or another media player\):
 + [Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a custom policy](#private-content-custom-policy-creating-signature-download-procedure)
 + [Option 2: To create a signature for an RTMP distribution by using a custom policy \(Adobe Flash Player\)](#private-content-custom-policy-creating-signature-streaming-flash-procedure)
 
@@ -250,7 +250,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 1. Use the SHA\-1 hash function and RSA to hash and sign the JSON policy statement that you created in the procedure [To create the policy statement for a signed URL that uses a custom policy](#private-content-custom-policy-creating-policy-procedure)\. Use the version of the policy statement that no longer includes whitespace but that has not yet been base64\-encoded\.
 
-   For the private key that is required by the hash function, use the private key that is associated with the applicable active trusted signer\.
+   For the private key that is required by the hash function, use the private key that is associated with the active trusted signer\.
 **Note**  
 The method that you use to hash and sign the policy statement depends on your programming language and platform\. For sample code, see [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)\.
 
@@ -268,7 +268,7 @@ The method that you use to hash and sign the policy statement depends on your pr
 
 1. Use the SHA\-1 hash function and RSA to hash and sign the JSON policy statement that you created in the [To create the policy statement for a signed URL that uses a custom policy](#private-content-custom-policy-creating-policy-procedure) procedure\. Use the version of the policy statement that no longer includes whitespace but that has not yet been base64\-encoded\.
 
-   For the private key that is required by the hash function, use the private key that is associated with the applicable active trusted signer\.
+   For the private key that is required by the hash function, use the private key that is associated with the active trusted signer\.
 **Note**  
 The method that you use to hash and sign the policy statement depends on your programming language and platform\. For sample code, see [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)\.
 

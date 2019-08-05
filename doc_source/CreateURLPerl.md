@@ -72,7 +72,7 @@ OLIZHoH6wkR3tU1cQHs8R1d-g-SlZGjNBXr~J2MbaJzm8i6EXAMPLE_&Key-Pair-Id=PK12345
 EXAMPLE
 ```
 
-For more information about the command line switches and features of this toolee the comments in the Perl source code, which is included in the next section\.
+For more information about the command line switches and features of this tool, see the comments in the Perl source code, included in the next section\.
 
 See also
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)

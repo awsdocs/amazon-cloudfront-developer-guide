@@ -591,13 +591,14 @@ For more information about alternate domain names, see [Using Custom URLs for Fi
 ### SSL Certificate<a name="DownloadDistValuesSSLCertificate"></a>
 
 If you specified an alternate domain name to use with your distribution, choose **Custom SSL Certificate**, and then, to validate your authorization to use the alternate domain name, choose a certificate that covers it\. If you want viewers to use HTTPS to access your objects, choose the settings that support that\. 
+
+**Note**  
+Before you can specify a custom SSL certificate, you must specify a valid alternate domain name\. For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements) and [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 + **Default CloudFront Certificate \(\*\.cloudfront\.net\)** – Choose this option if you want to use the CloudFront domain name in the URLs for your objects, such as `https://d111111abcdef8.cloudfront.net/image1.jpg`\. 
 + **Custom SSL Certificate** – Choose this option if you want to use your own domain name in the URLs for your objects as an alternate domain name, such as `https://example.com/image1.jpg`\. Then choose a certificate to use that covers the alternate domain name\. The list of certificates can include any of the following:
   + Certificates provided by AWS Certificate Manager
   + Certificates that you purchased from a third\-party certificate authority and uploaded to ACM
   + Certificates that you purchased from a third\-party certificate authority and uploaded to the IAM certificate store
-
-  For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements) and [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 
   If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(https://example\.com/logo\.jpg\)\. If you use your CloudFront distribution domain name \(https://d111111abcdef8\.cloudfront\.net/logo\.jpg\) and a client uses an older viewer that doesn't support SNI, how the viewer responds depends on the value that you choose for **Clients Supported**:
   + **All Clients**: The viewer displays a warning because the CloudFront domain name doesn't match the domain name in your SSL/TLS certificate\.

@@ -1,6 +1,6 @@
 # Task List: Serving Private Content<a name="private-content-task-list"></a>
 
-To configure CloudFront to serve private content, perform the following tasks:
+To configure CloudFront to serve private content, do the following tasks:
 
 1. \(Optional but recommended\) Require your users to access your content only through CloudFront\. The method that you use depends on whether you're using Amazon S3 or custom origins:
    + **Amazon S3** – See [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.

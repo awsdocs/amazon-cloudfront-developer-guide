@@ -21,11 +21,13 @@ When you create signed URLs or signed cookies to control access to your files, y
 
 One part of a signed URL or a signed cookie is hashed and signed using the private key from a public/private key pair\. When someone uses a signed URL or signed cookie to access a file, CloudFront compares the signed and unsigned portions of the URL or cookie\. If they don't match, CloudFront doesn't serve the file\.
 
+You must use RSA\-SHA1 for signing URLs or cookies\. CloudFront doesn't accept other algorithms\.
+
 ## Restricting Access to Files in Amazon S3 Buckets<a name="private-content-overview-s3"></a>
 
 You can optionally secure the content in your Amazon S3 bucket so that users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs\. This prevents someone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\. Be aware that this option is only available if you have not set up your Amazon S3 bucket as a website endpoint\.
 
-To require that users access your content through CloudFront URLs, you perform the following tasks:
+To require that users access your content through CloudFront URLs, you do the following tasks:
 + Create a special CloudFront user called an **origin access identity**\.
 + Give the origin access identity permission to read the files in your bucket\.
 + Remove permission for anyone else to use Amazon S3 URLs to read the files\.

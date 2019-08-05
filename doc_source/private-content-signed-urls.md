@@ -41,7 +41,7 @@ Here's an overview of how you configure CloudFront and Amazon S3 for signed URLs
 
    For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.
 
-1. You develop your application to determine whether a user should have access to your content and to create signed URLs for the files or parts of your application that you want to restrict access to\. For more information, see the applicable topic:
+1. You develop your application to determine whether a user should have access to your content and to create signed URLs for the files or parts of your application that you want to restrict access to\. For more information, see the following topics:
    + [Creating a Signed URL Using a Canned Policy](private-content-creating-signed-url-canned-policy.md)
    + [Creating a Signed URL Using a Custom Policy](private-content-creating-signed-url-custom-policy.md)
 
@@ -59,7 +59,7 @@ Here's an overview of how you configure CloudFront and Amazon S3 for signed URLs
 
    If the signature is valid, CloudFront looks at the policy statement in the URL \(or constructs one if you're using a canned policy\) to confirm that the request is still valid\. For example, if you specified a beginning and ending date and time for the URL, CloudFront confirms that the user is trying to access your content during the time period that you want to allow access\. 
 
-   If the request meets the requirements in the policy statement, CloudFront performs the standard operations: determines whether the file is already in the edge cache, forwards the request to the origin if necessary, and returns the file to the user\.
+   If the request meets the requirements in the policy statement, CloudFront does the standard operations: determines whether the file is already in the edge cache, forwards the request to the origin if necessary, and returns the file to the user\.
 
 **Note**  
 Signed CloudFront URLs cannot contain extra query string arguments\. If you add a query string to a signed URL after you create it, the URL returns an HTTP 403 status\. 

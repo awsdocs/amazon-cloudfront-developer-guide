@@ -52,11 +52,11 @@ After conversion, the RSA private key file is in the following format:
 </RSAKeyValue>
 ```
 
-The following C\# code creates a signed URL that uses a canned policy by performing the following steps:
+The following C\# code creates a signed URL that uses a canned policy by doing the following:
 + Creates a policy statement\.
 + Hashes the policy statement using SHA1, and signs the result using RSA and the private key for your AWS account or for a trusted AWS account that you specify\.
 + Base64\-encodes the hashed and signed policy statement and replaces special characters to make the string safe to use as a URL request parameter\.
-+ Concatenates the applicable values\.
++ Concatenates the values\.
 
 For the complete implementation, see the example at [Signature Code in C\#](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
 
@@ -136,7 +136,7 @@ public static string CreateCannedPrivateURL(string urlString,
 }
 ```
 
-The following C\# code creates a signed URL that uses a custom policy by performing the following steps:
+The following C\# code creates a signed URL that uses a custom policy by doing the following:
 
 1. Creates a policy statement\.
 
@@ -146,7 +146,7 @@ The following C\# code creates a signed URL that uses a custom policy by perform
 
 1. Base64\-encodes the hashed policy statement and replacing special characters to make the string safe to use as a URL request parameter\.
 
-1. Concatenates the applicable values\.
+1. Concatenates the values\.
 
 For the complete implementation, see the example at [Signature Code in C\#](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\. 
 

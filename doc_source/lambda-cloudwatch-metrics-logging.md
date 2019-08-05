@@ -14,21 +14,17 @@ For more information about CloudWatch metrics, see the [Amazon CloudWatch User G
 
 ## CloudWatch Logs<a name="lambda-cloudwatch-logs"></a>
 
-When you create a trigger, Lambda automatically starts to send data to CloudWatch Logs about the CloudFront requests that trigger Lambda functions\. You use CloudWatch Logs tools to access the logs\.
+When you create a trigger, Lambda automatically starts to send data to CloudWatch Logs about the CloudFront requests that trigger Lambda functions\. You can access the log files by using the CloudFront console in the AWS Management Console or use CloudWatch Logs tools directly to access the logs\.
 
-Lambda creates CloudWatch Logs log streams in the CloudWatch Logs regions closest to the locations where the function is executed\. The log group name is formatted as: `/aws/lambda/us-east-1`\.*function\-name*, where *function\-name* is the name that you gave to the function when you created it\. 
-
-To help you find your log files, you can use the following Linux \(or OSX\) command\. Replace `function-name` with the name of your function\.
-
-```
-for i in `aws ec2 describe-regions | grep RegionName | awk '/[a-z]{2}-[a-z]+-[0-9]/g {gsub(/"/, "", $2); print $2 }'`; 
-do aws logs describe-log-groups --log-group-name-prefix '/aws/lambda/us-east-1.' --region $i; done | grep arn: | grep function-name
-```
+Lambda creates CloudWatch Logs log streams in the CloudWatch Logs Regions closest to the locations where the function is executed\. The log group name is formatted as: `/aws/lambda/us-east-1`\.*function\-name*, where *function\-name* is the name that you gave to the function when you created it\. 
 
 **Note**  
 Lambda@Edge throttles logs based on the request volume and the size of logs\.
 
+You must review CloudWatch log files in the correct AWS Region to see the log files created when CloudFront executed your Lambda function\. To see the Regions where your Lambda@Edge function is receiving traffic, view graphs of metrics for the function on the CloudFront console on the AWS Management Console\. Metrics are displayed for each AWS Region\. On the same page, you can choose a Region and then view log files for that Region so that you can investigate issues\. 
+
 To learn more about how to use CloudWatch Logs with Lambda functions, see the following:
++ For more information about viewing graphs in the Monitoring section of the CloudFront console, see [Monitoring CloudFront and Setting Alarms](monitoring-using-cloudwatch.md)\.
 + For information about the permissions required to send data to CloudWatch Logs, see [Setting IAM Permissions and Roles for Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html#lambda-edge-permissions) in the *IAM User Guide*\.
-+ For information about adding logging to a Lambda function, see [Logging \(Node\.js\)](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html) in the *AWS Lambda Developer Guide*\. 
++ For information about adding logging to a Lambda function, see [Function Logging in Node\.js](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html) or [Function Logging in Python](https://docs.aws.amazon.com/lambda/latest/dg/python-logging.html) in the *AWS Lambda Developer Guide*\. 
 + For information about CloudWatch Logs limits, see [Limits](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) in the *Amazon CloudWatch Logs User Guide*\.

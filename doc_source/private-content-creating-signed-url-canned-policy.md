@@ -1,6 +1,6 @@
 # Creating a Signed URL Using a Canned Policy<a name="private-content-creating-signed-url-canned-policy"></a>
 
-To create a signed URL using a canned policy, perform the following procedure\.<a name="private-content-creating-signed-url-canned-policy-procedure"></a>
+To create a signed URL using a canned policy, do the following procedure\.<a name="private-content-creating-signed-url-canned-policy-procedure"></a>
 
 **To create a signed URL using a canned policy**
 
@@ -45,7 +45,7 @@ A hashed, signed, and base64\-encoded version of the JSON policy statement\. For
 **![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=`*active CloudFront key pair Id for the key pair that you're using to generate the signature***  
 The ID for an active CloudFront key pair, for example, APKA9ONS7QCOWEXAMPLE\. The CloudFront key pair ID tells CloudFront which public key to use to validate the signed URL\. CloudFront compares the information in the signature with the information in the policy statement to verify that the URL has not been tampered with\.  
 The key pair ID that you include in CloudFront signed URLs must be the ID of an active key pair for one of your trusted signers:  
-   + **Web distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the applicable cache behavior\.
+   + **Web distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the cache behavior\.
    + **RTMP distributions** – The key pair must be associated with an AWS account that is one of the trusted signers for the distribution\.
 For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  
 If you make a key pair inactive while rotating CloudFront key pairs, and if you're generating signed URLs programmatically, you must update your application to use a new active key pair for one of your trusted signers\. If you're generating signed URLs manually, you must create new signed URLs\. For more information about rotating key pairs, see [Rotating CloudFront Key Pairs](private-content-trusted-signers.md#private-content-rotating-key-pairs)\.
@@ -60,7 +60,7 @@ Example signed URL for an RTMP distribution:
 
 ## Creating a Signature for a Signed URL That Uses a Canned Policy<a name="private-content-canned-policy-creating-signature"></a>
 
-To create the signature for a signed URL that uses a canned policy, you perform the following procedures:
+To create the signature for a signed URL that uses a canned policy, you do the following procedures:
 
 1. Create a policy statement\. See [Creating a Policy Statement for a Signed URL That Uses a Canned Policy](#private-content-canned-policy-creating-policy-statement)\.
 
@@ -68,7 +68,7 @@ To create the signature for a signed URL that uses a canned policy, you perform 
 
 ### Creating a Policy Statement for a Signed URL That Uses a Canned Policy<a name="private-content-canned-policy-creating-policy-statement"></a>
 
-When you create a signed URL using a canned policy, the `Signature` parameter is a hashed and signed version of a policy statement\. For signed URLs that use a canned policy, you don't include the policy statement in the URL, as you do for signed URLs that use a custom policy\. To create the policy statement, perform the following procedure\.<a name="private-content-canned-policy-creating-policy-statement-procedure"></a>
+When you create a signed URL using a canned policy, the `Signature` parameter is a hashed and signed version of a policy statement\. For signed URLs that use a canned policy, you don't include the policy statement in the URL, as you do for signed URLs that use a custom policy\. To create the policy statement, do the following procedure\.<a name="private-content-canned-policy-creating-policy-statement-procedure"></a>
 
 **To create the policy statement for a signed URL that uses a canned policy**
 
@@ -138,7 +138,7 @@ When you use the following example policy statement in a signed URL, a user can 
 
 ### Creating a Signature for a Signed URL That Uses a Canned Policy<a name="private-content-canned-policy-signing-policy-statement"></a>
 
-To create the value for the `Signature` parameter in a signed URL, you hash and sign the policy statement that you created in [Creating a Policy Statement for a Signed URL That Uses a Canned Policy](#private-content-canned-policy-creating-policy-statement)\. There are two versions of this procedure\. Perform the applicable procedure:
+To create the value for the `Signature` parameter in a signed URL, you hash and sign the policy statement that you created in [Creating a Policy Statement for a Signed URL That Uses a Canned Policy](#private-content-canned-policy-creating-policy-statement)\. There are two versions of this procedure\. Follow the procedure for your scenario:
 + [Option 1: To create a signature for a web distribution or for an RTMP distribution \(without Adobe Flash Player\) by using a canned policy](#private-content-canned-policy-creating-signature-download-procedure)
 + [Option 2: To create a signature for an RTMP distribution by using a canned policy \(Adobe Flash Player\)](#private-content-canned-policy-creating-signature-streaming-flash-procedure)
 
@@ -151,7 +151,7 @@ For additional information and examples of how to hash, sign, and encode the pol
 
 1. Use the SHA\-1 hash function and RSA to hash and sign the policy statement that you created in the procedure [To create the policy statement for a signed URL that uses a canned policy](#private-content-canned-policy-creating-policy-statement-procedure)\. Use the version of the policy statement that no longer includes whitespace\.
 
-   For the private key that is required by the hash function, use the private key that is associated with the applicable active trusted signer\.
+   For the private key that is required by the hash function, use the private key that is associated with the active trusted signer\.
 **Note**  
 The method that you use to hash and sign the policy statement depends on your programming language and platform\. For sample code, see [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)\.
 
@@ -169,7 +169,7 @@ The method that you use to hash and sign the policy statement depends on your pr
 
 1. Use the SHA\-1 hash function and RSA to hash and sign the policy statement that you created in the [To create the policy statement for a signed URL that uses a canned policy](#private-content-canned-policy-creating-policy-statement-procedure) procedure\. Use the version of the policy statement that no longer includes whitespace\.
 
-   For the private key that is required by the hash function, use the private key that is associated with the applicable active trusted signer\.
+   For the private key that is required by the hash function, use the private key that is associated with the active trusted signer\.
 **Note**  
 The method that you use to hash and sign the policy statement depends on your programming language and platform\. For sample code, see [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)\.
 

@@ -1,6 +1,6 @@
 # Document History<a name="WhatsNew"></a>
 + **API Version:** 2019\-03\-26
-+ **Latest documentation update:**June 20, 2019
++ **Latest documentation update:** June 20, 2019
 
 
 ****  
