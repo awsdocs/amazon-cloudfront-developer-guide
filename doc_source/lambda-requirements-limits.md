@@ -78,7 +78,6 @@ Read\-only headers can be read but not edited\. You can use them as input to Clo
 + If\-None\-Match
 + If\-Range
 + If\-Unmodified\-Since
-+ Range
 + Transfer\-Encoding
 + Via
 

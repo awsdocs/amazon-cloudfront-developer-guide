@@ -342,7 +342,7 @@ The maximum size of a response body that CloudFront will return to the viewer is
 
 ### Origin Unavailable<a name="ResponseCustomOriginUnavailable"></a>
 
-If your origin server is unavailable and CloudFront gets a request for an object that is in the edge cache but that has expired \(for example, because the period of time specified in the `Cache-Control max-age` directive has passed\), CloudFront either serves the expired version of the object or serves a custom error page\. For more information, see [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)\. 
+If your origin server is unavailable and CloudFront gets a request for an object that is in the edge cache but that has expired \(for example, because the period of time specified in the `Cache-Control max-age` directive has passed\), CloudFront either serves the expired version of the object or serves a custom error page\. For more information about CloudFront behavior when you've configured custom error pages, see [How CloudFront Processes Errors When You Have Configured Custom Error Pages](HTTPStatusCodes.md#HTTPStatusCodes-custom-error-pages)\. 
 
 In some cases, an object that is seldom requested is evicted and is no longer available in the edge cache\. CloudFront can't serve an object that has been evicted\.
 

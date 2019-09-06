@@ -2,13 +2,15 @@
 
 Tags are words or phrases that you can use to identify and organize your AWS resources\. You can add multiple tags to each resource, and each tag includes a key and a value that you define\. For example, the key might be "domain" and the value might be "example\.com"\. You can search and filter your resources based on the tags you add\. 
 
-When you apply tags to CloudFront distributions or other AWS resources \(such as Amazon EC2 instances or Amazon S3 buckets\) and activate the tags, AWS generates a cost allocation report as a comma\-separated value \(CSV file\) with your usage and costs aggregated by your active tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information about using tags for cost allocation, see [Use Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the [AWS Billing and Cost Management User Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)\.
-
-For the current limit on the number of tags that you can add to a distribution, see [Limits](cloudfront-limits.md)\. To request a higher limit, [create a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\.
+The following are two examples of how it can be useful to work with tags in CloudFront: 
++ Use tags to track billing information in different categories\. When you apply tags to CloudFront distributions or other AWS resources \(such as Amazon EC2 instances or Amazon S3 buckets\) and activate the tags, AWS generates a cost allocation report as a comma\-separated value \(CSV file\) with your usage and costs aggregated by your active tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information about using tags for cost allocation, see [Use Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*\.
++ Use tags to enforce tag\-based permissions on CloudFront distributions\. For more information, see [ Tag\-Based Policies](access-control-overview.md#access-control-manage-access-intro-tag-policies)\.
 
 Note the following:
 + You can tag web and RTMP distributions, but you can't tag origin access identities or invalidations\.
-+ [Tag Editor](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html) and [Resource Groups](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html) are currently not supported for CloudFront\.
++ [Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html) and [Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html) are currently not supported for CloudFront\. 
+
+For the current limit on the number of tags that you can add to a distribution, see [Limits](cloudfront-limits.md)\. To request a higher limit, [create a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\.
 
 You can also apply tags to resources by using the CloudFront API, AWS CLI, SDKs, and AWS Tools for Windows PowerShell\. For more information, see the following documentation:
 + CloudFront API – See the following operations in the *Amazon CloudFront API Reference*:
@@ -26,7 +28,7 @@ You can also apply tags to resources by using the CloudFront API, AWS CLI, SDKs,
 ## Tag Restrictions<a name="tagging-restrictions"></a>
 
 The following basic restrictions apply to tags:
-+ Maximum number of tags per resource – 10
++ Maximum number of tags per resource – 50
 + Maximum key length – 128 Unicode characters
 + Maximum value length – 256 Unicode characters
 + Valid values for key and value – a\-z, A\-Z, 0\-9, space, and the following characters: \_ \. : / = \+ \- and @

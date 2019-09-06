@@ -35,11 +35,12 @@ The following examples illustrate how this works:
 
 A *permissions policy* specifies who has access to what\. This section explains the options for creating permissions policies for CloudFront\. For general information about IAM policy syntax and descriptions, see the [AWS IAM Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
 
-Policies attached to an IAM identity are referred to as identity\-based policies \(IAM policies\), and policies attached to a resource are referred to as resource\-based policies\. CloudFront supports only identity\-based policies \(IAM policies\)\.
+Policies attached to an IAM identity are referred to as identity\-based policies \(IAM policies\), and policies attached to a resource are referred to as resource\-based policies\. CloudFront does not support resource\-based policies, but it does support resource\-level policies\. For more information about the types of permissions policies that CloudFront supports, see [Managing Access to Resources](#access-control-manage-access-intro)\.
 
 **Topics**
 + [Identity\-Based Policies \(IAM Policies\)](#access-control-manage-access-intro-iam-policies)
-+ [Resource\-Based Policies](#access-control-manage-access-intro-resource-policies)
++ [Resource\-Level Policies](#access-control-manage-access-intro-resource-policies)
++ [Tag\-Based Policies](#access-control-manage-access-intro-tag-policies)
 
 ### Identity\-Based Policies \(IAM Policies\)<a name="access-control-manage-access-intro-iam-policies"></a>
 
@@ -74,9 +75,103 @@ The following example policy allows a user to perform the `CreateDistribution` a
 
 For information about the permissions required to perform operations by using the CloudFront console, see [Permissions Required to Use the CloudFront Console](access-control-managing-permissions.md#console-required-permissions)\. For more information about attaching policies to identities for CloudFront, see [Using Identity\-Based Policies \(IAM Policies\) for CloudFront](access-control-managing-permissions.md)\. For more information about users, groups, roles, and permissions, see [Identities \(Users, Groups, and Roles\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the *IAM User Guide*\.
 
-### Resource\-Based Policies<a name="access-control-manage-access-intro-resource-policies"></a>
+### Resource\-Level Policies<a name="access-control-manage-access-intro-resource-policies"></a>
 
-Other services, such as Amazon S3, support attaching permissions policies to resources\. For example, you can attach a policy to an S3 bucket to manage access permissions to that bucket\. CloudFront doesn't support attaching policies to resources\. 
+In some scenarios, you might want to grant a specific level of access to a resource that you specify; for example, access to only specific actions on that resource\. One way that some AWS services implement this is to allow you to directly attach a policy on the resource\. For example, that’s how Amazon S3 and Elasticsearch implement resource access control\. CloudFront allows the same flexibility but uses a different method\. Instead of attaching a policy to a resource, you specify the resource in a policy\.
+
+For example, the following policy shows how you might allow update, delete, and create invalidations access to a distribution that you specify by the distribution’s ARN\. This policy grants the permissions necessary to complete these actions from the AWS API or AWS CLI only\. \(To use this policy, replace the red italicized text in the example policy with your own resource information\.\)
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "cloudfront:CreateDistribution",
+                "cloudfront:Get*",
+                "cloudfront:List*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "cloudfront:UpdateDistribution",
+                "cloudfront:DeleteDistribution",
+                "cloudfront:CreateInvalidation",
+                
+            ],
+            "Resource": "arn:aws:cloudfront::123456789012:distribution/EDFDVBD6EXAMPLE"
+        }
+    ]
+}
+```
+
+### Tag\-Based Policies<a name="access-control-manage-access-intro-tag-policies"></a>
+
+When you design IAM policies, you might set granular permissions by granting access to specific resources\. As the number of resources that you manage grows, this task becomes more difficult\. Tagging resources and using tags in policy statement conditions can make this task easier\. You grant access in bulk to any resource with a certain tag\. Then you repeatedly apply this tag to relevant resources, during creation or later\.
+
+**Note**  
+Using tags in conditions is one way to control access to resources and requests\. For information about tagging in CloudFront, see [Tagging Amazon CloudFront Distributions](tagging.md)\.
+
+Tags can be attached to the resource or passed in the request to services that support tagging\. In CloudFront, resources can have tags, and some actions can include tags\. When you create an IAM policy, you can use tag condition keys to control:
++ Which users can perform actions on a distribution, based on tags that it already has\.
++ What tags can be passed in an action's request\.
++ Whether specific tag keys can be used in a request\.
+
+For the complete syntax and semantics of tag condition keys, see [ Control Access Using IAM Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html) in the *IAM User Guide*\.
+
+For example, the CloudFront `AWSCloudFrontFullAccess` managed user policy gives users unlimited permission to perform any CloudFront action on any resource\. The following policy limits this power and denies unauthorized users permission to create CloudFront production distributions\.
+
+To implement the limitation using tags, it denies the `CreateDistribution` action if the request specifies a tag named `stage` with one of the values `gamma` or `prod`\. In addition, the policy prevents these unauthorized users from tampering with the stage of production environments by not allowing tag modification actions to include these same tag values or to completely remove the `stage` tag\. A customer's administrator must attach this IAM policy to unauthorized IAM users, in addition to the managed user policy\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": [
+                "cloudfront:CreateDistribution",
+                "cloudfront:TagResource"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/stage": [
+                        "gamma",
+                        "prod"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "cloudfront:TagResource",
+                "cloudfront:UntagResource"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringEquals": {
+                    "aws:TagKeys": [
+                        "stage"
+                    ]
+                },
+                "StringEquals": {
+                    "aws:ResourceTag/stage": [
+                        "gamma",
+                        "prod"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
 
 ## Specifying Policy Elements: Resources, Actions, Effects, and Principals<a name="access-control-specify-cf-actions"></a>
 
@@ -86,7 +181,9 @@ The following are the basic policy elements:
 + **Resource** – You use an Amazon Resource Name \(ARN\) to identify the resource that the policy applies to\. For more information, see [ARNs for CloudFront Resources](#access-control-resources)\.
 + **Action** – You use action keywords to identify resource operations that you want to allow or deny\. For example, depending on the specified `Effect`, the `cloudfront:CreateDistribution` permission allows or denies the user permissions to perform the CloudFront `CreateDistribution` action\.
 + **Effect** – You specify the effect, either allow or deny, when a user tries to perform the action on the specified resource\. If you don't explicitly grant access to an action, access is implicitly denied\. You can also explicitly deny access to a resource, which you might do to make sure that a user cannot access it, even if a different policy grants access\.
-+ **Principal** – In identity\-based policies \(IAM policies\), the user that the policy is attached to is the implicit principal\. For resource\-based policies, you specify the user, account, service, or other entity that you want to receive permissions \(applies to resource\-based policies only\)\. CloudFront doesn't support resource\-based policies\.
++ **Principal** – In identity\-based policies \(IAM policies\), the user that the policy is attached to is the implicit principal\. For resource\-based policies, you specify the user, account, service, or other entity that you want to receive permissions \(applies to resource\-based policies only\)\. 
+
+  CloudFront does not support resource\-based policies, but it does support resource\-level policies\. For more information about the types of permissions policies that CloudFront supports, see [Managing Access to Resources](#access-control-manage-access-intro)\.
 
 For more information about IAM policy syntax and descriptions, see the [AWS IAM Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
 

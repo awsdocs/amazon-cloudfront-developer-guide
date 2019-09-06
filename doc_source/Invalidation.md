@@ -129,7 +129,7 @@ If you are using signed URLs, invalidate a file by including only the portion of
 
 ## Invalidating Files Using the Console<a name="Invalidation_Requests"></a>
 
-You can use the CloudFront console to create and run an invalidation, display a list of the invalidations that you submitted previously, and display detailed information about an individual invalidation\. You can also copy an existing invalidation, edit the list of file paths, and run the edited invalidation\.
+You can use the CloudFront console to create and run an invalidation, display a list of the invalidations that you submitted previously, and display detailed information about an individual invalidation\. You can also copy an existing invalidation, edit the list of file paths, and run the edited invalidation\. You can't remove invalidations from the list\.
 + [Invalidating Files](#invalidating-objects-console)
 + [Copying, Editing, and Rerunning an Existing Invalidation](#invalidating-objects-copy-console)
 + [Canceling Invalidations](#canceling-invalidations)

@@ -8,7 +8,7 @@ Most codes in both columns include a two\-letter abbreviation that indicates the
 + **AP:** Hong Kong, Philippines, South Korea, Taiwan, and Singapore \(Asia Pacific\)
 + **AU:** Australia
 + **CA:** Canada
-+ **EU:** Europe
++ **EU:** Europe and Israel
 + **IN:** India
 + **JP:** Japan
 + **ME:** Middle East

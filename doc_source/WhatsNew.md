@@ -1,12 +1,14 @@
 # Document History<a name="WhatsNew"></a>
 + **API Version:** 2019\-03\-26
-+ **Latest documentation update:** June 20, 2019
++ **Latest documentation update:** August 8, 2019
 
 
 ****  
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+|  Tag\-based and resource\-level IAM permissions policies  |  CloudFront now supports two additional ways of specifying IAM permission policies: tag\-based and resource\-level policy permissions\. For more information, see [Managing Access to Resources](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/access-control-manage-access-intro.html)\.  |  August 8, 2019  | 
+|  Support for Python programming language  |  You can now use the Python programming language to develop functions in Lambda@Edge, in addition to Node\.js\. For example functions that cover a variety of scenarios, see [Lambda@Edge Example Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-examples.html)\.  |  August 1, 2019  | 
 |  Updated monitoring graphs  |  Content updates to describe new ways for you to monitor Lambda functions associated with your CloudFront distributions directly from the CloudFront console to more easily track and debug errors\. For more information, see [Monitoring CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/monitoring-using-cloudwatch.html)\.  |  June 20, 2019  | 
 |  Consolidated security content  |  A new Security chapter consolidates information about CloudFront's features around and implementation of data protection, IAM, logging, compliance, and more\. For more information, see [Security](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/security.html)\.  |  May 24, 2019  | 
 |  Domain validation is now required  |  CloudFront now requires that you use an SSL certificate to verify that you have permission to use an alternate domain name with a distribution\. For more information, see [Using Alternate Domain Names and HTTPS](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-requirements)\.  |  April 9, 2019  | 

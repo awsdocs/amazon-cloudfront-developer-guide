@@ -14,11 +14,14 @@ When CloudFront requests an object from your Amazon S3 bucket or custom origin s
 
 CloudFront always caches responses to `GET` and `HEAD` requests\. You can also configure CloudFront to cache responses to `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
 
-For information about settings for custom error pages in the CloudFront console, see [Custom Error Pages and Error Caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages)\. For information about the error caching minimum TTL in the CloudFront console, see [Error Caching Minimum TTL](distribution-web-values-specify.md#DownloadDistValuesErrorCachingMinTTL)\.
-
-For a list of the HTTP status codes that CloudFront caches, see [HTTP 4xx and 5xx Status Codes that CloudFront Caches](#HTTPStatusCodes-cached-errors)\.
+If the origin doesn't respond, the CloudFront request to the origin times out which is considered an HTTP 5xx error from the origin, even though the origin didn't respond with that error\. In that scenario, CloudFront continues to serve cached content\. For more information, see [Origin Unavailable](RequestAndResponseBehaviorCustomOrigin.md#ResponseCustomOriginUnavailable)\.
 
 If you have enabled logging, CloudFront writes the results to the logs regardless of the HTTP status code\.
+
+For more information about features and options that relate to the error message returned from CloudFront, see the following:
++ For information about settings for custom error pages in the CloudFront console, see [Custom Error Pages and Error Caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages)\. 
++ For information about the error caching minimum TTL in the CloudFront console, see [Error Caching Minimum TTL](distribution-web-values-specify.md#DownloadDistValuesErrorCachingMinTTL)\.
++ For a list of the HTTP status codes that CloudFront caches, see [HTTP 4xx and 5xx Status Codes that CloudFront Caches](#HTTPStatusCodes-cached-errors)\.
 
 ## How CloudFront Processes Errors When You Have Configured Custom Error Pages<a name="HTTPStatusCodes-custom-error-pages"></a>
 
