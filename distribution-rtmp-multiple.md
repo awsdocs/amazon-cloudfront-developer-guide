@@ -1,3 +1,0 @@
-# Creating Multiple RTMP Distributions for an Origin Server<a name="distribution-rtmp-multiple"></a>
-
-You typically create one RTMP distribution per Amazon S3 bucket, but you can choose to create multiple RTMP distributions for the same bucket\. For example, if you had two distributions for an Amazon S3 bucket, you could reference a single media file using either distribution\. In this case, if you had a media file called `media.flv` in your origin server, CloudFront would work with each distribution as though it referenced an individual `media.flv` object: one `media.flv` accessible through one distribution, and another `media.flv` accessible through the other distribution\.
