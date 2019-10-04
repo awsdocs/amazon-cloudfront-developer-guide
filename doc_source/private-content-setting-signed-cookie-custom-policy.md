@@ -21,25 +21,26 @@ In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. T
 
    ```
    Set-Cookie: 
-   Domain=optional domain name; 
-   Path=/optional directory path; 
-   Secure; 
-   HttpOnly; 
    CloudFront-Policy=base64 encoded version of the policy statement
-   
-   Set-Cookie: 
    Domain=optional domain name; 
    Path=/optional directory path; 
    Secure; 
    HttpOnly; 
+
+   
+   Set-Cookie:
    CloudFront-Signature=hashed and signed version of the policy statement
-   
-   Set-Cookie: 
    Domain=optional domain name; 
    Path=/optional directory path; 
    Secure; 
    HttpOnly; 
+   
+   Set-Cookie: 
    CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature
+   Domain=optional domain name; 
+   Path=/optional directory path; 
+   Secure; 
+   HttpOnly; 
    ```  
 **\(Optional\) `Domain`**  
 The domain name for the requested file\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
@@ -65,17 +66,17 @@ If you make a key pair inactive while rotating CloudFront key pairs, you must up
 Example `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your files:
 
 ```
-Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly; CloudFront-Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cDovL2QxMTExMTFhYmNkZWY4LmNsb3VkZnJvbnQubmV0L2dhbWVfZG93bmxvYWQuemlwIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIxOTIuMC4yLjAvMjQifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0MjY1MDAwMDB9fX1dfQ__
-Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly; CloudFront-Signature=dtKhpJ3aUYxqDIwepczPiDb9NXQ_
-Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
+Set-Cookie: CloudFront-Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cDovL2QxMTExMTFhYmNkZWY4LmNsb3VkZnJvbnQubmV0L2dhbWVfZG93bmxvYWQuemlwIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIxOTIuMC4yLjAvMjQifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0MjY1MDAwMDB9fX1dfQ__; Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly
+Set-Cookie: CloudFront-Signature=dtKhpJ3aUYxqDIwepczPiDb9NXQ_; Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly
+Set-Cookie: CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE; Domain=d111111abcdef8.cloudfront.net; Path=/; Secure; HttpOnly
 ```
 
 Example `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your files:
 
 ```
-Set-Cookie: Domain=example.org; Path=/; Secure; HttpOnly; CloudFront-Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cDovL2QxMTExMTFhYmNkZWY4LmNsb3VkZnJvbnQubmV0L2dhbWVfZG93bmxvYWQuemlwIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIxOTIuMC4yLjAvMjQifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0MjY1MDAwMDB9fX1dfQ__
-Set-Cookie: Domain=example.org; Path=/; Secure; HttpOnly; CloudFront-Signature=dtKhpJ3aUYxqDIwepczPiDb9NXQ_
-Set-Cookie: Domain=example.org; Path=/; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
+Set-Cookie: CloudFront-Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cDovL2QxMTExMTFhYmNkZWY4LmNsb3VkZnJvbnQubmV0L2dhbWVfZG93bmxvYWQuemlwIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIxOTIuMC4yLjAvMjQifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0MjY1MDAwMDB9fX1dfQ__; Domain=example.org; Path=/; Secure; HttpOnly
+Set-Cookie: CloudFront-Signature=dtKhpJ3aUYxqDIwepczPiDb9NXQ_; Domain=example.org; Path=/; Secure; HttpOnly
+Set-Cookie: CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE; Domain=example.org; Path=/; Secure; HttpOnly
 ```
 
 If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
