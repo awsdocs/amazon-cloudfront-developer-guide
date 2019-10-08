@@ -16,25 +16,26 @@ In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. E
 
    ```
    Set-Cookie: 
-   Domain=optional domain name; 
-   Path=/optional directory path; 
-   Secure; 
-   HttpOnly; 
    CloudFront-Expires=date and time in Unix time format (in seconds) and Coordinated Universal Time (UTC)
-   
-   Set-Cookie: 
    Domain=optional domain name; 
    Path=/optional directory path; 
    Secure; 
    HttpOnly; 
+
+   
+   Set-Cookie: 
    CloudFront-Signature=hashed and signed version of the policy statement
-   
-   Set-Cookie: 
    Domain=optional domain name; 
    Path=/optional directory path; 
    Secure; 
    HttpOnly; 
+   
+   Set-Cookie: 
    CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature
+   Domain=optional domain name; 
+   Path=/optional directory path; 
+   Secure; 
+   HttpOnly; 
    ```  
 **\(Optional\) `Domain`**  
 The domain name for the requested file\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
@@ -59,17 +60,17 @@ If you make a key pair inactive while rotating CloudFront key pairs, you must up
 The following example shows `Set-Cookie` headers for one signed cookie when you're using the domain name that is associated with your distribution in the URLs for your files:
 
 ```
-Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly; CloudFront-Expires=1426500000
-Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly; CloudFront-Signature=yXrSIgyQoeE4FBI4eMKF6ho~CA8_
-Set-Cookie: Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
+Set-Cookie: CloudFront-Expires=1426500000; Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly
+Set-Cookie: CloudFront-Signature=yXrSIgyQoeE4FBI4eMKF6ho~CA8_; Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly
+Set-Cookie: CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE; Domain=d111111abcdef8.cloudfront.net; Path=/images/*; Secure; HttpOnly
 ```
 
 The following example shows `Set-Cookie` headers for one signed cookie when you're using the alternate domain name example\.org in the URLs for your files:
 
 ```
-Set-Cookie: Domain=example.org; Path=/images/*; Secure; HttpOnly; CloudFront-Expires=1426500000
-Set-Cookie: Domain=example.org; Path=/images/*; Secure; HttpOnly; CloudFront-Signature=yXrSIgyQoeE4FBI4eMKF6ho~CA8_
-Set-Cookie: Domain=example.org; Path=/images/*; Secure; HttpOnly; CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE
+Set-Cookie: CloudFront-Expires=1426500000; Domain=example.org; Path=/images/*; Secure; HttpOnly
+Set-Cookie: CloudFront-Signature=yXrSIgyQoeE4FBI4eMKF6ho~CA8_; Domain=example.org; Path=/images/*; Secure; HttpOnly
+Set-Cookie: CloudFront-Key-Pair-Id=APKA9ONS7QCOWEXAMPLE; Domain=example.org; Path=/images/*; Secure; HttpOnly
 ```
 
 If you want to use an alternate domain name such as example\.com in URLs, you must add the alternate domain name to your distribution regardless of whether you specify the `Domain` attribute\. For more information, see [Alternate Domain Names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
