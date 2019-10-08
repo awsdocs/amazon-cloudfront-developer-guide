@@ -1244,7 +1244,7 @@ from urllib.parse import parse_qs
                      'port': 443,
                      'protocol': 'https',
                      'path': '',
-                     'sslProtocols:': ['TLSv1', 'TLSv1.1'],
+                     'sslProtocols': ['TLSv1', 'TLSv1.1'],
                      'readTimeout': 5,
                      'keepaliveTimeout': 5,
                      'customHeaders': {}

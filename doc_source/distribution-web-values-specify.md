@@ -118,7 +118,7 @@ If your origin is an Amazon S3 bucket, note the following:
 + If you configured Amazon S3 Transfer Acceleration for your bucket, do not specify the `s3-accelerate` endpoint for **Origin Domain Name**\.
 + If you're using a bucket from a different AWS account and if the bucket is not configured as a website, enter the name, using the following format:
 
-  `bucket-name.s3.regionamazonaws.com` 
+  `bucket-name.s3.region.amazonaws.com` 
 
   If your bucket is in the US Standard region and you want Amazon S3 to route requests to a facility in Northern Virginia, use the following format:
 

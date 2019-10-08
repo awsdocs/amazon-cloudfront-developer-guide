@@ -32,7 +32,7 @@ If you're just getting started with setting up CloudFront with private content o
 
 ## Creating a CloudFront Origin Access Identity and Adding it to Your Distribution<a name="private-content-creating-oai"></a>
 
-An AWS account can have up to 100 CloudFront origin access identities\. However, you can add an origin access identity to as many distributions as you want, so one origin access identity is usually sufficient\. 
+An AWS account can have [up to 100 CloudFront origin access identities](cloudfront-limits.md#limits-web-distributions)\. However, you can add an origin access identity to as many distributions as you want, so one origin access identity is usually sufficient\.
 
 If you didn't create an origin access identity and add it to your distribution when you created the distribution, you can create and add one now by using either the CloudFront console or the CloudFront API:
 + **To use the CloudFront console** – You can create an origin access identity and add it to your distribution at the same time\. For step\-by\-step instructions, see [Creating an Origin Access Identity and Adding it to Your Distribution](#private-content-creating-oai-console)\.

@@ -16,26 +16,25 @@ In general, we recommend that you exclude `Expires` and `Max-Age` attributes\. E
 
    ```
    Set-Cookie: 
-   CloudFront-Expires=date and time in Unix time format (in seconds) and Coordinated Universal Time (UTC)
+   CloudFront-Expires=date and time in Unix time format (in seconds) and Coordinated Universal Time (UTC); 
    Domain=optional domain name; 
    Path=/optional directory path; 
    Secure; 
-   HttpOnly; 
-
+   HttpOnly
    
    Set-Cookie: 
-   CloudFront-Signature=hashed and signed version of the policy statement
+   CloudFront-Signature=hashed and signed version of the policy statement; 
    Domain=optional domain name; 
    Path=/optional directory path; 
    Secure; 
-   HttpOnly; 
+   HttpOnly
    
    Set-Cookie: 
-   CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature
+   CloudFront-Key-Pair-Id=active CloudFront key pair Id for the key pair that you are using to generate the signature; 
    Domain=optional domain name; 
    Path=/optional directory path; 
    Secure; 
-   HttpOnly; 
+   HttpOnly
    ```  
 **\(Optional\) `Domain`**  
 The domain name for the requested file\. If you don't specify a `Domain` attribute, the default value is the domain name in the URL, and it applies only to the specified domain name, not to subdomains\. If you specify a `Domain` attribute, it also applies to subdomains\. A leading dot in the domain name \(for example, `Domain=.example.com`\) is optional\. In addition, if you specify a `Domain` attribute, the domain name in the URL and the value of the `Domain` attribute must match\.  
