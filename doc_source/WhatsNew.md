@@ -1,12 +1,13 @@
 # Document History<a name="WhatsNew"></a>
 + **API Version:** 2019\-03\-26
-+ **Latest documentation update:** August 8, 2019
++ **Latest documentation update:** October 30, 2019
 
 
 ****  
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+|  AWS for WordPress plugin  |  You can use the AWS for WordPress plugin to provide visitors to your WordPress website an accelerated viewing experience using CloudFront\. For more information, see [Getting Started with a Simple DistributionGetting Started with AWS for WordPress](WordPressPlugIn.md)\.  |  October 30, 2019  | 
 |  Tag\-based and resource\-level IAM permissions policies  |  CloudFront now supports two additional ways of specifying IAM permission policies: tag\-based and resource\-level policy permissions\. For more information, see [Managing Access to Resources](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/access-control-manage-access-intro.html)\.  |  August 8, 2019  | 
 |  Support for Python programming language  |  You can now use the Python programming language to develop functions in Lambda@Edge, in addition to Node\.js\. For example functions that cover a variety of scenarios, see [Lambda@Edge Example Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-examples.html)\.  |  August 1, 2019  | 
 |  Updated monitoring graphs  |  Content updates to describe new ways for you to monitor Lambda functions associated with your CloudFront distributions directly from the CloudFront console to more easily track and debug errors\. For more information, see [Monitoring CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/monitoring-using-cloudwatch.html)\.  |  June 20, 2019  | 

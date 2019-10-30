@@ -68,13 +68,17 @@ Save the private key for your CloudFront key pair in a secure location, and set 
 
    For example, if you're using OpenSSL, you can use the following command to generate a key pair with a length of 4096 bits and save it in the file `private_key.pem`:
 
-   `$ openssl genrsa -out private_key.pem 4096`
+   ```
+   openssl genrsa -out private_key.pem 4096
+   ```
 
    The resulting file contains both the public and the private key\. To extract the public key from that file, run the following command:
 
-   `$ openssl rsa -pubout -in private_key.pem -out public_key.pem`
+   ```
+   openssl rsa -pubout -in private_key.pem -out public_key.pem
+   ```
 
-   The public key is the file that you upload later in this procedure
+   The public key \(`public_key.pem`\) is the file that you upload later in this procedure\.
 
    Note the following requirements for the key:
    + The key pair must be an SSH\-2 RSA key pair\.

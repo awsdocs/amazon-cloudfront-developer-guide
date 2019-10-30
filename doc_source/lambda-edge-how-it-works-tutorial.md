@@ -65,7 +65,7 @@ Choose how to set the permissions for your function\. It's easiest to get starte
 **Role name**  
 Type a name for the role that will be created from the policy template, which you choose next, under **Policy templates**\.  
 **Policy templates**  
- The policy template **Basic Edge Lambda permissions** is automatically added for you, because you chose a CloudFront blueprint as the basis for your function\. This policy template adds execution role permissions that allow CloudFront to run your Lambda function for you in CloudFront locations around the world\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)\.
+The policy template **Basic Edge Lambda permissions** is automatically added for you, because you chose a CloudFront blueprint as the basis for your function\. This policy template adds execution role permissions that allow CloudFront to run your Lambda function for you in CloudFront locations around the world\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)\.
 
 1. Choose **Create function**\. Lambda creates the function, and on the next page, you see a Congratulations\! success message box\.  
 ![\[Code editing and configuration page for a function in the Lambda console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-after-choose-create-function.png)
@@ -131,7 +131,7 @@ Select this check box if you want to access the request body in your function, f
 1. Wait for the function to replicate\. This typically takes a few minutes but can take up to 15 minutes\.
 
     You can check to see if replication is finished by going to the CloudFront console and viewing your distribution:
-   + Go to the CloudFront console at https://console\.aws\.amazon\.com/cloudfront/\.
+   + Go to the CloudFront console at [https://console.aws.amazon.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
    Check for the distribution status to change from **In Progress** back to **Deployed**, which means that your function has been replicated\. Then follow the steps in the next section to verify that the function works\.
 

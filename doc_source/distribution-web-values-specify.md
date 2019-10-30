@@ -103,7 +103,7 @@ When you create or update a distribution, you specify the following values for e
 ### Origin Domain Name<a name="DownloadDistValuesDomainName"></a>
 
 The DNS domain name of the Amazon S3 bucket or HTTP server from which you want CloudFront to get objects for this origin, for example:
-+ **Amazon S3 bucket** – `myawsbucket.s3.us-west-2.amazonaws.com`
++ **Amazon S3 bucket** – `aws-s3-bucket1.s3.us-west-2.amazonaws.com`
 + **Amazon S3 bucket configured as a website** – `https://bucket-name.s3-website.us-west-2.amazonaws.com`
 + **MediaStore container** – `mymediastore.data.mediastore.us-west-1.amazonaws.com`
 + **MediaPackage endpoint** – `mymediapackage.mediapackage.us-west-1.amazon.com`

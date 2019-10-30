@@ -38,15 +38,29 @@ The following steps provide an overview of setting up field\-level encryption\. 
 ## Setting Up Field\-Level Encryption<a name="field-level-encryption-setting-up"></a>
 
 Follow these steps to get started using field\-level encryption\. To learn about limits in field\-level encryption, see [Limits](cloudfront-limits.md)\.
-+ [Step 1: Get an RSA Key Pair](#field-level-encryption-setting-up-step1)
++ [Step 1: Create an RSA Key Pair](#field-level-encryption-setting-up-step1)
 + [Step 2: Add Your Public Key to CloudFront](#field-level-encryption-setting-up-step2)
 + [Step 3: Create a Profile for Field\-Level Encryption](#field-level-encryption-setting-up-step3)
 + [Step 4: Create a Configuration](#field-level-encryption-setting-up-step4)
 + [Step 5: Add a Configuration to a Cache Behavior](#field-level-encryption-setting-up-step5)
 
-### Step 1: Get an RSA Key Pair<a name="field-level-encryption-setting-up-step1"></a>
+### Step 1: Create an RSA Key Pair<a name="field-level-encryption-setting-up-step1"></a>
 
-To get started, you must obtain a RSA key pair that includes a public key, so CloudFront can encrypt data, and a private key, so components at your origin to decrypt the fields that have been encrypted\. For example, you can use Open SSL or another tool to create a key pair\. The key size must be 2048 bits\. For more information, see [To create an RSA key pair and upload the public key in the AWS Management Console](private-content-trusted-signers.md#private-content-uploading-cloudfront-public-key-procedure)\.
+To get started, you must create an RSA key pair that includes a public key, so CloudFront can encrypt data, and a private key, so components at your origin can decrypt the fields that have been encrypted\. You can use OpenSSL or another tool to create a key pair\. The key size must be 2048 bits\.
+
+For example, if you're using OpenSSL, you can use the following command to generate a key pair with a length of 2048 bits and save it in the file `private_key.pem`:
+
+```
+openssl genrsa -out private_key.pem 2048
+```
+
+The resulting file contains both the public and the private key\. To extract the public key from that file, run the following command:
+
+```
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+```
+
+The public key file \(`public_key.pem`\) contains the encoded key value that you paste in the following step\.
 
 ### Step 2: Add Your Public Key to CloudFront<a name="field-level-encryption-setting-up-step2"></a>
 
@@ -62,11 +76,11 @@ After you get your RSA key pair, add your public key to CloudFront\.<a name="fie
 
 1. For **Key name**, type a unique name for the key\. The name can't have spaces and can include only alphanumeric characters, underscores \(\_\), and hyphens \(\-\)\. The maximum number of characters is 128\.
 
-1. For **Encoded key**, copy and paste the encoded key value for your public key, including the " \-\-\-\-\-BEGIN PUBLIC KEY\-\-\-\-\-" and "\-\-\-\-\-END PUBLIC KEY\-\-\-\-\-" lines\.
+1. For **Key value**, paste the encoded key value for your public key, including the " \-\-\-\-\-BEGIN PUBLIC KEY\-\-\-\-\-" and "\-\-\-\-\-END PUBLIC KEY\-\-\-\-\-" lines\.
 
 1. For **Comment**, add an optional comment\. For example, you could include the expiration date for the public key\.
 
-1. Choose **Add key**\.
+1. Choose **Add**\.
 
 You can add more keys to use with CloudFront by repeating the steps in the procedure\.
 

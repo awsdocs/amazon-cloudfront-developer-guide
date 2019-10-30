@@ -1,7 +1,7 @@
 # Writing Functions for Lambda@Edge<a name="lambda-edge-authoring-functions"></a>
 
 There are several resources to help you with writing Lambda@Edge functions:
-+ For more information about writing Lambda functions that you can use with Lambda@Edge, see [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)\. 
++ For more information about writing Lambda functions that you can use with Lambda@Edge, see [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)\.
 + To learn about the event structure to use with Lambda@Edge functions, see [Lambda@Edge Event Structure](lambda-event-structure.md)\.
 + To see examples of Lambda@Edge functions, such as functions for A/B testing and generating an HTTP redirect, see [Lambda@Edge Example Functions](lambda-examples.md)\.
 

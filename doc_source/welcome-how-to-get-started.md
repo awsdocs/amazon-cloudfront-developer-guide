@@ -2,4 +2,4 @@
 
 For information about getting started with Amazon CloudFront, see the following topics in this guide:
 + [Setting Up Amazon CloudFront](setting-up-cloudfront.md), which explains how to sign up for AWS, how to secure access to your AWS account, and how to set up programmatic access to CloudFront\.
-+ [Getting Started with CloudFront](GettingStarted.md), which describes how to create a distribution that can serve content to viewers from your origin, like an Amazon S3 bucket or a website, and then test that it works\.
++ [Getting Started with Amazon CloudFront](GettingStarted.md), which describes how to create a distribution that can serve content to viewers from your origin, like an Amazon S3 bucket or a website, and then test that it works\.

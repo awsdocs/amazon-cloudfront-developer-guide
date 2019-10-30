@@ -22,7 +22,7 @@ To stream media files using CloudFront, you create an RTMP distribution and spec
 
 ## Origin Domain Name \(Amazon S3 Bucket\)<a name="StreamingDistValuesDNSName"></a>
 
-The DNS domain name of the Amazon S3 bucket from which you want CloudFront to get objects for this origin, for example, `myawsbucket.s3.amazonaws.com`\. In the CloudFront console, click in the **Origin Domain Name** field, and a list enumerates the Amazon S3 buckets that are associated with the current AWS account\. To use a bucket from a different AWS account, type the domain name of the bucket in the following format:
+The DNS domain name of the Amazon S3 bucket from which you want CloudFront to get objects for this origin, for example, `aws-s3-bucket1.s3.amazonaws.com`\. In the CloudFront console, click in the **Origin Domain Name** field, and a list enumerates the Amazon S3 buckets that are associated with the current AWS account\. To use a bucket from a different AWS account, type the domain name of the bucket in the following format:
 
 `bucket-name.s3.region.amazonaws.com` 
 

@@ -13,7 +13,7 @@ The overview and procedures in this section help you get started with AWS\.
 
 When you sign up for AWS, your AWS account is automatically signed up for all services in AWS, including Amazon CloudFront\. You are charged only for the services that you use\.
 
-If you have an AWS account already, skip to [Access Your Account](#setting-up-access-account)\. Otherwise, go ahead and create one\.<a name="setting-up-sign-up-for-aws-procedure"></a>
+If you have an AWS account already, skip to [Access Your Account](#setting-up-access-account)\. Otherwise, create one\.<a name="setting-up-sign-up-for-aws-procedure"></a>
 
 **To create an AWS account**
 
