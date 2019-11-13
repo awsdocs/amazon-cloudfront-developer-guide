@@ -209,7 +209,7 @@ For more information, see [Caching Content Based on Query String Parameters](Que
 
 ## Size Limits for Body with the Include Body Option<a name="lambda-requirements-size-body-access"></a>
 
-For all Lambda@Edge limits, including size limits, see \.
+For all Lambda@Edge limits, including size limits, see [Limits](#lambda-requirements-see-limits)\.
 
 ## Tagging<a name="lambda-requirements-tagging"></a>
 
