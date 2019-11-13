@@ -203,7 +203,7 @@ The maximum length of a request, including the path, the query string \(if any\)
 
 CloudFront constructs a URL from the request\. The maximum length of this URL is 8192 bytes\. 
 
-If a request or a URL exceeds these limits, CloudFront returns HTTP status code 413, Request Header Fields Too Large, to the viewer, and then terminates the TCP connection to the viewer\.
+If a request or a URL exceeds these limits, CloudFront returns HTTP status code 413, Request Entity Too Large, to the viewer, and then terminates the TCP connection to the viewer\.
 
 ### OCSP Stapling<a name="request-custom-ocsp-stapling"></a>
 
