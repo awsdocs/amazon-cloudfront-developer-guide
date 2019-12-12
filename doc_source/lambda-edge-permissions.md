@@ -189,6 +189,6 @@ CloudFront supports using service\-linked roles for Lambda@Edge in the following
 | Asia Pacific \(Seoul\) | ap\-northeast\-2 | Yes | 
 | Asia Pacific \(Singapore\) | ap\-southeast\-1 | Yes | 
 | Asia Pacific \(Sydney\) | ap\-southeast\-2 | Yes | 
-| EU \(Frankfurt\) | eu\-central\-1 | Yes | 
-| EU \(London\) | eu\-west\-2 | Yes | 
+| Europe \(Frankfurt\) | eu\-central\-1 | Yes | 
+| Europe \(London\) | eu\-west\-2 | Yes | 
 | South America \(São Paulo\) | sa\-east\-1 | Yes | 

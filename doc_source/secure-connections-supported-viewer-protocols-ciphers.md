@@ -29,7 +29,7 @@ A viewer must support at least one of the supported ciphers to establish an HTTP
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | TLSv1\.2 | ♦ | ♦ | ♦ | ♦ | ♦ | 
 | TLSv1\.1 | ♦ | ♦ | ♦ | ♦ |  | 
-| TLSv1 | ♦ | ♦ | ♦ |  |  | 
+| TLSv1 | ♦ | ♦¹ | ♦ |  |  | 
 | SSLv3 | ♦ |  |  |  |  | 
 | Ciphers Supported | 
 | ECDHE\-RSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | 
@@ -45,6 +45,8 @@ A viewer must support at least one of the supported ciphers to establish an HTTP
 | AES128\-SHA | ♦ | ♦ | ♦ | ♦ |  | 
 | DES\-CBC3\-SHA  | ♦ | ♦ |  |  |  | 
 | RC4\-MD5 | ♦ |  |  |  |  | 
+
+¹ For distributions that use a custom SSL certificate and support legacy clients, you can configure the distribution to support only TLS version 1\.1 and higher, refusing connections from clients that use TLS version 1\.0\. To do so, choose the **TLSv1** security policy, and then create a case in the [AWS Support Center](https://console.aws.amazon.com/support/home) to request this support\.
 
 ### OpenSSL and RFC Cipher Names<a name="secure-connections-openssl-rfc-cipher-names"></a>
 

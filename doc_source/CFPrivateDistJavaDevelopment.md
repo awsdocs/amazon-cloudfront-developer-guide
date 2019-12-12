@@ -1,6 +1,6 @@
 # Create a URL Signature Using Java<a name="CFPrivateDistJavaDevelopment"></a>
 
-The [Open source Java toolkit for Amazon S3 and CloudFront](http://jets3t.s3.amazonaws.com/index.html) provides example code and information about CloudFront development in Java\. For information about private distributions, go to Private Distributions at [Programmer Guide: Code Samples](http://jets3t.s3.amazonaws.com/toolkit/code-samples.html#cloudfront-private-distributions)\. 
+[JetS3t](https://github.com/mondain/jets3t) is a free, open source Java toolkit and application suite for Amazon S3, CloudFront, and Google Cloud Storage, with example code for CloudFront development in Java\. See the [signed URL example in `CloudFrontSamples.java`](https://github.com/mondain/jets3t/blob/master/jets3t/src/main/java/org/jets3t/samples/CloudFrontSamples.java#L216-L255)\.
 
 You can also create signed URLs by using the `CloudFrontUrlSigner` class in the AWS SDK for Java\. For more information, see [Class UrlSigner](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/cloudfront/CloudFrontUrlSigner.html) in the *AWS SDK for Java API Reference*\.
 
@@ -73,7 +73,7 @@ String signedUrl = CloudFrontService.signUrl(
 System.out.println(signedUrl);
 ```
 
-See also
+See also:
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)

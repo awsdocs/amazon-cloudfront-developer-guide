@@ -3,7 +3,9 @@
 For web distributions, CloudFront by default doesn't consider cookies when caching your objects in edge locations\. If your origin returns two objects and they differ only by the values in the `Set-Cookie` header, CloudFront caches only one version of the object\. \(For RTMP distributions, you cannot configure CloudFront to process cookies and CloudFront does not cache cookies in edge caches\.\)
 
 **Important**  
-Amazon S3 and some HTTP servers do not process cookies\. Do not configure CloudFront cache behaviors to forward cookies to an origin that doesn't process cookies, or you'll adversely affect cacheability and, therefore, performance\. For more information about cache behaviors, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.
+Amazon S3 and some HTTP servers don’t process cookies\. Don’t configure CloudFront to forward cookies to an origin that doesn’t process cookies, or you’ll adversely affect cacheability and, therefore, performance\.  
+Conversely, if your CloudFront origin depends on a particular cookie, make sure you configure CloudFront to forward that cookie to the origin\. Otherwise, CloudFront will remove the cookie before forwarding the request to your origin\.  
+To configure cookie forwarding, you update your distribution’s cache behavior\. For more information about cache behaviors, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior), particularly the *Forward Cookies* and *Whitelist Cookies* sections\.
 
 You can configure CloudFront to forward to your origin some or all of the cookies in viewer requests, and to cache separate versions of your objects based on cookie values in viewer requests\. CloudFront uses the cookies in viewer requests to uniquely identify an object in the cache\. 
 
@@ -43,8 +45,6 @@ If you want CloudFront to temporarily stop caching cookies and cookie attributes
 `no-cache="Set-Cookie"`
 
 **Total Length of Cookie Names**  
-The total number of bytes in all of the cookie names that you configure CloudFront to forward to your origin can't exceed:  
-`512 – (the number of cookies that you're forwarding)`  
-For example, if you configure CloudFront to forward 10 cookies to your origin, the combined length of the names of the 10 cookies can't exceed 502 bytes \(512 – 10\)\. If you configure CloudFront to forward all cookies to your origin, the length of cookie names doesn't matter\.
+The total number of bytes in all of the cookie names that you configure CloudFront to forward to your origin can’t exceed 512 minus the number of cookies that you’re forwarding\. For example, if you configure CloudFront to forward 10 cookies to your origin, the combined length of the names of the 10 cookies can’t exceed 502 bytes \(512 – 10\)\. If you configure CloudFront to forward all cookies to your origin, the length of cookie names doesn’t matter\.
 
-For information about using the CloudFront console to update a distribution so CloudFront forwards cookies to the origin, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update a distribution, see [PUT Distribution Config](https://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+For information about using the CloudFront console to update a distribution so CloudFront forwards cookies to the origin, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update a distribution, see [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.

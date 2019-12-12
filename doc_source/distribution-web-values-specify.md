@@ -374,7 +374,7 @@ Specify the HTTP methods that you want CloudFront to process and forward to your
 **Note**  
 CloudFront caches responses to `GET` and `HEAD` requests and, optionally, `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
 
-If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 regions and `PUT` requests in those regions require an additional header\. For more information, see [Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\. 
+If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 regions and `PUT` requests in those regions require an additional header\. For more information, see [Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
 
 **Important**  
 If you choose **GET, HEAD, OPTIONS** or **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**, you might need to restrict access to your Amazon S3 bucket or to your custom origin to prevent users from performing operations that you don't want them to perform\. The following examples explain how to restrict access:  
@@ -615,13 +615,13 @@ For more information, see [Using Alternate Domain Names and HTTPS](using-https-a
 ### Security Policy<a name="DownloadDistValues-security-policy"></a>
 
 Specify the security policy that you want CloudFront to use for HTTPS connections\. A security policy determines two settings: 
-+ The minimum SSL/TLS protocol that CloudFront uses to communicate with viewers
-+ The cipher that CloudFront uses to encrypt the content that it returns to viewers
++ The minimum SSL/TLS protocol that CloudFront uses to communicate with viewers\.
++ The cipher that CloudFront uses to encrypt the content that it returns to viewers\.
 
 The security policies that are available depend on the values that you specify for **SSL Certificate** and **Custom SSL Client Support**:
 + When **SSL Certificate** is **Default CloudFront Certificate \(\*\.cloudfront\.net\)**, CloudFront automatically sets the value of **Security Policy** to **TLSv1**\.
-+ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Only Clients that Support Server Name Indication \(SNI\)**, you must use TLSv1 or later\. We recommend that you choose **TLSv1\.1\_2016** unless your users are using browsers or devices that don't support TLSv1\.1 or later\.
-+ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **All Clients**, we recommend that you choose **TLSv1**\. In this configuration, the **TLSv1\_2016**, **TLSv1\.1\_2016**, and **TLSv1\.2\_2018** security policies aren't available\.
++ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Clients that Support Server Name Indication \(SNI\) \- \(Recommended\)**, you must use TLSv1 or later\. We recommend that you choose **TLSv1\.1\_2016** unless your viewers are using browsers or devices that don't support TLSv1\.1 or later\.
++ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Legacy Clients Support**, we recommend that you choose **TLSv1**\. In this configuration, the **TLSv1\_2016**, **TLSv1\.1\_2016**, and **TLSv1\.2\_2018** security policies aren't available\. However, you can use this configuration to support only TLS version 1\.1 and higher, refusing connections from clients that use TLS version 1\.0\. To do so, choose the **TLSv1** security policy, and then create a case in the [AWS Support Center](https://console.aws.amazon.com/support/home) to request this support\.
 
 For information about the relationship between the security policy that you choose and the protocols and ciphers that CloudFront uses to communicate with viewers, see [Supported SSL/TLS Protocols and Ciphers for Communication Between Viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
 
