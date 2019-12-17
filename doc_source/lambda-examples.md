@@ -2,7 +2,8 @@
 
 See the following sections for examples of using Lambda functions with CloudFront\.
 
-Note that each Lambda@Edge Node.js function must call the `callback` parameter to successfully process a request or return a response\. For more information, see [Writing and Creating a Lambda@Edge Function](lambda-edge-create-function.md)\.
+**Note**  
+For Node\.js functions, each function must call the `callback` parameter to successfully process a request or return a response\. For more information, see [Writing and Creating a Lambda@Edge Function](lambda-edge-create-function.md)\.
 
 **Topics**
 + [General Examples](#lambda-examples-general-examples)
