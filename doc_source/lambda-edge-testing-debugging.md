@@ -52,7 +52,7 @@ The Lambda service throttles executions in each Region, and returns an error if 
 
 ### How to Determine the Type of Failure<a name="lambda-edge-testing-debugging-failure-type"></a>
 
-To help you decide where to focus as you debug and work to resolve errors returned by CloudFront, it's helpful to identify why CloudFront is returning an HTTP error\. To get started, you can use the graphs provided in the **Monitoring** section of the CloudFront console on the AWS Management Console\. For more information about viewing graphs in the **Monitoring** section of the CloudFront console, see [Monitoring CloudFront and Setting Alarms](monitoring-using-cloudwatch.md)\.
+To help you decide where to focus as you debug and work to resolve errors returned by CloudFront, it's helpful to identify why CloudFront is returning an HTTP error\. To get started, you can use the graphs provided in the **Monitoring** section of the CloudFront console on the AWS Management Console\. For more information about viewing graphs in the **Monitoring** section of the CloudFront console, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
 
 The following graphs can be especially helpful when you want to track down whether errors are being returned by origins or by a Lambda function, and to narrow down the type of issue when it's an error from a Lambda function\.
 
@@ -72,7 +72,7 @@ The **Lambda@Edge errors** tab includes graphs that categorize the Lambda@Edge e
 In addition, read the following sections in this chapter for more recommendations about troubleshooting and fixing errors\.
 
 **Throttles graph**  
-The **Lambda@Edge errors** tab also includes a **Throttles** graph\. On occasion, the Lambda service throttles your function invocations on per Region basis, if you reach the regional concurrency limit\. If you see a limit exceeded error, your function has reached a limit that the Lambda service imposes on executions in a Region\. For more information, including how to request an increase in the limit, see [Limits on Lambda@Edge](cloudfront-limits.md#limits-lambda-at-edge)\.  
+The **Lambda@Edge errors** tab also includes a **Throttles** graph\. On occasion, the Lambda service throttles your function invocations on per Region basis, if you reach the regional concurrency limit\. If you see a limit exceeded error, your function has reached a limit that the Lambda service imposes on executions in a Region\. For more information, including how to request an increase in the limit, see [Quotas on Lambda@Edge](cloudfront-limits.md#limits-lambda-at-edge)\.  
 
 ![\[Throttle graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
 
@@ -105,7 +105,7 @@ Even if you haven't changed your Lambda@Edge function, updates to the Lambda fun
 
 To see the Regions where your Lambda@Edge function is receiving traffic, view metrics for the function on the CloudFront console on the AWS Management Console\. Metrics are displayed for each AWS Region\. On the same page, you can choose a Region and view log files for that Region so you can investigate issues\. You must review CloudWatch log files in the correct AWS Region to see the log files created when CloudFront executed your Lambda function\.
 
-For more information about viewing graphs in the Monitoring section of the CloudFront console, see [Monitoring CloudFront and Setting Alarms](monitoring-using-cloudwatch.md)\.
+For more information about viewing graphs in the Monitoring section of the CloudFront console, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
 
 ## Determining if Your Account Pushes Logs to CloudWatch<a name="lambda-edge-testing-debugging-cloudwatch-logs-enabled"></a>
 

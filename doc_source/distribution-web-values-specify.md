@@ -91,7 +91,7 @@ You specify the delivery method when you create a distribution\. Unless you're u
 
 When you create or update a distribution, you provide information about one or more locations—known as origins—where you store the original versions of your web content\. CloudFront gets your web content from your origins and serves it to viewers via a world\-wide network of edge servers\. Each origin is either an Amazon S3 bucket or an HTTP server, for example, a web server\. 
 
-For the current limit on the number of origins that you can create for a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current limit on the number of origins that you can create for a distribution or to request a higher limit, see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 If you want to delete an origin, you must first edit or delete the cache behaviors that are associated with that origin\. 
 
@@ -281,7 +281,7 @@ The value for the header that you specified in the **Custom Header** field\.
 
 For more information, see [Forwarding Custom Headers to Your Origin](forward-custom-headers.md)\. 
 
-For the current limit on the maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the total length of all header names and values, see [Limits](cloudfront-limits.md)\.
+For the current limit on the maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the total length of all header names and values, see [Quotas](cloudfront-limits.md)\.
 
 ## Cache Behavior Settings<a name="DownloadDistValuesCacheBehavior"></a>
 
@@ -297,7 +297,7 @@ When you create a new distribution, you specify settings for the default cache b
 
 When you create a cache behavior, you specify the one origin from which you want CloudFront to get objects\. As a result, if you want CloudFront to distribute objects from all of your origins, you must have at least as many cache behaviors \(including the default cache behavior\) as you have origins\. For example, if you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin will never be used\.
 
-For the current limit on the number of cache behaviors that you can add to a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current limit on the number of cache behaviors that you can add to a distribution or to request a higher limit, see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 ### Path Pattern<a name="DownloadDistValuesPathPattern"></a>
 
@@ -400,7 +400,7 @@ For more information about how to configure caching in CloudFront by using reque
 
 Specify the headers that you want CloudFront to consider when caching your objects\. Select headers from the list of available headers and choose **Add**\. To forward a custom header, enter the name of the header in the field, and choose **Add Custom**\.
 
-For the current limit on the number of headers that you can whitelist for each cache behavior or to request a higher limit, see [Limits on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
+For the current limit on the number of headers that you can whitelist for each cache behavior or to request a higher limit, see [Quotas on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
 
 ### Object Caching<a name="DownloadDistValuesObjectCaching"></a>
 
@@ -467,7 +467,7 @@ where each of your users has a unique value for *member\-number*\. You want Clou
 
 `userid_*`
 
-For the current limit on the number of cookie names that you can whitelist for each cache behavior or to request a higher limit, see [Limits on Whitelisted Cookies \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-cookies)\.
+For the current limit on the number of cookie names that you can whitelist for each cache behavior or to request a higher limit, see [Quotas on Whitelisted Cookies \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-cookies)\.
 
 ### Query String Forwarding and Caching<a name="DownloadDistValuesQueryString"></a>
 
@@ -584,7 +584,7 @@ Create \(or update\) a CNAME record with your DNS service to route queries for `
 Add a certificate to CloudFront from a trusted certificate authority \(CA\) that covers the domain name \(CNAME\) that you add to your distribution, to validate your authorization to use the domain name\.
 You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, or that you're developing an application for the domain owner\.
 
-For the current limit on the number of alternate domain names that you can add to a distribution or to request a higher limit, see [General Limits on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current limit on the number of alternate domain names that you can add to a distribution or to request a higher limit, see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 For more information about alternate domain names, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 
@@ -619,11 +619,21 @@ Specify the security policy that you want CloudFront to use for HTTPS connection
 + The cipher that CloudFront uses to encrypt the content that it returns to viewers\.
 
 The security policies that are available depend on the values that you specify for **SSL Certificate** and **Custom SSL Client Support**:
-+ When **SSL Certificate** is **Default CloudFront Certificate \(\*\.cloudfront\.net\)**, CloudFront automatically sets the value of **Security Policy** to **TLSv1**\.
-+ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Clients that Support Server Name Indication \(SNI\) \- \(Recommended\)**, you must use TLSv1 or later\. We recommend that you choose **TLSv1\.1\_2016** unless your viewers are using browsers or devices that don't support TLSv1\.1 or later\.
-+ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Legacy Clients Support**, we recommend that you choose **TLSv1**\. In this configuration, the **TLSv1\_2016**, **TLSv1\.1\_2016**, and **TLSv1\.2\_2018** security policies aren't available\. However, you can use this configuration to support only TLS version 1\.1 and higher, refusing connections from clients that use TLS version 1\.0\. To do so, choose the **TLSv1** security policy, and then create a case in the [AWS Support Center](https://console.aws.amazon.com/support/home) to request this support\.
++ When **SSL Certificate** is **Default CloudFront Certificate \(\*\.cloudfront\.net\)**, CloudFront automatically sets the value of **Security Policy** to TLSv1\.
++ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Clients that Support Server Name Indication \(SNI\) \- \(Recommended\)**, you can choose any of the following security policies:
+  + TLSv1
+  + TLSv1\_2016
+  + TLSv1\.1\_2016
+  + TLSv1\.2\_2018
 
-For information about the relationship between the security policy that you choose and the protocols and ciphers that CloudFront uses to communicate with viewers, see [Supported SSL/TLS Protocols and Ciphers for Communication Between Viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
+  We recommend that you choose TLSv1\.1\_2016 unless your viewers are using browsers or devices that don’t support TLSv1\.1 or later\.
++ When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** and **Custom SSL Client Support** is **Legacy Clients Support**, you can choose any of the following security policies:
+  + TLSv1
+  + SSLv3
+
+  We recommend that you choose TLSv1\. In this configuration, the TLSv1\_2016, TLSv1\.1\_2016, and TLSv1\.2\_2018 security policies aren’t available in the CloudFront console or API\. However, you can request one of these security policies by creating a case in the [AWS Support Center](https://console.aws.amazon.com/support/home)\.
+
+For more information about the security policies, including the protocols and ciphers that each one includes, see [Supported SSL/TLS Protocols and Ciphers for Communication Between Viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
 
 ### Minimum SSL Protocol Version<a name="DownloadDistValuesMinimumSSLProtocolVersion"></a>
 

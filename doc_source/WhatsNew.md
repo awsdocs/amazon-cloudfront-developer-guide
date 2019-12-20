@@ -1,12 +1,13 @@
 # Document History<a name="WhatsNew"></a>
 + **API Version:** 2019\-03\-26
-+ **Latest documentation update:** December 12, 2019
++ **Latest documentation update:** December 19, 2019
 
 
 ****  
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+|  New real\-time metrics in CloudWatch  |  Amazon CloudFront now offers eight additional real\-time metrics in Amazon CloudWatch\. For more information, see [Viewing Additional CloudFront Distribution Metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  |  December 19, 2019  | 
 |  New fields in access logs  |  CloudFront adds seven new fields to access logs\. For more information, see [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.  |  December 12, 2019  | 
 |  AWS for WordPress plugin  |  You can use the AWS for WordPress plugin to provide visitors to your WordPress website an accelerated viewing experience using CloudFront\. For more information, see [Getting Started with a Simple DistributionGetting Started with AWS for WordPress](WordPressPlugIn.md)\.  |  October 30, 2019  | 
 |  Tag\-based and resource\-level IAM permissions policies  |  CloudFront now supports two additional ways of specifying IAM permission policies: tag\-based and resource\-level policy permissions\. For more information, see [Managing Access to Resources](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/access-control-manage-access-intro.html)\.  |  August 8, 2019  | 

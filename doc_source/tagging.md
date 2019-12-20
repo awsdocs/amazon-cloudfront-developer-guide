@@ -10,7 +10,7 @@ Note the following:
 + You can tag web and RTMP distributions, but you can't tag origin access identities or invalidations\.
 + [Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html) and [Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html) are currently not supported for CloudFront\. 
 
-For the current limit on the number of tags that you can add to a distribution, see [Limits](cloudfront-limits.md)\. To request a higher limit, [create a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\.
+For the current limit on the number of tags that you can add to a distribution, see [Quotas](cloudfront-limits.md)\. To request a higher limit, [create a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\.
 
 You can also apply tags to resources by using the CloudFront API, AWS CLI, SDKs, and AWS Tools for Windows PowerShell\. For more information, see the following documentation:
 + CloudFront API – See the following operations in the *Amazon CloudFront API Reference*:

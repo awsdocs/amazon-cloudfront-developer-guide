@@ -1,12 +1,6 @@
 # Downloading Data in CSV Format<a name="cloudwatch-csv"></a>
 
-You can download the CloudFront CloudWatch monitoring information in CSV format\. This section explains how to download the report and describes several values in the report\.<a name="cloudwatch-csv-procedure"></a>
-
-**To download the CloudFront monitoring information in CSV format**
-
-1. While viewing the CloudFront metrics, choose **CSV**\.
-
-1. In the **Opening *file name*** dialog box, choose whether to open or save the file\.
+You can download the CloudWatch metrics data for a CloudFront distribution in CSV format\. You can download the data when you **View distribution metrics** for a particular distribution in the [CloudFront console](https://console.aws.amazon.com/cloudfront/home)\.
 
 ## Information About the Report<a name="cloudwatch-csv-header"></a>
 
@@ -19,7 +13,7 @@ The CloudFront reporting version\.
 The name of the report\.
 
 **DistributionID**  
-The ID of the distribution that you ran the report for\.
+The ID of the distribution for which you ran the report\.
 
 **StartDateUTC**  
 The beginning of the date range for which you ran the report, in Coordinated Universal Time \(UTC\)\.
@@ -31,14 +25,14 @@ The end of the date range for which you ran the report, in Coordinated Universal
 The date and time on which you ran the report, in Coordinated Universal Time \(UTC\)\.
 
 **Granularity**  
-The time period for each row in the report, for example, ONE\_MINUTE\. 
+The time period for each row in the report, for example, `ONE_MINUTE`\.
 
 ## Data in the CloudWatch Metrics Report<a name="cloudwatch-csv-data"></a>
 
 The report includes the following values:
 
 **DistributionID**  
-The ID of the distribution that you ran the report for\.
+The ID of the distribution for which you ran the report\.
 
 **FriendlyName**  
 An alternate domain name \(CNAME\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes an origin domain name for the distribution\.
@@ -47,19 +41,45 @@ An alternate domain name \(CNAME\) for the distribution, if any\. If a distribut
 The hour or the day that data applies to, in Coordinated Universal Time \(UTC\)\.
 
 **Requests**  
-The total number of requests for all HTTP status codes \(for example, 200 or 404\) and all methods \(for example, GET, HEAD, or POST\) during the time period\.
+The total number of requests for all HTTP status codes \(for example, `200`, `404`, and so on\) and all methods \(for example, `GET`, `HEAD`, `POST`, and so on\) during the time period\.
 
 **BytesDownloaded**  
 The number of bytes that viewers downloaded for the specified distribution during the time period\.
 
 **BytesUploaded**  
-The number of bytes that viewers uploaded to your origin for the specified distribution during the time period\.
+The number of bytes that viewers uploaded for the specified distribution during the time period\.
 
 **TotalErrorRatePct**  
-Requests for which the HTTP status code was a 4xx or 5xx error for the specified distribution during the time period\.
+The percentage of requests for which the HTTP status code was a `4xx` or `5xx` error for the specified distribution during the time period\.
 
 **4xxErrorRatePct**  
-Requests for which the HTTP status code was a 4xx error for the specified distribution during the time period\.
+The percentage of requests for which the HTTP status code was a `4xx` error for the specified distribution during the time period\.
 
 **5xxErrorRatePct**  
-Requests for which the HTTP status code was a 5xx error for the specified distribution during the time period\.
+The percentage of requests for which the HTTP status code was a `5xx` error for the specified distribution during the time period\.
+
+If you have [enabled additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional) for your distribution, then the report also includes the following additional values:
+
+**401ErrorRatePct**  
+The percentage of requests for which the HTTP status code was a `401` error for the specified distribution during the time period\.
+
+**403ErrorRatePct**  
+The percentage of requests for which the HTTP status code was a `403` error for the specified distribution during the time period\.
+
+**404ErrorRatePct**  
+The percentage of requests for which the HTTP status code was a `404` error for the specified distribution during the time period\.
+
+**502ErrorRatePct**  
+The percentage of requests for which the HTTP status code was a `502` error for the specified distribution during the time period\.
+
+**503ErrorRatePct**  
+The percentage of requests for which the HTTP status code was a `503` error for the specified distribution during the time period\.
+
+**504ErrorRatePct**  
+The percentage of requests for which the HTTP status code was a `504` error for the specified distribution during the time period\.
+
+**OriginLatency**  
+The total time spent, in milliseconds, from when CloudFront received a request to when it started providing a response to the network \(not the viewer\), for requests that were served from the origin, not the CloudFront cache\. This is also known as *first byte latency*, or *time\-to\-first\-byte*\.
+
+**CacheHitRate**  
+The percentage of all cacheable requests for which CloudFront served the content from its cache\. HTTP `POST` and `PUT` requests, and errors, are not considered cacheable requests\.

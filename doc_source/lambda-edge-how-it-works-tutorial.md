@@ -170,7 +170,7 @@ For example, if you view the file from London, try changing the Region in the Cl
 
 1. In the left pane, choose **Logs** to view the logs for your distribution\. 
 
-For more information, see [Monitoring CloudFront and Setting Alarms](monitoring-using-cloudwatch.md)\.
+For more information, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
 
 ## Step 7: Clean Up Your Example Resources<a name="lambda-edge-how-it-works-tutorial-cleanup-resources"></a>
 

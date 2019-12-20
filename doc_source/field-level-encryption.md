@@ -37,7 +37,7 @@ The following steps provide an overview of setting up field\-level encryption\. 
 
 ## Setting Up Field\-Level Encryption<a name="field-level-encryption-setting-up"></a>
 
-Follow these steps to get started using field\-level encryption\. To learn about limits in field\-level encryption, see [Limits](cloudfront-limits.md)\.
+Follow these steps to get started using field\-level encryption\. To learn about limits in field\-level encryption, see [Quotas](cloudfront-limits.md)\.
 + [Step 1: Create an RSA Key Pair](#field-level-encryption-setting-up-step1)
 + [Step 2: Add Your Public Key to CloudFront](#field-level-encryption-setting-up-step2)
 + [Step 3: Create a Profile for Field\-Level Encryption](#field-level-encryption-setting-up-step3)

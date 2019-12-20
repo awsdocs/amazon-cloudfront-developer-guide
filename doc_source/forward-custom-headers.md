@@ -30,7 +30,7 @@ For each origin that you want to forward custom headers to, add header names and
 
 If the header names and values that you specify are not already present in the viewer request, CloudFront adds them\. If a header is present, CloudFront overwrites the header value before forwarding the request to the origin\.
 
-For the current limits related to forwarding custom headers to the origin, see [Limits](cloudfront-limits.md)\.
+For the current limits related to forwarding custom headers to the origin, see [Quotas](cloudfront-limits.md)\.
 
 ## Custom Headers that CloudFront Can't Forward to Your Origin<a name="forward-custom-headers-blacklist"></a>
 

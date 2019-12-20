@@ -8,5 +8,5 @@ This section includes topics that provide details on your options for reports an
 + [Tracking Configuration Changes with AWS Config](TrackingChanges.md)
 + [Configuring and Using Access Logs](AccessLogs.md)
 + [Using AWS CloudTrail to Capture Requests Sent to the CloudFront API](logging_using_cloudtrail.md)
-+ [Monitoring CloudFront and Setting Alarms](monitoring-using-cloudwatch.md)
++ [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)
 + [Tagging Amazon CloudFront Distributions](tagging.md)

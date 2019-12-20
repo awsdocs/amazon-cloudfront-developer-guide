@@ -41,8 +41,7 @@ Change the **Origin Protocol Policy** for the applicable origins in your distrib
 
      CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.  
 **Origin SSL Protocols**  
-Choose the **Origin SSL Protocols** for the applicable origins in your distribution\. The SSLv3 protocol is less secure, so we recommend that you choose SSLv3 only if your origin doesn't support TLSv1 or later\.  
-The TLSv1 handshake is both backwards and forwards compatible with SSLv3, but TLSv1\.1 and TLSv1\.2 are not\. In this case, the openssl only sends a SSLv3 handshake\.
+Choose the **Origin SSL Protocols** for the applicable origins in your distribution\. The SSLv3 protocol is less secure, so we recommend that you choose SSLv3 only if your origin doesn’t support TLSv1 or later\. The TLSv1 handshake is both backwards and forwards compatible with SSLv3, but TLSv1\.1 and TLSv1\.2 are not\. When you choose SSLv3, CloudFront *only* sends SSLv3 handshake requests\.
 
 1. Choose **Yes, Edit**\.
 

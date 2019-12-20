@@ -33,7 +33,7 @@ Then fill out the rest of the form\.
 
 ## Certificates That You Can Use with Dedicated IP Addresses<a name="certificates-using-dedicated-ip-address"></a>
 
-For the limit on the number of SSL certificates that you can use for each AWS account when serving HTTPS requests using dedicated IP addresses, see [Limits on SSL Certificates \(Web Distributions Only\)](cloudfront-limits.md#limits-ssl-certificates)\.
+For the limit on the number of SSL certificates that you can use for each AWS account when serving HTTPS requests using dedicated IP addresses, see [Quotas on SSL Certificates \(Web Distributions Only\)](cloudfront-limits.md#limits-ssl-certificates)\.
 
 To request a higher limit, [create a case](https://console.aws.amazon.com/support/home?region=us-west-2#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\. Specify the following values:
 + **Regarding** – Accept the default value of **Service Limit Increase**
