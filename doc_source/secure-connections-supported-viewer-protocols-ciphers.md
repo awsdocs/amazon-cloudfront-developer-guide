@@ -13,19 +13,19 @@ You can choose HTTPS settings both for communication between viewers and CloudFr
 To choose whether to require HTTPS between viewers and CloudFront, specify the applicable value for [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.
 
 If you choose to require HTTPS, you also choose the security policy that you want CloudFront to use for HTTPS connections\. A security policy determines two settings:
-+ The SSL/TLS protocol that CloudFront uses to communicate with viewers
-+ The cipher that CloudFront uses to encrypt the content that it returns to viewers
++ The minimum SSL/TLS protocol that CloudFront uses to communicate with viewers\.
++ The ciphers that CloudFront can use to encrypt the content that it returns to viewers\.
 
-We recommend that you specify **TLSv1\.1\_2016** unless your users are using browsers or devices that don't support TLSv1\.1 or later\. When you use a custom SSL certificate and SNI, you must use TLSv1 or later\.
+We recommend that you specify **TLSv1\.2\_2018** unless your viewers are using browsers or devices that don’t support TLSv1\.2\.
 
 To choose a security policy, specify the applicable value for [Security Policy](distribution-web-values-specify.md#DownloadDistValues-security-policy)\. The following table lists the protocols and ciphers that CloudFront can use for each security policy\. 
 
-A viewer must support at least one of the supported ciphers to establish an HTTPS connection with CloudFront\. If you're using an SSL/TLS certificate in AWS Certificate Manager, a viewer must support one of the \*\-RSA\-\* ciphers\. CloudFront chooses a cipher in the listed order from among the ciphers that the viewer supports\. See also [OpenSSL and RFC Cipher Names](#secure-connections-openssl-rfc-cipher-names)\.
+A viewer must support at least one of the supported ciphers to establish an HTTPS connection with CloudFront\. If you’re using an SSL/TLS certificate in AWS Certificate Manager, a viewer must support one of the \*\-RSA\-\* ciphers\. CloudFront chooses a cipher in the listed order from among the ciphers that the viewer supports\. See also [OpenSSL and RFC Cipher Names](#secure-connections-openssl-rfc-cipher-names)\.
 
 
 ****  
 
-|  | Security Policy |  | SSLv3 | TLSv1\.0 | TLSv1\_2016 | TLSv1\.1\_2016 | TLSv1\.2\_2018 | 
+|  | Security Policy |  | SSLv3 | TLSv1 | TLSv1\_2016 | TLSv1\.1\_2016 | TLSv1\.2\_2018 | 
 | --- | --- | --- | --- | --- | --- | --- | --- | 
 | SSL/TLS Protocols Supported | 
 | TLSv1\.2 | ♦ | ♦ | ♦ | ♦ | ♦ | 
