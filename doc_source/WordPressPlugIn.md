@@ -44,43 +44,11 @@ To use the AWS for WordPress plugin, you must create an *IAM user* for the plugi
 **Note**  
 If you don't use [WordPress\.com](https://wordpress.com/) and instead have a self\-hosted WordPress website on Amazon EC2, you can use an IAM role instead of an IAM user\. For more information, see [IAM Roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) in the *Amazon EC2 User Guide*\.
 
-The following procedure contains the steps to create an IAM *policy*, and then attach it to the IAM user\. An IAM policy is a document that defines the permissions that apply to the user\.
+The following procedure includes the steps to attach an IAM *policy* to the IAM user\. An IAM policy is a document that defines the permissions that apply to the user\.
 
 **To create an IAM user**
 
 1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
-
-1. In the navigation pane, choose **Policies**\. Then choose **Create policy**\.
-
-1. Choose **JSON**\.
-
-1. Delete everything in the policy text box, and then paste or enter the following JSON policy into the text box:
-
-   ```
-   {
-       "Version": "2012-10-17",
-       "Statement": [
-           {
-               "Effect": "Allow",
-               "Action": "acm:DeleteCertificate",
-               "Resource": "*",
-               "Condition": {
-                   "StringEquals": {
-                       "aws:RequestedRegion": "us-east-1"
-                   }
-               }
-           }
-       ]
-   }
-   ```
-
-1. Choose **Review policy**\.
-
-1. On the **Review policy** page, do the following:
-
-   1. For **Name**, enter **AWSForWordPressDeleteCert**\.
-
-   1. Choose **Create policy**\.
 
 1. In the navigation pane, choose **Users**\. Then choose **Add user**\.
 
@@ -96,9 +64,9 @@ The following procedure contains the steps to create an IAM *policy*, and then a
 
    1. Choose **Attach existing policies directly**\.
 
-   1. In the search box, enter **WordPress**, and then select the check boxes next to **AWSForWordPressPolicy** and **AWSForWordPressDeleteCert**\. Make sure to select the check boxes for both WordPress policies\.
+   1. In the search box, enter **WordPress**, and then select the check box next to **AWSForWordPressPluginPolicy**\.
 **Note**  
-The *AWSForWordPressPolicy* is an AWS managed policy that gives the user permission to use all the features included in the AWS for WordPress plugin\. When new features are added to the plugin, AWS will update this policy to include the permissions necessary to use the new features\.
+The *AWSForWordPressPluginPolicy* is an AWS managed policy that gives the user permission to use all the features included in the AWS for WordPress plugin\. When new features are added to the plugin, AWS will update this policy to include the permissions necessary to use the new features\.
 
    1. Choose **Next: Tags**\.
 
