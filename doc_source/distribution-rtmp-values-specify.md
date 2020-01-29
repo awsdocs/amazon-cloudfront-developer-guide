@@ -1,5 +1,8 @@
 # Values that You Specify When You Create or Update an RTMP Distribution<a name="distribution-rtmp-values-specify"></a>
 
+**Note**  
+[Adobe designated Flash as end\-of\-life by December 31, 2020](https://theblog.adobe.com/adobe-flash-update/)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
+
 To stream media files using CloudFront, you create an RTMP distribution and specify the following values\. 
 
 **Topics**
