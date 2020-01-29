@@ -12,11 +12,11 @@ Most of these reports are based on the data in CloudFront access logs, which con
 **CloudFront Cache Statistics Reports**
 
 The CloudFront cache statistics report includes the following information:
-+ **Total Requests** – Shows the total number of requests for all HTTP status codes \(for example, 200 or 404\) and all methods \(for example, GET, HEAD, or POST\)
-+ **Percentage of Viewer Requests by Result Type** – Shows hits, misses, and errors as a percentage of total viewer requests for the selected CloudFront distribution
-+ **Bytes Transferred to Viewers** – Shows total bytes and bytes from misses
-+ **HTTP Status Codes** – Shows viewer requests by HTTP status code
-+ **Percentage of GET Requests that Didn't Finish Downloading**– Shows viewer GET requests that didn't finish downloading the requested object as a percentage of total requests
++ **Total Requests** – Shows the total number of requests for all HTTP status codes \(for example, 200 or 404\) and all methods \(for example, GET, HEAD, or POST\)\.
++ **Percentage of Viewer Requests by Result Type** – Shows hits, misses, and errors as a percentage of total viewer requests for the selected CloudFront distribution\.
++ **Bytes Transferred to Viewers** – Shows total bytes and bytes from misses\.
++ **HTTP Status Codes** – Shows viewer requests by HTTP status code\.
++ **Percentage of GET Requests that Didn't Finish Downloading**– Shows viewer GET requests that didn't finish downloading the requested object as a percentage of total requests\.
 
 For more information, see [CloudFront Cache Statistics Reports](cache-statistics.md)\.
 
@@ -35,9 +35,10 @@ For more information, see [CloudFront Top Referrers Report](top-referrers-report
 **CloudFront Usage Reports**
 
 The CloudFront usage reports include the following information:
-+ **Number of Requests** – Shows the number of HTTP and HTTPS requests that CloudFront responds to from edge locations in the selected region during each time interval for the specified CloudFront distribution
-+ **Data Transferred by Protocol** – Shows the total amount of data transferred over HTTP and HTTPS from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution
-+ **Data Transferred by Destination**– Shows the total amount of data transferred over HTTP and HTTPS from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution
++ **Number of Requests** – Shows the total number of requests that CloudFront responds to from edge locations in the selected region during each time interval for the specified CloudFront distribution\.
++ **Data Transferred by Protocol** and **Data Transferred by Destination** – Both show the total amount of data transferred from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution\. They separate the data differently, as follows:
+  + **By Protocol** – Separates the data by protocol: HTTP or HTTPS\.
+  + **By Destination** – Separates the data by destination: to your users or to your origin\.
 
 For more information, see [CloudFront Usage Reports](usage-charts.md)\.
 

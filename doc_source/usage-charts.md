@@ -132,7 +132,7 @@ The following list shows how the usage charts in the CloudFront console correspo
 
 ### Number of Requests<a name="usage-charts-requests"></a>
 
-This chart shows the number of HTTP and HTTPS requests that CloudFront responds to from edge locations in the selected region during each time interval for the specified CloudFront distribution\. 
+This chart shows the total number of requests that CloudFront responds to from edge locations in the selected region during each time interval for the specified CloudFront distribution, separated by protocol \(HTTP or HTTPS\) and type \(static, dynamic, or proxy\)\.
 
 **Number of HTTP Requests**  
 + *region***\-Requests\-HTTP\-Static:** Number of HTTP `GET` and `HEAD` requests served for objects with TTL ≥ 3600 seconds
@@ -146,7 +146,7 @@ This chart shows the number of HTTP and HTTPS requests that CloudFront responds 
 
 ### Data Transferred by Protocol<a name="usage-charts-data-transferred-by-protocol"></a>
 
-This chart shows the total amount of data transferred over HTTP and HTTPS from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution\. 
+This chart shows the total amount of data transferred from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution, separated by protocol \(HTTP or HTTPS\), type \(static, dynamic, or proxy\), and destination \(users or origin\)\.
 
 **Data Transferred over HTTP**  
 + *region***\-Out\-Bytes\-HTTP\-Static:** Bytes served via HTTP for objects with TTL ≥ 3600 seconds
@@ -162,7 +162,7 @@ This chart shows the total amount of data transferred over HTTP and HTTPS from C
 
 ### Data Transferred by Destination<a name="usage-charts-data-transferred-by-destination"></a>
 
-This chart shows the total amount of data transferred over HTTP and HTTPS from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution\. 
+This chart shows the total amount of data transferred from CloudFront edge locations in the selected region during each time interval for the specified CloudFront distribution, separated by destination \(users or origin\), protocol \(HTTP or HTTPS\), and type \(static, dynamic, or proxy\)\.
 
 **Data Transferred from CloudFront to Your Users**  
 + *region***\-Out\-Bytes\-HTTP\-Static:** Bytes served via HTTP for objects with TTL ≥ 3600 seconds
