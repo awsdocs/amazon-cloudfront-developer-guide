@@ -8,7 +8,7 @@ See the following sections for requirements and restrictions on using Lambda fun
 + [CloudWatch Logs](#lambda-requirements-cloudwatch-logs)
 + [Headers](#lambda-header-restrictions)
 + [HTTP Status Codes](#lambda-requirements-http-status-codes)
-+ [Lambda Function Configuration and Execution Environment](#lambda-requirements-lambda-function-configuration)
++ [Lambda Function Supported Runtimes and Configuration](#lambda-requirements-lambda-function-configuration)
 + [Limits](#lambda-requirements-see-limits)
 + [Microsoft Smooth Streaming](#lambda-requirements-microsoft-smooth-streaming)
 + [Network Access](#lambda-requirements-network-access)
@@ -118,16 +118,22 @@ CloudFront doesn't execute Lambda functions for viewer response events if the or
 
 You can, however, execute Lambda functions for *origin* response errors, including HTTP status codes 4xx and 5xx\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
 
-## Lambda Function Configuration and Execution Environment<a name="lambda-requirements-lambda-function-configuration"></a>
-+ You must create functions with the `nodejs8.10`, `nodejs10.x`, or `python3.7` runtime property\.
+## Lambda Function Supported Runtimes and Configuration<a name="lambda-requirements-lambda-function-configuration"></a>
++ Lambda@Edge supports Lambda functions with the following runtimes:
+  + **Python 3\.7**
+  + **Node\.js 10\.x**
+  + **Node\.js 8\.10**
 **Note**  
-If you have a function with the `nodejs6.10` property, you can still edit the function and associate it with a CloudFront distribution\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide*\.
-+ You can't configure your Lambda function to access resources inside your VPC\.
-+ You can't associate your Lambda function to a CloudFront distribution owned by another AWS account\. 
+Node\.js 8\.10 has reached end of life\. You can’t create new functions with the Node\.js 8\.10 runtime, though you can still update existing ones\. Starting February 3, 2020 you can’t update existing Node\.js 8\.10 functions, though you can still associate them with a CloudFront distribution\. We recommend moving to Node\.js 10\.x\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule on GitHub](https://github.com/nodejs/Release#release-schedule)\.
+  + **Node\.js 6\.10**
+**Note**  
+Node\.js 6\.10 has reached end of life\. You can’t create or update functions with the Node\.js 6\.10 runtime\. If you have an existing Node\.js 6\.10 function you can still associate it with a CloudFront distribution, though we recommend moving to Node\.js 10\.x\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule on GitHub](https://github.com/nodejs/Release#release-schedule)\.
++ You can’t configure your Lambda function to access resources inside your VPC\.
++ You can’t associate your Lambda function with a CloudFront distribution owned by another AWS account\.
 + The Dead Letter Queue \(DLQ\) is not supported\.
-+ Environment variables aren't supported\.
-+ Functions with Layers aren't supported\.
-+ AWS X\-Ray isn't supported\.
++ Environment variables are not supported\.
++ Functions with Layers are not supported\.
++ AWS X\-Ray is not supported\.
 
 ## Limits<a name="lambda-requirements-see-limits"></a>
 

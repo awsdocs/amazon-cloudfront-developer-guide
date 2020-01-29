@@ -1,6 +1,6 @@
 # Setting IAM Permissions and Roles for Lambda@Edge<a name="lambda-edge-permissions"></a>
 
-Specific IAM permissions and an IAM execution role are required so that you can configure Lambda@Edge\. Lambda@Edge also creates service\-linked roles to replicate Lambda functions to CloudFront Regions and to enable log files to be used by your CloudWatch account\.
+To configure Lambda@Edge, you must set up specific IAM permissions and an IAM execution role\. Lambda@Edge also creates service\-linked roles to replicate Lambda functions to CloudFront Regions and to enable CloudWatch to use CloudFront log files\.
 
 **Topics**
 + [IAM Permissions Required to Associate Lambda Functions with CloudFront Distributions](#lambda-edge-permissions-required)
@@ -12,20 +12,24 @@ Specific IAM permissions and an IAM execution role are required so that you can 
 In addition to the IAM permissions that you need to use AWS Lambda, the IAM user needs the following IAM permissions to associate Lambda functions with CloudFront distributions:
 + `lambda:GetFunction`
 
+  Allows the user to get configuration information for the Lambda function and a presigned URL to download a \.zip file that contains the function\.
+
   For the resource, specify the ARN of the function version that you want to execute when a CloudFront event occurs, as shown in the following example:
 
   `arn:aws:lambda:us-east-1:123456789012:function:TestFunction:2`
 + `lambda:EnableReplication*`
+
+  Adds a permission to the resource policy that gives the Lambda replication service permission to get function code and configuration\.
 
   For the resource, specify the ARN of the function version that you want to execute when a CloudFront event occurs, as shown in the following example:
 
   `arn:aws:lambda:us-east-1:123456789012:function:TestFunction:2`
 + `iam:CreateServiceLinkedRole`
 
-  Used to create a service linked role used by Lambda@Edge to replicate Lambda functions in CloudFront\. After this role has been created by the first distribution you use with Lambda@Edge, you do not need to add permission to other distributions you use with Lambda@Edge\. 
+  Allows the user to create a service linked role that is used by Lambda@Edge to replicate Lambda functions in CloudFront\. After this role has been created by the first distribution you use with Lambda@Edge, you don’t need to add permission to other distributions that you use with Lambda@Edge\.
 + `cloudfront:UpdateDistribution` or `cloudfront:CreateDistribution`
 
-  Choose `cloudfront:UpdateDistribution` to update a distribution or `cloudfront:CreateDistribution` to create a distribution\.
+  Use `cloudfront:UpdateDistribution` to update a distribution or `cloudfront:CreateDistribution` to create a distribution\.
 
 For more information, see the following documentation:
 + [Identity and Access Management in CloudFront](auth-and-access-control.md) in this guide\.
