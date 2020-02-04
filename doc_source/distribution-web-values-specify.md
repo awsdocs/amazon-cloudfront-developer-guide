@@ -279,7 +279,7 @@ The name of a header that you want CloudFront to forward to your origin\.
 **Value**  
 The value for the header that you specified in the **Custom Header** field\.
 
-For more information, see [Forwarding Custom Headers to Your Origin](forward-custom-headers.md)\. 
+For more information, see [Adding Custom Headers to Origin Requests](add-origin-custom-headers.md)\. 
 
 For the current limit on the maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the total length of all header names and values, see [Quotas](cloudfront-limits.md)\.
 

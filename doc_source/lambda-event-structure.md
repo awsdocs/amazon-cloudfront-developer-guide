@@ -168,7 +168,7 @@ The request body content\.
 You can specify either a custom origin or an Amazon S3 origin in a single request; not both\.
 
 **customHeaders**  
-You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can't Forward to Your Origin](forward-custom-headers.md#forward-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
+You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can’t Add to Origin Requests](add-origin-custom-headers.md#add-origin-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
 
 **domainName**  
 The domain name of the origin server, like www\.example\.com\. The domain name can't be empty, can't include a colon \(:\), and can't use the IPV4 address format\. The domain name can be up to 253 characters\.
@@ -203,7 +203,7 @@ Set to `origin-access-identity` if your Amazon S3 bucket has an origin access id
 For more information about using an OAI, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 **customHeaders**  
-You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can't Forward to Your Origin](forward-custom-headers.md#forward-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
+You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can’t Add to Origin Requests](add-origin-custom-headers.md#add-origin-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
 
 **domainName**  
 The domain name of the Amazon S3 origin server, like `my-bucket.s3.amazonaws.com`\. The domain name can't be empty, and must be an allowed bucket name \(as defined by Amazon S3\)\. Do not use a Region\-specific endpoint, like `my-bucket.s3-eu-west-1.amazonaws.com`\. The name can be up to 128 characters, and must be all lowercase\.

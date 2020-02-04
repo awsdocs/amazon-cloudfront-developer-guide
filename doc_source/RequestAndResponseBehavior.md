@@ -6,6 +6,6 @@ The following sections explain how CloudFront processes viewer requests and forw
 + [Request and Response Behavior for Amazon S3 Origins](RequestAndResponseBehaviorS3Origin.md)
 + [Request and Response Behavior for Custom Origins](RequestAndResponseBehaviorCustomOrigin.md)
 + [Request and Response Behavior for Origin Groups](RequestAndResponseBehaviorOriginGroups.md)
-+ [Forwarding Custom Headers to Your Origin](forward-custom-headers.md)
++ [Adding Custom Headers to Origin Requests](add-origin-custom-headers.md)
 + [How CloudFront Processes HTTP 3xx Status Codes from Your Origin](http-3xx-status-codes.md)
 + [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)
