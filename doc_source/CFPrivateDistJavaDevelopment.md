@@ -1,13 +1,11 @@
 # Create a URL Signature Using Java<a name="CFPrivateDistJavaDevelopment"></a>
 
-[JetS3t](https://github.com/mondain/jets3t) is a free, open source Java toolkit and application suite for Amazon S3, CloudFront, and Google Cloud Storage, with example code for CloudFront development in Java\. See the [signed URL example in `CloudFrontSamples.java`](https://github.com/mondain/jets3t/blob/master/jets3t/src/main/java/org/jets3t/samples/CloudFrontSamples.java#L216-L255)\.
-
-You can also create signed URLs by using the `CloudFrontUrlSigner` class in the AWS SDK for Java\. For more information, see [Class UrlSigner](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/cloudfront/CloudFrontUrlSigner.html) in the *AWS SDK for Java API Reference*\.
+In addition to the following code example, you can use [the `CloudFrontUrlSigner` utility class in the AWS SDK for Java \(version 1\)](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/cloudfront/CloudFrontUrlSigner.html) to create [CloudFront signed URLs](private-content-signed-urls.md)\.
 
 **Note**  
-Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the entire process, see [Using Signed URLs](private-content-signed-urls.md)\.
+Creating a signed URL is just one part of the process of [serving private content with CloudFront](PrivateContent.md)\. For more information about the entire process, see [Using Signed URLs](private-content-signed-urls.md)\.
 
-The following methods are from the Java open source toolkit for Amazon S3 and CloudFront\. You must convert the private key from PEM to DER format for Java implementations to use it\.
+The following example shows how to create a CloudFront signed URL\. You must convert the private key from PEM to DER format for Java implementations to use it\.
 
 **Example Java Policy and Signature Encryption Methods**  <a name="ExampleJavaPolicyAndSignatureEncryptionMethods"></a>
 
@@ -26,7 +24,7 @@ Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 String distributionDomain = "a1b2c3d4e5f6g7.cloudfront.net";
 String privateKeyFilePath = "/path/to/rsa-private-key.der";
 String s3ObjectKey = "s3/object/key.txt";
-String policyResourcePath = "http://" + distributionDomain + "/" + s3ObjectKey;
+String policyResourcePath = "https://" + distributionDomain + "/" + s3ObjectKey;
 
 // Convert your DER file into a byte array.
 
@@ -37,7 +35,7 @@ byte[] derPrivateKey = ServiceUtils.readInputStreamToBytes(new
 // specific distribution and file
 
 String signedUrlCanned = CloudFrontService.signUrlCanned(
-    "http://" + distributionDomain + "/" + s3ObjectKey, // Resource URL or Path
+    "https://" + distributionDomain + "/" + s3ObjectKey, // Resource URL or Path
     keyPairId,     // Certificate identifier, 
                    // an active trusted signer for the distribution
     derPrivateKey, // DER Private key data
@@ -62,7 +60,7 @@ String policy = CloudFrontService.buildPolicyForSignedUrl(
 
 String signedUrl = CloudFrontService.signUrl(
     // Resource URL or Path
-    "http://" + distributionDomain + "/" + s3ObjectKey, 
+    "https://" + distributionDomain + "/" + s3ObjectKey, 
     // Certificate identifier, an active trusted signer for the distribution
     keyPairId,     
     // DER Private key data
