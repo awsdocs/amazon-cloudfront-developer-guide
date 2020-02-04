@@ -120,20 +120,18 @@ You can, however, execute Lambda functions for *origin* response errors, includi
 
 ## Lambda Function Supported Runtimes and Configuration<a name="lambda-requirements-lambda-function-configuration"></a>
 + Lambda@Edge supports Lambda functions with the following runtimes:
-  + **Python 3\.7**
-  + **Node\.js 10\.x**
-  + **Node\.js 8\.10**
+  + Python 3\.7
+  + Node\.js 10
+  + Node\.js 8 and Node\.js 6
 **Note**  
-Node\.js 8\.10 has reached end of life\. You can’t create new functions with the Node\.js 8\.10 runtime, though you can still update existing ones\. Starting February 3, 2020 you can’t update existing Node\.js 8\.10 functions, though you can still associate them with a CloudFront distribution\. We recommend moving to Node\.js 10\.x\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule on GitHub](https://github.com/nodejs/Release#release-schedule)\.
-  + **Node\.js 6\.10**
-**Note**  
-Node\.js 6\.10 has reached end of life\. You can’t create or update functions with the Node\.js 6\.10 runtime\. If you have an existing Node\.js 6\.10 function you can still associate it with a CloudFront distribution, though we recommend moving to Node\.js 10\.x\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule on GitHub](https://github.com/nodejs/Release#release-schedule)\.
+Node\.js versions 8 and 6 have reached end of life\. You can’t create or update functions with these runtimes\. If you have an existing function with one of these runtimes you can still associate it with a CloudFront distribution, and functions that are already associated with a distribution will still run\. However, we recommend moving your function to a newer version of Node\.js\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule on GitHub](https://github.com/nodejs/Release#release-schedule)\.
 + You can’t configure your Lambda function to access resources inside your VPC\.
 + You can’t associate your Lambda function with a CloudFront distribution owned by another AWS account\.
-+ The Dead Letter Queue \(DLQ\) is not supported\.
-+ Environment variables are not supported\.
-+ Functions with Layers are not supported\.
-+ AWS X\-Ray is not supported\.
++ [AWS Lambda function dead letter queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq) are not supported\.
++ [AWS Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html) are not supported\.
++ Functions with [AWS Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) are not supported\.
++ [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html) is not supported\.
++ [AWS Lambda reserved concurrency and provisioned concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html) are not supported\.
 
 ## Limits<a name="lambda-requirements-see-limits"></a>
 
@@ -219,7 +217,7 @@ For all Lambda@Edge limits, including size limits, see [Limits](#lambda-requirem
 
 ## Tagging<a name="lambda-requirements-tagging"></a>
 
-Some AWS services, including Amazon CloudFront and AWS Lambda, support [ adding tags to resources within the service](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\. However, at this time, you cannot apply tags to Lambda@Edge resources\. To learn more about tagging in CloudFront, see [Tagging Amazon CloudFront Distributions](tagging.md)\.
+Some AWS services, including Amazon CloudFront and AWS Lambda, support adding tags to resources within the service\. However, at this time, you cannot apply tags to Lambda@Edge resources\. To learn more about tagging in CloudFront, see [Tagging Amazon CloudFront Distributions](tagging.md)\.
 
 ## URI<a name="lambda-requirements-uri"></a>
 
