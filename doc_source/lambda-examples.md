@@ -24,7 +24,7 @@ The examples in this section illustrate some common ways to use Lambda@Edge in C
 
 ### Example: A/B Testing<a name="lambda-examples-a-b-testing"></a>
 
-You can use the following example if you want to test two different versions of your home page, but you don't want to create redirects or change the URL\. This example sets cookies when CloudFront receives a request, randomly assigns the user to version A or B, and then returns the corresponding version to the viewer\.
+You can use the following example to test two different versions of an image without creating redirects or changing the URL\. This example reads the cookies in the viewer request and modifies the request URL accordingly\. If the viewer doesn’t send a cookie with one of the expected values, the example randomly assigns the viewer to one of the URLs\.
 
 ------
 #### [ Node\.js ]
