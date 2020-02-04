@@ -8,8 +8,7 @@ To create the solution, follow these steps:
 + **Step 3:** Deliver the converted content by using a CloudFront distribution, so viewers can watch it on any device, whenever they like\. 
 
 **Tip**  
-To learn more about best practices when you implement a video on\-demand workflow with AWS Cloud services, see [Video on Demand on AWS](https://aws.amazon.com/answers/media-entertainment/video-on-demand-on-aws/)\.  
-You can also explore how to use an AWS CloudFormation template to deploy a video\-on\-demand AWS solution together with all the associated components\. To see the steps for using the template, see [Video on Demand Automated Deployment](https://docs.aws.amazon.com/solutions/latest/video-on-demand/deployment.html)\.
+You can explore how to use an AWS CloudFormation template to deploy a video\-on\-demand AWS solution together with all the associated components\. To see the steps for using the template, see [Video on Demand Automated Deployment](https://docs.aws.amazon.com/solutions/latest/video-on-demand/deployment.html)\.
 
 **Topics**
 + [Configuring On\-Demand Microsoft Smooth Streaming](#on-demand-streaming-smooth)

@@ -11,8 +11,7 @@ There are two main options for preparing and serving live streaming content:
 After you've set up your origin by using one of these options, you can distribute live streaming video to viewers by using CloudFront\.
 
 **Tip**  
-To learn more about best practices when you implement a live video streaming workflow with AWS Cloud services, see [Live Streaming Video](https://aws.amazon.com/answers/media-entertainment/live-streaming/)\.  
-You can also learn about an AWS solution that automatically deploys services for building a highly\-available real\-time viewing experience\. To see the steps to automatically deploy this solution, see [Live Streaming Automated Deployment](https://docs.aws.amazon.com/solutions/latest/live-streaming/deployment.html)\.
+You can learn about an AWS solution that automatically deploys services for building a highly\-available real\-time viewing experience\. To see the steps to automatically deploy this solution, see [Live Streaming Automated Deployment](https://docs.aws.amazon.com/solutions/latest/live-streaming/deployment.html)\.
 
 **Topics**
 + [Serving Video Using AWS Elemental MediaStore as the Origin](#video-streaming-mediastore)
