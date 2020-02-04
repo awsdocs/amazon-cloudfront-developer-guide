@@ -123,17 +123,21 @@ You must configure permissions to allow an IAM entity \(such as a user, group, o
 
 ### Creating Service\-Linked Roles for Lambda@Edge<a name="create-slr"></a>
 
-You don't typically manually create the service\-linked roles for Lambda@Edge\. The service creates the roles for you automatically in the following scenarios:
-+ When you first create a trigger, the service creates a role, AWSServiceRoleForLambdaReplicator, that allows Lambda to replicate Lambda@Edge functions to AWS Regions\.
+You don’t typically manually create the service\-linked roles for Lambda@Edge\. The service creates the roles for you automatically in the following scenarios:
++ When you first create a trigger, the service creates a role, AWSServiceRoleForLambdaReplicator, if the role doesn’t already exist, that allows Lambda to replicate Lambda@Edge functions to AWS Regions\.
 
   If you delete the service\-linked role, the role will be created again when you add a new trigger for Lambda@Edge in a distribution\.
-+ When you update or create a CloudFront distribution that has a Lambda@Edge association, the service creates a role, AWSServiceRoleForCloudFrontLogger, if the role doesn't already exist, that allows CloudFront to push your log files to CloudWatch\.
++ When you update or create a CloudFront distribution that has a Lambda@Edge association, the service creates a role, AWSServiceRoleForCloudFrontLogger, if the role doesn’t already exist, that allows CloudFront to push your log files to CloudWatch\.
 
-  If you delete the service\-linked role, the role will be created again when you update or create a CloudFront distribution that has a Lambda@Edge association\. 
+  If you delete the service\-linked role, the role will be created again when you update or create a CloudFront distribution that has a Lambda@Edge association\.
 
-If you must manually provision the AWSServiceRoleForCloudFrontLogger service\-linked role, run the following command on the AWS command line:
+If you must manually create these service\-linked roles, run the following commands using the AWS CLI:
 
+**To create the AWSServiceRoleForLambdaReplicator role**  
 `aws iam create-service-linked-role --aws-service-name replicator.lambda.amazonaws.com`
+
+**To create the AWSServiceRoleForCloudFrontLogger role**  
+`aws iam create-service-linked-role --aws-service-name logger.cloudfront.amazonaws.com`
 
 ### Editing Lambda@Edge Service\-Linked Roles<a name="edit-slr"></a>
 
