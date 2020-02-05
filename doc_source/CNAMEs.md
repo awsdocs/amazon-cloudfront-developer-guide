@@ -161,6 +161,8 @@ While these changes propagate, the alternate domain name may be served by either
 
 1. Test the alternate domain name by creating some test links that use your domain name in the URL instead of the CloudFront domain name for your distribution\.
 
+1. The wildcard alternate name may now be removed from the new distribution\.
+
 1. If you’re no longer using the original distribution, delete it\. For more information, see [Deleting a Distribution](HowToDeleteDistribution.md)\.
 
 ### Move a domain name, like example\.com, to another distribution<a name="alternate-domain-names-move-domain"></a>
