@@ -4,7 +4,7 @@
 
 1. Sign in to the AWS Management Console and open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
 
-1. In the region list at the top of the page, choose **US East \(N\. Virginia\)**\.
+1. In the Region list at the top of the page, choose **US East \(N\. Virginia\)**\.
 
 1. On the **Functions** page, choose the name of the function that you want to add triggers for\.
 
@@ -35,7 +35,7 @@ Choose the CloudFront event that causes the function to execute\.
 **Include body**  
 Select this check box if you want to access the request body in your function\.   
 **Enable trigger and replicate**  
-Select this check box so that AWS Lambda replicates the function to regions globally\. 
+Select this check box so that AWS Lambda replicates the function to Regions globally\.
 
 1. Choose **Submit**\.
 

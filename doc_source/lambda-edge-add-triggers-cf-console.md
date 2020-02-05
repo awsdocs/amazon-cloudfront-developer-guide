@@ -6,7 +6,7 @@
 
    1. Sign in to the AWS Management Console and open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
 
-   1. In the list of regions at the top of the page, choose **US East \(N\. Virginia\)**\.
+   1. In the list of Regions at the top of the page, choose **US East \(N\. Virginia\)**\.
 
    1. In the list of functions, choose name of the function that you want to add triggers to\.
 
@@ -36,7 +36,7 @@ You can add triggers only to a numbered version, not to **$LATEST**\.
 
 1. Select **Include Body** if you want to access the request body in your function\.
 
-   Note that you don't need to select this option if you just want to replace the request body\.
+   If you just want to replace the request body, you don't need to select this option\.
 
 1. To execute the same function for more event types, choose **\+** and repeat steps 6 and 7\.
 

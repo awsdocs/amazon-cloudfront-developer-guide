@@ -157,8 +157,8 @@ The action that you intend to take with the body\. The options for `action` are 
 + **replace:** Specify this when you want to replace the body sent to the origin\.
 
 **encoding \(read/write\)**  
-The encoding for the body\. When Lambda@Edge exposes the body to the Lambda function, it first converts the body to base64 encoding\. If you choose `replace` for the `action` to replace the body, you can opt to use `text` or `base64` \(the default\) encoding\.  
-If you specify `encoding` as `base64` but the body is not valid base64, CloudFront returns an error\.
+The encoding for the body\. When Lambda@Edge exposes the body to the Lambda function, it first converts the body to `base64-encoding`\. If you choose `replace` for the `action` to replace the body, you can opt to use `text` or `base64` \(the default\) encoding\.  
+If you specify `encoding` as `base64` but the body is not valid `base64`, CloudFront returns an error\.
 
 **data \(read/write\)**  
 The request body content\. 
@@ -168,25 +168,25 @@ The request body content\.
 You can specify either a custom origin or an Amazon S3 origin in a single request; not both\.
 
 **customHeaders**  
-You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in request\.headers or in request\.origin\.custom\.customHeaders\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can’t Add to Origin Requests](add-origin-custom-headers.md#add-origin-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
+You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are blacklisted for origin custom headers or hooks, and a header with the same name can't be present in `request.headers` or in `request.origin.custom.customHeaders`\. The restrictions for request\.headers also apply to custom headers\. For more information, see [Custom Headers that CloudFront Can’t Add to Origin Requests](add-origin-custom-headers.md#add-origin-custom-headers-blacklist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.
 
 **domainName**  
 The domain name of the origin server, like www\.example\.com\. The domain name can't be empty, can't include a colon \(:\), and can't use the IPV4 address format\. The domain name can be up to 253 characters\.
 
 **keepaliveTimeout**  
-How long, in seconds, that CloudFront should try to maintain the connection to your origin after receiving the last packet of a response\. The value must be a number in the range of 1 to 60 seconds\.
+How long, in seconds, that CloudFront should try to maintain the connection to your origin after receiving the last packet of a response\. The value must be a number in the range of 1–60 seconds\.
 
 **path**  
 The directory path at the server where the request should locate content\. The path should start with a slash \(/\) but should have no trailing / \(like path/\)\. The path should be URL encoded, with a maximum length of 255 characters\.
 
 **port**  
-The port at your custom origin\. The port must be 80 or 443, or a number in the range of 1024 to 65535\.
+The port at your custom origin\. The port must be 80 or 443, or a number in the range of 1024–65535\.
 
 **protocol \(origin requests only\)**  
 The origin protocol policy that CloudFront should use when fetching objects from your origin\. The value can be `http` or `https`\.
 
 **readTimeout**  
-How long, in seconds, CloudFront should wait for a response after forwarding a request to the origin, and how long CloudFront should wait after receiving a packet of a response before receiving the next packet\. The value must be a number in the range of 4 to 60 seconds\.
+How long, in seconds, CloudFront should wait for a response after forwarding a request to the origin, and how long CloudFront should wait after receiving a packet of a response before receiving the next packet\. The value must be a number in the range of 4–60 seconds\.
 
 **sslProtocols**  
 The SSL protocols that CloudFront can use when establishing an HTTPS connection with your origin\. Values can be the following: `TLSv1.2`, `TLSv1.1`, `TLSv1`, `SSLv3`\.
@@ -196,7 +196,7 @@ The SSL protocols that CloudFront can use when establishing an HTTPS connection 
 You can specify either a custom origin or an Amazon S3 origin in a single request, but not both\.
 
 **authMethod**  
-Set to `origin-access-identity` if your Amazon S3 bucket has an origin access identity \(OAI\) set up, or `none` if you aren’t using OAI\. If you set authMethod to `origin-access-identity`, there are several requirements:   
+Set to `origin-access-identity` if your Amazon S3 bucket has an origin access identity \(OAI\) setup, or `none` if you aren’t using OAI\. If you set authMethod to `origin-access-identity`, there are several requirements:  
 + You must specify a Region in your header\.
 + You must use the same OAI when you switch from one Amazon S3 origin to another\.
 + You can’t use an OAI when you switch from a custom origin to an Amazon S3 origin\.
@@ -291,7 +291,7 @@ Headers that you want CloudFront to return in the generated response\. Note the 
 + Each header \(for example, `headers["accept"]` or `headers["host"]`\) is an array of key\-value pairs\. For a given header, the array contains one key\-value pair for each value in the generated response\.
 + `key` \(optional\) is the case\-sensitive name of the header as it appears in an HTTP request; for example, `accept` or `host`\.
 + Specify `value` as a header value\.
-+ If you do not include the header key portion of the key\-value pair, Lambda@Edge will automatically insert a header key using the header name that you provide\. Regardless of how you've formatted the header name, the header key that is inserted automatically will be formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
++ If you do not include the header key portion of the key\-value pair, Lambda@Edge automatically inserts a header key using the header name that you provide\. Regardless of how you've formatted the header name, the header key that is inserted is automatically formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
 
   For example, you can add a header like the following, without a header key: `'content-type': [{ value: 'text/html;charset=UTF-8' }]`
 
@@ -302,13 +302,13 @@ For information about restrictions on header usage, see [Headers](lambda-require
 An encrypted string that uniquely identifies a request\. The `requestId` value also appears in CloudFront access logs as the `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 **request – One of the following:**  
-+ Viewer request – The request that CloudFront received from the viewer and that might have been modified by the Lambda function that was triggered by a viewer request event
-+ Origin request – The request that CloudFront forwarded to the origin and that might have been modified by the Lambda function that was triggered by an origin request event
++ Viewer request – The request that CloudFront received from the viewer and that might have been modified by the Lambda function that was triggered by a viewer request event\.
++ Origin request – The request that CloudFront forwarded to the origin and that might have been modified by the Lambda function that was triggered by an origin request event\.
 If the Lambda function modifies the request object, the changes are ignored\.
 
 **response – One of the following:**  
-+ Viewer response – The response that CloudFront will return to the viewer for viewer response events\.
-+ Origin response – The response that CloudFront received from the origin for origin response events\.
++ Viewer response – The response that CloudFront returns to the viewer for viewer response events\.
++ Origin response – The response that CloudFront receives from the origin for origin response events\.
 
 **status**  
 The HTTP status code that CloudFront returns to the viewer\.

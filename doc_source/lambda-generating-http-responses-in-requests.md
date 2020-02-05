@@ -3,8 +3,8 @@
 When CloudFront receives a request, you can use a Lambda function to generate an HTTP response that CloudFront returns directly to the viewer without forwarding the response to the origin\. Generating HTTP responses reduces the load on the origin, and typically also reduces latency for the viewer\.
 
 Some common scenarios for generating HTTP responses include the following:
-+ Returning a small web page to the viewer
-+ Returning an HTTP 301 or 302 status code to redirect the user to another web page
++ Returning a small webpage to the viewer
++ Returning an HTTP 301 or 302 status code to redirect the user to another webpage
 + Returning an HTTP 401 status code to the viewer when the user hasn't authenticated
 
 A Lambda@Edge function can generate an HTTP response when the following CloudFront events occur:
@@ -63,7 +63,7 @@ Headers that you want CloudFront to return in the generated response\. Note the 
 + Each header \(for example, `headers["accept"]` or `headers["host"]`\) is an array of key\-value pairs\. For a given header, the array contains one key\-value pair for each value in the generated response\.
 + `key` \(optional\) is the case\-sensitive name of the header as it appears in an HTTP request; for example, `accept` or `host`\.
 + Specify `value` as a header value\.
-+ If you do not include the header key portion of the key\-value pair, Lambda@Edge will automatically insert a header key using the header name that you provide\. Regardless of how you've formatted the header name, the header key that is inserted automatically will be formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
++ If you do not include the header key portion of the key\-value pair, Lambda@Edge automatically inserts a header key using the header name that you provide\. Regardless of how you've formatted the header name, the header key that is inserted is automaticallyformatted with initial capitalization for each part, separated by hyphens \(\-\)\.
 
   For example, you can add a header like the following, without a header key: `'content-type': [{ value: 'text/html;charset=UTF-8' }]`
 

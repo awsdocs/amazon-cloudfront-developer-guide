@@ -10,4 +10,4 @@ You can also delete a specific version of a function if the version doesn’t ha
 
 Replicas cannot be manually deleted at this time\. This helps prevent a situation where a replica is removed that you're still using, which would result in an error\.
 
-Note that it's important not to build applications that use function replicas outside of CloudFront because the replicas will be deleted whenever their associations with distributions are removed, or when distributions themselves are deleted\. So the replica that an outside application depends on could be removed without warning, causing it to fail\.
+Don't build applications that use function replicas outside of CloudFront\. These replicas are deleted whenever their associations with distributions are removed, or when distributions themselves are deleted\. The replica that an outside application depends on could be removed without warning, causing it to fail\.

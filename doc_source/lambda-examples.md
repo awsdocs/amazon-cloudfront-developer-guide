@@ -476,7 +476,7 @@ exports.handler = (event, context, callback) => {
 
 ## Working with Query Strings \- Examples<a name="lambda-examples-query-string-examples"></a>
 
-The examples in this section includes ways that you can use Lambda@Edge with query strings\.
+The examples in this section include ways that you can use Lambda@Edge with query strings\.
 
 **Topics**
 + [Example: Adding a Header Based on a Query String Parameter](#lambda-examples-header-based-on-query-string)
@@ -557,8 +557,8 @@ exports.handler = (event, context, callback) => {
 ### Example: Normalizing Query String Parameters to Improve the Cache Hit Ratio<a name="lambda-examples-normalize-query-string-parameters"></a>
 
 The following example shows how to improve your cache hit ratio by making the following changes to query strings before CloudFront forwards requests to your origin:
-+ Alphabetize key\-value pairs by the name of the parameter
-+ Change the case of key\-value pairs to lowercase
++ Alphabetize key\-value pairs by the name of the parameter\.
++ Change the case of key\-value pairs to lowercase\.
 
 For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
@@ -1048,7 +1048,7 @@ In this example, we use the value of the CloudFront\-Viewer\-Country header to u
 
 To use this example, you must do the following:
 + Configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\. 
-+ Create a trigger for this function in the origin request event\. CloudFront adds the CloudFront\-Viewer\-Country header after the viewer request event, so to use this example, you must make sure the function executes for an origin request\.
++ Create a trigger for this function in the origin request event\. CloudFront adds the CloudFront\-Viewer\-Country header after the viewer request event, so to use this example, you must make sure that the function executes for an origin request\.
 
 ------
 #### [ Node\.js ]
@@ -1338,8 +1338,8 @@ if (randomNumber <= BLUE_TRAFFIC_PERCENTAGE) {
 This function demonstrates how you can change the origin domain name based on the CloudFront\-Viewer\-Country header, so content is served from an origin closer to the viewer's country\.
 
 Implementing this functionality for your distribution can have advantages such as the following:
-+ Reducing latencies when the Region specified is nearer to the viewer's country\.
-+ Providing data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
++ Reducing latencies when the Region specified is nearer to the viewer's country
++ Providing data sovereignty by making sure that data is served from an origin that's in the same country that the request came from
 
 Note that to enable this functionality you must configure your distribution to cache based on the CloudFront\-Viewer\-Country header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
 
@@ -1395,8 +1395,8 @@ The examples in this section provide guidance for how you can use Lambda@Edge to
 ### Example: Using an Origin\-Response Trigger to Update the Error Status Code to 200\-OK<a name="lambda-examples-custom-error-static-body"></a>
 
 This function demonstrates how you can update the response status to 200 and generate static body content to return to the viewer in the following scenario:
-+ The function is triggered in an origin response
-+ The response status from the origin server is an error status code \(4xx or 5xx\)
++ The function is triggered in an origin response\.
++ The response status from the origin server is an error status code \(4xx or 5xx\)\.
 
 ------
 #### [ Node\.js ]
@@ -1450,8 +1450,8 @@ exports.handler = (event, context, callback) => {
 ### Example: Using an Origin\-Response Trigger to Update the Error Status Code to 302\-Found<a name="lambda-examples-custom-error-new-site"></a>
 
 This function demonstrates how you can update the HTTP status code to 302 to redirect to another path \(cache behavior\) that has a different origin configured\. Note the following:
-+ The function is triggered in an origin response
-+ The response status from the origin server is an error status code \(4xx or 5xx\)
++ The function is triggered in an origin response\.
++ The response status from the origin server is an error status code \(4xx or 5xx\)\.
 
 ------
 #### [ Node\.js ]
@@ -1520,10 +1520,10 @@ exports.handler = (event, context, callback) => {
 The examples in this section illustrate how you can use Lambda@Edge to work with POST requests\.
 
 **Topics**
-+ [Example: Using an Request Trigger to Read an HTML Form](#lambda-examples-access-request-body-examples-read)
-+ [Example: Using an Request Trigger to Modify an HTML Form](#lambda-examples-access-request-body-examples-replace)
++ [Example: Using a Request Trigger to Read an HTML Form](#lambda-examples-access-request-body-examples-read)
++ [Example: Using a Request Trigger to Modify an HTML Form](#lambda-examples-access-request-body-examples-replace)
 
-### Example: Using an Request Trigger to Read an HTML Form<a name="lambda-examples-access-request-body-examples-read"></a>
+### Example: Using a Request Trigger to Read an HTML Form<a name="lambda-examples-access-request-body-examples-read"></a>
 
 This function demonstrates how you can process the body of a POST request generated by an HTML form \(web form\), such as a "contact us" form\. For example, you might have an HTML form like the following:
 
@@ -1626,7 +1626,7 @@ exports.handler = (event, context, callback) => {
 
 ------
 
-### Example: Using an Request Trigger to Modify an HTML Form<a name="lambda-examples-access-request-body-examples-replace"></a>
+### Example: Using a Request Trigger to Modify an HTML Form<a name="lambda-examples-access-request-body-examples-replace"></a>
 
 This function demonstrates how you can modify the body of a POST request generated by an HTML form \(web form\)\. The function is triggered in a CloudFront viewer request or origin request\.
 

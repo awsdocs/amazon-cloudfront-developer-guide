@@ -24,7 +24,7 @@ Before you add your Lambda function to CloudFront, make sure to test the functio
 
 **Test your function's operation in CloudFront**  
 It's important to complete integration testing, where your function is associated with a distribution and runs based on a CloudFront event\. Make sure that the function is triggered for the right event, and returns a response that is valid and correct for CloudFront\. For example, make sure that the event structure correct, that only valid headers are included, and so on\.  
-As you iterate on integration testing with your function in the Lambda console, refer to the steps in the Lambda@Edge tutorial as you modify your code or change the CloudFront trigger that calls your function\. For example, make sure that you're working in a numbered version of your function, as described in this step of the tutorial: [ Step 4: Add a CloudFront Trigger to Run the Function](lambda-edge-how-it-works-tutorial.md#lambda-edge-how-it-works-tutorial-add-trigger)\.   
+As you iterate on integration testing with your function in the Lambda console, refer to the steps in the Lambda@Edge tutorial as you modify your code or change the CloudFront trigger that calls your function\. For example, make sure that you're working in a numbered version of your function, as described in this step of the tutorial: [Step 4: Add a CloudFront Trigger to Run the Function](lambda-edge-how-it-works-tutorial.md#lambda-edge-how-it-works-tutorial-add-trigger)\.   
 As you make changes and deploy them, be aware that it will take several minutes for your updated function and CloudFront triggers to replicate across all Regions\. This typically takes a few minutes but can take up to 15 minutes\.  
 You can check to see if replication is finished by going to the CloudFront console and viewing your distribution:  
 + Go to the CloudFront console at https://console\.aws\.amazon\.com/cloudfront/\.
@@ -105,7 +105,7 @@ Even if you haven't changed your Lambda@Edge function, updates to the Lambda fun
 
 To see the Regions where your Lambda@Edge function is receiving traffic, view metrics for the function on the CloudFront console on the AWS Management Console\. Metrics are displayed for each AWS Region\. On the same page, you can choose a Region and view log files for that Region so you can investigate issues\. You must review CloudWatch log files in the correct AWS Region to see the log files created when CloudFront executed your Lambda function\.
 
-For more information about viewing graphs in the Monitoring section of the CloudFront console, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
+For more information about viewing graphs in the **Monitoring** section of the CloudFront console, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
 
 ## Determining if Your Account Pushes Logs to CloudWatch<a name="lambda-edge-testing-debugging-cloudwatch-logs-enabled"></a>
 

@@ -182,7 +182,7 @@ You must follow separate procedures to manually delete each service\-linked role
 
 ### Supported Regions for CloudFront Service\-Linked Roles<a name="slr-regions"></a>
 
-CloudFront supports using service\-linked roles for Lambda@Edge in the following regions\.
+CloudFront supports using service\-linked roles for Lambda@Edge in the following Regions\.
 
 
 ****  

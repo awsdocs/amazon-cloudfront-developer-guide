@@ -42,71 +42,71 @@ Note the following requirements and restrictions on using headers with Lambda@Ed
 ### Blacklisted Headers<a name="lambda-blacklisted-headers"></a>
 
 Blacklisted headers aren't exposed and can't be added by Lambda@Edge functions\. If your Lambda function adds a blacklisted header, the request fails CloudFront validation\. CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
-+ Connection 
-+ Expect
-+ Keep\-alive
-+ Proxy\-Authenticate
-+ Proxy\-Authorization
-+ Proxy\-Connection
-+ Trailer
-+ Upgrade
-+ X\-Accel\-Buffering
-+ X\-Accel\-Charset
-+ X\-Accel\-Limit\-Rate
-+ X\-Accel\-Redirect
-+ X\-Amz\-Cf\-\*
-+ X\-Amzn\-\*
-+ X\-Cache
-+ X\-Edge\-\*
-+ X\-Forwarded\-Proto
-+ X\-Real\-IP
++ `Connection` 
++ `Expect`
++ `Keep-Alive`
++ `Proxy-Authenticate`
++ `Proxy-Authorization`
++ `Proxy-Connection`
++ `Trailer`
++ `Upgrade`
++ `X-Accel-Buffering`
++ `X-Accel-Charset`
++ `X-Accel-Limit-Rate`
++ `X-Accel-Redirect`
++ `X-Amz-Cf-*`
++ `X-Amzn-*`
++ `X-Cache`
++ `X-Edge-*`
++ `X-Forwarded-Proto`
++ `X-Real-IP`
 
 ### Read\-only Headers<a name="lambda-read-only-headers"></a>
 
 Read\-only headers can be read but not edited\. You can use them as input to CloudFront caching logic, and your Lambda function can read the header values, but it can't change the values\. If your Lambda function adds or edits a read\-only header, the request fails CloudFront validation\. CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
 
 #### Read\-only Headers for CloudFront Viewer Request Events<a name="lambda-read-only-headers-viewer-request-events"></a>
-+ Content\-Length
-+ Host
-+ Transfer\-Encoding
-+ Via
++ `Content-Length`
++ `Host`
++ `Transfer-Encoding`
++ `Via`
 
 #### Read\-only Headers for CloudFront Origin Request Events<a name="lambda-read-only-headers-origin-request-events"></a>
-+ Accept\-Encoding
-+ Content\-Length
-+ If\-Modified\-Since
-+ If\-None\-Match
-+ If\-Range
-+ If\-Unmodified\-Since
-+ Transfer\-Encoding
-+ Via
++ `Accept-Encoding`
++ `Content-Length`
++ `If-Modified-Since`
++ `If-None-Match`
++ `If-Range`
++ `If-Unmodified-Since`
++ `Transfer-Encoding`
++ `Via`
 
 #### Read\-only Headers for CloudFront Origin Response Events<a name="lambda-read-only-headers-origin-response-events"></a>
-+ Transfer\-Encoding
-+ Via
++ `Transfer-Encoding`
++ `Via`
 
 #### Read\-only Headers for CloudFront Viewer Response Events<a name="lambda-read-only-headers-viewer-response-events"></a>
-+ Content\-Encoding
-+ Content\-Length
-+ Transfer\-Encoding
-+ Warning
-+ Via
++ `Content-Encoding`
++ `Content-Length`
++ `Transfer-Encoding`
++ `Warning`
++ `Via`
 
 ### CloudFront\-\* Headers<a name="lambda-cloudfront-star-headers"></a>
 
 A Lambda function can read, edit, remove, or add any of the following headers\. 
-+ CloudFront\-Forwarded\-Proto
-+ CloudFront\-Is\-Desktop\-Viewer
-+ CloudFront\-Is\-Mobile\-Viewer
-+ CloudFront\-Is\-SmartTV\-Viewer
-+ CloudFront\-Is\-Tablet\-Viewer
-+ CloudFront\-Viewer\-Country
++ `CloudFront-Forwarded-Proto`
++ `CloudFront-Is-Desktop-Viewer`
++ `CloudFront-Is-Mobile-Viewer`
++ `CloudFront-Is-SmartTV-Viewer`
++ `CloudFront-Is-Tablet-Viewer`
++ `CloudFront-Viewer-Country`
 
 Note the following:
 + If you want CloudFront to add these headers, you must configure CloudFront to cache based on these headers\. For information about configuring CloudFront to cache based on specified headers, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 + CloudFront adds the headers after the viewer request event\. 
 + If the viewer adds headers that have these names, CloudFront overwrites the header values\.
-+ For viewer events, CloudFront\-Viewer\-Country is blacklisted\. Blacklisted headers aren't exposed and can't be added by Lambda@Edge functions\. If your Lambda function adds a blacklisted header, the request fails CloudFront validation, and CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
++ For viewer events, `CloudFront-Viewer-Country` is blacklisted\. Blacklisted headers aren't exposed and can't be added by Lambda@Edge functions\. If your Lambda function adds a blacklisted header, the request fails CloudFront validation, and CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
 
 For more information, see the following examples:
 + [Example: Redirecting Viewer Requests to a Country\-Specific URL](lambda-examples.md#lambda-examples-redirect-based-on-country)
@@ -159,8 +159,8 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 | --- | --- | 
 | Distributions per AWS account that you can create triggers for |  25 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Triggers per distribution |  100 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Requests per second  |  10,000 \(in each region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Concurrent executions For more information, see [Function Scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(in each region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Requests per second  |  10,000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Concurrent executions For more information, see [Function Scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 
 ### Size Quotas on URI and Query String<a name="lambda-at-the-edge-URI-size-limits-lambda-at-edge"></a>
 

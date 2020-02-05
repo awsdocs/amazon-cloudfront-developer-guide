@@ -10,7 +10,7 @@ To set up AWS Lambda to run Lambda functions that are based on CloudFront events
 
    If you've don't have any functions, choose **Get Started Now**\.
 
-1. In the region list at the top of the page, choose **US East \(N\. Virginia\)**\.
+1. In the Region list at the top of the page, choose **US East \(N\. Virginia\)**\.
 
 1. Create a function using your own code or create a function starting with a CloudFront blueprint\.
    + To create a function using your own code, choose **Author from scratch**\. 

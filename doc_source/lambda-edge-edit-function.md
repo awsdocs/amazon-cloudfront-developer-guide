@@ -13,7 +13,7 @@ When you want to edit a Lambda function, note the following:
 
 1. Sign in to the AWS Management Console and open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
 
-1. In the region list at the top of the page, choose **US East \(N\. Virginia\)**\.
+1. In the Region list at the top of the page, choose **US East \(N\. Virginia\)**\.
 
 1. In the list of functions, choose the name of the function that you want to edit\.
 
@@ -47,7 +47,7 @@ Choose the cache behavior that specifies the objects that you want to execute th
 **CloudFront event**  
 Choose the CloudFront event that causes the function to execute\.  
 **Enable trigger and replicate**  
-Select this check box so Lambda replicates the function to regions globally\. 
+Select this check box so Lambda replicates the function to Regions globally\.
 
 1. Choose **Submit**\.
 
