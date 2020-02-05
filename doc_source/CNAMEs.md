@@ -156,6 +156,8 @@ At this point, the subdomain will still be served by the original distribution s
 When using Route 53 alias records, it is not possible to use dig to confirm that the resource record points to the new distribution\. In this case, you can either change the type of of the resource record from alias to CNAME, or wait until the record's time to live \(TTL\) value has expired\.
 
 1. Remove the CNAME from the existing distribution and then add it to the new CloudFront distribution where the wildcard alternate name was added previously\.
+**Note**  
+While these changes propagate, the alternate domain name may be served by either the original or new distribution at random\. This behaviour may even persist for a few minutes after both distributions have reached status **Deployed**\.
 
 1. Test the alternate domain name by creating some test links that use your domain name in the URL instead of the CloudFront domain name for your distribution\.
 
