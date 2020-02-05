@@ -126,6 +126,8 @@ You can’t add a wildcard to a top level domain name, such as `*.com`, so if yo
    To update the configuration, do one of the following: 
    + **If you're using Route 53,** update alias records or CNAME records, depending how you set up the alternate domain name originally\. For more information, see [ Editing Records](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html) in the *Amazon Route 53 Developer Guide*\.
    + **If you're using another DNS service provider,** use the method provided by the DNS service provider to update the CNAME record that directs traffic to CloudFront\. For more information, see the documentation provided by your DNS service provider\.
+**Note**  
+At this point, the subdomain will still be served by the original distribution since that is where the alternate domain is currently configured\.
 
 1. Using dig or a similar tool, confirm that the resource record set that you created in step 4 points to the domain name for your distribution\. For more information about dig, go to [http://www\.kloth\.net/services/dig\.php](http://www.kloth.net/services/dig.php)\.
 
