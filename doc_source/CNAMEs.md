@@ -126,6 +126,8 @@ You can’t add a wildcard to a top level domain name, such as `*.com`, so if yo
    To update the configuration, do one of the following: 
    + **If you're using Route 53,** update alias records or CNAME records, depending how you set up the alternate domain name originally\. For more information, see [ Editing Records](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html) in the *Amazon Route 53 Developer Guide*\.
    + **If you're using another DNS service provider,** use the method provided by the DNS service provider to update the CNAME record that directs traffic to CloudFront\. For more information, see the documentation provided by your DNS service provider\.
+**Note**  
+At this point, the subdomain will still be served by the original distribution since that is where the alternate domain is currently configured\.
 
 1. Using dig or a similar tool, confirm that the resource record set that you created in step 4 points to the domain name for your distribution\. For more information about dig, go to [http://www\.kloth\.net/services/dig\.php](http://www.kloth.net/services/dig.php)\.
 
@@ -150,10 +152,16 @@ You can’t add a wildcard to a top level domain name, such as `*.com`, so if yo
    ```
 
    The line in the Answer Section shows a CNAME resource record set that routes queries for images\.example\.com to the CloudFront distribution domain name d111111abcdef8\.cloudfront\.net\. The CNAME resource record set is configured correctly if the name on the right side of `CNAME` is the domain name for your CloudFront distribution\. If that is any other value, for example, the domain name for your Amazon S3 bucket, then the CNAME resource record set is configured incorrectly\. In that case, go back to Step 4 and correct the CNAME record to point to the domain name for your distribution\.
+**Note**  
+When using Route 53 alias records, it is not possible to use dig to confirm that the resource record points to the new distribution\. In this case, you can either change the type of the resource record from alias to CNAME, or wait until the record's time to live \(TTL\) value has expired\.
 
-1. Remove the CNAME from the existing distribution and move it to the new CloudFront distribution\. For example, move `marketing.example.com` to a new distribution that by default is pointed to by something like `d111111abcdef8.cloudfront.net`\.
+1. Remove the CNAME from the existing distribution and then add it to the new CloudFront distribution where the wildcard alternate name was added previously\.
+**Note**  
+While these changes propagate, the alternate domain name may be served by either the original or new distribution at random\. This behavior may persist for a few minutes after both distributions have reached status **Deployed**\.
 
 1. Test the alternate domain name by creating some test links that use your domain name in the URL instead of the CloudFront domain name for your distribution\.
+
+1. The wildcard alternate name may now be removed from the new distribution\.
 
 1. If you’re no longer using the original distribution, delete it\. For more information, see [Deleting a Distribution](HowToDeleteDistribution.md)\.
 
