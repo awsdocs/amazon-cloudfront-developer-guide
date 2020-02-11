@@ -676,6 +676,7 @@ exports.handler = (event, context, callback) => {
     const parsedCookies = parseCookies(headers);
     if (parsedCookies && parsedCookies['session-id']) {
         callback(null, request);
+	return;
     }
 
     /* URI encode the original request to be sent as redirect_url in query params */
