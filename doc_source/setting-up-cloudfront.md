@@ -134,4 +134,4 @@ If you have experience with Windows PowerShell, you might prefer to use AWS Tool
 
 ## Download an AWS SDK<a name="setting-up-sdk"></a>
 
-If you're using a programming language that AWS provides an SDK for, we recommend that you use an SDK instead of the Amazon CloudFront API\. The SDKs make authentication simpler, integrate easily with your development environment, and provide easy access to CloudFront commands\. For more information, see [Tools for Amazon Web Services](https://aws.amazon.com//tools/)\.
+If you're using a programming language that AWS provides an SDK for, we recommend that you use an SDK instead of the Amazon CloudFront API\. The SDKs make authentication simpler, integrate easily with your development environment, and provide easy access to CloudFront commands\. For more information, see [Tools to Build on AWS](http://aws.amazon.com/tools/)\.

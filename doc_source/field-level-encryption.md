@@ -165,7 +165,7 @@ For more information, see [Values That You Specify When You Create or Update a D
 
 ## Decrypting Data Fields at Your Origin<a name="field-level-encryption-decrypt"></a>
 
-CloudFront encrypts data fields by using the [AWS Encryption SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide//introduction.html)\. The data remains encrypted throughout your application stack and can be accessed only by applications that have the credentials to decrypt it\. 
+CloudFront encrypts data fields by using the [AWS Encryption SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/introduction.html)\. The data remains encrypted throughout your application stack and can be accessed only by applications that have the credentials to decrypt it\. 
 
 After encryption, the cipher text is base64 encoded\. When your applications decrypt the text at the origin, they must first decode the cipher text, and then use the AWS Encryption SDK to decrypt the data\.
 
@@ -175,7 +175,7 @@ The following code sample illustrates how applications can decrypt data at your 
   + PROVIDER\_NAME: You specified this value when you created a field\-level encryption profile\. Use the same value here\.
   + KEY\_NAME: You created a name for your public key when you uploaded it to CloudFront, and then specified the key name in the profile\. Use the same value here\.
   + ALGORITHM: CloudFront uses "RSA/ECB/OAEPWithSHA\-256AndMGF1Padding" as the algorithm for encrypting, so you must use the same algorithm to decrypt the data\.
-+ If you run the following sample program with cipher text as input, the decrypted data is output to your console\. For more information, see the [Java Example Code](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide//java-example-code.html) in the AWS Encryption SDK\.
++ If you run the following sample program with cipher text as input, the decrypted data is output to your console\. For more information, see the [Java Example Code](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/java-example-code.html) in the AWS Encryption SDK\.
 
 ### Sample Code<a name="field-level-encryption-decrypt-sample"></a>
 

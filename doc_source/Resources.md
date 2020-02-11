@@ -14,16 +14,15 @@ Although fairly simple to use, CloudFront is rich in functionality\. The informa
 
 The following related resources can help you as you work with this service\.
 + [Amazon CloudFront API Reference](https://docs.aws.amazon.com/cloudfront/latest/APIReference/) – Gives complete descriptions of the API actions, parameters, and data types, and a list of errors that the service returns\.
-+ [CloudFront What's New](https://aws.amazon.com//cloudfront/whats-new/) – Announcements of new CloudFront features and recently added edge locations\. 
-+ [Technical documentation for the Amazon Simple Storage Service \(S3\)](http://aws.amazon.com/documentation/s3/) – A detailed discussion of the Amazon S3 service, including the basics of getting started, an overview of the service, a programming reference, and an API reference\. 
++ [CloudFront What's New](https://aws.amazon.com/cloudfront/whats-new/) – Announcements of new CloudFront features and recently added edge locations\. 
++ [Technical documentation for the Amazon Simple Storage Service \(S3\)](https://docs.aws.amazon.com/s3/) – A detailed discussion of the Amazon S3 service, including the basics of getting started, an overview of the service, a programming reference, and an API reference\. 
 + [Amazon CloudFront product information](http://aws.amazon.com/cloudfront/) – The primary web page for information about CloudFront, including features and pricing information\.
-+ [Terms of Use](http://aws.amazon.com/terms/) – Detailed information about our copyright and trademark; your account, license, and site access; and other topics\.
 
 ## Getting Support<a name="resources-cloudfront-support"></a>
 
 Support for CloudFront is available in a number of forms\.
 + [Discussion forums](https://forums.aws.amazon.com/forum.jspa?forumID=46) – A community\-based forum for developers to discuss technical questions related to CloudFront\.
-+ [AWS Support Center](https://console.aws.amazon.com/support/home#/) – This site brings together information about your recent support cases and results from AWS Trusted Advisor and health checks, as well as providing links to discussion forums, technical FAQs, the service health dashboard, and information about AWS support plans\.
++ [AWS Support Center](https://console.aws.amazon.com/support/home) – This site brings together information about your recent support cases and results from AWS Trusted Advisor and health checks, as well as providing links to discussion forums, technical FAQs, the service health dashboard, and information about AWS support plans\.
 + [AWS Premium Support Information](https://aws.amazon.com/premiumsupport/) – The primary web page for information about AWS Premium Support, a one\-on\-one, fast\-response support channel to help you build and run applications on AWS Infrastructure Services\.
 + [Contact Us](http://aws.amazon.com/contact-us/) – Links for inquiring about your billing or account\. For technical questions, use the discussion forums or support links above\.
 
@@ -32,10 +31,10 @@ Support for CloudFront is available in a number of forms\.
 See the [Developer Tools](https://aws.amazon.com/developertools/) page for links to developer resources that provide documentation, code samples, release notes, and other information to help you build innovative applications with AWS\. 
 
 In addition, Amazon Web Services provides software development kits for accessing CloudFront programmatically\. The SDK libraries automate a number of common tasks, including cryptographically signing your service requests, retrying requests, and handling error responses\.
-+ [AWS SDK for Java](http://aws.amazon.com/sdkforjava/) – Setup and other documentation
-+ [AWS SDK for \.NET](http://aws.amazon.com/sdkfornet/) – Setup and other documentation
-+ [AWS SDK for PHP](http://aws.amazon.com/sdkforphp/) – Setup and other documentation
-+ [AWS SDK for Ruby](http://aws.amazon.com/sdkforruby/) – Setup and other documentation
++ [AWS SDK for Java](https://aws.amazon.com/sdkforjava/) – Setup and other documentation
++ [AWS SDK for \.NET](https://aws.amazon.com/sdkfornet/) – Setup and other documentation
++ [AWS SDK for PHP](https://aws.amazon.com/sdkforphp/) – Setup and other documentation
++ [AWS SDK for Ruby](https://aws.amazon.com/sdkforruby/) – Setup and other documentation
 
 ## Tips from the Amazon Web Services Blog<a name="resources-aws-blog-tips"></a>
 
