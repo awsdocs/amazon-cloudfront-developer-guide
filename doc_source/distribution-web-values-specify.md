@@ -103,12 +103,14 @@ When you create or update a distribution, you specify the following values for e
 ### Origin Domain Name<a name="DownloadDistValuesDomainName"></a>
 
 The DNS domain name of the Amazon S3 bucket or HTTP server from which you want CloudFront to get objects for this origin, for example:
-+ **Amazon S3 bucket** – `aws-s3-bucket1.s3.us-west-2.amazonaws.com`
-+ **Amazon S3 bucket configured as a website** – `https://bucket-name.s3-website.us-west-2.amazonaws.com`
-+ **MediaStore container** – `mymediastore.data.mediastore.us-west-1.amazonaws.com`
-+ **MediaPackage endpoint** – `mymediapackage.mediapackage.us-west-1.amazon.com`
++ **Amazon S3 bucket** – `awsexamplebucket.s3.us-west-2.amazonaws.com`
+**Note**  
+If you recently created the S3 bucket, the CloudFront distribution might return `HTTP 307 Temporary Redirect` responses for up to 24 hours\. It can take up to 24 hours for the S3 bucket name to propagate to all AWS Regions\. When the propagation is complete, the distribution will automatically stop sending these redirect responses; you don’t need to take any action\. For more information, see [Why am I getting an HTTP 307 Temporary Redirect response from Amazon S3?](http://aws.amazon.com/premiumsupport/knowledge-center/s3-http-307-response/) and [Temporary Request Redirection](https://docs.aws.amazon.com/AmazonS3/latest/dev/Redirects.html#TemporaryRedirection)\.
++ **Amazon S3 bucket configured as a website** – `https://awsexamplebucket.s3-website.us-west-2.amazonaws.com`
++ **MediaStore container** – `examplemediastore.data.mediastore.us-west-1.amazonaws.com`
++ **MediaPackage endpoint** – `examplemediapackage.mediapackage.us-west-1.amazonaws.com`
 + **Amazon EC2 instance** – `ec2-203-0-113-25.compute-1.amazonaws.com`
-+ **Elastic Load Balancing load balancer** – `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com`
++ **Elastic Load Balancing load balancer** – `example-load-balancer-1234567890.us-west-2.elb.amazonaws.com`
 + **Your own web server** – `https://example.com`
 
 Choose the domain name in the **Origin Domain Name** field, or type the name\. The domain name is not case sensitive\.
