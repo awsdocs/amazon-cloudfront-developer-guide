@@ -85,7 +85,7 @@ To create a CloudFront origin access identity by using the CloudFront API, use t
 + **Id element** – You use the value of the `Id` element to associate an origin access ID with your distribution\.
 + **S3CanonicalUserId element** – You use the value of the `S3CanonicalUserId` element when you give CloudFront access to your Amazon S3 bucket or files\. 
 
-For more information, see [CreateCloudFrontOriginAccessIdentity](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html) in the *Amazon CloudFront API Reference*\.  
+For more information, see [CreateCloudFrontOriginAccessIdentity](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html) in the *Amazon CloudFront API Reference*\.
 
 ### Adding an Origin Access Identity to Your Distribution Using the CloudFront API<a name="private-content-adding-oai-api"></a>
 
@@ -97,49 +97,126 @@ See the following topics in the *Amazon CloudFront API Reference*:
 
 ## Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket<a name="private-content-granting-permissions-to-oai"></a>
 
-When you create or update a distribution, you can add an origin access identity and automatically update the bucket policy to give the origin access identity permission to access your bucket\. Alternatively, you can choose to manually change the bucket policy or change ACLs, which control permissions on individual files in your bucket\.
+When you create or update a distribution, you can add an origin access identity \(OAI\) and automatically update the Amazon S3 bucket policy to give the OAI permission to access your bucket\. Alternatively, you can choose to manually create or update the bucket policy, or use object ACLs which control access to individual files in the bucket\.
 
-Whichever method you use, you should still review the bucket policy for your bucket and review the permissions on your files to ensure that:
-+ CloudFront can access files in the bucket on behalf of users who are requesting your files through CloudFront\.
-+ Users can't use Amazon S3 URLs to access your files\.
+Whichever method you use, you should still review the permissions to make sure that:
++ Your CloudFront OAI can access files in the bucket on behalf of viewers who are requesting them through CloudFront\.
++ Viewers can’t use Amazon S3 URLs to access your files outside of CloudFront\.
 
 **Important**  
-If you configure CloudFront to accept and forward to Amazon S3 all of the HTTP methods that CloudFront supports, create a CloudFront origin access identity to restrict access to your Amazon S3 content, and grant the origin access identity the desired permissions\. For example, if you configure CloudFront to accept and forward these methods because you want to use the `PUT` method, you must configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately so users can't delete resources that you don't want them to\. 
+If you configure CloudFront to accept and forward all of the HTTP methods that CloudFront supports, make sure you give your CloudFront OAI the desired permissions\. For example, if you configure CloudFront to accept and forward requests that use the `DELETE` method, configure your bucket policy or object ACLs to handle `DELETE` requests appropriately so viewers can’t delete files that you don’t want them to\.
 
 Note the following:
-+ You might find it easier to update Amazon S3 bucket policies than ACLs because you can add files to the bucket without updating permissions\. However, ACLs give you more fine\-grained control because you're granting permissions on each file\.
-+ By default, your Amazon S3 bucket and all of the files in it are private—only the AWS account that created the bucket has permission to read or write the files in it\.
-+ If you're adding an origin access identity to an existing distribution, modify the bucket policy or any file ACLs as appropriate to ensure that the files are not publicly available\.
++ You might find it easier to use Amazon S3 bucket policies than object ACLs because you can add files to the bucket without updating permissions\. However, ACLs give you more fine\-grained control because you’re granting permissions on each individual file\.
++ By default, your Amazon S3 bucket and all of the files in it are private\. Only the AWS account that created the bucket has permission to read or write the files in it\.
++ If another AWS account uploads files to your bucket, that account is the owner of those files\. Bucket policies only apply to files that the bucket owner owns\. This means that if another account uploads files to your bucket, the bucket policy that you created for your OAI will not be evaluated for those files\. In that case, use ACLs to give permissions to your OAI\.
++ If you’re adding an OAI to an existing distribution, modify the bucket policy or any file ACLs as appropriate to ensure that the files are not publicly available outside of CloudFront\.
 + Grant additional permissions to one or more secure administrator accounts so you can continue to update the contents of the Amazon S3 bucket\.
 
 **Important**  
-There might be a brief delay between when you save your changes to Amazon S3 permissions and when the changes take effect\. Until the changes take effect, you can get permission\-denied errors when you try to access files in your bucket\.
+There might be a brief delay between when you save your changes to Amazon S3 permissions and when the changes take effect\. Until the changes take effect, you might get “permission denied” errors when you try to access files in your bucket\.
 
-### Updating Amazon S3 Bucket Policies<a name="private-content-updating-s3-bucket-policies"></a>
+### Using Amazon S3 Bucket Policies<a name="private-content-updating-s3-bucket-policies"></a>
 
-You can update the Amazon S3 bucket policy by using either the AWS Management Console or the Amazon S3 API:
-+ Grant the CloudFront origin access identity the desired permissions on the bucket\.
+You can give a CloudFront OAI access to files in an Amazon S3 bucket by creating or updating the bucket policy in the following ways:
++ Using the Amazon S3 bucket’s **Permissions** tab in the [Amazon S3 console](https://console.aws.amazon.com/s3/home)\.
++ Using [PutBucketPolicy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketPolicy.html) in the Amazon S3 API\.
++ Using the [CloudFront console](https://console.aws.amazon.com/cloudfront/home)\. When you add an OAI to your origin settings in the CloudFront console, you can choose **Yes, Update Bucket Policy** to tell CloudFront to update the bucket policy on your behalf\.
 
-  To specify an origin access identity, use the value of **Amazon S3 Canonical User ID** on the **Origin Access Identity** page in the CloudFront console\. If you're using the CloudFront API, use the value of the `S3CanonicalUserId` element that was returned when you created the origin access identity\.
-+ Deny access to anyone that you don't want to have access using Amazon S3 URLs\.
+If you update the bucket policy manually, make sure that you:
++ Specify the correct OAI as the `Principal` in the policy\.
++ Give the OAI the permissions it needs to access objects on behalf of viewers\.
 
-For more information, go to [Using Bucket Policies and User Policies](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucketPolicies.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information, see the following sections\.
 
-For an example, see "Granting Permission to an Amazon CloudFront Origin Identity" in the topic [Bucket Policy Examples](https://docs.aws.amazon.com/AmazonS3/latest/dev/AccessPolicyLanguage_UseCases_s3_a.html), also in the *Amazon Simple Storage Service Developer Guide*\.
+#### Specify an OAI as the `Principal` in a Policy<a name="private-content-updating-s3-bucket-policies-principal"></a>
 
-### Updating Amazon S3 ACLs<a name="private-content-updating-s3-acls"></a>
+To specify an OAI as the `Principal` in an Amazon S3 bucket policy, use the OAI’s ID\. For example:
 
-Using either the AWS Management Console or the Amazon S3 API, change the Amazon S3 ACL:
-+ Grant the CloudFront origin access identity the desired permissions on each file that the CloudFront distribution serves\.
+```
+"Principal": {
+    "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity EH1HDMB1FH2TC"
+}
+```
 
-  To specify an origin access identity, use the value of **Amazon S3 Canonical User ID** on the **Origin Access Identity** page in the CloudFront console\. If you're using the CloudFront API, use the value of the `S3CanonicalUserId` element that was returned when you created the origin access identity\.
-+ Deny access to anyone that you don't want to have access using Amazon S3 URLs\.
+To use the preceding example, replace *EH1HDMB1FH2TC* with the OAI’s ID\. To find the OAI’s ID, see the [Origin Access Identity page](https://console.aws.amazon.com/cloudfront/home?region=us-east-1#oai:) in the CloudFront console, or use [ListCloudFrontOriginAccessIdentities](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListCloudFrontOriginAccessIdentities.html) in the CloudFront API\.
 
-If another AWS account uploads files to your bucket, that account is the owner of those files\. Bucket policies only apply to files that the bucket owner owns\. This means that if another account uploads files to your bucket, the bucket policy that you created for your OAI will not be evaluated for those files\.
+You can also specify an OAI as the `Principal` by using its Amazon S3 canonical ID\. For example:
 
-For more information, see [Managing Access with ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
+```
+"Principal": {
+    "CanonicalUser": "79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be"
+}
+```
 
-You can also change the ACLs programmatically by using one of the AWS SDKs\. For an example, see the downloadable sample code in [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)\.
+To use the preceding example, replace *79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be* with the OAI’s canonical ID\. You can find the OAI’s canonical ID in the same ways that you find its ID\.
+
+**Note**  
+One advantage of using the OAI’s ID to specify it as the `Principal` is that it’s easier to understand who the bucket policy is granting access to\. Amazon S3 canonical IDs can refer to different kinds of AWS identities, not just CloudFront OAIs, and it can be difficult to determine which identity a canonical ID refers to\. Using the OAI’s ID can make it easier to understand the bucket policy\.  
+Also, when you use the OAI’s canonical ID in a bucket policy, AWS replaces the canonical ID with the OAI’s ID\. That is—when you write a policy that specifies an OAI’s canonical ID and then later view the same policy, you’ll see that the canonical ID has been replaced by the corresponding OAI ID\. For this reason, it might make sense to just write the policy using the OAI’s ID\.
+
+#### Giving an OAI Permissions in a Policy<a name="private-content-updating-s3-bucket-policies-permissions"></a>
+
+To give the OAI the permissions it needs to access objects in your Amazon S3 bucket, you use permission keywords that relate to specific Amazon S3 API operations\. For example, the `s3:GetObject` permission allows the OAI to read objects in the bucket\. For more information, see the examples in the following section, or see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+
+#### Amazon S3 Bucket Policy Examples<a name="private-content-updating-s3-bucket-policies-examples"></a>
+
+The following examples show Amazon S3 bucket policies that grant access to a CloudFront OAI\. To use these examples:
++ Replace *EH1HDMB1FH2TC* with the OAI’s ID\. To find the OAI’s ID, see the [Origin Access Identity page](https://console.aws.amazon.com/cloudfront/home?region=us-east-1#oai:) in the CloudFront console, or use [ListCloudFrontOriginAccessIdentities](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListCloudFrontOriginAccessIdentities.html) in the CloudFront API\.
++ Replace *aws\-example\-bucket* with the name of your Amazon S3 bucket\.
+
+**Example Amazon S3 bucket policy that gives the OAI read access**  
+The following example allows the OAI to read objects in the specified bucket \(`s3:GetObject`\)\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity EH1HDMB1FH2TC"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::aws-example-bucket/*"
+        }
+    ]
+}
+```
+
+**Example Amazon S3 bucket policy that gives the OAI read and write access**  
+The following example allows the OAI to read and write objects in the specified bucket \(`s3:GetObject` and `s3:PutObject`\)\. This allows viewers to upload files to your Amazon S3 bucket through CloudFront\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity EH1HDMB1FH2TC"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::aws-example-bucket/*"
+        }
+    ]
+}
+```
+
+### Updating Amazon S3 Object ACLs<a name="private-content-updating-s3-acls"></a>
+
+You can give a CloudFront OAI access to files in an Amazon S3 bucket by creating or updating the file’s ACL in the following ways:
++ Using the Amazon S3 object’s **Permissions** tab in the [Amazon S3 console](https://console.aws.amazon.com/s3/home)\.
++ Using [PutObjectAcl](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html) in the Amazon S3 API\.
+
+When you grant access to an OAI using an ACL, you must specify the OAI using its Amazon S3 canonical user ID\. This is the value of **Amazon S3 Canonical User ID** on the [Origin Access Identity page](https://console.aws.amazon.com/cloudfront/home?region=us-east-1#oai:) in the CloudFront console\. If you’re using the CloudFront API, use the value of the `S3CanonicalUserId` element that was returned when you created the OAI, or call [ListCloudFrontOriginAccessIdentities](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListCloudFrontOriginAccessIdentities.html) in the CloudFront API\.
+
+For more information about Amazon S3 object ACLs, see [Managing Access with ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 ## Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication<a name="private-content-origin-access-identity-signature-version-4"></a>
 
