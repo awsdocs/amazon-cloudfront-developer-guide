@@ -8,7 +8,7 @@ An HTTP 502 status code \(Bad Gateway\) indicates that CloudFront wasn't able to
 + [SSL/TLS Certificate on the Origin Is Expired, Invalid, Self\-signed, or the Certificate Chain Is in the Wrong Order](#ssl-certificate-expired)
 + [Origin Is Not Responding on Specified Ports in Origin Settings](#origin-not-responding-on-specified-ports)
 + [CloudFront Was Not Able to Resolve Your Origin Domain Due to DNS Issues](#http-502-service-unavailable-origin-domain-dns-issues)
-+ [Lambda Function Associated with Your Distribution Includes Execution Errors](#http-502-bad-gateway-lambda-function-invalid)
++ [Lambda@Edge Function Validation Errors](#http-502-bad-gateway-lambda-function-invalid)
 
 ## SSL/TLS Negotiation Failure Between CloudFront and a Custom Origin Server<a name="ssl-negotitation-failure"></a>
 
@@ -93,8 +93,6 @@ dig OriginDomainName @NameServerFromAbove
 nslookup OriginDomainName NameServerFromAbove
 ```
 
-## Lambda Function Associated with Your Distribution Includes Execution Errors<a name="http-502-bad-gateway-lambda-function-invalid"></a>
+## Lambda@Edge Function Validation Errors<a name="http-502-bad-gateway-lambda-function-invalid"></a>
 
-When a Lambda@Edge function has execution errors, CloudFront may return an HTTP 502 error\.
-
-To troubleshoot this issue, examine the access logs to look for errors returned by your Lambda function\. Make sure you look at the log files in the region where the function executed\. For more information, see [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)\.
+If you’re using Lambda@Edge, an HTTP 502 status code can indicate that your Lambda function response was incorrectly formed or included invalid content\. For more information about troubleshooting Lambda@Edge errors, see [Testing and Debugging Lambda@Edge Functions](lambda-edge-testing-debugging.md)\.

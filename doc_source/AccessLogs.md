@@ -66,7 +66,7 @@ In some circumstances, if you programmatically submit a request to create a buck
 **Restoring the ACL for the bucket**  
 If you remove permissions for the `awslogsdelivery` account, CloudFront won't be able to save logs to the S3 bucket\. To enable CloudFront to start saving logs for your distribution again, restore the ACL permission by doing one of the following:  
 + Disable logging for your distribution in CloudFront, and then enable it again\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
-+ Add the ACL permission for `awslogsdelivery` manually by navigating to the S3 bucket in the Amazon S3 console and adding permission\. To add the ACL for `awslogsdelivery`, you must provide the canonical ID for the account, which is the following: 
++ Add the ACL permission for `awslogsdelivery` manually by navigating to the S3 bucket in the Amazon S3 console and adding permission\. To add the ACL for `awslogsdelivery`, you must provide the canonical ID for the account, which is the following:
 
   `c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0`
 
