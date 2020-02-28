@@ -1,12 +1,13 @@
 # Document History<a name="WhatsNew"></a>
 + **API Version:** 2019\-03\-26
-+ **Latest documentation update:** December 19, 2019
++ **Latest documentation update:** February 27, 2020
 
 
 ****  
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+|  Lambda@Edge supports newer runtime versions  |  Lambda@Edge now supports Lambda functions with the Node\.js 12 and Python 3\.8 runtimes\. For more information, see [Lambda Function Supported Runtimes and Configuration](lambda-requirements-limits.md#lambda-requirements-lambda-function-configuration)\.  |  February 27, 2020  | 
 |  New real\-time metrics in CloudWatch  |  Amazon CloudFront now offers eight additional real\-time metrics in Amazon CloudWatch\. For more information, see [Viewing Additional CloudFront Distribution Metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  |  December 19, 2019  | 
 |  New fields in access logs  |  CloudFront adds seven new fields to access logs\. For more information, see [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.  |  December 12, 2019  | 
 |  AWS for WordPress plugin  |  You can use the AWS for WordPress plugin to provide visitors to your WordPress website an accelerated viewing experience using CloudFront\. For more information, see [Getting Started with a Simple DistributionGetting Started with AWS for WordPress](WordPressPlugIn.md)\.  |  October 30, 2019  | 

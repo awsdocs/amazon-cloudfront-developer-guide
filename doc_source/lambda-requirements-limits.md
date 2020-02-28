@@ -120,7 +120,9 @@ You can, however, execute Lambda functions for *origin* response errors, includi
 
 ## Lambda Function Supported Runtimes and Configuration<a name="lambda-requirements-lambda-function-configuration"></a>
 + Lambda@Edge supports Lambda functions with the following runtimes:
+  + Python 3\.8
   + Python 3\.7
+  + Node\.js 12
   + Node\.js 10
   + Node\.js 8 and Node\.js 6
 **Note**  
