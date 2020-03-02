@@ -86,34 +86,50 @@ In rare cases, when a CloudFront edge location is unusually busy, some files mig
 ### File Types that CloudFront Compresses<a name="compressed-content-cloudfront-file-types"></a>
 
 If you configure CloudFront to compress your content, CloudFront compresses files that have the following values in the `Content-Type` header:
-
-
-****  
-
-|  |  | 
-| --- |--- |
-| application/dash\+xml | application/x\-opentype | 
-| application/eot | application/x\-otf | 
-| application/font | application/x\-perl | 
-| application/font\-sfnt | application/x\-ttf | 
-| application/javascript | font/eot | 
-| application/json | font/ttf | 
-| application/opentype | font/otf | 
-| application/otf | font/opentype | 
-| application/pkcs7\-mime | image/svg\+xml | 
-| application/truetype | text/css | 
-| application/ttf | text/csv | 
-| application/vnd\.ms\-fontobject | text/html | 
-| application/vnd\.apple\.mpegurl | text/javascript | 
-| application/xhtml\+xml | text/js | 
-| application/xml | text/plain | 
-| application/xml\+rss | text/richtext | 
-| application/x\-font\-opentype | text/tab\-separated\-values | 
-| application/x\-font\-truetype | text/xml | 
-| application/x\-font\-ttf | text/x\-script | 
-| application/x\-httpd\-cgi | text/x\-component | 
-| application/x\-javascript | text/x\-java\-source | 
-| application/x\-mpegurl | vnd\.apple\.mpegurl | 
++ `application/dash+xml`
++ `application/eot`
++ `application/font`
++ `application/font-sfnt`
++ `application/javascript`
++ `application/json`
++ `application/opentype`
++ `application/otf`
++ `application/pkcs7-mime`
++ `application/rss+xml`
++ `application/truetype`
++ `application/ttf`
++ `application/vnd.apple.mpegurl`
++ `application/vnd.ms-fontobject`
++ `application/xhtml+xml`
++ `application/xml`
++ `application/x-font-opentype`
++ `application/x-font-truetype`
++ `application/x-font-ttf`
++ `application/x-httpd-cgi`
++ `application/x-javascript`
++ `application/x-mpegurl`
++ `application/x-opentype`
++ `application/x-otf`
++ `application/x-perl`
++ `application/x-ttf`
++ `font/eot`
++ `font/opentype`
++ `font/otf`
++ `font/ttf`
++ `image/svg+xml`
++ `text/css`
++ `text/csv`
++ `text/html`
++ `text/javascript`
++ `text/js`
++ `text/plain`
++ `text/richtext`
++ `text/tab-separated-values`
++ `text/xml`
++ `text/x-component`
++ `text/x-java-source`
++ `text/x-script`
++ `vnd.apple.mpegurl`
 
 ## Using a Custom Origin to Compress Your Content<a name="compressed-content-custom-origin"></a>
 
