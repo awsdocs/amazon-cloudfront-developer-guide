@@ -57,76 +57,84 @@ Set to 5 seconds or less, to help prevent serving stale content\.
 
 ## Serving Live Video Formatted with AWS Elemental MediaPackage<a name="live-streaming-with-mediapackage"></a>
 
-If you've used AWS Elemental MediaPackage to format a live stream for viewing, you can create a CloudFront distribution and configure cache behaviors to serve the live stream\. This topic assumes that you have already [ created a channel](https://docs.aws.amazon.com/mediapackage/latest/ug/channels-create.html) and [added endpoints](https://docs.aws.amazon.com/mediapackage/latest/ug/channels-add-endpoint.html) for your live video using MediaPackage\.
+If you’ve used AWS Elemental MediaPackage to format a live stream for viewing, you can create a CloudFront distribution and configure cache behaviors to serve the live stream\. The following process assumes that you have already [ created a channel](https://docs.aws.amazon.com/mediapackage/latest/ug/channels-create.html) and [added endpoints](https://docs.aws.amazon.com/mediapackage/latest/ug/channels-add-endpoint.html) for your live video using MediaPackage\.
 
-To stream the video with CloudFront, create a web distribution for the channel, and then add each MediaPackage endpoint as an origin for the distribution\. For each origin, you must configure cache behaviors to route the video content correctly\.
+**Note**  
+Instead of using the following process, you can choose to automatically create a CloudFront distribution when you save a channel in MediaPackage\. For more information, see [Creating a Distribution from AWS Elemental MediaPackage](https://docs.aws.amazon.com/mediapackage/latest/ug/cdns-cf.html#cdns-create-mp) in the *AWS Elemental MediaPackage User Guide*\.
 
-When you save a channel in MediaPackage, you can choose to also automatically create a distribution in CloudFront\. For more information, see [Creating a Distribution from AWS Elemental MediaPackage](https://docs.aws.amazon.com/mediapackage/latest/ug/cdns-create-mp.html) in the AWS Elemental MediaPackage User Guide\.
-
-To create a CloudFront distribution for MediaPackage in CloudFront, follow these steps:
+To create a CloudFront distribution for MediaPackage manually, follow these steps:
 
 **Topics**
-+ [Step 1: Create and Configure a CloudFront Distribution for Live Video](#live-streaming-with-mediapackage-create-dist)
-+ [Step 2: Add the Other Endpoints as Origins for the Distribution](#live-streaming-with-mediapackage-add-endpoints)
-+ [Step 3: Configure Cache Behaviors for all Endpoints](#live-streaming-with-mediapackage-create-cache-behavior)
-+ [Step 4: Use CloudFront to Serve the Live Stream Channel](#live-streaming-with-mediapackage-serve-channel)
++ [Step 1: Create and configure a CloudFront distribution](#live-streaming-with-mediapackage-create-dist)
++ [Step 2: Add the other endpoints as origins](#live-streaming-with-mediapackage-add-endpoints)
++ [Step 3: Configure cache behaviors for all endpoints](#live-streaming-with-mediapackage-create-cache-behavior)
++ [Step 4: Use CloudFront to serve the live stream channel](#live-streaming-with-mediapackage-serve-channel)
 
-### Step 1: Create and Configure a CloudFront Distribution for Live Video<a name="live-streaming-with-mediapackage-create-dist"></a>
+### Step 1: Create and configure a CloudFront distribution<a name="live-streaming-with-mediapackage-create-dist"></a>
 
-Complete the following procedure to set up a CloudFront distribution for the live video channel that you created with MediaPackage<a name="live-streaming-with-mediapackage-create-dist-procedure"></a>
+Complete the following procedure to set up a CloudFront distribution for the live video channel that you created with MediaPackage\.<a name="live-streaming-with-mediapackage-create-dist-procedure"></a>
 
-**To create a web distribution for your live video channel**
+**To create a distribution for your live video channel**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
 1. Choose **Create Distribution**\.
 
-1. On the **Select a delivery method** page, in the **Web** section, choose **Get Started**\.
+1. On the **Select a delivery method for your content** page, in the **Web** section, choose **Get Started**\.
 
 1. Choose the settings for the distribution, including the following:  
 **Origin Domain Name**  
-The origin where your MediaPackage live video channel and endpoints are\. From the dropdown list, choose the MediaPackage channel for your live video\. The format of a MediaPackage origin is ChannelID\-OriginEndpointID\-OriginEndpointURL\. You can map one channel to several origin endpoints\.  
+The origin where your MediaPackage live video channel and endpoints are\. Choose the text field, then from the dropdown list, choose the MediaPackage channel for your live video\. You can map one channel to several origin endpoints\.  
 If you created your channel using another AWS account, type the origin URL value into the field\. The origin must be an HTTPS URL\.  
-For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
+For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
 **Origin Path**  
 The folder structure in the MediaPackage where your objects are stored\. When you choose a channel from the dropdown list, the path is filled in for you\.  
-Note that if you chose to use a channel from another AWS account for **Origin Domain Name**, the **Origin Path** field is not filled in for you\. You must sign in to the other account and get the correct origin path so you that can enter it manually\.  
-For more information about how an origin path works, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
-For the other distribution settings, set specific values based on other technical requirements or the needs of your business\. For a list of all the options for web distributions and information about setting them, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.
+Note that if you chose to use a channel from another AWS account for **Origin Domain Name**, the **Origin Path** field is not filled in for you\. You must get the correct origin path from the other account so that you can enter it manually\.  
+For more information about how an origin path works, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath) in [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
-1. Specify the correct cache behavior settings for the channel that you chose for the origin\. You’ll add one or more additional origins later and edit cache behavior settings for them\.
+   For the other distribution settings, set specific values based on other technical requirements or the needs of your business\. For a list of all the options for distributions and information about setting them, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
-1. Wait until the value of the Status column for your distribution has changed from **In Progress** to **Deployed**, indicating that CloudFront has created your distribution\.
+   When you finish choosing the other distribution settings, choose **Create Distribution**\.
 
-### Step 2: Add the Other Endpoints as Origins for the Distribution<a name="live-streaming-with-mediapackage-add-endpoints"></a>
+1. Choose the distribution that you just created, then choose the **Behaviors** tab\.
 
-Repeat the steps here to add each endpoint\.<a name="live-streaming-with-mediapackage-add-endpoints-procedure"></a>
+1. Choose the default cache behavior, and specify the correct cache behavior settings for the channel that you chose for the origin\. Later, you’ll add one or more additional origins and edit cache behavior settings for them\.
+
+1. Go to the [**CloudFront Distributions** page](https://console.aws.amazon.com/cloudfront/home#distributions:)\.
+
+1. Wait until the value of the **Status** column for your distribution has changed from **In Progress** to **Deployed**, indicating that CloudFront has created your distribution\.
+
+### Step 2: Add the other endpoints as origins<a name="live-streaming-with-mediapackage-add-endpoints"></a>
+
+Repeat the steps here to add each of your MediaPackage channel endpoints to your distribution\.<a name="live-streaming-with-mediapackage-add-endpoints-procedure"></a>
 
 **To add other endpoints as origins**
 
-1. On the CloudFront console, choose the distribution that you created for your channel, and then choose **Distribution Settings**\.
+1. On the CloudFront console, choose the distribution that you created for your channel\.
 
-1. On the **Origins** tab, choose **Create Origin**\.
+1. Choose the **Origins and Origin Groups** tab, then choose **Create Origin**\.
 
 1. For **Origin Domain Name**, in the dropdown list, choose a MediaPackage endpoint for your channel\. The **Origin Path** field will be automatically filled in for you\.
 
-1. For the other settings, set the values based on other technical requirements or the needs of your business\. For more information, see [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.
+1. For the other settings, set the values based on other technical requirements or the needs of your business\. For more information, see [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 1. Choose **Create**\.
 
-### Step 3: Configure Cache Behaviors for all Endpoints<a name="live-streaming-with-mediapackage-create-cache-behavior"></a>
+### Step 3: Configure cache behaviors for all endpoints<a name="live-streaming-with-mediapackage-create-cache-behavior"></a>
 
-For each endpoint, you must configure cache behaviors to add path patterns that route requests correctly\. The path patterns that you specify depend on the video format that you’re serving\. The procedure in this topic includes the path pattern information to use for HLS, CMAF, DASH, and Microsoft Smooth formats\.
+For each endpoint, you must configure cache behaviors to add path patterns that route requests correctly\. The path patterns that you specify depend on the video format that you’re serving\. The following procedure includes the path pattern information to use for HLS, CMAF, DASH, and Microsoft Smooth Streaming formats\.
 
 You typically set up two cache behaviors for each endpoint:
-+ The parent manifest, which is the index to your files
-+ The segments, which are the files of the video content<a name="live-streaming-with-mediapackage-create-cache-behavior-procedure"></a>
++ The parent manifest, which is the index to your files\.
++ The segments, which are the files of the video content\.<a name="live-streaming-with-mediapackage-create-cache-behavior-procedure"></a>
 
 **To create a cache behavior for an endpoint**
+**Note**  
+For all endpoint formats except for a Microsoft Smooth Streaming endpoint, you must repeat the steps, to add two cache behaviors\.
 
-1. On the CloudFront console, choose the distribution that you created for your channel, and then choose **Distribution Settings**\.
+1. On the CloudFront console, choose the distribution that you created for your channel\.
 
-1. On the **Behaviors** tab, choose **Create Behavior**\.
+1. Choose the **Behaviors** tab, then choose **Create Behavior**\.
 
 1. In the **Cache Behavior Settings** section, for **Path Pattern**, type the first path pattern for the endpoint type for this origin, using the following path pattern guidance\. For example, if it’s a DASH endpoint, type `*.mpd` for **Path Pattern**\.  
 **Path Patterns**  
@@ -141,7 +149,6 @@ For a DASH endpoint, create the following two cache behaviors:
    + A cache behavior with a path pattern of `*.mp4` \(for the segments\)
 For a Microsoft Smooth Streaming endpoint, only a manifest is served, so you create only one cache behavior:  
    + A cache behavior with a path pattern of `index.ism/*`
-For all endpoint formats except for a Microsoft Smooth Streaming endpoint, you must repeat the steps, to add two cache behaviors\.
 
 1. Specify values for the following settings, for each cache behavior:  
 **Viewer Protocol Policy**  
@@ -149,21 +156,21 @@ Choose **Redirect HTTP to HTTPS**\.
 **Cache Based on Selected Request Headers**  
 Choose **None \(improves caching\)**\.  
 For more information about improving caching, see [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches \(Cache Hit Ratio\)](cache-hit-ratio.md)\.  
+**Object Caching**  
+MediaPackage sets default `Cache-Control` headers that ensure correct playback behavior\. If you want to use those values, choose **Use Origin Cache Headers**\. However, you can increase cache times for video segments\. For more information about customizing the time that objects stay in the CloudFront cache, see [Object Caching](distribution-web-values-specify.md#DownloadDistValuesObjectCaching) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
+**Minimum TTL**  
+Set to 5 seconds or less, to help prevent serving stale content\.  
 **Query String Forwarding and Caching**  
 Choose **Forward all, cache based on whitelist**\.  
 **Query String Whitelist**  
-Specify the letter m as the query string parameter that you want CloudFront to use as the basis for caching\. The AWS Elemental MediaPackage response always includes the tag `?m=###` to capture the modified time of the endpoint\. If content is already cached with a different value for this tag, CloudFront requests a new manifest instead of serving the cached version\.  
-If you’re using the time\-shifted viewing functionality in MediaPackage, specify `start` and `end` as additional query string parameters on the cache behavior for manifest requests \(`*.m3u8`, `*.mpd`, and `index.ism/*`\)\. This way, content is served that’s specific to the requested time period in the manifest request\. For more information about time\-shifted viewing and formatting content start and end request parameters, see [ Time\-shifted Viewing](https://docs.aws.amazon.com/mediapackage/latest/ug/time-shifted.html) in the AWS Elemental MediaPackage User Guide\.  
-**Object Caching**  
-MediaPackage sets default `Cache-Control` headers that ensure correct playback behavior\. If you want to use those values, choose Use Origin Cache Headers\. However, you can increase cache times for video segments\. For more information about customizing the time that objects stay in the CloudFront cache, see [Object Caching](distribution-web-values-specify.md#DownloadDistValuesObjectCaching) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
-**Error Caching Minimum TTL**  
-Set to 5 seconds or less, to help prevent serving stale content\.
+Specify `m` as the query string parameter that you want CloudFront to use as the basis for caching\. The MediaPackage response always includes the tag `?m=###` to capture the modified time of the endpoint\. If content is already cached with a different value for this tag, CloudFront requests a new manifest instead of serving the cached version\.  
+If you’re using the time\-shifted viewing functionality in MediaPackage, specify `start` and `end` as additional query string parameters on the cache behavior for manifest requests \(`*.m3u8`, `*.mpd`, and `index.ism/*`\)\. This way, content is served that’s specific to the requested time period in the manifest request\. For more information about time\-shifted viewing and formatting content start and end request parameters, see [ Time\-shifted Viewing](https://docs.aws.amazon.com/mediapackage/latest/ug/time-shifted.html) in the *AWS Elemental MediaPackage User Guide*\.
 
 1. Choose **Create**\.
 
-1. If your endpoint is not a Microsoft Smooth endpoint, choose **Create Behavior**, and then repeat these steps to create a second cache behavior\.
+1. If your endpoint is not a Microsoft Smooth Streaming endpoint, choose **Create Behavior**, and then repeat these steps to create a second cache behavior\.
 
-### Step 4: Use CloudFront to Serve the Live Stream Channel<a name="live-streaming-with-mediapackage-serve-channel"></a>
+### Step 4: Use CloudFront to serve the live stream channel<a name="live-streaming-with-mediapackage-serve-channel"></a>
 
 After you create the distribution, add the origins, and create the cache behaviors, you can serve the live stream channel using CloudFront\. Content requests from viewers are routed to the correct MediaPackage endpoints based on the settings that you configured for the cache behaviors\.
 
