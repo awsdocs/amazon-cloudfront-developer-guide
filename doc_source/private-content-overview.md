@@ -28,7 +28,7 @@ You must use RSA\-SHA1 for signing URLs or cookies\. CloudFront doesn't accept o
 You can optionally secure the content in your Amazon S3 bucket so that users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs\. This prevents someone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\. Be aware that this option is only available if you have not set up your Amazon S3 bucket as a website endpoint\.
 
 To require that users access your content through CloudFront URLs, you do the following tasks:
-+ Create a special CloudFront user called an **origin access identity**\.
++ Create a special CloudFront user called an **origin access identity** and associate it with your CloudFront distribution\.
 + Give the origin access identity permission to read the files in your bucket\.
 + Remove permission for anyone else to use Amazon S3 URLs to read the files\.
 
