@@ -4,15 +4,15 @@ You can control user access to your private content in two ways, as shown in the
 
 1. Restrict access to files in CloudFront edge caches
 
-1. Restrict access to files in your origin by doing one of the following: 
-   + Set up an origin access identity \(OAI\) for your Amazon S3 bucket \(unless you've configured it as a website endpoint\)
-   + Configure custom headers for a private HTTP server or an Amazon S3 bucket configured as a website endpoint
+1. Restrict access to files in your origin by doing one of the following:
+   + Set up an origin access identity \(OAI\) for your Amazon S3 bucket
+   + Configure custom headers for a private HTTP server \(a custom origin\)
 
 ![\[The two ways to restrict file access in CloudFront\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/PrivateContent_TwoPartsNew.png)
 
 ## Restricting Access to Files in CloudFront Edge Caches<a name="private-content-overview-edge-caches"></a>
 
-You can configure CloudFront to require that users access your files using either **signed URLs** or **signed cookies**\. You then develop your application either to create and distribute signed URLs to authenticated users or to send `Set-Cookie` headers that set signed cookies on the viewers for authenticated users\. \(To give a few users long\-term access to a limited number of files, you can also create signed URLs manually\.\) 
+You can configure CloudFront to require that users access your files using either *signed URLs* or *signed cookies*\. You then develop your application either to create and distribute signed URLs to authenticated users or to send `Set-Cookie` headers that set signed cookies on the viewers for authenticated users\. \(To give a few users long\-term access to a limited number of files, you can also create signed URLs manually\.\) 
 
 When you create signed URLs or signed cookies to control access to your files, you can specify the following restrictions:
 + An ending date and time, after which the URL is no longer valid\. 
@@ -25,7 +25,7 @@ You must use RSA\-SHA1 for signing URLs or cookies\. CloudFront doesn't accept o
 
 ## Restricting Access to Files in Amazon S3 Buckets<a name="private-content-overview-s3"></a>
 
-You can optionally secure the content in your Amazon S3 bucket so that users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs\. This prevents someone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\. Be aware that this option is only available if you have not set up your Amazon S3 bucket as a website endpoint\.
+You can optionally secure the content in your Amazon S3 bucket so that users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs\. This prevents someone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\.
 
 To require that users access your content through CloudFront URLs, you do the following tasks:
 + Create a special CloudFront user called an *origin access identity* and associate it with your CloudFront distribution\.
