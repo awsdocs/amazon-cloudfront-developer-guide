@@ -3,7 +3,7 @@
 **Note**  
 [Adobe designated Flash as end\-of\-life by December 31, 2020](https://theblog.adobe.com/adobe-flash-update/)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
 
-The following task list summarizes the process for creating a distribution for on\-demand streaming using the Adobe RTMP protocol for any media player\.<a name="create-streaming-distribution-task-list"></a>
+The following task list summarizes the process for creating a distribution for video on demand \(VOD\) streaming using the Adobe RTMP protocol for any media player\.<a name="create-streaming-distribution-task-list"></a>
 
 **To Create an RTMP Distribution**
 

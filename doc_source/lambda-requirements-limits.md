@@ -195,7 +195,7 @@ If you access the request body as read\-only, the full original request body is 
 
 ## Microsoft Smooth Streaming<a name="lambda-requirements-microsoft-smooth-streaming"></a>
 
-You can't create triggers for a CloudFront distribution that you're using for on\-demand streaming of media files that you've transcoded into the Microsoft Smooth Streaming format\.
+You can’t create triggers for a CloudFront distribution that you’re using for video on demand \(VOD\) streaming of media files that you’ve transcoded into the Microsoft Smooth Streaming format\.
 
 ## Network Access<a name="lambda-requirements-network-access"></a>
 

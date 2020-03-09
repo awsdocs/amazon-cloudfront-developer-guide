@@ -68,4 +68,4 @@ When you use this configuration, CloudFront removes the Accept\-Encoding header 
 
 ## Serving Media Content by Using HTTP<a name="cache-hit-ratio-http-streaming"></a>
 
-For information about optimizing on\-demand and streaming video content, see [On\-Demand and Live Streaming Video with CloudFront](on-demand-streaming-video.md)\.
+For information about optimizing video on demand \(VOD\) and streaming video content, see [Video on Demand and Live Streaming Video with CloudFront](on-demand-streaming-video.md)\.

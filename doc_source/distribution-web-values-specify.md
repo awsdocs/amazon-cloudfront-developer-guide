@@ -499,7 +499,7 @@ Choose **No** if you have a Microsoft IIS server that you want to use as an orig
 **Note**  
 If you specify **Yes**, you can still distribute other content using this cache behavior if that content matches the value of **Path Pattern**\.
 
-For more information, see [Configuring On\-Demand Microsoft Smooth Streaming](on-demand-video.md#on-demand-streaming-smooth)\.
+For more information, see [Configuring Video on Demand for Microsoft Smooth Streaming](on-demand-video.md#on-demand-streaming-smooth)\.
 
 ### Restrict Viewer Access \(Use Signed URLs\)<a name="DownloadDistValuesRestrictViewerAccess"></a>
 

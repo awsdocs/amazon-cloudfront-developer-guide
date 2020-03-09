@@ -12,7 +12,7 @@ For the current limit on the number of distributions that you can create for eac
 
 You can use distributions to serve the following content over HTTP or HTTPS:
 + Static and dynamic download content, for example, \.html, \.css, \.js, and image files, using HTTP or HTTPS\.
-+ Video on demand in different formats, such as Apple HTTP Live Streaming \(HLS\) and Microsoft Smooth Streaming\. For more information, see the [Delivering On\-Demand Video with CloudFront](on-demand-video.md)\.
++ Video on demand in different formats, such as Apple HTTP Live Streaming \(HLS\) and Microsoft Smooth Streaming\. For more information, see the [Delivering Video on Demand \(VOD\) with CloudFront](on-demand-video.md)\.
 
   You can't serve Adobe Flash multimedia content over HTTP or HTTPS, but you can serve it using a CloudFront RTMP distribution\. See [RTMP Distributions](distribution-overview-rtmp.md)\.
 + A live event, such as a meeting, conference, or concert, in real time\. For live streaming, you can create the distribution automatically by using an AWS CloudFormation stack\. For more information, see [Delivering Live Streaming Video with CloudFront and AWS Media Services](live-streaming.md)\.

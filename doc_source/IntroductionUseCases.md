@@ -4,7 +4,7 @@ Using CloudFront can help you accomplish a variety of goals\. This section lists
 
 **Topics**
 + [Accelerate Static Website Content Delivery](#IntroductionUseCasesStaticWebsite)
-+ [Serve On\-Demand or Live Streaming Video](#IntroductionUseCasesStreaming)
++ [Serve Video On Demand or Live Streaming Video](#IntroductionUseCasesStreaming)
 + [Encrypt Specific Fields Throughout System Processing](#IntroductionUseCasesFieldLevelEncryption)
 + [Customize at the Edge](#IntroductionUseCasesProgrammableCDN)
 + [Serve Private Content by using Lambda@Edge Customizations](#IntroductionUseCasesPrivateContentAtTheEdge)
@@ -17,13 +17,13 @@ A simple approach for storing and delivering static content is to use an Amazon 
 
 For more information about using S3 together with CloudFront, including a AWS CloudFormation template to help you get started quickly, see [ Amazon S3 \+ Amazon CloudFront: A Match Made in the Cloud](https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-s3-amazon-cloudfront-a-match-made-in-the-cloud/)\.
 
-## Serve On\-Demand or Live Streaming Video<a name="IntroductionUseCasesStreaming"></a>
+## Serve Video On Demand or Live Streaming Video<a name="IntroductionUseCasesStreaming"></a>
 
 CloudFront offers several options for streaming your media to global viewers—both pre\-recorded files and live events\.
-+ For on\-demand streaming, you can use CloudFront to stream in common formats such as MPEG DASH, Apple HLS, Microsoft Smooth Streaming, and CMAF, to any device\.
++ For video on demand \(VOD\) streaming, you can use CloudFront to stream in common formats such as MPEG DASH, Apple HLS, Microsoft Smooth Streaming, and CMAF, to any device\.
 + For broadcasting a live stream, you can cache media fragments at the edge, so that multiple requests for the manifest file that delivers the fragments in the right order can be combined, to reduce the load on your origin server\.
 
-For more information about how to deliver streaming content with CloudFront, see [On\-Demand and Live Streaming Video with CloudFront](on-demand-streaming-video.md)\.
+For more information about how to deliver streaming content with CloudFront, see [Video on Demand and Live Streaming Video with CloudFront](on-demand-streaming-video.md)\.
 
 ## Encrypt Specific Fields Throughout System Processing<a name="IntroductionUseCasesFieldLevelEncryption"></a>
 
