@@ -10,12 +10,12 @@ This topic explains in detail how to set up the OAI and grant permissions to mai
 If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin and you can't use the origin access identity feature described in this topic\. However, you *can* restrict access to content on a custom origin by setting up custom headers and configuring your origin to require them\. For more information, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 **Topics**
-+ [Overview of Origin Access Identity Setup](#private-content-restricting-access-to-s3-overview)
-+ [Creating a CloudFront Origin Access Identity and Adding it to Your Distribution](#private-content-creating-oai)
-+ [Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)
-+ [Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication](#private-content-origin-access-identity-signature-version-4)
++ [Overview of OAI Setup](#private-content-restricting-access-to-s3-overview)
++ [Creating a CloudFront OAI and Adding it to Your Distribution](#private-content-creating-oai)
++ [Granting the OAI Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)
++ [Using an OAI in Amazon S3 Regions that Support Only Signature Version 4 Authentication](#private-content-origin-access-identity-signature-version-4)
 
-## Overview of Origin Access Identity Setup<a name="private-content-restricting-access-to-s3-overview"></a>
+## Overview of OAI Setup<a name="private-content-restricting-access-to-s3-overview"></a>
 
 When you first set up an Amazon S3 bucket as the origin for a CloudFront distribution, you grant everyone permission to read the files in your bucket\. This allows anyone to access your files either through CloudFront or using the Amazon S3 URL\. CloudFront doesn't expose Amazon S3 URLs, but your users might have those URLs if your application serves any files directly from Amazon S3 or if anyone gives out direct links to specific files in Amazon S3\.
 
@@ -23,79 +23,77 @@ If you use CloudFront signed URLs or signed cookies to limit access to files in 
 
 To ensure that your users access your files using only CloudFront URLs, regardless of whether the URLs are signed, do the following:
 
-1. Create an origin access identity, which is a special CloudFront user, and associate the origin access identity with your distribution\. You associate the origin access identity with origins, so that you can secure all or just some of your Amazon S3 content\. You can also create an origin access identity and add it to your distribution when you create the distribution\. For more information, see [Creating a CloudFront Origin Access Identity and Adding it to Your Distribution](#private-content-creating-oai)\.
+1. Create an origin access identity, which is a special CloudFront user, and associate the origin access identity with your distribution\. You associate the origin access identity with origins, so that you can secure all or just some of your Amazon S3 content\. You can also create an origin access identity and add it to your distribution when you create the distribution\. For more information, see [Creating a CloudFront OAI and Adding it to Your Distribution](#private-content-creating-oai)\.
 
-1. Change the permissions either on your Amazon S3 bucket or on the files in your bucket so that only the origin access identity has read permission \(or read and download permission\)\. When your users access your Amazon S3 files through CloudFront, the CloudFront origin access identity gets the files on behalf of your users\. If your users request files directly by using Amazon S3 URLs, they're denied access\. The origin access identity has permission to access files in your Amazon S3 bucket, but users don't\. For more information, see [Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
+1. Change the permissions either on your Amazon S3 bucket or on the files in your bucket so that only the origin access identity has read permission \(or read and download permission\)\. When your users access your Amazon S3 files through CloudFront, the CloudFront origin access identity gets the files on behalf of your users\. If your users request files directly by using Amazon S3 URLs, they're denied access\. The origin access identity has permission to access files in your Amazon S3 bucket, but users don't\. For more information, see [Granting the OAI Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
 
 **Tip**  
 If you're just getting started with setting up CloudFront with private content on an S3 bucket, you might find it helpful to read through the following blog post for an end\-to\-end view of the process: [How to Set Up and Serve Private Content Using S3 and Amazon CloudFront](http://improve.dk/how-to-set-up-and-serve-private-content-using-s3/)\. 
 
-## Creating a CloudFront Origin Access Identity and Adding it to Your Distribution<a name="private-content-creating-oai"></a>
+## Creating a CloudFront OAI and Adding it to Your Distribution<a name="private-content-creating-oai"></a>
 
-An AWS account can have [up to 100 CloudFront origin access identities](cloudfront-limits.md#limits-web-distributions)\. However, you can add an origin access identity to as many distributions as you want, so one origin access identity is usually sufficient\.
+An AWS account can have [up to 100 CloudFront origin access identities \(OAIs\)](cloudfront-limits.md#limits-web-distributions)\. However, you can add an OAI to as many distributions as you want, so one OAI is usually sufficient\.
 
-If you didn't create an origin access identity and add it to your distribution when you created the distribution, you can create and add one now by using either the CloudFront console or the CloudFront API:
-+ **To use the CloudFront console** – You can create an origin access identity and add it to your distribution at the same time\. For step\-by\-step instructions, see [Creating an Origin Access Identity and Adding it to Your Distribution](#private-content-creating-oai-console)\.
-+ **To use the CloudFront API** – You create an origin access identity, and then you add it to your distribution\. For step\-by\-step instructions, see the following:
-  + [Creating an Origin Access Identity Using the CloudFront API](#private-content-creating-oai-api)
-  + [Adding an Origin Access Identity to Your Distribution Using the CloudFront API](#private-content-adding-oai-api)
+If you didn’t create an OAI and add it to your distribution when you created the distribution, you can create and add one now by using either the CloudFront console or the CloudFront API:
++ **To use the CloudFront console** – You can create an OAI and add it to your distribution at the same time\. For step\-by\-step instructions, see [Creating an OAI and Adding it to Your Distribution](#private-content-creating-oai-console)\.
++ **To use the CloudFront API** – You create an OAI, and then you add it to your distribution\. For step\-by\-step instructions, see the following:
+  + [Creating an OAI Using the CloudFront API](#private-content-creating-oai-api)
+  + [Adding an OAI to Your Distribution Using the CloudFront API](#private-content-adding-oai-api)
 
 **Note**  
-To create origin access identities, you must use the CloudFront console or CloudFront API version 2009\-09\-09 or later\.
+To create OAIs, you must use the CloudFront console, or CloudFront API version 2009\-09\-09 or later\.
 
-### Creating an Origin Access Identity and Adding it to Your Distribution<a name="private-content-creating-oai-console"></a>
+### Creating an OAI and Adding it to Your Distribution<a name="private-content-creating-oai-console"></a>
 
-If you didn't create an origin access identity when you created your distribution, do the following\. <a name="private-content-creating-oai-console-procedure"></a>
+If you didn’t create an OAI when you created your distribution, do the following\.<a name="private-content-creating-oai-console-procedure"></a>
 
-**To create a CloudFront origin access identity using the CloudFront console**
+**To create a CloudFront OAI using the CloudFront console**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
-1. Click the ID of a distribution that has an S3 origin, and then choose **Distribution Settings**\.
+1. Choose the ID of a distribution that has an S3 origin\.
 
-1. Choose the **Origins** tab\.
+1. Choose the **Origins and Origin Groups** tab\.
 
-1. Choose an origin, and then choose **Edit**\.
+1. Choose the check box next to an origin, and then choose **Edit**\.
 
 1. For **Restrict Bucket Access**, choose **Yes**\.
+
+1. If you already have an OAI that you want to use, choose **Use an Existing Identity**\. Then choose the OAI in the **Your Identities** list\.
 **Note**  
-If you don't see the **Restrict Bucket Access** option, your Amazon S3 origin might be configured as a website endpoint\. In that configuration, S3 buckets must be set up with CloudFront as custom origins and you can't use an origin access identity with them\.
+If you already have an OAI, we recommend that you reuse it to simplify maintenance\.
 
-1. If you already have an origin access identity that you want to use, click **Use an Existing Identity**\. Then select the identity in the **Your Identities** list\.
-**Note**  
-If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. 
+   If you want to create an OAI, choose **Create a New Identity**\. You can replace the bucket name in the **Comment** field with a custom description\.
 
-   If you want to create an identity, click **Create a New Identity**\. If you like, you can replace the bucket name in the **Comment** field with a custom description\.
-
-1. If you want CloudFront to automatically give the origin access identity permission to read the files in the Amazon S3 bucket specified in **Origin Domain Name**, click **Yes, Update Bucket Policy**\.
+1. If you want CloudFront to automatically give the OAI permission to read the files in the Amazon S3 bucket specified in **Origin Domain Name**, choose **Yes, Update Bucket Policy**\.
 **Important**  
-If you choose **Yes, Update Bucket Policy**, CloudFront updates bucket permissions to grant the specified origin access identity the permission to read files in your bucket\. However, CloudFront does not remove existing permissions\. If users currently have permission to access the files in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket permissions\. To view or remove existing bucket permissions, use a method provided by Amazon S3\. For more information, see [Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
+If you choose **Yes, Update Bucket Policy**, CloudFront updates bucket permissions to grant the specified OAI permission to read files in your bucket\. However, CloudFront does not remove existing permissions\. If users currently have permission to access the files in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket permissions\. To view or remove existing bucket permissions, use a method provided by Amazon S3\.
 
-   If you want to manually update permissions on your Amazon S3 bucket, choose **No, I Will Update Permissions**\.
+   If you want to manually update permissions on your Amazon S3 bucket, choose **No, I Will Update Permissions**\. For more information, see [Granting the OAI Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
 
 1. Choose **Yes, Edit**\.
 
-1. If you have more than one origin, repeat the steps to add an origin access identity for each one\.
+1. If you have more than one origin, repeat the steps to add an OAI for each one\.
 
-### Creating an Origin Access Identity Using the CloudFront API<a name="private-content-creating-oai-api"></a>
+### Creating an OAI Using the CloudFront API<a name="private-content-creating-oai-api"></a>
 
-If you already have an origin access identity and you want to reuse it instead of creating another one, skip to [Adding an Origin Access Identity to Your Distribution Using the CloudFront API](#private-content-adding-oai-api)\.
+If you already have an origin access identity and you want to reuse it instead of creating another one, skip to [Adding an OAI to Your Distribution Using the CloudFront API](#private-content-adding-oai-api)\.
 
-To create a CloudFront origin access identity by using the CloudFront API, use the `POST Origin Access Identity` API action\. The response includes an `Id` and an `S3CanonicalUserId` for the new origin access identity\. Make note of these values because you will use them later in the process:
-+ **Id element** – You use the value of the `Id` element to associate an origin access ID with your distribution\.
-+ **S3CanonicalUserId element** – You use the value of the `S3CanonicalUserId` element when you give CloudFront access to your Amazon S3 bucket or files\. 
+To create a CloudFront OAI using the CloudFront API, use the `POST Origin Access Identity` API action\. The response includes an `Id` and an `S3CanonicalUserId` for the new OAI\. Make note of these values because you will use them later in the process:
++ **Id element** – You use the value of the `Id` element to associate the OAI with your distribution\.
++ **S3CanonicalUserId element** – You use the value of the `S3CanonicalUserId` element when you use Amazon S3 object ACLs to give the OAI access to your Amazon S3 objects\.
 
 For more information, see [CreateCloudFrontOriginAccessIdentity](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html) in the *Amazon CloudFront API Reference*\.
 
-### Adding an Origin Access Identity to Your Distribution Using the CloudFront API<a name="private-content-adding-oai-api"></a>
+### Adding an OAI to Your Distribution Using the CloudFront API<a name="private-content-adding-oai-api"></a>
 
-You can use the CloudFront API to add a CloudFront origin access identity to an existing distribution or to create a new distribution that includes an origin access identity\. In either case, include an `OriginAccessIdentity` element\. This element contains the value of the `Id` element that the `POST Origin Access Identity` API action returned when you created the origin access identity\. You can add the `OriginAccessIdentity` element to one or more origins\.
+You can use the CloudFront API to add a CloudFront OAI to an existing distribution or to create a new distribution that includes an OAI\. In either case, include an `OriginAccessIdentity` element\. This element contains the value of the `Id` element that the `POST Origin Access Identity` API action returned when you created the OAI\. You can add the `OriginAccessIdentity` element to one or more origins\.
 
 See the following topics in the *Amazon CloudFront API Reference*:
 + **Create a new web distribution** – [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
 + **Update an existing web distribution** – [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 
-## Granting the Origin Access Identity Permission to Read Files in Your Amazon S3 Bucket<a name="private-content-granting-permissions-to-oai"></a>
+## Granting the OAI Permission to Read Files in Your Amazon S3 Bucket<a name="private-content-granting-permissions-to-oai"></a>
 
 When you create or update a distribution, you can add an origin access identity \(OAI\) and automatically update the Amazon S3 bucket policy to give the OAI permission to access your bucket\. Alternatively, you can choose to manually create or update the bucket policy, or use object ACLs which control access to individual files in the bucket\.
 
@@ -109,8 +107,8 @@ If you configure CloudFront to accept and forward all of the HTTP methods that C
 Note the following:
 + You might find it easier to use Amazon S3 bucket policies than object ACLs because you can add files to the bucket without updating permissions\. However, ACLs give you more fine\-grained control because you’re granting permissions on each individual file\.
 + By default, your Amazon S3 bucket and all of the files in it are private\. Only the AWS account that created the bucket has permission to read or write the files in it\.
-+ If another AWS account uploads files to your bucket, that account is the owner of those files\. Bucket policies only apply to files that the bucket owner owns\. This means that if another account uploads files to your bucket, the bucket policy that you created for your OAI will not be evaluated for those files\. In that case, use ACLs to give permissions to your OAI\.
-+ If you’re adding an OAI to an existing distribution, modify the bucket policy or any file ACLs as appropriate to ensure that the files are not publicly available outside of CloudFront\.
++ If another AWS account uploads files to your bucket, that account is the owner of those files\. Bucket policies only apply to files that the bucket owner owns\. This means that if another account uploads files to your bucket, the bucket policy that you created for your OAI will not be evaluated for those files\. In that case, use object ACLs to give permissions to your OAI\.
++ If you’re adding an OAI to an existing distribution, modify the bucket policy or any object ACLs as appropriate to ensure that the files are not publicly available outside of CloudFront\.
 + Grant additional permissions to one or more secure administrator accounts so you can continue to update the contents of the Amazon S3 bucket\.
 
 **Important**  
@@ -218,7 +216,7 @@ When you grant access to an OAI using an ACL, you must specify the OAI using its
 
 For more information about Amazon S3 object ACLs, see [Managing Access with ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-## Using an Origin Access Identity in Amazon S3 Regions that Support Only Signature Version 4 Authentication<a name="private-content-origin-access-identity-signature-version-4"></a>
+## Using an OAI in Amazon S3 Regions that Support Only Signature Version 4 Authentication<a name="private-content-origin-access-identity-signature-version-4"></a>
 
 Newer Amazon S3 regions require that you use signature version 4 for authenticated requests\. \(For the versions of signature supported in each Amazon S3 region, see [Amazon Simple Storage Service \(S3\)](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the topic [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.\) However, when you create an origin access identity and add it to a CloudFront distribution, CloudFront typically uses signature version 4 for authentication when it requests files in your Amazon S3 bucket\. If you're using an origin access identity and if your bucket is in one of the regions that requires signature version 4 for authentication, note the following:
 + `DELETE`, `GET`, `HEAD`, `OPTIONS`, and `PATCH` requests are supported without qualifications\.
