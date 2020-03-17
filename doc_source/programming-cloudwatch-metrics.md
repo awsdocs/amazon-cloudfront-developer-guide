@@ -98,6 +98,7 @@ The total time spent, in milliseconds, from when CloudFront receives a request t
 + Metric name: `OriginLatency`
 + Valid statistic: `Percentile`
 + Unit: `Milliseconds`
+To get a `Percentile` statistic from the CloudWatch API, use the `ExtendedStatistics` parameter, not `Statistics`\. For more information, see [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html) in the *Amazon CloudWatch API Reference*, or the reference documentation for the [AWS SDKs](https://docs.aws.amazon.com/#sdks)\.
 
 **Requests**  
 The total number of viewer requests received by CloudFront, for all HTTP methods and for both HTTP and HTTPS requests\.  
