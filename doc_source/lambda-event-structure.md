@@ -83,7 +83,8 @@ The following example shows an origin request event object\.
         "config": {
           "distributionDomainName": "d111111abcdef8.cloudfront.net",
           "distributionId": "EDFDVBD6EXAMPLE",
-          "eventType": "origin-request"
+          "eventType": "origin-request",
+          "requestId": "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ=="
         },
         "request": {
           "clientIp": "203.0.113.178",
@@ -162,7 +163,7 @@ The ID of the distribution that’s associated with the request\.
 **`eventType` \(read\-only\)**  
 The type of trigger that’s associated with the request: `viewer-request` or `origin-request`\.
 
-**`requestId` \(read\-only\) \(`viewer-request` events only\)**  
+**`requestId` \(read\-only\)**  
 An encrypted string that uniquely identifies a viewer\-to\-CloudFront request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 #### Fields in the Request Object<a name="request-event-fields-request"></a>
@@ -267,7 +268,8 @@ The following example shows an origin response event object\.
         "config": {
           "distributionDomainName": "d111111abcdef8.cloudfront.net",
           "distributionId": "EDFDVBD6EXAMPLE",
-          "eventType": "origin-response"
+          "eventType": "origin-response",
+          "requestId": "4TyzHTaYWb1GX1qTfsHhEqV6HUDd_BzoBZnwfnvQc_1oF26ClkoUSEQ=="
         },
         "request": {
           "clientIp": "203.0.113.178",
@@ -531,7 +533,7 @@ The ID of the distribution that’s associated with the response\.
 **`eventType` \(read\-only\)**  
 The type of trigger that’s associated with the response: `origin-response` or `viewer-response`\.
 
-**`requestId` \(read\-only\) \(`viewer-response` events only\)**  
+**`requestId` \(read\-only\)**  
 An encrypted string that uniquely identifies the viewer\-to\-CloudFront request that this response is associated with\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 #### Fields in the Response Object<a name="response-event-fields-response"></a>
