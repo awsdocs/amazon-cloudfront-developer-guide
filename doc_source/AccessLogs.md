@@ -11,7 +11,7 @@ You can enable logging when you create or update a distribution\. For more infor
 + [Required CMK Key Policy for Use with SSE\-KMS Buckets](#AccessLogsKMSPermissions)
 + [File Name Format](#AccessLogsFileNaming)
 + [Timing of Log File Delivery](#access-logs-timing)
-+ [How Requests Are Logged When the Request URL or Headers Exceed Size Limits](#access-logs-request-URL-size)
++ [How Requests Are Logged When the Request URL or Headers Exceed the Maximum Size](#access-logs-request-URL-size)
 + [Analyzing Access Logs](#access-logs-analyzing)
 + [Editing Your Logging Settings](#ChangeSettings)
 + [Deleting Log Files from an Amazon S3 Bucket](#DeletingLogFiles)
@@ -125,11 +125,11 @@ CloudFront begins to reliably deliver access logs about four hours after you ena
 **Note**  
 If no users request your objects during the time period, you don't receive any log files for that period\.
 
-## How Requests Are Logged When the Request URL or Headers Exceed Size Limits<a name="access-logs-request-URL-size"></a>
+## How Requests Are Logged When the Request URL or Headers Exceed the Maximum Size<a name="access-logs-request-URL-size"></a>
 
-If the total size of all request headers, including cookies, exceeds 20 KB, or if the URL exceeds the 8192\-byte URL size limit, CloudFront can't parse the request completely and can't log the request\. Because the request isn't logged, you won't see in the log files the HTTP error status code returned\.
+If the total size of all request headers, including cookies, exceeds 20 KB, or if the URL exceeds 8192 bytes, CloudFront can't parse the request completely and can't log the request\. Because the request isn't logged, you won't see in the log files the HTTP error status code returned\.
 
-If the body size exceeds the size limit, the request is logged, including the HTTP error status code\.
+If the request body exceeds the maximum size, the request is logged, including the HTTP error status code\.
 
 ## Analyzing Access Logs<a name="access-logs-analyzing"></a>
 
@@ -233,7 +233,7 @@ The log file for a web distribution includes the following fields in the listed 
 | 22 | ssl\-cipher |  When `cs-protocol` in field 17 is `https`, this field contains the SSL/TLS cipher that the client and CloudFront negotiated for encrypting the request and response\. Possible values include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) When `cs-protocol` in field 17 is `http`, the value for this field is a hyphen \(\-\)\.  | 
 | 23 | x\-edge\-response\-result\-type | How CloudFront classified the response just before returning the response to the viewer\. See also `x-edge-result-type` in field 14\.  Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 24 | cs\-protocol\-version |  The HTTP version that the viewer specified in the request\. Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 25 | fle\-status | When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. If field\-level encryption is not configured for the distribution, the value of this field is a hyphen \(\-\)\. When CloudFront successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type`, field 14, can still indicate a client\-side or server\-side error in this case\. If the request exceeds a field\-level encryption limit, `fle-status` contains one of the following error codes, and CloudFront returns HTTP status code `400` to the viewer\. For a list of the current limits on field\-level encryption, see [Quotas on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) Other possible values for this field include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
+| 25 | fle\-status | When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. If field\-level encryption is not configured for the distribution, the value of this field is a hyphen \(\-\)\. When CloudFront successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type`, field 14, can still indicate a client\-side or server\-side error in this case\. If the request exceeds a field\-level encryption quota, `fle-status` contains one of the following error codes, and CloudFront returns HTTP status code `400` to the viewer\. For a list of the current quotas on field\-level encryption, see [Quotas on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) Other possible values for this field include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
 | 26 | fle\-encrypted\-fields | The number of fields that CloudFront encrypted and forwarded to the origin\. CloudFront streams the processed request to the origin as it encrypts data, so fle\-encrypted\-fields can have a value even if the value of fle\-status is an error\. If field\-level encryption is not configured for the distribution, the value of fle\-encrypted\-fields is a hyphen \(\-\)\.  | 
 | 27 | c\-port | The port number of the request from the viewer\. | 
 | 28 | time\-to\-first\-byte | The number of seconds between receiving the request and writing the first byte of the response, as measured on the server\. | 

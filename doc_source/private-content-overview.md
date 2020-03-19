@@ -12,7 +12,7 @@ You can control user access to your private content in two ways, as shown in the
 
 ## Restricting Access to Files in CloudFront Edge Caches<a name="private-content-overview-edge-caches"></a>
 
-You can configure CloudFront to require that users access your files using either *signed URLs* or *signed cookies*\. You then develop your application either to create and distribute signed URLs to authenticated users or to send `Set-Cookie` headers that set signed cookies on the viewers for authenticated users\. \(To give a few users long\-term access to a limited number of files, you can also create signed URLs manually\.\) 
+You can configure CloudFront to require that users access your files using either *signed URLs* or *signed cookies*\. You then develop your application either to create and distribute signed URLs to authenticated users or to send `Set-Cookie` headers that set signed cookies on the viewers for authenticated users\. \(To give a few users long\-term access to a small number of files, you can also create signed URLs manually\.\) 
 
 When you create signed URLs or signed cookies to control access to your files, you can specify the following restrictions:
 + An ending date and time, after which the URL is no longer valid\. 

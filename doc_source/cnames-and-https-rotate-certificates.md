@@ -14,7 +14,7 @@ To rotate certificates, perform the following procedure\. Viewers can continue t
 
 **To rotate SSL/TLS certificates**
 
-1. [Increasing the Limit for SSL/TLS Certificates](increasing-the-limit-for-ssl-tls-certificates.md) to determine whether you need permission to use more SSL certificates\. If so, request permission and wait until permission is granted before you continue with step 2\.
+1. [Increasing the Quotas for SSL/TLS Certificates](increasing-the-limit-for-ssl-tls-certificates.md) to determine whether you need permission to use more SSL certificates\. If so, request permission and wait until permission is granted before you continue with step 2\.
 
 1. Import the new certificate into ACM or upload it to IAM\. For more information, see [Importing an SSL/TLS Certificate](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-procedures.html#cnames-and-https-uploading-certificates) in the *Amazon CloudFront Developer Guide*
 

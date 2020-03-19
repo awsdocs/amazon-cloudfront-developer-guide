@@ -7,7 +7,7 @@ The procedures in this section show you how to use CloudFront to set up a basic 
 + Uses the CloudFront domain name in URLs for your objects \(for example, `http://d111111abcdef8.cloudfront.net/image.jpg`\)
 + Keeps your objects in CloudFront edge locations for the default duration of 24 hours \(the minimum duration is 0 seconds\)
 
-Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can limit who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.
+Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can restrict who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.
 
 You have to complete only a few basic steps to start delivering your content with CloudFront\. The first step is signing up\. After that, you create a CloudFront distribution, and then use the CloudFront domain name in URLs in your webpages or applications to reference the content\.
 
@@ -23,7 +23,7 @@ Before you begin, make sure that you've completed the steps in [Setting Up Amazo
 
 ## Step 1: Upload Your Content to Amazon S3 and Grant Object Permissions<a name="GettingStartedUploadContent"></a>
 
-An Amazon S3 bucket is a container that can contain files \(objects\) or folders\. CloudFront can distribute almost any type of file for you using an Amazon S3 bucket as the source\. For example, CloudFront can distribute text, images, and videos\. You can create multiple buckets, and there is no limit to the amount of data that you can store on Amazon S3\.
+An Amazon S3 bucket is a container that can contain files \(objects\) or folders\. CloudFront can distribute almost any type of file for you using an Amazon S3 bucket as the source\. For example, CloudFront can distribute text, images, and videos\. You can create multiple buckets, and there is no limitation to the amount of data that you can store on Amazon S3\.
 
 By default, your Amazon S3 bucket and all the files in it are private—only the AWS account that created the bucket has read/write permission to the files\. If you want to allow anyone to access the files in your Amazon S3 bucket using CloudFront URLs, you must grant public read permissions to the objects\. \(This is one of the most common mistakes when working with CloudFront and Amazon S3\. You must explicitly grant permissions to each object in an Amazon S3 bucket\.\)
 
@@ -102,7 +102,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
    + Respond to requests for your objects\.
    + Cache your objects at CloudFront edge locations for 24 hours\.
    + Forward only the default request headers to your origin and not cache your objects based on the values in the headers\.
-   + Exclude cookies and query string parameters, if any, when forwarding requests for objects to your origin\. \(Amazon S3 doesn't process cookies, and processes only a limited set of query string parameters\.\)
+   + Exclude cookies and query string parameters, if any, when forwarding requests for objects to your origin\. \(Amazon S3 doesn't process cookies, and processes only some query string parameters\.\)
    + Allow everyone to view your content\.
 
    CloudFront will not:

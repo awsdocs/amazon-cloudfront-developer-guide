@@ -25,7 +25,7 @@ You can submit a specified number of invalidation paths each month for free\. If
 + [Invalidating Files Using the Console](#Invalidation_Requests)
 + [Invalidating Files Using the CloudFront API](#invalidating-objects-api)
 + [Third\-Party Tools for Invalidating Files](#InvalidationTools)
-+ [Concurrent Invalidation Request Limits](#InvalidationLimits)
++ [Concurrent Invalidation Request Maximum](#InvalidationLimits)
 + [Paying for File Invalidation](#PayingForInvalidation)
 
 ## Choosing Between Invalidating Files and Using Versioned File Names<a name="Invalidation_Expiration"></a>
@@ -47,13 +47,13 @@ If you want to invalidate selected files but your users don't necessarily access
 
 ## Specifying the Files to Invalidate<a name="invalidation-specifying-objects"></a>
 
-Whether you invalidate files by using the CloudFront console or the CloudFront API, the requirements and limitations for specifying files are the same\. Note the following about specifying the files that you want to invalidate\.
+Whether you invalidate files by using the CloudFront console or the CloudFront API, the requirements and restrictions for specifying files are the same\. Note the following about specifying the files that you want to invalidate\.
 
 **Case sensitivity**  
 Invalidation paths are case sensitive, so `/images/image.jpg` and `/images/Image.jpg` specify two different files\.
 
  **Changing the URI Using a Lambda Function**  
-If your CloudFront distribution triggers a Lambda function on viewer request events, and if the function changes the URI of the requested file, you must invalidate both URIs to remove the file from CloudFront edge caches:  
+If your CloudFront distribution triggers a Lambda function on viewer request events, and if the function changes the URI of the requested file, we recommend that you invalidate both URIs to remove the file from CloudFront edge caches:  
 + The URI in the viewer request
 + The URI after the function changed it
 For example, suppose your Lambda function changes the URI for a file from this:  
@@ -85,8 +85,8 @@ If client requests include five different query strings for the same file, you c
 `/images/image.jpg*`  
 For more information about using wildcards in the invalidation path, see [Invalidation paths](#invalidation-specifying-objects-paths)\. For more information about query strings, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\. To determine which query strings are in use, you can enable CloudFront logging\. For more information, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
-**Limits**  
-For information about limits on invalidations, see [Concurrent Invalidation Request Limits](#InvalidationLimits)\.
+**Maximum Allowed**  
+For information about the maximum number of invalidations allowed, see [Concurrent Invalidation Request Maximum](#InvalidationLimits)\.
 
  **Microsoft Smooth Streaming files**  
 You cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior\. 
@@ -163,7 +163,7 @@ Specify file paths carefully\. You can't cancel an invalidation request after yo
 You can copy an invalidation that you created previously, update the list of invalidation paths, and run the updated invalidation\. You cannot copy an existing invalidation, update the invalidation paths, and then save the updated invalidation without running it\.
 
 **Important**  
-If you copy an invalidation that is still in progress, update the list of invalidation paths, and then run the updated invalidation, CloudFront will not stop or delete the invalidation that you copied\. If any invalidation paths appear in the original and in the copy, CloudFront will try to invalidate the files twice, and both invalidations will count against your maximum number of free invalidations for the month\. If you've already reached the maximum number of free invalidations, you'll be charged for both invalidations of each file\. For more information, see [Concurrent Invalidation Request Limits](#InvalidationLimits)\.<a name="invalidating-objects-copy-console-procedure"></a>
+If you copy an invalidation that is still in progress, update the list of invalidation paths, and then run the updated invalidation, CloudFront will not stop or delete the invalidation that you copied\. If any invalidation paths appear in the original and in the copy, CloudFront will try to invalidate the files twice, and both invalidations will count against your maximum number of free invalidations for the month\. If you've already reached the maximum number of free invalidations, you'll be charged for both invalidations of each file\. For more information, see [Concurrent Invalidation Request Maximum](#InvalidationLimits)\.<a name="invalidating-objects-copy-console-procedure"></a>
 
 **To copy, edit, and rerun an existing invalidation**
 
@@ -235,14 +235,14 @@ For information about invalidating objects and about displaying information abou
 
 In addition to the invalidation methods provided by CloudFront, several third\-party tools provide ways to invalidate files\. For a list of tools, see [Invalidating Objects](Resources.md#resources-invalidation-tools)\.
 
-## Concurrent Invalidation Request Limits<a name="InvalidationLimits"></a>
+## Concurrent Invalidation Request Maximum<a name="InvalidationLimits"></a>
 
-If you're invalidating files individually, you can have invalidation requests for up to 3,000 files per distribution in progress at one time\. This can be one invalidation request for up to 3,000 files, up to 3,000 requests for one file each, or any other combination that doesn't exceed 3,000 files\. For example, you can submit 30 invalidation requests that invalidate 100 files each\. As long as all 30 invalidation requests are still in progress, you can't submit any more invalidation requests\. If you exceed the limit, CloudFront returns an error message\. 
+If you're invalidating files individually, you can have invalidation requests for up to 3,000 files per distribution in progress at one time\. This can be one invalidation request for up to 3,000 files, up to 3,000 requests for one file each, or any other combination that doesn't exceed 3,000 files\. For example, you can submit 30 invalidation requests that invalidate 100 files each\. As long as all 30 invalidation requests are still in progress, you can't submit any more invalidation requests\. If you exceed the maximum, CloudFront returns an error message\.
 
-If you're using the \* wildcard, you can have requests for up to 15 invalidation paths in progress at one time\. You can also have invalidation requests for up to 3,000 individual files per distribution in progress at the same time; the limit on wildcard invalidation requests is independent of the limit on invalidating files individually\.
+If you're using the \* wildcard, you can have requests for up to 15 invalidation paths in progress at one time\. You can also have invalidation requests for up to 3,000 individual files per distribution in progress at the same time; the maximum on wildcard invalidation requests allowed is independent of the maximum on invalidating files individually\.
 
 ## Paying for File Invalidation<a name="PayingForInvalidation"></a>
 
 The first 1,000 invalidation paths that you submit per month are free; you pay for each invalidation path over 1,000 in a month\. An invalidation path can be for a single file \(such as `/images/logo.jpg`\) or for multiple files \(such as `/images/*`\)\. A path that includes the `*` wildcard counts as one path even if it causes CloudFront to invalidate thousands of files\.
 
-This limit of 1000 invalidation paths per month applies to the total number of invalidation paths across all of the distributions that you create with one AWS account\. For example, if you use the AWS account `john@example.com` to create three distributions, and you submit 600 invalidation paths for each distribution in a given month \(for a total of 1,800 invalidation paths\), AWS will charge you for 800 invalidation paths in that month\. For specific information about invalidation pricing, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\. For more information about invalidation paths, see [Invalidation paths](#invalidation-specifying-objects-paths)\.
+The maximum of 1000 invalidation paths per month applies to the total number of invalidation paths across all of the distributions that you create with one AWS account\. For example, if you use the AWS account `john@example.com` to create three distributions, and you submit 600 invalidation paths for each distribution in a given month \(for a total of 1,800 invalidation paths\), AWS will charge you for 800 invalidation paths in that month\. For specific information about invalidation pricing, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\. For more information about invalidation paths, see [Invalidation paths](#invalidation-specifying-objects-paths)\.

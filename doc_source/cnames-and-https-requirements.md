@@ -81,7 +81,7 @@ If you're using AWS Certificate Manager \(ACM\), we recommend that you use AWS I
 ## Size of the Public Key<a name="https-requirements-size-of-public-key"></a>
 
 The length of the public key for a certificate depends on where you're storing it\.
-+ Importing a certificate into AWS Certificate Manager \(ACM\): public key length must be 1024 or 2048 bits\. The limit for a certificate that you use with CloudFront is 2048 bits, even though ACM supports larger keys\.
++ Importing a certificate into AWS Certificate Manager \(ACM\): public key length must be 1024 or 2048 bits\. The maximum length for a certificate that you use with CloudFront is 2048 bits, even though ACM supports larger keys\.
 + Uploading a certificate to the AWS Identity and Access Management \(IAM\) certificate store: maximum size of the public key is 2048 bits\.
 
 We recommend using 2048 bits\.

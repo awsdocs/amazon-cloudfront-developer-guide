@@ -59,7 +59,7 @@ Here's an overview of how you configure CloudFront for signed cookies and how Cl
 
 ## Preventing Misuse of Signed Cookies<a name="private-content-signed-cookie-misuse"></a>
 
-If you specify the `Domain` parameter in a `Set-Cookie` header, specify the most precise value possible to limit potential access by someone with the same root domain name\. For example, apex\.example\.com is preferable to example\.com, especially when you don't control example\.com\. This helps prevent someone from accessing your content from nadir\.example\.com\.
+If you specify the `Domain` parameter in a `Set-Cookie` header, specify the most precise value possible to reduce the potential for access by someone with the same root domain name\. For example, app\.example\.com is preferable to example\.com, especially when you don't control example\.com\. This helps prevent someone from accessing your content from www\.example\.com\.
 
 To help prevent this type of attack, do the following:
 + Exclude the `Expires` and `Max-Age` cookie attributes, so that the `Set-Cookie` header creates a session cookie\. Session cookies are automatically deleted when the user closes the browser, which reduces the possibility of someone getting unauthorized access to your content\.
