@@ -9,11 +9,11 @@ See the following sections for requirements and restrictions on using Lambda fun
 + [Headers](#lambda-header-restrictions)
 + [HTTP Status Codes](#lambda-requirements-http-status-codes)
 + [Lambda Function Supported Runtimes and Configuration](#lambda-requirements-lambda-function-configuration)
-+ [Limits](#lambda-requirements-see-limits)
++ [Quotas](#lambda-requirements-see-limits)
 + [Microsoft Smooth Streaming](#lambda-requirements-microsoft-smooth-streaming)
 + [Network Access](#lambda-requirements-network-access)
 + [Query String Parameters](#lambda-requirements-query-strings)
-+ [Size Limits for Body with the Include Body Option](#lambda-requirements-size-body-access)
++ [Maximum Size for Body with the Include Body Option](#lambda-requirements-size-body-access)
 + [Tagging](#lambda-requirements-tagging)
 + [URI](#lambda-requirements-uri)
 + [URI and Query String Encoding](#lambda-requirements-encoding)
@@ -28,7 +28,7 @@ See the following sections for requirements and restrictions on using Lambda fun
 
 ## CloudWatch Logs<a name="lambda-requirements-cloudwatch-logs"></a>
 
-For information about Amazon CloudWatch Logs limits, see [CloudWatch Logs Limits](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) in the *Amazon CloudWatch User Guide*\.
+For information about Amazon CloudWatch Logs quotas \(formerly known as limits\), see [CloudWatch Logs quotas](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) in the *Amazon CloudWatch User Guide*\.
 
 ## Headers<a name="lambda-header-restrictions"></a>
 
@@ -135,7 +135,7 @@ Node\.js versions 8 and 6 have reached end of life\. You can’t create or updat
 + [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html) is not supported\.
 + [AWS Lambda reserved concurrency and provisioned concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html) are not supported\.
 
-## Limits<a name="lambda-requirements-see-limits"></a>
+## Quotas<a name="lambda-requirements-see-limits"></a>
 
 The quotas in this section apply to Lambda@Edge\. These quotas are in addition to the default CloudFront and Lambda quotas, which also apply\. For the default quotas, see [Quotas](cloudfront-limits.md) in this guide and [Quotas](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*\.
 
@@ -213,9 +213,9 @@ Functions triggered by origin request and response events as well as functions t
 
 For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
-## Size Limits for Body with the Include Body Option<a name="lambda-requirements-size-body-access"></a>
+## Maximum Size for Body with the Include Body Option<a name="lambda-requirements-size-body-access"></a>
 
-For all Lambda@Edge limits, including size limits, see [Limits](#lambda-requirements-see-limits)\.
+For all Lambda@Edge quotas \(formerly known as limits\), including size quotas, see [Quotas](#lambda-requirements-see-limits)\.
 
 ## Tagging<a name="lambda-requirements-tagging"></a>
 

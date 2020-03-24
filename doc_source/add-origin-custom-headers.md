@@ -36,7 +36,7 @@ To configure a web distribution to add custom headers to requests that it sends 
 
 If the header names and values that you specify are not already present in the viewer request, CloudFront adds them to the origin request\. If a header is present, CloudFront overwrites the header value before forwarding the request to the origin\.
 
-For the limitations regarding origin custom headers, see [Quotas on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
+For the quotas \(formerly known as limits\) that apply to origin custom headers, see [Quotas on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
 
 ## Custom Headers that CloudFront Can’t Add to Origin Requests<a name="add-origin-custom-headers-blacklist"></a>
 

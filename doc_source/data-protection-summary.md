@@ -16,7 +16,7 @@ For more information about data protection, see the [AWS Shared Responsibility M
 Amazon CloudFront provides several options that you can use to help secure the content that it delivers:
 + Configure HTTPS connections\.
 + Configure field\-level encryption to encrypt data during transit\.
-+ Limit access to content so that only specific people, or people in a specific area, can view it\. 
++ Restrict access to content so that only specific people, or people in a specific area, can view it\.
 
 The following topics explain the options in more detail\.
 
@@ -47,11 +47,11 @@ Many companies that distribute content over the internet want to restrict access
 You can restrict access to content that is intended for selected users—for example, users who have paid a fee—by serving this private content through CloudFront using signed URLs or signed cookies\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
 
 **Restrict access to content in Amazon S3 buckets**  
-If you limit access to your content by using, for example, CloudFront signed URLs or signed cookies, you also won't want people to view files by using the direct URL for the file\. Instead, you want them to access the files only by using the CloudFront URL, so that your protections work\.  
+If you restrict access to your content by using, for example, CloudFront signed URLs or signed cookies, you also won’t want people to view files by using the direct URL for the file\. Instead, you want them to access the files only by using the CloudFront URL, so that your protections work\.  
 If you use an Amazon S3 bucket as the origin for a CloudFront distribution, you can set up an origin access identity \(OAI\) to manage direct access to your content\. An origin access identity is a special CloudFront user identity that you can associate with your distribution so that you can secure all or just some of your Amazon S3 content\. For more information about how to configure this, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\. 
 
 **Use AWS WAF web ACLs**  
-You can use AWS WAF, a web application firewall service, to create a web access control list \(web ACL\) to limit access to your content\. Based on conditions that you specify, such as the IP addresses that requests originate from or the values of query strings, CloudFront responds to requests either with the requested content or with an HTTP 403 status code \(Forbidden\)\. For more information, see [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)\. 
+You can use AWS WAF, a web application firewall service, to create a web access control list \(web ACL\) to restrict access to your content\. Based on conditions that you specify, such as the IP addresses that requests originate from or the values of query strings, CloudFront responds to requests either with the requested content or with an HTTP 403 status code \(Forbidden\)\. For more information, see [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)\. 
 
 **Use geo restriction**  
 You can use *geo restriction*, also known as *geoblocking*, to prevent users in specific geographic locations from accessing content that you serve through a CloudFront distribution\. There are several options to choose from when you configure geo restrictions\. For more information, see [Restricting the Geographic Distribution of Your Content](georestrictions.md)\.

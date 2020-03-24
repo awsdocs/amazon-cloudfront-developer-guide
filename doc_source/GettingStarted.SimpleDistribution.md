@@ -23,7 +23,7 @@ Before you begin, make sure that you've completed the steps in [Setting Up Amazo
 
 ## Step 1: Upload Your Content to Amazon S3 and Grant Object Permissions<a name="GettingStartedUploadContent"></a>
 
-An Amazon S3 bucket is a container that can contain files \(objects\) or folders\. CloudFront can distribute almost any type of file for you using an Amazon S3 bucket as the source\. For example, CloudFront can distribute text, images, and videos\. You can create multiple buckets, and there is no limitation to the amount of data that you can store on Amazon S3\.
+An Amazon S3 bucket is a container that can contain files \(objects\) or folders\. CloudFront can distribute almost any type of file for you using an Amazon S3 bucket as the source\. For example, CloudFront can distribute text, images, and videos\. You can create multiple buckets, and there is no maximum for the amount of data that you can store on Amazon S3\.
 
 By default, your Amazon S3 bucket and all the files in it are private—only the AWS account that created the bucket has read/write permission to the files\. If you want to allow anyone to access the files in your Amazon S3 bucket using CloudFront URLs, you must grant public read permissions to the objects\. \(This is one of the most common mistakes when working with CloudFront and Amazon S3\. You must explicitly grant permissions to each object in an Amazon S3 bucket\.\)
 

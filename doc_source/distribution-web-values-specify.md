@@ -91,7 +91,7 @@ You specify the delivery method when you create a distribution\. Unless you're u
 
 When you create or update a distribution, you provide information about one or more locations—known as origins—where you store the original versions of your web content\. CloudFront gets your web content from your origins and serves it to viewers via a world\-wide network of edge servers\. Each origin is either an Amazon S3 bucket or an HTTP server, for example, a web server\. 
 
-For the current limit on the number of origins that you can create for a distribution or to request a higher limit, see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of origins that you can create for a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 If you want to delete an origin, you must first edit or delete the cache behaviors that are associated with that origin\. 
 
@@ -236,7 +236,7 @@ The origin response timeout, also known as the *origin read timeout* or *origin 
 + How long \(in seconds\) CloudFront waits for a response after forwarding a request to a custom origin
 + How long \(in seconds\) CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
 
-The default timeout is 30 seconds\. You can change the value to be from 4 to 60 seconds\. If you need a timeout value outside that range, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+The default timeout is 30 seconds\. You can change the value to be from 4 to 60 seconds\. If you need a timeout value outside that range, [create a case in the AWS Support Center](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
 **Tip**  
 If you want to increase the timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troubleshooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
@@ -255,7 +255,7 @@ How long \(in seconds\) CloudFront tries to maintain a connection to your custom
 **Note**  
 For the **Origin Keep\-alive Timeout** value to have an effect, your origin must be configured to allow persistent connections\.
 
-The default timeout is 5 seconds\. You can change the value to a number from 1 to 60 seconds\. If you need a keep\-alive timeout longer than 60 seconds, [request a change to the limit](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+The default timeout is 5 seconds\. You can change the value to a number from 1 to 60 seconds\. If you need a keep\-alive timeout longer than 60 seconds, [create a case in the AWS Support Center](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
 ### HTTP Port<a name="DownloadDistValuesHTTPPort"></a>
 
@@ -283,7 +283,7 @@ The value for the header that you specified in the **Custom Header** field\.
 
 For more information, see [Adding Custom Headers to Origin Requests](add-origin-custom-headers.md)\. 
 
-For the current limit on the maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the total length of all header names and values, see [Quotas](cloudfront-limits.md)\.
+For the current maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the maximum total length of all header names and values, see [Quotas](cloudfront-limits.md)\.
 
 ## Cache Behavior Settings<a name="DownloadDistValuesCacheBehavior"></a>
 
@@ -299,7 +299,7 @@ When you create a new distribution, you specify settings for the default cache b
 
 When you create a cache behavior, you specify the one origin from which you want CloudFront to get objects\. As a result, if you want CloudFront to distribute objects from all of your origins, you must have at least as many cache behaviors \(including the default cache behavior\) as you have origins\. For example, if you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin will never be used\.
 
-For the current limit on the number of cache behaviors that you can add to a distribution or to request a higher limit, see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of cache behaviors that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 ### Path Pattern<a name="DownloadDistValuesPathPattern"></a>
 
@@ -402,7 +402,7 @@ For more information about how to configure caching in CloudFront by using reque
 
 Specify the headers that you want CloudFront to consider when caching your objects\. Select headers from the list of available headers and choose **Add**\. To forward a custom header, enter the name of the header in the field, and choose **Add Custom**\.
 
-For the current limit on the number of headers that you can whitelist for each cache behavior or to request a higher limit, see [Quotas on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
+For the current maximum number of headers that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
 
 ### Object Caching<a name="DownloadDistValuesObjectCaching"></a>
 
@@ -469,7 +469,7 @@ where each of your users has a unique value for *member\-number*\. You want Clou
 
 `userid_*`
 
-For the current limit on the number of cookie names that you can whitelist for each cache behavior or to request a higher limit, see [Quotas on Whitelisted Cookies \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-cookies)\.
+For the current maximum number of cookie names that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Whitelisted Cookies \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-cookies)\.
 
 ### Query String Forwarding and Caching<a name="DownloadDistValuesQueryString"></a>
 
@@ -586,7 +586,7 @@ Create \(or update\) a CNAME record with your DNS service to route queries for `
 Add a certificate to CloudFront from a trusted certificate authority \(CA\) that covers the domain name \(CNAME\) that you add to your distribution, to validate your authorization to use the domain name\.
 You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, or that you're developing an application for the domain owner\.
 
-For the current limit on the number of alternate domain names that you can add to a distribution or to request a higher limit, see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 For more information about alternate domain names, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 

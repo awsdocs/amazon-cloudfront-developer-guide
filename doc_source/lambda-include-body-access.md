@@ -11,4 +11,4 @@ Scenarios when you might want to use this feature include the following:
 For sample code, see [Lambda@Edge Example Functions](lambda-examples.md)\.
 
 **Note**  
-If the request body is large, Lambda@Edge truncates it\. For detailed information about size limits and truncation, see [Size Limits for Body with the Include Body Option](lambda-requirements-limits.md#lambda-requirements-size-body-access)\.
+If the request body is large, Lambda@Edge truncates it\. For detailed information about the maximum size and truncation, see [Maximum Size for Body with the Include Body Option](lambda-requirements-limits.md#lambda-requirements-size-body-access)\.

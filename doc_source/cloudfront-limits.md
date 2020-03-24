@@ -26,7 +26,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Data transfer rate per distribution | 40 Gbps [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Requests per second per distribution | 100,000 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Tags that can be added to a CloudFront web or RTMP distribution | 50 | 
-| Files that you can serve per distribution | Unlimited | 
+| Files that you can serve per distribution | No quota | 
 | Maximum length of a request, including headers and query strings, but not including the body content | 20,480 bytes | 
 | Maximum length of a URL | 8,192 bytes | 
 | Active CloudFront key pairs for trusted signers For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  | 2 | 
@@ -110,7 +110,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | --- | --- | 
 | File invalidation: maximum number of files allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  | 3,000 | 
 | File invalidation: maximum number of active wildcard invalidations allowed | 15 | 
-| File invalidation: maximum number of files that one wildcard invalidation can process | Unlimited | 
+| File invalidation: maximum number of files that one wildcard invalidation can process | No quota | 
 
 ## Quotas on Field\-Level Encryption<a name="limits-field-level-encryption"></a>
 

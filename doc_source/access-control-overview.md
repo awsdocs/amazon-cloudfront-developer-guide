@@ -124,9 +124,9 @@ Tags can be attached to the resource or passed in the request to services that s
 
 For the complete syntax and semantics of tag condition keys, see [ Control Access Using IAM Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html) in the *IAM User Guide*\.
 
-For example, the CloudFront `AWSCloudFrontFullAccess` managed user policy gives users unlimited permission to perform any CloudFront action on any resource\. The following policy limits this power and denies unauthorized users permission to create CloudFront production distributions\.
+For example, the `AWSCloudFrontFullAccess` managed user policy gives users unrestricted permission to perform any CloudFront action on any resource\. The following policy restricts this power and denies unauthorized users permission to create CloudFront production distributions\.
 
-To implement the limitation using tags, it denies the `CreateDistribution` action if the request specifies a tag named `stage` with one of the values `gamma` or `prod`\. In addition, the policy prevents these unauthorized users from tampering with the stage of production environments by not allowing tag modification actions to include these same tag values or to completely remove the `stage` tag\. A customer's administrator must attach this IAM policy to unauthorized IAM users, in addition to the managed user policy\.
+To implement the restriction using tags, it denies the `CreateDistribution` action if the request specifies a tag named `stage` with one of the values `gamma` or `prod`\. In addition, the policy prevents these unauthorized users from tampering with the stage of production environments by not allowing tag modification actions to include these same tag values or to completely remove the `stage` tag\. A customer’s administrator must attach this IAM policy to unauthorized IAM users, in addition to the managed user policy\.
 
 ```
 {

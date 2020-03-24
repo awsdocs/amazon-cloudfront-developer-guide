@@ -27,9 +27,9 @@ It's important to complete integration testing, where your function is associate
 As you iterate on integration testing with your function in the Lambda console, refer to the steps in the Lambda@Edge tutorial as you modify your code or change the CloudFront trigger that calls your function\. For example, make sure that you're working in a numbered version of your function, as described in this step of the tutorial: [Step 4: Add a CloudFront Trigger to Run the Function](lambda-edge-how-it-works-tutorial.md#lambda-edge-how-it-works-tutorial-add-trigger)\.   
 As you make changes and deploy them, be aware that it will take several minutes for your updated function and CloudFront triggers to replicate across all Regions\. This typically takes a few minutes but can take up to 15 minutes\.  
 You can check to see if replication is finished by going to the CloudFront console and viewing your distribution:  
-+ Go to the CloudFront console at https://console\.aws\.amazon\.com/cloudfront/\.
++ Go to the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront](https://console.aws.amazon.com/cloudfront)\.
 Check for the distribution status to change from **In Progress** back to **Deployed**, which means that your function has been replicated\. Then follow the steps in the next section to verify that the function works\.  
-Be aware that testing in the console only validates logic, and does not apply service limits that are specific to Lambda@Edge\.
+Be aware that testing in the console only validates your function’s logic, and does not apply any service quotas \(formerly known as limits\) that are specific to Lambda@Edge\.
 
 ## Identifying Lambda Function Errors in CloudFront<a name="lambda-edge-identifying-function-errors"></a>
 
@@ -47,8 +47,8 @@ An execution error results when CloudFront doesn’t get a response from Lambda 
 **An invalid Lambda function response is returned to CloudFront**  
 After the function runs, CloudFront receives a response from Lambda\. An error is returned if the object structure of the response doesn't conform to the [Lambda@Edge Event Structure](lambda-event-structure.md), or the response contains invalid headers or other invalid fields\.
 
-**The execution in CloudFront is throttled due to Lambda service limits**  
-The Lambda service throttles executions in each Region, and returns an error if you reach the limit\.
+**The execution in CloudFront is throttled due to Lambda service quotas \(formerly known as limits\)**  
+The Lambda service throttles executions in each Region, and returns an error if you exceed the quota\.
 
 ### How to Determine the Type of Failure<a name="lambda-edge-testing-debugging-failure-type"></a>
 
@@ -72,7 +72,7 @@ The **Lambda@Edge errors** tab includes graphs that categorize the Lambda@Edge e
 In addition, read the following sections in this chapter for more recommendations about troubleshooting and fixing errors\.
 
 **Throttles graph**  
-The **Lambda@Edge errors** tab also includes a **Throttles** graph\. On occasion, the Lambda service throttles your function invocations on per Region basis, if you reach the regional concurrency limit\. If you see a limit exceeded error, your function has reached a limit that the Lambda service imposes on executions in a Region\. For more information, including how to request an increase in the limit, see [Quotas on Lambda@Edge](cloudfront-limits.md#limits-lambda-at-edge)\.  
+The **Lambda@Edge errors** tab also includes a **Throttles** graph\. On occasion, the Lambda service throttles your function invocations on per Region basis, if you reach the regional concurrency quota \(formerly known as limit\)\. If you see a limit exceeded error, your function has reached a quota that the Lambda service imposes on executions in a Region\. For more information, including how to request an increase in the quota, see [Quotas on Lambda@Edge](cloudfront-limits.md#limits-lambda-at-edge)\.  
 
 ![\[Throttle graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
 
@@ -84,7 +84,7 @@ If you identify that your problem is a Lambda validation error, it means that yo
 
 CloudFront validates the response from a Lambda function in two ways:
 + **The Lambda response must conform to the required object structure\.** Examples of bad object structure include the following: unparsable JSON, missing required fields, and an invalid object in the response\. For more information, see the [Lambda@Edge Event Structure](lambda-event-structure.md)\.
-+ **The response must include only valid object values\.** An error will occur if the response includes a valid object but has values that are not supported\. Examples include the following: adding or updating blacklisted or read\-only headers \(see [Headers](lambda-requirements-limits.md#lambda-header-restrictions) in the *Requirements and Restrictions on Lambda Functions* topic\), exceeding body size limitations \(see *Limits on the Size of the Generated Response* in the Lambda Response [Errors](lambda-generating-http-responses-in-requests.md#lambda-generating-http-responses-errors) topic\), and invalid characters or values \(see the [Lambda@Edge Event Structure](lambda-event-structure.md)\)\.
++ **The response must include only valid object values\.** An error will occur if the response includes a valid object but has values that are not supported\. Examples include the following: adding or updating blacklisted or read\-only headers \(see [Headers](lambda-requirements-limits.md#lambda-header-restrictions) in the *Requirements and Restrictions on Lambda Functions* topic\), exceeding the maximum body size \(see *Restrictions on the Size of the Generated Response* in the Lambda Response [Errors](lambda-generating-http-responses-in-requests.md#lambda-generating-http-responses-errors) topic\), and invalid characters or values \(see the [Lambda@Edge Event Structure](lambda-event-structure.md)\)\.
 
 When Lambda returns an invalid response to CloudFront, error messages are written to log files which CloudFront pushes to CloudWatch in the Region of where the Lambda function executed\. It's the default behavior to send the log files to CloudWatch when there's an invalid response\. However, if you associated a Lambda function with CloudFront before the functionality was released, it might not be enabled for your function\. For more information, see *Determine if Your Account Pushes Logs to CloudWatch* later in the topic\.
 
