@@ -1,14 +1,15 @@
 # Using Field\-Level Encryption to Help Protect Sensitive Data<a name="field-level-encryption"></a>
 
-You can already configure CloudFront to help enforce secure end\-to\-end connections to origin servers by using HTTPS\. Field\-level encryption adds an additional layer of security along with HTTPS that lets you protect specific data throughout system processing so that only certain applications can see it\.
+With Amazon CloudFront, you can enforce secure end\-to\-end connections to origin servers by using HTTPS\. Field\-level encryption adds an additional layer of security that lets you protect specific data throughout system processing so that only certain applications can see it\.
 
-Field\-level encryption allows you to securely upload user\-submitted sensitive information to your web servers\. The sensitive information provided by your clients is encrypted at the edge closer to the user and remains encrypted throughout your entire application stack, ensuring that only applications that need the data—and have the credentials to decrypt it—are able to do so\. 
+Field\-level encryption allows you to enable your users to securely upload sensitive information to your web servers\. The sensitive information provided by your users is encrypted at the edge, close to the user, and remains encrypted throughout your entire application stack, ensuring that only applications that need the data—and have the credentials to decrypt it—are able to do so\.
 
-To use field\-level encryption, you configure your CloudFront distribution to specify the set of fields in POST requests that you want to be encrypted, and the public key to use to encrypt them\. You can encrypt up to 10 data fields in a request\. \(You can't encrypt all of the data in a request with field\-level encryption; you must specify individual fields to encrypt\.\)
+To use field\-level encryption, you configure your CloudFront distribution, specifying the set of fields in POST requests that you want to be encrypted, and the public key to use to encrypt them\. You can encrypt up to 10 data fields in a request\. \(You can’t encrypt all of the data in a request with field\-level encryption; you must specify individual fields to encrypt\.\)
 
-When the HTTPS request with field\-level encryption is forwarded to the origin, and the request is routed throughout your origin sub\-system, the sensitive data is still encrypted, reducing the risk of a data breach or accidental data loss of the sensitive data\. Components that need access to the sensitive data for business reasons, such as a payment processing system needing access to a credit number, can use the appropriate private key to decrypt and access the data\.
+When the HTTPS request with field\-level encryption is forwarded to the origin, and the request is routed throughout your origin application or sub\-system, the sensitive data is still encrypted, reducing the risk of a data breach or accidental data loss of the sensitive data\. Components that need access to the sensitive data for business reasons, such as a payment processing system needing access to a credit number, can use the appropriate private key to decrypt and access the data\.
 
-Be aware that in order to use field\-level encryption, your origin must support chunked encoding\.
+**Note**  
+To use field\-level encryption, your origin must support chunked encoding\.
 
 ![\[Field-level encryption in CloudFront\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/fleoverview.png)
 
@@ -31,7 +32,7 @@ The following steps provide an overview of setting up field\-level encryption\. 
 
 1. **Create a field\-level encryption profile\.** Field\-level encryption profiles, which you create in CloudFront, define the fields that you want to be encrypted\.
 
-1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use—based on the content type of the request or a query argument—for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios; for example, when the profile name specified by the query argument in a request URL doesn't exist in CloudFront\. 
+1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use, based on the content type of the request or a query argument, for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios; for example, when the profile name specified by the query argument in a request URL doesn’t exist in CloudFront\.
 
 1. **Link to a cache behavior\.** Link the configuration to a cache behavior for a distribution, to specify when CloudFront should encrypt data\.
 
@@ -48,7 +49,7 @@ Follow these steps to get started using field\-level encryption\. To learn about
 
 To get started, you must create an RSA key pair that includes a public key, so CloudFront can encrypt data, and a private key, so components at your origin can decrypt the fields that have been encrypted\. You can use OpenSSL or another tool to create a key pair\. The key size must be 2048 bits\.
 
-For example, if you're using OpenSSL, you can use the following command to generate a key pair with a length of 2048 bits and save it in the file `private_key.pem`:
+For example, if you’re using OpenSSL, you can use the following command to generate a key pair with a length of 2048 bits and save it in the file `private_key.pem`:
 
 ```
 openssl genrsa -out private_key.pem 2048
@@ -117,14 +118,14 @@ Make sure that you don’t use overlapping characters for different field name p
 After you create one or more field\-level encryption profiles, create a configuration that specifies the content type of the request that includes the data to be encrypted, the profile to use for encryption, and other options that specify how you want CloudFront to handle encryption\.
 
 For example, when CloudFront can’t encrypt the data, you can specify whether CloudFront should block or forward a request to your origin in the following scenarios:
-+ **When a request's content type isn't in a configuration\.** If you haven't added a content type to a configuration, you can specify whether CloudFront should forward the request with that content type to the origin without encrypting data fields, or block the request and return an error\.
-
-  Note: If you add a content type to a configuration but haven't specified a profile to use with that type, requests with that content type will always be forwarded to the origin\.
++ **When a request’s content type isn’t in a configuration\.** If you haven’t added a content type to a configuration, you can specify whether CloudFront should forward the request with that content type to the origin without encrypting data fields, or block the request and return an error\.
+**Note**  
+If you add a content type to a configuration but haven’t specified a profile to use with that type, requests with that content type will always be forwarded to the origin\.
 + **When the profile name provided in a query argument is unknown\.** When you specify the `fle-profile` query argument with a profile name that doesn’t exist for your distribution, you can specify whether CloudFront should send the request to the origin without encrypting data fields, or block the request and return an error\.
 
-In a configuration, you can also specify whether providing a profile as a query argument in a URL overrides a profile that you’ve mapped to the content type for that query\. By default, CloudFront uses the profile that you've mapped to a content type, if you specify one\. This lets you have a profile that's used by default but decide for certain requests that you want to enforce a different profile\. 
+In a configuration, you can also specify whether providing a profile as a query argument in a URL overrides a profile that you’ve mapped to the content type for that query\. By default, CloudFront uses the profile that you’ve mapped to a content type, if you specify one\. This lets you have a profile that’s used by default but decide for certain requests that you want to enforce a different profile\.
 
-So, for example, you might specify \(in your configuration\) SampleProfile as the query argument profile to use\. Then you could use the URL `https://d1234.cloudfront.net?fle-profile=SampleProfile` instead of `https://d1234.cloudfront.net`, to have CloudFront use SampleProfile for this request, instead of the profile you'd set up for the content type of the request\.
+So, for example, you might specify \(in your configuration\) **SampleProfile** as the query argument profile to use\. Then you could use the URL `https://d1234.cloudfront.net?fle-profile=SampleProfile` instead of `https://d1234.cloudfront.net`, to have CloudFront use **SampleProfile** for this request, instead of the profile you’d set up for the content type of the request\.
 
 You can create up to 10 configurations for a single account, and then associate one of the configurations to the cache behavior of any distribution for the account\.<a name="field-level-encryption-setting-up-step4-procedure"></a>
 
@@ -132,14 +133,14 @@ You can create up to 10 configurations for a single account, and then associate 
 
 1. On the **Field\-level encryption** page, choose **Create configuration**\.
 
-   Note: If you haven't created at least one profile, you won't see the option to create a configuration\.
+   Note: If you haven’t created at least one profile, you won’t see the option to create a configuration\.
 
-1. Fill in the following fields to specify the profile to use\. \(Some fields can't be changed\.\)   
-**Content type \(can't be changed\)**  
+1. Fill in the following fields to specify the profile to use\. \(Some fields can’t be changed\.\)  
+**Content type \(can’t be changed\)**  
 The content type is set to `application/x-www-form-urlencoded` and can’t be changed\.  
 **Default profile ID \(optional\)**  
 In the drop\-down list, choose the profile that you want to map to the content type in the **Content type** field\.  
-**Content format \(can't be changed\)**  
+**Content format \(can’t be changed\)**  
 The content format is set to `URLencoded` and can’t be changed\.
 
 1. If you want to change the CloudFront default behavior for the following options, select the appropriate check box\.  
@@ -159,13 +160,19 @@ Select the check box if you want to allow the request to go to your origin *if t
 
 ### Step 5: Add a Configuration to a Cache Behavior<a name="field-level-encryption-setting-up-step5"></a>
 
-To use field\-level encryption, link a configuration to a cache behavior for a distribution by adding the configuration ID as a value for your distribution\. Note that the Viewer Protocol Policy and Origin Protocol Policy must be HTTPS in order for you to link a configuration to a cache behavior\.
+To use field\-level encryption, link a configuration to a cache behavior for a distribution by adding the configuration ID as a value for your distribution\.
+
+**Important**  
+To link a field\-level encryption configuration to a cache behavior, the distribution must be configured to always use HTTPS, and to accept HTTP `POST` and `PUT` requests from viewers\. That is, the following must be true:  
+The cache behavior’s **Viewer Protocol Policy** must be set to **Redirect HTTP to HTTPS** or **HTTPS Only**\. \(In AWS CloudFormation or the CloudFront API, `ViewerProtocolPolicy` must be set to `redirect-to-https` or `https-only`\.\)
+The cache behavior’s **Allowed HTTP Methods** must bet set to **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**\. \(In AWS CloudFormation or the CloudFront API, `AllowedMethods` must be set to `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE`\. These can be specified in any order\.\)
+The origin setting’s **Origin Protocol Policy** must be set to **Match Viewer** or **HTTPS Only**\. \(In AWS CloudFormation or the CloudFront API, `OriginProtocolPolicy` must be set to `match-viewer` or `https-only`\.\)
 
 For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ## Decrypting Data Fields at Your Origin<a name="field-level-encryption-decrypt"></a>
 
-CloudFront encrypts data fields by using the [AWS Encryption SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/introduction.html)\. The data remains encrypted throughout your application stack and can be accessed only by applications that have the credentials to decrypt it\. 
+CloudFront encrypts data fields by using the [AWS Encryption SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/introduction.html)\. The data remains encrypted throughout your application stack and can be accessed only by applications that have the credentials to decrypt it\.
 
 After encryption, the cipher text is base64 encoded\. When your applications decrypt the text at the origin, they must first decode the cipher text, and then use the AWS Encryption SDK to decrypt the data\.
 
