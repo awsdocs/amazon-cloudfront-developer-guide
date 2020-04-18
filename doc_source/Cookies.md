@@ -8,13 +8,13 @@ For example, suppose that requests for `locations.html` contain a `country` cook
 
 **Important**  
 Amazon S3 and some HTTP servers don’t process cookies\. Don’t configure CloudFront to forward cookies to an origin that doesn’t process cookies or doesn’t vary its response based on cookies\. That can cause CloudFront to forward more requests to the origin for the same object, which slows performance and increases the load on the origin\. If, considering the previous example, your origin doesn’t process the `country` cookie or always returns the same version of `locations.html` to CloudFront regardless of the value of the `country` cookie, don’t configure CloudFront to forward that cookie\.  
-Conversely, if your custom origin depends on a particular cookie or sends different responses based on a cookie, make sure you configure CloudFront to forward that cookie to the origin\. Otherwise, CloudFront will remove the cookie before forwarding the request to your origin\.
+Conversely, if your custom origin depends on a particular cookie or sends different responses based on a cookie, make sure you configure CloudFront to forward that cookie to the origin\. Otherwise, CloudFront removes the cookie before forwarding the request to your origin\.
 
 To configure cookie forwarding, you update your distribution’s cache behavior\. For more information about cache behaviors, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior), particularly the [Forward Cookies](distribution-web-values-specify.md#DownloadDistValuesForwardCookies) and [Whitelist Cookies](distribution-web-values-specify.md#DownloadDistValuesWhitelistCookies) sections\.
 
 You can configure each cache behavior to do one of the following:
 + **Forward all cookies to your origin – ** CloudFront includes all cookies sent by the viewer when it forwards requests to the origin\. When your origin returns a response, CloudFront caches the response using the cookie names and values in the viewer request\. If the origin response includes `Set-Cookie` headers, CloudFront returns them to the viewer with the requested object\. CloudFront also caches the `Set-Cookie` headers with the object returned from the origin, and sends those `Set-Cookie` headers to viewers on all cache hits\.
-+ **Forward a whitelist of cookies that you specify – ** CloudFront removes any cookies sent by the viewer that aren’t on the whitelist before it forwards a request to the origin\. CloudFront caches the response using the whitelisted cookies names and values in the viewer request\. If the origin response includes `Set-Cookie` headers, CloudFront returns them to the viewer with the requested object\. CloudFront also caches the `Set-Cookie` headers with the object returned from the origin, and sends those `Set-Cookie` headers to viewers on all cache hits\.
++ **Forward a whitelist of cookies that you specify – ** CloudFront removes any cookies that the viewer sends that aren’t on the whitelist before it forwards a request to the origin\. CloudFront caches the response using the whitelisted cookies names and values in the viewer request\. If the origin response includes `Set-Cookie` headers, CloudFront returns them to the viewer with the requested object\. CloudFront also caches the `Set-Cookie` headers with the object returned from the origin, and sends those `Set-Cookie` headers to viewers on all cache hits\.
 
   For information about specifying wildcards in cookie names in a whitelist, see [Whitelist Cookies](distribution-web-values-specify.md#DownloadDistValuesWhitelistCookies)\.
 
@@ -27,7 +27,7 @@ Note the following about specifying the cookies that you want to forward:
 If you configure CloudFront to log requests and to log cookies, CloudFront logs all cookies and all cookie attributes, even if you configure CloudFront not to forward cookies to your origin or if you configure CloudFront to forward only a whitelist of specific cookies\. For more information about CloudFront logging, see [Configuring and Using Access Logs](AccessLogs.md)\.
 
 **Case sensitivity**  
-Cookie names and values are both case\-sensitive\. For example, if CloudFront is configured to forward all cookies, and two viewer requests for the same object have cookies that are identical except for case, CloudFront will cache the object twice\.
+Cookie names and values are both case\-sensitive\. For example, if CloudFront is configured to forward all cookies, and two viewer requests for the same object have cookies that are identical except for case, CloudFront caches the object twice\.
 
 **CloudFront sorts cookies**  
 If CloudFront is configured to forward cookies \(all or a whitelist\), CloudFront sorts the cookies in natural order by cookie name before forwarding the request to your origin\.
