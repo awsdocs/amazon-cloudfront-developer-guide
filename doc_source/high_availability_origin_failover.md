@@ -4,7 +4,7 @@ You can set up CloudFront with origin failover for scenarios that require high a
 
 To set up origin failover, you must have a distribution with at least two origins\. Next, you create an origin group for your distribution that includes the two origins, setting one as the primary\. Finally, you define a cache behavior in which you specify the origin group as your origin\. For more information about specifying origin groups for distributions, see [Origin ID](distribution-web-values-specify.md#DownloadDistValuesId)\.
 
-The two origins in the origin group can be any combination of the following: AWS origins, like Amazon S3 buckets or Amazon EC2 instances, or custom origins, like your own HTTP web server\. When you create the origin group, you configure CloudFront to failover to the second origin for GET, HEAD, and OPTIONS HTTP methods when the primary origin returns specific status codes that you configure\. 
+The two origins in the origin group can be any combination of the following: AWS origins, like Amazon S3 buckets or Amazon EC2 instances, or custom origins, like your own HTTP web server\. When you create the origin group, you configure CloudFront to fail over to the second origin for GET, HEAD, and OPTIONS HTTP methods when the primary origin returns specific status codes that you configure\. 
 
 To see the steps for setting up origin groups with specific origin failover options, see [Creating an Origin Group](#concept_origin_groups.creating)\.
 
@@ -34,7 +34,7 @@ You create an origin group with two origins\. You specify one as the primary ori
 
 1. On the **Origin and Origin Groups** tab, choose **Create origin group**\.
 
-1. Choose the origins for the origin group, and then choose the **Priority** arrows to set one of them as the Primary origin\.
+1. Choose the origins for the origin group, and then choose the **Priority** arrows to set one of them as the primary origin\.
 
 1. Select one or more HTTP status codes as the failover criteria\. You can choose any combination of the following status codes: 500, 502, 503, 504, 404, or 403\.
 

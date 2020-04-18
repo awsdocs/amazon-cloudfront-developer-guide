@@ -1,6 +1,6 @@
 # Testing a Distribution<a name="distribution-web-testing"></a>
 
-After you've created your distribution, CloudFront knows where your origin server is, and you know the domain name associated with the distribution\. You can create links to your objects using the CloudFront domain name, and CloudFront will serve the objects to your web page or application\.
+After you've created your distribution, CloudFront knows where your origin server is, and you know the domain name associated with the distribution\. You can create links to your objects using the CloudFront domain name, and CloudFront will serve the objects to your webpage or application\.
 
 **Note**  
 You must wait until the status of the distribution changes to **Deployed** before you can test your links\.<a name="distribution-web-testing-procedure"></a>
@@ -27,8 +27,8 @@ You must wait until the status of the distribution changes to **Deployed** befor
 
    `http://d111111abcdef8.cloudfront.net/images/image.jpg`
 
-1. Save the HTML code in a file that has a \.html filename extension\.
+1. Save the HTML code in a file that has an \.html file name extension\.
 
-1. Open your web page in a browser to ensure that you can see your object\.
+1. Open your webpage in a browser to ensure that you can see your object\.
 
 The browser returns your page with the embedded image file, served from the edge location that CloudFront determined was appropriate to serve the object\.

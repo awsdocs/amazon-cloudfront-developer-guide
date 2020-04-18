@@ -120,7 +120,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    If you're using a CNAME with Amazon S3, specify the CNAME for your distribution, too\.
 
-1. Create a test web page that contains links to publicly readable objects in your Amazon S3 bucket, and test the links\. For this initial test, use the CloudFront domain name of your distribution in the object URLs, for example, `http://d111111abcdef8.cloudfront.net/images/image.jpg`\. 
+1. Create a test webpage that contains links to publicly readable objects in your Amazon S3 bucket, and test the links\. For this initial test, use the CloudFront domain name of your distribution in the object URLs, for example, `http://d111111abcdef8.cloudfront.net/images/image.jpg`\. 
 
    For more information about the format of CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 
@@ -130,11 +130,11 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    `http://example.com/images/image.jpg`
 
-   the request is automatically rerouted, and the user sees this object:
+   The request is automatically rerouted, and the user sees this object:
 
    `http://aws-s3-bucket1.s3.amazonaws.com/images/image.jpg`
 
-   To route queries to your CloudFront distribution instead of your Amazon S3 bucket, you need to use the method provided by your DNS service provider to update the CNAME resource record set for your domain\. This updated CNAME record will start to redirect DNS queries from your domain to the CloudFront domain name for your distribution\. For more information, see the documentation provided by your DNS service provider\.
+   To route queries to your CloudFront distribution instead of your Amazon S3 bucket, you need to use the method provided by your DNS service provider to update the CNAME resource record set for your domain\. This updated CNAME record starts to redirect DNS queries from your domain to the CloudFront domain name for your distribution\. For more information, see the documentation provided by your DNS service provider\.
 **Note**  
 If you're using Route 53 as your DNS service, you can use either a CNAME resource record set or an alias resource record set\. For information about editing resource record sets, see [Editing Resource Record Sets](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html)\. For information about alias resource record sets, see [Choosing Between Alias and Non\-Alias Resource Record Sets](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html)\. Both topics are in the *Amazon Route 53 Developer Guide*\.
 
@@ -144,10 +144,10 @@ If you're using Route 53 as your DNS service, you can use either a CNAME resour
 
 ## Moving an Amazon S3 Bucket to a Different Region<a name="move-s3-bucket-different-region"></a>
 
-If you're using Amazon S3 as the origin for a CloudFront distribution and you move the bucket to a different region, CloudFront can take up to an hour to update its records to include the change of region when both of the following are true:
+If you're using Amazon S3 as the origin for a CloudFront distribution and you move the bucket to a different Region, CloudFront can take up to an hour to update its records to include the change of Region when both of the following are true:
 + You're using a CloudFront origin access identity \(OAI\) to restrict access to the bucket
-+ You move the bucket to an Amazon S3 region that requires Signature Version 4 for authentication
++ You move the bucket to an Amazon S3 Region that requires Signature Version 4 for authentication
 
-When you're using OAIs, CloudFront uses the region \(among other values\) to calculate the signature that it uses to request objects from your bucket\. For more information about OAIs, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\. For a list of Amazon S3 regions and the signature versions that they support, see [Amazon Simple Storage Service \(Amazon S3\)](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the "Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.
+When you're using OAIs, CloudFront uses the Region \(among other values\) to calculate the signature that it uses to request objects from your bucket\. For more information about OAIs, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\. For a list of Amazon S3 Regions and the signature versions that they support, see [Amazon Simple Storage Service \(Amazon S3\)](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the "Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.
 
-To force a faster update to CloudFront's records, you can update your CloudFront distribution, for example, by updating the **Comment** field on the **General** tab in the CloudFront console\. When you update a distribution, CloudFront immediately checks on the region that your bucket is in; propagation of the change to all edge locations should take less than 15 minutes\.
+To force a faster update to CloudFront's records, you can update your CloudFront distribution, for example, by updating the **Comment** field on the **General** tab in the CloudFront console\. When you update a distribution, CloudFront immediately checks on the Region that your bucket is in; propagation of the change to all edge locations should take less than 15 minutes\.

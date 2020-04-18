@@ -1,6 +1,6 @@
-# Setting Alarms to Receive Notifications<a name="receiving-notifications"></a>
+# Setting alarms to receive notifications<a name="receiving-notifications"></a>
 
-In the CloudFront console, you can set alarms to notify you by Amazon Simple Notification Service \(Amazon SNS\) based on specific CloudFront metrics\. You can set an alarm on the **Alarms** page in the [CloudFront console](https://console.aws.amazon.com/cloudfront/home)\.
+In the CloudFront console, you can set alarms to notify you by Amazon Simple Notification Service \(Amazon SNS\) based on specific CloudFront metrics\. You can set an alarm on the [**Alarms** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/home#alarms:)\.
 
 When you create an alarm in the console, you specify the following values:
 

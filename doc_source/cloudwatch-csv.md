@@ -1,8 +1,8 @@
-# Downloading Data in CSV Format<a name="cloudwatch-csv"></a>
+# Downloading data in CSV format<a name="cloudwatch-csv"></a>
 
 You can download the CloudWatch metrics data for a CloudFront distribution in CSV format\. You can download the data when you **View distribution metrics** for a particular distribution in the [CloudFront console](https://console.aws.amazon.com/cloudfront/home)\.
 
-## Information About the Report<a name="cloudwatch-csv-header"></a>
+## Information about the report<a name="cloudwatch-csv-header"></a>
 
 The first few rows of the report include the following information:
 
@@ -27,7 +27,7 @@ The date and time on which you ran the report, in Coordinated Universal Time \(U
 **Granularity**  
 The time period for each row in the report, for example, `ONE_MINUTE`\.
 
-## Data in the CloudWatch Metrics Report<a name="cloudwatch-csv-data"></a>
+## Data in the metrics report<a name="cloudwatch-csv-data"></a>
 
 The report includes the following values:
 

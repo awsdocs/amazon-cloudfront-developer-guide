@@ -1,6 +1,11 @@
 # Configuring Secure Access and Restricting Access to Content<a name="SecurityAndPrivateContent"></a>
 
-For web distributions, CloudFront provides several options for securing content that it delivers, including configuring HTTPS connections, using AWS WAF to control access to your content, or setting up field\-level encryption for specific content fields\. In addition, you can prevent users in specific geographic locations from accessing content distributed through a web distribution\. You also have the option of restricting access to private content by requiring that users access that content by using CloudFront signed URLs or signed cookies\. 
+For web distributions, CloudFront provides several options for securing content that it delivers\. The following are some ways you can use CloudFront to secure and restrict access to content:
++ Configure HTTPS connections
++ Prevent users in specific geographic locations from accessing content
++ Require users to access content using CloudFront signed URLs or signed cookies
++ Set up field\-level encryption for specific content fields
++ Use AWS WAF to control access to your content
 
 **Topics**
 + [Using HTTPS with CloudFront](using-https.md)

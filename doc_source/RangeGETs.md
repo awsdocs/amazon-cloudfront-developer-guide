@@ -13,7 +13,7 @@ In either case, CloudFront begins to serve the requested range or object to the 
 **Note**  
 If the viewer makes a `Range GET` request and the origin returns `Transfer-Encoding: chunked`, CloudFront returns the entire object to the viewer instead of the requested range\.
 
-CloudFront generally follows the RFC specification for the `Range` header\. However, if your `Range` headers don't adhere to the following requirements, CloudFront will return HTTP status code 200 with the full object instead of status code 206 with the specified ranges:
+CloudFront generally follows the RFC specification for the `Range` header\. However, if your `Range` headers don’t adhere to the following requirements, CloudFront returns HTTP status code `200` with the full object instead of status code `206` with the specified ranges:
 + The ranges must be listed in ascending order\. For example, `100-200,300-400` is valid, `300-400,100-200` is not valid\.
 + The ranges must not overlap\. For example, `100-200,150-250` is not valid\.
 + All of the ranges specifications must be valid\. For example, you can't specify a negative value as part of a range\.

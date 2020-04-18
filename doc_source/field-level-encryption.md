@@ -2,18 +2,18 @@
 
 With Amazon CloudFront, you can enforce secure end\-to\-end connections to origin servers by using HTTPS\. Field\-level encryption adds an additional layer of security that lets you protect specific data throughout system processing so that only certain applications can see it\.
 
-Field\-level encryption allows you to enable your users to securely upload sensitive information to your web servers\. The sensitive information provided by your users is encrypted at the edge, close to the user, and remains encrypted throughout your entire application stack, ensuring that only applications that need the data—and have the credentials to decrypt it—are able to do so\.
+Field\-level encryption allows you to enable your users to securely upload sensitive information to your web servers\. The sensitive information provided by your users is encrypted at the edge, close to the user, and remains encrypted throughout your entire application stack\. This encryption ensures that only applications that need the data—and have the credentials to decrypt it—are able to do so\.
 
-To use field\-level encryption, you configure your CloudFront distribution, specifying the set of fields in POST requests that you want to be encrypted, and the public key to use to encrypt them\. You can encrypt up to 10 data fields in a request\. \(You can’t encrypt all of the data in a request with field\-level encryption; you must specify individual fields to encrypt\.\)
+To use field\-level encryption, when you configure your CloudFront distribution, specify the set of fields in POST requests that you want to be encrypted, and the public key to use to encrypt them\. You can encrypt up to 10 data fields in a request\. \(You can’t encrypt all of the data in a request with field\-level encryption; you must specify individual fields to encrypt\.\)
 
-When the HTTPS request with field\-level encryption is forwarded to the origin, and the request is routed throughout your origin application or sub\-system, the sensitive data is still encrypted, reducing the risk of a data breach or accidental data loss of the sensitive data\. Components that need access to the sensitive data for business reasons, such as a payment processing system needing access to a credit number, can use the appropriate private key to decrypt and access the data\.
+When the HTTPS request with field\-level encryption is forwarded to the origin, and the request is routed throughout your origin application or subsystem, the sensitive data is still encrypted, reducing the risk of a data breach or accidental data loss of the sensitive data\. Components that need access to the sensitive data for business reasons, such as a payment processing system needing access to a credit number, can use the appropriate private key to decrypt and access the data\.
 
 **Note**  
 To use field\-level encryption, your origin must support chunked encoding\.
 
 ![\[Field-level encryption in CloudFront\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/fleoverview.png)
 
-CloudFront field\-level encryption uses asymmetric encryption, also known as public\-key encryption\. You provide a public key to CloudFront, and all sensitive data that you specify is encrypted automatically\. The key you provide to CloudFront cannot be used to decrypt the encrypted values; only your private key can do that\.
+CloudFront field\-level encryption uses asymmetric encryption, also known as public key encryption\. You provide a public key to CloudFront, and all sensitive data that you specify is encrypted automatically\. The key you provide to CloudFront cannot be used to decrypt the encrypted values; only your private key can do that\.
 
 ![\[Encrypt only sensitive data\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/encryptedfields.png)
 
@@ -32,7 +32,7 @@ The following steps provide an overview of setting up field\-level encryption\. 
 
 1. **Create a field\-level encryption profile\.** Field\-level encryption profiles, which you create in CloudFront, define the fields that you want to be encrypted\.
 
-1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use, based on the content type of the request or a query argument, for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios; for example, when the profile name specified by the query argument in a request URL doesn’t exist in CloudFront\.
+1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use, based on the content type of the request or a query argument, for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios\.For example, you can set the behavior for when the profile name specified by the query argument in a request URL doesn’t exist in CloudFront\.
 
 1. **Link to a cache behavior\.** Link the configuration to a cache behavior for a distribution, to specify when CloudFront should encrypt data\.
 
@@ -47,7 +47,7 @@ Follow these steps to get started using field\-level encryption\. To learn about
 
 ### Step 1: Create an RSA Key Pair<a name="field-level-encryption-setting-up-step1"></a>
 
-To get started, you must create an RSA key pair that includes a public key, so CloudFront can encrypt data, and a private key, so components at your origin can decrypt the fields that have been encrypted\. You can use OpenSSL or another tool to create a key pair\. The key size must be 2048 bits\.
+To get started, you must create an RSA key pair that includes a public key and a private key\. The public key enables CloudFront to encrypt data, and the private key enables components at your origin to decrypt the fields that have been encrypted\. You can use OpenSSL or another tool to create a key pair\. The key size must be 2048 bits\.
 
 For example, if you’re using OpenSSL, you can use the following command to generate a key pair with a length of 2048 bits and save it in the file `private_key.pem`:
 
@@ -77,7 +77,7 @@ After you get your RSA key pair, add your public key to CloudFront\.<a name="fie
 
 1. For **Key name**, type a unique name for the key\. The name can't have spaces and can include only alphanumeric characters, underscores \(\_\), and hyphens \(\-\)\. The maximum number of characters is 128\.
 
-1. For **Key value**, paste the encoded key value for your public key, including the " \-\-\-\-\-BEGIN PUBLIC KEY\-\-\-\-\-" and "\-\-\-\-\-END PUBLIC KEY\-\-\-\-\-" lines\.
+1. For **Key value**, paste the encoded key value for your public key, including the `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----` lines\.
 
 1. For **Comment**, add an optional comment\. For example, you could include the expiration date for the public key\.
 
@@ -101,11 +101,11 @@ Type a unique name for the profile\. The name can't have spaces and can include 
 **Public key name**  
 In the drop\-down list, choose the name of a public key that you added to CloudFront in step 2\. CloudFront uses the key to encrypt the fields that you specify in this profile\.  
 **Provider name**  
-Type a phrase to help identify the key, such as the provider where you got the key pair\. This information, along with the private key, will be needed when applications decrypt data fields\. The provider name can't have spaces and can include only alphanumeric characters, colons \(:\), underscores \(\_\), and hyphens \(\-\)\. The maximum number of characters is 128\.  
+Type a phrase to help identify the key, such as the provider where you got the key pair\. This information, along with the private key, is needed when applications decrypt data fields\. The provider name can't have spaces and can include only alphanumeric characters, colons \(:\), underscores \(\_\), and hyphens \(\-\)\. The maximum number of characters is 128\.  
 **Field name pattern to match**  
 Type the names of the data fields, or patterns that identify data field names in the request, that you want CloudFront to encrypt\. Choose the \+ option to add all the fields that you want to encrypt with this key\.  
 For the field name pattern, you can type the entire name of the data field, like DateOfBirth, or just the first part of the name with a wildcard character \(\*\), like CreditCard\*\. The field name pattern must include only alphanumeric characters, square brackets \(\[ and \]\), periods \(\.\), underscores \(\_\), and hyphens \(\-\), in addition to the optional wildcard character \(\*\)\.  
-Make sure that you don’t use overlapping characters for different field name patterns\. For example, if you have a field name pattern of ABC\*, you can’t add another field name pattern that is AB\*\. In addition, note that field names are case sensitive and the maximum number of characters that you can use is 128\.  
+Make sure that you don’t use overlapping characters for different field name patterns\. For example, if you have a field name pattern of ABC\*, you can’t add another field name pattern that is AB\*\. In addition, field names are case\-sensitive and the maximum number of characters that you can use is 128\.  
 **Comment**  
 \(Optional\) Type a comment about this profile\. The maximum number of characters that you can use is 128\.
 
@@ -118,10 +118,10 @@ Make sure that you don’t use overlapping characters for different field name p
 After you create one or more field\-level encryption profiles, create a configuration that specifies the content type of the request that includes the data to be encrypted, the profile to use for encryption, and other options that specify how you want CloudFront to handle encryption\.
 
 For example, when CloudFront can’t encrypt the data, you can specify whether CloudFront should block or forward a request to your origin in the following scenarios:
-+ **When a request’s content type isn’t in a configuration\.** If you haven’t added a content type to a configuration, you can specify whether CloudFront should forward the request with that content type to the origin without encrypting data fields, or block the request and return an error\.
++ **When a request’s content type isn’t in a configuration** – If you haven’t added a content type to a configuration, you can specify whether CloudFront should forward the request with that content type to the origin without encrypting data fields, or block the request and return an error\.
 **Note**  
-If you add a content type to a configuration but haven’t specified a profile to use with that type, requests with that content type will always be forwarded to the origin\.
-+ **When the profile name provided in a query argument is unknown\.** When you specify the `fle-profile` query argument with a profile name that doesn’t exist for your distribution, you can specify whether CloudFront should send the request to the origin without encrypting data fields, or block the request and return an error\.
+If you add a content type to a configuration but haven’t specified a profile to use with that type, CloudFront always forwards requests with that content type to the origin\.
++ **When the profile name provided in a query argument is unknown** – When you specify the `fle-profile` query argument with a profile name that doesn’t exist for your distribution, you can specify whether CloudFront should send the request to the origin without encrypting data fields, or block the request and return an error\.
 
 In a configuration, you can also specify whether providing a profile as a query argument in a URL overrides a profile that you’ve mapped to the content type for that query\. By default, CloudFront uses the profile that you’ve mapped to a content type, if you specify one\. This lets you have a profile that’s used by default but decide for certain requests that you want to enforce a different profile\.
 
@@ -174,15 +174,15 @@ For more information, see [Values That You Specify When You Create or Update a D
 
 CloudFront encrypts data fields by using the [AWS Encryption SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/introduction.html)\. The data remains encrypted throughout your application stack and can be accessed only by applications that have the credentials to decrypt it\.
 
-After encryption, the cipher text is base64 encoded\. When your applications decrypt the text at the origin, they must first decode the cipher text, and then use the AWS Encryption SDK to decrypt the data\.
+After encryption, the ciphertext is base64 encoded\. When your applications decrypt the text at the origin, they must first decode the ciphertext, and then use the AWS Encryption SDK to decrypt the data\.
 
-The following code sample illustrates how applications can decrypt data at your origin\. Note the following: 
+The following code example illustrates how applications can decrypt data at your origin\. Note the following: 
 + To simplify the example, this sample loads public and private keys \(in DER format\) from files in the working directory\. In practice, you would store the private key in a secure offline location, such as an offline hardware security module, and distribute the public key to your development team\.
 + CloudFront uses specific information while encrypting the data, and the same set of parameters should be used at the origin to decrypt it\. Parameters CloudFront uses while initializing the MasterKey include the following:
   + PROVIDER\_NAME: You specified this value when you created a field\-level encryption profile\. Use the same value here\.
   + KEY\_NAME: You created a name for your public key when you uploaded it to CloudFront, and then specified the key name in the profile\. Use the same value here\.
-  + ALGORITHM: CloudFront uses "RSA/ECB/OAEPWithSHA\-256AndMGF1Padding" as the algorithm for encrypting, so you must use the same algorithm to decrypt the data\.
-+ If you run the following sample program with cipher text as input, the decrypted data is output to your console\. For more information, see the [Java Example Code](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/java-example-code.html) in the AWS Encryption SDK\.
+  + ALGORITHM: CloudFront uses `RSA/ECB/OAEPWithSHA-256AndMGF1Padding` as the algorithm for encrypting, so you must use the same algorithm to decrypt the data\.
++ If you run the following sample program with ciphertext as input, the decrypted data is output to your console\. For more information, see the [Java Example Code](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/java-example-code.html) in the AWS Encryption SDK\.
 
 ### Sample Code<a name="field-level-encryption-decrypt-sample"></a>
 
