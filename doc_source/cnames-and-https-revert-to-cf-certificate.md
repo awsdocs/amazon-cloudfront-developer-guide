@@ -2,7 +2,7 @@
 
 If you configured CloudFront to use HTTPS between viewers and CloudFront, and you configured CloudFront to use a custom SSL/TLS certificate, you can change your configuration to use the default CloudFront SSL/TLS certificate\. The process depends on whether you've used your distribution to distribute your content:
 + If you have not used your distribution to distribute your content, you can just change the configuration\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
-+ If you have used your distribution to distribute your content, you need to create a new CloudFront distribution and change the URLs for your files to reduce or eliminate the amount of time that your content is unavailable\. To do that, perform the following procedure\.<a name="cnames-and-https-revert-to-cf-certificate-proc"></a>
++ If you have used your distribution to distribute your content, you must create a new CloudFront distribution and change the URLs for your files to reduce or eliminate the amount of time that your content is unavailable\. To do that, perform the following procedure\.<a name="cnames-and-https-revert-to-cf-certificate-proc"></a>
 
 **To revert to the default CloudFront certificate**
 
