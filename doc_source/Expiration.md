@@ -1,10 +1,10 @@
 # Managing How Long Content Stays in an Edge Cache \(Expiration\)<a name="Expiration"></a>
 
-You can control how long your files stay in a CloudFront cache before CloudFront forwards another request to your origin\. Reducing the duration allows you to serve dynamic content\. Increasing the duration means your users get better performance because your files are more likely to be served directly from the edge cache\. A longer duration also reduces the load on your origin\.
+You can control how long your files stay in a CloudFront cache before CloudFront forwards another request to your origin\. Reducing the duration allows you to serve dynamic content\. Increasing the duration means that your users get better performance because your files are more likely to be served directly from the edge cache\. A longer duration also reduces the load on your origin\.
 
 Typically, CloudFront serves a file from an edge location until the cache duration that you specified passes—that is, until the file expires\. After it expires, the next time the edge location gets a user request for the file, CloudFront forwards the request to the origin server to verify that the cache contains the latest version of the file\. The response from the origin depends on whether the file has changed:
-+ If the CloudFront cache already has the latest version, the origin returns a 304 status code \(Not Modified\)\.
-+ If the CloudFront cache does not have the latest version, the origin returns a 200 status code \(OK\) and the latest version of the file\.
++ If the CloudFront cache already has the latest version, the origin returns a status code `304 Not Modified`\.
++ If the CloudFront cache does not have the latest version, the origin returns a status code `200 OK` and the latest version of the file\.
 
 If a file in an edge location isn't frequently requested, CloudFront might evict the file—remove the file before its expiration date—to make room for files that have been requested more recently\.
 
@@ -14,7 +14,7 @@ By default, each file automatically expires after 24 hours, but you can change t
 
 For more information about how **Minimum TTL**, **Default TTL**, and **Maximum TTL** interact with `Cache-Control max-age` and `Cache-Control s-maxage` directives and the `Expires` header field, see [Specifying the Amount of Time that CloudFront Caches Objects for Web Distributions](#ExpirationDownloadDist)\.
 
-You can also control how long errors \(for example, 404, Not Found\) stay in a CloudFront cache before CloudFront tries again to get the requested object by forwarding another request to your origin\. For more information, see [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)\.
+You can also control how long errors \(for example, `404, Not Found`\) stay in a CloudFront cache before CloudFront tries again to get the requested object by forwarding another request to your origin\. For more information, see [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)\.
 
 **Topics**
 + [Using Headers to Control Cache Duration for Individual Objects](#expiration-individual-objects)
@@ -52,7 +52,7 @@ For an example of how to add `Cache-Control` and `Expires` header fields using t
 
 ## Specifying the Amount of Time that CloudFront Caches Objects for Web Distributions<a name="ExpirationDownloadDist"></a>
 
-For web distributions, you can use `Cache-Control` or `Expires` headers, and CloudFront minimum, maximum, and default TTL values to control the amount of time in seconds that CloudFront keeps an object in the cache before forwarding another request to the origin\. Headers values also determine how long a browser keeps an object in the cache before forwarding another request to CloudFront\. 
+For web distributions, you can use `Cache-Control` or `Expires` headers, and CloudFront minimum, maximum, and default TTL values to control the amount of time in seconds that CloudFront keeps an object in the cache before forwarding another request to the origin\. Header values also determine how long a browser keeps an object in the cache before forwarding another request to CloudFront\. 
 
 **Important**  
 If you configure CloudFront to forward all headers to your origin for a cache behavior, CloudFront never caches the associated objects\. Instead, CloudFront forwards all requests for those objects to the origin\. In that configuration, the value of minimum TTL must be 0\. For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
