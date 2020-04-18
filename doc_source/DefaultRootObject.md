@@ -45,7 +45,7 @@ If the file name of the default root object is too long or contains an invalid c
 
    1. Confirm that your distribution is fully deployed by viewing the status of your distribution in the CloudFront console\.
 
-   1. Repeat Steps 2 and 3 to verify that you granted the correct permissions and that you correctly updated the configuration of your distribution to specify the default root object\.
+   1. Repeat steps 2 and 3 to verify that you granted the correct permissions and that you correctly updated the configuration of your distribution to specify the default root object\.
 
 ## How Headers Work With Default Root Objects<a name="DefaultRootObjectHow"></a>
 
@@ -61,7 +61,7 @@ When you define a default root object, an end\-user request that calls the root 
 
 `http://d111111abcdef8.cloudfront.net/`
 
-returns:
+Returns:
 
 `http://d111111abcdef8.cloudfront.net/index.html`
 
@@ -69,9 +69,9 @@ However, if you define a default root object, an end\-user request for a subdire
 
 `http://d111111abcdef8.cloudfront.net/install/`
 
-CloudFront will not return the default root object even if a copy of `index.html` appears in the `install` directory\.
+CloudFront does not return the default root object even if a copy of `index.html` appears in the `install` directory\.
 
-If you configure your distribution to allow all of the HTTP methods that CloudFront supports, the default root object applies to all methods\. For example, if your default root object is index\.php and you write your application to submit a `POST` request to the root of your domain \(http://example\.com\), CloudFront will send the request to http://example\.com/index\.php\.
+If you configure your distribution to allow all of the HTTP methods that CloudFront supports, the default root object applies to all methods\. For example, if your default root object is index\.php and you write your application to submit a `POST` request to the root of your domain \(http://example\.com\), CloudFront sends the request to http://example\.com/index\.php\.
 
 The behavior of CloudFront default root objects is different from the behavior of Amazon S3 index documents\. When you configure an Amazon S3 bucket as a website and specify the index document, Amazon S3 returns the index document even if a user requests a subdirectory in the bucket\. \(A copy of the index document must appear in every subdirectory\.\) For more information about configuring Amazon S3 buckets as websites and about index documents, see the [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) chapter in the *Amazon Simple Storage Service Developer Guide*\.
 
@@ -86,4 +86,4 @@ If you don't define a default root object, requests for the root of your distrib
   + The Amazon S3 permissions on the bucket associated with your distribution and on the objects in the bucket grant access to *everyone*\.
   + An end user accesses your origin using your origin root URL\. 
 + **A list of the private contents of your origin**—If you configure your origin as a private distribution \(only you and CloudFront have access\), the contents of the Amazon S3 bucket associated with your distribution are visible to anyone who has the credentials to access your distribution through CloudFront\. In this case, users are not able to access your content through your origin root URL\. For more information about distributing private content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
-+ **Error 403 Forbidden**—CloudFront returns this error if the permissions on the Amazon S3 bucket associated with your distribution or the permissions on the objects in that bucket deny access to CloudFront and to everyone\.
++ `Error 403 Forbidden`—CloudFront returns this error if the permissions on the Amazon S3 bucket associated with your distribution or the permissions on the objects in that bucket deny access to CloudFront and to everyone\.
