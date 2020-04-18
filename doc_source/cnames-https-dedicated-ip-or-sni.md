@@ -1,7 +1,7 @@
 # Choosing How CloudFront Serves HTTPS Requests<a name="cnames-https-dedicated-ip-or-sni"></a>
 
-If you want your viewers to use HTTPS and to use alternate domain names for your files, you need to choose one of the following options for how CloudFront serves HTTPS requests:
-+ Use Server Name Indication \(SNI\) \- Recommended
+If you want your viewers to use HTTPS and to use alternate domain names for your files, choose one of the following options for how CloudFront serves HTTPS requests:
++ Use Server Name Indication \(SNI\) – Recommended
 + Use a dedicated IP address in each edge location
 
 This section explains how each option works\.
@@ -10,7 +10,7 @@ This section explains how each option works\.
 
 Server Name Indication \(SNI\) is an extension to the TLS protocol that is supported by browsers and clients released after 2010\. If you configure CloudFront to serve HTTPS requests using SNI, CloudFront associates your alternate domain name with an IP address for each edge location\. When a viewer submits an HTTPS request for your content, DNS routes the request to the IP address for the correct edge location\. The IP address to your domain name is determined during the SSL/TLS handshake negotiation; the IP address isn't dedicated to your distribution\. 
 
-The SSL/TLS negotiation occurs very early in the process of establishing an HTTPS connection\. If CloudFront can't immediately determine which domain the request is for, it drops the connection\. When a viewer that supports SNI submits an HTTPS request for your content, here's what happens:
+The SSL/TLS negotiation occurs early in the process of establishing an HTTPS connection\. If CloudFront can't immediately determine which domain the request is for, it drops the connection\. When a viewer that supports SNI submits an HTTPS request for your content, here's what happens:
 
 1. The viewer automatically gets the domain name from the request URL and adds it to a field in the request header\. 
 
@@ -28,9 +28,9 @@ If you want to use SNI but some of your users' browsers don't support SNI, you h
 
   If you use the default CloudFront certificate, viewers must support the SSL protocol TLSv1 or later\. CloudFront doesn't support SSLv3 with the default CloudFront certificate\.
 
-  You also need to change the SSL/TLS certificate that CloudFront is using from a custom certificate to the default CloudFront certificate:
+  You also must change the SSL/TLS certificate that CloudFront is using from a custom certificate to the default CloudFront certificate:
   + If you haven't used your distribution to distribute your content, you can just change the configuration\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
-  + If you have used your distribution to distribute your content, you need to create a new CloudFront distribution and change the URLs for your files to reduce or eliminate the amount of time that your content is unavailable\. For more information, see [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)\.
+  + If you have used your distribution to distribute your content, you must create a new CloudFront distribution and change the URLs for your files to reduce or eliminate the amount of time that your content is unavailable\. For more information, see [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)\.
 + If you can control which browser your users use, have them upgrade their browser to one that supports SNI\.
 + Use HTTP instead of HTTPS\.
 
