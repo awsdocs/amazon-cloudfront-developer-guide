@@ -1,12 +1,12 @@
-# Getting CloudWatch Metrics for CloudFront Programmatically<a name="programming-cloudwatch-metrics"></a>
+# Getting metrics using the CloudWatch API<a name="programming-cloudwatch-metrics"></a>
 
-You can use the Amazon CloudWatch API or CLI to get the CloudFront metrics in programs or applications that you build\. You can use the raw data to build your own custom dashboards, your own alarming tools, and so on\. To get the CloudFront metrics from the CloudWatch API, you need to know certain values and types for each metric\.
+You can use the Amazon CloudWatch API or CLI to get the CloudFront metrics in programs or applications that you build\. You can use the raw data to build your own custom dashboards, your own alarming tools, and so on\. To get the CloudFront metrics from the CloudWatch API, you must use the US East \(N\. Virginia\) Region \(us\-east\-1\)\. You also need to know certain values and types for each metric\.
 
 **Topics**
-+ [Values for All CloudFront Metrics](#cloudfront-metrics-global-values)
-+ [Values for Specific CloudFront Metrics](#cloudfront-metrics-values)
++ [Values for all CloudFront metrics](#cloudfront-metrics-global-values)
++ [Values for individual CloudFront metrics](#cloudfront-metrics-values)
 
-## Values for All CloudFront Metrics<a name="cloudfront-metrics-global-values"></a>
+## Values for all CloudFront metrics<a name="cloudfront-metrics-global-values"></a>
 
 The following values apply to all CloudFront metrics:
 
@@ -20,7 +20,10 @@ The value for `DistributionId` is the ID of the CloudFront distribution for whic
 **`Region`**  
 The value for `Region` is always `Global`, because CloudFront is a global service\.
 
-## Values for Specific CloudFront Metrics<a name="cloudfront-metrics-values"></a>
+**Note**  
+To get the CloudFront metrics from the CloudWatch API, you must use the US East \(N\. Virginia\) Region \(us\-east\-1\)\.
+
+## Values for individual CloudFront metrics<a name="cloudfront-metrics-values"></a>
 
 Use information from the following list to get details about specific CloudFront metrics from the CloudWatch API\. Some of these metrics are available only when you have enabled additional metrics for the distribution\.
 
@@ -75,25 +78,25 @@ The percentage of all viewer requests for which the response’s HTTP status cod
 + Valid statistic: `Average`
 + Unit: `Percent`
 
-**Bytes Downloaded**  
+**Bytes downloaded**  
 The total number of bytes downloaded by viewers for `GET`, `HEAD`, and `OPTIONS` requests\.  
 + Metric name: `BytesDownloaded`
 + Valid statistic: `Sum`
 + Unit: `None`
 
-**Bytes Uploaded**  
+**Bytes uploaded**  
 The total number of bytes that viewers uploaded to your origin with CloudFront, using `POST` and `PUT` requests\.  
 + Metric name: `BytesUploaded`
 + Valid statistic: `Sum`
 + Unit: `None`
 
-**Cache Hit Rate**  
+**Cache hit rate**  
 The percentage of all cacheable requests for which CloudFront served the content from its cache\. HTTP `POST` and `PUT` requests, and errors, are not considered cacheable requests\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `CacheHitRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
-**Origin Latency**  
+**Origin latency**  
 The total time spent, in milliseconds, from when CloudFront receives a request to when it starts providing a response to the network \(not the viewer\), for requests that are served from the origin, not the CloudFront cache\. This is also known as *first byte latency*, or *time\-to\-first\-byte*\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `OriginLatency`
 + Valid statistic: `Percentile`
@@ -106,7 +109,7 @@ The total number of viewer requests received by CloudFront, for all HTTP methods
 + Valid statistic: `Sum`
 + Unit: `None`
 
-**Total Error Rate**  
+**Total error rate**  
 The percentage of all viewer requests for which the response’s HTTP status code is `4xx` or `5xx`\.  
 + Metric name: `TotalErrorRate`
 + Valid statistic: `Average`

@@ -1,13 +1,13 @@
-# Viewing CloudFront and Lambda@Edge Metrics<a name="viewing-cloudfront-metrics"></a>
+# Viewing CloudFront and Lambda@Edge metrics<a name="viewing-cloudfront-metrics"></a>
 
 You can view operational metrics about your CloudFront distributions and Lambda@Edge functions in the CloudFront console\. To view these metrics, see the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring)\. To view graphs about the activity for a specific CloudFront distribution or Lambda@Edge function, choose one, and then choose to view the metrics\.
 
 **Topics**
-+ [Viewing the Default CloudFront Distribution Metrics](#monitoring-console.distributions)
-+ [Viewing Additional CloudFront Distribution Metrics](#monitoring-console.distributions-additional)
-+ [Viewing the Default Lambda@Edge Function Metrics](#monitoring-console.lambda-at-edge)
++ [Viewing the default CloudFront distribution metrics](#monitoring-console.distributions)
++ [Viewing additional CloudFront distribution metrics](#monitoring-console.distributions-additional)
++ [Viewing the default Lambda@Edge function metrics](#monitoring-console.lambda-at-edge)
 
-## Viewing the Default CloudFront Distribution Metrics<a name="monitoring-console.distributions"></a>
+## Viewing the default CloudFront distribution metrics<a name="monitoring-console.distributions"></a>
 
 The following default metrics are included for all CloudFront distributions, at no additional cost:
 
@@ -37,9 +37,11 @@ You can customize the graphs by doing the following:
 
 To view CloudFront graphs in the CloudWatch console, choose **Add to dashboard**\.
 
-## Viewing Additional CloudFront Distribution Metrics<a name="monitoring-console.distributions-additional"></a>
+## Viewing additional CloudFront distribution metrics<a name="monitoring-console.distributions-additional"></a>
 
-In addition to the default metrics, you can enable additional metrics for an additional cost\. For more information about the cost, see [Amazon CloudWatch pricing](http://aws.amazon.com/cloudwatch/pricing/)\. The following additional metrics must be enabled for each distribution separately:
+In addition to the default metrics, you can enable additional metrics for an additional cost\. For more information about the cost, see [Estimating cost for the additional CloudFront metrics](#monitoring-console.distributions-additional-pricing)\.
+
+These additional metrics must be enabled for each distribution separately:
 
 **Cache hit rate**  
 The percentage of all cacheable requests for which CloudFront served the content from its cache\. HTTP `POST` and `PUT` requests, and errors, are not considered cacheable requests\.
@@ -68,7 +70,11 @@ You can customize the graphs by doing the following:
 
 To view CloudFront graphs in the CloudWatch console, choose **Add to dashboard**\.
 
-## Viewing the Default Lambda@Edge Function Metrics<a name="monitoring-console.lambda-at-edge"></a>
+### Estimating cost for the additional CloudFront metrics<a name="monitoring-console.distributions-additional-pricing"></a>
+
+When you enable additional metrics for a distribution, CloudFront sends up to 8 metrics to CloudWatch in the US East \(N\. Virginia\) Region\. CloudWatch charges a low, fixed rate for each metric\. This rate is charged only once per month, per metric \(up to 8 metrics per distribution\)\. This is a fixed rate, so your cost remains the same regardless of the number of requests or responses that the CloudFront distribution receives or sends\. For the per\-metric rate, see the [Amazon CloudWatch pricing page](http://aws.amazon.com/cloudwatch/pricing/) and the [CloudWatch pricing calculator](http://aws.amazon.com/cloudwatch/pricing/#Pricing_calculator)\. Additional API charges apply when you retrieve the metrics with the CloudWatch API\.
+
+## Viewing the default Lambda@Edge function metrics<a name="monitoring-console.lambda-at-edge"></a>
 
 The following default metrics are included for all Lambda@Edge functions, at no additional cost:
 + 5xx error rate for Lambda@Edge
@@ -86,4 +92,4 @@ You can customize the graphs by doing the following:
 + To change the time range for the information displayed in the graphs, choose 1h \(1 hour\), 3h \(3 hours\), or another range, or specify a custom range\. 
 + To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh interval\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
 
-To view the graphs in the CloudWatch console, choose **Add to dashboard**\.
+To view the graphs in the CloudWatch console, choose **Add to dashboard**\. You must use the US East \(N\. Virginia\) Region \(us\-east\-1\) to view the graphs in the CloudWatch console\.
