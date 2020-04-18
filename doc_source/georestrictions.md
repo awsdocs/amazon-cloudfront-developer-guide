@@ -1,6 +1,6 @@
 # Restricting the Geographic Distribution of Your Content<a name="georestrictions"></a>
 
-You can use *geo restriction*, also known as *geoblocking*, to prevent users in specific geographic locations from accessing content that you're distributing through a CloudFront web distribution\. To use geo restriction, you have two options:
+You can use *geo restriction*, also known as *geo blocking*, to prevent users in specific geographic locations from accessing content that you're distributing through a CloudFront web distribution\. To use geo restriction, you have two options:
 + Use the CloudFront geo restriction feature\. Use this option to restrict access to all of the files that are associated with a distribution and to restrict access at the country level\. 
 + Use a third\-party geolocation service\. Use this option to restrict access to a subset of the files that are associated with a distribution or to restrict access at a finer granularity than the country level\.
 
@@ -17,7 +17,7 @@ When a user requests your content, CloudFront typically serves the requested con
 For example, if a request comes from a country where, for copyright reasons, you are not authorized to distribute your content, you can use CloudFront geo restriction to block the request\.
 
 **Note**  
-CloudFront determines the location of your users by using a third\-party GeoIP database\. The accuracy of the mapping between IP addresses and countries varies by region\. Based on recent tests, the overall accuracy is 99\.8%\. Be aware that if CloudFront can't determine a user's location, CloudFront will serve the content that the user has requested\.
+CloudFront determines the location of your users by using a third\-party GeoIP database\. The accuracy of the mapping between IP addresses and countries varies by Region\. Based on recent tests, the overall accuracy is 99\.8%\. If CloudFront can't determine a user's location, CloudFront serves the content that the user has requested\.
 
 Here's how geo restriction works:
 
@@ -27,9 +27,9 @@ Here's how geo restriction works:
 
 1. The edge location in Milan looks up your distribution and determines that the user in Monaco is not allowed to download your content\.
 
-1. CloudFront returns an HTTP status code of 403 \(Forbidden\) to the user\.
+1. CloudFront returns an HTTP status code `403 (Forbidden)` to the user\.
 
-You can optionally configure CloudFront to return a custom error message to the user, and you can specify how long you want CloudFront to cache the error response for the requested file; the default value is five minutes\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
+You can optionally configure CloudFront to return a custom error message to the user, and you can specify how long you want CloudFront to cache the error response for the requested file\. The default value is 5 minutes\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
 
 Geo restriction applies to an entire web distribution\. If you need to apply one restriction to part of your content and a different restriction \(or no restriction\) to another part of your content, you must either create separate CloudFront web distributions or use a third\-party geolocation service\.
 
@@ -37,7 +37,7 @@ If you enable CloudFront access logging, you can identify the requests that Clou
 
 The following procedure explains how to use the CloudFront console to add geo restriction to an existing web distribution\. For information about how to use the console to create a web distribution, see [Creating a Distribution](distribution-web-creating-console.md)\.<a name="restrictions-geo-procedure"></a>
 
-**To use the CloudFront console to add geo restriction to your CloudFront web distribution**
+**To add geo restriction to your CloudFront web distribution \(console\)**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
 
@@ -57,9 +57,9 @@ The CloudFront geo restriction feature lets you control distribution of your con
 
 When you're using a third\-party geolocation service, we recommend that you use CloudFront signed URLs, which let you specify an expiration date and time after which the URL is no longer valid\. In addition, we recommend that you use an Amazon S3 bucket as your origin because you can then use a CloudFront origin access identity to prevent users from accessing your content directly from the origin\. For more information about signed URLs and origin access identities, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
 
-The following task list explains how to control access to your files by using a third\-party geolocation service\. 
+The following steps explain how to control access to your files by using a third\-party geolocation service\. 
 
-**Task list for restricting access to files in a CloudFront distribution based on geographic location**
+**To use geographic location to restrict access to files in a CloudFront distribution**
 
 1. Get an account with a geolocation service\.
 
@@ -73,12 +73,12 @@ The following task list explains how to control access to your files by using a 
 
    1. Evaluate the return value from the geolocation service to determine whether the user is in a location to which you want CloudFront to distribute your content\.
 
-   1. Based on whether you want to distribute your content to the user's location, either generate a signed URL for your CloudFront content, or return HTTP status code 403 \(Forbidden\) to the user\. Alternatively, you can configure CloudFront to return a custom error message\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
+   1. If you want to distribute your content to the user's location, generate a signed URL for your CloudFront content\. If you don't want to distribute content to that location, return HTTP status code `403 (Forbidden)` to the user\. Alternatively, you can configure CloudFront to return a custom error message\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
 
    For more information, refer to the documentation for the geolocation service that you're using\.
 
 You can use a web server variable to get the IP addresses of the users who are visiting your website\. Note the following caveats:
-+ If your web server is not connected to the internet through a load balancer, you can use a web server variable to get the remote IP address\. However, this IP address isn't always the user's IP address—it can also be the IP address of a proxy server, depending on how the user is connected to the internet\.
-+ If your web server is connected to the internet through a load balancer, a web server variable might contain the IP address of the load balancer, not the IP address of the user\. In this configuration, we recommend that you use the last IP address in the `X-Forwarded-For` http header\. This header typically contains more than one IP address, most of which are for proxies or load balancers\. The last IP address in the list is the one most likely to be associated with the user's geographic location\.
++ If your web server is not connected to the internet through a load balancer, you can use a web server variable to get the remote IP address\. However, this IP address isn't always the user's IP address\. It can also be the IP address of a proxy server, depending on how the user is connected to the internet\.
++ If your web server is connected to the internet through a load balancer, a web server variable might contain the IP address of the load balancer, not the IP address of the user\. In this configuration, we recommend that you use the last IP address in the `X-Forwarded-For` HTTP header\. This header typically contains more than one IP address, most of which are for proxies or load balancers\. The last IP address in the list is the one most likely to be associated with the user's geographic location\.
 
 If your web server is not connected to a load balancer, we recommend that you use web server variables instead of the `X-Forwarded-For` header to avoid IP address spoofing\. 
