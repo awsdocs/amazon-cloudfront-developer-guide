@@ -3,17 +3,17 @@
 To use alternate domain names in the URLs for your files and to use HTTPS between viewers and CloudFront, perform the applicable procedures\.
 
 **Topics**
-+ [Requesting Permission to Use Three or More SSL/TLS Certificates](#cnames-and-https-multiple-certificates)
++ [Requesting Permission to Use Three or More Dedicated IP SSL/TLS Certificates](#cnames-and-https-multiple-certificates)
 + [Getting an SSL/TLS Certificate](#cnames-and-https-getting-certificates)
 + [Importing an SSL/TLS Certificate](#cnames-and-https-uploading-certificates)
 + [Updating Your CloudFront Distribution](#cnames-and-https-updating-cloudfront)
 
-## Requesting Permission to Use Three or More SSL/TLS Certificates<a name="cnames-and-https-multiple-certificates"></a>
+## Requesting Permission to Use Three or More Dedicated IP SSL/TLS Certificates<a name="cnames-and-https-multiple-certificates"></a>
 
 If you need permission to permanently associate three or more SSL/TLS dedicated IP certificates with CloudFront, perform the following procedure\. For more details about HTTPS requests, see [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)\.
 
 **Note**  
-This procedure is for using three or more DedicatedIP certificates across your CloudFront distributions\. The default value is 2\. Keep in mind you cannot bind more than one SSL certificate to a distribution\.  
+This procedure is for using three or more dedicated IP certificates across your CloudFront distributions\. The default value is 2\. Keep in mind you cannot bind more than one SSL certificate to a distribution\.  
 You can only associate a single SSL/TLS certificate to a CloudFront distribution at a time\. This number is for the total number of dedicated IP SSL certificates you can use across all of your CloudFront distributions\.<a name="cnames-and-https-multiple-certificates-procedure"></a>
 
 **To request permission to use three or more certificates with a CloudFront distribution**
@@ -26,10 +26,10 @@ You can only associate a single SSL/TLS certificate to a CloudFront distribution
 
 ## Getting an SSL/TLS Certificate<a name="cnames-and-https-getting-certificates"></a>
 
-Get an SSL/TLS certificate if you don't already have one\. For more information, see the applicable documentation:
+Get an SSL/TLS certificate if you don’t already have one\. For more information, see the applicable documentation:
 + To use a certificate provided by AWS Certificate Manager \(ACM\), see the [AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)\. Then skip to [Updating Your CloudFront Distribution](#cnames-and-https-updating-cloudfront)\.
 **Note**  
-We recommend that you use ACM to provision, manage, and deploy SSL/TLS certificates on AWS managed resources\. 
+We recommend that you use ACM to provision, manage, and deploy SSL/TLS certificates on AWS managed resources\. You must request an ACM certificate in the US East \(N\. Virginia\) Region\.
 + To get a certificate from a third\-party certificate authority \(CA\), see the documentation provided by the certificate authority\. When you have the certificate, continue with the next procedure\.
 + To create a self\-signed certificate, see the documentation for the application that you're using to create and sign the certificate\. Then continue with the next procedure\.
 
@@ -38,7 +38,7 @@ We recommend that you use ACM to provision, manage, and deploy SSL/TLS certifica
 If you got your certificate from a third\-party CA, import the certificate into ACM or upload it to the IAM certificate store:
 
 **ACM \(Recommended\)**  
-ACM lets you import third\-party certificates from the ACM console, as well as programmatically\. For information about importing a certificate to ACM, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*\.
+ACM lets you import third\-party certificates from the ACM console, as well as programmatically\. For information about importing a certificate to ACM, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*\. You must import the certificate in the US East \(N\. Virginia\) Region\.
 
 **IAM certificate store**  
 If ACM is not available in your Region, use the following AWS CLI command to upload your third\-party certificate to the IAM certificate store\. \(For a list of the Regions where ACM is available, see [AWS Certificate Manager](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region) in the "AWS Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.\)  
