@@ -117,7 +117,7 @@ The AWSServiceRoleForCloudFrontLogger service\-linked role trusts the following 
 The role permissions policy allows Lambda@Edge to complete the following actions on the specified resources:
 + Action: `logs:CreateLogGroup` on `arn:aws:logs:*:*:/aws/cloudfront/*`
 + Action: `logs:CreateLogStream` on `arn:aws:logs:*:*:/aws/cloudfront/*`
-+ Action: `logs:PutLogsEvent` on `arn:aws:logs:*:*:/aws/cloudfront/*`
++ Action: `logs:PutLogEvents` on `arn:aws:logs:*:*:/aws/cloudfront/*`
 
 You must configure permissions to allow an IAM entity \(such as a user, group, or role\) to delete the Lambda@Edge service\-linked roles\. For more information, see [Service\-Linked Role Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#service-linked-role-permissions) in the *IAM User Guide*\.
 
