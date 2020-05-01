@@ -143,7 +143,7 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 **Resources:** `*`
 
 [ListCloudFrontOriginAccessIdentities](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListCloudFrontOriginAccessIdentities.html)  
-**Required Permissions \(API Action\):** `cloudfront:ListDistributions`  
+**Required Permissions \(API Action\):** `cloudfront:ListCloudFrontOriginAccessIdentities`  
 **Resources:** `*`
 
 [UpdateCloudFrontOriginAccessIdentity](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateCloudFrontOriginAccessIdentity.html)  
