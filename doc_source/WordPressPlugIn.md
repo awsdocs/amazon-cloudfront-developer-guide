@@ -104,6 +104,8 @@ Regardless of how you set up your WordPress website, you need the following befo
 + Your website must have its own *domain name*\. A domain name, also known as a *web address* or a *URL \(uniform resource locator\)*, is the address that visitors use to go to your website\. For example, Amazon's domain name is *amazon\.com*\. In this topic, we use *example\.com* as a generic example domain name, but you need a custom domain name for your website\.
 + Your website must work using HTTPS\. This is a security best practice, and the plugin assumes that your website works using HTTPS\. To check, go to your website's address using HTTPS \(for example, ***https**://example\.com*\) and make sure that your website displays correctly\.
 
+For a step\-by\-step tutorial that explains how to create a WordPress website on AWS using Amazon Lightsail, see [Accelerating WordPress with CloudFront using the AWS for WordPress Plugin](http://aws.amazon.com/blogs/networking-and-content-delivery/accelerating-wordpress-with-cloudfront-using-the-aws-for-wordpress-plugin/) on the AWS Networking and Content Delivery blog\.
+
 When your website has a domain name and works using HTTPS, proceed to the following section\.
 
 ## Step 1: Install the Plugin<a name="WordPressPlugin-install"></a>
