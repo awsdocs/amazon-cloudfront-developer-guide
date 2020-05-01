@@ -40,15 +40,15 @@ Do not specify the bucket using the following formats:
 ## Using Amazon S3 Buckets Configured as Website Endpoints for Your Origin<a name="concept_S3Origin_website"></a>
 
 You can set up an Amazon S3 bucket that is configured as a website endpoint as custom origin with CloudFront\.
-+ When you configure your CloudFront distribution, for the origin, enter the Amazon S3 static website hosting endpoint for your bucket\. This value appears in the Amazon S3 console, on the **Properties** page under **Static Website Hosting**\. For example:
++ When you configure your CloudFront distribution, for the origin, enter the Amazon S3 static website hosting endpoint for your bucket\. This value appears in the Amazon S3 console, on the **Properties** tab, in the **Static website hosting** pane\. For example:
 
-  `https://bucket-name.s3-website.region.amazonaws.com`
+  `http://bucket-name.s3-website-region.amazonaws.com`
 
-For more information about specifying Amazon S3 static website endpoints, see [Website Endpoints](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteEndpoints.html) in the Amazon S3 documentation\.
+For more information about specifying Amazon S3 static website endpoints, see [Website endpoints](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteEndpoints.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-When you specify the bucket name in this format as your origin, you can use Amazon S3 redirects and Amazon S3 custom error documents\. For more information about Amazon S3 features, see the [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html)\. \(CloudFront also provides custom error pages\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.\) 
+When you specify the bucket name in this format as your origin, you can use Amazon S3 redirects and Amazon S3 custom error documents\. For more information about Amazon S3 features, see the [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)\. \(CloudFront also provides custom error pages\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.\)
 
-Using an Amazon S3 bucket as your CloudFront origin server doesn't change it in any way\. You can still use it as you normally would and you incur regular Amazon S3 charges\. For more information about the charges to use CloudFront, see [CloudFront Reports in the Console](reports.md)\.
+Using an Amazon S3 bucket as your CloudFront origin server doesn’t change it in any way\. You can still use it as you normally would and you incur regular Amazon S3 charges\. For more information about the charges to use CloudFront, see [CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
 
 **Note**  
 If you use the CloudFront API to create your distribution with an Amazon S3 bucket that is configured as a website endpoint, you must configure it by using `CustomOriginConfig`, even though the website is hosted in an Amazon S3 bucket\. For more information about creating distributions by using the CloudFront API, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
