@@ -48,7 +48,7 @@ In addition to the invalidation methods provided by CloudFront, you can use the 
 
 **Note**  
 These tools were developed by third\-party vendors who are not associated with Amazon Web Services\. For information on how to use these tools, please refer to the vendor's documentation or contact the vendor\. 
-+ CloudBerry Explorer – [http://cloudberrylab\.com](http://cloudberrylab.com)
++ CloudBerry Explorer – [https://www\.msp360\.com/explorer\.aspx](https://www.msp360.com/explorer.aspx)
 + Ylastic – [http://ylastic\.com](http://ylastic.com)
 + Cyberduck – [http://cyberduck\.io](http://cyberduck.io)
 + CloudFront Invalidator – [https://github\.com/swook/jQuery\-CloudFront\-Invalidator](https://github.com/swook/jQuery-CloudFront-Invalidator)
