@@ -47,12 +47,12 @@ The AWS Blog has a number of posts to help you use CloudFront\. For example, see
 In addition to the invalidation methods provided by CloudFront, you can use the following third\-party tools to invalidate objects\.
 
 **Note**  
-These tools were developed by third\-party vendors who are not associated with Amazon Web Services\. For information on how to use these tools, please refer to the vendor's documentation or contact the vendor\. 
+These tools were developed by third\-party vendors who are not associated with Amazon Web Services\. For information on how to use these tools, please refer to the vendor’s documentation or contact the vendor\.
 + CloudBerry Explorer – [https://www\.msp360\.com/explorer\.aspx](https://www.msp360.com/explorer.aspx)
 + Ylastic – [http://ylastic\.com](http://ylastic.com)
-+ Cyberduck – [http://cyberduck\.io](http://cyberduck.io)
++ Cyberduck – [https://cyberduck\.io/](https://cyberduck.io/)
 + CloudFront Invalidator – [https://github\.com/swook/jQuery\-CloudFront\-Invalidator](https://github.com/swook/jQuery-CloudFront-Invalidator)
-+ CDN Planet CloudFront Purge Tool – [http://www\.cdnplanet\.com/tools/cloudfront\-purge\-tool/](http://www.cdnplanet.com/tools/cloudfront-purge-tool/)
++ CDN Planet CloudFront Purge Tool – [https://www\.cdnplanet\.com/tools/cloudfront\-purge\-tool/](https://www.cdnplanet.com/tools/cloudfront-purge-tool/)
 
 You can also search for code samples on Github, [https://github\.com](https://github.com)\. Search for the phrase *CloudFront invalidation*\.
 
