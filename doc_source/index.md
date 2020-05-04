@@ -196,4 +196,4 @@ Amazon's trademarks and trade dress may not be used in
 + [Quotas](cloudfront-limits.md)
 + [Amazon CloudFront Related Information](Resources.md)
 + [Document History](WhatsNew.md)
-+ [AWS Glossary](glossary.md)
++ [AWS glossary](glossary.md)
