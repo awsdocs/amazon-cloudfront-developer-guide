@@ -19,7 +19,7 @@ In the CloudFront console, you can see the CloudFront distributions that are ass
       For information about the fields, see [Values that You Specify When You Create or Update an RTMP Distribution](distribution-rtmp-values-specify.md)\.
 
 1. Make the updates, and then, to save your changes, choose **Yes, Edit**\. For information about the fields, see the following topics: 
-   + **General settings:** [Distribution Details](distribution-web-values-specify.md#DownloadDistValuesGeneral)
+   + **General settings:** [Distribution Settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)
    + **Origin settings:** [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin)
    + **Cache behavior settings:** [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)
 
