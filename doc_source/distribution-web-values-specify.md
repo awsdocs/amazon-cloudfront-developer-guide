@@ -613,11 +613,15 @@ Before you can specify a custom SSL certificate, you must specify a valid altern
 
 ### Custom SSL Client Support<a name="DownloadDistValuesClientsSupported"></a>
 
-If you specified one or more alternate domain names and you specified an SSL certificate in the IAM certificate store, choose how you want CloudFront to serve HTTPS requests, either a method that works for all clients or one that works for most clients:
-+ **All Clients:** Any client can access your content\. However, you must request permission to use this feature, and you incur additional monthly charges\.
-+ **Only Clients that Support Server Name Indication \(SNI\):** All modern browsers can access your content because they all support SNI\. However, some browsers still in use don't support SNI\. Users with these browsers must access your content using some other method, for example, by getting your objects directly from the origin\.
+If you specified one or more alternate domain names and a custom SSL certificate for the distribution, choose how you want CloudFront to serve HTTPS requests:
++ **Clients that Support Server Name Indication \(SNI\) \- \(Recommended\)** – With this setting, virtually all modern web browsers and clients can connect to the distribution, because they support SNI\. However, some viewers might use older web browsers or clients that don’t support SNI, which means they can’t connect to the distribution\.
 
-For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+  To apply this setting using the CloudFront API, specify `sni-only` in the `SSLSupportMethod` field\. In AWS CloudFormation, the field is named `SslSupportMethod` \(note the different capitalization\)\.
++ **Legacy Clients Support** – With this setting, older web browsers and clients that don’t support SNI can connect to the distribution\. However, this setting incurs additional monthly charges\. For the exact price, go to the [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/) page, and search the page for **Dedicated IP custom SSL**\.
+
+  To apply this setting using the CloudFront API, specify `vip` in the `SSLSupportMethod` field\. In AWS CloudFormation, the field is named `SslSupportMethod` \(note the different capitalization\)\.
+
+For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)\.
 
 ### Security Policy<a name="DownloadDistValues-security-policy"></a>
 
