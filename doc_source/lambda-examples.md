@@ -1373,7 +1373,7 @@ exports.handler = (event, context, callback) => {
  def lambda_handler(event, context):
      request = event['Records'][0]['cf']['request']
  
-     viwerCountry = request['headers'].get('cloudfront-viewer-country')
+     viewerCountry = request['headers'].get('cloudfront-viewer-country')
      if viewerCountry:
          countryCode = viewerCountry[0]['value']
          if countryCode == 'UK' or countryCode == 'DE' or countryCode == 'IE':
