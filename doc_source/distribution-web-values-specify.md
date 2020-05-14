@@ -12,27 +12,27 @@ You specify the delivery method when you create a distribution\. You can’t cha
 [Adobe designated Flash as end\-of\-life by December 31, 2020](https://theblog.adobe.com/adobe-flash-update/)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
 
 **[Origin Settings](#DownloadDistValuesOrigin)**
+
+The following values apply to all types of origins:
 + [Origin Domain Name](#DownloadDistValuesDomainName)
 + [Origin Path](#DownloadDistValuesOriginPath)
 + [Origin ID](#DownloadDistValuesId)
++ [Origin Custom Headers](#DownloadDistValuesOriginCustomHeaders)
 
-The following values apply to Amazon S3 origins that are *not* configured with static website hosting:
+The following values apply only to Amazon S3 origins that are *not* configured with static website hosting:
 + [Restrict Bucket Access](#DownloadDistValuesOAIRestrictBucketAccess)
 + [Origin Access Identity](#DownloadDistValuesOAI) \(Applies only when you choose **Yes** for **Restrict Bucket Access**\)
 + [Comment](#DownloadDistValuesOAIComment) \(Applies only when you choose **Create a New Identity** for **Origin Access Identity**\)
 + [Your Identities](#DownloadDistValuesOAIYourIdentities) \(Applies only when you choose **Use an Existing Identity** for **Origin Access Identities**\)
 + [Grant Read Permissions on Bucket](#DownloadDistValuesOAIGrantReadPermissions) \(Applies only when you choose **Yes** for **Restrict Bucket Access**\)
 
-The following values apply to custom origins, such as Amazon EC2 instances, Elastic Load Balancing load balancers, MediaPackage origins, MediaStore containers, Amazon S3 buckets that are configured with static website hosting, or your own web server:
+The following values apply only to custom origins, such as Amazon EC2 instances, Elastic Load Balancing load balancers, MediaPackage origins, MediaStore containers, Amazon S3 buckets that are configured with static website hosting, or your own web server:
 + [Minimum Origin SSL Protocol](#DownloadDistValuesOriginSSLProtocols)
 + [Origin Protocol Policy](#DownloadDistValuesOriginProtocolPolicy)
 + [Origin Response Timeout](#DownloadDistValuesOriginResponseTimeout)
 + [Origin Keep\-alive Timeout](#DownloadDistValuesOriginKeepaliveTimeout)
 + [HTTP Port](#DownloadDistValuesHTTPPort)
 + [HTTPS Port](#DownloadDistValuesHTTPSPort)
-
-The following value applies to all types of origins:
-+ [Origin Custom Headers](#DownloadDistValuesOriginCustomHeaders)
 
 **[Cache Behavior Settings](#DownloadDistValuesCacheBehavior)**
 
@@ -161,6 +161,20 @@ For more information, see the following:
 + **Creating origin groups:** [Creating an Origin Group](high_availability_origin_failover.md#concept_origin_groups.creating)
 + **Working with cache behaviors:** [Cache Behavior Settings](#DownloadDistValuesCacheBehavior)
 
+### Origin Custom Headers<a name="DownloadDistValuesOriginCustomHeaders"></a>
+
+If you want CloudFront to add custom headers whenever it sends a request to your origin, specify the following values:
+
+**Header Name**  
+The name of a header that you want CloudFront to add to requests that it sends to your origin\.
+
+**Value**  
+The value for the header that you specified in the **Custom Header** field\.
+
+For more information, see [Adding Custom Headers to Origin Requests](add-origin-custom-headers.md)\. 
+
+For the current maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the maximum total length of all header names and values, see [Quotas](cloudfront-limits.md)\.
+
 ### Restrict Bucket Access<a name="DownloadDistValuesOAIRestrictBucketAccess"></a>
 
 **Note**  
@@ -209,6 +223,9 @@ If you want to update permissions manually, for example, if you want to update A
 
 ### Minimum Origin SSL Protocol<a name="DownloadDistValuesOriginSSLProtocols"></a>
 
+**Note**  
+This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
+
 Choose the minimum TLS/SSL protocol that CloudFront can use when it establishes an HTTPS connection to your origin\. Lower TLS protocols are less secure, so we recommend that you choose the latest TLS protocol that your origin supports\. 
 
 If you use the CloudFront API to set the TLS/SSL protocol for CloudFront to use, you cannot set a minimum protocol\. Instead, you specify all of the TLS/SSL protocols that CloudFront can use with your origin\. For more information, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) in the *Amazon CloudFront API Reference*\.
@@ -219,7 +236,7 @@ This option applies only to Amazon S3 buckets that *are* configured with static 
 ### Origin Protocol Policy<a name="DownloadDistValuesOriginProtocolPolicy"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
 
 The protocol policy that you want CloudFront to use when fetching objects from your origin server\. 
 
@@ -235,7 +252,7 @@ For HTTPS viewer requests that CloudFront forwards to this origin, one of the do
 ### Origin Response Timeout<a name="DownloadDistValuesOriginResponseTimeout"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
 
 The origin response timeout, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following values:
 + How long \(in seconds\) CloudFront waits for a response after forwarding a request to a custom origin
@@ -253,7 +270,7 @@ CloudFront behavior depends on the HTTP method in the viewer request:
 ### Origin Keep\-alive Timeout<a name="DownloadDistValuesOriginKeepaliveTimeout"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
 
 How long \(in seconds\) CloudFront tries to maintain a connection to your custom origin after it gets the last packet of a response\. Maintaining a persistent connection saves the time that is required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. Increasing the keep\-alive timeout helps improve the request\-per\-connection metric for distributions\.
 
@@ -265,30 +282,16 @@ The default timeout is 5 seconds\. You can change the value to a number from 1 t
 ### HTTP Port<a name="DownloadDistValuesHTTPPort"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
 
 Optional\. The HTTP port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 80\.
 
 ### HTTPS Port<a name="DownloadDistValuesHTTPSPort"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
 
 Optional\. The HTTPS port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 443\.
-
-### Origin Custom Headers<a name="DownloadDistValuesOriginCustomHeaders"></a>
-
-If you want CloudFront to add custom headers whenever it sends a request to your origin, specify the following values:
-
-**Header Name**  
-The name of a header that you want CloudFront to add to requests that it sends to your origin\.
-
-**Value**  
-The value for the header that you specified in the **Custom Header** field\.
-
-For more information, see [Adding Custom Headers to Origin Requests](add-origin-custom-headers.md)\. 
-
-For the current maximum number of custom headers that you can forward to the origin, the maximum length of a custom header name and value, and the maximum total length of all header names and values, see [Quotas](cloudfront-limits.md)\.
 
 ## Cache Behavior Settings<a name="DownloadDistValuesCacheBehavior"></a>
 
