@@ -23,9 +23,9 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 
 | Entity | Default quota | 
 | --- | --- | 
-| Data transfer rate per distribution | 40 Gbps [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Requests per second per distribution | 100,000 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Tags that can be added to a CloudFront web or RTMP distribution | 50 | 
+| Data transfer rate per distribution | 150 Gbps [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Requests per second per distribution | 250,000 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Tags that can be added to a distribution | 50 | 
 | Files that you can serve per distribution | No quota | 
 | Maximum length of a request, including headers and query strings, but not including the body content | 20,480 bytes | 
 | Maximum length of a URL | 8,192 bytes | 
