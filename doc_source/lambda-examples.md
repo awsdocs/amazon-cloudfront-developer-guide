@@ -1355,7 +1355,7 @@ exports.handler = (event, context, callback) => {
      
   if (request.headers['cloudfront-viewer-country']) {
          const countryCode = request.headers['cloudfront-viewer-country'][0].value;
-         if (countryCode === 'UK' || countryCode === 'DE' || countryCode === 'IE' ) {
+         if (countryCode === 'GB' || countryCode === 'DE' || countryCode === 'IE' ) {
              const domainName = 'eu.example.com';
              request.origin.custom.domainName = domainName;
              request.headers['host'] = [{key: 'host', value: domainName}];
@@ -1376,7 +1376,7 @@ exports.handler = (event, context, callback) => {
      viewerCountry = request['headers'].get('cloudfront-viewer-country')
      if viewerCountry:
          countryCode = viewerCountry[0]['value']
-         if countryCode == 'UK' or countryCode == 'DE' or countryCode == 'IE':
+         if countryCode == 'GB' or countryCode == 'DE' or countryCode == 'IE':
              domainName = 'eu.example.com'
              request['origin']['custom']['domainName'] = domainName
              request['headers']['host'] = [{'key': 'host', 'value': domainName}]
