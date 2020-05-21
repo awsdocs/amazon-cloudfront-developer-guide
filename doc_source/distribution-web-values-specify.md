@@ -230,9 +230,6 @@ Choose the minimum TLS/SSL protocol that CloudFront can use when it establishes 
 
 If you use the CloudFront API to set the TLS/SSL protocol for CloudFront to use, you cannot set a minimum protocol\. Instead, you specify all of the TLS/SSL protocols that CloudFront can use with your origin\. For more information, see [OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) in the *Amazon CloudFront API Reference*\.
 
-**Note**  
-This option applies only to Amazon S3 buckets that *are* configured with static website hosting\. If the origin is an Amazon S3 bucket that is *not* configured as a static website, CloudFront always uses TLSv1\.2\.
-
 ### Origin Protocol Policy<a name="DownloadDistValuesOriginProtocolPolicy"></a>
 
 **Note**  
