@@ -76,13 +76,13 @@ When you enable additional metrics for a distribution, CloudFront sends up to 8 
 
 ## Viewing the default Lambda@Edge function metrics<a name="monitoring-console.lambda-at-edge"></a>
 
-The following default metrics are included for all Lambda@Edge functions, at no additional cost:
+The following default metrics are shown in graphs for each Lambda@Edge function on the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring):
 + 5xx error rate for Lambda@Edge
 + Lambda execution errors
 + Lambda invalid responses
 + Lambda throttles
 
-These metrics are shown in graphs for each Lambda@Edge function on the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring)\. The graphs include the number of invocations, errors, throttles, and so on\. On each graph, the totals are displayed at 1\-minute granularity, grouped by AWS Region\.
+The graphs include the number of invocations, errors, throttles, and so on\. On each graph, the totals are displayed at 1\-minute granularity, grouped by AWS Region\.
 
 If you see a spike in errors that you want to investigate, you can choose a function and then view log files by AWS Region, until you determine which function is causing the problems and in which AWS Region\. For more information about troubleshooting Lambda@Edge errors, see:
 +  [How to Determine the Type of Failure](lambda-edge-testing-debugging.md#lambda-edge-testing-debugging-failure-type)
