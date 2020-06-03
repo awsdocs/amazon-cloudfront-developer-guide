@@ -40,6 +40,7 @@ To deploy this secure static website solution, you can choose from either of the
 
 **Topics**
 + [Prerequisites](#deploy-website-cloudformation-prerequisites)
++ [Using the AWS CloudFormation Console](#deploy-website-cloudformation-console)
 + [Cloning the Solution Locally](#deploy-website-cloudformation-clone)
 + [Finding Access Logs](#deploy-website-cloudformation-logs)
 
@@ -51,7 +52,7 @@ To use this solution, you must have the following prerequisites:
 
 You are responsible for the costs incurred while using this solution\. For more information about costs, see [the pricing pages for each AWS service](http://aws.amazon.com/pricing/)\.
 
-#### Using the AWS CloudFormation Console<a name="deploy-website-cloudformation-console"></a>
+### Using the AWS CloudFormation Console<a name="deploy-website-cloudformation-console"></a>
 
 **To deploy using the CloudFormation console**
 
