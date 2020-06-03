@@ -19,14 +19,14 @@ The following values apply to all types of origins:
 + [Origin ID](#DownloadDistValuesId)
 + [Origin Custom Headers](#DownloadDistValuesOriginCustomHeaders)
 
-The following values apply only to Amazon S3 origins that are *not* configured with static website hosting:
+The following values apply only to Amazon S3 origins \(those that are *not* using the S3 static website endpoint\):
 + [Restrict Bucket Access](#DownloadDistValuesOAIRestrictBucketAccess)
 + [Origin Access Identity](#DownloadDistValuesOAI) \(Applies only when you choose **Yes** for **Restrict Bucket Access**\)
 + [Comment](#DownloadDistValuesOAIComment) \(Applies only when you choose **Create a New Identity** for **Origin Access Identity**\)
 + [Your Identities](#DownloadDistValuesOAIYourIdentities) \(Applies only when you choose **Use an Existing Identity** for **Origin Access Identities**\)
 + [Grant Read Permissions on Bucket](#DownloadDistValuesOAIGrantReadPermissions) \(Applies only when you choose **Yes** for **Restrict Bucket Access**\)
 
-The following values apply only to custom origins, such as Amazon EC2 instances, Elastic Load Balancing load balancers, MediaPackage origins, MediaStore containers, Amazon S3 buckets that are configured with static website hosting, or your own web server:
+The following values apply only to custom origins, such as Amazon EC2 instances, Elastic Load Balancing load balancers, MediaPackage origins, MediaStore containers, or your own web server:
 + [Minimum Origin SSL Protocol](#DownloadDistValuesOriginSSLProtocols)
 + [Origin Protocol Policy](#DownloadDistValuesOriginProtocolPolicy)
 + [Origin Response Timeout](#DownloadDistValuesOriginResponseTimeout)
@@ -178,7 +178,7 @@ For the current maximum number of custom headers that you can forward to the ori
 ### Restrict Bucket Access<a name="DownloadDistValuesOAIRestrictBucketAccess"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that are *not* configured with static website hosting\.
+This applies only to Amazon S3 bucket origins \(those that are *not* using the S3 static website endpoint\)\.
 
 Choose **Yes** if you want to require users to access objects in an Amazon S3 bucket by using only CloudFront URLs, not by using Amazon S3 URLs\. Then specify additional values\.
 
@@ -191,28 +191,28 @@ For information about how to require users to access objects on a custom origin 
 ### Origin Access Identity<a name="DownloadDistValuesOAI"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that are *not* configured with static website hosting\.
+This applies only to Amazon S3 bucket origins \(those that are *not* using the S3 static website endpoint\)\.
 
 If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
 ### Comment<a name="DownloadDistValuesOAIComment"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that are *not* configured with static website hosting\.
+This applies only to Amazon S3 bucket origins \(those that are *not* using the S3 static website endpoint\)\.
 
 If you chose **Create a New Identity** for **Origin Access Identity**, enter a comment that identifies the new origin access identity\. CloudFront creates the origin access identity when you create this distribution\.
 
 ### Your Identities<a name="DownloadDistValuesOAIYourIdentities"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that are *not* configured with static website hosting\.
+This applies only to Amazon S3 bucket origins \(those that are *not* using the S3 static website endpoint\)\.
 
 If you chose **Use an Existing Identity** for **Origin Access Identity**, choose the origin access identity that you want to use\. You cannot use an origin access identity that is associated with another AWS account\.
 
 ### Grant Read Permissions on Bucket<a name="DownloadDistValuesOAIGrantReadPermissions"></a>
 
 **Note**  
-This applies only to Amazon S3 bucket origins that are *not* configured with static website hosting\.
+This applies only to Amazon S3 bucket origins \(those that are *not* using the S3 static website endpoint\)\.
 
 If you want CloudFront to automatically grant the origin access identity the permission to read objects in your Amazon S3 bucket, choose **Yes, Update Bucket Policy**\. 
 
@@ -224,7 +224,7 @@ If you want to update permissions manually, for example, if you want to update A
 ### Minimum Origin SSL Protocol<a name="DownloadDistValuesOriginSSLProtocols"></a>
 
 **Note**  
-This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins\.
 
 Choose the minimum TLS/SSL protocol that CloudFront can use when it establishes an HTTPS connection to your origin\. Lower TLS protocols are less secure, so we recommend that you choose the latest TLS protocol that your origin supports\. 
 
@@ -233,14 +233,14 @@ If you use the CloudFront API to set the TLS/SSL protocol for CloudFront to use,
 ### Origin Protocol Policy<a name="DownloadDistValuesOriginProtocolPolicy"></a>
 
 **Note**  
-This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins\.
 
 The protocol policy that you want CloudFront to use when fetching objects from your origin server\. 
 
 Choose one of the following values:
 + **HTTP Only:** CloudFront uses only HTTP to access the origin\.
 **Important**  
-If your origin is an Amazon S3 bucket that is configured with static website hosting, you must choose this option\. Amazon S3 doesn’t support HTTPS connections for static website hosting\.
+If your origin is an Amazon S3 static website hosting endpoint, you must choose this option\. Amazon S3 doesn’t support HTTPS connections for static website hosting endpoints\.
 + **HTTPS Only:** CloudFront uses only HTTPS to access the origin\.
 + **Match Viewer:** CloudFront communicates with your origin using HTTP or HTTPS, depending on the protocol of the viewer request\. CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.
 **Important**  
@@ -249,7 +249,7 @@ For HTTPS viewer requests that CloudFront forwards to this origin, one of the do
 ### Origin Response Timeout<a name="DownloadDistValuesOriginResponseTimeout"></a>
 
 **Note**  
-This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins\.
 
 The origin response timeout, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following values:
 + How long \(in seconds\) CloudFront waits for a response after forwarding a request to a custom origin
@@ -267,7 +267,7 @@ CloudFront behavior depends on the HTTP method in the viewer request:
 ### Origin Keep\-alive Timeout<a name="DownloadDistValuesOriginKeepaliveTimeout"></a>
 
 **Note**  
-This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins\.
 
 How long \(in seconds\) CloudFront tries to maintain a connection to your custom origin after it gets the last packet of a response\. Maintaining a persistent connection saves the time that is required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. Increasing the keep\-alive timeout helps improve the request\-per\-connection metric for distributions\.
 
@@ -279,14 +279,14 @@ The default timeout is 5 seconds\. You can change the value to a number from 1 t
 ### HTTP Port<a name="DownloadDistValuesHTTPPort"></a>
 
 **Note**  
-This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins\.
 
 Optional\. The HTTP port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 80\.
 
 ### HTTPS Port<a name="DownloadDistValuesHTTPSPort"></a>
 
 **Note**  
-This applies only to custom origins, including Amazon S3 bucket origins that *are* configured with static website hosting\.
+This applies only to custom origins\.
 
 Optional\. The HTTPS port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 443\.
 
