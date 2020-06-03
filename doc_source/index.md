@@ -27,6 +27,7 @@ Amazon's trademarks and trade dress may not be used in
 + [Getting Started with Amazon CloudFront](GettingStarted.md)
    + [Getting Started with a Simple CloudFront Distribution](GettingStarted.SimpleDistribution.md)
    + [Getting Started with the AWS for WordPress Plugin](WordPressPlugIn.md)
+   + [Getting Started with a Secure Static Website](getting-started-secure-static-website-cloudformation-template.md)
 + [Working with Distributions](distribution-working-with.md)
    + [Overview of Distributions](distribution-overview.md)
       + [Actions You Can Use with Distributions](distribution-overview-actions.md)

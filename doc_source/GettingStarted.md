@@ -7,3 +7,4 @@ With both of the following options, you can get started for free using the [AWS 
 **Topics**
 + [Getting Started with a Simple Distribution](GettingStarted.SimpleDistribution.md)
 + [Getting Started with AWS for WordPress](WordPressPlugIn.md)
++ [Getting Started with a Secure Static Website](getting-started-secure-static-website-cloudformation-template.md)
