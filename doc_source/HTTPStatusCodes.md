@@ -56,9 +56,9 @@ CloudFront does the following:
 ### The Requested Object Is in the Edge Cache<a name="HTTPStatusCodes-custom-error-pages-in-cache"></a>
 
 CloudFront continues to serve the object that is currently in the edge cache when all of the following are true:
-+ A viewer requests an object
-+ The object is in the edge cache but it has expired
-+ Your origin returns an HTTP 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object
++ A viewer requests an object\.
++ The object is in the edge cache but it has expired\.
++ Your origin returns an HTTP 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object\.
 
 CloudFront does the following:
 
@@ -75,8 +75,8 @@ If you have not configured custom error pages, CloudFront behavior depends on wh
 ### The Requested Object Is Not in the Edge Cache<a name="HTTPStatusCodes-no-custom-error-pages-not-in-cache"></a>
 
 CloudFront continues to try to get the requested object from your origin when all of the following are true:
-+ A viewer requests an object
-+ The object isn't in the edge cache
++ A viewer requests an object\.
++ The object isn't in the edge cache\.
 + Your origin returns an HTTP 4xx or 5xx status code and one of the following is true:
   + Your origin returns an HTTP 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object\.
   + Your origin returns an HTTP 4xx status code that is not restricted by a cache control header and is included in the following list of status codes: [HTTP 4xx and 5xx Status Codes that CloudFront Always Caches](#HTTPStatusCodes-cached-errors-general)
@@ -95,9 +95,9 @@ CloudFront does the following:
 ### The Requested Object Is in the Edge Cache<a name="HTTPStatusCodes-no-custom-error-pages-in-cache"></a>
 
 CloudFront continues to serve the object that is currently in the edge cache when all of the following are true:
-+ A viewer requests an object
-+ The object is in the edge cache but it has expired
-+ Your origin returns an HTTP 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object
++ A viewer requests an object\.
++ The object is in the edge cache but it has expired\.
++ Your origin returns an HTTP 5xx status code instead of returning a 304 status code \(Not Modified\) or an updated version of the object\.
 
 CloudFront does the following:
 

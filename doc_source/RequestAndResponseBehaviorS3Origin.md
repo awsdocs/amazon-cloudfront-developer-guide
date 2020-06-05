@@ -22,6 +22,7 @@ This topic contains information about how CloudFront processes viewer requests a
 + [OCSP Stapling](#request-s3-ocsp-stapling)
 + [Protocols](#RequestS3Protocol)
 + [Query Strings](#RequestS3QueryStrings)
++ [Origin Connection Timeout and Attempts](#s3-origin-timeout-attempts)
 + [Origin Response Timeout](#RequestS3RequestTimeout)
 + [Simultaneous Requests for the Same Object \(Traffic Spikes\)](#request-s3-traffic-spikes)
 
@@ -80,7 +81,7 @@ If you configure CloudFront to process all of the HTTP methods that it supports,
 
 CloudFront always caches responses to `GET` and `HEAD` requests\. You can also configure CloudFront to cache responses to `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
 
-If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 regions and `PUT` requests in those regions require an additional header\. For more information, see [Using an OAI in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
+If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 Regions and `PUT` requests in those Regions require an additional header\. For more information, see [Using an OAI in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
 
 If you want to use multi\-part uploads to add objects to an Amazon S3 bucket, you must add a CloudFront origin access identity to your distribution and grant the origin access identity the needed permissions\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
@@ -118,19 +119,27 @@ If your Amazon S3 bucket is configured as a website endpoint, you cannot configu
 
 For web distributions, you can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For RTMP distributions, CloudFront does not forward query string parameters\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
+### Origin Connection Timeout and Attempts<a name="s3-origin-timeout-attempts"></a>
+
+*Origin connection timeout* is the number of seconds that CloudFront waits when trying to establish a connection to the origin\.
+
+*Origin connection attempts* is the number of times that CloudFront attempts to connect to the origin\.
+
+Together, these settings determine how long CloudFront tries to connect to the origin before failing over to the secondary origin \(in the case of an origin group\) or returning an error response to the viewer\. By default, CloudFront waits as long as 30 seconds \(3 attempts of 10 seconds each\) before attempting to connect to the secondary origin or returning an error response\. You can reduce this time by specifying a shorter connection timeout, fewer attempts, or both\.
+
+For more information, see [Controlling Origin Timeouts and Attempts](high_availability_origin_failover.md#controlling-attempts-and-timeouts)\.
+
 ### Origin Response Timeout<a name="RequestS3RequestTimeout"></a>
 
-The origin response timeout, also known as the origin read timeout or origin request timeout, applies to both of the following values:
-+ The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to Amazon S3
-+ The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from S3 and before receiving the next packet
+The *origin response timeout*, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following:
++ The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to the origin\.
++ The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet\.
 
-CloudFront behavior depends on the HTTP method:
-+ `GET` and `HEAD` requests – If Amazon S3 doesn't respond within 30 seconds or stops responding for 30 seconds, CloudFront drops the connection and makes two additional attempts to contact the origin\. If the origin doesn't reply during the third attempt, CloudFront doesn't try again until it receives another request for content on the same CloudFront origin\.
-+ `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If Amazon S3 doesn't respond within 30 seconds, CloudFront drops the connection and doesn't try again to contact the origin\. The client can resubmit the request if necessary\.
+CloudFront behavior depends on the HTTP method of the viewer request:
++ `GET` and `HEAD` requests – If the origin doesn’t respond within 30 seconds or stops responding for 30 seconds, CloudFront drops the connection\. If the specified number of [origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts) is more than 1, CloudFront tries again to get a complete response\. CloudFront tries up to 3 times, as determined by the value of the *origin connection attempts* setting\. If the origin doesn’t respond during the final attempt, CloudFront doesn’t try again until it receives another request for content on the same origin\.
++ `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn’t respond within 30 seconds, CloudFront drops the connection and doesn’t try again to contact the origin\. The client can resubmit the request if necessary\.
 
-For all requests, CloudFront attempts to establish a connection with S3\. If the connection fails within 10 seconds, CloudFront drops the connection and makes two additional attempts to contact S3\. If the origin doesn't reply during the third attempt, CloudFront doesn't try again until it receives another request for content on the same origin\.
-
-The response timeout for S3 can't be changed\.
+You can’t change the response timeout for an Amazon S3 origin \(an S3 bucket that is *not* configured with static website hosting\)\.
 
 ### Simultaneous Requests for the Same Object \(Traffic Spikes\)<a name="request-s3-traffic-spikes"></a>
 

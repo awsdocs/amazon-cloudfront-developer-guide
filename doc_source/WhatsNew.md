@@ -7,6 +7,7 @@ The following entries describe important changes made to the CloudFront document
 
 | Change | Description | Date Changed | 
 | --- | --- | --- | 
+|  New settings to control origin timeouts and attempts  |  CloudFront added new settings that control origin timeouts and attempts\. For more information, see [Controlling Origin Timeouts and Attempts](high_availability_origin_failover.md#controlling-attempts-and-timeouts)\.  |  June 5, 2020  | 
 |  New documentation for getting started with CloudFront by creating a secure static website  |  Get started with CloudFront by creating a secure static website using Amazon S3, CloudFront, Lambda@Edge, and more, all deployed with AWS CloudFormation\. For more information, see [Getting Started with a Secure Static Website](getting-started-secure-static-website-cloudformation-template.md)\.  |  June 2, 2020  | 
 |  Lambda@Edge supports newer runtime versions  |  Lambda@Edge now supports Lambda functions with the Node\.js 12 and Python 3\.8 runtimes\. For more information, see [Lambda Function Supported Runtimes and Configuration](lambda-requirements-limits.md#lambda-requirements-lambda-function-configuration)\.  |  February 27, 2020  | 
 |  New real\-time metrics in CloudWatch  |  Amazon CloudFront now offers eight additional real\-time metrics in Amazon CloudWatch\. For more information, see [Viewing additional CloudFront distribution metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  |  December 19, 2019  | 

@@ -27,6 +27,7 @@ This topic contains information about how CloudFront processes viewer requests a
 + [Persistent Connections](#request-custom-persistent-connections)
 + [Protocols](#RequestCustomProtocols)
 + [Query Strings](#RequestCustomQueryStrings)
++ [Origin Connection Timeout and Attempts](#custom-origin-timeout-attempts)
 + [Origin Response Timeout](#request-custom-request-timeout)
 + [Simultaneous Requests for the Same Object \(Traffic Spikes\)](#request-custom-traffic-spikes)
 + [User\-Agent Header](#request-custom-user-agent-header)
@@ -36,8 +37,8 @@ This topic contains information about how CloudFront processes viewer requests a
 For `DELETE`, `GET`, `HEAD`, `PATCH`, `POST`, and `PUT` requests, if you configure CloudFront to forward the `Authorization` header to your origin, you can configure your origin server to request client authentication\. 
 
 For `OPTIONS` requests, you can configure your origin server to request client authentication only if you use the following CloudFront settings:
-+ Configure CloudFront to forward the `Authorization` header to your origin
-+ Configure CloudFront to *not* cache the response to `OPTIONS` requests
++ Configure CloudFront to forward the `Authorization` header to your origin\.
++ Configure CloudFront to *not* cache the response to `OPTIONS` requests\.
 
 You can configure CloudFront to forward requests to your origin using either HTTP or HTTPS; for more information, see [Using HTTPS with CloudFront](using-https.md)\.
 
@@ -136,7 +137,7 @@ The following table lists HTTP request headers that you can forward to both cust
 + CloudFront behavior if you don't configure CloudFront to forward the header to your origin, which causes CloudFront to cache your objects based on header values\.
 + Whether you can configure CloudFront to cache objects based on header values for that header\. 
 
-  You can configure CloudFront to cache objects based on values in the `Date` and `User-Agent` headers, but we don't recommend it\. These headers have a lot of possible values, and caching based on their values would cause CloudFront to forward significantly more requests to your origin\. 
+  You can configure CloudFront to cache objects based on values in the `Date` and `User-Agent` headers, but we don't recommend it\. These headers have many possible values, and caching based on their values would cause CloudFront to forward significantly more requests to your origin\.
 
 For more information about caching based on header values, see [Caching Content Based on Request Headers](header-caching.md)\.
 
@@ -209,7 +210,7 @@ If a request or a URL exceeds these maximums, CloudFront returns HTTP status cod
 
 When a viewer submits an HTTPS request for an object, either CloudFront or the viewer must confirm with the certificate authority \(CA\) that the SSL certificate for the domain has not been revoked\. OCSP stapling speeds up certificate validation by allowing CloudFront to validate the certificate and to cache the response from the CA, so the client doesn't need to validate the certificate directly with the CA\.
 
-The performance improvement of OCSP stapling is more pronounced when CloudFront receives a lot of HTTPS requests for objects in the same domain\. Each server in a CloudFront edge location must submit a separate validation request\. When CloudFront receives a lot of HTTPS requests for the same domain, every server in the edge location soon has a response from the CA that it can "staple" to a packet in the SSL handshake; when the viewer is satisfied that the certificate is valid, CloudFront can serve the requested object\. If your distribution doesn't get much traffic in a CloudFront edge location, new requests are more likely to be directed to a server that hasn't validated the certificate with the CA yet\. In that case, the viewer separately performs the validation step and the CloudFront server serves the object\. That CloudFront server also submits a validation request to the CA, so the next time it receives a request that includes the same domain name, it has a validation response from the CA\.
+The performance improvement of OCSP stapling is more pronounced when CloudFront receives numerous HTTPS requests for objects in the same domain\. Each server in a CloudFront edge location must submit a separate validation request\. When CloudFront receives a lot of HTTPS requests for the same domain, every server in the edge location soon has a response from the CA that it can "staple" to a packet in the SSL handshake; when the viewer is satisfied that the certificate is valid, CloudFront can serve the requested object\. If your distribution doesn't get much traffic in a CloudFront edge location, new requests are more likely to be directed to a server that hasn't validated the certificate with the CA yet\. In that case, the viewer separately performs the validation step and the CloudFront server serves the object\. That CloudFront server also submits a validation request to the CA, so the next time it receives a request that includes the same domain name, it has a validation response from the CA\.
 
 ### Persistent Connections<a name="request-custom-persistent-connections"></a>
 
@@ -236,13 +237,27 @@ For information about how to update a distribution using the CloudFront console,
 
 You can configure whether CloudFront forwards query string parameters to your origin\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
 
+### Origin Connection Timeout and Attempts<a name="custom-origin-timeout-attempts"></a>
+
+*Origin connection timeout* is the number of seconds that CloudFront waits when trying to establish a connection to the origin\.
+
+*Origin connection attempts* is the number of times that CloudFront attempts to connect to the origin\.
+
+Together, these settings determine how long CloudFront tries to connect to the origin before failing over to the secondary origin \(in the case of an origin group\) or returning an error response to the viewer\. By default, CloudFront waits as long as 30 seconds \(3 attempts of 10 seconds each\) before attempting to connect to the secondary origin or returning an error response\. You can reduce this time by specifying a shorter connection timeout, fewer attempts, or both\.
+
+For more information, see [Controlling Origin Timeouts and Attempts](high_availability_origin_failover.md#controlling-attempts-and-timeouts)\.
+
 ### Origin Response Timeout<a name="request-custom-request-timeout"></a>
 
-The origin response timeout, also known as the origin request timeout or origin read timeout, applies to both of the following values:
-+ The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to a custom origin
-+ The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
+The *origin response timeout*, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following:
++ The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to the origin\.
++ The amount of time, in seconds, that CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet\.
 
-For more information, including how to configure the origin response timeout, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+CloudFront behavior depends on the HTTP method of the viewer request:
++ `GET` and `HEAD` requests – If the origin doesn’t respond or stops responding within the duration of the response timeout, CloudFront drops the connection\. If the specified number of [origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts) is more than 1, CloudFront tries again to get a complete response\. CloudFront tries up to 3 times, as determined by the value of the *origin connection attempts* setting\. If the origin doesn’t respond during the final attempt, CloudFront doesn’t try again until it receives another request for content on the same origin\.
++ `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn’t respond within 30 seconds, CloudFront drops the connection and doesn’t try again to contact the origin\. The client can resubmit the request if necessary\.
+
+For more information, including how to configure the origin response timeout, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
 
 ### Simultaneous Requests for the Same Object \(Traffic Spikes\)<a name="request-custom-traffic-spikes"></a>
 
@@ -258,7 +273,7 @@ If you want CloudFront to cache different versions of your objects based on the 
 
 Based on the value of the `User-Agent` header, CloudFront sets the value of these headers to `true` or `false` before forwarding the request to your origin\. If a device falls into more than one category, more than one value might be `true`\. For example, for some tablet devices, CloudFront might set both `CloudFront-Is-Mobile-Viewer` and `CloudFront-Is-Tablet-Viewer` to `true`\. For more information about configuring CloudFront to cache based on request headers, see [Caching Content Based on Request Headers](header-caching.md)\.
 
-You can configure CloudFront to cache objects based on values in the `User-Agent` header, but we don't recommend it\. The `User-Agent` header has a lot of possible values, and caching based on those values would cause CloudFront to forward significantly more requests to your origin\. 
+You can configure CloudFront to cache objects based on values in the `User-Agent` header, but we don't recommend it\. The `User-Agent` header has many possible values, and caching based on those values would cause CloudFront to forward significantly more requests to your origin\. 
 
 If you do not configure CloudFront to cache objects based on values in the `User-Agent` header, CloudFront adds a `User-Agent` header with the following value before it forwards a request to your origin:
 
@@ -325,7 +340,7 @@ CloudFront removes or updates the following header fields before forwarding the 
 + `Vary` – Note the following:
   + If you configure CloudFront to forward any of the device\-specific headers to your origin \(`CloudFront-Is-Desktop-Viewer`, `CloudFront-Is-Mobile-Viewer`, `CloudFront-Is-SmartTV-Viewer`, `CloudFront-Is-Tablet-Viewer`\) and you configure your origin to return `Vary:User-Agent` to CloudFront, CloudFront returns `Vary:User-Agent` to the viewer\. For more information, see [Configuring Caching Based on the Device Type](header-caching.md#header-caching-web-device)\.
   + If you configure your origin to include either `Accept-Encoding` or `Cookie` in the `Vary` header, CloudFront includes the values in the response to the viewer\.
-  + If you configure CloudFront to forward a whitelist of headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those value to the viewer\.
+  + If you configure CloudFront to forward a whitelist of headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those values to the viewer\.
   + For information about how CloudFront processes a value of `*` in the `Vary` header, see [Content Negotiation](#ResponseCustomContentNegotiation)\.
   + If you configure your origin to include any other values in the `Vary` header, CloudFront removes the values before returning the response to the viewer\.
 + `Via` – CloudFront sets the value to the following in the response to the viewer:

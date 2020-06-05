@@ -145,8 +145,8 @@ If you're using Route 53 as your DNS service, you can use either a CNAME resour
 ## Moving an Amazon S3 Bucket to a Different Region<a name="move-s3-bucket-different-region"></a>
 
 If you're using Amazon S3 as the origin for a CloudFront distribution and you move the bucket to a different Region, CloudFront can take up to an hour to update its records to include the change of Region when both of the following are true:
-+ You're using a CloudFront origin access identity \(OAI\) to restrict access to the bucket
-+ You move the bucket to an Amazon S3 Region that requires Signature Version 4 for authentication
++ You're using a CloudFront origin access identity \(OAI\) to restrict access to the bucket\.
++ You move the bucket to an Amazon S3 Region that requires Signature Version 4 for authentication\.
 
 When you're using OAIs, CloudFront uses the Region \(among other values\) to calculate the signature that it uses to request objects from your bucket\. For more information about OAIs, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\. For a list of Amazon S3 Regions and the signature versions that they support, see [Amazon Simple Storage Service \(Amazon S3\)](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the "Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.
 

@@ -1,6 +1,6 @@
 # Optimizing Content Caching and Availability<a name="ConfiguringCaching"></a>
 
-This section describes how to set up and manage caching of objects to improve performance and meet your business requirements\.
+This section describes how to set up and manage the caching of objects to improve performance and meet your business requirements\.
 
 To learn about adding and removing the content that you want CloudFront to serve, see [Adding, Removing, or Replacing Content That CloudFront Distributes](AddRemoveReplaceObjects.md)\.
 

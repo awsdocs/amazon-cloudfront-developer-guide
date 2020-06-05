@@ -17,6 +17,8 @@ The following values apply to all types of origins:
 + [Origin Domain Name](#DownloadDistValuesDomainName)
 + [Origin Path](#DownloadDistValuesOriginPath)
 + [Origin ID](#DownloadDistValuesId)
++ [Origin Connection Attempts](#origin-connection-attempts)
++ [Origin Connection Timeout](#origin-connection-timeout)
 + [Origin Custom Headers](#DownloadDistValuesOriginCustomHeaders)
 
 The following values apply only to Amazon S3 origins \(those that are *not* using the S3 static website endpoint\):
@@ -127,7 +129,7 @@ If your origin is an Amazon S3 bucket, note the following:
 
   `bucket-name.s3.region.amazonaws.com` 
 
-  If your bucket is in the US Standard Region and you want Amazon S3 to route requests to a facility in Northern Virginia, use the following format:
+  If your bucket is in the US Standard Region and you want Amazon S3 to route requests to a facility in northern Virginia, use the following format:
 
   `bucket-name.s3.us-east-1.amazonaws.com` 
 + The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
@@ -135,7 +137,7 @@ If your origin is an Amazon S3 bucket, note the following:
 **Important**  
 If the origin is an Amazon S3 bucket, the bucket name must conform to DNS naming requirements\. For more information, go to [ Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
-When you change the value of **Origin Domain Name** for an origin, CloudFront immediately begins replicating the change to CloudFront edge locations\. Until the distribution configuration is updated in a given edge location, CloudFront will continue to forward requests to the previous HTTP server or Amazon S3 bucket\. As soon as the distribution configuration is updated in that edge location, CloudFront begins to forward requests to the new HTTP server or Amazon S3 bucket\.
+When you change the value of **Origin Domain Name** for an origin, CloudFront immediately begins replicating the change to CloudFront edge locations\. Until the distribution configuration is updated in a given edge location, CloudFront continues to forward requests to the previous HTTP server or Amazon S3 bucket\. As soon as the distribution configuration is updated in that edge location, CloudFront begins to forward requests to the new HTTP server or Amazon S3 bucket\.
 
 Changing the origin does not require CloudFront to repopulate edge caches with objects from the new origin\. As long as the viewer requests in your application have not changed, CloudFront continues to serve objects that are already in an edge cache until the TTL on each object expires or until seldom\-requested objects are evicted\. 
 
@@ -160,6 +162,29 @@ For more information, see the following:
 + **Origins that you can specify:** [Using CloudFront Origin Groups](DownloadDistS3AndCustomOrigins.md#concept_origin_groups)
 + **Creating origin groups:** [Creating an Origin Group](high_availability_origin_failover.md#concept_origin_groups.creating)
 + **Working with cache behaviors:** [Cache Behavior Settings](#DownloadDistValuesCacheBehavior)
+
+### Origin Connection Attempts<a name="origin-connection-attempts"></a>
+
+The number of times that CloudFront attempts to connect to the origin\. You can specify 1, 2, or 3 as the number of attempts\. The default number \(if you don’t specify otherwise\) is 3\.
+
+Use this setting together with **Origin Connection Timeout** to specify how long CloudFront waits before attempting to connect to the secondary origin or returning an error response to the viewer\. By default, CloudFront waits as long as 30 seconds \(3 attempts of 10 seconds each\) before attempting to connect to the secondary origin or returning an error response\. You can reduce this time by specifying fewer attempts, a shorter connection timeout, or both\.
+
+If the specified number of connection attempts fail, CloudFront does one of the following:
++ If the origin is part of an origin group, CloudFront attempts to connect to the secondary origin\. If the specified number of connection attempts to the secondary origin fail, then CloudFront returns an error response to the viewer\.
++ If the origin is not part of an origin group, CloudFront returns an error response to the viewer\.
+
+For a custom origin \(including an Amazon S3 bucket that’s configured with static website hosting\), this setting also specifies the number of times that CloudFront attempts to get a response from the origin\. For more information, see [Origin Response Timeout](#DownloadDistValuesOriginResponseTimeout)\.
+
+### Origin Connection Timeout<a name="origin-connection-timeout"></a>
+
+The number of seconds that CloudFront waits when trying to establish a connection to the origin\. You can specify a number of seconds between 1 and 10 \(inclusive\)\. The default timeout \(if you don’t specify otherwise\) is 10 seconds\.
+
+Use this setting together with **Origin Connection Attempts** to specify how long CloudFront waits before attempting to connect to the secondary origin or before returning an error response to the viewer\. By default, CloudFront waits as long as 30 seconds \(3 attempts of 10 seconds each\) before attempting to connect to the secondary origin or returning an error response\. You can reduce this time by specifying fewer attempts, a shorter connection timeout, or both\.
+
+If CloudFront doesn’t establish a connection to the origin within the specified number of seconds, CloudFront does one of the following:
++ If the specified number of **Origin Connection Attempts** is more than 1, CloudFront tries again to establish a connection\. CloudFront tries up to 3 times, as determined by the value of **Origin Connection Attempts**\.
++ If all the connection attempts fail and the origin is part of an origin group, CloudFront attempts to connect to the secondary origin\. If the specified number of connection attempts to the secondary origin fail, then CloudFront returns an error response to the viewer\.
++ If all the connection attempts fail and the origin is not part of an origin group, CloudFront returns an error response to the viewer\.
 
 ### Origin Custom Headers<a name="DownloadDistValuesOriginCustomHeaders"></a>
 
@@ -240,7 +265,7 @@ The protocol policy that you want CloudFront to use when fetching objects from y
 Choose one of the following values:
 + **HTTP Only:** CloudFront uses only HTTP to access the origin\.
 **Important**  
-If your origin is an Amazon S3 static website hosting endpoint, you must choose this option\. Amazon S3 doesn’t support HTTPS connections for static website hosting endpoints\.
+**HTTP Only** is the default setting when the origin is an Amazon S3 static website hosting endpoint, because Amazon S3 doesn’t support HTTPS connections for static website hosting endpoints\. The CloudFront console does not support changing this setting for Amazon S3 static website hosting endpoints\.
 + **HTTPS Only:** CloudFront uses only HTTPS to access the origin\.
 + **Match Viewer:** CloudFront communicates with your origin using HTTP or HTTPS, depending on the protocol of the viewer request\. CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.
 **Important**  
@@ -252,17 +277,17 @@ For HTTPS viewer requests that CloudFront forwards to this origin, one of the do
 This applies only to custom origins\.
 
 The origin response timeout, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following values:
-+ How long \(in seconds\) CloudFront waits for a response after forwarding a request to a custom origin
-+ How long \(in seconds\) CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet
++ How long \(in seconds\) CloudFront waits for a response after forwarding a request to the origin\.
++ How long \(in seconds\) CloudFront waits after receiving a packet of a response from the origin and before receiving the next packet\.
 
-The default timeout is 30 seconds\. You can change the value to be from 4 to 60 seconds\. If you need a timeout value outside that range, [create a case in the AWS Support Center](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
+The default timeout is 30 seconds\. You can change the value to be from 1 to 60 seconds\. If you need a timeout value outside that range, [create a case in the AWS Support Center](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
 **Tip**  
 If you want to increase the timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troubleshooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
 
 CloudFront behavior depends on the HTTP method in the viewer request:
-+ `GET` and `HEAD` requests – If the origin doesn't respond before the read timeout elapses or if the origin stops responding for the configured timeout, CloudFront drops the connection and tries two more times to contact the origin\. After the third try, if the origin doesn't respond before the read timeout elapses, CloudFront doesn't try again until it receives another request for content on the same origin\.
-+ `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn't respond before the read timeout elapses, CloudFront drops the connection and doesn't try again to contact the origin\. The client can resubmit the request if necessary\.
++ `GET` and `HEAD` requests – If the origin doesn’t respond or stops responding within the duration of the response timeout, CloudFront drops the connection\. CloudFront tries again to connect according to the value of [Origin Connection Attempts](#origin-connection-attempts)\.
++ `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn’t respond for the duration of the read timeout, CloudFront drops the connection and doesn’t try again to contact the origin\. The client can resubmit the request if necessary\.
 
 ### Origin Keep\-alive Timeout<a name="DownloadDistValuesOriginKeepaliveTimeout"></a>
 
@@ -282,6 +307,9 @@ The default timeout is 5 seconds\. You can change the value to a number from 1 t
 This applies only to custom origins\.
 
 Optional\. The HTTP port that the custom origin listens on\. Valid values include ports 80, 443, and 1024 to 65535\. The default value is port 80\.
+
+**Important**  
+Port 80 is the default setting when the origin is an Amazon S3 static website hosting endpoint, because Amazon S3 only supports port 80 for static website hosting endpoints\. The CloudFront console does not support changing this setting for Amazon S3 static website hosting endpoints\.
 
 ### HTTPS Port<a name="DownloadDistValuesHTTPSPort"></a>
 

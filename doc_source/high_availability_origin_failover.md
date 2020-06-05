@@ -13,11 +13,11 @@ After you configure origin failover for a cache behavior, CloudFront does the fo
 + When any of the following occur:
   + The primary origin returns an HTTP status code that you’ve configured for failover
   + CloudFront fails to connect to the primary origin
-**Note**  
-CloudFront times out when it cannot connect to the origin after three consecutive attempts for a single request\. CloudFront waits up to 10 seconds between connection attempts\.
   + The response from the primary origin takes too long \(times out\)
 
   Then CloudFront routes the request to the secondary origin in the origin group\.
+**Note**  
+For some use cases, like streaming video content, you might want CloudFront to fail over to the secondary origin quickly\. To adjust how quickly CloudFront fails over to the secondary origin, see [Controlling Origin Timeouts and Attempts](#controlling-attempts-and-timeouts)\.
 
 CloudFront routes all incoming requests to the primary origin, even when a previous request failed over to the secondary origin\. CloudFront only sends requests to the secondary origin after a request to the primary origin fails\.
 
@@ -31,6 +31,7 @@ For more information, see the following:
 
 **Topics**
 + [Creating an Origin Group](#concept_origin_groups.creating)
++ [Controlling Origin Timeouts and Attempts](#controlling-attempts-and-timeouts)
 + [Use Origin Failover with Lambda@Edge Functions](#concept_origin_groups.lambda)
 + [Use Custom Error Pages with Origin Failover](#concept_origin_groups.custom-error)
 
@@ -53,6 +54,31 @@ For more information, see the following:
 1. Enter a unique identifier for the origin group\. You can’t use an identifier that’s already in use for a different origin or origin group in your AWS account\.
 
 For information about specifying an origin group for a distribution, see [Origin ID](distribution-web-values-specify.md#DownloadDistValuesId)\.
+
+## Controlling Origin Timeouts and Attempts<a name="controlling-attempts-and-timeouts"></a>
+
+By default, CloudFront tries to connect to the primary origin in an origin group for as long as 30 seconds \(3 connection attempts of 10 seconds each\) before failing over to the secondary origin\. For some use cases, like streaming video content, you might want CloudFront to fail over to the secondary origin more quickly\. You can adjust the following settings to affect how quickly CloudFront fails over to the secondary origin\. If the origin is a secondary origin, or an origin that is not part of an origin group, these settings affect how quickly CloudFront returns an HTTP 504 response to the viewer\.
+
+To fail over more quickly, specify a shorter connection timeout, fewer connection attempts, or both\. For custom origins \(including Amazon S3 bucket origins that *are* configured with static website hosting\), you can also adjust the origin response timeout\.
+
+**Origin connection timeout**  
+The origin connection timeout setting affects how long CloudFront waits when trying to establish a connection to the origin\. By default, CloudFront waits 10 seconds to establish a connection, but you can specify 1–10 seconds \(inclusive\)\. For more information, see [Origin Connection Timeout](distribution-web-values-specify.md#origin-connection-timeout)\.
+
+**Origin connection attempts**  
+The origin connection attempts setting affects the number of times that CloudFront attempts to connect to the origin\. By default, CloudFront tries 3 times to connect, but you can specify 1–3 \(inclusive\)\. For more information, see [Origin Connection Attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  
+For a custom origin \(including an Amazon S3 bucket that’s configured with static website hosting\), this setting also affects the number of times that CloudFront attempts to get a response from the origin in the case of an origin response timeout\.
+
+**Origin response timeout**  
+This applies only to custom origins\.
+The origin response timeout setting affects how long CloudFront waits to receive a response \(or to receive the complete response\) from the origin\. By default, CloudFront waits for 30 seconds, but you can specify 1–60 seconds \(inclusive\)\. For more information, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
+
+### How to change these settings<a name="controlling-attempts-and-timeouts-how-to"></a>
+
+**To change these settings in the [CloudFront console](https://console.aws.amazon.com/cloudfront/home)**
++ For a new origin or a new distribution, you specify these values when you create the resource\.
++ For an existing origin in an existing distribution, you specify these values when you edit the origin\.
+
+For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 ## Use Origin Failover with Lambda@Edge Functions<a name="concept_origin_groups.lambda"></a>
 

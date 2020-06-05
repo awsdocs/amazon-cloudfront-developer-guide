@@ -189,7 +189,7 @@ Here are the specific steps to take\.<a name="MovingADomainToNewDistributionStep
 
    For example: `example.com TXT d111111abcdef8.cloudfront.net`
    + If your DNS service provider is Route 53, go to step 3 for detailed steps\.
-   + If your domain is hosted by another DNS service provider, see the documentation at the DNS service provider\. You may need to request that your service provider create the TXT record for you\.
+   + If your domain is hosted by another DNS service provider, see the documentation at the DNS service provider\. You might need to request that your service provider create the TXT record for you\.
 **Tip**  
 If your service provider does not allow a TXT record for a domain to have the same information as a CNAME record, consider creating a TXT record that uses your domain name with an underscore \(\_\) prepended to it\. For an example, see the following Knowledge Center article: [Resolve CNAME Already Exists Error](https://aws.amazon.com/premiumsupport/knowledge-center/resolve-cnamealreadyexists-error/)\.
 
