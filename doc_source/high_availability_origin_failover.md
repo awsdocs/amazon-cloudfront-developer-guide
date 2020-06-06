@@ -9,7 +9,7 @@ To see the steps for setting up origin groups and configuring specific origin fa
 After you configure origin failover for a cache behavior, CloudFront does the following for viewer requests:
 + When there’s a cache hit, CloudFront returns the requested file\.
 + When there’s a cache miss, CloudFront routes the request to the primary origin in the origin group\.
-+ When the primary origin returns a status code that’s configured for failover, such as an HTTP 2xx or 3xx status code, CloudFront serves the requested content to the viewer\.
++ When the primary origin returns a status code that is not configured for failover, such as an HTTP 2xx or 3xx status code, CloudFront serves the requested content to the viewer\.
 + When any of the following occur:
   + The primary origin returns an HTTP status code that you’ve configured for failover
   + CloudFront fails to connect to the primary origin
