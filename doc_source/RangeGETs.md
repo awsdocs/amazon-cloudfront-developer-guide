@@ -6,7 +6,7 @@ When CloudFront receives a `Range GET` request, it checks the cache in the edge 
 
 If the cache doesn't contain the requested range, CloudFront forwards the request to the origin\. \(To optimize performance, CloudFront may request a larger range than the client requested in the `Range GET`\.\) What happens next depends on whether the origin supports `Range GET` requests:
 + **If the origin supports `Range GET` requests:** It returns the requested range\. CloudFront serves the requested range and also caches it for future requests\. \(Amazon S3 supports `Range GET` requests, as do some HTTP servers, for example, Apache and IIS\. For information about whether your HTTP server does, see the documentation for your HTTP server\.\)
-+ **If the origin doesn't support `Range GET` requests:** It returns the entire object\. CloudFront serves the current request by sending the entire object while also caching it for future requests\. After CloudFront caches the entire object in an edge cache, it responds to new `Range GET` requests by serving the requested range\. 
++ **If the origin doesn't support `Range GET` requests:** It returns the entire object\. CloudFront serves the current request by sending the entire object while also caching it for future requests\. After CloudFront caches the entire object in an edge cache, it responds to new `Range GET` requests by serving the requested range\.
 
 In either case, CloudFront begins to serve the requested range or object to the end user as soon as the first byte arrives from the origin\.
 
