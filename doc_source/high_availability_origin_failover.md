@@ -21,6 +21,8 @@ For some use cases, like streaming video content, you might want CloudFront to f
 
 CloudFront routes all incoming requests to the primary origin, even when a previous request failed over to the secondary origin\. CloudFront only sends requests to the secondary origin after a request to the primary origin fails\.
 
+CloudFront fails over to the secondary origin only when the HTTP method of the viewer request is `GET`, `HEAD`, or `OPTIONS`\. CloudFront does not fail over when the viewer sends a different HTTP method \(for example `POST`, `PUT`, and so on\)\.
+
 The following diagram illustrates how origin failover works\.
 
 ![\[How origin failover works\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/origingroups-overview.png)
@@ -50,6 +52,8 @@ For more information, see the following:
 1. Choose the origins for the origin group\. After you add origins, use the arrows to set the priority—that is, which origin is primary and which is secondary\.
 
 1. Choose the HTTP status codes to use as failover criteria\. You can choose any combination of the following status codes: 500, 502, 503, 504, 404, or 403\. When CloudFront receives a response with one of the status codes that you specify, it fails over to the secondary origin\.
+**Note**  
+CloudFront fails over to the secondary origin only when the HTTP method of the viewer request is `GET`, `HEAD`, or `OPTIONS`\. CloudFront does not fail over when the viewer sends a different HTTP method \(for example `POST`, `PUT`, and so on\)\.
 
 1. Enter a unique identifier for the origin group\. You can’t use an identifier that’s already in use for a different origin or origin group in your AWS account\.
 
