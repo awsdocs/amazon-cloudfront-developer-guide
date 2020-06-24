@@ -26,23 +26,23 @@ To determine whether domain names in the certificate match the **Origin Domain N
 
 ### Online SSL Checker<a name="troubleshooting-ssl-negotiation-failure-online-ssl-checker"></a>
 
-To find an SSL test tool, search the internet for "online ssl checker\." Typically, you specify the name of your domain, and the tool returns a variety of information about your SSL/TLS certificate\. Confirm that the certificate contains your domain name in the **Common Names** or **Subject Alternative Names** fields\.
+To find an SSL test tool, search the internet for "online ssl checker\." Typically, you specify the name of your domain, and the tool returns a variety of information about your SSL/TLS certificate\. Confirm that the certificate contains your domain name in the **Common Name** or **Subject Alternative Names** fields\.
 
 ### OpenSSL<a name="troubleshooting-ssl-negotiation-failure-openssl"></a>
 
-To determine whether CloudFront is able to establish a connection with your origin, you can use OpenSSL to try to make an SSL/TLS connection to your origin and to verify that the certificate on your origin is correctly configured\. If OpenSSL is able to make a connection, it returns information about the certificate on the origin server\. 
+To help troubleshoot HTTP 502 errors from CloudFront, you can use OpenSSL to try to make an SSL/TLS connection to your origin server\. If OpenSSL is not able to make a connection, that can indicate a problem with your origin server’s SSL/TLS configuration\. If OpenSSL is able to make a connection, it returns information about the origin server’s certificate, including the certificate’s common name \(`Subject CN` field\) and subject alternative name \(`Subject Alternative Name` field\)\.
 
-The command that you use depends on whether you use a client that supports [SNI \(Server Name Indication\)](http://en.wikipedia.org/wiki/Server_Name_Indication)\.
+Use the following OpenSSL command to test the connection to your origin server \(replace *origin domain name* with your origin server’s domain name, such as example\.com\):
 
-**Client supports SNI**  
-`openssl s_client -connect domainname:443 -servername domainname`
+`openssl s_client –connect origin domain name:443`
 
-**Client doesn't support SNI**  
-`openssl s_client –connect domainname:443`
+If the following are true:
++ Your origin server supports multiple domain names with multiple SSL/TLS certificates
++ Your distribution is configured to forward the `Host` header to the origin
 
-Replace *domainname* with the applicable value:
-+ **If you aren't forwarding the `Host` header to the origin** – Replace *domainname* with your origin's domain name\.
-+ **If you are forwarding the Host header to the origin** – Replace *domainname* with the CNAME that you're using with your CloudFront distribution\.
+Then add the `-servername` option to the OpenSSL command, as in the following example \(replace *CNAME* with the CNAME that’s configured in your distribution\):
+
+`openssl s_client –connect origin domain name:443 -servername CNAME`
 
 ## Origin Is Not Responding with Supported Ciphers/Protocols<a name="origin-not-responding-with-supported-ciphers-protocols"></a>
 
