@@ -10,6 +10,8 @@ The following describes the behavior for origin failover when the primary origin
 + HTTP 4xx or 5xx status code \(client/server error\): If the returned status code has been configured for failover, CloudFront sends the same request to the secondary origin in the origin group\.
 + HTTP 4xx or 5xx status code \(client/server error\): If the returned status code has not been configured for failover, CloudFront returns the error to the viewer\.
 
+CloudFront fails over to the secondary origin only when the HTTP method of the viewer request is `GET`, `HEAD`, or `OPTIONS`\. CloudFront does not fail over when the viewer sends a different HTTP method \(for example `POST`, `PUT`, and so on\)\.
+
 When CloudFront sends a request to a secondary origin, the response behavior is the same as for a CloudFront origin that’s not in an origin group\.
 
 For more information about origin groups, see [Optimizing High Availability with CloudFront Origin Failover](high_availability_origin_failover.md)\.
