@@ -95,6 +95,7 @@ If you configure CloudFront to compress your content, CloudFront compresses file
 + `application/opentype`
 + `application/otf`
 + `application/pkcs7-mime`
++ `application/protobuf`
 + `application/rss+xml`
 + `application/truetype`
 + `application/ttf`
