@@ -29,7 +29,7 @@ Here's how geo restriction works:
 
 1. CloudFront returns an HTTP status code `403 (Forbidden)` to the user\.
 
-You can optionally configure CloudFront to return a custom error message to the user, and you can specify how long you want CloudFront to cache the error response for the requested file\. The default value is 5 minutes\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
+You can optionally configure CloudFront to return a custom error message to the user, and you can specify how long you want CloudFront to cache the error response for the requested file\. The default value is one minute\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
 
 Geo restriction applies to an entire web distribution\. If you need to apply one restriction to part of your content and a different restriction \(or no restriction\) to another part of your content, you must either create separate CloudFront web distributions or use a third\-party geolocation service\.
 

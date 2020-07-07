@@ -1,6 +1,6 @@
 # Controlling How Long CloudFront Caches Errors<a name="custom-error-pages-expiration"></a>
 
-By default, when your origin returns an HTTP 4xx or 5xx status code, CloudFront caches these error responses for five minutes\. CloudFront then submits the next request for the object to your origin to see whether the problem that caused the error has been resolved and the requested object is now available\.
+By default, when your origin returns an HTTP 4xx or 5xx status code, CloudFront caches these error responses for one minute\. CloudFront then submits the next request for the object to your origin to see whether the problem that caused the error has been resolved and the requested object is now available\.
 
 **Note**  
 You can create a custom error page for HTTP status code 416 \(Requested Range Not Satisfiable\), and you can change the HTTP status code that CloudFront returns to viewers when your origin returns a status code 416 to CloudFront\. \(For more information, see [Changing Response Codes Returned by CloudFront](custom-error-pages-response-code.md)\.\) However, CloudFront doesn't cache status code 416 responses, so although you can specify a value for **Error Caching Minimum TTL** for status code 416, CloudFront doesn't use it\. 

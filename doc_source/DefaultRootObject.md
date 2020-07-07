@@ -17,7 +17,7 @@ To avoid exposing the contents of your web distribution or returning an error, s
 
    The file can be any type supported by CloudFront\. For a list of constraints on the file name, see the description of the `DefaultRootObject` element in [DistributionConfig Complex Type](https://docs.aws.amazon.com/cloudfront/latest/APIReference/DistributionConfigDatatype.html)\.
 **Note**  
-If the file name of the default root object is too long or contains an invalid character, CloudFront returns the error `HTTP 400 Bad Request - InvalidDefaultRootObject`\. In addition, CloudFront caches the code for five minutes and writes the results to the access logs\.
+If the file name of the default root object is too long or contains an invalid character, CloudFront returns the error `HTTP 400 Bad Request - InvalidDefaultRootObject`\. In addition, CloudFront caches the code for one minute and writes the results to the access logs\.
 
 1. Confirm that the permissions for the object grant CloudFront at least `read` access\.
 
