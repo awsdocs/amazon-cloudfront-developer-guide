@@ -107,7 +107,7 @@ If the origin is an Amazon S3 bucket, CloudFront always uses TLSv1\.2\.
 **Important**  
 Other versions of SSL and TLS are not supported\.
 
-For more information about using HTTPS with CloudFront, see [Using HTTPS with CloudFront](using-https.md)\. For lists of the ciphers that CloudFront supports for HTTPS communication between viewers and CloudFront, and between CloudFront and your origin, see [Supported SSL/TLS Protocols and Ciphers for Communication Between Viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
+For more information about using HTTPS with CloudFront, see [Using HTTPS with CloudFront](using-https.md)\. For lists of the ciphers that CloudFront supports for HTTPS communication between viewers and CloudFront, and between CloudFront and your origin, see [Supported SSL/TLS protocols and ciphers for communication between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
 
 ### GET Requests That Include a Body<a name="RequestCustom-get-body"></a>
 

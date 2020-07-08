@@ -69,7 +69,7 @@ The certificate returned from the origin must cover the domain that you specifie
 
 The encryption strength of a communications connection depends on the key size and strength of the algorithm that you choose for your origin server’s certificate\. The two options that CloudFront supports for connections with a custom origin are RSA and Elliptic Curve Digital Signature Algorithm \(ECDSA\)\.
 
-For lists of the RSA and ECDSA ciphers supported by CloudFront, see [Supported SSL/TLS Protocols and Ciphers for Communication Between CloudFront and Your Origin](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers-cloudfront-to-origin)\.
+For lists of the RSA and ECDSA ciphers supported by CloudFront, see [Supported SSL/TLS protocols and ciphers for communication between CloudFront and your origin](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers-cloudfront-to-origin)\.
 
 ### How RSA Ciphers Work<a name="using-https-cloudfront-to-origin-which-cipher-rsa"></a>
 
