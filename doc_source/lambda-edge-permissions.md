@@ -20,10 +20,12 @@ In addition to the IAM permissions that you need to use AWS Lambda, the IAM user
 + `lambda:EnableReplication*`
 
   Adds a permission to the resource policy that gives the Lambda replication service permission to get function code and configuration\.
+**Important**  
+The asterisk \(`*`\) at the end of the permission is required: `lambda:EnableReplication*`
 
-  For the resource, specify the ARN of the function version that you want to execute when a CloudFront event occurs, as shown in the following example:
+  For the resource, specify the ARN of the function \(without the version number\) that you want to execute when a CloudFront event occurs, as shown in the following example:
 
-  `arn:aws:lambda:us-east-1:123456789012:function:TestFunction:2`
+  `arn:aws:lambda:us-east-1:123456789012:function:TestFunction`
 + `iam:CreateServiceLinkedRole`
 
   Allows the user to create a service linked role that is used by Lambda@Edge to replicate Lambda functions in CloudFront\. After this role has been created by the first distribution you use with Lambda@Edge, you don’t need to add permission to other distributions that you use with Lambda@Edge\.
