@@ -33,9 +33,6 @@ To ensure that your users access your files using only CloudFront URLs, regardle
 
 1. Change the permissions either on your Amazon S3 bucket or on the files in your bucket so that only the origin access identity has read permission \(or read and download permission\)\. When your users access your Amazon S3 files through CloudFront, the CloudFront origin access identity gets the files on behalf of your users\. If your users request files directly by using Amazon S3 URLs, they're denied access\. The origin access identity has permission to access files in your Amazon S3 bucket, but users don't\. For more information, see [Granting the OAI Permission to Read Files in Your Amazon S3 Bucket](#private-content-granting-permissions-to-oai)\.
 
-**Tip**  
-If you're just getting started with setting up CloudFront with private content on an S3 bucket, you might find it helpful to read through the following blog post for an end\-to\-end view of the process: [How to Set Up and Serve Private Content Using S3 and Amazon CloudFront](http://improve.dk/how-to-set-up-and-serve-private-content-using-s3/)\. 
-
 ## Creating a CloudFront OAI and Adding it to Your Distribution<a name="private-content-creating-oai"></a>
 
 An AWS account can have [up to 100 CloudFront origin access identities \(OAIs\)](cloudfront-limits.md#limits-web-distributions)\. However, you can add an OAI to as many distributions as you want, so one OAI is usually sufficient\.
