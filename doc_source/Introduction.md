@@ -1,4 +1,4 @@
-# What Is Amazon CloudFront?<a name="Introduction"></a>
+# What is Amazon CloudFront?<a name="Introduction"></a>
 
 Amazon CloudFront is a web service that speeds up distribution of your static and dynamic web content, such as \.html, \.css, \.js, and image files, to your users\. CloudFront delivers your content through a worldwide network of data centers called edge locations\. When a user requests content that you're serving with CloudFront, the user is routed to the edge location that provides the lowest latency \(time delay\), so that content is delivered with the best possible performance\.
 + If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately\.
@@ -13,22 +13,22 @@ CloudFront speeds up the distribution of your content by routing each user reque
 You also get increased reliability and availability because copies of your files \(also known as *objects\)* are now held \(or cached\) in multiple edge locations around the world\. 
 
 **Topics**
-+ [How You Set Up CloudFront to Deliver Content](#HowCloudFrontWorksOverview)
-+ [CloudFront Use Cases](IntroductionUseCases.md)
-+ [How CloudFront Delivers Content](HowCloudFrontWorks.md)
-+ [Locations and IP Address Ranges of CloudFront Edge Servers](LocationsOfEdgeServers.md)
++ [How you set up CloudFront to deliver content](#HowCloudFrontWorksOverview)
++ [CloudFront use cases](IntroductionUseCases.md)
++ [How CloudFront delivers content](HowCloudFrontWorks.md)
++ [Locations and IP address ranges of CloudFront edge servers](LocationsOfEdgeServers.md)
 + [Accessing CloudFront](introduction-accessing-cloudfront.md)
-+ [How to Get Started with Amazon CloudFront](welcome-how-to-get-started.md)
++ [How to get started with Amazon CloudFront](welcome-how-to-get-started.md)
 + [AWS Identity and Access Management](IAMCloudFront.md)
-+ [CloudFront Pricing](CloudFrontPricing.md)
++ [CloudFront pricing](CloudFrontPricing.md)
 
-## How You Set Up CloudFront to Deliver Content<a name="HowCloudFrontWorksOverview"></a>
+## How you set up CloudFront to deliver content<a name="HowCloudFrontWorksOverview"></a>
 
 You create a CloudFront distribution to tell CloudFront where you want content to be delivered from, and the details about how to track and manage content delivery\. Then CloudFront uses computers—edge servers—that are close to your viewers to deliver that content quickly when someone wants to see it or use it\.
 
 ![\[How CloudFront works\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/how-you-configure-cf.png)<a name="HowCloudFrontWorksConfiguration"></a>
 
-**How You Configure CloudFront to Deliver Your Content**
+**How you configure CloudFront to deliver your content**
 
 1. You specify *origin servers*, like an Amazon S3 bucket or your own HTTP server, from which CloudFront gets your files which will then be distributed from CloudFront edge locations all over the world\. 
 

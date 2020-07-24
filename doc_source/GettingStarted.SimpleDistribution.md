@@ -1,4 +1,4 @@
-# Getting Started with a Simple CloudFront Distribution<a name="GettingStarted.SimpleDistribution"></a>
+# Getting started with a simple CloudFront distribution<a name="GettingStarted.SimpleDistribution"></a>
 
 The procedures in this section show you how to use CloudFront to set up a basic configuration that does the following:
 + Stores the original versions of your objects in one Amazon Simple Storage Service \(Amazon S3\) bucket
@@ -13,15 +13,15 @@ You have to complete only a few basic steps to start delivering your content wit
 
 **Topics**
 + [Prerequisites](#GettingStartedSignup)
-+ [Step 1: Upload Your Content to Amazon S3 and Grant Object Permissions](#GettingStartedUploadContent)
-+ [Step 2: Create a CloudFront Distribution](#GettingStartedCreateDistribution)
-+ [Step 3: Test Your Links](#GettingStartedAccessingDistributions)
++ [Step 1: Upload your content to Amazon S3 and grant object permissions](#GettingStartedUploadContent)
++ [Step 2: Create a CloudFront distribution](#GettingStartedCreateDistribution)
++ [Step 3: Test your links](#GettingStartedAccessingDistributions)
 
 ## Prerequisites<a name="GettingStartedSignup"></a>
 
-Before you begin, make sure that you've completed the steps in [Setting Up Amazon CloudFront](setting-up-cloudfront.md)\.
+Before you begin, make sure that you've completed the steps in [Setting up Amazon CloudFront](setting-up-cloudfront.md)\.
 
-## Step 1: Upload Your Content to Amazon S3 and Grant Object Permissions<a name="GettingStartedUploadContent"></a>
+## Step 1: Upload your content to Amazon S3 and grant object permissions<a name="GettingStartedUploadContent"></a>
 
 An Amazon S3 bucket is a container that can contain files \(objects\) or folders\. CloudFront can distribute almost any type of file for you using an Amazon S3 bucket as the source\. For example, CloudFront can distribute text, images, and videos\. You can create multiple buckets, and there is no maximum for the amount of data that you can store on Amazon S3\.
 
@@ -81,7 +81,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    Use your Amazon S3 URL to verify that your content is publicly accessible, but remember that this is not the URL you'll use when you're ready to distribute your content with CloudFront\.
 
-## Step 2: Create a CloudFront Distribution<a name="GettingStartedCreateDistribution"></a><a name="GettingStartedCreateDistributionProcedure"></a>
+## Step 2: Create a CloudFront distribution<a name="GettingStartedCreateDistribution"></a><a name="GettingStartedCreateDistributionProcedure"></a>
 
 **To create a CloudFront distribution**
 
@@ -115,7 +115,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 1. Under **Distribution Settings**, choose the values for your distribution:  
 **Price Class**  
 Choose the price class that corresponds with the maximum price that you want to pay for the CloudFront service\. By default, CloudFront serves your objects from edge locations in all CloudFront Regions\.   
-For more information about price classes and how your choice of price class affects CloudFront performance for your distribution, see [Choosing the Price Class for a CloudFront Distribution](PriceClass.md)\. For information about CloudFront pricing, including how price classes map to CloudFront Regions, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.  
+For more information about price classes and how your choice of price class affects CloudFront performance for your distribution, see [Choosing the price class for a CloudFront distribution](PriceClass.md)\. For information about CloudFront pricing, including how price classes map to CloudFront Regions, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.  
 **AWS WAF Web ACL**  
 Accept the default value, **None**\.  
 **Alternate Domain Names \(CNAMEs\)**  
@@ -142,7 +142,7 @@ Choose **Enabled**\.
 
    The domain name that CloudFront assigns to your distribution appears in the list of distributions\. \(It also appears on the **General** tab for a selected distribution\.\)
 
-## Step 3: Test Your Links<a name="GettingStartedAccessingDistributions"></a>
+## Step 3: Test your links<a name="GettingStartedAccessingDistributions"></a>
 
 After you've created your distribution, CloudFront knows where your Amazon S3 origin server is, and you know the domain name associated with the distribution\. You can create a link to your Amazon S3 bucket content with that domain name and have CloudFront serve it\. 
 

@@ -587,7 +587,7 @@ The following values apply to the entire distribution\.
 
 Choose the price class that corresponds with the maximum price that you want to pay for CloudFront service\. By default, CloudFront serves your objects from edge locations in all CloudFront Regions\. 
 
-For more information about price classes and about how your choice of price class affects CloudFront performance for your distribution, see [Choosing the Price Class for a CloudFront Distribution](PriceClass.md)\. For information about CloudFront pricing, including how price classes map to CloudFront Regions, go to [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
+For more information about price classes and about how your choice of price class affects CloudFront performance for your distribution, see [Choosing the price class for a CloudFront distribution](PriceClass.md)\. For information about CloudFront pricing, including how price classes map to CloudFront Regions, go to [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
 
 ### AWS WAF Web ACL<a name="DownloadDistValuesWAFWebACL"></a>
 

@@ -1,4 +1,4 @@
-# Getting Started with a Secure Static Website<a name="getting-started-secure-static-website-cloudformation-template"></a>
+# Getting started with a secure static website<a name="getting-started-secure-static-website-cloudformation-template"></a>
 
 You can get started with Amazon CloudFront by using the solution described in this topic to create a secure static website for your domain name\. A *static website* uses only static files—like HTML, CSS, JavaScript, images, and videos—and doesn’t need servers or server\-side processing\. With this solution, your website gets the following benefits:
 + **Uses the durable storage of [Amazon Simple Storage Service \(Amazon S3\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html)** – This solution creates an Amazon S3 bucket to host your static website’s content\. To update your website, just upload your new files to the S3 bucket\.
@@ -11,10 +11,10 @@ You can get started with Amazon CloudFront by using the solution described in th
 This solution is open source on GitHub\. To view the code, submit a pull request, or open an issue, go to [https://github.com/aws-samples/amazon-cloudfront-secure-static-site](https://github.com/aws-samples/amazon-cloudfront-secure-static-site)\.
 
 **Topics**
-+ [Solution Overview](#cloudformation-website-overview)
-+ [Deploying the Solution](#deploy-secure-static-website-cloudformation)
++ [Solution overview](#cloudformation-website-overview)
++ [Deploying the solution](#deploy-secure-static-website-cloudformation)
 
-## Solution Overview<a name="cloudformation-website-overview"></a>
+## Solution overview<a name="cloudformation-website-overview"></a>
 
 The following diagram shows an overview of how this static website solution works:
 
@@ -32,7 +32,7 @@ The following diagram shows an overview of how this static website solution work
 
 1. \(Not shown\) The objects is returned to the viewer\. Subsequent requests for the object that come to the same CloudFront edge location are served from the CloudFront cache\.
 
-## Deploying the Solution<a name="deploy-secure-static-website-cloudformation"></a>
+## Deploying the solution<a name="deploy-secure-static-website-cloudformation"></a>
 
 To deploy this secure static website solution, you can choose from either of the following options:
 + Use the AWS CloudFormation console to deploy the solution with default content, then upload your website content to Amazon S3\.
@@ -40,9 +40,9 @@ To deploy this secure static website solution, you can choose from either of the
 
 **Topics**
 + [Prerequisites](#deploy-website-cloudformation-prerequisites)
-+ [Using the AWS CloudFormation Console](#deploy-website-cloudformation-console)
-+ [Cloning the Solution Locally](#deploy-website-cloudformation-clone)
-+ [Finding Access Logs](#deploy-website-cloudformation-logs)
++ [Using the AWS CloudFormation console](#deploy-website-cloudformation-console)
++ [Cloning the solution locally](#deploy-website-cloudformation-clone)
++ [Finding access logs](#deploy-website-cloudformation-logs)
 
 ### Prerequisites<a name="deploy-website-cloudformation-prerequisites"></a>
 
@@ -52,7 +52,7 @@ To use this solution, you must have the following prerequisites:
 
 You are responsible for the costs incurred while using this solution\. For more information about costs, see [the pricing pages for each AWS service](http://aws.amazon.com/pricing/)\.
 
-### Using the AWS CloudFormation Console<a name="deploy-website-cloudformation-console"></a>
+### Using the AWS CloudFormation console<a name="deploy-website-cloudformation-console"></a>
 
 **To deploy using the CloudFormation console**
 
@@ -95,7 +95,7 @@ Make sure to choose the bucket with **s3bucketroot** in its name, not **s3bucket
 **Note**  
 If you viewed your website with this solution’s default content, then it’s likely that some of the default content is cached in a CloudFront edge location\. To make sure that viewers see your updated website content, *invalidate* the files to remove the cached copies from CloudFront edge locations\. For more information, see [Invalidating Files](Invalidation.md)\.
 
-### Cloning the Solution Locally<a name="deploy-website-cloudformation-clone"></a>
+### Cloning the solution locally<a name="deploy-website-cloudformation-clone"></a>
 
 **Prerequisites**
 
@@ -147,7 +147,7 @@ To add your website content before deploying this solution, you must package the
 
    When the status changes to **CREATE\_COMPLETE**, go to https://www\.example\.com to view your website \(replace www\.example\.com with the subdomain and domain name that you specified in the previous step\)\. You should see your website’s content\.
 
-### Finding Access Logs<a name="deploy-website-cloudformation-logs"></a>
+### Finding access logs<a name="deploy-website-cloudformation-logs"></a>
 
 This solution enables [access logs](AccessLogs.md) for the CloudFront distribution\. Complete the following steps to locate the distribution’s access logs\.
 

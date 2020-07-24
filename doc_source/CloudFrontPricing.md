@@ -1,4 +1,4 @@
-# CloudFront Pricing<a name="CloudFrontPricing"></a>
+# CloudFront pricing<a name="CloudFrontPricing"></a>
 
 Amazon CloudFront is designed so you don’t have to pay any up\-front fees or commit to how much content you’ll have\. As with the other AWS services, you pay as you go and pay only for what you use\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
 

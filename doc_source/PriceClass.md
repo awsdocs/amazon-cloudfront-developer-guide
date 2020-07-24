@@ -1,4 +1,4 @@
-# Choosing the Price Class for a CloudFront Distribution<a name="PriceClass"></a>
+# Choosing the price class for a CloudFront distribution<a name="PriceClass"></a>
 
 CloudFront has edge locations all over the world\. Our cost for each edge location varies and, as a result, the price that we charge you varies depending on the edge location from which CloudFront serves your requests\.
 

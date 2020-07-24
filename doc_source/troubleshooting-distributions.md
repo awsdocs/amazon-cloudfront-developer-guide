@@ -40,7 +40,7 @@ If you can't view the files in your CloudFront distribution, see the following t
 
 ### Did You Sign Up for Both CloudFront and Amazon S3?<a name="Troubleshooting.SigningUp"></a>
 
-To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both CloudFront and Amazon S3, separately\. For more information about signing up for CloudFront and Amazon S3, see [Setting Up Amazon CloudFront](setting-up-cloudfront.md)\.
+To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both CloudFront and Amazon S3, separately\. For more information about signing up for CloudFront and Amazon S3, see [Setting up Amazon CloudFront](setting-up-cloudfront.md)\.
 
 ### Are Your Amazon S3 Bucket and Object Permissions Set Correctly?<a name="Troubleshooting.Permissions"></a>
 

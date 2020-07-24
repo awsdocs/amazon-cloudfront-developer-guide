@@ -1,4 +1,4 @@
-# Locations and IP Address Ranges of CloudFront Edge Servers<a name="LocationsOfEdgeServers"></a>
+# Locations and IP address ranges of CloudFront edge servers<a name="LocationsOfEdgeServers"></a>
 
 For a list of the locations of CloudFront edge servers, see the [Amazon CloudFront Product Details page](http://aws.amazon.com/cloudfront/details)\.
 

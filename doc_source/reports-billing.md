@@ -7,7 +7,7 @@ AWS provides two usage reports for CloudFront:
 To help you understand these reports, see the detailed information in [Interpreting Your AWS Bill and the AWS Usage Report for CloudFront](billing-and-usage-interpreting.md)\.
 
 **Note**  
-Like other AWS services, CloudFront charges you for only what you use\. For more information, see [CloudFront Pricing](CloudFrontPricing.md)\.
+Like other AWS services, CloudFront charges you for only what you use\. For more information, see [CloudFront pricing](CloudFrontPricing.md)\.
 
 **Topics**
 + [AWS Billing Report for CloudFront](#billing-report)
