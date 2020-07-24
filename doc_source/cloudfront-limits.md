@@ -5,6 +5,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 **Topics**
 + [General Quotas](#limits-general)
 + [General Quotas on Web Distributions](#limits-web-distributions)
++ [General Quotas on Policies](#limits-policies)
 + [Quotas on WebSocket Connections](#limits-websockets)
 + [Quotas on Whitelisted Cookies \(Web Distributions Only\)](#limits-whitelisted-cookies)
 + [Quotas on Whitelisted Query Strings \(Web Distributions Only\)](#limits-whitelisted-query-strings)
@@ -49,6 +50,24 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Origin groups per distribution | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Origin access identities per account  |  100 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Cache behaviors per distribution | 25 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+
+## General Quotas on Policies<a name="limits-policies"></a>
+
+
+****  
+
+| Entity | Default quota | 
+| --- | --- | 
+|  Cache policies per AWS account  |  20  | 
+|  Distributions associated with the same cache policy  |  100  | 
+|  Query strings per cache policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Headers per cache policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Cookies per cache policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Origin request policies per AWS account  |  20  | 
+|  Distributions associated with the same origin request policy  |  100  | 
+|  Query strings per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Headers per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Cookies per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
 ## Quotas on WebSocket Connections<a name="limits-websockets"></a>
 
