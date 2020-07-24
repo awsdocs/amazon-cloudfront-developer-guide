@@ -55,6 +55,8 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    You must allow public read access to the bucket and files so that CloudFront URLs can serve content from the bucket\. However, you can restrict access to specific content by using the CloudFront private content feature\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
 
+   Select the check box for **I acknowledge that the current settings may result in this bucket and the objects within becoming public**\.
+
 1. Choose **Next**, and then choose **Create bucket**\.
 
 1. In the **Buckets** pane, choose your bucket, and then choose **Upload**\.
@@ -63,13 +65,9 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 1. Choose **Next**\.
 
-1. On the **Set permissions** page, grant public read privileges for each file that you upload to your Amazon S3 bucket\. 
+1. On the **Set permissions** page, for **Manage public permissions**, choose **Grant public read access to this object\(s\)**\.
 
-   1. Choose **Next** to set permissions\.
-
-   1. For **Manage public permissions**, choose **Grant public read access to this object\(s\)**\.
-
-   1. Choose **Next**\.
+1. Choose **Next**\.
 
 1. Set any properties that you want for the object, such as encryption or tagging, and then choose **Next**\.
 
@@ -91,16 +89,17 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 1. On the **Select a delivery method for your content** page, in the **Web** section, choose **Get Started**\.
 
-1. On the **Create Distribution** page, for **Origin Domain Name**, choose the Amazon S3 bucket that you created earlier\. For **Origin Path**, **Origin ID**, **Restrict Bucket Access**, and **Origin Custom Headers**, accept the default values\.  
-![\[Specify the Amazon S3 bucket.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-2-origin-s3-get-started.png)
+1. On the **Create Distribution** page, for **Origin Domain Name**, choose the Amazon S3 bucket that you created earlier\.
 
-1. Under **Default Cache Behavior Settings**, accept the default values\.
+   For the other settings under **Origin Settings**, accept the default values\.
+
+1. For the settings under **Default Cache Behavior Settings**, accept the default values\.
 
    CloudFront will:
-   + Forward all requests that use the CloudFront URL for your distribution \(for example, `http://d111111abcdef8.cloudfront.net/image.jpg`\) to the Amazon S3 bucket that you specified in step 4 of this procedure\.
+   + Forward all requests that use the CloudFront URL for your distribution \(for example, `https://d111111abcdef8.cloudfront.net/image.jpg`\) to the Amazon S3 bucket that you specified in step 4 of this procedure\.
    + Allow end users to use either HTTP or HTTPS to access your objects\.
    + Respond to requests for your objects\.
-   + Cache your objects at CloudFront edge locations for 24 hours\.
+   + Attempt to cache your objects at CloudFront edge locations for 24 hours, by default\.
    + Forward only the default request headers to your origin and not cache your objects based on the values in the headers\.
    + Exclude cookies and query string parameters, if any, when forwarding requests for objects to your origin\. \(Amazon S3 doesn't process cookies, and processes only some query string parameters\.\)
    + Allow everyone to view your content\.
@@ -109,8 +108,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
    + Be configured to distribute media files in the Microsoft Smooth Streaming format\.
    + Automatically compress your content\.
 
-   For more information about cache behavior options, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.  
-![\[Define cache behavior.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-3-cache-behavior-get-started.png)
+   For more information about cache behavior options, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.
 
 1. Under **Distribution Settings**, choose the values for your distribution:  
 **Price Class**  
@@ -133,12 +131,11 @@ Accept the default value\.
 **Comment \(Optional\)**  
 Enter any comments that you want to save with the distribution\.  
 **Distribution State**  
-Choose **Enabled**\.  
-![\[Distribution settings\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/create-download-dist-4-distribution-details.png)
+Choose **Enabled**\.
 
 1. Choose **Create Distribution**\.
 
-1. After CloudFront creates your distribution, the value of the **Status** column for your distribution changes from **In Progress** to **Deployed**\. This typically takes between 20 and 40 minutes\.
+1. After CloudFront creates your distribution, the value of the **Status** column for your distribution changes from **In Progress** to **Deployed**\. This typically takes a few minutes\.
 
    The domain name that CloudFront assigns to your distribution appears in the list of distributions\. \(It also appears on the **General** tab for a selected distribution\.\)
 
