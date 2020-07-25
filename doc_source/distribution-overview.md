@@ -1,10 +1,11 @@
-# Overview of Distributions<a name="distribution-overview"></a>
+# Overview of distributions<a name="distribution-overview"></a>
 
 When you want to use CloudFront to distribute your content, you create a distribution and choose the configuration settings you want\. For example:
 + Your content origin—that is, the Amazon S3 bucket, MediaPackage channel, or HTTP server from which CloudFront gets the files to distribute\. You can specify any combination of up to 25 Amazon S3 buckets, channels, and/or HTTP servers as your origins\. 
 + Access—whether you want the files to be available to everyone or restrict access to some users\.
 + Security—whether you want CloudFront to require users to use HTTPS to access your content\.
-+ Cookie or query\-string forwarding—whether you want CloudFront to forward cookies or query strings to your origin\.
++ Cache key—which values, if any, you want to include in the *cache key*\. The cache key uniquely identifies each file in the cache for a given distribution\.
++ Origin request settings—whether you want CloudFront to include HTTP headers, cookies, or query strings in requests that it sends to your origin\.
 + Geo\-restrictions—whether you want CloudFront to prevent users in selected countries from accessing your content\.
 + Access logs—whether you want CloudFront to create access logs that show viewer activity\.
 

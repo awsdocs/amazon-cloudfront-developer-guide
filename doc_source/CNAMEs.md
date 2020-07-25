@@ -24,7 +24,7 @@ If you want to use your own domain name, such as `www.example.com`, instead of t
 
 ## Adding an Alternate Domain Name<a name="CreatingCNAME"></a>
 
-The following task list describes how to use the CloudFront console to add an alternate domain name to your distribution so that you can use your own domain name in your links instead of the CloudFront domain name\. For information about updating your distribution using the CloudFront API, see [Working with Distributions](distribution-working-with.md)\.
+The following task list describes how to use the CloudFront console to add an alternate domain name to your distribution so that you can use your own domain name in your links instead of the CloudFront domain name\. For information about updating your distribution using the CloudFront API, see [Working with distributions](distribution-working-with.md)\.
 
 **Note**  
 If you want viewers to use HTTPS with your alternate domain name, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.

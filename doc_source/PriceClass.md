@@ -8,7 +8,7 @@ By default, CloudFront responds to requests for your objects based only on perfo
 
 If you choose a price class that does not include all edge locations, CloudFront may still occasionally serve requests for your content from an edge location in a region that is not included in your price class\. When this happens, you are not charged the rate for the more expensive region from which your objects were served\. Instead, you're charged the rate for the least expensive region in your selected price class\.
 
-You can choose a price class when you create or update a CloudFront distribution\. For more information, see [Working with Distributions](distribution-working-with.md)\. 
+You can choose a price class when you create or update a CloudFront distribution\. For more information, see [Working with distributions](distribution-working-with.md)\. 
 
 If you're creating or updating a distribution by using the CloudFront API, one of the AWS SDKs, or AWS CloudFormation, see [DistributionConfig Complex Type](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html) \(search for `PriceClass`\)\.
 

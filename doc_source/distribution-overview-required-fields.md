@@ -1,4 +1,4 @@
-# Required Fields for Create Distribution and Update Distribution<a name="distribution-overview-required-fields"></a>
+# Required fields for creating and updating distributions<a name="distribution-overview-required-fields"></a>
 
 When you update a distribution by using the [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) CloudFront API action, there are more required fields than when you create a distribution by using [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)\. Review the following tables for a summary of the fields that are required for creating and for updating a distribution\.
 
