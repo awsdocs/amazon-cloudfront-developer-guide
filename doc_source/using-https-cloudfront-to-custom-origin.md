@@ -3,7 +3,7 @@
 If you want to require HTTPS for communication between CloudFront and your custom origin, the steps you take depend on whether you're using the domain name that CloudFront assigned to your distribution \(like d111111abcdef8\.cloudfront\.net\) or your own alternate domain name \(like example\.com\)\. 
 
 **Note**  
-If you use an Amazon S3 bucket as your origin and you configure your bucket as a website endpoint, follow the guidance in this section\. If not, to use your Amazon S3 bucket with HTTPS, see [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)\.
+If your custom origin is an Amazon S3 bucket that’s configured as a website endpoint, you can’t configure CloudFront to use HTTPS with your origin because Amazon S3 doesn’t support HTTPS for website endpoints\.
 
 **Use the default CloudFront domain name**  
 If you're using the domain name that CloudFront assigned to your distribution in the URLs for your objects \(for example, https://d111111abcdef8\.cloudfront\.net/logo\.jpg\), you can require HTTPS by following the procedures in this topic to do the following:  
