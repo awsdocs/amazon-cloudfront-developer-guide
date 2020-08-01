@@ -157,7 +157,7 @@ You must wait until the status of your distribution changes to **Deployed** befo
    2. <head>My CloudFront Test</head>
    3. <body>
    4. <p>My text content goes here.</p>
-   5. <p><img src="https://<domain name>/<object name>" alt="my test image"/>
+   5. <p><img src="https://<domain name>/<object name>" alt="my test image"/></p>
    6. </body>
    7. </html>
    ```
