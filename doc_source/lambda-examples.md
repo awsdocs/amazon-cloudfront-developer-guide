@@ -1520,6 +1520,11 @@ exports.handler = (event, context, callback) => {
 
 The examples in this section illustrate how you can use Lambda@Edge to work with POST requests\.
 
+**Note**  
+To use these examples, you must enable the *include body* option in the distribution’s Lambda function association\. It is not enabled by default\.  
+To enable this setting in the CloudFront console, select the check box for **Include Body** in the **Lambda Function Association**\.
+To enable this setting in the CloudFront API or with AWS CloudFormation, set the `IncludeBody` field to `true` in `LambdaFunctionAssociation`\.
+
 **Topics**
 + [Example: Using a Request Trigger to Read an HTML Form](#lambda-examples-access-request-body-examples-read)
 + [Example: Using a Request Trigger to Modify an HTML Form](#lambda-examples-access-request-body-examples-replace)
