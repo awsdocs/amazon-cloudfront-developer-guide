@@ -1520,6 +1520,8 @@ exports.handler = (event, context, callback) => {
 
 The examples in this section illustrate how you can use Lambda@Edge to work with POST requests\.
 
+For these examples to work, the [LambdaFunctionAssociation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_LambdaFunctionAssociation.html) that is part of the Cloudfront distribution must have `IncludeBody` enabled.
+
 **Topics**
 + [Example: Using a Request Trigger to Read an HTML Form](#lambda-examples-access-request-body-examples-read)
 + [Example: Using a Request Trigger to Modify an HTML Form](#lambda-examples-access-request-body-examples-replace)
