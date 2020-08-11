@@ -184,21 +184,16 @@ You must follow separate procedures to manually delete each service\-linked role
 
 ### Supported Regions for CloudFront Service\-Linked Roles<a name="slr-regions"></a>
 
-CloudFront supports using service\-linked roles for Lambda@Edge in the following Regions\.
-
-
-****  
-
-| Region name | Region identity | Support in CloudFront | 
-| --- | --- | --- | 
-| US East \(N\. Virginia\) | us\-east\-1 | Yes | 
-| US East \(Ohio\) | us\-east\-2 | Yes | 
-| US West \(Oregon\) | us\-west\-2 | Yes | 
-| Asia Pacific \(Mumbai\) | ap\-south\-1 | Yes | 
-| Asia Pacific \(Tokyo\) | ap\-northeast\-1 | Yes | 
-| Asia Pacific \(Seoul\) | ap\-northeast\-2 | Yes | 
-| Asia Pacific \(Singapore\) | ap\-southeast\-1 | Yes | 
-| Asia Pacific \(Sydney\) | ap\-southeast\-2 | Yes | 
-| Europe \(Frankfurt\) | eu\-central\-1 | Yes | 
-| Europe \(London\) | eu\-west\-2 | Yes | 
-| South America \(São Paulo\) | sa\-east\-1 | Yes | 
+CloudFront supports using service\-linked roles for Lambda@Edge in the following Regions:
++ US East \(Ohio\) – `us-east-2`
++ US East \(N\. Virginia\) – `us-east-1`
++ US West \(Oregon\) – `us-west-2`
++ Asia Pacific \(Mumbai\) – `ap-south-1`
++ Asia Pacific \(Seoul\) – `ap-northeast-2`
++ Asia Pacific \(Singapore\) – `ap-southeast-1`
++ Asia Pacific \(Sydney\) – `ap-southeast-2`
++ Asia Pacific \(Tokyo\) – `ap-northeast-1`
++ Europe \(Frankfurt\) – `eu-central-1`
++ Europe \(Ireland\) – `eu-west-1`
++ Europe \(London\) – `eu-west-2`
++ South America \(São Paulo\) – `sa-east-1`
