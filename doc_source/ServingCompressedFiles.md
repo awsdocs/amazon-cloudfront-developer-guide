@@ -64,8 +64,15 @@ CloudFront compresses files that are between 1,000 bytes and 10,000,000 bytes in
 **Content\-Length header**  
 The origin must include a `Content-Length` header in the response so CloudFront can determine whether the size of the file is in the range that CloudFront compresses\. If the `Content-Length` header is missing, CloudFront won't compress the file\.
 
-**Etag header**  
-If you configure CloudFront to compress content, CloudFront removes the `ETag` response header from the files that it compresses\. When the `ETag` header is present, CloudFront and your origin can use it to determine whether the version of a file in a CloudFront edge cache is identical to the version on the origin server\. However, after compression the two versions are no longer identical\. As a result, when a compressed file expires and CloudFront forwards another request to your origin, your origin always returns the file to CloudFront instead of an HTTP status code 304 \(Not Modified\)\.
+**ETag header**  
+When the uncompressed object from the origin includes a valid, strong `ETag` HTTP header, CloudFront converts the strong `ETag` header value to a weak `ETag`, and returns the weak `ETag` value to the viewer\. Viewers can store the weak `ETag` value and use it to send conditional requests with the `If-None-Match` HTTP header\. This allows viewers, CloudFront, and the origin to treat the compressed and uncompressed versions of an object as semantically equivalent, which reduces unnecessary data transfer\.  
+A valid, strong `ETag` header value begins with a double quote character \(`"`\)\. To convert the strong `ETag` value to a weak one, CloudFront adds the characters `W/` to the beginning of the strong `ETag` value\.  
+When the object from the origin includes a weak `ETag` header value \(a value that begins with the characters `W/`\), CloudFront does not modify this value, and returns it to the viewer as received from the origin\.  
+When the object from the origin includes an invalid `ETag` header value \(the value does not begin with `"` or with `W/`\), CloudFront removes the `ETag` header and returns the object to the viewer without the `ETag` response header\.  
+For more information, see the following pages in the MDN web docs:  
++ [Directives](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag#Directives) \(`ETag` HTTP header\)
++ [Weak validation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#Weak_validation) \(HTTP conditional requests\)
++ [`If-None-Match` HTTP header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match)
 
 **Content already in edge locations when you configure CloudFront to compress files**  
 CloudFront compresses files in each edge location when it gets the files from your origin\. When you configure CloudFront to compress your content, it doesn't compress files that are already in edge locations\. In addition, when a file expires in an edge location and CloudFront forwards another request for the file to your origin, CloudFront doesn't compress the file if your origin returns an HTTP status code 304, which means that the edge location already has the latest version of the file\. If you want CloudFront to compress the files that are already in edge locations, you'll need to invalidate those files\. For more information, see [Invalidating Files](Invalidation.md)\.
