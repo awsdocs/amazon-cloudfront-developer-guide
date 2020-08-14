@@ -336,4 +336,3 @@ See also
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-+ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)

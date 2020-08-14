@@ -151,8 +151,7 @@ To create the value for the `CloudFront-Signature` attribute in a `Set-Cookie` h
 
 For additional information and examples of how to hash, sign, and encode the policy statement, see the following topics:
 + [Using a Linux Command and OpenSSL for Base64\-Encoding and Encryption](private-content-linux-openssl.md)
-+ [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)
-+ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)<a name="private-content-canned-policy-cookie-creating-signature-procedure"></a>
++ [Code Examples for Creating a Signature for a Signed URL](PrivateCFSignatureCodeAndExamples.md)<a name="private-content-canned-policy-cookie-creating-signature-procedure"></a>
 
 **To create a signature for a signed cookie using a canned policy**
 

@@ -24,7 +24,6 @@ You can submit a certain number of invalidation paths each month for free\. If y
 + [Specifying the Files to Invalidate](#invalidation-specifying-objects)
 + [Invalidating Files Using the Console](#Invalidation_Requests)
 + [Invalidating Files Using the CloudFront API](#invalidating-objects-api)
-+ [Third\-Party Tools for Invalidating Files](#InvalidationTools)
 + [Concurrent Invalidation Request Maximum](#InvalidationLimits)
 + [Paying for File Invalidation](#PayingForInvalidation)
 
@@ -229,10 +228,6 @@ For information about invalidating objects and about displaying information abou
 + Invalidating files: [CreateInvalidation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html) 
 + Getting a list of your invalidations: [ListInvalidations](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html)
 + Getting information about a specific invalidation: [GetInvalidation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetInvalidation.html)
-
-## Third\-Party Tools for Invalidating Files<a name="InvalidationTools"></a>
-
-In addition to the invalidation methods provided by CloudFront, several third\-party tools provide ways to invalidate files\. For a list of tools, see [Invalidating Objects](Resources.md#resources-invalidation-tools)\.
 
 ## Concurrent Invalidation Request Maximum<a name="InvalidationLimits"></a>
 

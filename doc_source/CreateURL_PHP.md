@@ -257,4 +257,3 @@ See also:
 + [Create a URL Signature Using Perl](CreateURLPerl.md)
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-+ [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)

@@ -68,7 +68,7 @@ Signed CloudFront URLs cannot contain extra query string arguments\. If you add 
 
 You can distribute private content using a signed URL that is valid for only a short time—possibly for as little as a few minutes\. Signed URLs that are valid for such a short period are good for distributing content on\-the\-fly to a user for a specific purpose, such as distributing movie rentals or music downloads to customers on demand\. If your signed URLs will be valid for just a short period, you'll probably want to generate them automatically using an application that you develop\. When the user starts to download a file or starts to play a media file, CloudFront compares the expiration time in the URL with the current time to determine whether the URL is still valid\.
 
-You can also distribute private content using a signed URL that is valid for a longer time, possibly for years\. Signed URLs that are valid for a longer period are useful for distributing private content to known users, such as distributing a business plan to investors or distributing training materials to employees\. You can develop an application to generate these longer\-term signed URLs for you, or you can use one of the third\-party GUI tools listed in [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)\.
+You can also distribute private content using a signed URL that is valid for a longer time, possibly for years\. Signed URLs that are valid for a longer period are useful for distributing private content to known users, such as distributing a business plan to investors or distributing training materials to employees\. You can develop an application to generate these longer\-term signed URLs for you\.
 
 ## When Does CloudFront Check the Expiration Date and Time in a Signed URL?<a name="private-content-check-expiration"></a>
 
@@ -87,5 +87,3 @@ For sample code that creates the hashed and signed part of signed URLs, see the 
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-
-For information about third\-party tools that support private content, including creating signed URLs, see [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)\.

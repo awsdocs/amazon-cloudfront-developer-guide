@@ -80,5 +80,3 @@ The sample code for private content shows only how to create the signature for s
 + [Create a URL Signature Using PHP](CreateURL_PHP.md)
 + [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
 + [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
-
-For information about third\-party tools that support private content, including creating signed URLs, see [Tools and Code Examples for Configuring Private Content](Resources.md#resources-distributing-private-content)\.
