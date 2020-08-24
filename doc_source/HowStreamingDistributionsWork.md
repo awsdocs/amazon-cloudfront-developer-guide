@@ -1,7 +1,7 @@
 # How RTMP Distributions Work<a name="HowStreamingDistributionsWork"></a>
 
 **Note**  
-[Adobe designated Flash as end\-of\-life by December 31, 2020](https://theblog.adobe.com/adobe-flash-update/)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
+[Adobe designated Flash as end\-of\-life at the end of 2020](https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update.html)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
 
 To stream media files using CloudFront, you provide two types of files to your end users:
 + Your media files

@@ -1,7 +1,7 @@
 # Working with RTMP Distributions<a name="distribution-rtmp"></a>
 
 **Note**  
-[Adobe designated Flash as end\-of\-life by December 31, 2020](https://theblog.adobe.com/adobe-flash-update/)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
+[Adobe designated Flash as end\-of\-life at the end of 2020](https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update.html)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
 
 This section describes how you configure and manage RTMP distributions\. RTMP distributions stream media files using Adobe Media Server and the Adobe Real\-Time Messaging Protocol \(RTMP\)\. For information about how to create an RTMP distribution, see [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\.
 
