@@ -7,6 +7,7 @@ The following entries describe important changes made to the CloudFront document
 
 | Change | Description | Date changed | 
 | --- | --- | --- | 
+|  API support for additional metrics  |  CloudFront now supports enabling eight additional real\-time metrics with the CloudFront API\. For more information, see [Enabling additional metrics](viewing-cloudfront-metrics.md#enable-metrics)\.  |  August 28, 2020  | 
 |  New CloudFront HTTP headers  |  CloudFront added additional HTTP headers for determining information about the viewer such as device type, geographic location, and more\. For more information, see [Using the CloudFront HTTP headers](using-cloudfront-headers.md)\.  |  July 23, 2020  | 
 |  New feature  |  CloudFront now supports *cache policies* and *origin request polices*, which give you more granular control over the *cache key* and *origin requests* for your CloudFront distributions\. For more information, see [Working with policies](working-with-policies.md)\.  |  July 22, 2020  | 
 |  New security policy  |  CloudFront now supports a new security policy, **TLSv1\.2\_2019**, with a smaller set of supported ciphers\. For more information, see [Supported SSL/TLS protocols and ciphers for communication between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.  |  July 8, 2020  | 

@@ -52,6 +52,12 @@ The total time spent from when CloudFront receives a request to when it starts p
 **Error rate by status code**  
 The percentage of all viewer requests for which the response’s HTTP status code is a particular code in the `4xx` or `5xx` range\. This metric is available for all of the following error codes: `401`, `403`, `404`, `502`, `503`, and `504`\.
 
+### Enabling additional metrics<a name="enable-metrics"></a>
+
+You can enable the additional metrics in the CloudFront console, with the AWS Command Line Interface \(AWS CLI\), or with the CloudFront API\.
+
+#### Enabling additional metrics \(console\)<a name="enable-metrics-console"></a>
+
 **To enable additional metrics**
 
 1. Sign in to the AWS Management Console and open the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring)\.
@@ -69,6 +75,40 @@ You can customize the graphs by doing the following:
 + To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh interval\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
 
 To view CloudFront graphs in the CloudWatch console, choose **Add to dashboard**\.
+
+#### Enabling additional metrics \(AWS CLI\)<a name="enable-metrics-cli"></a>
+
+To manage additional metrics with the AWS Command Line Interface \(AWS CLI\), use one of the following commands\.
+
+**To enable additional metrics for a distribution**
++ Use the create\-monitoring\-subscription command, as in the following example\. Replace *EDFDVBD6EXAMPLE* with the ID of the distribution that you are enabling additional metrics for\.
+
+  ```
+  aws cloudfront create-monitoring-subscription --distribution-id EDFDVBD6EXAMPLE --monitoring-subscription RealtimeMetricsSubscriptionConfig={RealtimeMetricsSubscriptionStatus=Enabled}
+  ```
+
+**To see whether additional metrics are enabled for a distribution**
++ Use the get\-monitoring\-subscription command, as in the following example\. Replace *EDFDVBD6EXAMPLE* with the ID of the distribution that you are checking\.
+
+  ```
+  aws cloudfront get-monitoring-subscription --distribution-id EDFDVBD6EXAMPLE
+  ```
+
+**To disable additional metrics for a distribution**
++ Use the delete\-monitoring\-subscription command, as in the following example\. Replace *EDFDVBD6EXAMPLE* with the ID of the distribution that you are disabling additional metrics for\.
+
+  ```
+  aws cloudfront delete-monitoring-subscription --distribution-id EDFDVBD6EXAMPLE
+  ```
+
+#### Enabling additional metrics \(API\)<a name="enable-metrics-api"></a>
+
+To manage additional metrics with the CloudFront API, use one of the following API operations\.
++ To enable additional metrics for a distribution, use [CreateMonitoringSubscription](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateMonitoringSubscription.html)\.
++ To see whether additional metrics are enabled for a distribution, use [GetMonitoringSubscription](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetMonitoringSubscription.html)\.
++ To disable additional metrics for a distribution, use [DeleteMonitoringSubscription](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteMonitoringSubscription.html)\.
+
+For more information about these API calls, see the API reference documentation for your AWS SDK or other API client\.
 
 ### Estimating cost for the additional CloudFront metrics<a name="monitoring-console.distributions-additional-pricing"></a>
 
