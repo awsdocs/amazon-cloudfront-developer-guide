@@ -164,7 +164,7 @@ The ID of the distribution that’s associated with the request\.
 The type of trigger that’s associated with the request: `viewer-request` or `origin-request`\.
 
 **`requestId` \(read\-only\)**  
-An encrypted string that uniquely identifies a viewer\-to\-CloudFront request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
+An encrypted string that uniquely identifies a viewer\-to\-CloudFront request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md) and [Web Distribution Standard Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 #### Fields in the Request Object<a name="request-event-fields-request"></a>
 
@@ -534,7 +534,7 @@ The ID of the distribution that’s associated with the response\.
 The type of trigger that’s associated with the response: `origin-response` or `viewer-response`\.
 
 **`requestId` \(read\-only\)**  
-An encrypted string that uniquely identifies the viewer\-to\-CloudFront request that this response is associated with\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and Using Access Logs](AccessLogs.md) and [Web Distribution Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
+An encrypted string that uniquely identifies the viewer\-to\-CloudFront request that this response is associated with\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md) and [Web Distribution Standard Log File Format](AccessLogs.md#BasicDistributionFileFormat)\.
 
 #### Fields in the Response Object<a name="response-event-fields-response"></a>
 

@@ -42,7 +42,7 @@ For more information about file versioning, see [Updating Existing Files Using V
 
 If you want to invalidate multiple files such as all of the files in a directory or all files that begin with the same characters, you can include the `*` wildcard at the end of the invalidation path\. For more information about using the `*` wildcard, see [Invalidation paths](#invalidation-specifying-objects-paths)\.
 
-If you want to invalidate selected files but your users don’t necessarily access every file on your origin, you can determine which files viewers have requested from CloudFront and invalidate only those files\. To determine which files viewers have requested, enable CloudFront access logging\. For more information about access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
+If you want to invalidate selected files but your users don’t necessarily access every file on your origin, you can determine which files viewers have requested from CloudFront and invalidate only those files\. To determine which files viewers have requested, enable CloudFront access logging\. For more information about access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 ## Specifying the Files to Invalidate<a name="invalidation-specifying-objects"></a>
 
@@ -82,7 +82,7 @@ If you configured CloudFront to forward query strings to your origin, you must i
 + `/images/image.jpg?parameter1=b`
 If client requests include five different query strings for the same file, you can either invalidate the file five times, once for each query string, or you can use the \* wildcard in the invalidation path, as shown in the following example:  
 `/images/image.jpg*`  
-For more information about using wildcards in the invalidation path, see [Invalidation paths](#invalidation-specifying-objects-paths)\. For more information about query strings, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\. To determine which query strings are in use, you can enable CloudFront logging\. For more information, see [Configuring and Using Access Logs](AccessLogs.md)\.
+For more information about using wildcards in the invalidation path, see [Invalidation paths](#invalidation-specifying-objects-paths)\. For more information about query strings, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\. To determine which query strings are in use, you can enable CloudFront logging\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 **Maximum Allowed**  
 For information about the maximum number of invalidations allowed, see [Concurrent Invalidation Request Maximum](#InvalidationLimits)\.

@@ -81,7 +81,7 @@ The number of requests submitted by the referrer as a percentage of the total nu
 
 ## How Data in the Top Referrers Report Is Related to Data in the CloudFront Access Logs<a name="top-referrers-data"></a>
 
-The following list shows how values in the Top Referrers report in the CloudFront console correspond with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
+The following list shows how values in the Top Referrers report in the CloudFront console correspond with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 **Referrer**  
 The domain name of the referrer\. In access logs, referrers are listed in the `cs(Referer)` column\. 

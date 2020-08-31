@@ -66,7 +66,7 @@ The CloudFront usage report includes the following values:
 If you're using Amazon S3 as the origin for CloudFront, consider running the usage report for Amazon S3, too\. However, if you use Amazon S3 for purposes other than as an origin for your CloudFront distributions, it might not be clear what portion applies to your CloudFront usage\.
 
 **Tip**  
-For detailed information about every request that CloudFront receives for your objects, turn on CloudFront access logs for your distribution\. For more information, see [Configuring and Using Access Logs](AccessLogs.md)\. <a name="usage-report-procedure"></a>
+For detailed information about every request that CloudFront receives for your objects, turn on CloudFront access logs for your distribution\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\. <a name="usage-report-procedure"></a>
 
 **To download the usage report for CloudFront or Amazon S3**
 

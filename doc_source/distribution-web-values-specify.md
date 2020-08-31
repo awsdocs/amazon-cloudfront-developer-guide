@@ -701,7 +701,7 @@ For more information, see [Specifying a Default Root Object](DefaultRootObject.m
 
 ### Logging<a name="DownloadDistValuesLoggingOnOff"></a>
 
-Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
+Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 ### Bucket for Logs<a name="DownloadDistValuesLogBucket"></a>
 
@@ -715,14 +715,14 @@ Europe \(Milan\)  eu\-south\-1
 Middle East \(Bahrain\)  me\-south\-1
 The [Amazon S3 console](https://console.aws.amazon.com/s3/home) shows the bucket’s Region\.
 
-If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
+If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 **Note**  
-You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions Required to Configure Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
+You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions Required to Configure Standard Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
 
 ### Log Prefix<a name="DownloadDistValuesLogPrefix"></a>
 
-Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log file names for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Configuring and Using Access Logs](AccessLogs.md)\.
+Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log file names for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 ### Cookie Logging<a name="DownloadDistValuesCookieLogging"></a>
 
@@ -746,7 +746,7 @@ For more information, see [Routing Traffic to an Amazon CloudFront Web Distribut
 
 If you created a CNAME resource record set, either with Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record routes traffic to your distribution regardless of the IP address format of the viewer request\.
 
-If you enable IPv6 and CloudFront access logs, the `c-ip` column includes values in IPv4 and IPv6 format\. For more information, see [Configuring and Using Access Logs](AccessLogs.md)\.
+If you enable IPv6 and CloudFront access logs, the `c-ip` column includes values in IPv4 and IPv6 format\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 **Note**  
 To maintain high customer availability, CloudFront responds to viewer requests by using IPv4 if our data suggests that IPv4 will provide a better user experience\. To find out what percentage of requests CloudFront is serving over IPv6, enable CloudFront logging for your distribution and parse the `c-ip` column, which contains the IP address of the viewer that made the request\. This percentage should grow over time, but it will remain a minority of traffic as IPv6 is not yet supported by all viewer networks globally\. Some viewer networks have excellent IPv6 support, but others don't support IPv6 at all\. \(A viewer network is analogous to your home internet or wireless carrier\.\)  
