@@ -126,13 +126,13 @@ This field is truncated to 800 bytes\.
 + **cs\-accept\-encoding** – The value of the `Accept-Encoding` header in the viewer request\.
 + **cs\-accept** – The value of the `Accept` header in the viewer request\.
 + **cache\-behavior\-path\-pattern** – The path pattern that identifies the cache behavior that matched the viewer request\.
-+ **cs\-headers** – The HTTP headers \(names and values\) that the edge server sent in the response to the viewer\.
++ **cs\-headers** – The HTTP headers \(names and values\) in the viewer request\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ **cs\-header\-names** – The names of the HTTP headers \(not values\) that the edge server sent in the response to the viewer\.
++ **cs\-header\-names** – The names of the HTTP headers \(not values\) in the viewer request\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ **cs\-headers\-count** – The number of HTTP headers that the edge server sent in the response to the viewer\.
++ **cs\-headers\-count** – The number of HTTP headers in the viewer request\.
 
 **Endpoint \(Kinesis data stream\)**  
 The endpoint contains information about the Kinesis data stream where you want to send real\-time logs\. You provide the Amazon Resource Name \(ARN\) of the data stream\.  
