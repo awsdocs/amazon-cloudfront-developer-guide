@@ -12,6 +12,6 @@ This documentation helps you understand how to apply the shared responsibility m
 + [Data Protection in Amazon CloudFront](data-protection-summary.md)
 + [Identity and Access Management in CloudFront](auth-and-access-control.md)
 + [Logging and Monitoring in Amazon CloudFront](logging-and-monitoring.md)
-+ [Compliance Validation for Amazon CloudFront](SERVICENAME-compliance.md)
++ [Compliance Validation for Amazon CloudFront](compliance.md)
 + [Resilience in Amazon CloudFront](disaster-recovery-resiliency.md)
 + [Infrastructure Security in Amazon CloudFront](infrastructure-security.md)

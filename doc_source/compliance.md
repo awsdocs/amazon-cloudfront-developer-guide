@@ -1,4 +1,4 @@
-# Compliance Validation for Amazon CloudFront<a name="SERVICENAME-compliance"></a>
+# Compliance Validation for Amazon CloudFront<a name="compliance"></a>
 
 Third\-party auditors assess the security and compliance of Amazon CloudFront as part of multiple AWS compliance programs\. These include SOC, PCI, HIPAA, and others\. 
 
