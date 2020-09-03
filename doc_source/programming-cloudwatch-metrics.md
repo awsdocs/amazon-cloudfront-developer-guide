@@ -14,7 +14,7 @@ The following values apply to all CloudFront metrics:
 The value for `Namespace` is always `AWS/CloudFront`\.
 
 **Dimensions**  
-Each CloudFront metrics has the following two dimensions:    
+Each CloudFront metric has the following two dimensions:    
 **`DistributionId`**  
 The value for `DistributionId` is the ID of the CloudFront distribution for which you want to get metrics\.  
 **`Region`**  

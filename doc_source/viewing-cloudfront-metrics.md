@@ -33,7 +33,7 @@ These metrics are shown in graphs for each CloudFront distribution on the [**Mon
 
 You can customize the graphs by doing the following:
 + To change the time range for the information displayed in the graphs, choose 1h \(1 hour\), 3h \(3 hours\), or another range, or specify a custom range\. 
-+ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh interval\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
++ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh rate\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
 
 To view CloudFront graphs in the CloudWatch console, choose **Add to dashboard**\.
 
@@ -54,7 +54,7 @@ The percentage of all viewer requests for which the response’s HTTP status cod
 
 ### Enabling additional metrics<a name="enable-metrics"></a>
 
-You can enable the additional metrics in the CloudFront console, with the AWS Command Line Interface \(AWS CLI\), or with the CloudFront API\.
+You can enable additional metrics in the CloudFront console, with the AWS Command Line Interface \(AWS CLI\), or with the CloudFront API\.
 
 #### Enabling additional metrics \(console\)<a name="enable-metrics-console"></a>
 
@@ -72,7 +72,7 @@ After you enable the additional metrics, they are shown in graphs\. On each grap
 
 You can customize the graphs by doing the following:
 + To change the time range for the information displayed in the graphs, choose 1h \(1 hour\), 3h \(3 hours\), or another range, or specify a custom range\. 
-+ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh interval\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
++ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh rate\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
 
 To view CloudFront graphs in the CloudWatch console, choose **Add to dashboard**\.
 
@@ -117,7 +117,7 @@ When you enable additional metrics for a distribution, CloudFront sends up to 8 
 ## Viewing the default Lambda@Edge function metrics<a name="monitoring-console.lambda-at-edge"></a>
 
 The following default metrics are shown in graphs for each Lambda@Edge function on the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring):
-+ 5xx error rate for Lambda@Edge
++ `5xx` error rate for Lambda@Edge
 + Lambda execution errors
 + Lambda invalid responses
 + Lambda throttles
@@ -130,6 +130,6 @@ If you see a spike in errors that you want to investigate, you can choose a func
 
 You can customize the graphs by doing the following:
 + To change the time range for the information displayed in the graphs, choose 1h \(1 hour\), 3h \(3 hours\), or another range, or specify a custom range\. 
-+ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh interval\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
++ To change how often CloudFront updates the information in the graph, choose the down arrow next to the refresh icon, and then choose a refresh rate\. The default refresh rate is 1 minute, but you can choose 10 seconds, 2 minutes, or other options\.
 
 To view the graphs in the CloudWatch console, choose **Add to dashboard**\. You must use the US East \(N\. Virginia\) Region \(us\-east\-1\) to view the graphs in the CloudWatch console\.

@@ -14,10 +14,10 @@ The CloudFront distribution for which you are creating the alarm\.
 A name for the alarm\.
 
 **Send a notification to**  
-The Amazon SNS topic to send notification to if this metrics triggers an alarm\.
+The Amazon SNS topic to send notification to if this metric triggers an alarm\.
 
 **Whenever *<metric> <operator> <value>***  
-Specify when CloudWatch should trigger an alarm and send a notification to the Amazon SNS topic\. For example, to receive a notification when the `5xx` error rate exceeds one percent, specify the following:  
+Specify when CloudWatch should trigger an alarm and send a notification to the Amazon SNS topic\. For example, to receive a notification when the `5xx` error rate exceeds 1%, specify the following:  
 **Whenever Average of 5xxErrorRate** **> 1**  
 Note the following about specifying values:  
 + Enter only whole numbers without punctuation\. For example, to specify one thousand, enter **1000**\.

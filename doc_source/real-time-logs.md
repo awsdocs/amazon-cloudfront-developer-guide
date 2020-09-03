@@ -29,44 +29,44 @@ A name to identify the real\-time log configuration\.
 The sampling rate is a whole number between 1 and 100 \(inclusive\) that determines the percentage of viewer requests that are sent to Kinesis Data Streams as real\-time log records\. To include every viewer request in your real\-time logs, specify 100 for the sampling rate\. You might choose a lower sampling rate to reduce costs while still receiving a representative sample of request data in your real\-time logs\.
 
 **Fields**  
-A list of the fields that are included in each real\-time log record\. You can choose to receive all of the available fields, or only the fields that you need to monitor and analyze performance\.  
-The following list describes each of the available fields\. The fields are listed in the order in which they appear in the log records delivered to Kinesis Data Streams\.
-+ **timestamp** – The date and time at which the edge server finished responding to the request\.
-+ **c\-ip** – The IP address of the viewer that made the request, for example, 192\.0\.2\.183 or 2001:0db8:85a3:0000:0000:8a2e:0370:7334\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of this field is the IP address of the proxy or load balancer\.
-+ **time\-to\-first\-byte** – The number of seconds between receiving the request and writing the first byte of the response, as measured on the edge server\.
-+ **sc\-status** – Contains one of the following values:
-  + The HTTP status code of the edge server’s response \(for example, 200\)\.
-  + 000, which indicates that the viewer closed the connection before the edge server could respond to the request\. If the viewer closes the connection after the edge server starts to send the response, this field contains the applicable HTTP status code\.
-+ **sc\-bytes** – The total number of bytes that the edge server sent to the viewer in response to the request, including headers\.
-+ **cs\-method** – The HTTP request method received from the viewer\.
-+ **cs\-protocol** – The protocol of the viewer request \(http, https, ws, or wss\)\.
-+ **cs\-host** – The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)\.
-+ **cs\-uri\-stem** – The portion of the request URL that identifies the path and object \(for example, /images/cat\.jpg\)\. Question marks \(?\) in URLs and query strings are not included in the log\.
-+ **cs\-bytes** – The total number of bytes of data that the viewer included in the request, including headers\.
-+ **x\-edge\-location** – The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number \(for example, DFW3\)\. The three\-letter code typically corresponds with the International Air Transport Association airport code for an airport near the edge location’s geographic location\. \(These abbreviations might change in the future\.\)
-+ **x\-edge\-request\-id** – An opaque string that uniquely identifies a request\. This string is also sent in the `x-amz-cf-id` response header\.
-+ **x\-host\-header** – The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
-+ **time\-taken** – The number of seconds \(to the thousandth of a second, for example, 0\.082\) from when the edge server receives the viewer’s request to when the edge server writes the last byte of the response to the output queue, as measured on the edge server\. From the perspective of the viewer, the total time to get the full response will be longer than this value because of network latency andTCP buffering\.
-+ **cs\-protocol\-version** – The HTTP version that the viewer specified in the request\. Possible values include `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, and `HTTP/2.0`\.
-+ **c\-ip\-version** – The IP version of the request \(IPv4 or IPv6\)\.
-+ **cs\-user\-agent** – The value of the `User-Agent` header in the request\. The `User-Agent` header identifies the source of the request, such as the type of device and browser that submitted the request or, if the request came from a search engine, which search engine\.
-+ **cs\-referer** – The value of the `Referer` header in the request\. This is the name of the domain that originated the request\. Common referrers include search engines, other websites that link directly to your objects, and your own website\.
-+ **cs\-cookie** – The `Cookie` header in the request, including name—value pairs and the associated attributes\.
+A list of the fields that are included in each real\-time log record\. You can choose to receive all of the available fields, or only the fields that you need for monitoring and analyzing performance\.  
+The following list describes each of the available fields\. The fields are listed in the order in which they appear in the log records that are delivered to Kinesis Data Streams\.
++ **`timestamp`** – The date and time at which the edge server finished responding to the request\.
++ **`c-ip`** – The IP address of the viewer that made the request, for example, 192\.0\.2\.183 or 2001:0db8:85a3:0000:0000:8a2e:0370:7334\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of this field is the IP address of the proxy or load balancer\.
++ `time-to-first-byte` – The number of seconds between receiving the request and writing the first byte of the response, as measured on the edge server\.
++ `sc-status` – Contains one of the following values:
+  + The HTTP status code of the edge server’s response \(for example, `200`\)\.
+  + `000`, which indicates that the viewer closed the connection before the edge server could respond to the request\. If the viewer closes the connection after the edge server starts to send the response, this field contains the applicable HTTP status code\.
++ `sc-bytes` – The total number of bytes that the edge server sent to the viewer in response to the request, including headers\.
++ `cs-method` – The HTTP request method received from the viewer\.
++ `cs-protocol` – The protocol of the viewer request \(`http`, `https`, `ws`, or `wss`\)\.
++ `cs-host` – The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)\.
++ `cs-uri-stem` – The portion of the request URL that identifies the path and object \(for example, /images/cat\.jpg\)\. Question marks \(?\) in URLs and query strings are not included in the log\.
++ `cs-bytes` – The total number of bytes of data that the viewer included in the request, including headers\.
++ `x-edge-location` – The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number \(for example, DFW3\)\. The three\-letter code typically corresponds with the International Air Transport Association \(IATA\) airport code for an airport near the edge location’s geographic location\. \(These abbreviations might change in the future\.\)
++ `x-edge-request-id` – An opaque string that uniquely identifies a request\. This string is also sent in the `x-amz-cf-id` response header\.
++ `x-host-header` – The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
++ `time-taken` – The number of seconds \(to the thousandth of a second, for example, 0\.082\) from when the edge server receives the viewer’s request to when the edge server writes the last byte of the response to the output queue, as measured on the edge server\. From the perspective of the viewer, the total time to get the full response will be longer than this value because of network latency andTCP buffering\.
++ `cs-protocol-version` – The HTTP version that the viewer specified in the request\. Possible values include `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, and `HTTP/2.0`\.
++ `c-ip-version` – The IP version of the request \(IPv4 or IPv6\)\.
++ `cs-user-agent` – The value of the `User-Agent` header in the request\. The `User-Agent` header identifies the source of the request, such as the type of device and browser that submitted the request or, if the request came from a search engine, which search engine\.
++ `cs-referer` – The value of the `Referer` header in the request\. This is the name of the domain that originated the request\. Common referrers include search engines, other websites that link directly to your objects, and your own website\.
++ `cs-cookie` – The `Cookie` header in the request, including name—value pairs and the associated attributes\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ **cs\-uri\-query** – The query string portion of the URL, if any\.
-+ **x\-edge\-response\-result\-type** – How the edge server classified the response just before returning the response to the viewer\. Possible values include:
++ `cs-uri-query` – The query string portion of the URL, if any\.
++ `x-edge-response-result-type` – How the edge server classified the response just before returning the response to the viewer\. Possible values include:
   + `Hit` – The edge server served the object to the viewer from the cache\.
   + `RefreshHit` – The edge server found the object in the edge cache but the object had expired, so the edge server contacted the origin to verify that the cache had the latest version of the object\.
   + `Miss` – The request could not be satisfied by an object in the edge cache, so the edge server forwarded the request to the origin server and returned the result to the viewer\.
   + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
-  + `CapacityExceeded` – The edge server returned a 503 error it didn’t have enough capacity at the time of the request to serve the object\.
+  + `CapacityExceeded` – The edge server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
   + `Error` – Typically, this means the request resulted in a client error or a server error\.
   + `Redirect` – The edge server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
-+ **x\-forwarded\-for** – If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\.
-+ **ssl\-protocol** – When the request used HTTPS, this field contains the SSL/TLS protocol that the viewer and edge server negotiated for transmitting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported SSL/TLS protocols and ciphers for communication between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
-+ **ssl\-cipher** – When the request used HTTPS, this field contains the SSL/TLS cipher that the viewer and edge server negotiated for encrypting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported SSL/TLS protocols and ciphers for communication between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
-+ **x\-edge\-result\-type** – How the edge server classified the response after the last byte left the edge location\. In some cases, the result type can change between the time that the edge server is ready to send the response and the time that it finishes sending the response\. \(See also the `x-edge-response-result-type` field\)\.
++ `x-forwarded-for` – If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\.
++ `ssl-protocol` – When the request used HTTPS, this field contains the SSL/TLS protocol that the viewer and edge server negotiated for transmitting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported SSL/TLS protocols and ciphers for communication between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
++ `ssl-cipher` – When the request used HTTPS, this field contains the SSL/TLS cipher that the viewer and edge server negotiated for encrypting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported SSL/TLS protocols and ciphers for communication between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md#secure-connections-supported-ciphers)\.
++ `x-edge-result-type` – How the edge server classified the response after the last byte left the edge location\. In some cases, the result type can change between the time that the edge server is ready to send the response and the time that it finishes sending the response\. \(See also the `x-edge-response-result-type` field\)\.
 
   For example, in HTTP streaming, suppose the edge server finds a segment of the stream in the edge cache\. In that scenario, the value of this field would ordinarily be `Hit`\. However, if the viewer closes the connection before the edge server has delivered the entire segment, the final result type \(and the value of this field\) is `Error`\.
 
@@ -75,11 +75,11 @@ This field is truncated to 800 bytes\.
   + `RefreshHit` – The edge server found the object in the edge cache but the object had expired, so the edge server contacted the origin to verify that the cache had the latest version of the object\.
   + `Miss` – The request could not be satisfied by an object in the edge cache, so the edge server forwarded the request to the origin server and returned the result to the viewer\.
   + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
-  + `CapacityExceeded` – The edge server returned a 503 error it didn’t have enough capacity at the time of the request to serve the object\.
+  + `CapacityExceeded` – The edge server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
   + `Error` – Typically, this means the request resulted in a client error or a server error\.
   + `Redirect` – The edge server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
-+ **fle\-encrypted\-fields** – The number of [field\-level encryption](field-level-encryption.md) fields that the edge server encrypted and forwarded to the origin\. Edge servers stream the processed request to the origin as they encrypts data, so this field can have a value even if the value of `fle-status` is an error\.
-+ **fle\-status** – When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. When the edge server successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type` can still indicate a client\-side or server\-side error in this case\.
++ `fle-encrypted-fields` – The number of [field\-level encryption](field-level-encryption.md) fields that the edge server encrypted and forwarded to the origin\. Edge servers stream the processed request to the origin as they encrypt data, so this field can have a value even if the value of `fle-status` is an error\.
++ `fle-status` – When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. When the edge server successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type` can still indicate a client\-side or server\-side error in this case\.
 
   If the request exceeds a field\-level encryption quota \(formerly referred to as a limit\), this field contains one of the following error codes, and the edge server returns HTTP status code 400 to the viewer\.
   + `FieldLengthLimitClientError` – A field that is configured to be encrypted exceeded the maximum length allowed\.
@@ -96,12 +96,12 @@ This field is truncated to 800 bytes\.
   + `RejectedByContentType` – The edge server rejected the request and returned an HTTP 400 status code to the viewer because no content type was specified in the configuration for field\-level encryption\.
   + `RejectedByQueryArgs` – The edge server rejected the request and returned an HTTP 400 status code to the viewer because no query argument was specified in the configuration for field\-level encryption\.
   + `ServerError` – The origin server returned an error\.
-+ **sc\-content\-type** – The value of the HTTP `Content-Type` header of the response\.
-+ **sc\-content\-len** – The value of the HTTP `Content-Length` header of the response\.
-+ **sc\-range\-start** – When the response contains the HTTP `Content-Range` header, this field contains the range start value\.
-+ **sc\-range\-end** – When the response contains the HTTP `Content-Range` header, this field contains the range end value\.
-+ **c\-port** – The port number of the request from the viewer\.
-+ **x\-edge\-detailed\-result\-type** – When the `x-edge-result-type` field is not `Error`, this field contains the same value as `x-edge-result-type`\. When `x-edge-result-type` is `Error`, this field contains the specific type of error\. Possible values include:
++ `sc-content-type` – The value of the HTTP `Content-Type` header of the response\.
++ `sc-content-len` – The value of the HTTP `Content-Length` header of the response\.
++ `sc-range-start` – When the response contains the HTTP `Content-Range` header, this field contains the range start value\.
++ `sc-range-end` – When the response contains the HTTP `Content-Range` header, this field contains the range end value\.
++ `c-port` – The port number of the request from the viewer\.
++ `x-edge-detailed-result-type` – When the `x-edge-result-type` field is not `Error`, this field contains the same value as `x-edge-result-type`\. When `x-edge-result-type` is `Error`, this field contains the specific type of error\. Possible values include:
   + `AbortedOrigin` – The edge server encountered an issue with the origin\.
   + `ClientCommError` – The response to the viewer was interrupted due to a communication problem between the edge server and the viewer\.
   + `ClientGeoBlocked` – The distribution is configured to refuse requests from the viewer’s geographic location\.
@@ -122,17 +122,17 @@ This field is truncated to 800 bytes\.
   + `OriginWriteError` – The edge server couldn’t write to the origin\.
   + `OriginZeroSizeObjectError` – A zero size object sent from the origin resulted in an error\.
   + `SlowReaderOriginError` – The viewer was slow to read the message that caused the origin error\.
-+ **c\-country** – A country code that represents the viewer’s geographic location, as determined by the viewer’s IP address\.
-+ **cs\-accept\-encoding** – The value of the `Accept-Encoding` header in the viewer request\.
-+ **cs\-accept** – The value of the `Accept` header in the viewer request\.
-+ **cache\-behavior\-path\-pattern** – The path pattern that identifies the cache behavior that matched the viewer request\.
-+ **cs\-headers** – The HTTP headers \(names and values\) in the viewer request\.
++ `c-country` – A country code that represents the viewer’s geographic location, as determined by the viewer’s IP address\.
++ `cs-accept-encoding` – The value of the `Accept-Encoding` header in the viewer request\.
++ `cs-accept` – The value of the `Accept` header in the viewer request\.
++ `cache-behavior-path-pattern` – The path pattern that identifies the cache behavior that matched the viewer request\.
++ `cs-headers` – The HTTP headers \(names and values\) in the viewer request\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ **cs\-header\-names** – The names of the HTTP headers \(not values\) in the viewer request\.
++ `cs-header-names` – The names of the HTTP headers \(not values\) in the viewer request\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ **cs\-headers\-count** – The number of HTTP headers in the viewer request\.
++ `cs-headers-count` – The number of HTTP headers in the viewer request\.
 
 **Endpoint \(Kinesis data stream\)**  
 The endpoint contains information about the Kinesis data stream where you want to send real\-time logs\. You provide the Amazon Resource Name \(ARN\) of the data stream\.  
@@ -140,7 +140,7 @@ For more information about creating a Kinesis data stream, see the following top
 + [Managing Streams Using the Console](https://docs.aws.amazon.com/streams/latest/dev/managing-streams-console.html)
 + [Perform Basic Kinesis Data Stream Operations Using the AWS CLI](https://docs.aws.amazon.com/streams/latest/dev/fundamental-stream.html)
 + [Creating a Stream](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-create-stream.html) \(uses the AWS SDK for Java\)
-When you create a data stream, you need to specify the number of shards you want\. Use the following information to help you estimate the number of shards you need\.  
+When you create a data stream, you need to specify the number of shards\. Use the following information to help you estimate the number of shards you need\.  
 
 **To estimate the number of shards for your Kinesis data stream**
 
@@ -156,8 +156,8 @@ When you create a data stream, you need to specify the number of shards you want
 
 1. Multiply the number of requests per second \(from step 1\) by the size of a typical real\-time log record \(from step 2\) to determine the amount of data per second that your real\-time log configuration is likely to send to the Kinesis data stream\.
 
-1. Using the data per second, calculate the number of shards that you need\. A single shard can handle no more than 1 MB per second and 1,000 requests \(log records\) per second\. When calculating the number of shards that you need, we recommend adding 10 to 25% as a buffer\.
-For example, assume your distribution receives 50,000 requests per second, and that your real\-time log records size is typically 500 bytes\. This means that your real\-time log configuration could generate 25,000,000 bytes \(50,000 multiplied by 500\), or 23\.84 MB, per second\. In this scenario you would need at least 24 shards\. 29 shards would add a buffer of about 20%\.
+1. Using the data per second, calculate the number of shards that you need\. A single shard can handle no more than 1 MB per second and 1,000 requests \(log records\) per second\. When calculating the number of shards that you need, we recommend adding 10\-25% as a buffer\.
+For example, assume your distribution receives 50,000 requests per second, and that your real\-time log records size is typically 500 bytes\. This means that your real\-time log configuration could generate 25,000,000 bytes \(50,000 multiplied by 500\), or 23\.84 MB, per second\. In this scenario you would need at least 24 shards\. To add a buffer of about 20%, you would specify 29 shards\.
 
 **IAM role**  
 The AWS Identity and Access Management \(IAM\) role that gives CloudFront permission to deliver real\-time logs to your Kinesis data stream\.  
@@ -235,7 +235,7 @@ To use the following policy, replace *Kinesis data stream ARN* with the ARN of y
 
 ## Creating and using real\-time log configurations<a name="create-real-time-log-config"></a>
 
-You can use a real\-time log configuration to get information about requests made to a distribution in real time \(logs are delivered within seconds of receiving the requests\)\. You can create a real\-time log configuration in the CloudFront console, with the AWS Command Line Interface \(AWS CLI\), or with the CloudFront API\.
+You can use a real\-time log configurations to get information about requests made to a distribution in real time \(logs are delivered within seconds of receiving the requests\)\. You can create a real\-time log configuration in the CloudFront console, with the AWS Command Line Interface \(AWS CLI\), or with the CloudFront API\.
 
 To use a real\-time log configuration, you attach it to one or more cache behaviors in a CloudFront distribution\.
 
@@ -251,7 +251,7 @@ To use a real\-time log configuration, you attach it to one or more cache behavi
 
 1. Choose the desired setting for the real\-time log configuration\. Note the following:
    + By default, all **Fields** are chosen\. To remove a field, do one of the following:
-     + Use the **Choose fields** drop down menu to remove the selection from the fields that you don’t want to include in the real\-time log configuration\.
+     + Use the **Choose fields** drop\-down menu to remove the selection from the fields that you don’t want to include in the real\-time log configuration\.
      + Use the expand button \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/console-expand-button.png)\) to view all fields, then use the remove button \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/console-remove-button.png)\) to remove the fields that you don’t want to include in the real\-time log configuration\.
    + For **IAM role**, you can choose **Create new service role** to let the console create the IAM role for you\. You must have permission to create IAM roles\.
    + You can use the setting in the **Distribution** section to choose a CloudFront distribution and cache behavior to attach to the real\-time log configuration\.
@@ -327,7 +327,7 @@ For both of these API calls, provide the ARN of the real\-time log configuration
 
 To read and analyze your real\-time logs, you build or use a Kinesis Data Streams *consumer*\. When you build a consumer for CloudFront real\-time logs, it’s important to know that the fields in every real\-time log record are always delivered in the same order, as listed in the [Fields](#understand-real-time-log-config-fields) section\. Make sure that you build your consumer to accommodate this fixed order\.
 
-For example, consider a real\-time log configuration that includes only these three fields: `time-to-first-byte`, `sc-status`, and `c-country`\. In this scenario, the last field, `c-country`, is always field number 3 in every log record\. However, if you later add additional fields to the real\-time log configuration, the placement of each field in a record can change\.
+For example, consider a real\-time log configuration that includes only these three fields: `time-to-first-byte`, `sc-status`, and `c-country`\. In this scenario, the last field, `c-country`, is always field number 3 in every log record\. However, if you later add fields to the real\-time log configuration, the placement of each field in a record can change\.
 
 For example, if you add the fields `sc-bytes` and `time-taken` to the real\-time log configuration, these fields are inserted into each log record according to the order shown in the [Fields](#understand-real-time-log-config-fields) section\. The resulting order of all five fields is `time-to-first-byte`, `sc-status`, `sc-bytes`, `time-taken`, and `c-country`\. The `c-country` field was originally field number 3, but is now field number 5\. Make sure that your consumer application can handle fields that change position in a log record, in case you add fields to your real\-time log configuration\.
 

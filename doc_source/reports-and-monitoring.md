@@ -6,5 +6,5 @@ This section includes topics that provide details on your options for reports an
 + [AWS Billing and Usage Reports for CloudFront](reports-billing.md)
 + [CloudFront Reports in the Console](reports.md)
 + [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)
-+ [CloudFront Logging](logging.md)
++ [CloudFront logging](logging.md)
 + [Tracking Configuration Changes with AWS Config](TrackingChanges.md)

@@ -38,7 +38,7 @@ The ID of the distribution for which you ran the report\.
 An alternate domain name \(CNAME\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes an origin domain name for the distribution\.
 
 **TimeBucket**  
-The hour or the day that data applies to, in Coordinated Universal Time \(UTC\)\.
+The hour or the day that the data applies to, in Coordinated Universal Time \(UTC\)\.
 
 **Requests**  
 The total number of requests for all HTTP status codes \(for example, `200`, `404`, and so on\) and all methods \(for example, `GET`, `HEAD`, `POST`, and so on\) during the time period\.
