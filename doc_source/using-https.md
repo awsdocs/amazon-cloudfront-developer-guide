@@ -27,5 +27,6 @@ For information about how to require HTTPS between viewers and CloudFront, and b
 + [Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)
 + [Requiring HTTPS for Communication Between CloudFront and Your Custom Origin](using-https-cloudfront-to-custom-origin.md)
 + [Requiring HTTPS for Communication Between CloudFront and Your Amazon S3 Origin](using-https-cloudfront-to-s3-origin.md)
-+ [Supported protocols and ciphers](secure-connections-supported-viewer-protocols-ciphers.md)
++ [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)
++ [Supported protocols and ciphers between CloudFront and the origin](secure-connections-supported-ciphers-cloudfront-to-origin.md)
 + [Charges for HTTPS connections](ChargesForHTTPSConnections.md)
