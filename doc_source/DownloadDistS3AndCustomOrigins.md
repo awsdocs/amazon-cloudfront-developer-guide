@@ -124,7 +124,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    For more information about the format of CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 
-1. If you're using Amazon S3 CNAMEs, your application uses your domain name \(for example, example\.com\) to reference the objects in your Amazon S3 bucket instead of using the name of your bucket \(for example, *AWSDOC\-EXAMPLE\-BUCKET1*\.s3\.amazonaws\.com\)\. To continue using your domain name to reference objects instead of using the CloudFront domain name for your distribution \(for example, d111111abcdef8\.cloudfront\.net\), you need to update your settings with your DNS service provider\.
+1. If you're using Amazon S3 CNAMEs, your application uses your domain name \(for example, example\.com\) to reference the objects in your Amazon S3 bucket instead of using the name of your bucket \(for example, *DOC\-EXAMPLE\-BUCKET1*\.s3\.amazonaws\.com\)\. To continue using your domain name to reference objects instead of using the CloudFront domain name for your distribution \(for example, d111111abcdef8\.cloudfront\.net\), you need to update your settings with your DNS service provider\.
 
    For Amazon S3 CNAMEs to work, your DNS service provider must have a CNAME resource record set for your domain that currently routes queries for the domain to your Amazon S3 bucket\. For example, if a user requests this object:
 
@@ -132,7 +132,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
    The request is automatically rerouted, and the user sees this object:
 
-   `http://AWSDOC-EXAMPLE-BUCKET1.s3.amazonaws.com/images/image.jpg`
+   `http://DOC-EXAMPLE-BUCKET1.s3.amazonaws.com/images/image.jpg`
 
    To route queries to your CloudFront distribution instead of your Amazon S3 bucket, you need to use the method provided by your DNS service provider to update the CNAME resource record set for your domain\. This updated CNAME record starts to redirect DNS queries from your domain to the CloudFront domain name for your distribution\. For more information, see the documentation provided by your DNS service provider\.
 **Note**  

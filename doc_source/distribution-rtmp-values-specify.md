@@ -25,7 +25,7 @@ To stream media files using CloudFront, you create an RTMP distribution and spec
 
 ## Origin Domain Name \(Amazon S3 Bucket\)<a name="StreamingDistValuesDNSName"></a>
 
-The DNS domain name of the Amazon S3 bucket from which you want CloudFront to get objects for this origin, for example, `AWSDOC-EXAMPLE-BUCKET1.s3.amazonaws.com`\. In the CloudFront console, click in the **Origin Domain Name** field, and a list enumerates the Amazon S3 buckets that are associated with the current AWS account\. To use a bucket from a different AWS account, type the domain name of the bucket in the following format:
+The DNS domain name of the Amazon S3 bucket from which you want CloudFront to get objects for this origin, for example, `DOC-EXAMPLE-BUCKET1.s3.amazonaws.com`\. In the CloudFront console, click in the **Origin Domain Name** field, and a list enumerates the Amazon S3 buckets that are associated with the current AWS account\. To use a bucket from a different AWS account, type the domain name of the bucket in the following format:
 
 `bucket-name.s3.region.amazonaws.com` 
 
@@ -87,7 +87,7 @@ Whether you want CloudFront to log information about each request for an object 
 
 ## Bucket for Logs<a name="StreamingDistValuesLogBucket"></a>
 
-If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myLogs-AWSDOC-EXAMPLE-BUCKET.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myLogs-DOC-EXAMPLE-BUCKET.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
 
 **Note**  
 You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions Required to Configure Standard Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.

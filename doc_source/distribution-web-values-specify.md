@@ -705,7 +705,7 @@ Whether you want CloudFront to log information about each request for an object 
 
 ### Bucket for Logs<a name="DownloadDistValuesLogBucket"></a>
 
-If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myLogs-AWSDOC-EXAMPLE-BUCKET.s3.amazonaws.com`\.
+If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myLogs-DOC-EXAMPLE-BUCKET.s3.amazonaws.com`\.
 
 **Note**  
 Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver access logs to buckets in these Regions:  
