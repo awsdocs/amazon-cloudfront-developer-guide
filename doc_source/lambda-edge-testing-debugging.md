@@ -76,7 +76,7 @@ The **Lambda@Edge errors** tab also includes a **Throttles** graph\. On occasion
 
 ![\[Throttle graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
 
-For an example about how to use this information in troubleshooting HTTP errors, see [Four steps for debugging your content delivery on AWS](https://aws-blogs-prod.amazon.com/networking-and-content-delivery/four-steps-for-debugging-your-content-delivery-on-aws/)\.
+For an example about how to use this information in troubleshooting HTTP errors, see [Four steps for debugging your content delivery on AWS](http://aws.amazon.com/blogs/networking-and-content-delivery/four-steps-for-debugging-your-content-delivery-on-aws/)\.
 
 ## Troubleshooting Invalid Lambda Function Responses \(Validation Errors\)<a name="lambda-edge-testing-debugging-troubleshooting-invalid-responses"></a>
 
