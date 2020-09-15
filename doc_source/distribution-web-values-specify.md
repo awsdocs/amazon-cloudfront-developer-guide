@@ -563,7 +563,7 @@ If you want to create signed URLs using AWS accounts in addition to or instead o
 
 ### Compress Objects Automatically<a name="DownloadDistValuesCompressObjectsAutomatically"></a>
 
-If you want CloudFront to automatically compress files of certain types when viewer requests include `Accept-Encoding: gzip` in the request header, choose **Yes**\. When CloudFront compresses your content, downloads are faster because the files are smaller, and your webpages render faster for your users\. For more information, see [Serving Compressed Files](ServingCompressedFiles.md)\.
+If you want CloudFront to automatically compress files of certain types when viewers support compressed content, choose **Yes**\. When CloudFront compresses your content, downloads are faster because the files are smaller, and your webpages render faster for your users\. For more information, see [Serving compressed files](ServingCompressedFiles.md)\.
 
 ### CloudFront Event<a name="DownloadDistValuesEventType"></a>
 

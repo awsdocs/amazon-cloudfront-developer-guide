@@ -74,7 +74,7 @@ CloudFront does not support client authentication with client\-side SSL certific
 
 ### Compression<a name="RequestCustomCompression"></a>
 
-CloudFront forwards requests that have the `Accept-Encoding` field values `"identity"` and `"gzip"`\. For more information, see [Serving Compressed Files](ServingCompressedFiles.md)\. 
+For more information, see [Serving compressed files](ServingCompressedFiles.md)\. 
 
 ### Conditional Requests<a name="RequestCustomConditionalGETs"></a>
 
@@ -149,7 +149,7 @@ For more information about caching based on header values, see [Caching Content 
 | Other\-defined headers | CloudFront forwards the headers to your origin\. | Yes | 
 | `Accept` | CloudFront removes the header\. | Yes | 
 | `Accept-Charset` | CloudFront removes the header\. | Yes | 
-| `Accept-Encoding` | If the value contains `gzip`, CloudFront forwards `Accept-Encoding: gzip` to your origin\. If the value does not contain `gzip`, CloudFront removes the `Accept-Encoding` header field before forwarding the request to your origin\. | Yes | 
+| `Accept-Encoding` | If the value contains `gzip` or `br`, CloudFront forwards a normalized `Accept-Encoding` header to your origin\. For more information, see [Cache compressed objects \(uses the `Accept-Encoding` header\)](controlling-the-cache-key.md#cache-policy-compressed-objects) and [Serving compressed files](ServingCompressedFiles.md)\. | Yes | 
 | `Accept-Language` | CloudFront removes the header\. | Yes | 
 | `Authorization` |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html)  | Yes | 
 | `Cache-Control` | CloudFront forwards the header to your origin\. | No | 

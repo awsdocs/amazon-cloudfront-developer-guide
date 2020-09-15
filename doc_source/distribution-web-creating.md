@@ -30,5 +30,5 @@ You are responsible for ensuring the security of your origin server\. You must e
 
    Note the following:
    + If you want to use signed URLs to restrict access to your content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\. 
-   + If you want to serve compressed content, see [Serving Compressed Files](ServingCompressedFiles.md)\.
+   + If you want to serve compressed content, see [Serving compressed files](ServingCompressedFiles.md)\.
    + For information about CloudFront request and response behavior for Amazon S3 and custom origins, see [Request and Response Behavior](RequestAndResponseBehavior.md)\.

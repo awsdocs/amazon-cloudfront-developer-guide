@@ -58,13 +58,11 @@ For more information, see [Caching Content Based on Request Headers](header-cach
 
 ## Remove Accept\-Encoding Header When Compression is Not Needed<a name="cache-hit-ratio-remove-accept-encoding"></a>
 
-By default, when CloudFront receives a request, it checks the value of the `Accept-Encoding` header\. If the value of the header contains `gzip`, then CloudFront adds the header and value `gzip`— `Accept-Encoding: gzip`—to the cache key, and then forwards it to the origin\. This behavior ensures that CloudFront serves either an object or a compressed version of the object, based on the value of the `Accept-Encoding` header\.
-
-If compression is not enabled—because the origin doesn't support it, CloudFront doesn't support it, or the content is not compressible—you can increase the cache hit ratio by specifying different behavior\. To do this, associate a cache behavior in your distribution to an origin that sets the Custom Origin Header as follows:
+If compression is not enabled—because the origin doesn’t support it, CloudFront doesn’t support it, or the content is not compressible—you can increase the cache hit ratio by associating a cache behavior in your distribution to an origin that sets the Custom Origin Header as follows:
 + **Header name**: `Accept-Encoding`
 + **Header value**: \(Keep blank\)
 
-When you use this configuration, CloudFront removes the `Accept-Encoding` header from the cache key without forwarding the header to the origin\. This configuration applies to all content that CloudFront serves with the distribution from that origin\.
+When you use this configuration, CloudFront removes the `Accept-Encoding` header from the cache key and doesn’t include the header in origin requests\. This configuration applies to all content that CloudFront serves with the distribution from that origin\.
 
 ## Serving Media Content by Using HTTP<a name="cache-hit-ratio-http-streaming"></a>
 

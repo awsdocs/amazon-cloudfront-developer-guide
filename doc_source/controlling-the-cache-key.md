@@ -52,6 +52,12 @@ The default amount of time, in seconds, that you want objects to stay in the Clo
 
 Cache key settings specify the values in viewer requests that CloudFront includes in the cache key\. The values can include URL query strings, HTTP headers, and cookies\. The values that you include in the cache key are automatically included in requests that CloudFront sends to the origin, known as *origin requests*\. For information about controlling origin requests without affecting the cache key, see [Controlling origin requests](controlling-origin-requests.md)\.
 
+Cache key settings include:
++ [Query strings](#cache-policy-query-strings)
++ [Headers](#cache-policy-headers)
++ [Cookies](#cache-policy-cookies)
++ [Cache compressed objects \(uses the `Accept-Encoding` header\)](#cache-policy-compressed-objects)
+
 **Query strings**  
 The URL query strings in viewer requests that CloudFront includes in the cache key and in origin requests\. For query strings, you can choose one of the following settings:  
 + **None** – The query strings in viewer requests are *not* included in the cache key and are *not* automatically included in origin requests\.
@@ -91,27 +97,40 @@ Cookie: session_ID=abcd1234
 In this case, you specify the cookie as `session_ID`, not as `session_ID=abcd1234`\. However, CloudFront includes the full cookie, including its value, in the cache key and in origin requests\.
 
 **Cache compressed objects \(uses the `Accept-Encoding` header\)**  
-This setting enables CloudFront to request and cache objects that are encoded in the `gzip` compression format, when the viewer supports it\. Viewers indicate their support for `gzip` encoding by using the `Accept-Encoding` HTTP header\.  
-Enable this setting when either of the following are true:  
-+ Your origin server returns `gzip` encoded objects in response to requests that contain the `Accept-Encoding: gzip` HTTP header\.
-+ The cache behavior that this cache policy is attached to is configured with [CloudFront edge compression](ServingCompressedFiles.md)\.
-If your origin server does not return `gzip` encoded objects, or the cache behavior is not configured with CloudFront edge compression, don’t enable this setting\. If you do, it might cause an increase in errors returned to the viewer\.  
-The following explains how this setting affects a CloudFront distribution:    
-**When this setting is enabled**  
-When this setting is enabled, CloudFront’s behavior depends on whether the viewer request included the `Accept-Encoding` HTTP header\.  
-+ When the viewer request does *not* include the `Accept-Encoding` header:
-  + CloudFront does not include this header in the cache key\.
-  + CloudFront does not include this header in the corresponding origin request\.
-+ When the viewer request *does* include the `Accept-Encoding` header, CloudFront’s behavior depends on whether `gzip` is one of the header values\.
-  + When `gzip` *is* one of the header values:
-    + CloudFront includes `Accept-Encoding: gzip` in the cache key\.
-    + CloudFront includes `Accept-Encoding: gzip` in the corresponding origin request\. Other values that were in the `Accept-Encoding` header sent by the viewer are not included\.
-  + When `gzip` is *not* one of the header values:
-    + CloudFront does not include this header in the cache key\.
-    + CloudFront includes `Accept-Encoding: identity` in the corresponding origin request\. Other values that were in the `Accept-Encoding` header sent by the viewer are not included\.
-When this setting is enabled, do not include the `Accept-Encoding` header in an [origin request policy](controlling-origin-requests.md) that’s associated with the same cache behavior\. CloudFront always includes this header in origin requests when this setting is enabled, so including `Accept-Encoding` in an origin request policy has no effect\.  
-**When this setting is disabled**  
-When this setting is disabled, CloudFront treats the `Accept-Encoding` header the same as any other HTTP header in the viewer request\. By default, it’s not included in the cache key and it’s not included in origin requests\. You can include it in the headers whitelist in a cache policy or an origin request policy like any other HTTP header\.
+These settings enable CloudFront to request and cache objects that are compressed in the Gzip or Brotli compression formats, when the viewer supports it\. Viewers indicate their support for these compression formats with the `Accept-Encoding` HTTP header\.  
+The Chrome and Firefox web browsers support Brotli compression only when the request is sent using HTTPS\. These browsers do not support Brotli with HTTP requests\.
+Enable these settings when any of the following are true:  
++ Your origin returns Gzip compressed objects when viewers support them \(requests contain the `Accept-Encoding` HTTP header with `gzip` as a value\)\. In this case, enable the **Cache Gzip objects** setting \(set `EnableAcceptEncodingGzip` to `true` in the CloudFront API, AWS SDKs, AWS CLI, or AWS CloudFormation\)\.
++ Your origin returns Brotli compressed objects when viewers support them \(requests contain the `Accept-Encoding` HTTP header with `br` as a value\)\. In this case, enable the **Cache Brotli objects** setting \(set `EnableAcceptEncodingBrotli` to `true` in the CloudFront API, AWS SDKs, AWS CLI, or AWS CloudFormation\)\.
++ The cache behavior that this cache policy is attached to is configured with [CloudFront edge compression](ServingCompressedFiles.md)\. In this case, you can enable caching for either Gzip or Brotli, or both\. When CloudFront edge compression is enabled, enabling caching for both formats can help to reduce your costs for data transfer out to the internet\.
+If you enable caching for one or both of these compression formats, do not include the `Accept-Encoding` header in an [origin request policy](controlling-origin-requests.md) that’s associated with the same cache behavior\. CloudFront always includes this header in origin requests when caching is enabled for either of these formats, so including `Accept-Encoding` in an origin request policy has no effect\.
+If your origin server does not return Gzip or Brotli compressed objects, or the cache behavior is not configured with CloudFront edge compression, don’t enable caching for compressed objects\. If you do, it might cause a decrease in your [cache hit ratio](cache-hit-ratio.md)\.  
+The following explains how these settings affect a CloudFront distribution\. All of the following scenarios assume that the viewer request includes the `Accept-Encoding` header\. When the viewer request does not include the `Accept-Encoding` header, CloudFront doesn’t include this header in the cache key and doesn’t include it in the corresponding origin request\.    
+**When caching compressed objects is enabled for both compression formats**  
+If the viewer supports both Gzip and Brotli—that is, if the `gzip` and `br` values are both in the `Accept-Encoding` header in the viewer request—CloudFront does the following:  
++ Normalizes the header to `Accept-Encoding: br,gzip` and includes the normalized header in the cache key\. The cache key doesn’t include other values that were in the `Accept-Encoding` header sent by the viewer\.
++ If the edge location has a Brotli or Gzip compressed object in the cache that matches the request and is not expired, the edge location returns the object to the viewer\.
++ If the edge location doesn’t have a Brotli or Gzip compressed object in the cache that matches the request and is not expired, CloudFront includes the normalized header \(`Accept-Encoding: br,gzip`\) in the corresponding origin request\. The origin request doesn’t include other values that were in the `Accept-Encoding` header sent by the viewer\.
+If the viewer supports one compression format but not the other—for example, if `gzip` is a value in the `Accept-Encoding` header in the viewer request but `br` is not—CloudFront does the following:  
++ Normalizes the header to `Accept-Encoding: gzip` and includes the normalized header in the cache key\. The cache key doesn’t include other values that were in the `Accept-Encoding` header sent by the viewer\.
++ If the edge location has a Gzip compressed object in the cache that matches the request and is not expired, the edge location returns the object to the viewer\.
++ If the edge location doesn’t have a Gzip compressed object in the cache that matches the request and is not expired, CloudFront includes the normalized header \(`Accept-Encoding: gzip`\) in the corresponding origin request\. The origin request doesn’t include other values that were in the `Accept-Encoding` header sent by the viewer\.
+To understand what CloudFront does if the viewer supports Brotli but not Gzip, replace the two compression formats with each other in the preceding example\.  
+If the viewer does not support Brotli or Gzip—that is, the `Accept-Encoding` header in the viewer request does not contain `br` or `gzip` as values—CloudFront:  
++ Doesn’t include the `Accept-Encoding` header in the cache key\.
++ Includes `Accept-Encoding: identity` in the corresponding origin request\. The origin request doesn’t include other values that were in the `Accept-Encoding` header sent by the viewer\.  
+**When caching compressed objects is enabled for one compression format, but not the other**  
+If the viewer supports the format for which caching is enabled—for example, if caching compressed objects is enabled for Gzip and the viewer supports Gzip \(`gzip` is one of the values in the `Accept-Encoding` header in the viewer request\)—CloudFront does the following:  
++ Normalizes the header to `Accept-Encoding: gzip` and includes the normalized header in the cache key\.
++ If the edge location has a Gzip compressed object in the cache that matches the request and is not expired, the edge location returns the object to the viewer\.
++ If the edge location doesn’t have a Gzip compressed object in the cache that matches the request and is not expired, CloudFront includes the normalized header \(`Accept-Encoding: gzip`\) in the corresponding origin request\. The origin request doesn’t include other values that were in the `Accept-Encoding` header sent by the viewer\.
+This behavior is the same when the viewer supports both Gzip and Brotli \(the `Accept-Encoding` header in the viewer request includes both `gzip` *and* `br` as values\), because in this scenario, caching compressed objects for Brotli is not enabled\.  
+To understand what CloudFront does if caching compressed objects is enabled for Brotli but not Gzip, replace the two compression formats with each other in the preceding example\.  
+If the viewer does not support the compression format for which caching is enabled \(the `Accept-Encoding` header in the viewer request doesn’t contain the value for that format\), CloudFront:  
++ Doesn’t include the `Accept-Encoding` header in the cache key\.
++ Includes `Accept-Encoding: identity` in the corresponding origin request\. The origin request doesn’t include other values that were in the `Accept-Encoding` header sent by the viewer\.  
+**When caching compressed objects is disabled for both compression formats**  
+When caching compressed objects is disabled for both compression formats, CloudFront treats the `Accept-Encoding` header the same as any other HTTP header in the viewer request\. By default, it’s not included in the cache key and it’s not included in origin requests\. You can include it in the headers whitelist in a cache policy or an origin request policy like any other HTTP header\.
 
 ## Creating cache policies<a name="cache-key-create-cache-policy"></a>
 

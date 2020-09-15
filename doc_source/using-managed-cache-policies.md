@@ -17,7 +17,7 @@ For more information, see [Creating cache policies](controlling-the-cache-key.md
 The following list describes the managed cache policies\.
 
 **Name: Managed\-CachingOptimizedID: 658327ea\-f89d\-4fab\-a63d\-7e88639e58f6**  
-This policy is designed to optimize cache efficiency by minimizing the values that CloudFront includes in the cache key\. CloudFront doesn’t include any query strings or cookies in the cache key, and only includes the normalized `Accept-Encoding` header\. This enables CloudFront to separately cache objects in `gzip` format when the origin returns them or when [CloudFront edge compression](ServingCompressedFiles.md) is enabled\.  
+This policy is designed to optimize cache efficiency by minimizing the values that CloudFront includes in the cache key\. CloudFront doesn’t include any query strings or cookies in the cache key, and only includes the normalized `Accept-Encoding` header\. This enables CloudFront to separately cache objects in the Gzip and Brotli compressions formats when the origin returns them or when [CloudFront edge compression](ServingCompressedFiles.md) is enabled\.  
 **Policy settings**  
 + **MinTTL:** 1 second\.
 + **MaxTTL:** 31,536,000 seconds \(365 days\)\.

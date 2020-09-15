@@ -9,4 +9,4 @@ This section explains how to make sure CloudFront can access the content that yo
 + [Customizing the URL Format for Files in CloudFront](LinkFormat.md)
 + [Specifying a Default Root Object](DefaultRootObject.md)
 + [Invalidating Files](Invalidation.md)
-+ [Serving Compressed Files](ServingCompressedFiles.md)
++ [Serving compressed files](ServingCompressedFiles.md)
