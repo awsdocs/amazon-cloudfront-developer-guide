@@ -1,6 +1,6 @@
 # Supported protocols and ciphers between viewers and CloudFront<a name="secure-connections-supported-viewer-protocols-ciphers"></a>
 
-When you [require HTTPS between viewers and your CloudFront distribution](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy), you must choose a [security policy](distribution-web-values-specify.md#DownloadDistValues-security-policy), which determines the following settings:
+When you [require HTTPS between viewers and your CloudFront distribution](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy), you must choose a [security policy](distribution-web-values-specify.md#DownloadDistValues-security-policy), which determines the following settings\.
 + The minimum SSL/TLS protocol that CloudFront uses to communicate with viewers\.
 + The ciphers that CloudFront can use to encrypt the communication with viewers\.
 
