@@ -211,7 +211,6 @@ The examples in this section show how you can use Lambda@Edge to generate respon
 
 **Topics**
 + [Example: Serving Static Content \(Generated Response\)](#lambda-examples-static-web-server)
-+ [Example: Serving Static Website Content as Gzip Compressed Content \(Generated Response\)](#lambda-examples-body-encoding-base64)
 + [Example: Generating an HTTP Redirect \(Generated Response\)](#lambda-examples-http-redirect)
 
 ### Example: Serving Static Content \(Generated Response\)<a name="lambda-examples-static-web-server"></a>
@@ -255,11 +254,7 @@ exports.handler = (event, context, callback) => {
             'content-type': [{
                 key: 'Content-Type',
                 value: 'text/html'
-            }],
-            'content-encoding': [{
-                key: 'Content-Encoding',
-                value: 'UTF-8'
-            }],
+            }]
         },
         body: content,
     };
@@ -303,116 +298,9 @@ exports.handler = (event, context, callback) => {
                      'key': 'Content-Type',
                      'value': 'text/html'
                  }
-             ],
-             'content-encoding': [
-                 {
-                     'key': 'Content-Encoding',
-                     'value': 'UTF-8'
-                 }
              ]
          },
          'body': CONTENT
-     }
-     return response
-```
-
-------
-
-### Example: Serving Static Website Content as Gzip Compressed Content \(Generated Response\)<a name="lambda-examples-body-encoding-base64"></a>
-
-This function demonstrates how to use a Lambda function to serve static website content as gzip compressed content, which reduces the load on the origin server and reduces overall latency\.
-
-You can generate HTTP responses for viewer request and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses-in-requests.md)\.
-
-------
-#### [ Node\.js ]
-
-```
-'use strict';
-
-const zlib = require('zlib');
-
-const content = `
-<\!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Simple Lambda@Edge Static Content Response</title>
-  </head>
-  <body>
-    <p>Hello from Lambda@Edge!</p>
-  </body>
-</html>
-`;
-
-exports.handler = (event, context, callback) => {
-
-    /*
-     * Generate HTTP OK response using 200 status code with a gzip compressed content HTML body.
-     */
-    
-    const buffer = zlib.gzipSync(content); 
-    const base64EncodedBody = buffer.toString('base64');
-    
-    var response = {
-        headers: {
-            'content-type': [{key:'Content-Type', value: 'text/html; charset=utf-8'}],
-            'content-encoding' : [{key:'Content-Encoding', value: 'gzip'}]
-         },
-        body: base64EncodedBody,
-        bodyEncoding: 'base64',
-        status: '200',
-        statusDescription: "OK"
-     }
-     
-    callback(null, response);
-};
-```
-
-------
-#### [ Python ]
-
-```
- import json
- import zlib
- import base64
- 
- CONTENT = """
- <\!DOCTYPE html>
- <html lang="en">
-   <head>
-     <meta charset="utf-8">
-     <title>Simple Lambda@Edge Static Content Response</title>
-   </head>
-   <body>
-     <p>Hello from Lambda@Edge!</p>
-   </body>
- </html>
- """
- 
- def lambda_handler(event, context): 
-     # Generate HTTP OK response using 200 status code with a gzip compressed content HTML body
-     buf = zlib.compress(CONTENT.encode('utf-8'))
-     base64EncodedBody = base64.b64encode(buf).decode('utf-8')
-     response = {
-         'headers': {
-             'content-type': [
-                 {
-                     'key': 'Content-Type',
-                     'value': 'text/html; charset=utf-8'
-                 }
-             ],
-             'content-encoding': [
-                 {
-                     'key': 'Content-Encoding',
-                     'value': 'gzip'
-                 }
-             ]
-         },
-         'body': base64EncodedBody,
-         'bodyEncoding': 'base64',
-         'status': '200',
-         'statusDescription': 'OK'
      }
      return response
 ```
