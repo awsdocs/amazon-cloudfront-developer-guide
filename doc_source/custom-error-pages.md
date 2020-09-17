@@ -6,7 +6,7 @@ To specify the specific file that you want to return and the errors for which th
 
 For example, the following is a customized error message:
 
-![\[AWS 404 page.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[AWS 404 page\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/custom-error-page-aws-404-example.png)
 
 You can specify a different object for each supported HTTP status code, or you can use the same object for all of the supported status codes\. You can also choose to specify objects for some status codes and not for others\. 
 
