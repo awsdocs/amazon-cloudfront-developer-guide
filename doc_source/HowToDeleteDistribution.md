@@ -23,7 +23,7 @@ If you disable a distribution that has an alternate domain name associated with 
 
 1. Choose **Disable** to disable the distribution, and choose **Yes, Disable** to confirm\. Then choose **Close**\.
 **Note**  
-Because CloudFront must propagate this change to all edge locations, it might take up to 90 minutes before the update is complete and you can delete your distribution\.
+Because CloudFront must propagate this change to all edge locations, it might take a few minutes before the update is complete and you can delete your distribution\.
 
 1. The value of the **State** column immediately changes to **Disabled**\. Wait until the value of the **Status** column changes to **Deployed**\.
 
