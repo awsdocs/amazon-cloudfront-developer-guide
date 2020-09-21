@@ -48,7 +48,7 @@ CloudFront does the following:
 1. The origin returns the custom error page to the edge location\.
 
 1. CloudFront returns the custom error page to the viewer that made the request, and also caches the custom error page for the maximum of the following: 
-   + The amount of time specified by the error caching minimum TTL \(one minute by default\)
+   + The amount of time specified by the error caching minimum TTL \(10 seconds by default\)
    + The amount of time specified by a `Cache-Control max-age` header or a `Cache-Control s-maxage` header that is returned by the origin when the first request generated the error
 
 1. After the caching time \(determined in Step 5\) has elapsed, CloudFront tries again to get the requested object by forwarding another request to your origin\. CloudFront continues to retry at intervals specified by the error caching minimum TTL\. 
@@ -85,7 +85,7 @@ CloudFront continues to try to get the requested object from your origin when al
 CloudFront does the following:
 
 1. CloudFront returns the 4xx or 5xx status code to the viewer, and also caches status code in the edge cache that received the request for the maximum of the following: 
-   + The amount of time specified by the error caching minimum TTL \(one minute by default\)
+   + The amount of time specified by the error caching minimum TTL \(10 seconds by default\)
    + The amount of time specified by a `Cache-Control max-age` header or a `Cache-Control s-maxage` header that is returned by the origin when the first request generated the error
 
 1. For the duration of the caching time \(determined in Step 1\), CloudFront responds to subsequent viewer requests for the same object with the cached 4xx or 5xx status code\. 
@@ -101,7 +101,7 @@ CloudFront continues to serve the object that is currently in the edge cache whe
 
 CloudFront does the following:
 
-1. If your origin returns a 5xx error code, CloudFront serves the object even though it has expired\. For the duration of the error caching minimum TTL \(one minute by default\), CloudFront continues to respond to viewer requests by serving the object from the edge cache\. 
+1. If your origin returns a 5xx error code, CloudFront serves the object even though it has expired\. For the duration of the error caching minimum TTL \(10 seconds by default\), CloudFront continues to respond to viewer requests by serving the object from the edge cache\. 
 
    If your origin returns a 4xx status code, CloudFront returns the status code, not the requested object, to the viewer\. 
 
