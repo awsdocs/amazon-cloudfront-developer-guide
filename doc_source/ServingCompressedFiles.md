@@ -5,11 +5,12 @@ You can use CloudFront to automatically compress files of certain types and serv
 **Note**  
 The Chrome and Firefox web browsers support Brotli compression only when the request is sent using HTTPS\. These browsers do not support Brotli with HTTP requests\.
 
-CloudFront only compresses content using Brotli when both of the following are true:
+CloudFront only compresses content using Brotli when all of the following are true:
 + You configure the distribution to compress content\. See the following section\.
++ You set the TTL values to a value higher than 0 to enable caching\.
 + You enable the **Cache Brotli objects** setting \(set `EnableAcceptEncodingBrotli` to `true`\)\. For more information, see [Cache compressed objects](controlling-the-cache-key.md#cache-policy-compressed-objects)\.
 
-CloudFront compresses content using Gzip when just the first of the previous items is true\.
+CloudFront can compress content using Gzip when the first and second conditions holds\.
 
 When content is compressed, downloads can be faster because the files are smaller—in some cases, less than a quarter the size of the original\. Especially for JavaScript and CSS files, faster downloads can result in faster rendering of webpages for your users\. In addition, because the cost of CloudFront data transfer is based on the total amount of data served, serving compressed files can be less expensive than serving uncompressed files\.
 
