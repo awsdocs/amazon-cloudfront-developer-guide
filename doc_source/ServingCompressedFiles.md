@@ -5,13 +5,6 @@ You can use CloudFront to automatically compress files of certain types and serv
 **Note**  
 The Chrome and Firefox web browsers support Brotli compression only when the request is sent using HTTPS\. These browsers do not support Brotli with HTTP requests\.
 
-CloudFront only compresses content using Brotli when all of the following are true:
-+ You configure the distribution to compress content\. See the following section\.
-+ You set the TTL values to a value higher than 0 to enable caching\.
-+ You enable the **Cache Brotli objects** setting \(set `EnableAcceptEncodingBrotli` to `true`\)\. For more information, see [Cache compressed objects](controlling-the-cache-key.md#cache-policy-compressed-objects)\.
-
-CloudFront can compress content using Gzip when the first and second conditions holds\.
-
 When content is compressed, downloads can be faster because the files are smaller—in some cases, less than a quarter the size of the original\. Especially for JavaScript and CSS files, faster downloads can result in faster rendering of webpages for your users\. In addition, because the cost of CloudFront data transfer is based on the total amount of data served, serving compressed files can be less expensive than serving uncompressed files\.
 
 If you’re using a custom origin, you can configure your origin to compress files\. Your origin might be able to compress files that CloudFront doesn’t compress \(see [File types that CloudFront compresses](#compressed-content-cloudfront-file-types)\)\. If your origin returns a compressed file to CloudFront, CloudFront detects that the file is compressed based on the value of the `Content-Encoding` header and doesn’t compress the file again\.
@@ -20,11 +13,16 @@ If you configure CloudFront to serve compressed content, you should also [cache 
 
 ## Configuring a CloudFront distribution to compress content<a name="compressed-content-cloudfront-configuring"></a>
 
-To configure a distribution to compress your content, update the cache behaviors that you want to serve the compressed content by using one of the following methods: 
-+ **CloudFront console** – Update the **Compress objects automatically** setting\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
-+ **CloudFront API, AWS SDKs, AWS CLI, or AWS CloudFormation** – In a `CacheBehavior`, set the value of the `Compress` element to `true`\. For more information, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\.
+To configure a distribution to compress content, update the cache behavior that you want to serve the compressed content by doing the following:
 
-If you configure CloudFront to serve compressed content, you should also [cache compressed objects](controlling-the-cache-key.md#cache-policy-compressed-objects)\.
+1. Make sure the **Compress Objects Automatically** setting is enabled\. \(In AWS CloudFormation or the CloudFront API, set `Compress` to `true`\.\)
+
+1. Use a [cache policy](controlling-the-cache-key.md) to specify caching settings, and make sure the **Gzip** and **Brotli** settings are both enabled\. \(In AWS CloudFormation or the CloudFront API, set `EnableAcceptEncodingGzip` and `EnableAcceptEncodingBrotli` to `true`\.\)
+
+To update a cache behavior, you can use any of the following tools:
++ The [CloudFront console](https://console.aws.amazon.com/cloudfront/home)
++ [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_CloudFront.html)
++ [The AWS SDKs and command line tools](http://aws.amazon.com/getting-started/tools-sdks/)
 
 ## Using CloudFront to compress your content<a name="compressed-content-cloudfront"></a>
 
