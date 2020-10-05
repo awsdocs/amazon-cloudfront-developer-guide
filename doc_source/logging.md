@@ -9,7 +9,7 @@ CloudFront provides the following ways to log the requests that come to your dis
 **Standard logs \(access logs\)**  
 CloudFront standard logs provide detailed records about every request that’s made to a distribution\. These logs are useful for many scenarios, including security and access audits\.  
 CloudFront standard logs are delivered to the Amazon S3 bucket of your choice\. CloudFront doesn’t charge for standard logs, though you incur Amazon S3 charges for storing and accessing the log files\.  
-For more information, see [Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+For more information, see [Using standard logs \(access logs\)](AccessLogs.md)\.
 
 **Real\-time logs**  
 CloudFront real\-time logs provide information about requests made to a distribution, in real time \(log records are delivered within seconds of receiving the requests\)\. You can choose the *sampling rate* for your real\-time logs—that is, the percentage of requests for which you want to receive real\-time log records\. You can also choose the specific fields that you want to receive in the log records\.  
@@ -25,6 +25,6 @@ For more information, see [Capturing API Requests with CloudTrail](logging_using
 **Topics**
 + [Logging requests](#logging-requests)
 + [Logging service activity](#logging-service-activity)
-+ [Using Standard Logs \(Access Logs\)](AccessLogs.md)
++ [Using standard logs \(access logs\)](AccessLogs.md)
 + [Real\-time logs](real-time-logs.md)
 + [Capturing API Requests with CloudTrail](logging_using_cloudtrail.md)

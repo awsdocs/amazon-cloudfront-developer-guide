@@ -115,7 +115,7 @@ These permissions aren't required if you aren't using the CloudFront console\.
 AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. For CloudFront, IAM provides two managed policies: 
 + **CloudFrontFullAccess** – Grants full access to CloudFront resources\.
 **Important**  
-If you want CloudFront to create and save access logs, you need to grant additional permissions\. For more information, see [Permissions Required to Configure Standard Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
+If you want CloudFront to create and save access logs, you need to grant additional permissions\. For more information, see [Permissions required to configure standard logging and to access your log files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
 + **CloudFrontReadOnlyAccess** – Grants read\-only access to CloudFront resources\.
 
 **Note**  

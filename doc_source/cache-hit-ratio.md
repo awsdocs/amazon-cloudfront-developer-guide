@@ -23,7 +23,7 @@ If you configure CloudFront to cache based on query string parameters, you can i
 + Use the same case \(uppercase or lowercase\) for all instances of the same parameter\. For example, if one request contains `parameter1=A` and another contains `parameter1=a`, CloudFront forwards separate requests to your origin when a request contains `parameter1=A` and when a request contains `parameter1=a`\. CloudFront then separately caches the corresponding objects returned by your origin separately even if the objects are identical\. If you use just `A` or `a`, CloudFront forwards fewer requests to your origin\.
 + List parameters in the same order\. As with differences in case, if one request for an object contains the query string `parameter1=a&parameter2=b` and another request for the same object contains `parameter2=b&parameter1=a`, CloudFront forwards both requests to your origin and separately caches the corresponding objects even if they're identical\. If you always use the same order for parameters, CloudFront forwards fewer requests to your origin\.
 
-For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\. If you want to review the query strings that CloudFront forwards to your origin, see the values in the `cs-uri-query` column of your CloudFront log files\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\. If you want to review the query strings that CloudFront forwards to your origin, see the values in the `cs-uri-query` column of your CloudFront log files\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 ## Caching Based on Cookie Values<a name="cache-hit-ratio-cookies"></a>
 
@@ -38,7 +38,7 @@ If you configure CloudFront to cache based on cookie values, you can improve cac
   If you create a cache behavior for which the path pattern is `*.css` and for which CloudFront doesn't cache based on cookie values, then CloudFront forwards requests for `.css` files to your origin for only the first request that an edge location receives for a given `.css` file and for the first request after a `.css` file expires\.
 + If possible, create separate cache behaviors for dynamic content when cookie values are unique for each user \(such as a user ID\), and dynamic content that varies based on a smaller number of unique values\.
 
-For more information, see [Caching Content Based on Cookies](Cookies.md)\. If you want to review the cookies that CloudFront forwards to your origin, see the values in the `cs(Cookie)` column of your CloudFront log files\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+For more information, see [Caching Content Based on Cookies](Cookies.md)\. If you want to review the cookies that CloudFront forwards to your origin, see the values in the `cs(Cookie)` column of your CloudFront log files\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 ## Caching Based on Request Headers<a name="cache-hit-ratio-request-headers"></a>
 

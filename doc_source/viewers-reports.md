@@ -278,7 +278,7 @@ The remaining columns in the report list the locations that CloudFront received 
 
 ## How Data in the Locations Report Is Related to Data in the CloudFront Access Logs<a name="viewers-reports-data"></a>
 
-The following list shows how data in the Locations report in the CloudFront console corresponds with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+The following list shows how data in the Locations report in the CloudFront console corresponds with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 **Location**  
 The country or U\.S\. state that the viewer is in\. In access logs, the `c-ip` column contains the IP address of the device that the viewer is running on\. We use geolocation data to identify the geographic location of the device based on the IP address\.  

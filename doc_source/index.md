@@ -190,7 +190,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Downloading data in CSV format](cloudwatch-csv.md)
       + [Getting metrics using the CloudWatch API](programming-cloudwatch-metrics.md)
    + [CloudFront logging](logging.md)
-      + [Configuring and Using Standard Logs (Access Logs)](AccessLogs.md)
+      + [Configuring and using standard logs (access logs)](AccessLogs.md)
       + [Real-time logs](real-time-logs.md)
       + [Using AWS CloudTrail to Capture Requests Sent to the CloudFront API](logging_using_cloudtrail.md)
    + [Tracking Configuration Changes with AWS Config](TrackingChanges.md)

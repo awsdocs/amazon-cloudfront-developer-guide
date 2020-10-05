@@ -1,4 +1,4 @@
-# Configuring and Using Standard Logs \(Access Logs\)<a name="AccessLogs"></a>
+# Configuring and using standard logs \(access logs\)<a name="AccessLogs"></a>
 
 You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These are called *standard logs*, also known as *access logs*\. These standard logs are available for both web and RTMP distributions\. If you enable standard logs, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\.
 
@@ -7,24 +7,24 @@ You can enable standard logs when you create or update a distribution\. For more
 CloudFront also offers real\-time logs, which give you information about requests made to a distribution in real time \(logs are delivered within seconds of receiving the requests\)\. You can use real\-time logs to monitor, analyze, and take action based on content delivery performance\. For more information, see [Real\-time logs](real-time-logs.md)\.
 
 **Topics**
-+ [How Standard Logging Works](#AccessLogsOverview)
-+ [Choosing an Amazon S3 Bucket for Your Standard Logs](#access-logs-choosing-s3-bucket)
-+ [Permissions Required to Configure Standard Logging and to Access Your Log Files](#AccessLogsBucketAndFileOwnership)
-+ [Required CMK Key Policy for Use with SSE\-KMS Buckets](#AccessLogsKMSPermissions)
-+ [File Name Format](#AccessLogsFileNaming)
-+ [Timing of Standard Log File Delivery](#access-logs-timing)
-+ [How Requests Are Logged When the Request URL or Headers Exceed the Maximum Size](#access-logs-request-URL-size)
-+ [Analyzing Standard Logs](#access-logs-analyzing)
-+ [Editing Your Standard Logging Settings](#ChangeSettings)
-+ [Deleting Standard Log Files from an Amazon S3 Bucket](#DeletingLogFiles)
-+ [Standard Log File Format](#LogFileFormat)
-+ [Charges for Standard Logs](#AccessLogsCharges)
++ [How standard logging works](#AccessLogsOverview)
++ [Choosing an Amazon S3 bucket for your standard logs](#access-logs-choosing-s3-bucket)
++ [Permissions required to configure standard logging and to access your log files](#AccessLogsBucketAndFileOwnership)
++ [Required CMK key policy for use with SSE\-KMS buckets](#AccessLogsKMSPermissions)
++ [File name format](#AccessLogsFileNaming)
++ [Timing of standard log file delivery](#access-logs-timing)
++ [How requests are logged when the request URL or headers exceed the maximum size](#access-logs-request-URL-size)
++ [Analyzing standard logs](#access-logs-analyzing)
++ [Editing your standard logging settings](#ChangeSettings)
++ [Deleting standard log files from an Amazon S3 bucket](#DeletingLogFiles)
++ [Standard log file format](#LogFileFormat)
++ [Charges for standard logs](#AccessLogsCharges)
 
-## How Standard Logging Works<a name="AccessLogsOverview"></a>
+## How standard logging works<a name="AccessLogsOverview"></a>
 
 The following diagram shows how CloudFront logs information about requests for your objects\.
 
-![\[Basic flow for access logs\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Basic flow for access logs\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/Logging.png)
 
 The following explains how CloudFront logs information about requests for your objects, as illustrated in the previous diagram\.
 
@@ -38,12 +38,12 @@ The following explains how CloudFront logs information about requests for your o
 
 If no users access your content during a given hour, you don't receive any log files for that hour\.
 
-Each entry in a log file gives details about a single request\. For more information about log file format, see [Standard Log File Format](#LogFileFormat)\.
+Each entry in a log file gives details about a single request\. For more information about log file format, see [Standard log file format](#LogFileFormat)\.
 
 **Important**  
 We recommend that you use the logs to understand the nature of the requests for your content, not as a complete accounting of all requests\. CloudFront delivers access logs on a best\-effort basis\. The log entry for a particular request might be delivered long after the request was actually processed and, in rare cases, a log entry might not be delivered at all\. When a log entry is omitted from access logs, the number of entries in the access logs won't match the usage that appears in the AWS usage and billing reports\.
 
-## Choosing an Amazon S3 Bucket for Your Standard Logs<a name="access-logs-choosing-s3-bucket"></a>
+## Choosing an Amazon S3 bucket for your standard logs<a name="access-logs-choosing-s3-bucket"></a>
 
 When you enable logging for a distribution, you specify the Amazon S3 bucket that you want CloudFront to store log files in\. If you’re using Amazon S3 as your origin, we recommend that you don’t use the same bucket for your log files; using a separate bucket simplifies maintenance\.
 
@@ -57,7 +57,7 @@ The [Amazon S3 console](https://console.aws.amazon.com/s3/home) shows the bucket
 
 You can store the log files for multiple distributions in the same bucket\. When you enable logging, you can specify an optional prefix for the file names, so you can keep track of which log files are associated with which distributions\.
 
-## Permissions Required to Configure Standard Logging and to Access Your Log Files<a name="AccessLogsBucketAndFileOwnership"></a>
+## Permissions required to configure standard logging and to access your log files<a name="AccessLogsBucketAndFileOwnership"></a>
 
 Your AWS account must have the following permissions for the bucket that you specify for log files:
 + The S3 access control list \(ACL\) for the bucket must grant you `FULL_CONTROL`\. If you're the bucket owner, your account has this permission by default\. If you're not, the bucket owner must update the ACL for the bucket\.
@@ -87,7 +87,7 @@ In addition to the ACL on the bucket, there's an ACL on each log file\. The buck
 **Disabling logging**  
 If you disable logging, CloudFront doesn't delete the ACLs for either the bucket or the log files\. If you want, you can do that yourself\.
 
-## Required CMK Key Policy for Use with SSE\-KMS Buckets<a name="AccessLogsKMSPermissions"></a>
+## Required CMK key policy for use with SSE\-KMS buckets<a name="AccessLogsKMSPermissions"></a>
 
 If you enabled server\-side encryption for your Amazon S3 bucket using AWS KMS\-managed keys \(SSE\-KMS\) with a customer\-managed Customer Master Key \(CMK\), you must add the following to the key policy for your CMK to enable writing log files to the bucket\. You cannot use the default CMK because CloudFront won't be able to upload the log files to the bucket\.
 
@@ -103,7 +103,7 @@ If you enabled server\-side encryption for your Amazon S3 bucket using AWS KMS\-
 }
 ```
 
-## File Name Format<a name="AccessLogsFileNaming"></a>
+## File name format<a name="AccessLogsFileNaming"></a>
 
 The name of each log file that CloudFront saves in your Amazon S3 bucket uses the following file name format:
 
@@ -119,7 +119,7 @@ When you enable logging for a distribution, you can specify an optional prefix f
 
 The `.gz` at the end of the file name indicates that CloudFront has compressed the log file using gzip\.
 
-## Timing of Standard Log File Delivery<a name="access-logs-timing"></a>
+## Timing of standard log file delivery<a name="access-logs-timing"></a>
 
 CloudFront delivers standard logs for a distribution up to several times an hour\. In general, a log file contains information about the requests that CloudFront received during a given time period\. CloudFront usually delivers the log file for that time period to your Amazon S3 bucket within an hour of the events that appear in the log\. Note, however, that some or all log file entries for a time period can sometimes be delayed by up to 24 hours\. When log entries are delayed, CloudFront saves them in a log file for which the file name includes the date and time of the period in which the requests occurred, not the date and time when the file was delivered\.
 
@@ -134,13 +134,13 @@ If no users request your objects during the time period, you don't receive any l
 
 CloudFront also offers real\-time logs, which give you information about requests made to a distribution in real time \(logs are delivered within seconds of receiving the requests\)\. You can use real\-time logs to monitor, analyze, and take action based on content delivery performance\. For more information, see [Real\-time logs](real-time-logs.md)\.
 
-## How Requests Are Logged When the Request URL or Headers Exceed the Maximum Size<a name="access-logs-request-URL-size"></a>
+## How requests are logged when the request URL or headers exceed the maximum size<a name="access-logs-request-URL-size"></a>
 
 If the total size of all request headers, including cookies, exceeds 20 KB, or if the URL exceeds 8192 bytes, CloudFront can't parse the request completely and can't log the request\. Because the request isn't logged, you won't see in the log files the HTTP error status code returned\.
 
 If the request body exceeds the maximum size, the request is logged, including the HTTP error status code\.
 
-## Analyzing Standard Logs<a name="access-logs-analyzing"></a>
+## Analyzing standard logs<a name="access-logs-analyzing"></a>
 
 Because you can receive multiple access logs per hour, we recommend that you combine all the log files you receive for a given time period into one file\. You can then analyze the data for that period more accurately and completely\.
 
@@ -154,7 +154,7 @@ In addition, the following AWS blog posts discuss some ways to analyze access lo
 **Important**  
 We recommend that you use the logs to understand the nature of the requests for your content, not as a complete accounting of all requests\. CloudFront delivers access logs on a best\-effort basis\. The log entry for a particular request might be delivered long after the request was actually processed and, in rare cases, a log entry might not be delivered at all\. When a log entry is omitted from access logs, the number of entries in the access logs won't match the usage that appears in the AWS usage and billing reports\.
 
-## Editing Your Standard Logging Settings<a name="ChangeSettings"></a>
+## Editing your standard logging settings<a name="ChangeSettings"></a>
 
 You can enable or disable logging, change the Amazon S3 bucket where your logs are stored, and change the prefix for log files by using the [CloudFront console](https://console.aws.amazon.com/cloudfront/home) or the CloudFront API\. Your changes to logging settings take effect within 12 hours\.
 
@@ -165,17 +165,17 @@ For more information, see the following topics:
 
 To use the CloudFront API to change access log settings for web distributions, you must use API version `2009-04-02` or later\. To use the CloudFront API to change access log settings for RTMP distributions, you must use API version `2010-05-01` or later\.
 
-## Deleting Standard Log Files from an Amazon S3 Bucket<a name="DeletingLogFiles"></a>
+## Deleting standard log files from an Amazon S3 bucket<a name="DeletingLogFiles"></a>
 
 CloudFront does not automatically delete log files from your Amazon S3 bucket\. For information about deleting log files from an Amazon S3 bucket, see the following topics:
 + Using the Amazon S3 console: [Deleting Objects](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-objects.html) in the *Amazon Simple Storage Service Console User Guide*\.
 + Using the REST API: [DeleteObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html) in the *Amazon Simple Storage Service API Reference*\.
 
-## Standard Log File Format<a name="LogFileFormat"></a>
+## Standard log file format<a name="LogFileFormat"></a>
 
 **Topics**
-+ [Web Distribution Standard Log File Format](#BasicDistributionFileFormat)
-+ [RTMP Distribution Log File Format](#StreamingDistributionLogFileFormat)
++ [Web distribution standard log file format](#BasicDistributionFileFormat)
++ [RTMP distribution log file format](#StreamingDistributionLogFileFormat)
 
 Each entry in a log file gives details about a single viewer request\. The log files for web and for RTMP distributions are not identical, but they share the following characteristics:
 + Use the [W3C extended log file format](https://www.w3.org/TR/WD-logfile.html)\.
@@ -211,7 +211,7 @@ Each entry in a log file gives details about a single viewer request\. The log f
 | %27 | ' | 
 | %20 | space | 
 
-### Web Distribution Standard Log File Format<a name="BasicDistributionFileFormat"></a>
+### Web distribution standard log file format<a name="BasicDistributionFileFormat"></a>
 
 The log file for a web distribution includes the following fields in the listed order\.
 
@@ -265,7 +265,7 @@ The following is an example log file for a web distribution:
 2019-12-13	22:37:02	SEA19-C2	900	192.0.2.200	GET	d111111abcdef8.cloudfront.net	/	502	-	curl/7.55.1	-	-	Error	kBkDzGnceVtWHqSCqBUqtA_cEs2T3tFUBbnBNkB9El_uVRhHgcZfcw==	www.example.com	http	387	0.103	-	-	-	Error	HTTP/1.1	-	-	12644	0.103	OriginDnsError	text/html	507	-	-
 ```
 
-### RTMP Distribution Log File Format<a name="StreamingDistributionLogFileFormat"></a>
+### RTMP distribution log file format<a name="StreamingDistributionLogFileFormat"></a>
 
 Each record in an RTMP access log represents a playback event, for example, connect, play, pause, stop, disconnect, and so on\. As a result, CloudFront generates multiple log records each time a viewer watches a video\. To relate log records that stem from the same stream ID, use the `x-sid` field\.
 
@@ -314,7 +314,7 @@ The following is an example of a log file for an RTMP distribution:
 2010-03-12	 23:59:44	 SEA4	 192.0.2.14	 disconnect	 429824092	 OK	 bfd8a98bee0840d9b871b7f6ade9908f	 rtmp://shqshne4jdp4b6.cloudfront.net/cfx/st​	key=value	 http://player.example.com/player.swf	 http://www.example.com/support/jw-player-setup-wizard?example=204	 LNX%2010,0,32,18	 -	 -	 -	 -
 ```
 
-## Charges for Standard Logs<a name="AccessLogsCharges"></a>
+## Charges for standard logs<a name="AccessLogsCharges"></a>
 
 Standard logging is an optional feature of CloudFront\. There is no extra charge for enabling standard logging\. However, you accrue the usual Amazon S3 charges for storing and accessing the files on Amazon S3 \(you can delete them at any time\)\.
 

@@ -9,7 +9,7 @@ Using CloudWatch alarms, you watch a single metric over a time period that you s
 CloudTrail provides a record of actions taken by a user, role, or an AWS service in CloudFront\. Using the information collected by CloudTrail, you can determine the request that was made to CloudFront, the IP address from which the request was made, who made the request, when it was made, and additional details\. For more information, see [Using AWS CloudTrail to Capture Requests Sent to the CloudFront API](logging_using_cloudtrail.md)\.
 
 **CloudFront Access Logs**  
-Server access logs provide detailed records about requests that are made to a distribution\. Server access logs are useful for many applications\. For example, access log information can be useful in security and access audits\. For more information, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+Server access logs provide detailed records about requests that are made to a distribution\. Server access logs are useful for many applications\. For example, access log information can be useful in security and access audits\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 **CloudFront Console Reports**  
 The CloudFront console includes a variety of reports, including the cache statistics report, the popular objects report, and the top referrers report\. Most CloudFront console reports are based on the data in CloudFront access logs, which contain detailed information about every user request that CloudFront receives\. However, you don't need to enable access logs to view the reports\. For more information, see [CloudFront Reports in the Console](reports.md)\.

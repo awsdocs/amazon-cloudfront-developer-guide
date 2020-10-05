@@ -124,7 +124,7 @@ The number of bytes served to viewers for objects that were not in the edge cach
 
 ## How Cache Statistics Charts Are Related to Data in the CloudFront Access Logs<a name="cache-statistics-data"></a>
 
-The following table shows how cache statistics charts in the CloudFront console correspond with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+The following table shows how cache statistics charts in the CloudFront console correspond with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 **Total Requests**  
 This chart shows the total number of requests for all HTTP status codes \(for example, 200 or 404\) and all methods \(for example, `GET`, `HEAD`, or `POST`\)\. Total requests shown in this chart equal the total number of requests in the access log files for the same time period\.

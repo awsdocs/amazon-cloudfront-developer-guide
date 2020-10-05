@@ -83,18 +83,18 @@ Optional\. You can associate one or more CNAME aliases with a distribution so th
 
 ## Logging<a name="StreamingDistValuesLoggingOnOff"></a>
 
-Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+Whether you want CloudFront to log information about each request for an object and store the log files in an Amazon S3 bucket\. You can enable or disable logging at any time\. There is no extra charge if you enable logging, but you accrue the usual Amazon S3 charges for storing and accessing the files in an Amazon S3 bucket\. You can delete the logs at any time\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 ## Bucket for Logs<a name="StreamingDistValuesLogBucket"></a>
 
-If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myLogs-DOC-EXAMPLE-BUCKET.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myLogs-DOC-EXAMPLE-BUCKET.s3.amazonaws.com`\. If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 **Note**  
-You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions Required to Configure Standard Logging and to Access Your Log Files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
+You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions required to configure standard logging and to access your log files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
 
 ## Log Prefix<a name="StreamingDistValuesLogPrefix"></a>
 
-Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log filenames for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+Optional\. If you chose **On** for **Logging**, specify the string, if any, that you want CloudFront to prefix to the access log filenames for this distribution, for example, `exampleprefix/`\. The trailing slash \( / \) is optional but recommended to simplify browsing your log files\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 ## Comment<a name="StreamingDistValuesComment"></a>
 

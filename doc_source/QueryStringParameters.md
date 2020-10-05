@@ -82,4 +82,4 @@ If you're using signed URLs and you want to configure CloudFront to forward quer
 
 ## Query String Parameters and CloudFront Access Logs<a name="query-string-parameters-access-logs"></a>
 
-For web and RTMP distributions, if you enable logging, CloudFront logs the full URL, including query string parameters\. For web distributions, this is true regardless of whether you have configured CloudFront to forward query strings to the origin\. For more information about CloudFront logging, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+For web and RTMP distributions, if you enable logging, CloudFront logs the full URL, including query string parameters\. For web distributions, this is true regardless of whether you have configured CloudFront to forward query strings to the origin\. For more information about CloudFront logging, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.

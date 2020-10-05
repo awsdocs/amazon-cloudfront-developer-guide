@@ -24,7 +24,7 @@ You can configure each cache behavior to do one of the following:
 Note the following about specifying the cookies that you want to forward:
 
 **Access logs**  
-If you configure CloudFront to log requests and to log cookies, CloudFront logs all cookies and all cookie attributes, even if you configure CloudFront not to forward cookies to your origin or if you configure CloudFront to forward only a whitelist of specific cookies\. For more information about CloudFront logging, see [Configuring and Using Standard Logs \(Access Logs\)](AccessLogs.md)\.
+If you configure CloudFront to log requests and to log cookies, CloudFront logs all cookies and all cookie attributes, even if you configure CloudFront not to forward cookies to your origin or if you configure CloudFront to forward only a whitelist of specific cookies\. For more information about CloudFront logging, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 **Case sensitivity**  
 Cookie names and values are both case\-sensitive\. For example, if CloudFront is configured to forward all cookies, and two viewer requests for the same object have cookies that are identical except for case, CloudFront caches the object twice\.
