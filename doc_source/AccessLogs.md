@@ -213,44 +213,241 @@ Each entry in a log file gives details about a single viewer request\. The log f
 
 ### Web distribution standard log file format<a name="BasicDistributionFileFormat"></a>
 
-The log file for a web distribution includes the following fields in the listed order\.
+The log file for a web distribution contains 33 fields\. The following list contains each field name, in order, along with a description of the information in that field\.
 
+1. **`date`**
 
-| Field Number | Field Name | Description | 
-| --- | --- | --- | 
-| 1 | date | The date on which the event occurred in the format YYYY\-MM\-DD\. For example, 2019\-06\-30\. The date and time are in Coordinated Universal Time \(UTC\)\. For WebSocket connections, this is the date when the connection closed\. | 
-| 2 | time | The time when the CloudFront server finished responding to the request \(in UTC\), for example, 01:42:39\. For WebSocket connections, this is the time when the connection is closed\. | 
-| 3 | x\-edge\-location | The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number, for example, DFW3\. The three\-letter code typically corresponds with the International Air Transport Association airport code for an airport near the edge location\. \(These abbreviations might change in the future\.\) For a list of edge locations, see the [Amazon CloudFront Infrastructure](http://aws.amazon.com/cloudfront/features/?#Amazon_CloudFront_Infrastructure) page\. | 
-| 4 | sc\-bytes | The total number of bytes that CloudFront served to the viewer in response to the request, including headers, for example, 1045619\. For WebSocket connections, this is the total number of bytes sent from the server to the client through the connection\. | 
-| 5 | c\-ip | The IP address of the viewer that made the request, for example, 192\.0\.2\.183 or 2001:0db8:85a3:0000:0000:8a2e:0370:7334\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of c\-ip is the IP address of the proxy or load balancer\. See also X\-Forwarded\-For in field 20\.  | 
-| 6 | cs\-method | The HTTP request method: DELETE, GET, HEAD, OPTIONS, PATCH, POST, or PUT\. | 
-| 7 | cs\(Host\) | The domain name of the CloudFront distribution, for example, d111111abcdef8\.cloudfront\.net\. | 
-| 8 | cs\-uri\-stem | The portion of the URI that identifies the path and object, for example, /images/cat\.jpg\. Question marks \(?\) in URLs and query strings are not included in the log\. | 
-| 9 | sc\-status | One of the following values: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 10 | cs\(Referer\) | The name of the domain that originated the request\. Common referrers include search engines, other websites that link directly to your objects, and your own website\. | 
-| 11 | cs\(User\-Agent\) | The value of the User\-Agent header in the request\. The User\-Agent header identifies the source of the request, such as the type of device and browser that submitted the request and, if the request came from a search engine, which search engine\. For more information, see [User\-Agent Header](RequestAndResponseBehaviorCustomOrigin.md#request-custom-user-agent-header)\. | 
-| 12 | cs\-uri\-query | The query string portion of the URI, if any\. When a URI doesn't contain a query string, this field's value is a hyphen \(\-\)\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.  | 
-| 13 | cs\(Cookie\) | The cookie header in the request, including name\-value pairs and the associated attributes\. If you enable cookie logging, CloudFront logs the cookies in all requests regardless of which cookies you choose to forward to the origin\. When a request doesn't include a cookie header, this field's value is a hyphen \(\-\)\. For more information about cookies, see [Caching Content Based on Cookies](Cookies.md)\.  | 
-| 14 | x\-edge\-result\-type | How CloudFront classifies the response after the last byte left the edge location\. In some cases, the result type can change between the time that CloudFront is ready to send the response and the time that CloudFront has finished sending the response\. See also `x-edge-response-result-type` in field 23\. For example, in HTTP streaming, suppose CloudFront finds a segment in the edge cache\. In that scenario, the value of this field would ordinarily be `Hit`\. However, if the viewer closes the connection before CloudFront has delivered the entire segment, the final result type, and thus the value of this field, is `Error`\. As another example, WebSocket connections will have a value of `Miss` for this field because the content is not cacheable and is proxied directly back to the origin server\. Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 15 | x\-edge\-request\-id | An encrypted string that uniquely identifies a request\. In the response header, this is x\-amz\-cf\-id\. | 
-| 16 | x\-host\-header | The value that the viewer included in the `Host` header for this request\. This is the domain name in the request: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 17 | cs\-protocol | The protocol that the viewer specified in the request: http, https, ws, or wss\. | 
-| 18 | cs\-bytes | The number of bytes of data that the viewer included in the request, including headers\. For WebSocket connections, this is the total number of bytes sent from the client to the server on the connection\. | 
-| 19 | time\-taken | The number of seconds \(to the thousandth of a second, for example, 0\.002\) between the time that a CloudFront edge server receives a viewer's request and the time that CloudFront writes the last byte of the response to the edge server's output queue as measured on the server\. From the perspective of the viewer, the total time to get the full object will be longer than this value due to network latency and TCP buffering\. | 
-| 20 | x\-forwarded\-for | If the viewer used an HTTP proxy or a load balancer to send the request, the value of `c-ip` in field 5 is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\. This field contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334\), as applicable\. If the viewer did not use an HTTP proxy or a load balancer, the value of `x-forwarded-for` is a hyphen \(\-\)\.  | 
-| 21 | ssl\-protocol | When `cs-protocol` in field 17 is `https`, this field contains the SSL/TLS protocol that the client and CloudFront negotiated for transmitting the request and response\. Possible values include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) When `cs-protocol` in field 17 is `http`, the value for this field is a hyphen \(\-\)\.  | 
-| 22 | ssl\-cipher |  When `cs-protocol` in field 17 is `https`, this field contains the SSL/TLS cipher that the client and CloudFront negotiated for encrypting the request and response\. Possible values include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) When `cs-protocol` in field 17 is `http`, the value for this field is a hyphen \(\-\)\.  | 
-| 23 | x\-edge\-response\-result\-type | How CloudFront classified the response just before returning the response to the viewer\. See also `x-edge-result-type` in field 14\.  Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 24 | cs\-protocol\-version |  The HTTP version that the viewer specified in the request\. Possible values include: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 25 | fle\-status | When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. If field\-level encryption is not configured for the distribution, the value of this field is a hyphen \(\-\)\. When CloudFront successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type`, field 14, can still indicate a client\-side or server\-side error in this case\. If the request exceeds a field\-level encryption quota, `fle-status` contains one of the following error codes, and CloudFront returns HTTP status code `400` to the viewer\. For a list of the current quotas on field\-level encryption, see [Quotas on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) Other possible values for this field include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 26 | fle\-encrypted\-fields | The number of fields that CloudFront encrypted and forwarded to the origin\. CloudFront streams the processed request to the origin as it encrypts data, so fle\-encrypted\-fields can have a value even if the value of fle\-status is an error\. If field\-level encryption is not configured for the distribution, the value of fle\-encrypted\-fields is a hyphen \(\-\)\.  | 
-| 27 | c\-port | The port number of the request from the viewer\. | 
-| 28 | time\-to\-first\-byte | The number of seconds between receiving the request and writing the first byte of the response, as measured on the server\. | 
-| 29 | x\-edge\-detailed\-result\-type |  When `x-edge-result-type` \(field 14\) is not `Error`, this field contains the same value as `x-edge-result-type`\. When `x-edge-result-type` is `Error`, this field contains the specific type of error\. Possible error type values for this field include the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)  | 
-| 30 | sc\-content\-type | The value of the HTTP Content\-Type header of the response\. | 
-| 31 | sc\-content\-len | The value of the HTTP Content\-Length header of the response\. | 
-| 32 | sc\-range\-start | When the response contains the HTTP Content\-Range header, this field contains the range start value\. | 
-| 33 | sc\-range\-end | When the response contains the HTTP Content\-Range header, this field contains the range end value\. | 
+   The date on which the event occurred in the format `YYYY-MM-DD`\. For example, `2019-06-30`\. The date and time are in Coordinated Universal Time \(UTC\)\. For WebSocket connections, this is the date when the connection closed\.
+
+1. **`time`**
+
+   The time when the CloudFront server finished responding to the request \(in UTC\), for example, `01:42:39`\. For WebSocket connections, this is the time when the connection is closed\.
+
+1. **`x-edge-location`**
+
+   The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number \(for example, DFW3\)\. The three\-letter code typically corresponds with the International Air Transport Association \(IATA\) airport code for an airport near the edge location’s geographic location\. \(These abbreviations might change in the future\.\)
+
+1. **`sc-bytes`**
+
+   The total number of bytes that the server sent to the viewer in response to the request, including headers\. For WebSocket connections, this is the total number of bytes sent from the server to the client through the connection\.
+
+1. **`c-ip`**
+
+   The IP address of the viewer that made the request, for example, `192.0.2.183` or `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of this field is the IP address of the proxy or load balancer\. See also the `x-forwarded-for` field\.
+
+1. **`cs-method`**
+
+   The HTTP request method received from the viewer\.
+
+1. **`cs(Host)`**
+
+   The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)\.
+
+1. **`cs-uri-stem`**
+
+   The portion of the request URL that identifies the path and object \(for example, `/images/cat.jpg`\)\. Question marks \(?\) in URLs and query strings are not included in the log\.
+
+1. **`sc-status`**
+
+   Contains one of the following values:
+   + The HTTP status code of the server’s response \(for example, `200`\)\.
+   + `000`, which indicates that the viewer closed the connection before the server could respond to the request\. If the viewer closes the connection after the server starts to send the response, this field contains the HTTP status code of the response that the server started to send\.
+
+1. **`cs(Referer)`**
+
+   The value of the `Referer` header in the request\. This is the name of the domain that originated the request\. Common referrers include search engines, other websites that link directly to your objects, and your own website\.
+
+1. **`cs(User-Agent)`**
+
+   The value of the `User-Agent` header in the request\. The `User-Agent` header identifies the source of the request, such as the type of device and browser that submitted the request or, if the request came from a search engine, which search engine\.
+
+1. **`cs-uri-query`**
+
+   The query string portion of the request URL, if any\.
+
+    
+
+   When a URL doesn’t contain a query string, this field's value is a hyphen \(\-\)\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+
+1. **`cs(Cookie)`**
+
+   The `Cookie` header in the request, including name—value pairs and the associated attributes\.
+
+    
+
+   If you enable cookie logging, CloudFront logs the cookies in all requests regardless of which cookies you choose to forward to the origin\. When a request doesn’t include a cookie header, this field’s value is a hyphen \(\-\)\. For more information about cookies, see [Caching Content Based on Cookies](Cookies.md)\.
+
+1. **`x-edge-result-type`**
+
+   How the server classified the response after the last byte left the server\. In some cases, the result type can change between the time that the server is ready to send the response and the time that it finishes sending the response\. See also the `x-edge-response-result-type` field\.
+
+    
+
+   For example, in HTTP streaming, suppose the server finds a segment of the stream in the cache\. In that scenario, the value of this field would ordinarily be `Hit`\. However, if the viewer closes the connection before the server has delivered the entire segment, the final result type \(and the value of this field\) is `Error`\.
+
+    
+
+   WebSocket connections will have a value of `Miss` for this field because the content is not cacheable and is proxied directly to the origin\.
+
+    
+
+   Possible values include:
+   + `Hit` – The server served the object to the viewer from the cache\.
+   + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
+   + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin and returned the result to the viewer\.
+   + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
+   + `CapacityExceeded` – The server returned an HTTP 503 status code because it didn’t have enough capacity at the time of the request to serve the object\.
+   + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\. If the value of the `sc-status` field is `200`, or if the value of this field is `Error` and the value of the `x-edge-response-result-type` field is not `Error`, it means the HTTP request was successful but the client disconnected before receiving all of the bytes\.
+   + `Redirect` – The server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
+
+1. **`x-edge-request-id`**
+
+   An opaque string that uniquely identifies a request\. CloudFront also sends this string in the `x-amz-cf-id` response header\.
+
+1. **`x-host-header`**
+
+   The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
+
+    
+
+   If you’re using alternate domain names, see `cs(Host)` in field 7 for the domain name that is associated with your distribution\.
+
+1. **`cs-protocol`**
+
+   The protocol of the viewer request \(`http`, `https`, `ws`, or `wss`\)\.
+
+1. **`cs-bytes`**
+
+   The total number of bytes of data that the viewer included in the request, including headers\. For WebSocket connections, this is the total number of bytes sent from the client to the server on the connection\.
+
+1. **`time-taken`**
+
+   The number of seconds \(to the thousandth of a second, for example, 0\.082\) from when the server receives the viewer’s request to when the server writes the last byte of the response to the output queue, as measured on the server\. From the perspective of the viewer, the total time to get the full response will be longer than this value because of network latency and TCP buffering\.
+
+1. **`x-forwarded-for`**
+
+   If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\. This field contains an IPv4 address \(for example, `192.0.2.183`\) or an IPv6 address \(for example, `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\)\.
+
+    
+
+   If the viewer did not use an HTTP proxy or a load balancer, the value of this field is a hyphen \(\-\)\.
+
+1. **`ssl-protocol`**
+
+   When the request used HTTPS, this field contains the SSL/TLS protocol that the viewer and server negotiated for transmitting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
+
+    
+
+   When `cs-protocol` in field 17 is `http`, the value for this field is a hyphen \(\-\)\.
+
+1. **`ssl-cipher`**
+
+   When the request used HTTPS, this field contains the SSL/TLS cipher that the viewer and server negotiated for encrypting the request and response\. For a list of possible values, see the supported SSL/TLS ciphers in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
+
+    
+
+   When `cs-protocol` in field 17 is `http`, the value for this field is a hyphen \(\-\)\.
+
+1. **`x-edge-response-result-type`**
+
+   How the server classified the response just before returning the response to the viewer\. See also the `x-edge-result-type` field\. Possible values include:
+   + `Hit` – The server served the object to the viewer from the cache\.
+   + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
+   + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin server and returned the result to the viewer\.
+   + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
+   + `CapacityExceeded` – The server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
+   + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\.
+
+      
+
+     If the value of the `x-edge-result-type` field is `Error` and the value of this field is not `Error`, the client disconnected before finishing the download\.
+   + `Redirect` – The server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
+
+1. **`cs-protocol-version`**
+
+   The HTTP version that the viewer specified in the request\. Possible values include `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, and `HTTP/2.0`\.
+
+1. **`fle-status`**
+
+   When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. When the server successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type` can still indicate a client\-side or server\-side error in this case\.
+
+    
+
+   Possible values for this field include:
+   + `ForwardedByContentType` – The server forwarded the request to the origin without parsing or encryption because no content type was configured\.
+   + `ForwardedByQueryArgs` – The server forwarded the request to the origin without parsing or encryption because the request contains a query argument that wasn’t in the configuration for field\-level encryption\.
+   + `ForwardedDueToNoProfile` – The server forwarded the request to the origin without parsing or encryption because no profile was specified in the configuration for field\-level encryption\.
+   + `MalformedContentTypeClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because the value of the `Content-Type` header was in an invalid format\.
+   + `MalformedInputClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because the request body was in an invalid format\.
+   + `MalformedQueryArgsClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because a query argument was empty or in an invalid format\.
+   + `RejectedByContentType` – The server rejected the request and returned an HTTP 400 status code to the viewer because no content type was specified in the configuration for field\-level encryption\.
+   + `RejectedByQueryArgs` – The server rejected the request and returned an HTTP 400 status code to the viewer because no query argument was specified in the configuration for field\-level encryption\.
+   + `ServerError` – The origin server returned an error\.
+
+   If the request exceeds a field\-level encryption quota \(formerly referred to as a limit\), this field contains one of the following error codes, and the server returns HTTP status code 400 to the viewer\. For a list of the current quotas on field\-level encryption, see [Quotas on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\.
+   + `FieldLengthLimitClientError` – A field that is configured to be encrypted exceeded the maximum length allowed\.
+   + `FieldNumberLimitClientError` – A request that the distribution is configured to encrypt contains more than the number of fields allowed\.
+   + `RequestLengthLimitClientError` – The length of the request body exceeded the maximum length allowed when field\-level encryption is configured\.
+
+    
+
+   If field\-level encryption is not configured for the distribution, the value of this field is a hyphen \(\-\)\.
+
+1. **`fle-encrypted-fields`**
+
+   The number of [field\-level encryption](field-level-encryption.md) fields that the server encrypted and forwarded to the origin\. CloudFront servers stream the processed request to the origin as they encrypt data, so this field can have a value even if the value of `fle-status` is an error\.
+
+    
+
+   If field\-level encryption is not configured for the distribution, the value of this field is a hyphen \(\-\)\.
+
+1. **`c-port`**
+
+   The port number of the request from the viewer\.
+
+1. **`time-to-first-byte`**
+
+   The number of seconds between receiving the request and writing the first byte of the response, as measured on the server\.
+
+1. **`x-edge-detailed-result-type`**
+
+   When the `x-edge-result-type` field is not `Error`, this field contains the same value as `x-edge-result-type`\. When the `x-edge-result-type` field is `Error`, this field contains the specific type of error\. Possible values include:
+   + `AbortedOrigin` – The server encountered an issue with the origin\.
+   + `ClientCommError` – The response to the viewer was interrupted due to a communication problem between the server and the viewer\.
+   + `ClientGeoBlocked` – The distribution is configured to refuse requests from the viewer’s geographic location\.
+   + `ClientHungUpRequest` – The viewer stopped prematurely while sending the request\.
+   + `Error` – An error occurred for which the error type doesn’t fit any of the other categories\. This error type can occur when the server serves an error response from the cache\.
+   + `InvalidRequest` – The server received an invalid request from the viewer\.
+   + `InvalidRequestBlocked` – Access to the requested resource is blocked\.
+   + `InvalidRequestCertificate` – The distribution doesn’t match the SSL/TLS certificate for which the HTTPS connection was established\.
+   + `InvalidRequestHeader` – The request contained an invalid header\.
+   + `InvalidRequestMethod` – The distribution is not configured to handle the HTTP request method that was used\. This can happen when the distribution supports only cacheable requests\.
+   + `OriginConnectError` – The server couldn’t connect to the origin\.
+   + `OriginContentRangeLengthError` – The `Content-Length` header in the origin’s response doesn’t match the length in the `Content-Range` header\.
+   + `OriginDnsError` – The server couldn’t resolve the origin’s domain name\.
+   + `OriginError` – The origin returned an incorrect response\.
+   + `OriginHeaderTooBigError` – A header returned by the origin is too big for the edge server to process\.
+   + `OriginInvalidResponseError` – The origin returned an invalid response\.
+   + `OriginReadError` – The server couldn’t read from the origin\.
+   + `OriginWriteError` – The server couldn’t write to the origin\.
+   + `OriginZeroSizeObjectError` – A zero size object sent from the origin resulted in an error\.
+   + `SlowReaderOriginError` – The viewer was slow to read the message that caused the origin error\.
+
+1. **`sc-content-type`**
+
+   The value of the HTTP `Content-Type` header of the response\.
+
+1. **`sc-content-len`**
+
+   The value of the HTTP `Content-Length` header of the response\.
+
+1. **`sc-range-start`**
+
+   When the response contains the HTTP `Content-Range` header, this field contains the range start value\.
+
+1. **`sc-range-end`**
+
+   When the response contains the HTTP `Content-Range` header, this field contains the range end value\.
 
 The following is an example log file for a web distribution:
 

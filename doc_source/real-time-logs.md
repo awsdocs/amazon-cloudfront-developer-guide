@@ -29,110 +29,244 @@ A name to identify the real\-time log configuration\.
 The sampling rate is a whole number between 1 and 100 \(inclusive\) that determines the percentage of viewer requests that are sent to Kinesis Data Streams as real\-time log records\. To include every viewer request in your real\-time logs, specify 100 for the sampling rate\. You might choose a lower sampling rate to reduce costs while still receiving a representative sample of request data in your real\-time logs\.
 
 **Fields**  
-A list of the fields that are included in each real\-time log record\. You can choose to receive all of the available fields, or only the fields that you need for monitoring and analyzing performance\.  
-The following list describes each of the available fields\. The fields are listed in the order in which they appear in the log records that are delivered to Kinesis Data Streams\.
-+ **`timestamp`** – The date and time at which the edge server finished responding to the request\.
-+ **`c-ip`** – The IP address of the viewer that made the request, for example, 192\.0\.2\.183 or 2001:0db8:85a3:0000:0000:8a2e:0370:7334\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of this field is the IP address of the proxy or load balancer\.
-+ `time-to-first-byte` – The number of seconds between receiving the request and writing the first byte of the response, as measured on the edge server\.
-+ `sc-status` – Contains one of the following values:
-  + The HTTP status code of the edge server’s response \(for example, `200`\)\.
-  + `000`, which indicates that the viewer closed the connection before the edge server could respond to the request\. If the viewer closes the connection after the edge server starts to send the response, this field contains the applicable HTTP status code\.
-+ `sc-bytes` – The total number of bytes that the edge server sent to the viewer in response to the request, including headers\.
-+ `cs-method` – The HTTP request method received from the viewer\.
-+ `cs-protocol` – The protocol of the viewer request \(`http`, `https`, `ws`, or `wss`\)\.
-+ `cs-host` – The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)\.
-+ `cs-uri-stem` – The portion of the request URL that identifies the path and object \(for example, /images/cat\.jpg\)\. Question marks \(?\) in URLs and query strings are not included in the log\.
-+ `cs-bytes` – The total number of bytes of data that the viewer included in the request, including headers\.
-+ `x-edge-location` – The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number \(for example, DFW3\)\. The three\-letter code typically corresponds with the International Air Transport Association \(IATA\) airport code for an airport near the edge location’s geographic location\. \(These abbreviations might change in the future\.\)
-+ `x-edge-request-id` – An opaque string that uniquely identifies a request\. This string is also sent in the `x-amz-cf-id` response header\.
-+ `x-host-header` – The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
-+ `time-taken` – The number of seconds \(to the thousandth of a second, for example, 0\.082\) from when the edge server receives the viewer’s request to when the edge server writes the last byte of the response to the output queue, as measured on the edge server\. From the perspective of the viewer, the total time to get the full response will be longer than this value because of network latency andTCP buffering\.
-+ `cs-protocol-version` – The HTTP version that the viewer specified in the request\. Possible values include `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, and `HTTP/2.0`\.
-+ `c-ip-version` – The IP version of the request \(IPv4 or IPv6\)\.
-+ `cs-user-agent` – The value of the `User-Agent` header in the request\. The `User-Agent` header identifies the source of the request, such as the type of device and browser that submitted the request or, if the request came from a search engine, which search engine\.
-+ `cs-referer` – The value of the `Referer` header in the request\. This is the name of the domain that originated the request\. Common referrers include search engines, other websites that link directly to your objects, and your own website\.
-+ `cs-cookie` – The `Cookie` header in the request, including name—value pairs and the associated attributes\.
+A list of the fields that are included in each real\-time log record\. Each log record can contain up to 40 fields, and you can choose to receive all of the available fields, or only the fields that you need for monitoring and analyzing performance\.  
+The following list contains each field name and a description of the information in that field\. The fields are listed in the order in which they appear in the log records that are delivered to Kinesis Data Streams\.
+
+1. **`timestamp`**
+
+   The date and time at which the edge server finished responding to the request\.
+
+1. **`c-ip`**
+
+   The IP address of the viewer that made the request, for example, `192.0.2.183` or `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of this field is the IP address of the proxy or load balancer\. See also the `x-forwarded-for` field\.
+
+1. **`time-to-first-byte`**
+
+   The number of seconds between receiving the request and writing the first byte of the response, as measured on the server\.
+
+1. **`sc-status`**
+
+   Contains one of the following values:
+   + The HTTP status code of the server’s response \(for example, `200`\)\.
+   + `000`, which indicates that the viewer closed the connection before the server could respond to the request\. If the viewer closes the connection after the server starts to send the response, this field contains the HTTP status code of the response that the server started to send\.
+
+1. **`sc-bytes`**
+
+   The total number of bytes that the server sent to the viewer in response to the request, including headers\. For WebSocket connections, this is the total number of bytes sent from the server to the client through the connection\.
+
+1. **`cs-method`**
+
+   The HTTP request method received from the viewer\.
+
+1. **`cs-protocol`**
+
+   The protocol of the viewer request \(`http`, `https`, `ws`, or `wss`\)\.
+
+1. **`cs-host`**
+
+   The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)\.
+
+1. **`cs-uri-stem`**
+
+   The portion of the request URL that identifies the path and object \(for example, `/images/cat.jpg`\)\. Question marks \(?\) in URLs and query strings are not included in the log\.
+
+1. **`cs-bytes`**
+
+   The total number of bytes of data that the viewer included in the request, including headers\. For WebSocket connections, this is the total number of bytes sent from the client to the server on the connection\.
+
+1. **`x-edge-location`**
+
+   The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number \(for example, DFW3\)\. The three\-letter code typically corresponds with the International Air Transport Association \(IATA\) airport code for an airport near the edge location’s geographic location\. \(These abbreviations might change in the future\.\)
+
+1. **`x-edge-request-id`**
+
+   An opaque string that uniquely identifies a request\. CloudFront also sends this string in the `x-amz-cf-id` response header\.
+
+1. **`x-host-header`**
+
+   The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
+
+1. **`time-taken`**
+
+   The number of seconds \(to the thousandth of a second, for example, 0\.082\) from when the server receives the viewer’s request to when the server writes the last byte of the response to the output queue, as measured on the server\. From the perspective of the viewer, the total time to get the full response will be longer than this value because of network latency and TCP buffering\.
+
+1. **`cs-protocol-version`**
+
+   The HTTP version that the viewer specified in the request\. Possible values include `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, and `HTTP/2.0`\.
+
+1. **`c-ip-version`**
+
+   The IP version of the request \(IPv4 or IPv6\)\.
+
+1. **`cs-user-agent`**
+
+   The value of the `User-Agent` header in the request\. The `User-Agent` header identifies the source of the request, such as the type of device and browser that submitted the request or, if the request came from a search engine, which search engine\.
+
+1. **`cs-referer`**
+
+   The value of the `Referer` header in the request\. This is the name of the domain that originated the request\. Common referrers include search engines, other websites that link directly to your objects, and your own website\.
+
+1. **`cs-cookie`**
+
+   The `Cookie` header in the request, including name—value pairs and the associated attributes\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ `cs-uri-query` – The query string portion of the URL, if any\.
-+ `x-edge-response-result-type` – How the edge server classified the response just before returning the response to the viewer\. Possible values include:
-  + `Hit` – The edge server served the object to the viewer from the cache\.
-  + `RefreshHit` – The edge server found the object in the edge cache but the object had expired, so the edge server contacted the origin to verify that the cache had the latest version of the object\.
-  + `Miss` – The request could not be satisfied by an object in the edge cache, so the edge server forwarded the request to the origin server and returned the result to the viewer\.
-  + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
-  + `CapacityExceeded` – The edge server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
-  + `Error` – Typically, this means the request resulted in a client error or a server error\.
-  + `Redirect` – The edge server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
-+ `x-forwarded-for` – If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\.
-+ `ssl-protocol` – When the request used HTTPS, this field contains the SSL/TLS protocol that the viewer and edge server negotiated for transmitting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
-+ `ssl-cipher` – When the request used HTTPS, this field contains the SSL/TLS cipher that the viewer and edge server negotiated for encrypting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
-+ `x-edge-result-type` – How the edge server classified the response after the last byte left the edge location\. In some cases, the result type can change between the time that the edge server is ready to send the response and the time that it finishes sending the response\. \(See also the `x-edge-response-result-type` field\)\.
 
-  For example, in HTTP streaming, suppose the edge server finds a segment of the stream in the edge cache\. In that scenario, the value of this field would ordinarily be `Hit`\. However, if the viewer closes the connection before the edge server has delivered the entire segment, the final result type \(and the value of this field\) is `Error`\.
+1. **`cs-uri-query`**
 
-  Possible values include:
-  + `Hit` – The edge server served the object to the viewer from the cache\.
-  + `RefreshHit` – The edge server found the object in the edge cache but the object had expired, so the edge server contacted the origin to verify that the cache had the latest version of the object\.
-  + `Miss` – The request could not be satisfied by an object in the edge cache, so the edge server forwarded the request to the origin server and returned the result to the viewer\.
-  + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
-  + `CapacityExceeded` – The edge server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
-  + `Error` – Typically, this means the request resulted in a client error or a server error\.
-  + `Redirect` – The edge server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
-+ `fle-encrypted-fields` – The number of [field\-level encryption](field-level-encryption.md) fields that the edge server encrypted and forwarded to the origin\. Edge servers stream the processed request to the origin as they encrypt data, so this field can have a value even if the value of `fle-status` is an error\.
-+ `fle-status` – When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. When the edge server successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type` can still indicate a client\-side or server\-side error in this case\.
+   The query string portion of the request URL, if any\.
 
-  If the request exceeds a field\-level encryption quota \(formerly referred to as a limit\), this field contains one of the following error codes, and the edge server returns HTTP status code 400 to the viewer\.
-  + `FieldLengthLimitClientError` – A field that is configured to be encrypted exceeded the maximum length allowed\.
-  + `FieldNumberLimitClientError` – A request that the distribution is configured to encrypt contains more than the number of fields allowed\.
-  + `RequestLengthLimitClientError` – The length of the request body exceeded the maximum length allowed when field\-level encryption is configured\.
+1. **`x-edge-response-result-type`**
 
-  Other possible values for this field include the following:
-  + `ForwardedByContentType` – The edge server forwarded the request to the origin without parsing or encryption because no content type was configured\.
-  + `ForwardedByQueryArgs` – The edge server forwarded the request to the origin without parsing or encryption because the request contains a query argument that wasn’t in the configuration for field\-level encryption\.
-  + `ForwardedDueToNoProfile` – The edge server forwarded the request to the origin without parsing or encryption because no profile was specified in the configuration for field\-level encryption\.
-  + `MalformedContentTypeClientError` – The edge server rejected the request and returned an HTTP 400 status code to the viewer because the value of the `Content-Type` header was in an invalid format\.
-  + `MalformedInputClientError` – The edge server rejected the request and returned an HTTP 400 status code to the viewer because the request body was in an invalid format\.
-  + `MalformedQueryArgsClientError` – The edge server rejected the request and returned an HTTP 400 status code to the viewer because a query argument was empty or in an invalid format\.
-  + `RejectedByContentType` – The edge server rejected the request and returned an HTTP 400 status code to the viewer because no content type was specified in the configuration for field\-level encryption\.
-  + `RejectedByQueryArgs` – The edge server rejected the request and returned an HTTP 400 status code to the viewer because no query argument was specified in the configuration for field\-level encryption\.
-  + `ServerError` – The origin server returned an error\.
-+ `sc-content-type` – The value of the HTTP `Content-Type` header of the response\.
-+ `sc-content-len` – The value of the HTTP `Content-Length` header of the response\.
-+ `sc-range-start` – When the response contains the HTTP `Content-Range` header, this field contains the range start value\.
-+ `sc-range-end` – When the response contains the HTTP `Content-Range` header, this field contains the range end value\.
-+ `c-port` – The port number of the request from the viewer\.
-+ `x-edge-detailed-result-type` – When the `x-edge-result-type` field is not `Error`, this field contains the same value as `x-edge-result-type`\. When `x-edge-result-type` is `Error`, this field contains the specific type of error\. Possible values include:
-  + `AbortedOrigin` – The edge server encountered an issue with the origin\.
-  + `ClientCommError` – The response to the viewer was interrupted due to a communication problem between the edge server and the viewer\.
-  + `ClientGeoBlocked` – The distribution is configured to refuse requests from the viewer’s geographic location\.
-  + `ClientHungUpRequest` – The viewer stopped prematurely while sending the request\.
-  + `Error` – An error occurred for which the error type doesn’t fit any of the other categories\. This error type can occur when the edge server serves an error response from the cache\.
-  + `InvalidRequest` – The edge server received an invalid request from the viewer\.
-  + `InvalidRequestBlocked` – Access to the requested resource is blocked\.
-  + `InvalidRequestCertificate` – The distribution doesn’t match the SSL/TLS certificate for which the HTTPS connection was established\.
-  + `InvalidRequestHeader` – The request contained an invalid header\.
-  + `InvalidRequestMethod` – The distribution is not configured to handle the HTTP request method that was used\. This can happen when the distribution supports only cacheable requests\.
-  + `OriginConnectError` – The edge server couldn’t connect to the origin\.
-  + `OriginContentRangeLengthError` – The `Content-Length` header in the origin’s response doesn’t match the length in the `Content-Range` header\.
-  + `OriginDnsError` – The edge server couldn’t resolve the origin’s domain name\.
-  + `OriginError` – The origin returned an incorrect response\.
-  + `OriginHeaderTooBigError` – A header returned by the origin is too big for the edge server to process\.
-  + `OriginInvalidResponseError` – The origin returned an invalid response\.
-  + `OriginReadError` – The edge server couldn’t read from the origin\.
-  + `OriginWriteError` – The edge server couldn’t write to the origin\.
-  + `OriginZeroSizeObjectError` – A zero size object sent from the origin resulted in an error\.
-  + `SlowReaderOriginError` – The viewer was slow to read the message that caused the origin error\.
-+ `c-country` – A country code that represents the viewer’s geographic location, as determined by the viewer’s IP address\.
-+ `cs-accept-encoding` – The value of the `Accept-Encoding` header in the viewer request\.
-+ `cs-accept` – The value of the `Accept` header in the viewer request\.
-+ `cache-behavior-path-pattern` – The path pattern that identifies the cache behavior that matched the viewer request\.
-+ `cs-headers` – The HTTP headers \(names and values\) in the viewer request\.
+   How the server classified the response just before returning the response to the viewer\. See also the `x-edge-result-type` field\. Possible values include:
+   + `Hit` – The server served the object to the viewer from the cache\.
+   + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
+   + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin server and returned the result to the viewer\.
+   + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
+   + `CapacityExceeded` – The server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
+   + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\.
+
+      
+
+     If the value of the `x-edge-result-type` field is `Error` and the value of this field is not `Error`, the client disconnected before finishing the download\.
+   + `Redirect` – The server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
+
+1. **`x-forwarded-for`**
+
+   If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\. This field contains an IPv4 address \(for example, `192.0.2.183`\) or an IPv6 address \(for example, `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\)\.
+
+1. **`ssl-protocol`**
+
+   When the request used HTTPS, this field contains the SSL/TLS protocol that the viewer and server negotiated for transmitting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
+
+1. **`ssl-cipher`**
+
+   When the request used HTTPS, this field contains the SSL/TLS cipher that the viewer and server negotiated for encrypting the request and response\. For a list of possible values, see the supported SSL/TLS ciphers in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
+
+1. **`x-edge-result-type`**
+
+   How the server classified the response after the last byte left the server\. In some cases, the result type can change between the time that the server is ready to send the response and the time that it finishes sending the response\. See also the `x-edge-response-result-type` field\.
+
+    
+
+   For example, in HTTP streaming, suppose the server finds a segment of the stream in the cache\. In that scenario, the value of this field would ordinarily be `Hit`\. However, if the viewer closes the connection before the server has delivered the entire segment, the final result type \(and the value of this field\) is `Error`\.
+
+    
+
+   WebSocket connections will have a value of `Miss` for this field because the content is not cacheable and is proxied directly to the origin\.
+
+    
+
+   Possible values include:
+   + `Hit` – The server served the object to the viewer from the cache\.
+   + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
+   + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin and returned the result to the viewer\.
+   + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
+   + `CapacityExceeded` – The server returned an HTTP 503 status code because it didn’t have enough capacity at the time of the request to serve the object\.
+   + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\. If the value of the `sc-status` field is `200`, or if the value of this field is `Error` and the value of the `x-edge-response-result-type` field is not `Error`, it means the HTTP request was successful but the client disconnected before receiving all of the bytes\.
+   + `Redirect` – The server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
+
+1. **`fle-encrypted-fields`**
+
+   The number of [field\-level encryption](field-level-encryption.md) fields that the server encrypted and forwarded to the origin\. CloudFront servers stream the processed request to the origin as they encrypt data, so this field can have a value even if the value of `fle-status` is an error\.
+
+1. **`fle-status`**
+
+   When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. When the server successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type` can still indicate a client\-side or server\-side error in this case\.
+
+    
+
+   Possible values for this field include:
+   + `ForwardedByContentType` – The server forwarded the request to the origin without parsing or encryption because no content type was configured\.
+   + `ForwardedByQueryArgs` – The server forwarded the request to the origin without parsing or encryption because the request contains a query argument that wasn’t in the configuration for field\-level encryption\.
+   + `ForwardedDueToNoProfile` – The server forwarded the request to the origin without parsing or encryption because no profile was specified in the configuration for field\-level encryption\.
+   + `MalformedContentTypeClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because the value of the `Content-Type` header was in an invalid format\.
+   + `MalformedInputClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because the request body was in an invalid format\.
+   + `MalformedQueryArgsClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because a query argument was empty or in an invalid format\.
+   + `RejectedByContentType` – The server rejected the request and returned an HTTP 400 status code to the viewer because no content type was specified in the configuration for field\-level encryption\.
+   + `RejectedByQueryArgs` – The server rejected the request and returned an HTTP 400 status code to the viewer because no query argument was specified in the configuration for field\-level encryption\.
+   + `ServerError` – The origin server returned an error\.
+
+   If the request exceeds a field\-level encryption quota \(formerly referred to as a limit\), this field contains one of the following error codes, and the server returns HTTP status code 400 to the viewer\. For a list of the current quotas on field\-level encryption, see [Quotas on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\.
+   + `FieldLengthLimitClientError` – A field that is configured to be encrypted exceeded the maximum length allowed\.
+   + `FieldNumberLimitClientError` – A request that the distribution is configured to encrypt contains more than the number of fields allowed\.
+   + `RequestLengthLimitClientError` – The length of the request body exceeded the maximum length allowed when field\-level encryption is configured\.
+
+1. **`sc-content-type`**
+
+   The value of the HTTP `Content-Type` header of the response\.
+
+1. **`sc-content-len`**
+
+   The value of the HTTP `Content-Length` header of the response\.
+
+1. **`sc-range-start`**
+
+   When the response contains the HTTP `Content-Range` header, this field contains the range start value\.
+
+1. **`sc-range-end`**
+
+   When the response contains the HTTP `Content-Range` header, this field contains the range end value\.
+
+1. **`c-port`**
+
+   The port number of the request from the viewer\.
+
+1. **`x-edge-detailed-result-type`**
+
+   When the `x-edge-result-type` field is not `Error`, this field contains the same value as `x-edge-result-type`\. When the `x-edge-result-type` field is `Error`, this field contains the specific type of error\. Possible values include:
+   + `AbortedOrigin` – The server encountered an issue with the origin\.
+   + `ClientCommError` – The response to the viewer was interrupted due to a communication problem between the server and the viewer\.
+   + `ClientGeoBlocked` – The distribution is configured to refuse requests from the viewer’s geographic location\.
+   + `ClientHungUpRequest` – The viewer stopped prematurely while sending the request\.
+   + `Error` – An error occurred for which the error type doesn’t fit any of the other categories\. This error type can occur when the server serves an error response from the cache\.
+   + `InvalidRequest` – The server received an invalid request from the viewer\.
+   + `InvalidRequestBlocked` – Access to the requested resource is blocked\.
+   + `InvalidRequestCertificate` – The distribution doesn’t match the SSL/TLS certificate for which the HTTPS connection was established\.
+   + `InvalidRequestHeader` – The request contained an invalid header\.
+   + `InvalidRequestMethod` – The distribution is not configured to handle the HTTP request method that was used\. This can happen when the distribution supports only cacheable requests\.
+   + `OriginConnectError` – The server couldn’t connect to the origin\.
+   + `OriginContentRangeLengthError` – The `Content-Length` header in the origin’s response doesn’t match the length in the `Content-Range` header\.
+   + `OriginDnsError` – The server couldn’t resolve the origin’s domain name\.
+   + `OriginError` – The origin returned an incorrect response\.
+   + `OriginHeaderTooBigError` – A header returned by the origin is too big for the edge server to process\.
+   + `OriginInvalidResponseError` – The origin returned an invalid response\.
+   + `OriginReadError` – The server couldn’t read from the origin\.
+   + `OriginWriteError` – The server couldn’t write to the origin\.
+   + `OriginZeroSizeObjectError` – A zero size object sent from the origin resulted in an error\.
+   + `SlowReaderOriginError` – The viewer was slow to read the message that caused the origin error\.
+
+1. **`c-country`**
+
+   A country code that represents the viewer’s geographic location, as determined by the viewer’s IP address\.
+
+1. **`cs-accept-encoding`**
+
+    The value of the `Accept-Encoding` header in the viewer request\.
+
+1. **`cs-accept`**
+
+   The value of the `Accept` header in the viewer request\.
+
+1. **`cache-behavior-path-pattern`**
+
+   The path pattern that identifies the cache behavior that matched the viewer request\.
+
+1. **`cs-headers`**
+
+   The HTTP headers \(names and values\) in the viewer request\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ `cs-header-names` – The names of the HTTP headers \(not values\) in the viewer request\.
+
+1. **`cs-header-names`**
+
+   The names of the HTTP headers \(not values\) in the viewer request\.
 **Note**  
 This field is truncated to 800 bytes\.
-+ `cs-headers-count` – The number of HTTP headers in the viewer request\.
+
+1. **`cs-headers-count`**
+
+    The number of HTTP headers in the viewer request\.
 
 **Endpoint \(Kinesis data stream\)**  
 The endpoint contains information about the Kinesis data stream where you want to send real\-time logs\. You provide the Amazon Resource Name \(ARN\) of the data stream\.  
