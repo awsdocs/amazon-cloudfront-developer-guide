@@ -19,6 +19,8 @@ To configure a distribution to compress content, update the cache behavior that 
 
 1. Use a [cache policy](controlling-the-cache-key.md) to specify caching settings, and make sure the **Gzip** and **Brotli** settings are both enabled\. \(In AWS CloudFormation or the CloudFront API, set `EnableAcceptEncodingGzip` and `EnableAcceptEncodingBrotli` to `true`\.\)
 
+1. Make sure the TTL values in the cache policy are set to a value higher than zero\. When you set the TTL values to zero, caching is disabled and CloudFront doesn’t compress content\.
+
 To update a cache behavior, you can use any of the following tools:
 + The [CloudFront console](https://console.aws.amazon.com/cloudfront/home)
 + [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_CloudFront.html)
@@ -30,17 +32,11 @@ CloudFront can compress files both for Amazon S3 origins and for custom origins\
 
 When you configure CloudFront to compress your content, here’s how CloudFront serves your content:
 
-1. You create or update a CloudFront distribution and configure CloudFront to compress content\. You also configure CloudFront to [cache compressed objects](controlling-the-cache-key.md#cache-policy-compressed-objects)\.
+1. You create or update a CloudFront distribution and configure CloudFront to compress content\. For more information, see the previous section\.
 
 1. A viewer requests a file\. The viewer includes the `Accept-Encoding` HTTP header in the request, and the header values include `gzip`, `br`, or both\. This indicates that the viewer supports compressed content\. When the viewer supports both formats, CloudFront uses Brotli\.
 **Note**  
 The Chrome and Firefox web browsers support Brotli compression only when the request is sent using HTTPS\. These browsers do not support Brotli with HTTP requests\.
-
-   CloudFront only compresses content using Brotli when both of the following are true:
-   + You configure the distribution to compress content\. See the previous section\.
-   + You enable the **Cache Brotli objects** setting \(set `EnableAcceptEncodingBrotli` to `true`\)\. For more information, see [Cache compressed objects](controlling-the-cache-key.md#cache-policy-compressed-objects)\.
-
-   CloudFront compresses content using Gzip when just the first of the previous items is true\.
 
 1. At the edge location, CloudFront checks the cache for a compressed version of the requested file\.
 
