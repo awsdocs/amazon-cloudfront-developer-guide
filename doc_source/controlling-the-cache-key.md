@@ -56,7 +56,7 @@ Cache key settings include:
 + [Query strings](#cache-policy-query-strings)
 + [Headers](#cache-policy-headers)
 + [Cookies](#cache-policy-cookies)
-+ [Cache compressed objects \(uses the `Accept-Encoding` header\)](#cache-policy-compressed-objects)
++ [Compression support](#cache-policy-compressed-objects)
 
 **Query strings**  
 The URL query strings in viewer requests that CloudFront includes in the cache key and in origin requests\. For query strings, you can choose one of the following settings:  
@@ -96,15 +96,15 @@ Cookie: session_ID=abcd1234
 ```
 In this case, you specify the cookie as `session_ID`, not as `session_ID=abcd1234`\. However, CloudFront includes the full cookie, including its value, in the cache key and in origin requests\.
 
-**Cache compressed objects \(uses the `Accept-Encoding` header\)**  
-These settings enable CloudFront to request and cache objects that are compressed in the Gzip or Brotli compression formats, when the viewer supports it\. Viewers indicate their support for these compression formats with the `Accept-Encoding` HTTP header\.  
+**Compression support**  
+These settings enable CloudFront to request and cache objects that are compressed in the Gzip or Brotli compression formats, when the viewer supports it\. These settings also allow [CloudFront compression](ServingCompressedFiles.md) to work\. Viewers indicate their support for these compression formats with the `Accept-Encoding` HTTP header\.  
 The Chrome and Firefox web browsers support Brotli compression only when the request is sent using HTTPS\. These browsers do not support Brotli with HTTP requests\.
 Enable these settings when any of the following are true:  
-+ Your origin returns Gzip compressed objects when viewers support them \(requests contain the `Accept-Encoding` HTTP header with `gzip` as a value\)\. In this case, enable the **Cache Gzip objects** setting \(set `EnableAcceptEncodingGzip` to `true` in the CloudFront API, AWS SDKs, AWS CLI, or AWS CloudFormation\)\.
-+ Your origin returns Brotli compressed objects when viewers support them \(requests contain the `Accept-Encoding` HTTP header with `br` as a value\)\. In this case, enable the **Cache Brotli objects** setting \(set `EnableAcceptEncodingBrotli` to `true` in the CloudFront API, AWS SDKs, AWS CLI, or AWS CloudFormation\)\.
-+ The cache behavior that this cache policy is attached to is configured with [CloudFront edge compression](ServingCompressedFiles.md)\. In this case, you can enable caching for either Gzip or Brotli, or both\. When CloudFront edge compression is enabled, enabling caching for both formats can help to reduce your costs for data transfer out to the internet\.
++ Your origin returns Gzip compressed objects when viewers support them \(requests contain the `Accept-Encoding` HTTP header with `gzip` as a value\)\. In this case, use the **Gzip enabled** setting \(set `EnableAcceptEncodingGzip` to `true` in the CloudFront API, AWS SDKs, AWS CLI, or AWS CloudFormation\)\.
++ Your origin returns Brotli compressed objects when viewers support them \(requests contain the `Accept-Encoding` HTTP header with `br` as a value\)\. In this case, use the **Brotli enabled** setting \(set `EnableAcceptEncodingBrotli` to `true` in the CloudFront API, AWS SDKs, AWS CLI, or AWS CloudFormation\)\.
++ The cache behavior that this cache policy is attached to is configured with [CloudFront compression](ServingCompressedFiles.md)\. In this case, you can enable caching for either Gzip or Brotli, or both\. When CloudFront compression is enabled, enabling caching for both formats can help to reduce your costs for data transfer out to the internet\.
 If you enable caching for one or both of these compression formats, do not include the `Accept-Encoding` header in an [origin request policy](controlling-origin-requests.md) that’s associated with the same cache behavior\. CloudFront always includes this header in origin requests when caching is enabled for either of these formats, so including `Accept-Encoding` in an origin request policy has no effect\.
-If your origin server does not return Gzip or Brotli compressed objects, or the cache behavior is not configured with CloudFront edge compression, don’t enable caching for compressed objects\. If you do, it might cause a decrease in your [cache hit ratio](cache-hit-ratio.md)\.  
+If your origin server does not return Gzip or Brotli compressed objects, or the cache behavior is not configured with CloudFront compression, don’t enable caching for compressed objects\. If you do, it might cause a decrease in your [cache hit ratio](cache-hit-ratio.md)\.  
 The following explains how these settings affect a CloudFront distribution\. All of the following scenarios assume that the viewer request includes the `Accept-Encoding` header\. When the viewer request does not include the `Accept-Encoding` header, CloudFront doesn’t include this header in the cache key and doesn’t include it in the corresponding origin request\.    
 **When caching compressed objects is enabled for both compression formats**  
 If the viewer supports both Gzip and Brotli—that is, if the `gzip` and `br` values are both in the `Accept-Encoding` header in the viewer request—CloudFront does the following:  
