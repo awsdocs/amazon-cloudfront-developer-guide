@@ -135,6 +135,13 @@ The following example shows an origin request event object\.
                 "TLSv1.1",
                 "TLSv1.2"
               ]
+            },
+            "s3": {
+              "authMethod": "origin-access-identity",
+              "customHeaders": {},
+              "domainName": "example-bucket.s3.amazonaws.com",
+              "path": "",
+              "region": "us-east-1"
             }
           },
           "querystring": "",
