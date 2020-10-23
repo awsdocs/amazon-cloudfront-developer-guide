@@ -139,7 +139,7 @@ You can create a CloudFront key pair in the following ways:
 **Important**  
 IAM users can’t create CloudFront key pairs\. You must sign in using root user credentials to create key pairs\.
 
-1. Choose your account name, the choose **My Security Credentials**\.
+1. Choose your account name, then choose **My Security Credentials**\.
 
 1. Choose **CloudFront key pairs**\.
 
