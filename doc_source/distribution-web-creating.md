@@ -29,6 +29,6 @@ You are responsible for ensuring the security of your origin server\. You must e
    If you specified one or more alternate domain names \(CNAMEs\) when you created your distribution, you can use your own domain name\. In that case, the URL for `image.jpg` might be `http://www.example.com/image.jpg`\.
 
    Note the following:
-   + If you want to use signed URLs to restrict access to your content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\. 
+   + If you want to use signed URLs to restrict access to your content, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\. 
    + If you want to serve compressed content, see [Serving compressed files](ServingCompressedFiles.md)\.
    + For information about CloudFront request and response behavior for Amazon S3 and custom origins, see [Request and Response Behavior](RequestAndResponseBehavior.md)\.

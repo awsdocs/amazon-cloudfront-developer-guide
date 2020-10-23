@@ -448,7 +448,7 @@ The following example shows how to improve your cache hit ratio by making the fo
 + Alphabetize key\-value pairs by the name of the parameter\.
 + Change the case of key\-value pairs to lowercase\.
 
-For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 ------
 #### [ Node\.js ]

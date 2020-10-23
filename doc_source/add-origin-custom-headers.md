@@ -26,7 +26,7 @@ If you configure more than one CloudFront distribution to use the same origin, y
 If some of your viewers don’t support cross\-origin resource sharing \(CORS\), you can configure CloudFront to always add the `Origin` header to requests that it sends to your origin\. Then you can configure your origin to return the `Access-Control-Allow-Origin` header for every request\. You must also [configure CloudFront to respect CORS settings](header-caching.md#header-caching-web-cors)\.
 
 **Controlling access to content**  
-You can use custom headers to control access to content\. By configuring your origin to respond to requests only when they include a custom header that gets added by CloudFront, you prevent users from bypassing CloudFront and accessing your content directly on the origin\. For more information, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
+You can use custom headers to control access to content\. By configuring your origin to respond to requests only when they include a custom header that gets added by CloudFront, you prevent users from bypassing CloudFront and accessing your content directly on the origin\. For more information, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 ## Configuring CloudFront to Add Custom Headers to Origin Requests<a name="add-origin-custom-headers-configure"></a>
 

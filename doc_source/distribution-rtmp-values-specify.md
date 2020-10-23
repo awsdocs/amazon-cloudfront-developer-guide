@@ -114,7 +114,7 @@ You can toggle a distribution between disabled and enabled as often as you want\
 
 If you want requests for objects served by this distribution to use public URLs, click **No**\. If you want requests to use signed URLs, click **Yes**\. Then specify the AWS accounts that you want to use to create signed URLs; these accounts are known as trusted signers\.
 
-For more information about trusted signers, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\. 
+For more information about trusted signers, see [Specifying the signers that can create signed URLs and signed cookies](private-content-trusted-signers.md)\. 
 
 ## Trusted Signers<a name="StreamingDistValuesTrustedSigners"></a>
 
@@ -130,7 +130,7 @@ If you're updating a distribution that you're already using to distribute conten
 ## AWS Account Numbers<a name="StreamingDistValuesAWSAccountNumbers"></a>
 
 If you want to create signed URLs using AWS accounts in addition to or instead of the current account, enter one AWS account number per line in this field\. Note the following:
-+ The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating CloudFront Key Pairs for Your Trusted Signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
++ The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating key pairs for your signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
 + You can't create CloudFront key pairs for IAM users, so you can't use IAM users as trusted signers\.
 + For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](https://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
 + If you enter the account number for the current account, CloudFront automatically checks the **Self** checkbox and removes the account number from the **AWS Account Numbers** list\.

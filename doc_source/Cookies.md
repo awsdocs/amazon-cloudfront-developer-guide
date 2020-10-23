@@ -1,4 +1,4 @@
-# Caching Content Based on Cookies<a name="Cookies"></a>
+# Caching content based on cookies<a name="Cookies"></a>
 
 By default, CloudFront doesn’t consider cookies when processing requests and responses, or when caching your objects in edge locations\. If CloudFront receives two requests that are identical except for what’s in the `Cookie` header, then, by default, CloudFront treats the requests as identical and returns the same object for both requests\.
 

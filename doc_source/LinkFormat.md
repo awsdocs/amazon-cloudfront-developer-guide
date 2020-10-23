@@ -43,7 +43,7 @@ It’s inconvenient to have to invalidate both URL formats, and it can lead to a
 
 ## Creating Signed URLs for Restricted Content<a name="LinkFormat_SignedURLs"></a>
 
-If you have content that you want to restrict access to, you can create signed URLs\. For example, if you want to distribute your content only to users who have authenticated, you can create URLs that are valid only for a specified time period or that are available only from a specified IP address\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+If you have content that you want to restrict access to, you can create signed URLs\. For example, if you want to distribute your content only to users who have authenticated, you can create URLs that are valid only for a specified time period or that are available only from a specified IP address\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 ## Creating URLs for RTMP Distribution Media Files<a name="LinkFormat_StreamingURLs"></a>
 

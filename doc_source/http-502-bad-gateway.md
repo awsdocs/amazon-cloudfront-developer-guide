@@ -14,7 +14,7 @@ An HTTP 502 status code \(Bad Gateway\) indicates that CloudFront wasn't able to
 
 If you use a custom origin and you configured CloudFront to require HTTPS between CloudFront and your origin, the problem might be mismatched domain names\. The SSL/TLS certificate that is installed on your origin includes a domain name in the **Common Name** field and possibly several more in the **Subject Alternative Names** field\. \(CloudFront supports wildcard characters in certificate domain names\.\) One of the domain names in the certificate must match one or both of the following values:
 + The value that you specified for **Origin Domain Name** for the applicable origin in your distribution\.
-+ The value of the `Host` header if you configured CloudFront to forward the `Host` header to your origin\. For more information about forwarding the `Host` header to your origin, see [Caching Content Based on Request Headers](header-caching.md)\.
++ The value of the `Host` header if you configured CloudFront to forward the `Host` header to your origin\. For more information about forwarding the `Host` header to your origin, see [Caching content based on request headers](header-caching.md)\.
 
 If the domain names don't match, the SSL/TLS handshake fails, and CloudFront returns an HTTP status code 502 \(Bad Gateway\) and sets the `X-Cache` header to `Error from cloudfront`\.
 

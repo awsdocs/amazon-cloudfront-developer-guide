@@ -1,21 +1,21 @@
-# Create a URL Signature Using PHP<a name="CreateURL_PHP"></a>
+# Create a URL signature using PHP<a name="CreateURL_PHP"></a>
 
-Any web server that runs PHP can use this PHP example code to create policy statements and signatures for private CloudFront distributions\. The full example creates a functioning web page with signed URL links that play a video stream using CloudFront streaming\. You can download the full example at [https://docs\.aws\.amazon\.com/AmazonCloudFront/latest/DeveloperGuide/samples/demo\-php\.zip](samples/demo-php.zip)\.
+Any web server that runs PHP can use this PHP example code to create policy statements and signatures for private CloudFront distributions\. The full example creates a functioning webpage with signed URL links that play a video stream using CloudFront streaming\. You can download the full example at [https://docs\.aws\.amazon\.com/AmazonCloudFront/latest/DeveloperGuide/samples/demo\-php\.zip](samples/demo-php.zip)\.
 
 You can also create signed URLs by using the `UrlSigner` class in the AWS SDK for PHP\. For more information, see [Class UrlSigner](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.CloudFront.UrlSigner.html) in the *AWS SDK for PHP API Reference*\.
 
 **Note**  
-Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the entire process, see [Using Signed URLs](private-content-signed-urls.md)\. 
+Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the entire process, see [Using signed URLs](private-content-signed-urls.md)\. 
 
 **Topics**
-+ [Sample: RSA SHA\-1 Signature](#sample-rsa-sign)
-+ [Sample: Create Canned Policy](#sample-canned-policy)
-+ [Sample: Create a Custom Policy](#sample-custom-policy)
-+ [Full Code Example](#full-example)
++ [Sample: RSA SHA\-1 signature](#sample-rsa-sign)
++ [Example: create canned policy](#sample-canned-policy)
++ [Example: create a custom policy](#sample-custom-policy)
++ [Full code example](#full-example)
 
-## Sample: RSA SHA\-1 Signature<a name="sample-rsa-sign"></a>
+## Sample: RSA SHA\-1 signature<a name="sample-rsa-sign"></a>
 
-In the following code sample, the function `rsa_sha1_sign` hashes and signs the policy statement\. The arguments required are a policy statement and the private key for an AWS account that is a trusted signer for your distribution\. Next, the `url_safe_base64_encode` function creates a URL\-safe version of the signature\.
+In the following code example, the function `rsa_sha1_sign` hashes and signs the policy statement\. The arguments required are a policy statement and the private key that corresponds with a public key that’s in a trusted key group for your distribution\. Next, the `url_safe_base64_encode` function creates a URL\-safe version of the signature\.
 
 ```
 function rsa_sha1_sign($policy, $private_key_filename) {
@@ -47,9 +47,9 @@ function url_safe_base64_encode($value) {
 }
 ```
 
-## Sample: Create Canned Policy<a name="sample-canned-policy"></a>
+## Example: create canned policy<a name="sample-canned-policy"></a>
 
-The following sample code constructs a *canned* policy statement for the signature\. For more information about canned policies, see [Creating a Signed URL Using a Canned Policy](private-content-creating-signed-url-canned-policy.md)\.
+The following example code constructs a *canned* policy statement for the signature\. For more information about canned policies, see [Creating a signed URL using a canned policy](private-content-creating-signed-url-canned-policy.md)\.
 
 **Note**  
 The `$expires` variable is a date/time stamp that must be an integer, not a string\.
@@ -72,9 +72,9 @@ function get_canned_policy_stream_name($video_path, $private_key_filename, $key_
 }
 ```
 
-## Sample: Create a Custom Policy<a name="sample-custom-policy"></a>
+## Example: create a custom policy<a name="sample-custom-policy"></a>
 
-The following sample code constructs a *custom* policy statement for the signature\. For more information about custom policies, see [Creating a Signed URL Using a Custom Policy](private-content-creating-signed-url-custom-policy.md)\.
+The following example code constructs a *custom* policy statement for the signature\. For more information about custom policies, see [Creating a signed URL using a custom policy](private-content-creating-signed-url-custom-policy.md)\.
 
 ```
 function get_custom_policy_stream_name($video_path, $private_key_filename, $key_pair_id, $policy) {
@@ -90,7 +90,7 @@ function get_custom_policy_stream_name($video_path, $private_key_filename, $key_
 }
 ```
 
-## Full Code Example<a name="full-example"></a>
+## Full code example<a name="full-example"></a>
 
 The following example code provides a complete demonstration of creating CloudFront signed URLs with PHP\. You can download this full example at [https://docs\.aws\.amazon\.com/AmazonCloudFront/latest/DeveloperGuide/samples/demo\-php\.zip](samples/demo-php.zip)\.
 
@@ -186,7 +186,7 @@ function get_custom_policy_stream_name($video_path, $private_key_filename, $key_
 // from the web!
 
 $private_key_filename = '/home/test/secure/example-priv-key.pem';
-$key_pair_id = 'AKIAIOSFODNN7EXAMPLE';
+$key_pair_id = 'K2JCJMDEHXQW5F';
 
 $video_path = 'example.mp4';
 
@@ -218,7 +218,7 @@ $custom_policy_stream_name = get_custom_policy_stream_name($video_path, $private
 </head>
 
 <body>
-    <h1>Amazon CloudFront</h1>
+    <h1>Amazon CloudFront </h1>
     <h2>Canned Policy</h2>
     <h3>Expires at <?= gmdate('Y-m-d H:i:s T', $expires) ?></h3>
     <br />
@@ -254,6 +254,6 @@ $custom_policy_stream_name = get_custom_policy_stream_name($video_path, $private
 ```
 
 See also:
-+ [Create a URL Signature Using Perl](CreateURLPerl.md)
-+ [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
-+ [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
++ [Create a URL signature using Perl](CreateURLPerl.md)
++ [Create a URL signature using C\# and the \.NET framework](CreateSignatureInCSharp.md)
++ [Create a URL signature using Java](CFPrivateDistJavaDevelopment.md)

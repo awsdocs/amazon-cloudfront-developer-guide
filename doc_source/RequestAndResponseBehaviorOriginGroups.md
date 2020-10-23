@@ -14,4 +14,4 @@ CloudFront fails over to the secondary origin only when the HTTP method of the v
 
 When CloudFront sends a request to a secondary origin, the response behavior is the same as for a CloudFront origin that’s not in an origin group\.
 
-For more information about origin groups, see [Optimizing High Availability with CloudFront Origin Failover](high_availability_origin_failover.md)\.
+For more information about origin groups, see [Optimizing high availability with CloudFront origin failover](high_availability_origin_failover.md)\.

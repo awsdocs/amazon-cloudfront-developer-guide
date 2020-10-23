@@ -198,7 +198,7 @@ For information about restrictions on header usage, see [Headers](lambda-require
 The HTTP method of the request\.
 
 **`querystring` \(read/write\)**  
-The query string, if any, in the request\. If the request doesn’t include a query string, the event object still includes `querystring` with an empty value\. For more information about query strings, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+The query string, if any, in the request\. If the request doesn’t include a query string, the event object still includes `querystring` with an empty value\. For more information about query strings, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 **`uri` \(read/write\)**  
 The relative path of the requested object\. If your Lambda function modifies the `uri` value, note the following:  

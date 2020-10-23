@@ -12,6 +12,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 + [Quotas on Custom Headers \(Web Distributions Only\)](#limits-custom-headers)
 + [Quotas on SSL Certificates \(Web Distributions Only\)](#limits-ssl-certificates)
 + [Quotas on Invalidations](#limits-invalidations)
++ [Quotas on key groups](#limits-key-groups)
 + [Quotas on Field\-Level Encryption](#limits-field-level-encryption)
 + [Quotas on Lambda@Edge](#limits-lambda-at-edge)
 + [Request Timeout](#limits-request-timeout)
@@ -30,7 +31,6 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Files that you can serve per distribution | No quota | 
 | Maximum length of a request, including headers and query strings, but not including the body content | 20,480 bytes | 
 | Maximum length of a URL | 8,192 bytes | 
-| Active CloudFront key pairs for trusted signers For more information, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\.  | 2 | 
 
 ## General Quotas on Web Distributions<a name="limits-web-distributions"></a>
 
@@ -85,7 +85,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 
 | Entity | Default quota | 
 | --- | --- | 
-| Whitelisted cookies per cache behavior For more information, see [Caching Content Based on Cookies](Cookies.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Whitelisted cookies per cache behavior For more information, see [Caching content based on cookies](Cookies.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Total number of bytes in whitelisted cookie names \(doesn’t apply if you configure CloudFront to forward all cookies to the origin\) | 512 minus the number of whitelisted cookies | 
 
 ## Quotas on Whitelisted Query Strings \(Web Distributions Only\)<a name="limits-whitelisted-query-strings"></a>
@@ -97,7 +97,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | --- | --- | 
 | Maximum number of characters in a whitelisted query string  | 128 characters  | 
 | Maximum number of characters total for all whitelisted query strings in the same parameter  | 512 characters  | 
-| Whitelisted query strings per cache behavior For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Whitelisted query strings per cache behavior For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
 ## Quotas on Custom Headers \(Web Distributions Only\)<a name="limits-custom-headers"></a>
 
@@ -106,7 +106,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 
 | Entity | Default quota | 
 | --- | --- | 
-| Whitelisted headers per cache behavior For more information, see [Caching Content Based on Request Headers](header-caching.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Whitelisted headers per cache behavior For more information, see [Caching content based on request headers](header-caching.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Custom headers: maximum number of custom headers that you can configure CloudFront to add to origin requests For more information, see [Adding Custom Headers to Origin Requests](add-origin-custom-headers.md)\.  | 10 name/value pairs [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Custom headers: maximum length of a header name | 256 characters | 
 | Custom headers: maximum length of a header value | 1,783 characters | 
@@ -132,6 +132,16 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | File invalidation: maximum number of files allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  | 3,000 | 
 | File invalidation: maximum number of active wildcard invalidations allowed | 15 | 
 | File invalidation: maximum number of files that one wildcard invalidation can process | No quota | 
+
+## Quotas on key groups<a name="limits-key-groups"></a>
+
+
+| Entity | Default quota | 
+| --- | --- | 
+|  Public keys in a single key group  |  5 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Key groups associated with a single distribution  | 4[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
+|  Key groups per AWS account  | 10[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
+|  Distributions associated with a single key group  | 100[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
 
 ## Quotas on Field\-Level Encryption<a name="limits-field-level-encryption"></a>
 

@@ -160,6 +160,7 @@ This field is truncated to 800 bytes\.
    Possible values include:
    + `Hit` – The server served the object to the viewer from the cache\.
    + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
+   + `OriginShieldHit` – The object was served to the viewer from the Origin Shield cache\.
    + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin and returned the result to the viewer\.
    + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
    + `CapacityExceeded` – The server returned an HTTP 503 status code because it didn’t have enough capacity at the time of the request to serve the object\.

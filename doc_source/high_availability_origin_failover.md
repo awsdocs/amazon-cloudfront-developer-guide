@@ -1,10 +1,10 @@
-# Optimizing High Availability with CloudFront Origin Failover<a name="high_availability_origin_failover"></a>
+# Optimizing high availability with CloudFront origin failover<a name="high_availability_origin_failover"></a>
 
 You can set up CloudFront with origin failover for scenarios that require high availability\. To get started, you create an *origin group* with two origins: a primary and a secondary\. If the primary origin is unavailable, or returns specific HTTP response status codes that indicate a failure, CloudFront automatically switches to the secondary origin\.
 
 To set up origin failover, you must have a distribution with at least two origins\. Next, you create an origin group for your distribution that includes two origins, setting one as the primary\. Finally, you create or update a cache behavior to use the origin group\.
 
-To see the steps for setting up origin groups and configuring specific origin failover options, see [Creating an Origin Group](#concept_origin_groups.creating)\.
+To see the steps for setting up origin groups and configuring specific origin failover options, see [Creating an origin group](#concept_origin_groups.creating)\.
 
 After you configure origin failover for a cache behavior, CloudFront does the following for viewer requests:
 + When there’s a cache hit, CloudFront returns the requested file\.
@@ -17,7 +17,7 @@ After you configure origin failover for a cache behavior, CloudFront does the fo
 
   Then CloudFront routes the request to the secondary origin in the origin group\.
 **Note**  
-For some use cases, like streaming video content, you might want CloudFront to fail over to the secondary origin quickly\. To adjust how quickly CloudFront fails over to the secondary origin, see [Controlling Origin Timeouts and Attempts](#controlling-attempts-and-timeouts)\.
+For some use cases, like streaming video content, you might want CloudFront to fail over to the secondary origin quickly\. To adjust how quickly CloudFront fails over to the secondary origin, see [Controlling origin timeouts and attempts](#controlling-attempts-and-timeouts)\.
 
 CloudFront routes all incoming requests to the primary origin, even when a previous request failed over to the secondary origin\. CloudFront only sends requests to the secondary origin after a request to the primary origin fails\.
 
@@ -28,16 +28,16 @@ The following diagram illustrates how origin failover works\.
 ![\[How origin failover works\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/origingroups-overview.png)
 
 For more information, see the following:
-+ **Cache hits and misses:** [How Caching Works with CloudFront Edge Caches](cache-hit-ratio-explained.md)
++ **Cache hits and misses:** [How caching works with CloudFront edge locations](cache-hit-ratio-explained.md)
 + **Request and response behavior with origin failover:** [Request and Response Behavior for Origin Groups](RequestAndResponseBehaviorOriginGroups.md)
 
 **Topics**
-+ [Creating an Origin Group](#concept_origin_groups.creating)
-+ [Controlling Origin Timeouts and Attempts](#controlling-attempts-and-timeouts)
-+ [Use Origin Failover with Lambda@Edge Functions](#concept_origin_groups.lambda)
-+ [Use Custom Error Pages with Origin Failover](#concept_origin_groups.custom-error)
++ [Creating an origin group](#concept_origin_groups.creating)
++ [Controlling origin timeouts and attempts](#controlling-attempts-and-timeouts)
++ [Use origin failover with Lambda@Edge functions](#concept_origin_groups.lambda)
++ [Use custom error pages with origin failover](#concept_origin_groups.custom-error)
 
-## Creating an Origin Group<a name="concept_origin_groups.creating"></a><a name="create-origin-groups-procedure"></a>
+## Creating an origin group<a name="concept_origin_groups.creating"></a><a name="create-origin-groups-procedure"></a>
 
 **To create an origin group**
 
@@ -59,7 +59,7 @@ CloudFront fails over to the secondary origin only when the HTTP method of the v
 
 For information about specifying an origin group for a distribution, see [Origin ID](distribution-web-values-specify.md#DownloadDistValuesId)\.
 
-## Controlling Origin Timeouts and Attempts<a name="controlling-attempts-and-timeouts"></a>
+## Controlling origin timeouts and attempts<a name="controlling-attempts-and-timeouts"></a>
 
 By default, CloudFront tries to connect to the primary origin in an origin group for as long as 30 seconds \(3 connection attempts of 10 seconds each\) before failing over to the secondary origin\. For some use cases, like streaming video content, you might want CloudFront to fail over to the secondary origin more quickly\. You can adjust the following settings to affect how quickly CloudFront fails over to the secondary origin\. If the origin is a secondary origin, or an origin that is not part of an origin group, these settings affect how quickly CloudFront returns an HTTP 504 response to the viewer\.
 
@@ -84,7 +84,7 @@ The origin response timeout setting affects how long CloudFront waits to receive
 
 For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
-## Use Origin Failover with Lambda@Edge Functions<a name="concept_origin_groups.lambda"></a>
+## Use origin failover with Lambda@Edge functions<a name="concept_origin_groups.lambda"></a>
 
 You can use Lambda@Edge functions with CloudFront distributions that you’ve set up with origin groups\. To use a Lambda function, specify it in an [origin request or origin response trigger](lambda-cloudfront-trigger-events.md) for an origin group when you create the cache behavior\. When you use a Lambda@Edge function with an origin group, the function can be triggered twice for a single viewer request\. For example, consider this scenario:
 
@@ -102,7 +102,7 @@ The following diagram illustrates how origin failover works when you include a L
 
 For more information about using Lambda@Edge triggers, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.
 
-## Use Custom Error Pages with Origin Failover<a name="concept_origin_groups.custom-error"></a>
+## Use custom error pages with origin failover<a name="concept_origin_groups.custom-error"></a>
 
 You can use custom error pages with origin groups similarly to how you use them with origins that are not set up for origin failover\. 
 

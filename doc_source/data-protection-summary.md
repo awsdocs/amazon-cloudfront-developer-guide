@@ -45,7 +45,7 @@ CloudFront uses SSDs which are encrypted for edge location points of presence \(
 Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for a subset of users\. To securely serve this content by using Amazon CloudFront, you can do one or more of the following:
 
 **Use signed URLs or cookies**  
-You can restrict access to content that is intended for selected users—for example, users who have paid a fee—by serving this private content through CloudFront using signed URLs or signed cookies\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+You can restrict access to content that is intended for selected users—for example, users who have paid a fee—by serving this private content through CloudFront using signed URLs or signed cookies\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 **Restrict access to content in Amazon S3 buckets**  
 If you restrict access to your content by using, for example, CloudFront signed URLs or signed cookies, you also won’t want people to view files by using the direct URL for the file\. Instead, you want them to access the files only by using the CloudFront URL, so that your protections work\.  

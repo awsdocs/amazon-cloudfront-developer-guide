@@ -15,8 +15,8 @@ If you want the function to change a value that you're using as a basis for cach
 + **URL when the request comes from an IP address in Germany** – http://example\.com/de/index\.html
 You also use the viewer request event if you're caching based on cookies or request headers\.  
 If the function changes cookies or headers, configure CloudFront to forward the applicable part of the request to the origin\. For more information, see the following topics:  
-+ [Caching Content Based on Cookies](Cookies.md)
-+ [Caching Content Based on Request Headers](header-caching.md)
++ [Caching content based on cookies](Cookies.md)
++ [Caching content based on request headers](header-caching.md)
 
 **Does the function affect the response from the origin?**  
 If you want the function to change the request in a way that affects the response from the origin, use the origin request event\. Typically, most viewer request events aren't forwarded to the origin; CloudFront responds to a request with an object that's already in the edge cache\. If the function changes the request based on an origin request event, CloudFront caches the response to the changed origin request\.

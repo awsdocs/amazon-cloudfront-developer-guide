@@ -69,7 +69,7 @@ When you use a custom origin that is your own HTTP server, you specify the DNS n
 
 Most CloudFront features are supported when you use a custom origin with the following exceptions:
 + **RTMP distributions**—Not supported\.
-+ **Private content**—Although you can use a signed URL to distribute content from a custom origin, for CloudFront to access the custom origin, the origin must remain publicly accessible\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
++ **Private content**—Although you can use a signed URL to distribute content from a custom origin, for CloudFront to access the custom origin, the origin must remain publicly accessible\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 Follow these guidelines for using Amazon EC2 instances and other custom origins with CloudFront\. 
 + Host and serve the same content on all servers that are serving content for the same CloudFront origin\. For more information, see [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.
@@ -77,7 +77,7 @@ Follow these guidelines for using Amazon EC2 instances and other custom origins 
 + Restrict access requests to the HTTP and HTTPS ports that your custom origin listens on\.
 + Synchronize the clocks of all servers in your implementation\. Note that CloudFront uses Coordinated Universal Time \(UTC\) for signed URLs and signed cookies, for access logs, and reports\. In addition, if you monitor CloudFront activity using CloudWatch metrics, note that CloudWatch also uses UTC\.
 + Use redundant servers to handle failures\.
-+ For information about using a custom origin to serve private content, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
++ For information about using a custom origin to serve private content, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 + For information about request and response behavior and about supported HTTP status codes, see [Request and Response Behavior](RequestAndResponseBehavior.md)\.
 
 If you use Amazon EC2 for your custom origins, we recommend that you do the following:
@@ -92,7 +92,7 @@ If you use Amazon EC2 for your custom origins, we recommend that you do the foll
 
 You can specify an origin group for your CloudFront origin if, for example, you want to configure origin failover for scenarios when you need high availability\. Use origin failover to designate a primary origin for CloudFront plus a second origin that CloudFront automatically switches to when the primary origin returns specific HTTP status code failure responses\. 
 
-To see the steps for setting up an origin group and for more information, see [Optimizing High Availability with CloudFront Origin Failover](high_availability_origin_failover.md)\.
+To see the steps for setting up an origin group and for more information, see [Optimizing high availability with CloudFront origin failover](high_availability_origin_failover.md)\.
 
 ## Adding CloudFront When You're Already Distributing Content from Amazon S3<a name="adding-cloudfront-to-s3"></a>
 
@@ -104,7 +104,7 @@ To learn more about using Amazon S3 buckets for your origin with CloudFront, inc
 Using CloudFront can be more cost effective if your users access your objects frequently because, at higher usage, the price for CloudFront data transfer is lower than the price for Amazon S3 data transfer\. In addition, downloads are faster with CloudFront than with Amazon S3 alone because your objects are stored closer to your users\.
 
 **Note**  
-If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward the `Origin` header to Amazon S3\. For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
+If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward the `Origin` header to Amazon S3\. For more information, see [Caching content based on request headers](header-caching.md)\.
 
 If you currently distribute content directly from your Amazon S3 bucket using your own domain name \(such as example\.com\) instead of the domain name of your Amazon S3 bucket \(such as MyAWSBucket\.s3\.us\-west\-2\.amazonaws\.com\), you can add CloudFront with no disruption by using the following procedure\.<a name="migrate-s3-to-cloudfront-process"></a>
 

@@ -1,9 +1,9 @@
-# Create a URL Signature Using Java<a name="CFPrivateDistJavaDevelopment"></a>
+# Create a URL signature using Java<a name="CFPrivateDistJavaDevelopment"></a>
 
 In addition to the following code example, you can use [the `CloudFrontUrlSigner` utility class in the AWS SDK for Java \(version 1\)](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/cloudfront/CloudFrontUrlSigner.html) to create [CloudFront signed URLs](private-content-signed-urls.md)\.
 
 **Note**  
-Creating a signed URL is just one part of the process of [serving private content with CloudFront](PrivateContent.md)\. For more information about the entire process, see [Using Signed URLs](private-content-signed-urls.md)\.
+Creating a signed URL is just one part of the process of [serving private content with CloudFront](PrivateContent.md)\. For more information about the entire process, see [Using signed URLs](private-content-signed-urls.md)\.
 
 The following example shows how to create a CloudFront signed URL\. You must convert the private key from PEM to DER format for Java implementations to use it\.
 
@@ -72,6 +72,6 @@ System.out.println(signedUrl);
 ```
 
 See also:
-+ [Create a URL Signature Using Perl](CreateURLPerl.md)
-+ [Create a URL Signature Using PHP](CreateURL_PHP.md)
-+ [Create a URL Signature Using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
++ [Create a URL signature using Perl](CreateURLPerl.md)
++ [Create a URL signature using PHP](CreateURL_PHP.md)
++ [Create a URL signature using C\# and the \.NET framework](CreateSignatureInCSharp.md)

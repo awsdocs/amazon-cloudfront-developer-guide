@@ -8,12 +8,12 @@ To restrict access to content that you serve from Amazon S3 buckets, follow thes
 
 After you take these steps, users can only access your files through CloudFront, not directly from the S3 bucket\.
 
-In general, if you’re using an Amazon S3 bucket as the origin for a CloudFront distribution, you can either allow everyone to have access to the files there, or you can restrict access\. If you restrict access by using, for example, CloudFront signed URLs or signed cookies, you also won’t want people to be able to view files by simply using the direct Amazon S3 URL for the file\. Instead, you want them to only access the files by using the CloudFront URL, so your protections work\. For more information about using signed URLs and signed cookies, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+In general, if you’re using an Amazon S3 bucket as the origin for a CloudFront distribution, you can either allow everyone to have access to the files there, or you can restrict access\. If you restrict access by using, for example, CloudFront signed URLs or signed cookies, you also won’t want people to be able to view files by simply using the direct Amazon S3 URL for the file\. Instead, you want them to only access the files by using the CloudFront URL, so your protections work\. For more information about using signed URLs and signed cookies, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 This topic explains in detail how to set up the OAI and grant permissions to maintain secure access to your S3 files\.
 
 **Important**  
-If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin\. You can’t use the origin access identity feature described in this topic\. However, you *can* restrict access to content on a custom origin by setting up custom headers and configuring your origin to require them\. For more information, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
+If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin\. You can’t use the origin access identity feature described in this topic\. However, you *can* restrict access to content on a custom origin by setting up custom headers and configuring your origin to require them\. For more information, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 **Topics**
 + [Overview of OAI Setup](#private-content-restricting-access-to-s3-overview)

@@ -28,7 +28,7 @@ An Amazon S3 bucket is a container that can contain files \(objects\) or folders
 By default, your Amazon S3 bucket and all the files in it are private—only the AWS account that created the bucket has read/write permission to the files\. If you want to allow anyone to access the files in your Amazon S3 bucket using CloudFront URLs, you must grant public read permissions to the objects\. \(This is one of the most common mistakes when working with CloudFront and Amazon S3\. You must explicitly grant permissions to each object in an Amazon S3 bucket\.\)
 
 **Note**  
-If you want to restrict who can download your content, you can use the CloudFront private content feature\. For more information about distributing private content, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+If you want to restrict who can download your content, you can use the CloudFront private content feature\. For more information about distributing private content, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 **To upload your content to Amazon S3 and grant read permissions to everyone**
 
@@ -53,7 +53,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 1. On the **Set permissions** page, clear the following check box:
    + **Block all public access**
 
-   You must allow public read access to the bucket and files so that CloudFront URLs can serve content from the bucket\. However, you can restrict access to specific content by using the CloudFront private content feature\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+   You must allow public read access to the bucket and files so that CloudFront URLs can serve content from the bucket\. However, you can restrict access to specific content by using the CloudFront private content feature\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
    Select the check box for **I acknowledge that the current settings may result in this bucket and the objects within becoming public**\.
 

@@ -53,7 +53,7 @@ Set to 5 seconds or less, to help prevent serving stale content\.
 
    1. Under **Cache Based on Selected Request Headers**, choose **Whitelist**, and then, under **Whitelist Headers**, select **Origin**\.
 
-   To learn more about CORS, see *Configuring CloudFront to Respect Cross\-Origin Resource Sharing \(CORS\) Settings* in [Caching Content Based on Request Headers](header-caching.md)\.
+   To learn more about CORS, see *Configuring CloudFront to Respect Cross\-Origin Resource Sharing \(CORS\) Settings* in [Caching content based on request headers](header-caching.md)\.
 
 1. For links in your application \(for example, a media player\), specify the name of the media file in the same format that you use for other objects that you're distributing using CloudFront\.
 
@@ -154,7 +154,7 @@ For a Microsoft Smooth Streaming endpoint, only a manifest is served, so you cre
 Choose **Redirect HTTP to HTTPS**\.  
 **Cache Based on Selected Request Headers**  
 Choose **None \(improves caching\)**\.  
-For more information about improving caching, see [Increasing the Proportion of Requests that Are Served from CloudFront Edge Caches \(Cache Hit Ratio\)](cache-hit-ratio.md)\.  
+For more information about improving caching, see [Increasing the proportion of requests that are served directly from the CloudFront caches \(cache hit ratio\)](cache-hit-ratio.md)\.  
 **Object Caching**  
 MediaPackage sets default `Cache-Control` headers that ensure correct playback behavior\. If you want to use those values, choose **Use Origin Cache Headers**\. However, you can increase cache times for video segments\. For more information about customizing the time that objects stay in the CloudFront cache, see [Object Caching](distribution-web-values-specify.md#DownloadDistValuesObjectCaching) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
 **Minimum TTL**  

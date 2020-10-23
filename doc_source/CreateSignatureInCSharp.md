@@ -1,17 +1,17 @@
-# Create a URL Signature Using C\# and the \.NET Framework<a name="CreateSignatureInCSharp"></a>
+# Create a URL signature using C\# and the \.NET framework<a name="CreateSignatureInCSharp"></a>
 
-The C\# examples in this section implement an example application that demonstrates how to create the signatures for CloudFront private distributions using canned and custom policy statements\. The examples includes utility functions based on the [AWS \.NET SDK](http://aws.amazon.com/sdkfornet/) that can be useful in \.NET applications\. 
+The C\# examples in this section implement an example application that demonstrates how to create the signatures for CloudFront private distributions using canned and custom policy statements\. The examples include utility functions based on the [AWS \.NET SDK](http://aws.amazon.com/sdkfornet/) that can be useful in \.NET applications\. 
 
 You can also create signed URLs and signed cookies by using the AWS SDK for \.NET\. In the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/), see the following topics:
 + **Signed URLs** – Amazon\.CloudFront > AmazonCloudFrontUrlSigner
 + **Signed cookies** – Amazon\.CloudFront > AmazonCloudFrontCookieSigner
 
 **Note**  
-Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the entire process, see [Using Signed URLs](private-content-signed-urls.md)\.
+Creating a URL signature is just one part of the process of serving private content using a signed URL\. For more information about the entire process, see [Using signed URLs](private-content-signed-urls.md)\.
 
 To download the code, go to [Signature Code in C\#](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\.
 
-To use the RSA keys provided by [AWS Account/Security](http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key) in the \.NET framework, you must convert the AWS\-supplied \.pem files to the XML format that the \.NET framework uses\.  
+To use the RSA keys provided by [AWS Account/Security](http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key) in the \.NET framework, you must convert the AWS supplied \.pem files to the XML format that the \.NET framework uses\.
 
 After conversion, the RSA private key file is in the following format:
 
@@ -54,7 +54,7 @@ After conversion, the RSA private key file is in the following format:
 
 The following C\# code creates a signed URL that uses a canned policy by doing the following:
 + Creates a policy statement\.
-+ Hashes the policy statement using SHA1, and signs the result using RSA and the private key for your AWS account or for a trusted AWS account that you specify\.
++ Hashes the policy statement using SHA1, and signs the result using RSA and the private key whose corresponding public key is in a trusted key group\.
 + Base64\-encodes the hashed and signed policy statement and replaces special characters to make the string safe to use as a URL request parameter\.
 + Concatenates the values\.
 
@@ -142,7 +142,7 @@ The following C\# code creates a signed URL that uses a custom policy by doing t
 
 1. Base64\-encodes the policy statement and replaces special characters to make the string safe to use as a URL request parameter\.
 
-1. Hashes the policy statement using SHA1, and encrypts the result using RSA and the private key for your AWS account or for a trusted AWS account that you specify\.
+1. Hashes the policy statement using SHA1, and encrypts the result using RSA and the private key whose corresponding public key is in a trusted key group\.
 
 1. Base64\-encodes the hashed policy statement and replacing special characters to make the string safe to use as a URL request parameter\.
 
@@ -333,6 +333,6 @@ public static string CopyExpirationTimeFromPolicy(string policyStatement)
 ```
 
 See also
-+ [Create a URL Signature Using Perl](CreateURLPerl.md)
-+ [Create a URL Signature Using PHP](CreateURL_PHP.md)
-+ [Create a URL Signature Using Java](CFPrivateDistJavaDevelopment.md)
++ [Create a URL signature using Perl](CreateURLPerl.md)
++ [Create a URL signature using PHP](CreateURL_PHP.md)
++ [Create a URL signature using Java](CFPrivateDistJavaDevelopment.md)

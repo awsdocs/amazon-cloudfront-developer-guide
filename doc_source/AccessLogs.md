@@ -267,7 +267,7 @@ The log file for a web distribution contains 33 fields\. The following list cont
 
     
 
-   When a URL doesn’t contain a query string, this field's value is a hyphen \(\-\)\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+   When a URL doesn’t contain a query string, this field's value is a hyphen \(\-\)\. For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 1. **`cs(Cookie)`**
 
@@ -275,7 +275,7 @@ The log file for a web distribution contains 33 fields\. The following list cont
 
     
 
-   If you enable cookie logging, CloudFront logs the cookies in all requests regardless of which cookies you choose to forward to the origin\. When a request doesn’t include a cookie header, this field’s value is a hyphen \(\-\)\. For more information about cookies, see [Caching Content Based on Cookies](Cookies.md)\.
+   If you enable cookie logging, CloudFront logs the cookies in all requests regardless of which cookies you choose to forward to the origin\. When a request doesn’t include a cookie header, this field’s value is a hyphen \(\-\)\. For more information about cookies, see [Caching content based on cookies](Cookies.md)\.
 
 1. **`x-edge-result-type`**
 
@@ -294,6 +294,7 @@ The log file for a web distribution contains 33 fields\. The following list cont
    Possible values include:
    + `Hit` – The server served the object to the viewer from the cache\.
    + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
+   + `OriginShieldHit` – The object was served to the viewer from the Origin Shield cache\.
    + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin and returned the result to the viewer\.
    + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
    + `CapacityExceeded` – The server returned an HTTP 503 status code because it didn’t have enough capacity at the time of the request to serve the object\.

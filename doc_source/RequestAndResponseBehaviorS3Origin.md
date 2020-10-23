@@ -33,7 +33,7 @@ For web distributions, to control how long your objects stay in a CloudFront cac
 + Specify a value for Minimum TTL in CloudFront cache behaviors\.
 + Use the default value of 24 hours\.
 
-For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
+For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
 ### Client IP Addresses<a name="RequestS3IPAddresses"></a>
 
@@ -62,7 +62,7 @@ Amazon S3 doesn't process cookies\. If you configure a cache behavior to forward
 
 ### Cross\-Origin Resource Sharing \(CORS\)<a name="RequestS3-cors"></a>
 
-If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward selected headers to Amazon S3\. For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
+If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward selected headers to Amazon S3\. For more information, see [Caching content based on request headers](header-caching.md)\.
 
 ### GET Requests That Include a Body<a name="RequestS3-get-body"></a>
 
@@ -117,7 +117,7 @@ If your Amazon S3 bucket is configured as a website endpoint, you cannot configu
 
 ### Query Strings<a name="RequestS3QueryStrings"></a>
 
-For web distributions, you can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For RTMP distributions, CloudFront does not forward query string parameters\. For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+For web distributions, you can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For RTMP distributions, CloudFront does not forward query string parameters\. For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 ### Origin Connection Timeout and Attempts<a name="s3-origin-timeout-attempts"></a>
 
@@ -127,7 +127,7 @@ For web distributions, you can configure whether CloudFront forwards query strin
 
 Together, these settings determine how long CloudFront tries to connect to the origin before failing over to the secondary origin \(in the case of an origin group\) or returning an error response to the viewer\. By default, CloudFront waits as long as 30 seconds \(3 attempts of 10 seconds each\) before attempting to connect to the secondary origin or returning an error response\. You can reduce this time by specifying a shorter connection timeout, fewer attempts, or both\.
 
-For more information, see [Controlling Origin Timeouts and Attempts](high_availability_origin_failover.md#controlling-attempts-and-timeouts)\.
+For more information, see [Controlling origin timeouts and attempts](high_availability_origin_failover.md#controlling-attempts-and-timeouts)\.
 
 ### Origin Response Timeout<a name="RequestS3RequestTimeout"></a>
 
@@ -164,7 +164,7 @@ If an object is not in the edge cache, and if a viewer terminates a session \(fo
 ### HTTP Response Headers That CloudFront Removes or Updates<a name="response-s3-removed-headers"></a>
 
 CloudFront removes or updates the following header fields before forwarding the response from your Amazon S3 origin to the viewer: 
-+ `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Caching Content Based on Cookies](Cookies.md)\.
++ `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Caching content based on cookies](Cookies.md)\.
 + `Trailer`
 + `Transfer-Encoding` – If your Amazon S3 origin returns this header field, CloudFront sets the value to `chunked` before returning the response to the viewer\.
 + `Upgrade`

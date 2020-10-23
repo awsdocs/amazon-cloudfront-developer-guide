@@ -160,7 +160,7 @@ A string that uniquely distinguishes this origin or origin group in this distrib
 
 For more information, see the following:
 + **Origins that you can specify:** [Using CloudFront Origin Groups](DownloadDistS3AndCustomOrigins.md#concept_origin_groups)
-+ **Creating origin groups:** [Creating an Origin Group](high_availability_origin_failover.md#concept_origin_groups.creating)
++ **Creating origin groups:** [Creating an origin group](high_availability_origin_failover.md#concept_origin_groups.creating)
 + **Working with cache behaviors:** [Cache Behavior Settings](#DownloadDistValuesCacheBehavior)
 
 ### Origin Connection Attempts<a name="origin-connection-attempts"></a>
@@ -211,7 +211,7 @@ Choose **No** if you want users to be able to access objects by using either Clo
 
 For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
 
-For information about how to require users to access objects on a custom origin by using only CloudFront URLs, see [ Restricting Access to Files on Custom Origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
+For information about how to require users to access objects on a custom origin by using only CloudFront URLs, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 ### Origin Access Identity<a name="DownloadDistValuesOAI"></a>
 
@@ -429,7 +429,7 @@ Specify whether you want CloudFront to cache objects based on the values of spec
 
 Regardless of the option that you choose, CloudFront forwards certain headers to your origin and takes specific actions based on the headers that you forward\. For more information about how CloudFront handles header forwarding, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
-For more information about how to configure caching in CloudFront by using request headers, see [Caching Content Based on Request Headers](header-caching.md)\.
+For more information about how to configure caching in CloudFront by using request headers, see [Caching content based on request headers](header-caching.md)\.
 
 ### Whitelist Headers<a name="DownloadDistValuesWhitelistHeaders"></a>
 
@@ -443,7 +443,7 @@ If your origin server is adding a `Cache-Control` header to your objects to cont
 
 To specify a minimum and maximum time that your objects stay in the CloudFront cache regardless of `Cache-Control` headers, and a default time that your objects stay in the CloudFront cache when the `Cache-Control` header is missing from an object, choose **Customize**\. Then specify values in the **Minimum TTL**, **Default TTL**, and **Maximum TTL** fields\.
 
-For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
+For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
 ### Minimum TTL<a name="DownloadDistValuesMinTTL"></a>
 
@@ -454,11 +454,11 @@ If you configure CloudFront to forward all headers to your origin for a cache be
 
 To specify a value for **Minimum TTL**, you must choose the **Customize** option for the **Object Caching** setting\.
 
-For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
+For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
 ### Maximum TTL<a name="DownloadDistValuesMaxTTL"></a>
 
-Specify the maximum amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated\. The value that you specify for **Maximum TTL** applies only when your origin adds HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
+Specify the maximum amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated\. The value that you specify for **Maximum TTL** applies only when your origin adds HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
 To specify a value for **Maximum TTL**, you must choose the **Customize** option for the **Object Caching** setting\.
 
@@ -466,7 +466,7 @@ The default value for **Maximum TTL** is 31536000 seconds \(one year\)\. If you 
 
 ### Default TTL<a name="DownloadDistValuesDefaultTTL"></a>
 
-Specify the default amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated\. The value that you specify for **Default TTL** applies only when your origin does *not* add HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Managing How Long Content Stays in an Edge Cache \(Expiration\)](Expiration.md)\.
+Specify the default amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated\. The value that you specify for **Default TTL** applies only when your origin does *not* add HTTP headers such as `Cache-Control max-age`, `Cache-Control s-maxage`, or `Expires` to objects\. For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
 To specify a value for **Default TTL**, you must choose the **Customize** option for the **Object Caching** setting\.
 
@@ -481,7 +481,7 @@ Specify whether you want CloudFront to forward cookies to your origin server and
 
 Amazon S3 doesn't process cookies, and forwarding cookies to the origin reduces cacheability\. For cache behaviors that are forwarding requests to an Amazon S3 origin, choose **None** for **Forward Cookies**\.
 
-For more information about forwarding cookies to the origin, go to [Caching Content Based on Cookies](Cookies.md)\.
+For more information about forwarding cookies to the origin, go to [Caching content based on cookies](Cookies.md)\.
 
 ### Whitelist Cookies<a name="DownloadDistValuesWhitelistCookies"></a>
 
@@ -517,7 +517,7 @@ Choose this option if your origin server returns different versions of your obje
 **Forward all, cache based on all**  
 Choose this option if your origin server returns different versions of your objects for all query string parameters\. 
 
-For more information about caching based on query string parameters, including how to improve performance, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+For more information about caching based on query string parameters, including how to improve performance, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 ### Query String Whitelist<a name="DownloadDistValuesQueryStringWhiteList"></a>
 
@@ -540,7 +540,7 @@ If you want requests for objects that match the `PathPattern` for this cache beh
 
 If you want requests for objects that match the `PathPattern` for this cache behavior to use signed URLs, choose **Yes**\. Then specify the AWS accounts that you want to use to create signed URLs; these accounts are known as trusted signers\.
 
-For more information about trusted signers, see [Specifying the AWS Accounts That Can Create Signed URLs and Signed Cookies \(Trusted Signers\)](private-content-trusted-signers.md)\. 
+For more information about trusted signers, see [Specifying the signers that can create signed URLs and signed cookies](private-content-trusted-signers.md)\. 
 
 ### Trusted Signers<a name="DownloadDistValuesTrustedSigners"></a>
 
@@ -556,7 +556,7 @@ If you're updating a distribution that you're already using to distribute conten
 ### AWS Account Numbers<a name="DownloadDistValuesAWSAccountNumbers"></a>
 
 If you want to create signed URLs using AWS accounts in addition to or instead of the current account, enter one AWS account number per line in this field\. Note the following:
-+ The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating CloudFront Key Pairs for Your Trusted Signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
++ The accounts that you specify must have at least one active CloudFront key pair\. For more information, see [Creating key pairs for your signers](private-content-trusted-signers.md#private-content-creating-cloudfront-key-pairs)\.
 + You can't create CloudFront key pairs for IAM users, so you can't use IAM users as trusted signers\.
 + For information about how to get the AWS account number for an account, see [How Do I Get Security Credentials?](https://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
 + If you enter the account number for the current account, CloudFront automatically checks the **Self** check box and removes the account number from the **AWS Account Numbers** list\.
@@ -730,13 +730,13 @@ If you want CloudFront to include cookies in access logs, choose **On**\. If you
 
 Amazon S3 doesn't process cookies, so unless your distribution also includes an Amazon EC2 or other custom origin, we recommend that you choose **Off** for the value of **Cookie Logging**\.
 
-For more information about cookies, go to [Caching Content Based on Cookies](Cookies.md)\.
+For more information about cookies, go to [Caching content based on cookies](Cookies.md)\.
 
 ### Enable IPv6<a name="DownloadDistValuesEnableIPv6"></a>
 
 IPv6 is a new version of the IP protocol\. It's the eventual replacement for IPv4 and uses a larger address space\. CloudFront always responds to IPv4 requests\. If you want CloudFront to respond to requests from IPv4 IP addresses \(such as 192\.0\.2\.44\) and requests from IPv6 addresses \(such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334\), select **Enable IPv6**\. 
 
-In general, you should enable IPv6 if you have users on IPv6 networks who want to access your content\. However, if you're using signed URLs or signed cookies to restrict access to your content, and if you're using a custom policy that includes the `IpAddress` parameter to restrict the IP addresses that can access your content, do not enable IPv6\. If you want to restrict access to some content by IP address and not restrict access to other content \(or restrict access but not by IP address\), you can create two distributions\. For information about creating signed URLs by using a custom policy, see [Creating a Signed URL Using a Custom Policy](private-content-creating-signed-url-custom-policy.md)\. For information about creating signed cookies by using a custom policy, see [Setting Signed Cookies Using a Custom Policy](private-content-setting-signed-cookie-custom-policy.md)\.
+In general, you should enable IPv6 if you have users on IPv6 networks who want to access your content\. However, if you're using signed URLs or signed cookies to restrict access to your content, and if you're using a custom policy that includes the `IpAddress` parameter to restrict the IP addresses that can access your content, do not enable IPv6\. If you want to restrict access to some content by IP address and not restrict access to other content \(or restrict access but not by IP address\), you can create two distributions\. For information about creating signed URLs by using a custom policy, see [Creating a signed URL using a custom policy](private-content-creating-signed-url-custom-policy.md)\. For information about creating signed cookies by using a custom policy, see [Setting signed cookies using a custom policy](private-content-setting-signed-cookie-custom-policy.md)\.
 
 If you're using a Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:
 + You enable IPv6 for the distribution

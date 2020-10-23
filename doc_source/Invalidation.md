@@ -71,10 +71,10 @@ To invalidate the default root object \(file\), specify the path the same way th
 You can invalidate only files that are associated with a web distribution\. You cannot invalidate objects that are served by an RTMP distribution\.
 
  **Forwarding cookies**  
-If you configured CloudFront to forward cookies to your origin, CloudFront edge caches might contain several versions of the file\. When you invalidate a file, CloudFront invalidates every cached version of the file regardless of its associated cookies\. You can’t selectively invalidate some versions and not others based on the associated cookies\. For more information, see [Caching Content Based on Cookies](Cookies.md)\.
+If you configured CloudFront to forward cookies to your origin, CloudFront edge caches might contain several versions of the file\. When you invalidate a file, CloudFront invalidates every cached version of the file regardless of its associated cookies\. You can’t selectively invalidate some versions and not others based on the associated cookies\. For more information, see [Caching content based on cookies](Cookies.md)\.
 
  **Forwarding headers**  
-If you configured CloudFront to forward a whitelist of headers to your origin and to cache based on the values of the headers, CloudFront edge caches might contain several versions of the file\. When you invalidate a file, CloudFront invalidates every cached version of the file regardless of the header values\. You can’t selectively invalidate some versions and not others based on header values\. \(If you configure CloudFront to forward all headers to your origin, CloudFront doesn't cache your files\.\) For more information, see [Caching Content Based on Request Headers](header-caching.md)\.
+If you configured CloudFront to forward a whitelist of headers to your origin and to cache based on the values of the headers, CloudFront edge caches might contain several versions of the file\. When you invalidate a file, CloudFront invalidates every cached version of the file regardless of the header values\. You can’t selectively invalidate some versions and not others based on header values\. \(If you configure CloudFront to forward all headers to your origin, CloudFront doesn't cache your files\.\) For more information, see [Caching content based on request headers](header-caching.md)\.
 
  **Forwarding query strings**  
 If you configured CloudFront to forward query strings to your origin, you must include the query strings when invalidating files, as shown in the following examples:  
@@ -82,7 +82,7 @@ If you configured CloudFront to forward query strings to your origin, you must i
 + `/images/image.jpg?parameter1=b`
 If client requests include five different query strings for the same file, you can either invalidate the file five times, once for each query string, or you can use the \* wildcard in the invalidation path, as shown in the following example:  
 `/images/image.jpg*`  
-For more information about using wildcards in the invalidation path, see [Invalidation paths](#invalidation-specifying-objects-paths)\. For more information about query strings, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\. To determine which query strings are in use, you can enable CloudFront logging\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
+For more information about using wildcards in the invalidation path, see [Invalidation paths](#invalidation-specifying-objects-paths)\. For more information about query strings, see [Caching content based on query string parameters](QueryStringParameters.md)\. To determine which query strings are in use, you can enable CloudFront logging\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 **Maximum Allowed**  
 For information about the maximum number of invalidations allowed, see [Concurrent Invalidation Request Maximum](#InvalidationLimits)\.

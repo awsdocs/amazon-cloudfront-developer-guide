@@ -55,7 +55,7 @@ The following procedure explains how to use the CloudFront console to add geo re
 
 The CloudFront geo restriction feature lets you control distribution of your content at the country level for all files that you're distributing with a given web distribution\. If you have geographic restrictions on where your content can be distributed and the restrictions don't follow country boundaries, or if you want to restrict access to only some of the files that you're distributing through CloudFront, you can combine CloudFront with a third\-party geolocation service\. This can allow you to control access to your content based not only on country but also based on city, zip or postal code, or even latitude and longitude\.
 
-When you're using a third\-party geolocation service, we recommend that you use CloudFront signed URLs, which let you specify an expiration date and time after which the URL is no longer valid\. In addition, we recommend that you use an Amazon S3 bucket as your origin because you can then use a CloudFront origin access identity to prevent users from accessing your content directly from the origin\. For more information about signed URLs and origin access identities, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+When you're using a third\-party geolocation service, we recommend that you use CloudFront signed URLs, which let you specify an expiration date and time after which the URL is no longer valid\. In addition, we recommend that you use an Amazon S3 bucket as your origin because you can then use a CloudFront origin access identity to prevent users from accessing your content directly from the origin\. For more information about signed URLs and origin access identities, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 The following steps explain how to control access to your files by using a third\-party geolocation service\. 
 
@@ -65,7 +65,7 @@ The following steps explain how to control access to your files by using a third
 
 1. Upload your content to an Amazon Simple Storage Service \(S3\) bucket\. For more information, see the [Amazon S3 documentation](http://aws.amazon.com/documentation/s3/)\. 
 
-1. Configure Amazon CloudFront and Amazon S3 to serve private content\. For more information, see [Serving Private Content with Signed URLs and Signed Cookies](PrivateContent.md)\.
+1. Configure Amazon CloudFront and Amazon S3 to serve private content\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 1. Write your web application to do the following:
 

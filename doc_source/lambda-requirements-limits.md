@@ -211,7 +211,7 @@ Functions triggered by origin request and response events as well as functions t
 + We recommend that you use percent encoding for the URI and query string\. For more information, see [URI and Query String Encoding](#lambda-requirements-encoding)\.
 + The total size of the URI \(`event.Records[0].cf.request.uri`\) and the query string \(`event.Records[0].cf.request.querystring`\) must be less than 8,192 characters\.
 
-For more information, see [Caching Content Based on Query String Parameters](QueryStringParameters.md)\.
+For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 ## Maximum Size for Body with the Include Body Option<a name="lambda-requirements-size-body-access"></a>
 
