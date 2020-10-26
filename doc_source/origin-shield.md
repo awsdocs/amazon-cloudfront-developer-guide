@@ -190,6 +190,7 @@ Origins:
 - DomainName: 3ae97e9482b0d011.mediapackage.us-west-2.amazonaws.com
   Id: Example-EMP-3ae97e9482b0d011
   OriginShield:
+    Enabled: true
     OriginShieldRegion: us-west-2
   CustomOriginConfig:
     OriginProtocolPolicy: match-viewer
