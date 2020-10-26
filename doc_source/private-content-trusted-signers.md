@@ -104,6 +104,8 @@ The following steps use OpenSSL as an example of one way to create a key pair\. 
 
    When finished, choose **Add**\.
 
+1. Record the public key ID\. You use it later when you create signed URLs or signed cookies, as the value of the `Key-Pair-Id` field\.
+
 **To add the public key to a key group**
 
 1. Open the CloudFront console at [ https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
@@ -122,7 +124,7 @@ The following steps use OpenSSL as an example of one way to create a key pair\. 
 
 1. Choose **Create key group**\.
 
-The console displays the key group ID\. Use the key group ID to associate this key group with a CloudFront distribution\.
+1. Record the key group name\. You use it later to associate the key group with a cache behavior in a CloudFront distribution\. \(In the CloudFront API, you use the key group ID to associate the key group with a cache behavior\.\)
 
 ### Create a CloudFront key pair \(not recommended, requires the AWS account root user\)<a name="create-key-pair-aws-account"></a>
 
