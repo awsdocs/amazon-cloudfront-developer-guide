@@ -63,7 +63,7 @@ The URL query strings in viewer requests that CloudFront includes in the cache k
 + **None** – The query strings in viewer requests are *not* included in the cache key and are *not* automatically included in origin requests\.
 + **All** – All query strings in viewer requests are included in the cache key and are also automatically included in origin requests\.
 + **Whitelist** – You specify which of the query strings in viewer requests are included in the cache key and automatically included in origin requests\.
-+ **All\-Except** – You specify which of the query strings in viewer requests are *not* included in the cache key and are *not* automatically included in origin requests\. All other query strings, expect for the ones you specify, *are* included in the cache key and automatically included in origin requests\.
++ **All\-Except** – You specify which of the query strings in viewer requests are *not* included in the cache key and are *not* automatically included in origin requests\. All other query strings, except for the ones you specify, *are* included in the cache key and automatically included in origin requests\.
 When you use the **Whitelist** or **All\-Except** setting, you specify query strings by their name, not their value\. For example, consider the following URL path:  
 
 ```
@@ -88,7 +88,7 @@ The cookies in viewer requests that CloudFront includes in the cache key and in 
 + **None** – The cookies in viewer requests are *not* included in the cache key and are *not* automatically included in origin requests\.
 + **All** – All cookies in viewer requests are included in the cache key and are automatically included in origin requests\.
 + **Whitelist** – You specify which of the cookies in viewer requests are included in the cache key and automatically included in origin requests\.
-+ **All\-Except** – You specify which of the cookies in viewer requests are *not* included in the cache key and are *not* automatically included in origin requests\. All other cookies, expect for the ones you specify, *are* included in the cache key and automatically included in origin requests\.
++ **All\-Except** – You specify which of the cookies in viewer requests are *not* included in the cache key and are *not* automatically included in origin requests\. All other cookies, except for the ones you specify, *are* included in the cache key and automatically included in origin requests\.
 When you use the **Whitelist** or **All\-Except** setting, you specify cookies by their name, not their value\. For example, consider the following `Cookie` header:  
 
 ```
