@@ -112,6 +112,7 @@ If you configure CloudFront to compress your content, CloudFront compresses file
 + `application/truetype`
 + `application/ttf`
 + `application/vnd.apple.mpegurl`
++ `application/vnd.mapbox-vector-tile`
 + `application/vnd.ms-fontobject`
 + `application/xhtml+xml`
 + `application/xml`
