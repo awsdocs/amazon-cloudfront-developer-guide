@@ -131,9 +131,10 @@ Node\.js versions 8 and 6 have reached end of life\. You can’t create or updat
 + You can’t associate your Lambda function with a CloudFront distribution owned by another AWS account\.
 + [AWS Lambda function dead letter queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq) are not supported\.
 + [AWS Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html) are not supported\.
-+ Functions with [AWS Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) are not supported\.
++ Lambda functions with [AWS Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) are not supported\.
 + [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html) is not supported\.
 + [AWS Lambda reserved concurrency and provisioned concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html) are not supported\.
++ [Lambda functions defined as container images](https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html) are not supported\.
 
 ## Quotas<a name="lambda-requirements-see-limits"></a>
 
