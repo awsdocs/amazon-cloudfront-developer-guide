@@ -65,6 +65,8 @@ Headers that you want CloudFront to return in the generated response\. Note the 
 + Specify `value` as a header value\.
 + If you do not include the header key portion of the key\-value pair, Lambda@Edge automatically inserts a header key using the header name that you provide\. Regardless of how you've formatted the header name, the header key that is inserted is automaticallyformatted with initial capitalization for each part, separated by hyphens \(\-\)\.
 
+  
+
   For example, you can add a header like the following, without a header key: `'content-type': [{ value: 'text/html;charset=UTF-8' }]`
 
   In this example, Lambda@Edge creates the following header key: `Content-Type`\.

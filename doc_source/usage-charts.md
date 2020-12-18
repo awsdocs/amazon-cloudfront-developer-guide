@@ -27,6 +27,8 @@ For more information, see [How the Usage Charts Are Related to Data in the Cloud
    + **All Web Distributions \(excludes deleted\)** — The charts display summed data for all web distributions that are associated with the current AWS account, excluding web distributions that you have deleted\.
    + **All Deleted Distributions** — The charts display summed data for all web distributions that are associated with the current AWS account and that were deleted in the last 60 days\.
 
+   
+
 1. Click **Update Graphs**\.
 
 1. To view data for a daily or hourly data point within a chart, move your mouse pointer over the data point\. 

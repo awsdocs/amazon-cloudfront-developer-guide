@@ -95,6 +95,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Create a URL signature using C# and the .NET framework](CreateSignatureInCSharp.md)
          + [Create a URL signature using Java](CFPrivateDistJavaDevelopment.md)
    + [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)
+   + [Restricting access to Application Load Balancers](restrict-access-to-load-balancer.md)
    + [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)
    + [Restricting the Geographic Distribution of Your Content](georestrictions.md)
    + [Using Field-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)
