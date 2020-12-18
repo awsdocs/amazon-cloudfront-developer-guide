@@ -9,7 +9,7 @@ For Node\.js functions, each function must call the `callback` parameter to succ
 + [General Examples](#lambda-examples-general-examples)
 + [Generating Responses \- Examples](#lambda-examples-generated-response-examples)
 + [Working with Query Strings \- Examples](#lambda-examples-query-string-examples)
-+ [Personalize Content by Country or Device Type Headers \- Examples](#lambda-examples-redirecting-examples)
++ [Personalize Content by Country or Device Type Headers or Referer \- Examples](#lambda-examples-redirecting-examples)
 + [Content\-Based Dynamic Origin Selection \- Examples](#lambda-examples-content-based-routing-examples)
 + [Updating Error Statuses \- Examples](#lambda-examples-update-error-status-examples)
 + [Accessing the Request Body \- Examples](#lambda-examples-access-request-body-examples)
@@ -633,13 +633,14 @@ def lambda_handler(event, context):
 
 ------
 
-## Personalize Content by Country or Device Type Headers \- Examples<a name="lambda-examples-redirecting-examples"></a>
+## Personalize Content by Country or Device Type Headers or Referer \- Examples<a name="lambda-examples-redirecting-examples"></a>
 
 The examples in this section illustrate how you can use Lambda@Edge to customize behavior based on location or the type of device used by the viewer\.
 
 **Topics**
 + [Example: Redirecting Viewer Requests to a Country\-Specific URL](#lambda-examples-redirect-based-on-country)
 + [Example: Serving Different Versions of an Object Based on the Device](#lambda-examples-vary-on-device-type)
++ [Example: Serving Different Versions of an Object Based on the Referer](#lambda-examples-vary-on-referer)
 
 ### Example: Redirecting Viewer Requests to a Country\-Specific URL<a name="lambda-examples-redirect-based-on-country"></a>
 
@@ -832,6 +833,94 @@ exports.handler = (event, context, callback) => {
          request['uri'] = tabletPath + request['uri']
      elif 'cloudfront-is-smarttv-viewer' in headers and headers['cloudfront-is-smarttv-viewer'][0]['value'] == 'true':
          request['uri'] = smarttvPath + request['uri']
+ 
+     print("Request uri set to %s" % request['uri'])
+ 
+     return request
+```
+
+------
+
+### Example: Serving Different Versions of an Object Based on the Referer<a name="lambda-examples-vary-on-referer"></a>
+
+The following example shows how to serve different versions of an object based on the referer of the reqest, for example, a website requesting a `<script>` asset. `\. Note the following:
++ You must configure your distribution to cache based on the `Referer` headers\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
++ CloudFront adds the `Referer` headers after the viewer request event\. To use this example, you must create a trigger for the origin request event\.
+
+------
+#### [ Node\.js ]
+
+```
+'use strict';
+
+/* This is an origin request function */
+exports.handler = (event, context, callback) => {
+    const request = event.Records[0].cf.request;
+    const headers = request.headers;
+
+    /*
+     * Serve different versions of an object based on the referer.
+     * NOTE: 1. You must configure your distribution to cache based on the
+     *          Referer headers. For more information, see
+     *          the following documentation:
+     *          http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+     *       2. CloudFront adds the Referer headers after the viewer
+     *          request event. To use this example, you must create a trigger for the
+     *          origin request event.
+     */
+
+    const evergreenVersion = '/sdk/sdk.js'; // an evergreen version of your JS library
+    const upgradeVersion = '/sdk/sdk-1.2.3.js'; // a pinned immutable version of your JS library
+
+    const upgradeTargetDomain = 'example.com';
+
+    if (headers['referer']) {
+        if (headers['referer'][0].value.indexOf(upgradeTargetDomain) >= 0) {
+            request.uri = upgradeVersion;
+        } else {
+            request.uri = evergreenVersion; // referer does not match your upgrade list
+        }
+    } else {
+        request.uri = evergreenVersion; // no referer 
+    }
+
+    console.log(`Request uri set to "${request.uri}"`);
+
+    callback(null, request);
+};
+```
+
+------
+#### [ Python ]
+
+```
+# This is an origin request function
+ def lambda_handler(event, context):
+     request = event['Records'][0]['cf']['request']
+     headers = request['headers']
+ 
+     '''
+      Serve different versions of an object based on the referer.
+      NOTE: 1. You must configure your distribution to cache based on the
+              Referer headers. For more information, see
+              the following documentation:
+              http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+            2. CloudFront adds the Referer headers after the viewer
+              request event. To use this example, you must create a trigger for the
+              origin request event.
+     '''
+     evergreenVersion = '/sdk/sdk.js';
+     upgradeVersion = '/sdk/sdk-1.2.3.js'; # a  pinned immutable version of your JS library
+
+     upgradeTargetDomain = 'example.com';
+      
+     if 'referer' in headers):
+         if upgradeTargetDomain in headers['referer'][0]['value']:
+          request.uri = upgradeVersion; # referer matches so respond with upgraded library
+         else
+          request.uri = evergreenVersion; # referer does not match your upgrade list
+     else
+         request.uri = evergreenVersion; # no referer 
  
      print("Request uri set to %s" % request['uri'])
  
