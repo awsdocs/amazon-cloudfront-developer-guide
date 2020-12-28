@@ -49,6 +49,9 @@ You can restrict access to content that is intended for selected users—for exa
 If you restrict access to your content by using, for example, CloudFront signed URLs or signed cookies, you also won’t want people to view files by using the direct URL for the file\. Instead, you want them to access the files only by using the CloudFront URL, so that your protections work\.  
 If you use an Amazon S3 bucket as the origin for a CloudFront distribution, you can set up an origin access identity \(OAI\) to manage direct access to your content\. An origin access identity is a special CloudFront user identity that you can associate with your distribution so that you can secure all or just some of your Amazon S3 content\. For more information about how to configure this, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\. 
 
+**Restrict access to content served by an Application Load Balancer**  
+When you use CloudFront with an Application Load Balancer in Elastic Load Balancing as the origin, you can configure CloudFront to prevent users from directly accessing the Application Load Balancer\. This allows users to access the Application Load Balancer only through CloudFront, ensuring that you get the benefits of using CloudFront\. For more information, see [Restricting access to Application Load Balancers](restrict-access-to-load-balancer.md)\.
+
 **Use AWS WAF web ACLs**  
 You can use AWS WAF, a web application firewall service, to create a web access control list \(web ACL\) to restrict access to your content\. Based on conditions that you specify, such as the IP addresses that requests originate from or the values of query strings, CloudFront responds to requests either with the requested content or with an HTTP 403 status code \(Forbidden\)\. For more information, see [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)\. 
 
