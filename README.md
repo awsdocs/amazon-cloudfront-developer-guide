@@ -11,4 +11,5 @@ The sample code within this documentation is made available under a modified MIT
 ## Default branch
 
 The default branch for this repo is `main`.
+The current branch is deprecated.
 If you cloned this repo previously, when it had a different default branch, update your local repo to use the `main` branch.
