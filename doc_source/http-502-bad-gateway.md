@@ -34,7 +34,7 @@ To help troubleshoot HTTP 502 errors from CloudFront, you can use OpenSSL to try
 
 Use the following OpenSSL command to test the connection to your origin server \(replace *origin domain name* with your origin server’s domain name, such as example\.com\):
 
-`openssl s_client –connect origin domain name:443`
+`openssl s_client -connect origin domain name:443`
 
 If the following are true:
 + Your origin server supports multiple domain names with multiple SSL/TLS certificates
@@ -42,7 +42,7 @@ If the following are true:
 
 Then add the `-servername` option to the OpenSSL command, as in the following example \(replace *CNAME* with the CNAME that’s configured in your distribution\):
 
-`openssl s_client –connect origin domain name:443 -servername CNAME`
+`openssl s_client -connect origin domain name:443 -servername CNAME`
 
 ## Origin Is Not Responding with Supported Ciphers/Protocols<a name="origin-not-responding-with-supported-ciphers-protocols"></a>
 
@@ -83,7 +83,7 @@ To further troubleshoot this issue, ensure that the [authoritative name servers]
 
 ```
 dig OriginAPEXDomainName NS +short 
-nslookup –query=NS OriginAPEXDomainName
+nslookup -query=NS OriginAPEXDomainName
 ```
 
 When you have the names of your name servers, use the following commands to query the domain name of your origin against them to make sure that each responds with an answer:
