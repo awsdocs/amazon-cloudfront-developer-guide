@@ -110,7 +110,7 @@ If you configure CloudFront to accept and forward all of the HTTP methods that C
 Note the following:
 + You might find it easier to use Amazon S3 bucket policies than object ACLs because you can add files to the bucket without updating permissions\. However, ACLs give you more fine\-grained control because you’re granting permissions on each individual file\.
 + By default, your Amazon S3 bucket and all of the files in it are private\. Only the AWS account that created the bucket has permission to read or write the files in it\.
-+ If another AWS account uploads files to your bucket, that account is the owner of those files\. Bucket policies only apply to files that the bucket owner owns\. This means that if another account uploads files to your bucket, the bucket policy that you created for your OAI not evaluated for those files\. In that case, use object ACLs to give permissions to your OAI\.
++ If another AWS account uploads files to your bucket, that account is the owner of those files\. Bucket policies only apply to files that the bucket owner owns\. This means that if another account uploads files to your bucket, the bucket policy that you created for your OAI is not evaluated for those files\. In that case, use object ACLs to give permissions to your OAI\.
 + If you’re adding an OAI to an existing distribution, modify the bucket policy or any object ACLs as appropriate to ensure that the files are not publicly available outside of CloudFront\.
 + Grant additional permissions to one or more secure administrator accounts so you can continue to update the contents of the Amazon S3 bucket\.
 
