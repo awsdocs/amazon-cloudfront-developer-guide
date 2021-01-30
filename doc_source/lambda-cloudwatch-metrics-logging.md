@@ -25,6 +25,6 @@ You must review CloudWatch log files in the correct AWS Region to see your Lambd
 
 To learn more about how to use CloudWatch Logs with Lambda@Edge functions, see the following:
 + For more information about viewing graphs in the **Monitoring** section of the CloudFront console, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
-+ For information about the permissions required to send data to CloudWatch Logs, see [Setting IAM Permissions and Roles for Lambda@Edge](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-permissions.html) in the *IAM User Guide*\.
-+ For information about adding logging to a Lambda function, see [Function Logging in Node\.js](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-logging.html) or [Function Logging in Python](https://docs.aws.amazon.com/lambda/latest/dg/python-logging.html) in the *AWS Lambda Developer Guide*\. 
++ For information about the permissions required to send data to CloudWatch Logs, see [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)\.
++ For information about adding logging to a Lambda function, see [AWS Lambda function logging in Node\.js](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-logging.html) or [AWS Lambda function logging in Python](https://docs.aws.amazon.com/lambda/latest/dg/python-logging.html) in the *AWS Lambda Developer Guide*\.
 + For information about CloudWatch Logs quotas \(formerly known as limits\), see [CloudWatch Logs quotas](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) in the *Amazon CloudWatch Logs User Guide*\.
