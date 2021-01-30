@@ -144,9 +144,9 @@ Without the plugin's site acceleration, all the traffic of your website's viewer
 
 Using either domain, your website's viewers get lower latency and a faster, more reliable viewing experience\. We recommend telling viewers to use your website's alternate domain name\. The following diagrams show your viewers' traffic with and without the plugin's site acceleration\.
 
-![\[Diagram of a website viewer's traffic going to the WordPress website host.\]](https://pixeljar.com/aws-images/wp-plugin-no-acceleration.png)
+![\[Diagram of a website viewer's traffic going to the WordPress website host.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/wp-plugin-no-acceleration.png)
 
-![\[Diagram of a website viewer's traffic going to the CloudFront edge locations.\]](https://pixeljar.com/aws-images/wp-plugin-with-acceleration.png)
+![\[Diagram of a website viewer's traffic going to the CloudFront edge locations.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/wp-plugin-with-acceleration.png)
 
 **To configure and use CloudFront with the plugin \(enable site acceleration\)**
 
