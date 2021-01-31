@@ -225,7 +225,7 @@ $custom_policy_stream_name = get_custom_policy_stream_name($video_path, $private
 
     <div id='canned'>The canned policy video will be here</div>
 
-    <h2>Canned Policy</h2>
+    <h2>Custom Policy</h2>
     <h3>Expires at <?= gmdate('Y-m-d H:i:s T', $expires) ?> only viewable by IP <?= $client_ip ?></h3>
     <div id='custom'>The custom policy video will be here</div>
 
