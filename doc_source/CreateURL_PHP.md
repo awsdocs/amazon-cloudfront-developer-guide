@@ -218,7 +218,7 @@ $custom_policy_stream_name = get_custom_policy_stream_name($video_path, $private
 </head>
 
 <body>
-    <h1>Amazon CloudFront </h1>
+    <h1>Amazon CloudFront</h1>
     <h2>Canned Policy</h2>
     <h3>Expires at <?= gmdate('Y-m-d H:i:s T', $expires) ?></h3>
     <br />
