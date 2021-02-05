@@ -64,7 +64,7 @@ The following list contains each field name and a description of the information
 
 1. **`cs-host`**
 
-   The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)\.
+   The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
 
 1. **`cs-uri-stem`**
 
@@ -84,7 +84,7 @@ The following list contains each field name and a description of the information
 
 1. **`x-host-header`**
 
-   The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
+   The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)\.
 
 1. **`time-taken`**
 
