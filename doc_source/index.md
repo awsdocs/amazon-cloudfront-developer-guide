@@ -22,6 +22,7 @@ Amazon's trademarks and trade dress may not be used in
    + [How to get started with Amazon CloudFront](welcome-how-to-get-started.md)
    + [AWS Identity and Access Management](IAMCloudFront.md)
    + [CloudFront pricing](CloudFrontPricing.md)
+      + [CloudFront security savings bundle](savings-bundle.md)
       + [Choosing the price class for a CloudFront distribution](PriceClass.md)
 + [Setting up Amazon CloudFront](setting-up-cloudfront.md)
 + [Getting started with Amazon CloudFront](GettingStarted.md)
