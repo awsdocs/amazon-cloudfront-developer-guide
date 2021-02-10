@@ -34,9 +34,7 @@ You create a CloudFront distribution to tell CloudFront where you want content t
 
    An origin server stores the original, definitive version of your objects\. If you're serving content over HTTP, your origin server is either an Amazon S3 bucket or an HTTP server, such as a web server\. Your HTTP server can run on an Amazon Elastic Compute Cloud \(Amazon EC2\) instance or on a server that you manage; these servers are also known as *custom origins\.*
 
-   If you use the Adobe Flash Media Server RTMP protocol to distribute media files on demand, your origin server is always an Amazon S3 bucket\.
-
-1. You upload your files to your origin servers\. Your files, also known as *objects*, typically include web pages, images, and media files, but can be anything that can be served over HTTP or a supported version of Adobe RTMP, the protocol used by Adobe Flash Media Server\.
+1. You upload your files to your origin servers\. Your files, also known as *objects*, typically include web pages, images, and media files, but can be anything that can be served over HTTP\.
 
    If you're using an Amazon S3 bucket as an origin server, you can make the objects in your bucket publicly readable, so that anyone who knows the CloudFront URLs for your objects can access them\. You also have the option of keeping objects private and controlling who accesses them\. See [Serving private content with signed URLs and signed cookies](PrivateContent.md)\. 
 

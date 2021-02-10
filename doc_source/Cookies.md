@@ -2,7 +2,7 @@
 
 By default, CloudFront doesn’t consider cookies when processing requests and responses, or when caching your objects in edge locations\. If CloudFront receives two requests that are identical except for what’s in the `Cookie` header, then, by default, CloudFront treats the requests as identical and returns the same object for both requests\.
 
-You can configure CloudFront to forward to your origin some or all of the cookies in viewer requests, and to cache separate versions of your objects based on the cookie values that it forwards\. When you do this, CloudFront uses some or all of the cookies in viewer requests—whichever ones it’s configured to forward—to uniquely identify an object in the cache\. \(For RTMP distributions, you cannot configure CloudFront to process cookies and CloudFront does not cache cookies in edge caches\.\)
+You can configure CloudFront to forward to your origin some or all of the cookies in viewer requests, and to cache separate versions of your objects based on the cookie values that it forwards\. When you do this, CloudFront uses some or all of the cookies in viewer requests—whichever ones it’s configured to forward—to uniquely identify an object in the cache\.
 
 For example, suppose that requests for `locations.html` contain a `country` cookie that has a value of either `uk` or `fr`\. When you configure CloudFront to cache your objects based on the value of the `country` cookie, CloudFront forwards requests for `locations.html` to the origin and includes the `country` cookie and its value\. Your origin returns `locations.html`, and CloudFront caches the object once for requests in which the value of the `country` cookie is `uk` and once for requests in which the value is `fr`\.
 

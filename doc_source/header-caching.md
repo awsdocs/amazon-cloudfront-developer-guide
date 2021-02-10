@@ -1,9 +1,6 @@
 # Caching content based on request headers<a name="header-caching"></a>
 
-For web distributions, CloudFront lets you choose whether you want CloudFront to forward headers to your origin and to cache separate versions of a specified object based on the header values in viewer requests\. This allows you to serve different versions of your content based on the device the user is using, the location of the viewer, the language the viewer is using, and a variety of other criteria\. For RTMP distributions, you cannot configure CloudFront to cache based on header values\.
-
-**Note**  
-For RTMP distributions, you cannot configure CloudFront to cache your content based on the headers in viewer requests\.
+CloudFront lets you choose whether you want CloudFront to forward headers to your origin and to cache separate versions of a specified object based on the header values in viewer requests\. This allows you to serve different versions of your content based on the device the user is using, the location of the viewer, the language the viewer is using, and a variety of other criteria\.
 
 **Topics**
 + [Headers and distributions – overview](#header-caching-web)
@@ -26,14 +23,14 @@ You can configure CloudFront to forward headers to the origin, which causes Clou
 
  For example, suppose viewer requests for `logo.jpg` contain a custom `Product` header that has a value of either `Acme` or `Apex`\. When you configure CloudFront to cache your objects based on the value of the `Product` header, CloudFront forwards requests for `logo.jpg` to the origin and includes the `Product` header and header values\. CloudFront caches `logo.jpg` once for requests in which the value of the `Product` header is `Acme` and once for requests in which the value is `Apex`\.
 
-You can configure each cache behavior in a web distribution to do one of the following: 
+You can configure each cache behavior in a distribution to do one of the following: 
 + Forward all headers to your origin
 **Important**  
 If you configure CloudFront to forward all headers to your origin, CloudFront doesn't cache the objects associated with this cache behavior\. Instead, it sends every request to the origin\.
 + Forward a whitelist of headers that you specify\. CloudFront caches your objects based on the values in all of the specified headers\. CloudFront also forwards the headers that it forwards by default, but it caches your objects based only on the headers that you specify\. 
 + Forward only the default headers\. In this configuration, CloudFront doesn't cache your objects based on the values in the request headers\.
 
-For the current quota on the number of headers that you can whitelist for each cache behavior or to request a higher quota, see [Quotas on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
+For the current quota on the number of headers that you can whitelist for each cache behavior or to request a higher quota, see [Quotas on Custom Headers](cloudfront-limits.md#limits-custom-headers)\.
 
 For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing distribution, see [Update Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 

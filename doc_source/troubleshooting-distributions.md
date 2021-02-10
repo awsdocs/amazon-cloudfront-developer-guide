@@ -85,14 +85,10 @@ Make sure that the URL that you're referencing uses the domain name \(or CNAME\)
 
 If you need AWS to help you troubleshoot a custom origin, we probably will need to inspect the `X-Amz-Cf-Id` header entries from your requests\. If you are not already logging these entries, you might want to consider it for the future\. For more information, see [Using Amazon EC2 or Other Custom Origins](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\. For further help, see the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
-### I Can't View the Files in My RTMP Distribution<a name="Troubleshooting.Configuration"></a>
-
-If you can't view the files in your RTMP distribution, are your URL and your playback client correctly configured? RTMP distributions require you to use an RTMP protocol instead of HTTP, and you must make a few minor configuration changes to your playback client\. For information about creating RTMP distributions, see [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)\. 
-
 ## Error Message: Certificate: <certificate\-id> Is Being Used by CloudFront<a name="troubleshooting-certificate-error"></a>
 
 **Problem:** You're trying to delete an SSL/TLS certificate from the IAM certificate store, and you're getting the message "Certificate: <certificate\-id> is being used by CloudFront\."
 
-**Solution:** Every CloudFront web distribution must be associated either with the default CloudFront certificate or with a custom SSL/TLS certificate\. Before you can delete an SSL/TLS certificate, you must either rotate the certificate \(replace the current custom SSL/TLS certificate with another custom SSL/TLS certificate\) or revert from using a custom SSL/TLS certificate to using the default CloudFront certificate\. To fix that, complete the steps in one of the following procedures:
+**Solution:** Every CloudFront distribution must be associated either with the default CloudFront certificate or with a custom SSL/TLS certificate\. Before you can delete an SSL/TLS certificate, you must either rotate the certificate \(replace the current custom SSL/TLS certificate with another custom SSL/TLS certificate\) or revert from using a custom SSL/TLS certificate to using the default CloudFront certificate\. To fix that, complete the steps in one of the following procedures:
 + [Rotating SSL/TLS Certificates](cnames-and-https-rotate-certificates.md)
 + [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)

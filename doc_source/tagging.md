@@ -7,7 +7,7 @@ The following are two examples of how it can be useful to work with tags in Clou
 + Use tags to enforce tag\-based permissions on CloudFront distributions\. For more information, see [ Tag\-Based Policies](access-control-overview.md#access-control-manage-access-intro-tag-policies)\.
 
 Note the following:
-+ You can tag web and RTMP distributions, but you can't tag origin access identities or invalidations\.
++ You can tag distributions, but you can't tag origin access identities or invalidations\.
 + [Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html) and [Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html) are currently not supported for CloudFront\. 
 
 For the current maximum number of tags that you can add to a distribution, see [Quotas](cloudfront-limits.md)\. To request a higher quota \(formerly known as limit\), [create a case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) with the AWS Support Center\.

@@ -4,9 +4,6 @@ If you need to remove a file from CloudFront edge caches before it expires, you 
 + Invalidate the file from edge caches\. The next time a viewer requests the file, CloudFront returns to the origin to fetch the latest version of the file\.
 + Use file versioning to serve a different version of the file that has a different name\. For more information, see [Updating Existing Files Using Versioned File Names](UpdatingExistingObjects.md#ReplacingObjects)\.
 
-**Important**  
-You cannot invalidate objects that are served by an RTMP distribution\.
-
 To invalidate files, you can specify either the path for individual files or a path that ends with the `*` wildcard, which might apply to one file or to many, as shown in the following examples:
 + `/images/image1.jpg`
 + `/images/image*`
@@ -66,9 +63,6 @@ For more information, see [Invalidation paths](#invalidation-specifying-objects-
 
  **Default root object**  
 To invalidate the default root object \(file\), specify the path the same way that you specify the path for any other file\.
-
- **Distribution types**  
-You can invalidate only files that are associated with a web distribution\. You cannot invalidate objects that are served by an RTMP distribution\.
 
  **Forwarding cookies**  
 If you configured CloudFront to forward cookies to your origin, CloudFront edge caches might contain several versions of the file\. When you invalidate a file, CloudFront invalidates every cached version of the file regardless of its associated cookies\. You can’t selectively invalidate some versions and not others based on the associated cookies\. For more information, see [Caching content based on cookies](Cookies.md)\.

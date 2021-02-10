@@ -44,7 +44,3 @@ You can view configuration histories in any of the following ways:
 For example, to get a list of all of your distributions from AWS Config, you could run a CLI command such as the following:
 
 `aws configservice list-discovered-resources --resource-type AWS::CloudFront::Distribution`
-
-Or, to get a list of all of your RTMP streaming distributions from AWS Config, run a CLI command such as the following:
-
-`aws configservice list-discovered-resources --resource-type AWS::CloudFront::StreamingDistribution`

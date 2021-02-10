@@ -34,14 +34,14 @@ For more information, see the [CloudTrail userIdentity Element](https://docs.aws
 
 Each JSON\-formatted CloudTrail log file can contain one or more log entries\. A log entry represents a single request from any source and includes information about the requested action, including any parameters, the date and time of the action, and so on\. The log entries are not guaranteed to be in any particular order; they are not an ordered stack trace of API calls\.
 
-The `eventName` element identifies the action that occurred and the API version that was used to perform that action\. For example, the following `eventName` value indicates that a web distribution was updated, and the 2014\-01\-31 API version was used to perform the action:
+The `eventName` element identifies the action that occurred and the API version that was used to perform that action\. For example, the following `eventName` value indicates that a distribution was updated, and the 2014\-01\-31 API version was used to perform the action:
 
 `UpdateDistribution2014_01_31`
 
 The following example shows a CloudTrail log entry that demonstrates five actions:
-+ Updating a web distribution configuration\. The value of `eventName` is `UpdateDistribution`\.
-+ Listing web distributions that are associated with the current account\. The value of `eventName` is `ListDistributions`\.
-+ Getting the configuration for a specific web distribution\. The value of `eventName` is `GetDistribution`\.
++ Updating a distribution configuration\. The value of `eventName` is `UpdateDistribution`\.
++ Listing distributions that are associated with the current account\. The value of `eventName` is `ListDistributions`\.
++ Getting the configuration for a specific distribution\. The value of `eventName` is `GetDistribution`\.
 + Creating an invalidation batch request\. The value of `eventName` is `CreateInvalidation`\.
 + Listing origin access identities that are associated with the current account\. The value of `eventName` is `ListCloudFrontOriginAccessIdentities`\.
 

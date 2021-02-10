@@ -16,7 +16,7 @@ When you grant permissions, you decide who gets the permissions, the resources t
 
 ## ARNs for CloudFront Resources<a name="access-control-resources"></a>
 
-All CloudFront resources—web and RTMP distributions, invalidations, and origin access identities—use the same format for Amazon Resource Names \(ARNs\):
+All CloudFront resources—distributions, invalidations, and origin access identities—use the same format for Amazon Resource Names \(ARNs\):
 
 `arn:aws:cloudfront::optional-account-id:*`
 
@@ -27,9 +27,9 @@ CloudFront provides API actions to work with each of these types of resources\. 
 An AWS account owns the resources that are created in the account, regardless of who created the resources\. Specifically, the resource owner is the AWS account of the principal entity \(that is, the root account, an IAM user, or an IAM role\) that authenticates the resource creation request\. 
 
 The following examples illustrate how this works:
-+ If you use the root account credentials of your AWS account to create a web distribution, your AWS account is the owner of the distribution\.
-+ If you create an IAM user in your AWS account and grant permissions to create a web distribution to that user, the user can create a web distribution\. The AWS account that created the user owns the distribution\.
-+ If you create an IAM role in your AWS account with permissions to create a web distribution, anyone who can assume the role can create a web distribution\. Your AWS account, to which the role belongs, owns the distribution\.
++ If you use the root account credentials of your AWS account to create a distribution, your AWS account is the owner of the distribution\.
++ If you create an IAM user in your AWS account and grant permissions to create a distribution to that user, the user can create a distribution\. The AWS account that created the user owns the distribution\.
++ If you create an IAM role in your AWS account with permissions to create a distribution, anyone who can assume the role can create a distribution\. Your AWS account, to which the role belongs, owns the distribution\.
 
 ## Managing Access to Resources<a name="access-control-manage-access-intro"></a>
 
@@ -45,7 +45,7 @@ Policies attached to an IAM identity are referred to as identity\-based policies
 ### Identity\-Based Policies \(IAM Policies\)<a name="access-control-manage-access-intro-iam-policies"></a>
 
 You can attach policies to IAM identities\. For example, you can do the following:
-+ **Attach a permissions policy to a user or a group in your account** – An account administrator can use a permissions policy that is associated with a particular user to grant permissions for that user to create a web distribution\. 
++ **Attach a permissions policy to a user or a group in your account** – An account administrator can use a permissions policy that is associated with a particular user to grant permissions for that user to create a distribution\.
 + **Attach a permissions policy to a role \(grant cross\-account permissions\)** – You can grant permissions to perform CloudFront actions to a user that was created in another AWS account\. To do so, you attach a permissions policy to an IAM role, and then you allow the user in the other account to assume the role\. The following example explains how this works for two AWS accounts, account A and account B:
 
   1. Account A administrator creates an IAM role and attaches to the role a permissions policy that grants permissions to create or access resources that are owned by account A\.
@@ -56,7 +56,7 @@ You can attach policies to IAM identities\. For example, you can do the followin
 
   For more information about how to delegate permissions to users in another AWS account, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) in the *IAM User Guide*\.
 
-The following example policy allows a user to perform the `CreateDistribution` action to programmatically create a web distribution for your AWS account:
+The following example policy allows a user to perform the `CreateDistribution` action to programmatically create a distribution for your AWS account:
 
 ```
 {

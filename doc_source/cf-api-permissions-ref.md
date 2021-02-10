@@ -5,14 +5,13 @@ When you are setting up [Access Control](auth-and-access-control.md#access-contr
 You can use AWS\-wide condition keys in your CloudFront policies to express conditions\. For a complete list of AWS\-wide keys, see [Available Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
 
 **Topics**
-+ [Required Permissions for Actions on Web Distributions](#required-permissions-web-distributions)
-+ [Required Permissions for Actions on RTMP Distributions](#required-permissions-rtmp-distributions)
-+ [Required Permissions for Actions on Invalidations](#required-permissions-invalidations)
-+ [Required Permissions for Actions on Origin Access Identities](#required-permissions-origin-access-identities)
-+ [Required Permissions for CloudFront Actions Related to Lambda@Edge](#required-permissions-lambda)
-+ [Required Permissions for Actions on Tags](#required-permissions-tags)
++ [Required permissions for actions on distributions](#required-permissions-web-distributions)
++ [Required permissions for actions on invalidations](#required-permissions-invalidations)
++ [Required permissions for actions on origin access identities](#required-permissions-origin-access-identities)
++ [Required permissions for CloudFront actions related to Lambda@Edge](#required-permissions-lambda)
++ [Required Permissions for actions on tags](#required-permissions-tags)
 
-## Required Permissions for Actions on Web Distributions<a name="required-permissions-web-distributions"></a><a name="web-distributions-table"></a>
+## Required permissions for actions on distributions<a name="required-permissions-web-distributions"></a><a name="web-distributions-table"></a>
 
 [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)  
 **Required Permissions \(API Action\):**  
@@ -69,52 +68,7 @@ You can use AWS\-wide condition keys in your CloudFront policies to express cond
 **Required Permissions \(API Action\):** `cloudfront:DeleteDistribution`  
 **Resources:** `*`
 
-## Required Permissions for Actions on RTMP Distributions<a name="required-permissions-rtmp-distributions"></a><a name="rtmp-distributions-table"></a>
-
-[CreateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistribution.html)  
-**Required Permissions \(API Action\):** `cloudfront:CreateStreamingDistribution`  
-Only if you configure CloudFront to save access logs:  
-+ `s3:GetBucketAcl`
-+ `s3:PutBucketAcl`
-+ The S3 ACL for the bucket must grant you `FULL_CONTROL`
-**Resources:** `*`  
-If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
-
-[CreateStreamingDistributionWithTags](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateStreamingDistributionWithTags.html)  
-**Required Permissions \(API Action\):** `cloudfront:CreateStreamingDistribution`, `cloudfront:TagResource`  
-Only if you configure CloudFront to save access logs:  
-+ `s3:GetBucketAcl`
-+ `s3:PutBucketAcl`
-+ The S3 ACL for the bucket must grant you `FULL_CONTROL`
-**Resources:** `*`  
-If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
-
-[GetStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetStreamingDistribution.html)  
-**Required Permissions \(API Action\):** `cloudfront:GetStreamingDistribution`  
-**Resources:** `*`
-
-[GetStreamingDistributionConfig](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetStreamingDistributionConfig.html)  
-**Required Permissions \(API Action\):** `cloudfront:GetStreamingDistributionConfig`  
-**Resources:** `*`
-
-[ListStreamingDistributions](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListStreamingDistributions.html)  
-**Required Permissions \(API Action\):** `cloudfront:ListStreamingDistributions`  
-**Resources:** `*`
-
-[UpdateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html)  
-**Required Permissions \(API Action\):** `cloudfront:UpdateStreamingDistribution`  
-Only if you configure CloudFront to save access logs:  
-+ `s3:GetBucketAcl`
-+ `s3:PutBucketAcl`
-+ The S3 ACL for the bucket must grant you `FULL_CONTROL`
-**Resources:** `*`  
-If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
-
-[DeleteStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteStreamingDistribution.html)  
-**Required Permissions \(API Action\):** `cloudfront:DeleteDistribution`  
-**Resources:** `*`
-
-## Required Permissions for Actions on Invalidations<a name="required-permissions-invalidations"></a><a name="invalidations-table"></a>
+## Required permissions for actions on invalidations<a name="required-permissions-invalidations"></a><a name="invalidations-table"></a>
 
 [CreateInvalidation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html)  
 **Required Permissions \(API Action\):** `cloudfront:CreateInvalidation`  
@@ -128,7 +82,7 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 **Required Permissions \(API Action\):** `cloudfront:ListInvalidations`  
 **Resources:** `*`
 
-## Required Permissions for Actions on Origin Access Identities<a name="required-permissions-origin-access-identities"></a><a name="origin-access-identities-table"></a>
+## Required permissions for actions on origin access identities<a name="required-permissions-origin-access-identities"></a><a name="origin-access-identities-table"></a>
 
 [CreateCloudFrontOriginAccessIdentity](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateCloudFrontOriginAccessIdentity.html)  
 **Required Permissions \(API Action\):** `cloudfront:CreateCloudFrontOriginAccessIdentity`  
@@ -154,7 +108,7 @@ If you configure CloudFront to save access logs, you can optionally restrict acc
 **Required Permissions \(API Action\):** `cloudfront:DeleteCloudFrontOriginAccessIdentity`  
 **Resources:** `*`
 
-## Required Permissions for CloudFront Actions Related to Lambda@Edge<a name="required-permissions-lambda"></a>
+## Required permissions for CloudFront actions related to Lambda@Edge<a name="required-permissions-lambda"></a>
 
 To use Lambda@Edge, you need the following CloudFront permissions so you can create or update a distribution that includes triggers for Lambda functions\. For information about the Lambda permissions that you need, see [Setting IAM Permissions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge-permissions.html) in the "AWS Lambda@Edge" chapter in the *AWS Lambda Developer Guide*\.<a name="lambda-table"></a>
 
@@ -197,7 +151,7 @@ To use Lambda@Edge, you need the following CloudFront permissions so you can cre
 + ACM: \*
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
-## Required Permissions for Actions on Tags<a name="required-permissions-tags"></a><a name="invalidations-tags"></a>
+## Required Permissions for actions on tags<a name="required-permissions-tags"></a><a name="invalidations-tags"></a>
 
 [TagResource](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html)  
 **Required Permissions \(API Action\):** `cloudfront:TagResource`  

@@ -69,12 +69,12 @@ To update settings for your distribution, perform the following procedure:<a nam
 1. Update the following values:  
 **Alternate Domain Names \(CNAMEs\)**  
 Add the applicable alternate domain names\. Separate domain names with commas, or type each domain name on a new line\.  
-**SSL Certificate \(Web Distributions Only\)**  
+**SSL Certificate**  
 Choose **Custom SSL Certificate**, and choose a certificate from the list\.  
 Up to 100 certificates are listed here\. If you have more than 100 certificates and you don't see the certificate that you want to add, you can type a certificate ARN in the field to choose it\.  
 If you uploaded a certificate to the IAM certificate store but it's not listed, and you can't choose it by typing the name in the field, review the procedure [Importing an SSL/TLS Certificate](#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\.   
 After you associate your SSL/TLS certificate with your CloudFront distribution, do not delete the certificate from ACM or the IAM certificate store until you remove the certificate from all distributions and until the status of the distributions has changed to **Deployed**\.  
-**Clients Supported \(Web Distributions Only\)**  
+**Clients Supported**  
 Choose the applicable option:  
    + **All clients**: CloudFront serves your HTTPS content using dedicated IP addresses\. If you select this option, you incur additional charges when you associate your SSL/TLS certificate with a distribution that is enabled\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing)\.
    + **Only clients that Support Server Name Indication \(SNI\)**: Older browsers or other clients that don't support SNI must use another method to access your content\.

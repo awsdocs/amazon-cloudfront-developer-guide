@@ -1,6 +1,6 @@
 # Configuring Secure Access and Restricting Access to Content<a name="SecurityAndPrivateContent"></a>
 
-For web distributions, CloudFront provides several options for securing content that it delivers\. The following are some ways you can use CloudFront to secure and restrict access to content:
+CloudFront provides several options for securing content that it delivers\. The following are some ways you can use CloudFront to secure and restrict access to content:
 + Configure HTTPS connections
 + Prevent users in specific geographic locations from accessing content
 + Require users to access content using CloudFront signed URLs or signed cookies

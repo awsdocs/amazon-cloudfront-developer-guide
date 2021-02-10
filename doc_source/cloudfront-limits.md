@@ -4,19 +4,18 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 
 **Topics**
 + [General Quotas](#limits-general)
-+ [General Quotas on Web Distributions](#limits-web-distributions)
++ [General Quotas on Distributions](#limits-web-distributions)
 + [General Quotas on Policies](#limits-policies)
 + [Quotas on WebSocket Connections](#limits-websockets)
-+ [Quotas on Whitelisted Cookies \(Web Distributions Only\)](#limits-whitelisted-cookies)
++ [Quotas on Whitelisted Cookies](#limits-whitelisted-cookies)
 + [Quotas on Whitelisted Query Strings \(Web Distributions Only\)](#limits-whitelisted-query-strings)
-+ [Quotas on Custom Headers \(Web Distributions Only\)](#limits-custom-headers)
-+ [Quotas on SSL Certificates \(Web Distributions Only\)](#limits-ssl-certificates)
++ [Quotas on Custom Headers](#limits-custom-headers)
++ [Quotas on SSL Certificates](#limits-ssl-certificates)
 + [Quotas on Invalidations](#limits-invalidations)
 + [Quotas on key groups](#limits-key-groups)
 + [Quotas on Field\-Level Encryption](#limits-field-level-encryption)
 + [Quotas on Lambda@Edge](#limits-lambda-at-edge)
 + [Request Timeout](#limits-request-timeout)
-+ [Quotas on RTMP Distributions](#limits-rtmp-distributions)
 
 ## General Quotas<a name="limits-general"></a>
 
@@ -32,14 +31,14 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Maximum length of a request, including headers and query strings, but not including the body content | 20,480 bytes | 
 | Maximum length of a URL | 8,192 bytes | 
 
-## General Quotas on Web Distributions<a name="limits-web-distributions"></a>
+## General Quotas on Distributions<a name="limits-web-distributions"></a>
 
 
 ****  
 
 | Entity | Default quota | 
 | --- | --- | 
-| Web distributions per AWS account For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Distributions per AWS account For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Maximum file size for HTTP GET, POST, and PUT requests | 20 GB | 
 | Response timeout per origin For more information, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 1\-60 seconds [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Connection timeout per origin For more information, see [Origin Connection Timeout](distribution-web-values-specify.md#origin-connection-timeout)\.  |  1\-10 seconds  | 
@@ -78,7 +77,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | --- | --- | 
 | Origin response timeout \(idle timeout\) | 10 minutes If CloudFront hasn’t detected any bytes sent from the origin to the client within the past 10 minutes, the connection is assumed to be idle and is closed\. | 
 
-## Quotas on Whitelisted Cookies \(Web Distributions Only\)<a name="limits-whitelisted-cookies"></a>
+## Quotas on Whitelisted Cookies<a name="limits-whitelisted-cookies"></a>
 
 
 ****  
@@ -99,7 +98,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Maximum number of characters total for all whitelisted query strings in the same parameter  | 512 characters  | 
 | Whitelisted query strings per cache behavior For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
-## Quotas on Custom Headers \(Web Distributions Only\)<a name="limits-custom-headers"></a>
+## Quotas on Custom Headers<a name="limits-custom-headers"></a>
 
 
 ****  
@@ -112,7 +111,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Custom headers: maximum length of a header value | 1,783 characters | 
 | Custom headers: maximum length of all header values and names combined | 10,240 characters | 
 
-## Quotas on SSL Certificates \(Web Distributions Only\)<a name="limits-ssl-certificates"></a>
+## Quotas on SSL Certificates<a name="limits-ssl-certificates"></a>
 
 
 ****  
@@ -120,7 +119,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Entity | Default quota | 
 | --- | --- | 
 | SSL certificates per AWS account when serving HTTPS requests using dedicated IP addresses \(no quota when serving HTTPS requests using SNI\) For more information, see [Using HTTPS with CloudFront](using-https.md)\.  | 2 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| SSL certificates that can be associated with a CloudFront web distribution | 1 | 
+| SSL certificates that can be associated with a CloudFront distribution | 1 | 
 
 ## Quotas on Invalidations<a name="limits-invalidations"></a>
 
@@ -226,12 +225,3 @@ If you access the request body as read\-only, the full original request body is 
 | Entity | Default quota | 
 | --- | --- | 
 | Request timeout For more information, see [Origin Response Timeout](RequestAndResponseBehaviorCustomOrigin.md#request-custom-request-timeout)\.  |  30 seconds [ Request a higher quota](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
-
-## Quotas on RTMP Distributions<a name="limits-rtmp-distributions"></a>
-
-
-****  
-
-| Entity | Default quota | 
-| --- | --- | 
-| RTMP distributions per AWS account For more information, see [Working with RTMP Distributions](distribution-rtmp.md)\.  | 100 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 

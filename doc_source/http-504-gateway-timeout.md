@@ -58,7 +58,7 @@ Here’s an overview of the steps you can take to find performance issues and co
 
 1. Add additional resources, such as CPU or memory, if needed\. Take other steps to address issues, such as tuning database queries to accommodate high\-load scenarios\.
 
-1. If needed, adjust the timeout value for your CloudFront web distribution\.
+1. If needed, adjust the timeout value for your CloudFront distribution\.
 
 Following are details about each step\.
 
@@ -95,4 +95,4 @@ In addition, consider the following tuning steps to help avoid timeouts:
 
 ### If needed, adjust the CloudFront timeout value<a name="http-504-gateway-timeout-slow-application-adjust-timeout"></a>
 
-If you have evaluated and addressed slow application performance, origin server capacity, and other issues, but viewers are still experiencing HTTP 504 errors, then you should consider changing the time that is specified in your web distribution for origin response timeout\. To learn more, see [ Origin Response Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout)\.
+If you have evaluated and addressed slow application performance, origin server capacity, and other issues, but viewers are still experiencing HTTP 504 errors, then you should consider changing the time that is specified in your distribution for origin response timeout\. To learn more, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.

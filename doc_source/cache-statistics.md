@@ -22,8 +22,8 @@ You don't need to enable access logging to view cache statistics\.<a name="cache
 1. For **Viewer Location**, choose the continent from which viewer requests originated, or choose **All Locations**\. Cache statistics charts include data for requests that CloudFront received from the specified location\.
 
 1. In the **Distribution** list, select the distributions for which you want to display data in the usage charts:
-   + **An individual web distribution** – The charts display data for the selected CloudFront web distribution\. The **Distribution** list displays the distribution ID and alternate domain names \(CNAMEs\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes origin domain names for the distribution\.
-   + **All Web Distributions** – The charts display summed data for all web distributions that are associated with the current AWS account, excluding web distributions that you have deleted\.
+   + **An individual distribution** – The charts display data for the selected CloudFront distribution\. The **Distribution** list displays the distribution ID and alternate domain names \(CNAMEs\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes origin domain names for the distribution\.
+   + **All distributions** – The charts display summed data for all distributions that are associated with the current AWS account, excluding distributions that you have deleted\.
 
 1. Click **Update**\.
 

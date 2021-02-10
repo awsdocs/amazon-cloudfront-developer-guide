@@ -41,8 +41,8 @@ To display CloudFront Viewers charts and reports, perform the following procedur
 1. \(Locations chart only\) For **Details**, specify whether to display the top locations by countries or by U\.S\. states\.
 
 1. In the **Distribution** list, select the distribution for which you want to display data in the usage charts:
-   + **An individual web distribution** – The charts display data for the selected CloudFront web distribution\. The **Distribution** list displays the distribution ID and an alternate domain name \(CNAME\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes an origin domain name for the distribution\.
-   + **All Web Distributions \(excludes deleted\)** – The charts display summed data for all web distributions that are associated with the current AWS account, excluding web distributions that you have deleted\.
+   + **An individual distribution** – The charts display data for the selected CloudFront distribution\. The **Distribution** list displays the distribution ID and an alternate domain name \(CNAME\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes an origin domain name for the distribution\.
+   + **All distributions \(excludes deleted\)** – The charts display summed data for all distributions that are associated with the current AWS account, excluding distributions that you have deleted\.
 
 1. Click **Update**\.
 
@@ -82,7 +82,7 @@ The version of the format for this CSV file\.
 The name of the report\.
 
 **DistributionID**  
-The ID of the distribution that you ran the report for, or `ALL` if you ran the report for all web distributions\.
+The ID of the distribution that you ran the report for, or `ALL` if you ran the report for all distributions\.
 
 **StartDateUTC**  
 The beginning of the date range for which you ran the report, in Coordinated Universal Time \(UTC\)\.

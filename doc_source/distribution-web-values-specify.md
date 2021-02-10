@@ -4,13 +4,6 @@ When you use the [CloudFront console](https://console.aws.amazon.com/cloudfront/
 
 For more information about creating or updating a distribution by using the CloudFront console, see [Creating a Distribution](distribution-web-creating-console.md) or [Updating a Distribution](HowToUpdateDistribution.md)\.
 
-**Delivery method**
-
-You specify the delivery method when you create a distribution\. You can’t change the delivery method for an existing distribution\. You can choose **Web** or **RTMP**\. Choose **Web**, unless you’re using Adobe Flash Media Server with RTMP\.
-
-**Note**  
-[Adobe designated Flash as end\-of\-life at the end of 2020](https://blog.adobe.com/en/publish/2017/07/25/adobe-flash-update.html)\. As a result, Amazon CloudFront will no longer support Adobe Flash Media Server and will be deprecating Real\-Time Messaging Protocol \(RTMP\) distributions by December 31, 2020\. For more information, [read the full announcement on the Amazon CloudFront discussion forum](https://forums.aws.amazon.com/ann.jspa?annID=7356)\.
-
 **[Origin Settings](#DownloadDistValuesOrigin)**
 
 The following values apply to all types of origins:
@@ -98,7 +91,7 @@ The following values apply to **Lambda Function Associations**\.
 
 When you create or update a distribution, you provide information about one or more locations—known as origins—where you store the original versions of your web content\. CloudFront gets your web content from your origins and serves it to viewers via a world\-wide network of edge servers\. Each origin is either an Amazon S3 bucket or an HTTP server, for example, a web server\. 
 
-For the current maximum number of origins that you can create for a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of origins that you can create for a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 If you want to delete an origin, you must first edit or delete the cache behaviors that are associated with that origin\. 
 
@@ -332,7 +325,7 @@ When you create a new distribution, you specify settings for the default cache b
 
 When you create a cache behavior, you specify the one origin from which you want CloudFront to get objects\. As a result, if you want CloudFront to distribute objects from all of your origins, you must have at least as many cache behaviors \(including the default cache behavior\) as you have origins\. For example, if you have two origins and only the default cache behavior, the default cache behavior causes CloudFront to get objects from one of the origins, but the other origin is never used\.
 
-For the current maximum number of cache behaviors that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of cache behaviors that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 ### Path Pattern<a name="DownloadDistValuesPathPattern"></a>
 
@@ -435,7 +428,7 @@ For more information about how to configure caching in CloudFront by using reque
 
 Specify the headers that you want CloudFront to consider when caching your objects\. Select headers from the list of available headers and choose **Add**\. To forward a custom header, enter the name of the header in the field, and choose **Add Custom**\.
 
-For the current maximum number of headers that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Custom Headers \(Web Distributions Only\)](cloudfront-limits.md#limits-custom-headers)\.
+For the current maximum number of headers that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Custom Headers](cloudfront-limits.md#limits-custom-headers)\.
 
 ### Object Caching<a name="DownloadDistValuesObjectCaching"></a>
 
@@ -502,7 +495,7 @@ Where each of your users has a unique value for *member\-number*\. You want Clou
 
 `userid_*`
 
-For the current maximum number of cookie names that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Whitelisted Cookies \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-cookies)\.
+For the current maximum number of cookie names that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Whitelisted Cookies](cloudfront-limits.md#limits-whitelisted-cookies)\.
 
 ### Query String Forwarding and Caching<a name="DownloadDistValuesQueryString"></a>
 
@@ -619,7 +612,7 @@ Create \(or update\) a CNAME record with your DNS service to route queries for `
 Add a certificate to CloudFront from a trusted certificate authority \(CA\) that covers the domain name \(CNAME\) that you add to your distribution, to validate your authorization to use the domain name\.
 You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, or that you're developing an application for the domain owner\.
 
-For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 For more information about alternate domain names, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 
@@ -742,7 +735,7 @@ If you're using a Route 53 alias resource record set to route traffic to your C
 + You enable IPv6 for the distribution
 + You're using alternate domain names in the URLs for your objects
 
-For more information, see [Routing Traffic to an Amazon CloudFront Web Distribution by Using Your Domain Name](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
+For more information, see [Routing traffic to an Amazon CloudFront distribution by using your domain name](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
 
 If you created a CNAME resource record set, either with Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record routes traffic to your distribution regardless of the IP address format of the viewer request\.
 

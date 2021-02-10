@@ -1,6 +1,6 @@
 # Specifying a Default Root Object<a name="DefaultRootObject"></a>
 
-You can configure CloudFront to return a specific object \(the default root object\) when a user requests the root URL for your web distribution instead of requesting an object in your distribution\. Specifying a default root object lets you avoid exposing the contents of your distribution\.
+You can configure CloudFront to return a specific object \(the default root object\) when a user requests the root URL for your distribution instead of requesting an object in your distribution\. Specifying a default root object lets you avoid exposing the contents of your distribution\.
 
 **Topics**
 + [How to Specify a Default Root Object](#DefaultRootObjectHowToDefine)
@@ -9,7 +9,7 @@ You can configure CloudFront to return a specific object \(the default root obje
 
 ## How to Specify a Default Root Object<a name="DefaultRootObjectHowToDefine"></a>
 
-To avoid exposing the contents of your web distribution or returning an error, specify a default root object for your distribution by completing the following steps\.<a name="DefaultRootObjectProcedure"></a>
+To avoid exposing the contents of your distribution or returning an error, specify a default root object for your distribution by completing the following steps\.<a name="DefaultRootObjectProcedure"></a>
 
 **To specify a default root object for your distribution**
 

@@ -1,6 +1,6 @@
 # Configuring and using standard logs \(access logs\)<a name="AccessLogs"></a>
 
-You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These are called *standard logs*, also known as *access logs*\. These standard logs are available for both web and RTMP distributions\. If you enable standard logs, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\.
+You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These are called *standard logs*, also known as *access logs*\. If you enable standard logs, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\.
 
 You can enable standard logs when you create or update a distribution\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
@@ -148,7 +148,6 @@ One way to analyze your access logs is to use [Amazon Athena](http://aws.amazon.
 
 In addition, the following AWS blog posts discuss some ways to analyze access logs\.
 + [ Amazon CloudFront Request Logging](http://aws.amazon.com/blogs/aws/amazon-cloudfront-request-logging/) \(for content delivered via HTTP\)
-+ [ Amazon CloudFront Now Supports Streaming Access Logs](http://aws.amazon.com/blogs/aws/amazon-cloudfront-supports-streaming-access-logs/) \(for content delivered via RTMP\)
 + [ Enhanced CloudFront Logs, Now With Query Strings](http://aws.amazon.com/blogs/aws/enhanced-cloudfront-logs-now-with-query-strings/)
 
 **Important**  
@@ -159,11 +158,8 @@ We recommend that you use the logs to understand the nature of the requests for 
 You can enable or disable logging, change the Amazon S3 bucket where your logs are stored, and change the prefix for log files by using the [CloudFront console](https://console.aws.amazon.com/cloudfront/home) or the CloudFront API\. Your changes to logging settings take effect within 12 hours\.
 
 For more information, see the following topics:
-+ To update a web or RTMP distribution using the CloudFront console, see [Updating a Distribution](HowToUpdateDistribution.md)\.
-+ To update a web distribution using the CloudFront API, see [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
-+ To update an RTMP distribution using the CloudFront API, see [UpdateStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
-
-To use the CloudFront API to change access log settings for web distributions, you must use API version `2009-04-02` or later\. To use the CloudFront API to change access log settings for RTMP distributions, you must use API version `2010-05-01` or later\.
++ To update a distribution using the CloudFront console, see [Updating a Distribution](HowToUpdateDistribution.md)\.
++ To update a distribution using the CloudFront API, see [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 ## Deleting standard log files from an Amazon S3 bucket<a name="DeletingLogFiles"></a>
 
@@ -173,11 +169,7 @@ CloudFront does not automatically delete log files from your Amazon S3 bucket\. 
 
 ## Standard log file format<a name="LogFileFormat"></a>
 
-**Topics**
-+ [Web distribution standard log file format](#BasicDistributionFileFormat)
-+ [RTMP distribution log file format](#StreamingDistributionLogFileFormat)
-
-Each entry in a log file gives details about a single viewer request\. The log files for web and for RTMP distributions are not identical, but they share the following characteristics:
+Each entry in a log file gives details about a single viewer request\. The log files have the following characteristics:
 + Use the [W3C extended log file format](https://www.w3.org/TR/WD-logfile.html)\.
 + Contain tab\-separated values\.
 + Contain records that are not necessarily in chronological order\.
@@ -211,9 +203,9 @@ Each entry in a log file gives details about a single viewer request\. The log f
 | %27 | ' | 
 | %20 | space | 
 
-### Web distribution standard log file format<a name="BasicDistributionFileFormat"></a>
+### Standard log file fields<a name="BasicDistributionFileFormat"></a>
 
-The log file for a web distribution contains 33 fields\. The following list contains each field name, in order, along with a description of the information in that field\.
+The log file for a distribution contains 33 fields\. The following list contains each field name, in order, along with a description of the information in that field\.
 
 1. **`date`**
 
@@ -450,7 +442,7 @@ The log file for a web distribution contains 33 fields\. The following list cont
 
    When the response contains the HTTP `Content-Range` header, this field contains the range end value\.
 
-The following is an example log file for a web distribution:
+The following is an example log file for a distribution:
 
 ```
 #Version: 1.0
@@ -461,55 +453,6 @@ The following is an example log file for a web distribution:
 2019-12-13	22:36:27	SEA19-C1	900	192.0.2.200	GET	d111111abcdef8.cloudfront.net	/favicon.ico	502	http://www.example.com/	Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/78.0.3904.108%20Safari/537.36	-	-	Error	1pkpNfBQ39sYMnjjUQjmH2w1wdJnbHYTbag21o_3OfcQgPzdL2RSSQ==	www.example.com	http	675	0.102	-	-	-	Error	HTTP/1.1	-	-	25260	0.102	OriginDnsError	text/html	507	-	-
 2019-12-13	22:36:26	SEA19-C1	900	192.0.2.200	GET	d111111abcdef8.cloudfront.net	/	502	-	Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/78.0.3904.108%20Safari/537.36	-	-	Error	3AqrZGCnF_g0-5KOvfA7c9XLcf4YGvMFSeFdIetR1N_2y8jSis8Zxg==	www.example.com	http	735	0.107	-	-	-	Error	HTTP/1.1	-	-	3802	0.107	OriginDnsError	text/html	507	-	-
 2019-12-13	22:37:02	SEA19-C2	900	192.0.2.200	GET	d111111abcdef8.cloudfront.net	/	502	-	curl/7.55.1	-	-	Error	kBkDzGnceVtWHqSCqBUqtA_cEs2T3tFUBbnBNkB9El_uVRhHgcZfcw==	www.example.com	http	387	0.103	-	-	-	Error	HTTP/1.1	-	-	12644	0.103	OriginDnsError	text/html	507	-	-
-```
-
-### RTMP distribution log file format<a name="StreamingDistributionLogFileFormat"></a>
-
-Each record in an RTMP access log represents a playback event, for example, connect, play, pause, stop, disconnect, and so on\. As a result, CloudFront generates multiple log records each time a viewer watches a video\. To relate log records that stem from the same stream ID, use the `x-sid` field\.
-
-**Note**  
-Some fields have values for all events, and some have values only for play, stop, pause, unpause, and seek events\. Usually, when the log file contains a hyphen \(\-\) for a field, it means that field isn't relevant for the corresponding event\. 
-
-The following table describes the fields that are present in each record in the RTMP distribution log file, regardless of the type of event\. The fields appear in the log in the order listed\.
-
-
-| Field Number | Field Name | Description | 
-| --- | --- | --- | 
-| 1 | date | The date on which the event occurred in the format YYYY\-MM\-DD, for example, 2019\-05\-23\. The date and time are in Coordinated Universal Time \(UTC\)\. | 
-| 2 | time | The time when the server received the request \(in UTC\), for example, 01:42:39\. | 
-| 3 | x\-edge\-location | The edge location where the playback event occurred\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number, for example, DFW3\. The three\-letter code typically corresponds with the International Air Transport Association airport code for an airport near the edge location\. \(These abbreviations might change in the future\.\) For a list of edge locations, see the [Amazon CloudFront Infrastructure](http://aws.amazon.com/cloudfront/features/?#Amazon_CloudFront_Infrastructure) page\. | 
-| 4 | c\-ip | Client IP, for example, 192\.0\.2\.183\. | 
-| 5 | x\-event | The event type\. This is a Connect, Disconnect, Play, Stop, Pause, Unpause, or Seek event\. | 
-| 6 | sc\-bytes | The running total number of bytes sent from the server to the client, up to the time of the event\. | 
-| 7 | x\-cf\-status | A code indicating the status of the event\. Currently, "OK" is the only value for this field\. New functionality in the future could require new status codes\. | 
-| 8 | x\-cf\-client\-id | An opaque string identifier that can be used to differentiate clients\. This value is unique for each connection\. | 
-| 9 | cs\-uri\-stem | The stem portion of the URI, including the application and the application instance\. This is sometimes referred to as the FMS connect string\. For example, rtmp://shqshne4jdp4b6\.cloudfront\.net/cfx/st\. Question marks \(?\) in URLs and query strings are not included in the log\. | 
-| 10 | cs\-uri\-query | The query string portion of the URI that is included on the connect string\. Question marks \(?\) in URLs and query strings are not included in the log\. | 
-| 11 | c\-referrer | The URI of the referrer\. | 
-| 12 | x\-page\-url | The URL of the page from which the SWF is linked\. | 
-| 13 | c\-user\-agent | The value of the User\-Agent header in the request\. The User\-Agent header identifies the type of device that submitted the request\. For more information, see [User\-Agent Header](RequestAndResponseBehaviorCustomOrigin.md#request-custom-user-agent-header)\. | 
-
-The following fields usually have values only for Play, Stop, Pause, Unpause, and Seek events\. For other events, they contain a single hyphen \(\-\)\. These fields appear in the log after the fields in the preceding table and in the order listed\.
-
-
-| Field Number | Field Name | Description | 
-| --- | --- | --- | 
-| 14 | x\-sname | The stream name\. | 
-| 15 | x\-sname\-query | The stream query string, if any\. | 
-| 16 | x\-file\-ext | The stream type, for example, FLV\. | 
-| 17 | x\-sid | The stream ID\. This is a unique integer identifier for the connection\. | 
-
-The following is an example of a log file for an RTMP distribution:
-
-```
-#Version: 1.0
-#Fields: date time x-edge-location c-ip x-event sc-bytes x-cf-status x-cf-client-id cs-uri-stem cs-uri-query c-referrer x-page-url​	c-user-agent x-sname x-sname-query x-file-ext x-sid
-2010-03-12	 23:51:20	 SEA4	 192.0.2.147	 connect	 2014	 OK	 bfd8a98bee0840d9b871b7f6ade9908f	 rtmp://shqshne4jdp4b6.cloudfront.net/cfx/st​	key=value	 http://player.example.com/player.swf	 http://www.example.com/support/jw-player-setup-wizard?example=204	 LNX%2010,0,32,18	 -	 -	 -	 -
-2010-03-12	 23:51:21	 SEA4	 192.0.2.222	 play	 3914	 OK	 bfd8a98bee0840d9b871b7f6ade9908f	 rtmp://shqshne4jdp4b6.cloudfront.net/cfx/st​	key=value	 http://player.example.com/player.swf	 http://www.example.com/support/jw-player-setup-wizard?example=204	 LNX%2010,0,32,18	 myvideo	 p=2&q=4	 flv	 1
-2010-03-12	 23:53:44	 SEA4	 192.0.2.4	 stop	 323914	 OK	 bfd8a98bee0840d9b871b7f6ade9908f	 rtmp://shqshne4jdp4b6.cloudfront.net/cfx/st​	key=value	 http://player.example.com/player.swf	 http://www.example.com/support/jw-player-setup-wizard?example=204	 LNX%2010,0,32,18	 dir/other/myvideo	 p=2&q=4	 flv	 1
-2010-03-12	 23:53:44	 SEA4	 192.0.2.103	 play	 8783724	 OK	 bfd8a98bee0840d9b871b7f6ade9908f	 rtmp://shqshne4jdp4b6.cloudfront.net/cfx/st​	key=value	 http://player.example.com/player.swf	 http://www.example.com/support/jw-player-setup-wizard?example=204	 LNX%2010,0,32,18	 dir/favs/myothervideo	 p=42&q=14	 mp4	 2
-2010-03-12	 23:56:21	 SEA4	 192.0.2.199	 stop	 429822014	 OK	 bfd8a98bee0840d9b871b7f6ade9908f	 rtmp://shqshne4jdp4b6.cloudfront.net/cfx/st​	key=value	 http://player.example.com/player.swf	 http://www.example.com/support/jw-player-setup-wizard?example=204	 LNX%2010,0,32,18	 dir/favs/myothervideo	 p=42&q=14	 mp4	 2
-2010-03-12	 23:59:44	 SEA4	 192.0.2.14	 disconnect	 429824092	 OK	 bfd8a98bee0840d9b871b7f6ade9908f	 rtmp://shqshne4jdp4b6.cloudfront.net/cfx/st​	key=value	 http://player.example.com/player.swf	 http://www.example.com/support/jw-player-setup-wizard?example=204	 LNX%2010,0,32,18	 -	 -	 -	 -
 ```
 
 ## Charges for standard logs<a name="AccessLogsCharges"></a>

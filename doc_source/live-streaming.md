@@ -43,7 +43,7 @@ Set as appropriate for your caching needs and segment durations\.
 Error Caching Minimum TTL  
 Set to 5 seconds or less, to help prevent serving stale content\.
 
-   For the other settings, you can set specific values based on other technical requirements or the needs of your business\. For a list of all the options for web distributions and information about setting them, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+   For the other settings, you can set specific values based on other technical requirements or the needs of your business\. For a list of all the options for distributions and information about setting them, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
 1. After CloudFront provisions your distribution, edit the cache behavior to set up cross\-origin resource sharing \(CORS\) for your origin:
 

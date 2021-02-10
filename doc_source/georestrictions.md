@@ -1,6 +1,6 @@
 # Restricting the Geographic Distribution of Your Content<a name="georestrictions"></a>
 
-You can use *geo restriction*, also known as *geo blocking*, to prevent users in specific geographic locations from accessing content that you're distributing through a CloudFront web distribution\. To use geo restriction, you have two options:
+You can use *geo restriction*, also known as *geo blocking*, to prevent users in specific geographic locations from accessing content that you're distributing through a CloudFront distribution\. To use geo restriction, you have two options:
 + Use the CloudFront geo restriction feature\. Use this option to restrict access to all of the files that are associated with a distribution and to restrict access at the country level\. 
 + Use a third\-party geolocation service\. Use this option to restrict access to a subset of the files that are associated with a distribution or to restrict access at a finer granularity than the country level\.
 
@@ -21,7 +21,7 @@ CloudFront determines the location of your users by using a third\-party GeoIP d
 
 Here's how geo restriction works:
 
-1. Suppose you have rights to distribute your content only in Liechtenstein\. You update your CloudFront web distribution and add a whitelist that contains only Liechtenstein\. \(Alternatively, you could add a blacklist that contains every country except Liechtenstein\.\)
+1. Suppose you have rights to distribute your content only in Liechtenstein\. You update your CloudFront distribution and add a whitelist that contains only Liechtenstein\. \(Alternatively, you could add a blacklist that contains every country except Liechtenstein\.\)
 
 1. A user in Monaco requests your content, and DNS routes the request to the CloudFront edge location in Milan, Italy\.
 
@@ -31,11 +31,11 @@ Here's how geo restriction works:
 
 You can optionally configure CloudFront to return a custom error message to the user, and you can specify how long you want CloudFront to cache the error response for the requested file\. The default value is 10 seconds\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
 
-Geo restriction applies to an entire web distribution\. If you need to apply one restriction to part of your content and a different restriction \(or no restriction\) to another part of your content, you must either create separate CloudFront web distributions or use a third\-party geolocation service\.
+Geo restriction applies to an entire distribution\. If you need to apply one restriction to part of your content and a different restriction \(or no restriction\) to another part of your content, you must either create separate CloudFront distributions or use a third\-party geolocation service\.
 
 If you enable CloudFront access logging, you can identify the requests that CloudFront rejected by searching for the log entries for which the value of `sc-status` \(the HTTP status code\) is `403`\. However, using only the access logs, you can't distinguish a request that CloudFront rejected based on the location of the user from a request that CloudFront rejected because the user didn't have permission to access the file for another reason\. If you have a third\-party geolocation service such as Digital Element or MaxMind, you can identify the location of requests based on the IP address in the `c-ip` \(client IP\) column in the access logs\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
-The following procedure explains how to use the CloudFront console to add geo restriction to an existing web distribution\. For information about how to use the console to create a web distribution, see [Creating a Distribution](distribution-web-creating-console.md)\.<a name="restrictions-geo-procedure"></a>
+The following procedure explains how to use the CloudFront console to add geo restriction to an existing distribution\. For information about how to use the console to create a distribution, see [Creating a Distribution](distribution-web-creating-console.md)\.<a name="restrictions-geo-procedure"></a>
 
 **To add geo restriction to your CloudFront web distribution \(console\)**
 

@@ -23,11 +23,9 @@ For more information, see [How the Usage Charts Are Related to Data in the Cloud
    Select only regions that are included in the price class for your distribution; otherwise, the usage charts probably won't contain any data\. For example, if you chose Price Class 200 for your distribution, the South America and Australia billing regions are not included, so CloudFront generally won't process your requests from those regions\. For more information about price classes, see [Choosing the price class for a CloudFront distribution](PriceClass.md)\.
 
 1. In the **Distribution** list, select the distributions for which you want to display data in the usage charts: 
-   + **An individual web distribution** — The charts display data for the selected CloudFront distribution\. The **Distribution** list displays the distribution ID and alternate domain names \(CNAMEs\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes origin domain names for the distribution\.
-   + **All Web Distributions \(excludes deleted\)** — The charts display summed data for all web distributions that are associated with the current AWS account, excluding web distributions that you have deleted\.
-   + **All Deleted Distributions** — The charts display summed data for all web distributions that are associated with the current AWS account and that were deleted in the last 60 days\.
-
-   
+   + **An individual distribution** — The charts display data for the selected CloudFront distribution\. The **Distribution** list displays the distribution ID and alternate domain names \(CNAMEs\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes origin domain names for the distribution\.
+   + **All distributions \(excludes deleted\)** — The charts display summed data for all distributions that are associated with the current AWS account, excluding distributions that you have deleted\.
+   + **All Deleted Distributions** — The charts display summed data for all distributions that are associated with the current AWS account and that were deleted in the last 60 days\.
 
 1. Click **Update Graphs**\.
 

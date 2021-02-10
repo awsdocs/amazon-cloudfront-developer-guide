@@ -68,7 +68,6 @@ A custom origin is an HTTP server, for example, a web server\. The HTTP server c
 When you use a custom origin that is your own HTTP server, you specify the DNS name of the server, along with the HTTP and HTTPS ports and the protocol that you want CloudFront to use when fetching objects from your origin\.
 
 Most CloudFront features are supported when you use a custom origin with the following exceptions:
-+ **RTMP distributions**—Not supported\.
 + **Private content**—Although you can use a signed URL to distribute content from a custom origin, for CloudFront to access the custom origin, the origin must remain publicly accessible\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 Follow these guidelines for using Amazon EC2 instances and other custom origins with CloudFront\. 
@@ -110,9 +109,7 @@ If you currently distribute content directly from your Amazon S3 bucket using yo
 
 **To add CloudFront when you're already distributing your content from Amazon S3**
 
-1. Create a CloudFront distribution using one of the following procedures:
-   + [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)
-   + [Task List for Streaming Media Files Using RTMP](distribution-rtmp-creating.md)
+1. Create a CloudFront distribution\. For more information, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.
 
    When you create the distribution, specify the name of your Amazon S3 bucket as the origin server\.
 **Important**  

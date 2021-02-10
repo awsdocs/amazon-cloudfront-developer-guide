@@ -223,8 +223,8 @@ You can use the CloudFront API to add a trusted key group as a signer\. You can 
 You can also add an AWS account as a trusted signer, but it’s not recommended\.
 
 See the following topics in the *Amazon CloudFront API Reference*:
-+ **Update an existing web distribution** – [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
-+ **Create a new web distribution** – [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
++ **Update an existing distribution** – [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
++ **Create a new distribution** – [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
 
 ## Rotating key pairs<a name="private-content-rotating-key-pairs"></a>
 

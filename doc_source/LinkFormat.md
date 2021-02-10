@@ -15,7 +15,7 @@ For example, you might use one of the following URLs to return the file `image.j
 You use the same URL format whether you store the content in Amazon S3 buckets or at a custom origin, like one of your own web servers\.
 
 **Note**  
-The URL format depends in part on the value that you specify for **Origin Path** in your distribution\. This value gives CloudFront a top directory path for your objects\. For more information about setting the origin path when you create a web distribution, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.
+The URL format depends in part on the value that you specify for **Origin Path** in your distribution\. This value gives CloudFront a top directory path for your objects\. For more information about setting the origin path when you create a distribution, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.
 
 For more information about URL formats, see the following sections\.
 
@@ -44,7 +44,3 @@ It’s inconvenient to have to invalidate both URL formats, and it can lead to a
 ## Creating Signed URLs for Restricted Content<a name="LinkFormat_SignedURLs"></a>
 
 If you have content that you want to restrict access to, you can create signed URLs\. For example, if you want to distribute your content only to users who have authenticated, you can create URLs that are valid only for a specified time period or that are available only from a specified IP address\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
-
-## Creating URLs for RTMP Distribution Media Files<a name="LinkFormat_StreamingURLs"></a>
-
-If you use an RTMP distribution to serve streaming content, you must include additional characters in the URLs for your files\. For more information, see [Configuring the Media Player](Streaming_URLs.md)\.

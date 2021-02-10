@@ -10,13 +10,7 @@ In the CloudFront console, you can see the CloudFront distributions that are ass
 
 1. To edit settings for a distribution, choose the **Distribution Settings** tab\.
 
-1. To make updates, do one of the following:
-
-   1. To update general settings, choose **Edit**\. Otherwise, choose the tab for the settings that you want to update: **Origins** or **Behaviors**\.
-
-   1. For settings for an RTMP distribution, choose **Edit**, and then update values\.
-
-      For information about the fields, see [Values that You Specify When You Create or Update an RTMP Distribution](distribution-rtmp-values-specify.md)\.
+1. To update general settings, choose **Edit**\. Otherwise, choose the tab for the settings that you want to update: **Origins** or **Behaviors**\.
 
 1. Make the updates, and then, to save your changes, choose **Yes, Edit**\. For information about the fields, see the following topics: 
    + **General settings:** [Distribution Settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)

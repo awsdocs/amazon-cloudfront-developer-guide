@@ -37,7 +37,7 @@ For information about Smooth Streaming clients, see [Smooth Streaming Primer](ht
 1. Transcode your media files into Smooth Streaming fragmented MP4 format\.
 
 1. Do one of the following:
-   + **If you’re using the CloudFront console:** When you create or update a web distribution, enable Smooth Streaming in one or more of the distribution’s cache behaviors\.
+   + **If you’re using the CloudFront console:** When you create or update a distribution, enable Smooth Streaming in one or more of the distribution’s cache behaviors\.
    + **If you’re using the CloudFront API:** Add the `SmoothStreaming` element to the `DistributionConfig` complex type for one or more of the distribution’s cache behaviors\.
 
 1. Upload the Smooth Streaming files to your origin\.

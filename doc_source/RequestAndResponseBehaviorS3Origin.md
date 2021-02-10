@@ -28,7 +28,7 @@ This topic contains information about how CloudFront processes viewer requests a
 
 ### Caching Duration and Minimum TTL<a name="RequestS3Caching"></a>
 
-For web distributions, to control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin, you can:
+To control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin, you can:
 + Configure your origin to add a `Cache-Control` or an `Expires` header field to each object\.
 + Specify a value for Minimum TTL in CloudFront cache behaviors\.
 + Use the default value of 24 hours\.
@@ -117,7 +117,7 @@ If your Amazon S3 bucket is configured as a website endpoint, you cannot configu
 
 ### Query Strings<a name="RequestS3QueryStrings"></a>
 
-For web distributions, you can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For RTMP distributions, CloudFront does not forward query string parameters\. For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
+You can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 ### Origin Connection Timeout and Attempts<a name="s3-origin-timeout-attempts"></a>
 
@@ -145,7 +145,7 @@ You can’t change the response timeout for an Amazon S3 origin \(an S3 bucket t
 
 When a CloudFront edge location receives a request for an object and either the object isn't currently in the cache or the object has expired, CloudFront immediately sends the request to your Amazon S3 origin\. If there's a traffic spike—if additional requests for the same object arrive at the edge location before Amazon S3 responds to the first request—CloudFront pauses briefly before forwarding additional requests for the object to your origin\. Typically, the response to the first request will arrive at the CloudFront edge location before the response to subsequent requests\. This brief pause helps to reduce unnecessary load on Amazon S3\. If additional requests are not identical because, for example, you configured CloudFront to cache based on request headers or query strings, CloudFront forwards all of the unique requests to your origin\.
 
-When the response from the origin includes a `Cache-Control: no-cache` header, CloudFront typically forwards the next request for the same object to the origin to determine whether the object has been updated\. However, when there's a traffic spike and CloudFront pauses after forwarding the first request to your origin, multiple viewer requests might arrive before CloudFront receives a response from the origin\. When CloudFront receives a response that contains a `Cache-Control: no-cache` header, it sends the object in the response to the viewer that made the original request and to all of the viewers that requested the object during the pause\. After the response arrives from the origin, CloudFront forwards the next viewer request for the same object to the origin\. In CloudFront access logs, the first request is identified as a `Miss` in the `x-edge-result-type` column, and all subsequent requests that CloudFront received during the pause are identified as a `Hit`\. For more information about access log file format, see [Web distribution standard log file format](AccessLogs.md#BasicDistributionFileFormat)\.
+When the response from the origin includes a `Cache-Control: no-cache` header, CloudFront typically forwards the next request for the same object to the origin to determine whether the object has been updated\. However, when there's a traffic spike and CloudFront pauses after forwarding the first request to your origin, multiple viewer requests might arrive before CloudFront receives a response from the origin\. When CloudFront receives a response that contains a `Cache-Control: no-cache` header, it sends the object in the response to the viewer that made the original request and to all of the viewers that requested the object during the pause\. After the response arrives from the origin, CloudFront forwards the next viewer request for the same object to the origin\. In CloudFront access logs, the first request is identified as a `Miss` in the `x-edge-result-type` column, and all subsequent requests that CloudFront received during the pause are identified as a `Hit`\. For more information about access log file format, see [Standard log file fields](AccessLogs.md#BasicDistributionFileFormat)\.
 
 ## How CloudFront Processes Responses from Your Amazon S3 Origin Server<a name="ResponseBehaviorS3Origin"></a>
 

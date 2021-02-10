@@ -6,7 +6,6 @@ You can use CloudFront to deliver video on demand \(VOD\) or live streaming vide
 + [About Streaming Video: Video on Demand and Live Streaming](#StreamingVideo)
 + [Delivering Video on Demand \(VOD\) with CloudFront](on-demand-video.md)
 + [Delivering Live Streaming Video with CloudFront and AWS Media Services](live-streaming.md)
-+ [Working with RTMP Distributions](distribution-rtmp.md)
 
 ## About Streaming Video: Video on Demand and Live Streaming<a name="StreamingVideo"></a>
 

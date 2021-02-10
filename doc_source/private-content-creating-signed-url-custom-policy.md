@@ -13,8 +13,8 @@ To create a signed URL using a custom policy, do the following procedure\.<a nam
 
 1. Concatenate the following values in the specified order, and remove the white space \(including tabs and newline characters\) between the parts\. You might have to include escape characters in the string in application code\. All values have a type of String\. Each part is keyed by number \(![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)\) to the two examples that follow\.  
 **![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the file***  
-The base URL is the CloudFront URL that you would use to access the file if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for web distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
-The following examples show values that you specify for web distributions\.  
+The base URL is the CloudFront URL that you would use to access the file if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
+The following examples show values that you specify for distributions\.  
    + The following CloudFront URL is for an image file in a distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the file in the URL must match the path to the file on your HTTP server or in your Amazon S3 bucket\.
 
      `http://d111111abcdef8.cloudfront.net/images/image.jpg`
@@ -106,7 +106,7 @@ When you create a policy statement for a custom policy, you specify the followin
 You can specify only one value for `Resource`\.
 The base URL including your query strings, if any, but excluding the CloudFront `Policy`, `Signature`, and `Key-Pair-Id` parameters, for example:  
 `http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
-If you omit the Resource parameter for a web distribution, users can access all of the files associated with any distribution that is associated with the key pair that you use to create the signed URL\.
+If you omit the Resource parameter for a distribution, users can access all of the files associated with any distribution that is associated with the key pair that you use to create the signed URL\.
 Note the following:  
 + **Protocol** – The value must begin with `http://`, `https://`, or `*`\. 
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.

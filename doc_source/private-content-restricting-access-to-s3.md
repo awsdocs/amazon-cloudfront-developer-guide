@@ -93,8 +93,8 @@ For more information, see [CreateCloudFrontOriginAccessIdentity](https://docs.aw
 You can use the CloudFront API to add a CloudFront OAI to an existing distribution or to create a new distribution that includes an OAI\. In either case, include an `OriginAccessIdentity` element\. This element contains the value of the `Id` element that the `POST Origin Access Identity` API action returned when you created the OAI\. You can add the `OriginAccessIdentity` element to one or more origins\.
 
 See the following topics in the *Amazon CloudFront API Reference*:
-+ **Create a new web distribution** – [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
-+ **Update an existing web distribution** – [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
++ **Create a new distribution** – [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)
++ **Update an existing distribution** – [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 
 ## Granting the OAI Permission to Read Files in Your Amazon S3 Bucket<a name="private-content-granting-permissions-to-oai"></a>
 

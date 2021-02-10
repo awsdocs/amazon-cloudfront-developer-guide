@@ -4,7 +4,7 @@ Some web applications use query strings to send information to the origin\. A qu
 
 `http://d111111abcdef8.cloudfront.net/images/image.jpg?color=red&size=large`
 
-For web distributions, you can choose if you want CloudFront to forward query strings to your origin and whether to cache your content based on all parameters or on selected parameters\. Why might this be useful? Consider the following example\.
+For distributions, you can choose if you want CloudFront to forward query strings to your origin and whether to cache your content based on all parameters or on selected parameters\. Why might this be useful? Consider the following example\.
 
 Suppose that your website is available in five languages\. The directory structure and file names for all five versions of the website are identical\. As a user views your website, requests that are forwarded to CloudFront include a language query string parameter based on the language that the user chose\. You can configure CloudFront to forward query strings to the origin and to cache based on the language parameter\. If you configure your web server to return the version of a given page that corresponds with the selected language, CloudFront caches each language version separately, based on the value of the language query string parameter\.
 
@@ -16,7 +16,6 @@ In this example, if the main page for your website is `main.html`, the following
 + `http://d111111abcdef8.cloudfront.net/main.html?language=jp`
 
 Note the following:
-+ For RTMP distributions, you cannot configure CloudFront to forward query string parameters to your origin\. If you have an RTMP distribution, before CloudFront forwards a request to the origin server, it removes any query string parameters\.
 + Some HTTP servers don't process query string parameters and, therefore, don't return different versions of an object based on parameter values\. For these origins, if you configure CloudFront to forward query string parameters to the origin, CloudFront still caches based on the parameter values even though the origin returns identical versions of the object to CloudFront for every parameter value\.
 + For query string parameters to work as described in the example above with the languages, you must use the `&` character as the delimiter between query string parameters\. If you use a different delimiter, you may get unexpected results, depending on which parameters you specify for CloudFront to use as a basis for caching, and the order in which the parameters appear in the query string\.
 
@@ -82,4 +81,4 @@ If you're using signed URLs and you want to configure CloudFront to forward quer
 
 ## Query string parameters and CloudFront standard logs \(access logs\)<a name="query-string-parameters-access-logs"></a>
 
-For web and RTMP distributions, if you enable logging, CloudFront logs the full URL, including query string parameters\. For web distributions, this is true regardless of whether you have configured CloudFront to forward query strings to the origin\. For more information about CloudFront logging, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
+If you enable logging, CloudFront logs the full URL, including query string parameters\. This is true regardless of whether you have configured CloudFront to forward query strings to the origin\. For more information about CloudFront logging, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.

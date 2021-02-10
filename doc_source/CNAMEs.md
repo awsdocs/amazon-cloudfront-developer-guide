@@ -1,6 +1,6 @@
 # Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)<a name="CNAMEs"></a>
 
-In CloudFront, an alternate domain name, also known as a CNAME, lets you use your own domain name \(for example, `www.example.com`\) in your files’ URLs instead of using the domain name that CloudFront assigns to your distribution\. Both web and RTMP distributions support alternate domain names\.
+In CloudFront, an alternate domain name, also known as a CNAME, lets you use your own domain name \(for example, `www.example.com`\) in your files’ URLs instead of using the domain name that CloudFront assigns to your distribution\.
 
 When you create a distribution, CloudFront returns a domain name for the distribution, for example:
 
@@ -44,7 +44,7 @@ If you want viewers to use HTTPS with your alternate domain name, see [Using Alt
 1. Update the following values:  
 **Alternate Domain Names \(CNAMEs\)**  
 Add your alternate domain names\. Separate domain names with commas, or type each domain name on a new line\.  
-**SSL Certificate \(Web Distributions Only\)**  
+**SSL Certificate**  
 Choose the following setting:  
    + **Use HTTPS** – Choose **Custom SSL Certificate**, and then choose a certificate from the list\. The list includes certificates provisioned by AWS Certificate Manager \(ACM\), certificates that you purchased from another CA and uploaded to ACM, and certificates that you purchased from another CA and uploaded to the IAM certificate store\. 
 
@@ -53,7 +53,7 @@ Choose the following setting:
      If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(`https://www.example.com/logo.jpg`\)\. If you use your CloudFront distribution domain name \(`https://d111111abcdef8.cloudfront.net/logo.jpg`\), a viewer might behave as follows, depending on the value that you choose for **Clients Supported**:
      + **All Clients**: If the viewer doesn’t support SNI, it displays a warning because the CloudFront domain name doesn’t match the domain name in your TLS/SSL certificate\.
      + **Only Clients that Support Server Name Indication \(SNI\)**: CloudFront drops the connection with the viewer without returning the object\.  
-**Clients Supported \(Web Distributions Only\)**  
+**Clients Supported**  
 Choose an option:  
    + **All Clients**: CloudFront serves your HTTPS content using dedicated IP addresses\. If you select this option, you incur additional charges when you associate your SSL/TLS certificate with a distribution that is enabled\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
    + **Only Clients that Support Server Name Indication \(SNI\) \(Recommended\)**: Older browsers or other clients that don't support SNI must use another method to access your content\.
@@ -296,7 +296,7 @@ If you want viewers to use HTTPS with an alternate domain name, you must complet
 Note the following restrictions on using alternate domain names:
 
 **Maximum number of alternate domain names**  
-For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Web Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 **Duplicate and overlapping alternate domain names**  
 You cannot add an alternate domain name to a CloudFront distribution if the alternate domain name already exists in another CloudFront distribution, even if your AWS account owns the other distribution\.  

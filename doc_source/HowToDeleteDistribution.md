@@ -33,6 +33,4 @@ Because CloudFront must propagate this change to all edge locations, it might ta
 **Note**  
 If you have just marked your distribution as disabled, CloudFront might still need a few more minutes to propagate that change to the edge locations\. Until propagation is complete, the **Delete** option isn't available\.
 
-You can also delete a distribution using the CloudFront API:
-+ To delete a distribution, see [DeleteDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteDistribution.html) in the *Amazon CloudFront API Reference*\.
-+ To delete an RTMP distribution, see [DeleteStreamingDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteStreamingDistribution.html) in the *Amazon CloudFront API Reference*\.
+You can also delete a distribution using the CloudFront API\. For more information, see [DeleteDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DeleteDistribution.html) in the *Amazon CloudFront API Reference*\.
