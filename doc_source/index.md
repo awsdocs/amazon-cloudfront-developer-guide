@@ -140,7 +140,7 @@ Amazon's trademarks and trade dress may not be used in
 + [Video on Demand and Live Streaming Video with CloudFront](on-demand-streaming-video.md)
    + [Delivering Video on Demand (VOD) with CloudFront](on-demand-video.md)
    + [Delivering Live Streaming Video with CloudFront and AWS Media Services](live-streaming.md)
-+ [Customizing Content at the Edge with Lambda@Edge](lambda-at-the-edge.md)
++ [Customizing at the edge with Lambda@Edge](lambda-at-the-edge.md)
    + [Get Started Creating and Using Lambda@Edge Functions](lambda-edge-how-it-works.md)
       + [Tutorial: Creating a Simple Lambda@Edge Function](lambda-edge-how-it-works-tutorial.md)
    + [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)
