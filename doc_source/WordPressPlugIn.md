@@ -87,7 +87,7 @@ The IAM user that you created in the preceding section can do the following in y
 + Use Amazon Polly to convert text into speech, and list the Amazon Polly voices that are available\.
 + Use Amazon Translate to translate text from one language to another\.
 + Determine whether a particular Amazon S3 bucket exists\.
-+ Create Amazon S3 buckets whose names begins with `audio_for_wordpress` or `audio-for-wordpress`, and create, delete, and list objects in those buckets\.
++ Create Amazon S3 buckets whose names begin with `audio_for_wordpress` or `audio-for-wordpress`, and create, delete, and list objects in those buckets\.
 
 **Important**  
 To prevent unauthorized users from gaining these permissions, protect the IAM user's credentials\. Treat the secret access key like a password; store it in a safe place, and don't share it with anyone\. Like a password, [rotate the access key periodically](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#rotating_access_keys_console)\. If the secret access key is accidentally leaked, [delete it immediately](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)\. Then you can create a new access key to use with the AWS for WordPress plugin\.
