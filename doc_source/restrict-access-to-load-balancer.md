@@ -68,7 +68,7 @@ For more information, see the [Origin](https://docs.aws.amazon.com/AWSCloudForma
 **To add a custom HTTP header \(CloudFront API\)**  
 In the CloudFront API, use the `CustomHeaders` object inside `Origin`\. For more information, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) and [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*, and the documentation for your SDK or other API client\.
 
-There are some header names that you can’t specify as origin custom headers\. For more information, see [Custom Headers that CloudFront Can’t Add to Origin Requests](add-origin-custom-headers.md#add-origin-custom-headers-blacklist)\.
+There are some header names that you can’t specify as origin custom headers\. For more information, see [Custom headers that CloudFront can’t add to origin requests](add-origin-custom-headers.md#add-origin-custom-headers-denylist)\.
 
 ## Configuring an Application Load Balancer to only forward requests that contain a specific header<a name="restrict-alb-route-based-on-header"></a>
 

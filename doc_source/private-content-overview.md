@@ -37,7 +37,7 @@ If you use a custom origin, you can optionally set up custom headers to restrict
 To require that users access content through CloudFront, change the following settings in your CloudFront distributions:
 
 **Origin Custom Headers**  
-Configure CloudFront to forward custom headers to your origin\. See [Configuring CloudFront to Add Custom Headers to Origin Requests](add-origin-custom-headers.md#add-origin-custom-headers-configure)\.
+Configure CloudFront to forward custom headers to your origin\. See [Configuring CloudFront to add custom headers to origin requests](add-origin-custom-headers.md#add-origin-custom-headers-configure)\.
 
 **Viewer Protocol Policy**  
 Configure your distribution to require viewers to use HTTPS to access CloudFront\. See [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\. 

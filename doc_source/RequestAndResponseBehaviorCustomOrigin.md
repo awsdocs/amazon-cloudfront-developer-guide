@@ -34,10 +34,10 @@ This topic contains information about how CloudFront processes viewer requests a
 
 ### Authentication<a name="RequestCustomClientAuth"></a>
 
-For `DELETE`, `GET`, `HEAD`, `PATCH`, `POST`, and `PUT` requests, if you configure CloudFront to forward the `Authorization` header to your origin, you can configure your origin server to request client authentication\. 
+For `DELETE`, `GET`, `HEAD`, `PATCH`, `POST`, and `PUT` requests, if you [configure CloudFront to forward the `Authorization` header to your origin](add-origin-custom-headers.md#add-origin-custom-headers-forward-authorization), you can configure your origin server to request client authentication\.
 
 For `OPTIONS` requests, you can configure your origin server to request client authentication only if you use the following CloudFront settings:
-+ Configure CloudFront to forward the `Authorization` header to your origin\.
++ [Configure CloudFront to forward the `Authorization` header to your origin](add-origin-custom-headers.md#add-origin-custom-headers-forward-authorization)\.
 + Configure CloudFront to *not* cache the response to `OPTIONS` requests\.
 
 You can configure CloudFront to forward requests to your origin using either HTTP or HTTPS; for more information, see [Using HTTPS with CloudFront](using-https.md)\.

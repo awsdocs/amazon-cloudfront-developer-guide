@@ -106,7 +106,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Entity | Default quota | 
 | --- | --- | 
 | Whitelisted headers per cache behavior For more information, see [Caching content based on request headers](header-caching.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Custom headers: maximum number of custom headers that you can configure CloudFront to add to origin requests For more information, see [Adding Custom Headers to Origin Requests](add-origin-custom-headers.md)\.  | 10 name/value pairs [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Custom headers: maximum number of custom headers that you can configure CloudFront to add to origin requests For more information, see [Adding custom headers to origin requests](add-origin-custom-headers.md)\.  | 10 name/value pairs [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Custom headers: maximum length of a header name | 256 characters | 
 | Custom headers: maximum length of a header value | 1,783 characters | 
 | Custom headers: maximum length of all header values and names combined | 10,240 characters | 
