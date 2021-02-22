@@ -440,12 +440,7 @@ For more information, see [Managing how long content stays in the cache \(expira
 
 ### Minimum TTL<a name="DownloadDistValuesMinTTL"></a>
 
-Specify the minimum amount of time, in seconds, that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated\. The default value for **Minimum TTL** is 0 seconds\.
-
-**Important**  
-If you configure CloudFront to forward all headers to your origin for a cache behavior, CloudFront never caches the associated objects\. Instead, CloudFront forwards all requests for those objects to the origin\. In that configuration, the value of **Minimum TTL** must be 0\.
-
-To specify a value for **Minimum TTL**, you must choose the **Customize** option for the **Object Caching** setting\.
+Specify the minimum amount of time, in seconds, that you want objects to stay in the CloudFront cache before CloudFront sends another request to the origin to determine whether the object has been updated\.
 
 For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
