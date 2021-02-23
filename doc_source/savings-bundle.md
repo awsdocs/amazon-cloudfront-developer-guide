@@ -51,8 +51,12 @@ You can purchase more than one savings bundle, and you can have multiple savings
 ## Permissions to manage a savings bundle<a name="savings-bundle-permissions"></a>
 
 To manage a CloudFront security savings bundle, the IAM identity must have the required permissions\. Identities with full access to CloudFront \(`cloudfront:*`\) inherit these permissions automatically\. For other identities, you can add the following permissions manually:
++ The following read\-only permissions allow the identity to get information related to existing CloudFront security savings bundles, including the information necessary to view recommendations and estimated savings in the CloudFront console:
+  + `cloudfront:ListSavingsPlans`
+  + `cloudfront:GetSavingsPlan`
+  + `cloudfront:ListRateCards`
+  + `cloudfront:ListUsages`
 + `cloudfront:CreateSavingsPlan` – Allows the identity to purchase a CloudFront security savings bundle\.
-+ `cloudfront:ListSavingsPlans` – Allows the identity to view purchased CloudFront security savings bundles\.
 + `cloudfront:UpdateSavingsPlan` – Allows the identity to enable or disable the automatic renewal of a purchased CloudFront security savings bundle\.
 
 ## More information about savings bundles<a name="savings-bundle-details"></a>
