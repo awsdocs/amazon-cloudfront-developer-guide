@@ -77,9 +77,6 @@ For information about how to change settings for distributions using the CloudFr
 
 ## Adding headers to your objects using the Amazon S3 console<a name="ExpirationAddingHeadersInS3"></a>
 
-**Note**  
-On the Amazon S3 console, you can only add headers to one object at a time, but with some third\-party tools, you can add headers to multiple Amazon S3 objects at a time\. For more information about third\-party tools that support Amazon S3, search on the web for **AWS S3 third party tools**\.
-
 **To add a `Cache-Control` or `Expires` header field to Amazon S3 objects using the Amazon S3 console**
 
 1. Sign in to the AWS Management Console and open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3](https://console.aws.amazon.com/s3)\.
