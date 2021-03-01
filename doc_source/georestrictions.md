@@ -29,7 +29,7 @@ Here's how geo restriction works:
 
 1. CloudFront returns an HTTP status code `403 (Forbidden)` to the user\.
 
-You can optionally configure CloudFront to return a custom error message to the user, and you can specify how long you want CloudFront to cache the error response for the requested file\. The default value is 10 seconds\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
+You can optionally configure CloudFront to return a custom error message to the user, and you can specify how long you want CloudFront to cache the error response for the requested file\. The default value is 10 seconds\. For more information, see [Creating a custom error page for specific HTTP status codes](GeneratingCustomErrorResponses.md#creating-custom-error-pages)\.
 
 Geo restriction applies to an entire distribution\. If you need to apply one restriction to part of your content and a different restriction \(or no restriction\) to another part of your content, you must either create separate CloudFront distributions or use a third\-party geolocation service\.
 
@@ -73,7 +73,7 @@ The following steps explain how to control access to your files by using a third
 
    1. Evaluate the return value from the geolocation service to determine whether the user is in a location to which you want CloudFront to distribute your content\.
 
-   1. If you want to distribute your content to the user's location, generate a signed URL for your CloudFront content\. If you don't want to distribute content to that location, return HTTP status code `403 (Forbidden)` to the user\. Alternatively, you can configure CloudFront to return a custom error message\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
+   1. If you want to distribute your content to the user's location, generate a signed URL for your CloudFront content\. If you don't want to distribute content to that location, return HTTP status code `403 (Forbidden)` to the user\. Alternatively, you can configure CloudFront to return a custom error message\. For more information, see [Creating a custom error page for specific HTTP status codes](GeneratingCustomErrorResponses.md#creating-custom-error-pages)\.
 
    For more information, refer to the documentation for the geolocation service that you're using\.
 

@@ -10,3 +10,4 @@ This section explains how to make sure CloudFront can access the content that yo
 + [Specifying a Default Root Object](DefaultRootObject.md)
 + [Invalidating Files](Invalidation.md)
 + [Serving compressed files](ServingCompressedFiles.md)
++ [Generating custom error responses](GeneratingCustomErrorResponses.md)

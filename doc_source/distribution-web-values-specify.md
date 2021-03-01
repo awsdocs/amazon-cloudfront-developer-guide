@@ -756,7 +756,7 @@ You can toggle a distribution between disabled and enabled as often as you want\
 
 ## Custom Error Pages and Error Caching<a name="DownloadDistValuesErrorPages"></a>
 
-You can have CloudFront return an object to the viewer \(for example, an HTML file\) when your Amazon S3 or custom origin returns an HTTP 4xx or 5xx status code to CloudFront\. You can also specify how long an error response from your origin or a custom error page is cached in CloudFront edge caches\. For more information, see [Creating a Custom Error Page for Specific HTTP Status Codes](custom-error-pages.md)\.
+You can have CloudFront return an object to the viewer \(for example, an HTML file\) when your Amazon S3 or custom origin returns an HTTP 4xx or 5xx status code to CloudFront\. You can also specify how long an error response from your origin or a custom error page is cached in CloudFront edge caches\. For more information, see [Creating a custom error page for specific HTTP status codes](GeneratingCustomErrorResponses.md#creating-custom-error-pages)\.
 
 **Note**  
 The following values aren't included in the Create Distribution wizard, so you can configure custom error pages only when you update a distribution\.

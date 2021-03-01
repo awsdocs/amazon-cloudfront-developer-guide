@@ -110,4 +110,4 @@ When you use origin failover, you can configure CloudFront to return a custom er
 + **Return a custom error page for the primary origin** – If the primary origin returns an HTTP status code that’s not configured for failover, CloudFront returns the custom error page to viewers\.
 + **Return a custom error page for the secondary origin** – If CloudFront receives a failure status code from the secondary origin, CloudFront returns the custom error page\.
 
-For more information about using custom error pages with CloudFront, see [Generating Custom Error Responses](GeneratingCustomErrorResponses.md)\.
+For more information about using custom error pages with CloudFront, see [Generating custom error responses](GeneratingCustomErrorResponses.md)\.
