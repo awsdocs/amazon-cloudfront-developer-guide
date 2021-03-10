@@ -138,7 +138,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Entity | Default quota | 
 | --- | --- | 
 |  Public keys in a single key group  |  5 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-|  Key groups associated with a single distribution  | 4[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
+|  Key groups associated with a single cache behavior  | 4[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
 |  Key groups per AWS account  | 10[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
 |  Distributions associated with a single key group  | 100[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
 
