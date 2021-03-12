@@ -543,8 +543,8 @@ function parseCookies(headers) {
     if (headers.cookie) {
         headers.cookie[0].value.split(';').forEach((cookie) => {
             if (cookie) {
-                const parts = cookie.split('=');
-                parsedCookie[parts[0].trim()] = parts[1].trim();
+                const split = cookie.indexOf('=');
+                parsedCookie[cookie.substring(0, split).trim()] = cookie.substring(split+1).trim();
             }
         });
     }
@@ -594,7 +594,7 @@ def parseCookies(headers):
     if headers.get('cookie'):
         for cookie in headers['cookie'][0]['value'].split(';'):
             if cookie:
-                parts = cookie.split('=')
+                parts = cookie.split('=', 1)
                 parsedCookie[parts[0].strip()] = parts[1].strip()
     return parsedCookie
 
