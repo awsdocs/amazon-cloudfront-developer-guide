@@ -285,14 +285,16 @@ When you create a data stream, you need to specify the number of shards\. Use th
 
 1. Determine the typical size of a single real\-time log record\.
 
-   In general, a single log record is around 500 bytes\. A large record that includes all available fields is around 1 KB\.
+   In general, a single log record is around 500 bytes\. A large record that includes all available fields is generally around 1 KB\.
 
    If you’re not sure what your log record size is, you can enable real\-time logs with a low sampling rate \(for example, 1%\), and then calculate the average record size using monitoring data in Kinesis Data Streams \(total number of records divided by total incoming bytes\)\.
 
-1. Multiply the number of requests per second \(from step 1\) by the size of a typical real\-time log record \(from step 2\) to determine the amount of data per second that your real\-time log configuration is likely to send to the Kinesis data stream\.
+1. In the [Pricing calculator](http://aws.amazon.com/kinesis/data-streams/pricing/#Pricing_calculator) on the Amazon Kinesis Data Streams pricing page, enter the number of requests \(records\) per second, and the average record size of a single log record\. Then choose **Show calculations**\.
 
-1. Using the data per second, calculate the number of shards that you need\. A single shard can handle no more than 1 MB per second and 1,000 requests \(log records\) per second\. When calculating the number of shards that you need, we recommend adding 10\-25% as a buffer\.
-For example, assume your distribution receives 50,000 requests per second, and that your real\-time log records size is typically 500 bytes\. This means that your real\-time log configuration could generate 25,000,000 bytes \(50,000 multiplied by 500\), or 23\.84 MB, per second\. In this scenario you would need at least 24 shards\. To add a buffer of about 20%, you would specify 29 shards\.
+   The pricing calculator shows you the number of shards you need\. \(It also shows you the estimated cost\.\)
+
+   The following example shows that for an average record size of 0\.5 KB, and 50,000 requests per second, you need 50 shards\.  
+![\[Example in the Amazon Kinesis Data Streams pricing calculator showing that for 50,000 requests per second and a 0.5 KB average record size, you need 50 shards.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/estimate-shards-example.png)
 
 **IAM role**  
 The AWS Identity and Access Management \(IAM\) role that gives CloudFront permission to deliver real\-time logs to your Kinesis data stream\.  
