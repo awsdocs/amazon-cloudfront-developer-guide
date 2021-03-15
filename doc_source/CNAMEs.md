@@ -195,19 +195,19 @@ If your service provider does not allow a TXT record for a domain to have the sa
 
 1. If your DNS service provider is Route 53, use the following steps to create a TXT record to prove domain ownership:
 
-   1. On the **Hosted Zones** page, double\-click the row for the hosted zone in which you want to edit records\.
+   1. Open the [Hosted zones page](https://console.aws.amazon.com/route53/v2/hostedzones#) in the Route 53 console\.
 
-   1. Choose **Create Record Set**\.
+   1. Choose the domain name of the domain for which you are creating a TXT record\.
 
-   1. Enter the following values:
-      + **Name**: The domain name you want to move to a new CloudFront distribution
-      + **Type**: TXT
-      + **Alias**: No
-      + **TTL**: 60 seconds
-      + **Value**: The name of the CloudFront distribution that you want to add this domain name to, such as d123\.cloudfront\.net
-      + **Routing policy**: Simple
+   1. Choose **Create record**\.
 
-   1.  Choose **Create**\.
+   1. On the **Quick create record** page, enter the following values:
+      + For **Record name**, leave the field blank\.
+      + For **Record type**, choose **TXT**\.
+      + For **Value**, enter the domain name of the CloudFront distribution that you want to add this domain name to, such as d111111abcdef8\.cloudfront\.net\.
+      + For all other fields, leave the default values\.
+
+   1.  Choose **Create records**\.
 
 **Step 2: Request that AWS Support move your domain to the new CloudFront distribution**
 + Sign in to AWS and [contact AWS support](https://console.aws.amazon.com/support/home#/) to request that they verify that you own the domain, and move the domain to the new CloudFront distribution\.
