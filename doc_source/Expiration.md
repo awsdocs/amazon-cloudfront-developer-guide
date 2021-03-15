@@ -79,20 +79,22 @@ For information about how to change settings for distributions using the CloudFr
 
 **To add a `Cache-Control` or `Expires` header field to Amazon S3 objects using the Amazon S3 console**
 
-1. Sign in to the AWS Management Console and open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3](https://console.aws.amazon.com/s3)\.
+1. Sign in to the AWS Management Console and open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
-1. In the Amazon S3 console, in the **Bucket name** list, choose the name of the bucket that contains the files\.
+1. In the list of buckets, choose the name of the bucket that contains the files that you are adding headers to\.
 
-1. In the **Name** list, choose the name of the object that you want to add a header to\.
+1. Select the check box next to the name of the file or folder that you are adding headers to\. When you add headers to a folder, it affects all the files inside that folder\.
 
-1. Choose **Properties**, and then choose **Metadata**\.
+1. Choose **Actions**, then choose **Edit metadata**\.
 
-1. Choose **Add Metadata**, and then in the **Key** menu, choose **Cache\-Control** or **Expires**\. 
+1. In the **Add metadata** panel, do the following:
 
-1. In the **Value** field, type one of the following:
-   + For a `Cache-Control` field, type:
+   1. Choose **Add metadata**\.
 
-     `max-age=number of seconds that you want objects to stay in a CloudFront edge cache`
-   + For an **Expires** field, type a date and time in HTML format\.
+   1. For **Type**, choose **System defined**\.
 
-1. Choose **Save**\.
+   1. For **Key**, choose the name of the header that you are adding \(**Cache\-Control** or **Expires**\)\.
+
+   1. For **Value**, enter a header value\. For example, for a `Cache-Control` header, you could enter `max-age=86400`\. For `Expires`, you could enter an expiration date and time such as `Wed, 30 Jun 2021 09:28:00 GMT`\.
+
+1. At the bottom of the page, choose **Edit metadata**\.
