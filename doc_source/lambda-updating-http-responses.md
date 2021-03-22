@@ -8,4 +8,4 @@ Some common scenarios for updating HTTP responses include the following:
 
 You can also replace the HTTP responses in viewer and origin request events\. For more information, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses-in-requests.md)\.
 
-When you’re working with the HTTP response, Lambda@Edge does not expose the HTML body that is returned by the origin server to the origin\-response trigger\. You can generate a static content body by setting it to the desired value, or remove the body inside the function by setting the value to be empty\. If you don’t update the body field in your function, the original body returned by the origin server is returned back to viewer\.
+When you’re working with the HTTP response, Lambda@Edge does not expose the body that is returned by the origin server to the origin\-response trigger\. You can generate a static content body by setting it to the desired value, or remove the body inside the function by setting the value to be empty\. If you don’t update the body field in your function, the original body returned by the origin server is returned back to viewer\.
