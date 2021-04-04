@@ -32,7 +32,7 @@ The following steps provide an overview of setting up field\-level encryption\. 
 
 1. **Create a field\-level encryption profile\.** Field\-level encryption profiles, which you create in CloudFront, define the fields that you want to be encrypted\.
 
-1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use, based on the content type of the request or a query argument, for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios\.For example, you can set the behavior for when the profile name specified by the query argument in a request URL doesn’t exist in CloudFront\.
+1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use, based on the content type of the request or a query argument, for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios\. For example, you can set the behavior for when the profile name specified by the query argument in a request URL doesn’t exist in CloudFront\.
 
 1. **Link to a cache behavior\.** Link the configuration to a cache behavior for a distribution, to specify when CloudFront should encrypt data\.
 
