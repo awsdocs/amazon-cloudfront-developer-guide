@@ -62,7 +62,7 @@ For more information, see the following procedures\.<a name="private-content-upl
 
 **To create a key pair**
 **Note**  
-The following steps use OpenSSL as an example of one way to create a key pair\. There are many others ways to create an RSA key pair\.
+The following steps use OpenSSL as an example of one way to create a key pair\. There are many other ways to create an RSA key pair\.
 
 1. The following example command uses OpenSSL to generate an RSA key pair with a length of 2048 bits and save to the file named `private_key.pem`\.
 
