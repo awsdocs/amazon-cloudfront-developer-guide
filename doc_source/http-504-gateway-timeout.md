@@ -22,7 +22,7 @@ The method that you use to determine if this is an issue with your firewall depe
 
 When you evaluate the firewall configuration on your origin server, look for any firewalls or security rules that block traffic from CloudFront edge locations, based on the [ published IP address range](https://ip-ranges.amazonaws.com/ip-ranges.json)\.
 
-If the CloudFront IP address range is whitelisted on your origin server, make sure to update your server’s security rules to incorporate changes\. You can subscribe to an Amazon Simple Notification Service \(SNS\) topic and receive notifications when the IP address range file is updated\. After you receive the notification, you can use code to retrieve the file, parse it, and make adjustments for your local environment\. For more information, see [ Subscribe to AWS Public IP Address Changes via Amazon SNS](https://aws.amazon.com/blogs/aws/subscribe-to-aws-public-ip-address-changes-via-amazon-sns/)\.
+If the CloudFront IP address range is whitelisted on your origin server, make sure to update your server’s security rules to incorporate changes\. You can subscribe to an Amazon Simple Notification Service \(SNS\) topic and receive notifications when the IP address range file is updated\. After you receive the notification, you can use code to retrieve the file, parse it, and make adjustments for your local environment\. For more information, see [ Subscribe to AWS Public IP Address Changes via Amazon SNS](https://aws.amazon.com/blogs/aws/subscribe-to-aws-public-ip-address-changes-via-amazon-sns/)\. 
 
 ## Configure the Security Groups on Your Origin Server to Allow CloudFront Traffic<a name="http-504-gateway-timeout-configure-security-groups"></a>
 
