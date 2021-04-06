@@ -54,7 +54,7 @@ CloudFront connects to origin servers using ciphers and protocols\. For a list o
   After the test is finished, find the **Protocols** and **Cipher Suites** sections in the test results to see which ciphers or protocols are supported by your origin\. Compare them with the list of [Supported Ciphers and Protocols](secure-connections-supported-viewer-protocols-ciphers.md)\.
 
 **Note**  
-If you're using Elastic Load Balancing, see [SSL Security Policies for Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/elb-security-policy-options.html) in the *Elastic Load Balancing User Guide* to learn how to set the ciphers and protocols\. Using the Predefined Security Policy *ELBSecurityPolicy\-2016\-08* gives CloudFront access to your Elastic Load Balancer\. If you want to restrict it further using a custom policy, you must allow the ciphers that CloudFront supports\.
+If you're using Elastic Load Balancing, see [SSL Security Policies for Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/elb-security-policy-options.html) in the *Elastic Load Balancing User Guide* to learn how to set the ciphers and protocols\. Using the Predefined Security Policy *ELBSecurityPolicy\-2016\-08* gives CloudFront access to your load balancer\. If you want to restrict it further using a custom policy, you must allow the ciphers that CloudFront supports\.
 
 ## SSL/TLS Certificate on the Origin Is Expired, Invalid, Self\-signed, or the Certificate Chain Is in the Wrong Order<a name="ssl-certificate-expired"></a>
 
