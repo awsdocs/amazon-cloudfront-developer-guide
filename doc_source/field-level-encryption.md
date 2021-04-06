@@ -32,7 +32,7 @@ The following steps provide an overview of setting up field\-level encryption\. 
 
 1. **Create a field\-level encryption profile\.** Field\-level encryption profiles, which you create in CloudFront, define the fields that you want to be encrypted\.
 
-1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use, based on the content type of the request or a query argument, for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios\.For example, you can set the behavior for when the profile name specified by the query argument in a request URL doesn’t exist in CloudFront\.
+1. **Create a field\-level encryption configuration\.** A configuration specifies the profiles to use, based on the content type of the request or a query argument, for encrypting specific data fields\. You can also choose the request\-forwarding behavior options that you want for different scenarios\. For example, you can set the behavior for when the profile name specified by the query argument in a request URL doesn’t exist in CloudFront\.
 
 1. **Link to a cache behavior\.** Link the configuration to a cache behavior for a distribution, to specify when CloudFront should encrypt data\.
 
@@ -165,7 +165,7 @@ To use field\-level encryption, link a configuration to a cache behavior for a d
 **Important**  
 To link a field\-level encryption configuration to a cache behavior, the distribution must be configured to always use HTTPS, and to accept HTTP `POST` and `PUT` requests from viewers\. That is, the following must be true:  
 The cache behavior’s **Viewer Protocol Policy** must be set to **Redirect HTTP to HTTPS** or **HTTPS Only**\. \(In AWS CloudFormation or the CloudFront API, `ViewerProtocolPolicy` must be set to `redirect-to-https` or `https-only`\.\)
-The cache behavior’s **Allowed HTTP Methods** must bet set to **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**\. \(In AWS CloudFormation or the CloudFront API, `AllowedMethods` must be set to `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE`\. These can be specified in any order\.\)
+The cache behavior’s **Allowed HTTP Methods** must be set to **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**\. \(In AWS CloudFormation or the CloudFront API, `AllowedMethods` must be set to `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE`\. These can be specified in any order\.\)
 The origin setting’s **Origin Protocol Policy** must be set to **Match Viewer** or **HTTPS Only**\. \(In AWS CloudFormation or the CloudFront API, `OriginProtocolPolicy` must be set to `match-viewer` or `https-only`\.\)
 
 For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.

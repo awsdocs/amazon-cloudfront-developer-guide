@@ -27,7 +27,7 @@ Note the following:
 
     `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large;color=red`
 
-You can configure CloudFront do one of the following:
+You can configure CloudFront to do one of the following:
 + Don't forward query strings to the origin at all\. If you don't forward query strings, CloudFront doesn't cache based on query string parameters\.
 + Forward query strings to the origin, and cache based on all parameters in the query string\.
 + Forward query strings to the origin, and cache based on specified parameters in the query string\.
