@@ -1,4 +1,4 @@
-## Amazon Cloudfront Developer Guide
+## Amazon CloudFront Developer Guide
 
 The open source version of the Amazon CloudFront documentation.
 
