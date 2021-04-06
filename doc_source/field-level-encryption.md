@@ -218,7 +218,7 @@ public class DecryptExample {
     // In your own code, use the Key name that you specified when you added your public key to CloudFront. This sample 
     // uses 'DEMOKEY' for the Key name.
     private static final String KEY_NAME = "DEMOKEY";
-    // Cloudfront uses this algorithm when encrypting data.
+    // CloudFront uses this algorithm when encrypting data.
     private static final String ALGORITHM = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding";
  
     public static void main(final String[] args) throws Exception {
