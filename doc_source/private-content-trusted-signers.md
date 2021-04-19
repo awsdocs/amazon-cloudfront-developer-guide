@@ -44,7 +44,7 @@ Each signer that you use to create CloudFront signed URLs or signed cookies must
 The way that you create a key pair depends on whether you use a trusted key group as the signer \(recommended\), or a CloudFront key pair\. For more information, see the following sections\. The key pair that you create must meet the following requirements:
 + It must be an SSH\-2 RSA key pair\.
 + It must be in base64\-encoded PEM format\.
-+ It must be a 1024, 2048, or 4096 bits key pair\.
++ It must be a 2048\-bit key pair\.
 
 To help secure your applications, we recommend that you rotate key pairs periodically\. For more information, see [Rotating key pairs](#private-content-rotating-key-pairs)\.
 
@@ -148,6 +148,8 @@ IAM users can’t create CloudFront key pairs\. You must sign in using root user
 1. Confirm that you have no more than one active key pair\. You can’t create a key pair if you already have two active key pairs\.
 
 1. Choose **Create New Key Pair**\.
+**Note**  
+You can also choose to create your own key pair and upload the public key\. CloudFront key pairs support 1024, 2048, or 4096\-bit keys\.
 
 1. In the **Create Key Pair** dialog box, choose **Download Private Key File**, and then save the file on your computer\.
 **Important**  
