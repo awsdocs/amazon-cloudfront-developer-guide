@@ -257,15 +257,11 @@ The log file for a distribution contains 33 fields\. The following list contains
 
    The query string portion of the request URL, if any\.
 
-    
-
    When a URL doesn’t contain a query string, this field's value is a hyphen \(\-\)\. For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 1. **`cs(Cookie)`**
 
    The `Cookie` header in the request, including name—value pairs and the associated attributes\.
-
-    
 
    If you enable cookie logging, CloudFront logs the cookies in all requests regardless of which cookies you choose to forward to the origin\. When a request doesn’t include a cookie header, this field’s value is a hyphen \(\-\)\. For more information about cookies, see [Caching content based on cookies](Cookies.md)\.
 
@@ -273,15 +269,9 @@ The log file for a distribution contains 33 fields\. The following list contains
 
    How the server classified the response after the last byte left the server\. In some cases, the result type can change between the time that the server is ready to send the response and the time that it finishes sending the response\. See also the `x-edge-response-result-type` field\.
 
-    
-
    For example, in HTTP streaming, suppose the server finds a segment of the stream in the cache\. In that scenario, the value of this field would ordinarily be `Hit`\. However, if the viewer closes the connection before the server has delivered the entire segment, the final result type \(and the value of this field\) is `Error`\.
 
-    
-
    WebSocket connections will have a value of `Miss` for this field because the content is not cacheable and is proxied directly to the origin\.
-
-    
 
    Possible values include:
    + `Hit` – The server served the object to the viewer from the cache\.
@@ -301,8 +291,6 @@ The log file for a distribution contains 33 fields\. The following list contains
 
    The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
 
-    
-
    If you’re using alternate domain names, see `cs(Host)` in field 7 for the domain name that is associated with your distribution\.
 
 1. **`cs-protocol`**
@@ -321,23 +309,17 @@ The log file for a distribution contains 33 fields\. The following list contains
 
    If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\. This field contains an IPv4 address \(for example, `192.0.2.183`\) or an IPv6 address \(for example, `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\)\.
 
-    
-
    If the viewer did not use an HTTP proxy or a load balancer, the value of this field is a hyphen \(\-\)\.
 
 1. **`ssl-protocol`**
 
    When the request used HTTPS, this field contains the SSL/TLS protocol that the viewer and server negotiated for transmitting the request and response\. For a list of possible values, see the supported SSL/TLS protocols in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
 
-    
-
    When `cs-protocol` in field 17 is `http`, the value for this field is a hyphen \(\-\)\.
 
 1. **`ssl-cipher`**
 
    When the request used HTTPS, this field contains the SSL/TLS cipher that the viewer and server negotiated for encrypting the request and response\. For a list of possible values, see the supported SSL/TLS ciphers in [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
-
-    
 
    When `cs-protocol` in field 17 is `http`, the value for this field is a hyphen \(\-\)\.
 
@@ -351,8 +333,6 @@ The log file for a distribution contains 33 fields\. The following list contains
    + `CapacityExceeded` – The server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
    + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\.
 
-      
-
      If the value of the `x-edge-result-type` field is `Error` and the value of this field is not `Error`, the client disconnected before finishing the download\.
    + `Redirect` – The server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
 
@@ -363,8 +343,6 @@ The log file for a distribution contains 33 fields\. The following list contains
 1. **`fle-status`**
 
    When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. When the server successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type` can still indicate a client\-side or server\-side error in this case\.
-
-    
 
    Possible values for this field include:
    + `ForwardedByContentType` – The server forwarded the request to the origin without parsing or encryption because no content type was configured\.
@@ -382,15 +360,11 @@ The log file for a distribution contains 33 fields\. The following list contains
    + `FieldNumberLimitClientError` – A request that the distribution is configured to encrypt contains more than the number of fields allowed\.
    + `RequestLengthLimitClientError` – The length of the request body exceeded the maximum length allowed when field\-level encryption is configured\.
 
-    
-
    If field\-level encryption is not configured for the distribution, the value of this field is a hyphen \(\-\)\.
 
 1. **`fle-encrypted-fields`**
 
    The number of [field\-level encryption](field-level-encryption.md) fields that the server encrypted and forwarded to the origin\. CloudFront servers stream the processed request to the origin as they encrypt data, so this field can have a value even if the value of `fle-status` is an error\.
-
-    
 
    If field\-level encryption is not configured for the distribution, the value of this field is a hyphen \(\-\)\.
 

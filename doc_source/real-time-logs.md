@@ -68,7 +68,9 @@ The following list contains each field name and a description of the information
 
 1. **`cs-uri-stem`**
 
-   The portion of the request URL that identifies the path and object \(for example, `/images/cat.jpg`\)\. Question marks \(?\) in URLs and query strings are not included in the log\.
+   The entire request URL, including the query string \(if one exists\), but without the domain name\. For example, `/images/cat.jpg?mobile=true`\.
+**Note**  
+In [standard logs](AccessLogs.md), the `cs-uri-stem` value doesn’t include the query string\.
 
 1. **`cs-bytes`**
 
@@ -126,8 +128,6 @@ This field is truncated to 800 bytes\.
    + `CapacityExceeded` – The server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
    + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\.
 
-      
-
      If the value of the `x-edge-result-type` field is `Error` and the value of this field is not `Error`, the client disconnected before finishing the download\.
    + `Redirect` – The server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
 
@@ -147,15 +147,9 @@ This field is truncated to 800 bytes\.
 
    How the server classified the response after the last byte left the server\. In some cases, the result type can change between the time that the server is ready to send the response and the time that it finishes sending the response\. See also the `x-edge-response-result-type` field\.
 
-    
-
    For example, in HTTP streaming, suppose the server finds a segment of the stream in the cache\. In that scenario, the value of this field would ordinarily be `Hit`\. However, if the viewer closes the connection before the server has delivered the entire segment, the final result type \(and the value of this field\) is `Error`\.
 
-    
-
    WebSocket connections will have a value of `Miss` for this field because the content is not cacheable and is proxied directly to the origin\.
-
-    
 
    Possible values include:
    + `Hit` – The server served the object to the viewer from the cache\.
@@ -174,8 +168,6 @@ This field is truncated to 800 bytes\.
 1. **`fle-status`**
 
    When [field\-level encryption](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html) is configured for a distribution, this field contains a code that indicates whether the request body was successfully processed\. When the server successfully processes the request body, encrypts values in the specified fields, and forwards the request to the origin, the value of this field is `Processed`\. The value of `x-edge-result-type` can still indicate a client\-side or server\-side error in this case\.
-
-    
 
    Possible values for this field include:
    + `ForwardedByContentType` – The server forwarded the request to the origin without parsing or encryption because no content type was configured\.
