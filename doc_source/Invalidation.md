@@ -10,7 +10,7 @@ To invalidate files, you can specify either the path for individual files or a p
 + `/images/*`
 
 **Note**  
-If you use the AWS command line interface \(CLI\) for invalidating files and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path\.   
+If you use the AWS Command Line Interface \(AWS CLI\) for invalidating files and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path\.   
 For example: `aws cloudfront create-invalidation --distribution-id distribution_ID --paths "/*"`
 
 You can submit a certain number of invalidation paths each month for free\. If you submit more than the allotted number of invalidation paths in a month, you pay a fee for each invalidation path that you submit\. For more information about the charges for invalidation, see [Paying for File Invalidation](#PayingForInvalidation)\. 
@@ -91,7 +91,7 @@ If the path includes non\-ASCII characters or unsafe characters as defined in [R
 The path is relative to the distribution\. For example, to invalidate the file at `https://d111111abcdef8.cloudfront.net/images/image2.jpg`, you would specify the following:  
 `/images/image2.jpg`  
 In the [CloudFront console](https://console.aws.amazon.com/cloudfront/home), you can omit the leading slash in the path, like this: `images/image2.jpg`\. When you use the CloudFront API directly, invalidation paths must begin with a leading slash\.
-You can also invalidate multiple files simultaneously by using the `*` wildcard\. The `*`, which replaces 0 or more characters, must be the last character in the invalidation path\. Also, if you use the AWS command line interface \(CLI\) for invalidating files and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path \(like this: `"/*"`\)\.  
+You can also invalidate multiple files simultaneously by using the `*` wildcard\. The `*`, which replaces 0 or more characters, must be the last character in the invalidation path\. Also, if you use the AWS Command Line Interface \(AWS CLI\) for invalidating files and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path \(like this: `"/*"`\)\.  
 The following are some examples:  
 + To invalidate all of the files in a directory:
 

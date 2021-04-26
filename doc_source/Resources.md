@@ -26,7 +26,7 @@ Support for CloudFront is available in a number of forms\.
 
 ## CloudFront Developer Tools and SDKs<a name="resources-developer-tools"></a>
 
-See the [Developer Tools](https://aws.amazon.com/developertools/) page for links to developer resources that provide documentation, code samples, release notes, and other information to help you build innovative applications with AWS\. 
+See the [Developer Tools](https://aws.amazon.com/developertools/) page for links to developer resources that provide documentation, code samples, release notes, and other information to help you build innovative applications with AWS\.
 
 In addition, Amazon Web Services provides software development kits for accessing CloudFront programmatically\. The SDK libraries automate a number of common tasks, including cryptographically signing your service requests, retrying requests, and handling error responses\.
 
