@@ -1459,7 +1459,7 @@ exports.handler = (event, context, callback) => {
  
         /* For demonstration purposes, we only log the form fields here.
          * You can put your custom logic here. For example, you can store the 
-         * fields in a database, such as AWS DynamoDB, and generate a response
+         * fields in a database, such as Amazon DynamoDB, and generate a response
          * right from your Lambda@Edge function.
          */
         for (let param in params) {
@@ -1509,7 +1509,7 @@ exports.handler = (event, context, callback) => {
          '''
          For demonstration purposes, we only log the form fields here.
          You can put your custom logic here. For example, you can store the 
-         fields in a database, such as AWS DynamoDB, and generate a response
+         fields in a database, such as Amazon DynamoDB, and generate a response
          right from your Lambda@Edge function.
          '''
          for key, value in params.items():

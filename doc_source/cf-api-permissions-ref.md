@@ -110,7 +110,7 @@ You can use AWS\-wide condition keys in your CloudFront policies to express cond
 
 ## Required permissions for CloudFront actions related to Lambda@Edge<a name="required-permissions-lambda"></a>
 
-To use Lambda@Edge, you need the following CloudFront permissions so you can create or update a distribution that includes triggers for Lambda functions\. For information about the Lambda permissions that you need, see [Setting IAM Permissions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge-permissions.html) in the "AWS Lambda@Edge" chapter in the *AWS Lambda Developer Guide*\.<a name="lambda-table"></a>
+To use Lambda@Edge, you need the following CloudFront permissions so you can create or update a distribution that includes triggers for Lambda functions\.<a name="lambda-table"></a>
 
 [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)  
 **Required Permissions \(API Action\):**  

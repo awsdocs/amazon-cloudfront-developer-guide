@@ -105,7 +105,7 @@ Using CloudFront can be more cost effective if your users access your objects fr
 **Note**  
 If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward the `Origin` header to Amazon S3\. For more information, see [Caching content based on request headers](header-caching.md)\.
 
-If you currently distribute content directly from your Amazon S3 bucket using your own domain name \(such as example\.com\) instead of the domain name of your Amazon S3 bucket \(such as MyAWSBucket\.s3\.us\-west\-2\.amazonaws\.com\), you can add CloudFront with no disruption by using the following procedure\.<a name="migrate-s3-to-cloudfront-process"></a>
+If you currently distribute content directly from your Amazon S3 bucket using your own domain name \(such as example\.com\) instead of the domain name of your Amazon S3 bucket \(such as DOC\-EXAMPLE\-BUCKET\.s3\.us\-west\-2\.amazonaws\.com\), you can add CloudFront with no disruption by using the following procedure\.<a name="migrate-s3-to-cloudfront-process"></a>
 
 **To add CloudFront when you're already distributing your content from Amazon S3**
 
