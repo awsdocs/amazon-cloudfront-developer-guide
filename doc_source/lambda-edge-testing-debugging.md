@@ -59,22 +59,22 @@ The following graphs can be especially helpful when you want to track down wheth
 **Error rates graph**  
 One of the graphs that you can view on the **Overview** tab for each of your distributions is an **Error rates** graph\. This graph displays the rate of errors as a percentage of total requests coming to your distribution\. The graph shows the total error rate, total 4xx errors, total 5xx errors, and total 5xx errors from Lambda functions\. Based on the error type and volume, you can take steps to investigate and troubleshoot the cause\.  
 
-![\[Error rates graph for a CloudFront distribution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Error rates graph for a CloudFront distribution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/Distribution-error-rate-pct-full.png)
 + If you see Lambda errors, you can investigate further by looking at the specific types of errors that the function returns\. The **Lambda@Edge errors** tab includes graphs that categorize function errors by type to help you pinpoint the issue for a specific function\.
 + If you see CloudFront errors, you can troubleshoot and work to fix origin errors or change your CloudFront configuration\. For more information, see [Troubleshooting Error Responses from Your Origin](troubleshooting-response-errors.md)\.
 
 **Execution errors and invalid function responses graphs**  
 The **Lambda@Edge errors** tab includes graphs that categorize the Lambda@Edge errors for a specific distribution, by type\. For example, one graph shows all execution errors by AWS Region\. To make it easier to troubleshoot issues, on the same page, you can look for specific problems by opening and examining the log files for specific functions by Region\. Under **View execution error logs** or **View invalid function response** logs, choose a Region \(and, for execution errors, a function\), and then choose **View logs**\.   
 
-![\[Error rates graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Error rates graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/Lambda-execution-error-page2.png)
 
-![\[Error rates graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Error rates graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/Lambda-function-response-error-page.png)
 In addition, read the following sections in this chapter for more recommendations about troubleshooting and fixing errors\.
 
 **Throttles graph**  
 The **Lambda@Edge errors** tab also includes a **Throttles** graph\. On occasion, the Lambda service throttles your function invocations on per Region basis, if you reach the regional concurrency quota \(formerly known as limit\)\. If you see a limit exceeded error, your function has reached a quota that the Lambda service imposes on executions in a Region\. For more information, including how to request an increase in the quota, see [Quotas on Lambda@Edge](cloudfront-limits.md#limits-lambda-at-edge)\.  
 
-![\[Throttle graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/)
+![\[Throttle graph for Lambda@Edge function execution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/Lambda-throttles-page.png)
 
 For an example about how to use this information in troubleshooting HTTP errors, see [Four steps for debugging your content delivery on AWS](http://aws.amazon.com/blogs/networking-and-content-delivery/four-steps-for-debugging-your-content-delivery-on-aws/)\.
 
