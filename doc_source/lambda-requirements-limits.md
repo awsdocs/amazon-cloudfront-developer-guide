@@ -120,13 +120,14 @@ You can, however, execute Lambda functions for *origin* response errors, includi
 
 ## Lambda Function Supported Runtimes and Configuration<a name="lambda-requirements-lambda-function-configuration"></a>
 + Lambda@Edge supports Lambda functions with the following runtimes:
-  + Python 3\.8
-  + Python 3\.7
+  + Node\.js 14
   + Node\.js 12
   + Node\.js 10
   + Node\.js 8 and Node\.js 6
 **Note**  
 Node\.js versions 8 and 6 have reached end of life\. You can’t create or update functions with these runtimes\. If you have an existing function with one of these runtimes you can still associate it with a CloudFront distribution, and functions that are already associated with a distribution will still run\. However, we recommend moving your function to a newer version of Node\.js\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule on GitHub](https://github.com/nodejs/Release#release-schedule)\.
+  + Python 3\.8
+  + Python 3\.7
 + You can’t configure your Lambda function to access resources inside your VPC\.
 + You can’t associate your Lambda function with a CloudFront distribution owned by another AWS account\.
 + [AWS Lambda function dead letter queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq) are not supported\.
