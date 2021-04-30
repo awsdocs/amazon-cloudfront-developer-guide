@@ -164,7 +164,7 @@ To give the OAI the permissions to access objects in your Amazon S3 bucket, use 
 
 The following examples show Amazon S3 bucket policies that grant access to a CloudFront OAI\. To use these examples:
 + Replace *EH1HDMB1FH2TC* with the OAI’s ID\. To find the OAI’s ID, see the [Origin Access Identity page](https://console.aws.amazon.com/cloudfront/home?region=us-east-1#oai:) in the CloudFront console, or use [ListCloudFrontOriginAccessIdentities](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListCloudFrontOriginAccessIdentities.html) in the CloudFront API\.
-+ Replace *awsexamplebucket* with the name of your Amazon S3 bucket\.
++ Replace *DOC\-EXAMPLE\-BUCKET* with the name of your Amazon S3 bucket\.
 
 **Example Amazon S3 bucket policy that gives the OAI read access**  
 The following example allows the OAI to read objects in the specified bucket \(`s3:GetObject`\)\.  
@@ -180,7 +180,7 @@ The following example allows the OAI to read objects in the specified bucket \(`
                 "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity EH1HDMB1FH2TC"
             },
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::awsexamplebucket/*"
+            "Resource": "arn:aws:s3:::DOC-EXAMPLE-BUCKET/*"
         }
     ]
 }
@@ -203,7 +203,7 @@ The following example allows the OAI to read and write objects in the specified 
                 "s3:GetObject",
                 "s3:PutObject"
             ],
-            "Resource": "arn:aws:s3:::aws-example-bucket/*"
+            "Resource": "arn:aws:s3:::DOC-EXAMPLE-BUCKET/*"
         }
     ]
 }

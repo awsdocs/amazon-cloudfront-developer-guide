@@ -11,7 +11,7 @@ Creating a URL signature is just one part of the process of serving private cont
 
 To download the code, go to [Signature Code in C\#](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/samples/AWS_PrivateCF_Distributions.zip)\.
 
-To use the RSA keys provided by [AWS Account/Security](http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key) in the \.NET framework, you must convert the AWS supplied \.pem files to the XML format that the \.NET framework uses\.
+To use an RSA key in the \.NET framework, you must convert the AWS supplied \.pem file to the XML format that the \.NET framework uses\.
 
 After conversion, the RSA private key file is in the following format:
 

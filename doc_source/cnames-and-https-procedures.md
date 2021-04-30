@@ -41,10 +41,15 @@ If you got your certificate from a third\-party CA, import the certificate into 
 ACM lets you import third\-party certificates from the ACM console, as well as programmatically\. For information about importing a certificate to ACM, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the *AWS Certificate Manager User Guide*\. You must import the certificate in the US East \(N\. Virginia\) Region\.
 
 **IAM certificate store**  
-If ACM is not available in your Region, use the following AWS CLI command to upload your third\-party certificate to the IAM certificate store\. \(For a list of the Regions where ACM is available, see [AWS Certificate Manager](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region) in the "AWS Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.\)  
+\(Not recommended\) Use the following AWS CLI command to upload your third\-party certificate to the IAM certificate store\.  
 
 ```
-aws iam upload-server-certificate --server-certificate-name CertificateName --certificate-body file://public_key_certificate_file --private-key file://privatekey.pem --certificate-chain file://certificate_chain_file --path /cloudfront/path/
+aws iam upload-server-certificate \
+        --server-certificate-name CertificateName \
+        --certificate-body file://public_key_certificate_file \
+        --private-key file://privatekey.pem \
+        --certificate-chain file://certificate_chain_file \
+        --path /cloudfront/path/
 ```
 Note the following:  
 + **AWS account** – You must upload the certificate to the IAM certificate store using the same AWS account that you used to create your CloudFront distribution\.

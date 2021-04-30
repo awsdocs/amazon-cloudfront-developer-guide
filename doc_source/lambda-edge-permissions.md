@@ -39,7 +39,7 @@ For more information, see the following documentation:
 
 ## Function Execution Role for Service Principals<a name="lambda-edge-permissions-function-execution"></a>
 
-You must create an IAM role that can be assumed by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. This role is assumed by the service principals when they execute your function\. For more information, see [Creating the Roles and Attaching the Policies \(Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#access_policies_job-functions_create-policies) in the topic "AWS Managed Policies for Job Functions" in the *IAM User Guide*\.
+You must create an IAM role that can be assumed by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. This role is assumed by the service principals when they execute your function\. For more information, see [Creating roles and attaching policies \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions_create-policies.html) in the *IAM User Guide*\.
 
 You add this role under the **Trust Relationship** tab in IAM \(do not add it under the **Permissions** tab\)\.
 

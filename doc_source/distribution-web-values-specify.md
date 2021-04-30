@@ -103,10 +103,10 @@ When you create or update a distribution, you specify the following values for e
 ### Origin Domain Name<a name="DownloadDistValuesDomainName"></a>
 
 The DNS domain name of the Amazon S3 bucket or HTTP server from which you want CloudFront to get objects for this origin, for example:
-+ **Amazon S3 bucket** – `awsexamplebucket.s3.us-west-2.amazonaws.com`
++ **Amazon S3 bucket** – `DOC-EXAMPLE-BUCKET.s3.us-west-2.amazonaws.com`
 **Note**  
 If you recently created the S3 bucket, the CloudFront distribution might return `HTTP 307 Temporary Redirect` responses for up to 24 hours\. It can take up to 24 hours for the S3 bucket name to propagate to all AWS Regions\. When the propagation is complete, the distribution automatically stops sending these redirect responses; you don’t need to take any action\. For more information, see [Why am I getting an HTTP 307 Temporary Redirect response from Amazon S3?](http://aws.amazon.com/premiumsupport/knowledge-center/s3-http-307-response/) and [Temporary Request Redirection](https://docs.aws.amazon.com/AmazonS3/latest/dev/Redirects.html#TemporaryRedirection)\.
-+ **Amazon S3 bucket configured as a website** – `https://awsexamplebucket.s3-website.us-west-2.amazonaws.com`
++ **Amazon S3 bucket configured as a website** – `https://DOC-EXAMPLE-BUCKET.s3-website.us-west-2.amazonaws.com`
 + **MediaStore container** – `examplemediastore.data.mediastore.us-west-1.amazonaws.com`
 + **MediaPackage endpoint** – `examplemediapackage.mediapackage.us-west-1.amazonaws.com`
 + **Amazon EC2 instance** – `ec2-203-0-113-25.compute-1.amazonaws.com`
@@ -139,13 +139,13 @@ Changing the origin does not require CloudFront to repopulate edge caches with o
 If you want CloudFront to request your content from a directory in your AWS resource or your custom origin, enter the directory path, beginning with a slash \(/\)\. CloudFront appends the directory path to the value of **Origin Domain Name**, for example, **cf\-origin\.example\.com/production/images**\. Do not add a slash \(/\) at the end of the path\.
 
 For example, suppose you've specified the following values for your distribution:
-+ **Origin Domain Name** – An Amazon S3 bucket named **myawsbucket**
++ **Origin Domain Name** – An Amazon S3 bucket named **DOC\-EXAMPLE\-BUCKET**
 + **Origin Path** – **/production**
 + **Alternate Domain Names \(CNAMEs\)** – **example\.com**
 
-When a user enters **example\.com/index\.html** in a browser, CloudFront sends a request to Amazon S3 for **myawsbucket/production/index\.html**\.
+When a user enters **example\.com/index\.html** in a browser, CloudFront sends a request to Amazon S3 for **DOC\-EXAMPLE\-BUCKET/production/index\.html**\.
 
-When a user enters **example\.com/acme/index\.html** in a browser, CloudFront sends a request to Amazon S3 for **myawsbucket/production/acme/index\.html**\.
+When a user enters **example\.com/acme/index\.html** in a browser, CloudFront sends a request to Amazon S3 for **DOC\-EXAMPLE\-BUCKET/production/acme/index\.html**\.
 
 ### Origin ID<a name="DownloadDistValuesId"></a>
 
@@ -706,7 +706,7 @@ The [Amazon S3 console](https://console.aws.amazon.com/s3/home) shows the bucket
 If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
 **Note**  
-You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the awsdatafeeds account permission to save log files in the bucket\. For more information, see [Permissions required to configure standard logging and to access your log files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
+You must have the permissions required to get and update Amazon S3 bucket ACLs, and the S3 ACL for the bucket must grant you `FULL_CONTROL`\. This allows CloudFront to give the `awsdatafeeds` account permission to save log files in the bucket\. For more information, see [Permissions required to configure standard logging and to access your log files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
 
 ### Log Prefix<a name="DownloadDistValuesLogPrefix"></a>
 

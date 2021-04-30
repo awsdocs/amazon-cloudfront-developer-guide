@@ -98,13 +98,13 @@ You can use this same process to create more groups and users and to give your u
 
 1. Sign out of the AWS console\.
 
-1. Sign in by using the following URL, where *your\_aws\_account\_id* is your AWS account number without the hyphens\. For example, if your AWS account number is 1234\-5678\-9012, your AWS account ID is 123456789012:
+1. Sign in by using the following URL, where *your\_account\_id* is your AWS account number without the hyphens\. For example, if your AWS account number is 1234\-5678\-9012, your AWS account ID is 123456789012:
 
    ```
-   https://your_aws_account_id.signin.aws.amazon.com/console/
+   https://your_account_id.signin.aws.amazon.com/console/
    ```
 
-1. Enter the IAM user name \(not your email address\) and password that you just created\. When you're signed in, the navigation bar displays "*your\_user\_name* @ *your\_aws\_account\_id*"\.
+1. Enter the IAM user name \(not your email address\) and password that you just created\. When you're signed in, the navigation bar displays "*your\_user\_name* @ *your\_account\_id*"\.
 
 If you don't want the URL for your sign\-in page to contain your AWS account ID, you can create an account alias\.<a name="setting-up-create-account-alias-procedure"></a>
 
