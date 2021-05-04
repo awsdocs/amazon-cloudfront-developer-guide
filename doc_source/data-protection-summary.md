@@ -34,11 +34,17 @@ Field\-level encryption adds an additional layer of security along with HTTPS th
 
 For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.
 
-## Encryption at Rest<a name="data-protection-summary-encryption-at-rest"></a>
+The CloudFront API endpoints, `cloudfront.amazonaws.com` and `cloudfront-fips.amazonaws.com`, only accept HTTPS traffic\. This means that when you send and receive information using the CloudFront API, your data—including distribution configurations, cache policies and origin request policies, key groups and public keys, and function code in CloudFront Functions—is always encrypted in transit\. In addition, all requests sent to the CloudFront API endpoints are signed with AWS credentials and logged in AWS CloudTrail\.
+
+Function code and configuration in CloudFront Functions is always encrypted in transit when copied to the edge location points of presence \(POPs\), and between other storage locations used by CloudFront\.
+
+## Encryption at rest<a name="data-protection-summary-encryption-at-rest"></a>
 
 CloudFront uses SSDs which are encrypted for edge location points of presence \(POPs\), and encrypted EBS volumes for Regional Edge Caches \(RECs\)\.
 
-## Restrict Access to Content<a name="data-protection-summary-restrict-access"></a>
+Function code and configuration in CloudFront Functions is always stored in an encrypted format on the encrypted SSDs on the edge location POPs, and in other storage locations used by CloudFront\.
+
+## Restrict access to content<a name="data-protection-summary-restrict-access"></a>
 
 Many companies that distribute content over the internet want to restrict access to documents, business data, media streams, or content that is intended for a subset of users\. To securely serve this content by using Amazon CloudFront, you can do one or more of the following:
 

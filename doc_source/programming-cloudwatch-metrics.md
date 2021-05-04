@@ -4,7 +4,8 @@ You can use the Amazon CloudWatch API or CLI to get the CloudFront metrics in pr
 
 **Topics**
 + [Values for all CloudFront metrics](#cloudfront-metrics-global-values)
-+ [Values for individual CloudFront metrics](#cloudfront-metrics-values)
++ [Values for CloudFront distribution metrics](#cloudfront-metrics-distribution-values)
++ [Values for CloudFront function metrics](#cloudfront-metrics-function-values)
 
 ## Values for all CloudFront metrics<a name="cloudfront-metrics-global-values"></a>
 
@@ -16,16 +17,19 @@ The value for `Namespace` is always `AWS/CloudFront`\.
 **Dimensions**  
 Each CloudFront metric has the following two dimensions:    
 **`DistributionId`**  
-The value for `DistributionId` is the ID of the CloudFront distribution for which you want to get metrics\.  
+The ID of the CloudFront distribution for which you want to get metrics\.  
+**`FunctionName`**  
+The name of the function \(in CloudFront Functions\) for which you want to get metrics\.  
+This dimension applies only to functions\.  
 **`Region`**  
 The value for `Region` is always `Global`, because CloudFront is a global service\.
 
 **Note**  
 To get the CloudFront metrics from the CloudWatch API, you must use the US East \(N\. Virginia\) Region \(us\-east\-1\)\.
 
-## Values for individual CloudFront metrics<a name="cloudfront-metrics-values"></a>
+## Values for CloudFront distribution metrics<a name="cloudfront-metrics-distribution-values"></a>
 
-Use information from the following list to get details about specific CloudFront metrics from the CloudWatch API\. Some of these metrics are available only when you have enabled additional metrics for the distribution\.
+Use information from the following list to get details about specific CloudFront distribution metrics from the CloudWatch API\. Some of these metrics are available only when you have enabled additional metrics for the distribution\.
 
 **Note**  
 Only one statistic, `Average` or `Sum`, is applicable for each metric\. The following list specifies which statistic is applicable to that metric\.
@@ -112,5 +116,36 @@ The total number of viewer requests received by CloudFront, for all HTTP methods
 **Total error rate**  
 The percentage of all viewer requests for which the response’s HTTP status code is `4xx` or `5xx`\.  
 + Metric name: `TotalErrorRate`
++ Valid statistic: `Average`
++ Unit: `Percent`
+
+## Values for CloudFront function metrics<a name="cloudfront-metrics-function-values"></a>
+
+Use information from the following list to get details about specific CloudFront function metrics from the CloudWatch API\.
+
+**Note**  
+Only one statistic, `Average` or `Sum`, is applicable for each metric\. The following list specifies which statistic is applicable to that metric\.
+
+**Invocations**  
+The number of times the function was started \(invoked\) in a given time period\.  
++ Metric name: `Invocations`
++ Valid statistic: `Sum`
++ Unit: `None`
+
+**Validation errors**  
+The number of validation errors produced by the function in a given time period\. Validation errors occur when the function runs successfully but returns invalid data \(an invalid event object\)\.  
++ Metric name: `ValidationErrors`
++ Valid statistic: `Sum`
++ Unit: `None`
+
+**Execution errors**  
+The number of execution errors that occurred in a given time period\. Execution errors occur when the function fails to complete successfully\.  
++ Metric name: `ExecutionErrors`
++ Valid statistic: `Sum`
++ Unit: `None`
+
+**Execution time**  
+The amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a value of 35 means that the function completed in 35% of the maximum allowed time\. This metric is a number between 0 and 100\.  
++ Metric name: `ExecutionTime`
 + Valid statistic: `Average`
 + Unit: `Percent`

@@ -11,5 +11,8 @@ CloudTrail provides a record of actions taken by a user, role, or an AWS service
 **CloudFront standard logs and real\-time logs**  
 CloudFront logs provide detailed records about requests that are made to a distribution\. These logs are useful for many applications\. For example, log information can be useful in security and access audits\. For more information, see [CloudFront logging](logging.md)\.
 
-**CloudFront Console Reports**  
+**Function logs in CloudFront Functions**  
+Customer\-generated logs in CloudFront Functions \(`console.log()` statements\) are sent directly to Amazon CloudWatch Logs and are not stored anywhere by CloudFront\. CloudFront Functions uses an AWS Identity and Access Management \(IAM\) [service\-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role) to send customer\-generated logs directly to CloudWatch Logs in the customer’s account\.
+
+**CloudFront console reports**  
 The CloudFront console includes a variety of reports, including the cache statistics report, the popular objects report, and the top referrers report\. Most CloudFront console reports are based on the data in CloudFront access logs, which contain detailed information about every user request that CloudFront receives\. However, you don't need to enable access logs to view the reports\. For more information, see [CloudFront Reports in the Console](reports.md)\.

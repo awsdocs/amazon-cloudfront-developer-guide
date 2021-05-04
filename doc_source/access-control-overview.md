@@ -16,7 +16,7 @@ When you grant permissions, you decide who gets the permissions, the resources t
 
 ## ARNs for CloudFront resources<a name="access-control-resources"></a>
 
-All CloudFront resources—distributions, invalidations, and origin access identities—use the same format for Amazon Resource Names \(ARNs\):
+All CloudFront resources—including distributions, invalidations, origin access identities, and functions—use the same format for Amazon Resource Names \(ARNs\):
 
 `arn:aws:cloudfront::AWS_account_ID:resource_type/resource_ID`
 

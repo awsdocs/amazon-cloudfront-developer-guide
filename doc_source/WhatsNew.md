@@ -7,6 +7,7 @@ The following entries describe important changes made to the CloudFront document
 
 | Change | Description | Date changed | 
 | --- | --- | --- | 
+|  New feature  |  Amazon CloudFront now supports CloudFront Functions, a native feature of CloudFront that enables you to write lightweight functions in JavaScript for high\-scale, latency\-sensitive CDN customizations\. For more information, see [Customizing at the edge with CloudFront Functions](cloudfront-functions.md)\.  |  May 3, 2021  | 
 |  Lambda@Edge supports newer runtime versions  |  Lambda@Edge now supports Lambda functions with the Node\.js 14 runtime\. For more information, see [Lambda Function Supported Runtimes and Configuration](lambda-requirements-limits.md#lambda-requirements-lambda-function-configuration)\.  |  April 29, 2021  | 
 |  Remove documentation for RTMP distributions  |  [Amazon CloudFront deprecated real\-time messaging protocol \(RTMP\) distributions on December 31, 2020\.](http://forums.aws.amazon.com/ann.jspa?annID=7356) Documentation for RTMP distributions is now removed from the *Amazon CloudFront Developer Guide*\.  |  February 10, 2021  | 
 |  New pricing option  |  Amazon CloudFront introduces the *CloudFront security savings bundle*, a simple way to save up to 30% on the CloudFront charges on your AWS bill\. For more information, see [CloudFront security savings bundle](savings-bundle.md)\.  |  February 5, 2021  | 
