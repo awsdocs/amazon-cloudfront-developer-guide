@@ -1,4 +1,4 @@
-# Overview of Managing Access Permissions to Your CloudFront Resources<a name="access-control-overview"></a>
+# Overview of managing access permissions to your CloudFront resources<a name="access-control-overview"></a>
 
 Every AWS resource is owned by an AWS account, and permissions to create or access a resource are governed by permissions policies\.
 
@@ -8,41 +8,41 @@ An *account administrator* \(or administrator user\) is a user that has administ
 When you grant permissions, you decide who gets the permissions, the resources they get permissions for, and the actions that they get permission to perform\.
 
 **Topics**
-+ [ARNs for CloudFront Resources](#access-control-resources)
-+ [Understanding Resource Ownership](#access-control-owner)
-+ [Managing Access to Resources](#access-control-manage-access-intro)
-+ [Specifying Policy Elements: Resources, Actions, Effects, and Principals](#access-control-specify-cf-actions)
-+ [Specifying Conditions in a Policy](#specifying-conditions)
++ [ARNs for CloudFront resources](#access-control-resources)
++ [Understanding resource ownership](#access-control-owner)
++ [Managing access to resources](#access-control-manage-access-intro)
++ [Specifying policy elements: resources, actions, effects, and principals](#access-control-specify-cf-actions)
++ [Specifying conditions in a policy](#specifying-conditions)
 
-## ARNs for CloudFront Resources<a name="access-control-resources"></a>
+## ARNs for CloudFront resources<a name="access-control-resources"></a>
 
 All CloudFront resources—distributions, invalidations, and origin access identities—use the same format for Amazon Resource Names \(ARNs\):
 
-`arn:aws:cloudfront::optional-account-id:*`
+`arn:aws:cloudfront::AWS_account_ID:resource_type/resource_ID`
 
-CloudFront provides API actions to work with each of these types of resources\. For more information, see the [Amazon CloudFront API Reference](https://docs.aws.amazon.com/cloudfront/latest/APIReference/)\. For a list of actions and the ARN that you specify to grant or deny permission to use each action, see [CloudFront API Permissions: Actions, Resources, and Conditions Reference](cf-api-permissions-ref.md)\.
+CloudFront provides API actions to work with each of these types of resources\. For more information, see the [Amazon CloudFront API Reference](https://docs.aws.amazon.com/cloudfront/latest/APIReference/)\. For a list of actions and the ARN that you specify to grant or deny permission to use each action, see [CloudFront API permissions: actions, resources, and conditions reference](cf-api-permissions-ref.md)\.
 
-## Understanding Resource Ownership<a name="access-control-owner"></a>
+## Understanding resource ownership<a name="access-control-owner"></a>
 
-An AWS account owns the resources that are created in the account, regardless of who created the resources\. Specifically, the resource owner is the AWS account of the principal entity \(that is, the root account, an IAM user, or an IAM role\) that authenticates the resource creation request\. 
+An AWS account owns the resources that are created in the account, regardless of who created the resources\. Specifically, the resource owner is the AWS account of the principal entity \(that is, the root account, an IAM user, or an IAM role\) that authenticates the resource creation request\.
 
 The following examples illustrate how this works:
 + If you use the root account credentials of your AWS account to create a distribution, your AWS account is the owner of the distribution\.
 + If you create an IAM user in your AWS account and grant permissions to create a distribution to that user, the user can create a distribution\. The AWS account that created the user owns the distribution\.
 + If you create an IAM role in your AWS account with permissions to create a distribution, anyone who can assume the role can create a distribution\. Your AWS account, to which the role belongs, owns the distribution\.
 
-## Managing Access to Resources<a name="access-control-manage-access-intro"></a>
+## Managing access to resources<a name="access-control-manage-access-intro"></a>
 
 A *permissions policy* specifies who has access to what\. This section explains the options for creating permissions policies for CloudFront\. For general information about IAM policy syntax and descriptions, see the [AWS IAM Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
 
-Policies attached to an IAM identity are referred to as identity\-based policies \(IAM policies\), and policies attached to a resource are referred to as resource\-based policies\. CloudFront does not support resource\-based policies, but it does support resource\-level policies\. For more information about the types of permissions policies that CloudFront supports, see [Managing Access to Resources](#access-control-manage-access-intro)\.
+Policies attached to an IAM identity are referred to as identity\-based policies \(IAM policies\), and policies attached to a resource are referred to as resource\-based policies\. CloudFront does not support resource\-based policies, but it does support resource\-level policies\. For more information about the types of permissions policies that CloudFront supports, see [Managing access to resources](#access-control-manage-access-intro)\.
 
 **Topics**
-+ [Identity\-Based Policies \(IAM Policies\)](#access-control-manage-access-intro-iam-policies)
-+ [Resource\-Level Policies](#access-control-manage-access-intro-resource-policies)
-+ [Tag\-Based Policies](#access-control-manage-access-intro-tag-policies)
++ [Identity\-based policies \(IAM policies\)](#access-control-manage-access-intro-iam-policies)
++ [Resource\-level policies](#access-control-manage-access-intro-resource-policies)
++ [Tag\-based policies](#access-control-manage-access-intro-tag-policies)
 
-### Identity\-Based Policies \(IAM Policies\)<a name="access-control-manage-access-intro-iam-policies"></a>
+### Identity\-based policies \(IAM policies\)<a name="access-control-manage-access-intro-iam-policies"></a>
 
 You can attach policies to IAM identities\. For example, you can do the following:
 + **Attach a permissions policy to a user or a group in your account** – An account administrator can use a permissions policy that is associated with a particular user to grant permissions for that user to create a distribution\.
@@ -73,9 +73,9 @@ The following example policy allows a user to perform the `CreateDistribution` a
 }
 ```
 
-For information about the permissions required to perform operations by using the CloudFront console, see [Permissions Required to Use the CloudFront Console](access-control-managing-permissions.md#console-required-permissions)\. For more information about attaching policies to identities for CloudFront, see [Using Identity\-Based Policies \(IAM Policies\) for CloudFront](access-control-managing-permissions.md)\. For more information about users, groups, roles, and permissions, see [Identities \(Users, Groups, and Roles\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the *IAM User Guide*\.
+For information about the permissions required to perform operations by using the CloudFront console, see [Permissions required to use the CloudFront console](access-control-managing-permissions.md#console-required-permissions)\. For more information about attaching policies to identities for CloudFront, see [Using identity\-based policies \(IAM policies\) for CloudFront](access-control-managing-permissions.md)\. For more information about users, groups, roles, and permissions, see [Identities \(Users, Groups, and Roles\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the *IAM User Guide*\.
 
-### Resource\-Level Policies<a name="access-control-manage-access-intro-resource-policies"></a>
+### Resource\-level policies<a name="access-control-manage-access-intro-resource-policies"></a>
 
 In some scenarios, you might want to grant a specific level of access to a resource that you specify; for example, access to only specific actions on that resource\. One way that some AWS services implement this is to allow you to directly attach a policy on the resource\. For example, that’s how Amazon S3 and Elasticsearch implement resource access control\. CloudFront allows the same flexibility but uses a different method\. Instead of attaching a policy to a resource, you specify the resource in a policy\.
 
@@ -110,7 +110,7 @@ For example, the following policy shows how you might allow update, delete, and 
 }
 ```
 
-### Tag\-Based Policies<a name="access-control-manage-access-intro-tag-policies"></a>
+### Tag\-based policies<a name="access-control-manage-access-intro-tag-policies"></a>
 
 When you design IAM policies, you might set granular permissions by granting access to specific resources\. As the number of resources that you manage grows, this task becomes more difficult\. Tagging resources and using tags in policy statement conditions can make this task easier\. You grant access in bulk to any resource with a certain tag\. Then you repeatedly apply this tag to relevant resources, during creation or later\.
 
@@ -173,23 +173,23 @@ To implement the restriction using tags, it denies the `CreateDistribution` acti
 }
 ```
 
-## Specifying Policy Elements: Resources, Actions, Effects, and Principals<a name="access-control-specify-cf-actions"></a>
+## Specifying policy elements: resources, actions, effects, and principals<a name="access-control-specify-cf-actions"></a>
 
-CloudFront includes API actions \(see [Amazon CloudFront API Reference](https://docs.aws.amazon.com/cloudfront/latest/APIReference/)\) that you can use on each CloudFront resource \(see [ARNs for CloudFront Resources](#access-control-resources)\)\. You can grant a user or a federated user permission to perform any or all of these actions\. 
+CloudFront includes API actions \(see [Amazon CloudFront API Reference](https://docs.aws.amazon.com/cloudfront/latest/APIReference/)\) that you can use on each CloudFront resource \(see [ARNs for CloudFront resources](#access-control-resources)\)\. You can grant a user or a federated user permission to perform any or all of these actions\. 
 
 The following are the basic policy elements:
-+ **Resource** – You use an Amazon Resource Name \(ARN\) to identify the resource that the policy applies to\. For more information, see [ARNs for CloudFront Resources](#access-control-resources)\.
++ **Resource** – You use an Amazon Resource Name \(ARN\) to identify the resource that the policy applies to\. For more information, see [ARNs for CloudFront resources](#access-control-resources)\.
 + **Action** – You use action keywords to identify resource operations that you want to allow or deny\. For example, depending on the specified `Effect`, the `cloudfront:CreateDistribution` permission allows or denies the user permissions to perform the CloudFront `CreateDistribution` action\.
 + **Effect** – You specify the effect, either allow or deny, when a user tries to perform the action on the specified resource\. If you don't explicitly grant access to an action, access is implicitly denied\. You can also explicitly deny access to a resource, which you might do to make sure that a user cannot access it, even if a different policy grants access\.
 + **Principal** – In identity\-based policies \(IAM policies\), the user that the policy is attached to is the implicit principal\. For resource\-based policies, you specify the user, account, service, or other entity that you want to receive permissions \(applies to resource\-based policies only\)\. 
 
-  CloudFront does not support resource\-based policies, but it does support resource\-level policies\. For more information about the types of permissions policies that CloudFront supports, see [Managing Access to Resources](#access-control-manage-access-intro)\.
+  CloudFront does not support resource\-based policies, but it does support resource\-level policies\. For more information about the types of permissions policies that CloudFront supports, see [Managing access to resources](#access-control-manage-access-intro)\.
 
 For more information about IAM policy syntax and descriptions, see the [AWS IAM Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
 
-For a showing all of the CloudFront API operations and the resources that they apply to, see [CloudFront API Permissions: Actions, Resources, and Conditions Reference](cf-api-permissions-ref.md)\.
+For a showing all of the CloudFront API operations and the resources that they apply to, see [CloudFront API permissions: actions, resources, and conditions reference](cf-api-permissions-ref.md)\.
 
-## Specifying Conditions in a Policy<a name="specifying-conditions"></a>
+## Specifying conditions in a policy<a name="specifying-conditions"></a>
 
 When you grant permissions, you can use the IAM policy language to specify when a policy should take effect\. For example, you might want a policy to be applied only after a specific date\. For more information about specifying conditions in a policy language, see [Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#Condition) in the *IAM User Guide*\. 
 

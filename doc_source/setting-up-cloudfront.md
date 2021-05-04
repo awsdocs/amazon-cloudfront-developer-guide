@@ -60,7 +60,7 @@ Use the following procedures to create a group for administrators, create an IAM
 
 1. Sign in to the [IAM console](https://console.aws.amazon.com/iam/) as the account owner by choosing **Root user** and entering your AWS account email address\. On the next page, enter your password\.
 **Note**  
-We strongly recommend that you adhere to the best practice of using the **Administrator** IAM user below and securely lock away the root user credentials\. Sign in as the root user only to perform a few [account and service management tasks](https://docs.aws.amazon.com/general/latest/gr/aws_tasks-that-require-root.html)\.
+We strongly recommend that you adhere to the best practice of using the **Administrator** IAM user that follows and securely lock away the root user credentials\. Sign in as the root user only to perform a few [account and service management tasks](https://docs.aws.amazon.com/general/latest/gr/aws_tasks-that-require-root.html)\.
 
 1. In the navigation pane, choose **Users** and then choose **Add user**\.
 
@@ -78,7 +78,7 @@ We strongly recommend that you adhere to the best practice of using the **Admini
 
 1. In the **Create group** dialog box, for **Group name** enter **Administrators**\.
 
-1. Choose **Filter policies**, and then select **AWS managed \-job function** to filter the table contents\.
+1. Choose **Filter policies**, and then select **AWS managed \- job function** to filter the table contents\.
 
 1. In the policy list, select the check box for **AdministratorAccess**\. Then choose **Create group**\.
 **Note**  
@@ -124,7 +124,7 @@ If you don't want the URL for your sign\-in page to contain your AWS account ID,
 
 To verify the sign\-in link for IAM users for your account, open the IAM console and check under **IAM users sign\-in link** on the dashboard\.
 
-For more information about using IAM, see [Identity and Access Management in CloudFront](auth-and-access-control.md)\.
+For more information about using IAM, see [Identity and Access Management \(IAM\) in CloudFront](auth-and-access-control.md)\.
 
 ## Set up the AWS Command Line Interface or AWS Tools for Windows PowerShell<a name="setting-up-aws-cli"></a>
 

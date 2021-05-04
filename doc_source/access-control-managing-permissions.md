@@ -1,14 +1,14 @@
-# Using Identity\-Based Policies \(IAM Policies\) for CloudFront<a name="access-control-managing-permissions"></a>
+# Using identity\-based policies \(IAM policies\) for CloudFront<a name="access-control-managing-permissions"></a>
 
 This topic provides examples of identity\-based policies that demonstrate how an account administrator can attach permissions policies to IAM identities \(that is, users, groups, and roles\) and thereby grant permissions to perform operations on CloudFront resources\.
 
 **Important**  
-We recommend that you first review the introductory topics that explain the basic concepts and options to manage access to your CloudFront resources\. For more information, see [Overview of Managing Access Permissions to Your CloudFront Resources](access-control-overview.md)\. 
+We recommend that you first review the introductory topics that explain the basic concepts and options to manage access to your CloudFront resources\. For more information, see [Overview of managing access permissions to your CloudFront resources](access-control-overview.md)\. 
 
 **Topics**
-+ [Permissions Required to Use the CloudFront Console](#console-required-permissions)
++ [Permissions required to use the CloudFront console](#console-required-permissions)
 + [AWS Managed \(Predefined\) Policies for CloudFront](#access-policy-examples-aws-managed)
-+ [Customer Managed Policy Examples](#access-policy-examples-for-sdk-cli)
++ [Customer managed policy examples](#access-policy-examples-for-sdk-cli)
 
 The following shows a permissions policy\. The `Sid`, or statement ID, is optional\.
 
@@ -26,11 +26,11 @@ The following shows a permissions policy\. The `Sid`, or statement ID, is option
 }
 ```
 
-The policy grants permissions to perform all CloudFront operations, which is sufficient to access CloudFront programmatically\. If you're using the console to access CloudFront, see [Permissions Required to Use the CloudFront Console](#console-required-permissions)\. 
+The policy grants permissions to perform all CloudFront operations, which is sufficient to access CloudFront programmatically\. If you're using the console to access CloudFront, see [Permissions required to use the CloudFront console](#console-required-permissions)\. 
 
-For a list of actions and the ARN that you specify to grant or deny permission to use each action, see [CloudFront API Permissions: Actions, Resources, and Conditions Reference](cf-api-permissions-ref.md)\.
+For a list of actions and the ARN that you specify to grant or deny permission to use each action, see [CloudFront API permissions: actions, resources, and conditions reference](cf-api-permissions-ref.md)\.
 
-## Permissions Required to Use the CloudFront Console<a name="console-required-permissions"></a>
+## Permissions required to use the CloudFront console<a name="console-required-permissions"></a>
 
 To grant full access to the CloudFront console, you grant the permissions in the following permissions policy: 
 
@@ -112,7 +112,7 @@ These permissions aren't required if you aren't using the CloudFront console\.
 
 ## AWS Managed \(Predefined\) Policies for CloudFront<a name="access-policy-examples-aws-managed"></a>
 
-AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. For CloudFront, IAM provides two managed policies: 
+AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. For CloudFront, IAM provides two managed policies:
 + **CloudFrontFullAccess** – Grants full access to CloudFront resources\.
 **Important**  
 If you want CloudFront to create and save access logs, you need to grant additional permissions\. For more information, see [Permissions required to configure standard logging and to access your log files](AccessLogs.md#AccessLogsBucketAndFileOwnership)\.
@@ -121,9 +121,9 @@ If you want CloudFront to create and save access logs, you need to grant additio
 **Note**  
 You can review these permissions policies by signing in to the IAM console and searching for specific policies there\. You can also create your own custom IAM policies to allow permissions for CloudFront API operations\. You can attach these custom policies to the IAM users or groups that require those permissions\.
 
-## Customer Managed Policy Examples<a name="access-policy-examples-for-sdk-cli"></a>
+## Customer managed policy examples<a name="access-policy-examples-for-sdk-cli"></a>
 
-You can create your own custom IAM policies to allow permissions for CloudFront API actions\. You can attach these custom policies to the IAM users or groups that require the specified permissions\. These policies work when you are using the CloudFront API, the AWS SDKs, or the AWS CLI\. The following examples show permissions for a few common use cases\. For the policy that grants a user full access to CloudFront, see [Permissions Required to Use the CloudFront Console](#console-required-permissions)\.
+You can create your own custom IAM policies to allow permissions for CloudFront API actions\. You can attach these custom policies to the IAM users or groups that require the specified permissions\. These policies work when you are using the CloudFront API, the AWS SDKs, or the AWS CLI\. The following examples show permissions for a few common use cases\. For the policy that grants a user full access to CloudFront, see [Permissions required to use the CloudFront console](#console-required-permissions)\.
 
 **Topics**
 + [Example 1: Allow read access to all distributions](#access-policy-example-allow-read-hosted-zones)

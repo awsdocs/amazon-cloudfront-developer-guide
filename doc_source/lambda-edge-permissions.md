@@ -34,7 +34,7 @@ The asterisk \(`*`\) at the end of the permission is required: `lambda:EnableRep
   Use `cloudfront:UpdateDistribution` to update a distribution or `cloudfront:CreateDistribution` to create a distribution\.
 
 For more information, see the following documentation:
-+ [Identity and Access Management in CloudFront](auth-and-access-control.md) in this guide\.
++ [Identity and Access Management \(IAM\) in CloudFront](auth-and-access-control.md) in this guide\.
 + [Authentication and Access Control for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/auth-and-access-control.html) in the *AWS Lambda Developer Guide*
 
 ## Function Execution Role for Service Principals<a name="lambda-edge-permissions-function-execution"></a>

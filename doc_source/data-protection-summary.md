@@ -1,4 +1,4 @@
-# Data Protection in Amazon CloudFront<a name="data-protection-summary"></a>
+# Data protection in Amazon CloudFront<a name="data-protection-summary"></a>
 
 The AWS [shared responsibility model](http://aws.amazon.com/compliance/shared-responsibility-model/) applies to data protection in Amazon CloudFront\. As described in this model, AWS is responsible for protecting the global infrastructure that runs all of the AWS Cloud\. You are responsible for maintaining control over your content that is hosted on this infrastructure\. This content includes the security configuration and management tasks for the AWS services that you use\. For more information about data privacy, see the [Data Privacy FAQ](http://aws.amazon.com/compliance/data-privacy-faq)\. For information about data protection in Europe, see the [AWS Shared Responsibility Model and GDPR](http://aws.amazon.com/blogs/security/the-aws-shared-responsibility-model-and-gdpr/) blog post on the *AWS Security Blog*\.
 
@@ -14,17 +14,17 @@ We strongly recommend that you never put sensitive identifying information, such
 
 Amazon CloudFront provides several options that you can use to help secure the content that it delivers:
 + Configure HTTPS connections\.
-+ Configure field\-level encryption to encrypt data during transit\.
++ Configure field\-level encryption to provide additional security for specific data during transit\.
 + Restrict access to content so that only specific people, or people in a specific area, can view it\.
 
 The following topics explain the options in more detail\.
 
 **Topics**
-+ [Encryption in Transit](#data-protection-summary-encryption-in-transit)
-+ [Encryption at Rest](#data-protection-summary-encryption-at-rest)
-+ [Restrict Access to Content](#data-protection-summary-restrict-access)
++ [Encryption in transit](#data-protection-summary-encryption-in-transit)
++ [Encryption at rest](#data-protection-summary-encryption-at-rest)
++ [Restrict access to content](#data-protection-summary-restrict-access)
 
-## Encryption in Transit<a name="data-protection-summary-encryption-in-transit"></a>
+## Encryption in transit<a name="data-protection-summary-encryption-in-transit"></a>
 
 To encrypt your data during transit, you configure Amazon CloudFront to require that viewers use HTTPS to request your files, so that connections are encrypted when CloudFront communicates with viewers\. You also can configure CloudFront to use HTTPS to get files from your origin, so that connections are encrypted when CloudFront communicates with your origin\.
 

@@ -2,7 +2,7 @@
 
 If you no longer want to use a distribution, you can delete it by using the CloudFront console or by using the CloudFront API\. 
 
-Be aware that before you can delete a distribution, you must disable it, which requires permission to update the distribution\. For more information about setting permissions for working with CloudFront, including setting UpdateDistribution and DeleteDistribution permissions, see [Customer Managed Policy Examples](access-control-managing-permissions.md#access-policy-examples-for-sdk-cli)\. 
+Be aware that before you can delete a distribution, you must disable it, which requires permission to update the distribution\. For more information about setting permissions for working with CloudFront, including setting UpdateDistribution and DeleteDistribution permissions, see [Customer managed policy examples](access-control-managing-permissions.md#access-policy-examples-for-sdk-cli)\. 
 
 **Note**  
 If you disable a distribution that has an alternate domain name associated with it, CloudFront stops accepting traffic for that domain name \(such as www\.example\.com\), even if another distribution has an alternate domain name with a wildcard \(\*\) that matches the same domain \(such as \*\.example\.com\)\.<a name="HowToDeleteDistributionProcedure"></a>

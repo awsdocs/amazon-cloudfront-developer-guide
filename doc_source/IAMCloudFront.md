@@ -9,6 +9,6 @@ Amazon CloudFront integrates with AWS Identity and Access Management \(IAM\), a 
 For example, you can use IAM with CloudFront to control which users in your AWS account can create a new distribution or update cache behavior settings\.
 
 For general information about IAM, see the following:
-+ [Identity and Access Management in CloudFront](auth-and-access-control.md)
++ [Identity and Access Management \(IAM\) in CloudFront](auth-and-access-control.md)
 + [Identity and Access Management \(IAM\)](https://aws.amazon.com/iam/)
 + [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)

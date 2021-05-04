@@ -1,6 +1,6 @@
-# Identity and Access Management in CloudFront<a name="auth-and-access-control"></a>
+# Identity and Access Management \(IAM\) in CloudFront<a name="auth-and-access-control"></a>
 
-To perform any operation on CloudFront resources, such as creating a distribution or invalidating an object, [AWS Identity and Access Management \(IAM\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) requires you to authenticate that you're an approved AWS user\. If you're using the CloudFront console, you authenticate your identity by providing your AWS user name and a password\. If you're accessing CloudFront programmatically, your application authenticates your identity for you by using access keys or by signing requests\.
+To perform any operation on CloudFront resources, such as creating a distribution or invalidating an object, [AWS Identity and Access Management \(IAM\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) requires you to authenticate that you’re an approved AWS user\. If you’re using the CloudFront console, you authenticate your identity by providing your AWS user name and a password\. If you’re accessing CloudFront programmatically, your application authenticates your identity for you by using access keys or by signing requests\.
 
 After you authenticate your identity, IAM controls your access to AWS by verifying that you have permissions to perform operations and access resources\. If you are an account administrator, you can use IAM to control the access of other users to the resources that are associated with your account\.
 
@@ -8,7 +8,7 @@ This chapter explains how to use [AWS Identity and Access Management \(IAM\)](ht
 
 **Topics**
 + [Authentication](#authentication)
-+ [Access Control](#access-control)
++ [Access control](#access-control)
 
 ## Authentication<a name="authentication"></a>
 
@@ -18,7 +18,7 @@ You can access AWS as any of the following types of identities:
 
    
 
-  In addition to a user name and password, you can also generate [access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for each user\. You can use these keys when you access AWS services programmatically, either through [one of the several SDKs](https://aws.amazon.com/tools/#sdk) or by using the [AWS Command Line Interface \(CLI\)](https://aws.amazon.com/cli/)\. The SDK and CLI tools use the access keys to cryptographically sign your request\. If you don’t use AWS tools, you must sign the request yourself\. CloudFront supports *Signature Version 4*, a protocol for authenticating inbound API requests\. For more information about authenticating requests, see [Signature Version 4 Signing Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) in the *AWS General Reference*\.
+  In addition to a user name and password, you can also generate [access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for each user\. You can use these keys when you access AWS services programmatically, either through [one of the several SDKs](https://aws.amazon.com/tools/#sdk) or by using the [AWS Command Line Interface \(CLI\)](https://aws.amazon.com/cli/)\. The SDK and CLI tools use the access keys to cryptographically sign your request\. If you don’t use AWS tools, you must sign the request yourself\. CloudFront supports *Signature Version 4*, a protocol for authenticating inbound API requests\. For more information about authenticating requests, see [Signature Version 4 signing process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) in the *AWS General Reference*\.
 
    
 + **IAM role** –  An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an IAM identity that you can create in your account that has specific permissions\. An IAM role is similar to an IAM user in that it is an AWS identity with permissions policies that determine what the identity can and cannot do in AWS\. However, instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it\. Also, a role does not have standard long\-term credentials such as a password or access keys associated with it\. Instead, when you assume a role, it provides you with temporary security credentials for your role session\. IAM roles with temporary credentials are useful in the following situations:
@@ -34,11 +34,11 @@ You can access AWS as any of the following types of identities:
 
     
 
-## Access Control<a name="access-control"></a>
+## Access control<a name="access-control"></a>
 
 To create, update, delete, or list CloudFront resources, you need permissions to perform the operation, and you need permissions to access the corresponding resources\. In addition, to perform the operation programmatically, you need valid access keys\. 
 
 The following sections describe how to manage permissions for CloudFront: 
-+ [Overview of Managing Access Permissions to Your CloudFront Resources](access-control-overview.md)
-+ [Using Identity\-Based Policies \(IAM Policies\) for CloudFront](access-control-managing-permissions.md)
-+ [CloudFront API Permissions: Actions, Resources, and Conditions Reference](cf-api-permissions-ref.md)
++ [Overview of managing access permissions to your CloudFront resources](access-control-overview.md)
++ [Using identity\-based policies \(IAM policies\) for CloudFront](access-control-managing-permissions.md)
++ [CloudFront API permissions: actions, resources, and conditions reference](cf-api-permissions-ref.md)

@@ -1,6 +1,6 @@
 # Getting metrics using the CloudWatch API<a name="programming-cloudwatch-metrics"></a>
 
-You can use the Amazon CloudWatch API or CLI to get the CloudFront metrics in programs or applications that you build\. You can use the raw data to build your own custom dashboards, your own alarming tools, and so on\. To get the CloudFront metrics from the CloudWatch API, you must use the US East \(N\. Virginia\) Region \(us\-east\-1\)\. You also need to know certain values and types for each metric\.
+You can use the Amazon CloudWatch API or CLI to get the CloudFront metrics in programs or applications that you build\. You can use the raw data to build your own custom dashboards, your own alarming tools, and so on\. To get the CloudFront metrics from the CloudWatch API, you must use the US East \(N\. Virginia\) Region \(`us-east-1`\)\. You also need to know certain values and types for each metric\.
 
 **Topics**
 + [Values for all CloudFront metrics](#cloudfront-metrics-global-values)

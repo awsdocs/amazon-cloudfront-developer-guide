@@ -1,15 +1,15 @@
-# CloudFront API Permissions: Actions, Resources, and Conditions Reference<a name="cf-api-permissions-ref"></a>
+# CloudFront API permissions: actions, resources, and conditions reference<a name="cf-api-permissions-ref"></a>
 
-When you are setting up [Access Control](auth-and-access-control.md#access-control) and writing a permissions policy that you can attach to an IAM identity \(identity\-based policies\), you can use the following as a reference\. The each CloudFront API operation, the corresponding actions for which you can grant permissions to perform the action, and the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\. 
+When you are setting up [Access control](auth-and-access-control.md#access-control) and writing a permissions policy that you can attach to an IAM identity \(identity\-based policies\), you can use the following as a reference\. The each CloudFront API operation, the corresponding actions for which you can grant permissions to perform the action, and the AWS resource for which you can grant the permissions\. You specify the actions in the policy's `Action` field, and you specify the resource value in the policy's `Resource` field\.
 
-You can use AWS\-wide condition keys in your CloudFront policies to express conditions\. For a complete list of AWS\-wide keys, see [Available Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\. 
+You can use AWS\-wide condition keys in your CloudFront policies to express conditions\. For a complete list of AWS\-wide keys, see [Available Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys) in the *IAM User Guide*\.
 
 **Topics**
 + [Required permissions for actions on distributions](#required-permissions-web-distributions)
 + [Required permissions for actions on invalidations](#required-permissions-invalidations)
 + [Required permissions for actions on origin access identities](#required-permissions-origin-access-identities)
 + [Required permissions for CloudFront actions related to Lambda@Edge](#required-permissions-lambda)
-+ [Required Permissions for actions on tags](#required-permissions-tags)
++ [Required permissions for actions on tags](#required-permissions-tags)
 
 ## Required permissions for actions on distributions<a name="required-permissions-web-distributions"></a><a name="web-distributions-table"></a>
 
@@ -151,7 +151,7 @@ To use Lambda@Edge, you need the following CloudFront permissions so you can cre
 + ACM: \*
 + Amazon S3: If you configure CloudFront to save access logs, you can optionally restrict access to a specified bucket\.
 
-## Required Permissions for actions on tags<a name="required-permissions-tags"></a><a name="invalidations-tags"></a>
+## Required permissions for actions on tags<a name="required-permissions-tags"></a><a name="invalidations-tags"></a>
 
 [TagResource](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html)  
 **Required Permissions \(API Action\):** `cloudfront:TagResource`  

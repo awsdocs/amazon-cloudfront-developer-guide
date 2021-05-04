@@ -1,4 +1,4 @@
-# Compliance Validation for Amazon CloudFront<a name="compliance"></a>
+# Compliance validation for Amazon CloudFront<a name="compliance"></a>
 
 Third\-party auditors assess the security and compliance of Amazon CloudFront as part of multiple AWS compliance programs\. These include SOC, PCI, HIPAA, and others\. 
 
@@ -15,7 +15,7 @@ Your compliance responsibility when using CloudFront is determined by the sensit
 + [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html) – This AWS service assesses how well your resource configurations comply with internal practices, industry guidelines, and regulations\.
 + [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html) – This AWS service provides a comprehensive view of your security state within AWS that helps you check your compliance with security industry standards and best practices\.
 
-## CloudFront Compliance Best Practices<a name="compliance"></a>
+## CloudFront compliance best practices<a name="compliance"></a>
 
 This section provides best practices and recommendations for compliance when you use Amazon CloudFront to serve your content\.
 
@@ -25,12 +25,12 @@ If you run PCI\-compliant or HIPAA\-compliant workloads that are based on the [A
 
 In addition, see the following for details about how CloudFront is compliant with the PCI DSS and SOC standards\.
 
-### PCI DSS<a name="compliance-pci"></a>
+### Payment Card Industry Data Security Standard \(PCI DSS\)<a name="compliance-pci"></a>
 
 CloudFront supports the processing, storage, and transmission of credit card data by a merchant or service provider, and has been validated as being compliant with Payment Card Industry \(PCI\) Data Security Standard \(DSS\)\. For more information about PCI DSS, including how to request a copy of the AWS PCI Compliance Package, see [PCI DSS Level 1](https://aws.amazon.com/compliance/pci-dss-level-1-faqs/)\. 
 
 As a security best practice, we recommend that you don't cache credit card information in CloudFront edge caches\. For example, you can configure your origin to include a `Cache-Control:no-cache="`*field\-name*`"` header in responses that contain credit card information, such as the last four digits of a credit card number and the card owner's contact information\.
 
-### AWS System and Organization Controls<a name="compliance-soc"></a>
+### System and Organization Controls \(SOC\)<a name="compliance-soc"></a>
 
 CloudFront is compliant with System and Organization Controls \(SOC\) measures, including SOC 1, SOC 2, and SOC 3\. SOC reports are independent, third\-party examination reports that demonstrate how AWS achieves key compliance controls and objectives\. These audits ensure that the appropriate safeguards and procedures are in place to protect against risks that might affect the security, confidentiality, and availability of customer and company data\. The results of these third\-party audits are available on the [AWS SOC Compliance website](https://aws.amazon.com/compliance/soc-faqs/), where you can view the published reports to get more information about the controls that support AWS operations and compliance\.

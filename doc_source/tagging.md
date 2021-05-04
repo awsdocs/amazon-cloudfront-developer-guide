@@ -4,7 +4,7 @@ Tags are words or phrases that you can use to identify and organize your AWS res
 
 The following are two examples of how it can be useful to work with tags in CloudFront: 
 + Use tags to track billing information in different categories\. When you apply tags to CloudFront distributions or other AWS resources \(such as Amazon EC2 instances or Amazon S3 buckets\) and activate the tags, AWS generates a cost allocation report as a comma\-separated value \(CSV file\) with your usage and costs aggregated by your active tags\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. For more information about using tags for cost allocation, see [Use Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*\.
-+ Use tags to enforce tag\-based permissions on CloudFront distributions\. For more information, see [ Tag\-Based Policies](access-control-overview.md#access-control-manage-access-intro-tag-policies)\.
++ Use tags to enforce tag\-based permissions on CloudFront distributions\. For more information, see [Tag\-based policies](access-control-overview.md#access-control-manage-access-intro-tag-policies)\.
 
 Note the following:
 + You can tag distributions, but you can't tag origin access identities or invalidations\.
