@@ -56,7 +56,7 @@ Choose the **Origin SSL Protocols** for the applicable origins in your distribut
 
 You can use an SSL/TLS certificate from the following sources on your custom origin:
 + If your origin is an Elastic Load Balancing load balancer, you can use a certificate provided by AWS Certificate Manager \(ACM\)\. You also can use a certificate that is signed by a trusted third\-party certificate authority and imported into ACM\.
-+ For origins other than Elastic Load Balancing load balancers, you must use a certificate that is signed by a trusted third\-party certificate authority \(CA\), for example, Comodo, DigiCert, or Symantec\.
++ For origins other than Elastic Load Balancing load balancers, you must use a certificate that is signed by a trusted third\-party certificate authority \(CA\), for example, Sectigo, DigiCert, or Symantec\.
 
 When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted certificate authority\. CloudFront supports the same certificate authorities that Mozilla does\. For the current list, see [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)\. You can't use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
 

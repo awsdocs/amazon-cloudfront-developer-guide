@@ -20,7 +20,7 @@ If you're using a third\-party CA and you want to use the same certificate with 
 If you're using certificates provided by ACM, you can't configure CloudFront to use certificates that were created by a different AWS account\.
 
 **Using the Same Certificate for CloudFront and for Other AWS Services \(IAM Certificate Store Only\) **  
-If you bought a certificate from a trusted certificate authority such as Comodo, DigiCert, or Symantec, you can use the same certificate for CloudFront and for other AWS services\. If you're importing the certificate into ACM, you need to import it only once to use it for multiple AWS services\.  
+If you bought a certificate from a trusted certificate authority such as Sectigo, DigiCert, or Symantec, you can use the same certificate for CloudFront and for other AWS services\. If you're importing the certificate into ACM, you need to import it only once to use it for multiple AWS services\.  
 If you're using certificates provided by ACM, the certificates are stored in ACM\.
 
 **Using the Same Certificate for Multiple CloudFront Distributions**  
