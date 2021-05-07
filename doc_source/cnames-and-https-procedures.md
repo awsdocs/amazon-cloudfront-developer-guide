@@ -31,7 +31,6 @@ Get an SSL/TLS certificate if you don’t already have one\. For more informatio
 **Note**  
 We recommend that you use ACM to provision, manage, and deploy SSL/TLS certificates on AWS managed resources\. You must request an ACM certificate in the US East \(N\. Virginia\) Region\.
 + To get a certificate from a third\-party certificate authority \(CA\), see the documentation provided by the certificate authority\. When you have the certificate, continue with the next procedure\.
-+ To create a self\-signed certificate, see the documentation for the application that you're using to create and sign the certificate\. Then continue with the next procedure\.
 
 ## Importing an SSL/TLS Certificate<a name="cnames-and-https-uploading-certificates"></a>
 
