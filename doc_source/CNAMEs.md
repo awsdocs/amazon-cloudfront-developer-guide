@@ -296,7 +296,7 @@ If you want viewers to use HTTPS with an alternate domain name, you must complet
 Note the following restrictions on using alternate domain names:
 
 **Maximum number of alternate domain names**  
-For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 **Duplicate and overlapping alternate domain names**  
 You cannot add an alternate domain name to a CloudFront distribution if the alternate domain name already exists in another CloudFront distribution, even if your AWS account owns the other distribution\.  

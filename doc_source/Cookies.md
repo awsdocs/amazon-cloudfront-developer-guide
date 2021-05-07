@@ -18,7 +18,7 @@ You can configure each cache behavior to do one of the following:
 
   For information about specifying wildcards in cookie names in a whitelist, see [Whitelist Cookies](distribution-web-values-specify.md#DownloadDistValuesWhitelistCookies)\.
 
-  For the current quota on the number of cookie names that you can whitelist for each cache behavior, or to request a higher quota, see [Quotas on Whitelisted Query Strings \(Web Distributions Only\)](cloudfront-limits.md#limits-whitelisted-query-strings)\.
+  For the current quota on the number of cookie names that you can whitelist for each cache behavior, or to request a higher quota, see [Quotas on query strings \(legacy cache settings\)](cloudfront-limits.md#limits-whitelisted-query-strings)\.
 + **Don’t forward cookies to your origin – **CloudFront doesn’t cache your objects based on cookie sent by the viewer\. In addition, CloudFront removes cookies before forwarding requests to your origin, and removes `Set-Cookie` headers from responses before returning responses to your viewers\.
 
 Note the following about specifying the cookies that you want to forward:

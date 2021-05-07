@@ -209,7 +209,7 @@ The relative path of the requested object\. If your Lambda function modifies the
 **`body` \(read/write\)**  
 The body of the HTTP request\. The `body` structure can contain the following fields:    
 **`inputTruncated` \(read\-only\)**  
-A Boolean flag that indicates whether the body was truncated by Lambda@Edge\. For more information, see [Size Quotas on Request Body with the Include Body Option](lambda-requirements-limits.md#lambda-at-the-edge-body-size-limits-lambda-at-edge)\.  
+A Boolean flag that indicates whether the body was truncated by Lambda@Edge\. For more information, see [Size quotas on request body with the include body option](lambda-requirements-limits.md#lambda-at-the-edge-body-size-limits-lambda-at-edge)\.  
 **`action` \(read/write\)**  
 The action that you intend to take with the body\. The options for `action` are the following:  
 + `read-only:` This is the default\. When returning the response from the Lambda function, if `action` is read\-only, Lambda@Edge ignores any changes to `encoding` or `data`\.

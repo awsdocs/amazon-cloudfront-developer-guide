@@ -7,7 +7,7 @@ If you want to create or update a distribution by using the CloudFront API, see 
 **Important**  
 When you update your distribution, be aware that a number of additional fields are required that are not required to create a distribution\. To help make sure that all of the required fields are included when you update your distribution by using the CloudFront API, follow the steps described in the *Amazon CloudFront API Reference*\.
 
-To see the current maximum number of distributions that you can create for each AWS account, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.<a name="CreatingDownloadDistributionsConsoleProcedure"></a>
+To see the current maximum number of distributions that you can create for each AWS account, or to request a higher quota \(formerly known as limit\), see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\.<a name="CreatingDownloadDistributionsConsoleProcedure"></a>
 
 **To create a CloudFront web distribution \(console\)**
 

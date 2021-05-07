@@ -139,10 +139,10 @@ Node\.js versions 8 and 6 have reached end of life\. You can’t create or updat
 
 ## Quotas<a name="lambda-requirements-see-limits"></a>
 
-The quotas in this section apply to Lambda@Edge\. These quotas are in addition to the default CloudFront and Lambda quotas, which also apply\. For the default quotas, see [Quotas](cloudfront-limits.md) in this guide and [Quotas](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*\.
+The quotas in this section apply to Lambda@Edge\. These quotas are in addition to the default CloudFront and Lambda quotas, which also apply\. For the Lambda quotas, see [Quotas](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*\.
 
 **Note**  
-Lambda dynamically scales capacity in response to increased traffic, within your account’s quotas\. For more information, see [Function Scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.
+Lambda dynamically scales capacity in response to increased traffic, within your account’s quotas\. For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.
 
 In addition, be aware that there are some other restrictions when using Lambda@Edge functions\. For more information, see [Requirements and Restrictions on Lambda Functions](#lambda-requirements-limits)\.
 
@@ -161,36 +161,36 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 
 | Entity | Default quota | 
 | --- | --- | 
-| Distributions per AWS account that you can create triggers for |  25 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Triggers per distribution |  100 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Distributions per AWS account that can have Lambda@Edge functions |  25 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Lambda@Edge functions per distribution |  100 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Requests per second  |  10,000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Concurrent executions For more information, see [Function Scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Concurrent executions For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1,000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 
-### Size Quotas on URI and Query String<a name="lambda-at-the-edge-URI-size-limits-lambda-at-edge"></a>
+### Size quotas on URI and query string<a name="lambda-at-the-edge-URI-size-limits-lambda-at-edge"></a>
 
 When accessing or updating a URI or query string in a Lambda@Edge function, the total length of the URI including the query string must be less than 8,192 characters\.
 
-### Size Quotas on Request Body with the Include Body Option<a name="lambda-at-the-edge-body-size-limits-lambda-at-edge"></a>
+### Size quotas on request body with the include body option<a name="lambda-at-the-edge-body-size-limits-lambda-at-edge"></a>
 
 When you choose the **Include Body** option to expose the request body to your Lambda@Edge function, the following size quotas apply to the portions of the body that are exposed or replaced\.
 
 **Note**  
 The body is always base64 encoded by Lambda@Edge before it is exposed\.
 
-#### Size Quotas when Exposing the Body to a Lambda Function<a name="lambda-at-the-edge-exposing-body-size-limits-lambda-at-edge"></a>
+#### Size quotas when exposing the body to a Lambda function<a name="lambda-at-the-edge-exposing-body-size-limits-lambda-at-edge"></a>
 
 If the request body is large, Lambda@Edge truncates it before exposing it, as follows:
 + For viewer requests, the body is truncated at 40 KB\.
 + For origin requests, the body is truncated at 1 MB\.
 
-#### Size Quotas when Returning a Request Body from a Lambda Function<a name="lambda-at-the-edge-returning-body-size-limits-lambda-at-edge"></a>
+#### Size quotas when returning a request body from a Lambda function<a name="lambda-at-the-edge-returning-body-size-limits-lambda-at-edge"></a>
 
 If you access the request body as read\-only, the full original request body is sent to the origin\. However, if you choose to replace the request body, the following body size quotas apply when it’s returned from a Lambda function:
 
 
 ****  
 
-| Type of body encoding | Allowed body size: Viewer request | Allowed body size: Origin request | 
+| Type of body encoding | Allowed body size: viewer request | Allowed body size: origin request | 
 | --- | --- | --- | 
 |  text  |  40 KB  |  1 MB  | 
 |  base64  |  53\.2 KB  |  1\.33 MB  | 

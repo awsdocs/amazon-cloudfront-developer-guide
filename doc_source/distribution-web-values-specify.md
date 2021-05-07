@@ -91,7 +91,7 @@ The following values apply to **Lambda Function Associations**\.
 
 When you create or update a distribution, you provide information about one or more locations—known as origins—where you store the original versions of your web content\. CloudFront gets your web content from your origins and serves it to viewers via a world\-wide network of edge servers\. Each origin is either an Amazon S3 bucket or an HTTP server, for example, a web server\. 
 
-For the current maximum number of origins that you can create for a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of origins that you can create for a distribution, or to request a higher quota \(formerly known as limit\), see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 If you want to delete an origin, you must first edit or delete the cache behaviors that are associated with that origin\. 
 
@@ -325,7 +325,7 @@ When you create a new distribution, you specify settings for the default cache b
 
 When you create a cache behavior, you specify the one origin from which you want CloudFront to get objects\. As a result, if you want CloudFront to distribute objects from all of your origins, you must have at least as many cache behaviors \(including the default cache behavior\) as you have origins\. For example, if you have two origins and only the default cache behavior, the default cache behavior causes CloudFront to get objects from one of the origins, but the other origin is never used\.
 
-For the current maximum number of cache behaviors that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of cache behaviors that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 ### Path Pattern<a name="DownloadDistValuesPathPattern"></a>
 
@@ -428,7 +428,7 @@ For more information about how to configure caching in CloudFront by using reque
 
 Specify the headers that you want CloudFront to consider when caching your objects\. Select headers from the list of available headers and choose **Add**\. To forward a custom header, enter the name of the header in the field, and choose **Add Custom**\.
 
-For the current maximum number of headers that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Custom Headers](cloudfront-limits.md#limits-custom-headers)\.
+For the current maximum number of headers that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on headers](cloudfront-limits.md#limits-custom-headers)\.
 
 ### Object Caching<a name="DownloadDistValuesObjectCaching"></a>
 
@@ -490,7 +490,7 @@ Where each of your users has a unique value for *member\-number*\. You want Clou
 
 `userid_*`
 
-For the current maximum number of cookie names that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on Whitelisted Cookies](cloudfront-limits.md#limits-whitelisted-cookies)\.
+For the current maximum number of cookie names that you can whitelist for each cache behavior, or to request a higher quota \(formerly known as limit\), see [Quotas on cookies \(legacy cache settings\)](cloudfront-limits.md#limits-whitelisted-cookies)\.
 
 ### Query String Forwarding and Caching<a name="DownloadDistValuesQueryString"></a>
 
@@ -607,7 +607,7 @@ Create \(or update\) a CNAME record with your DNS service to route queries for `
 Add a certificate to CloudFront from a trusted certificate authority \(CA\) that covers the domain name \(CNAME\) that you add to your distribution, to validate your authorization to use the domain name\.
 You must have permission to create a CNAME record with the DNS service provider for the domain\. Typically, this means that you own the domain, or that you're developing an application for the domain owner\.
 
-For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\.
+For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\.
 
 For more information about alternate domain names, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 

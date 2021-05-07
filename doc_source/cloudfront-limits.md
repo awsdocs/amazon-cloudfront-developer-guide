@@ -1,23 +1,23 @@
 # Quotas<a name="cloudfront-limits"></a>
 
-CloudFront is subject to the following quotas \(formerly referred to as limits\)\. Note that Lambda@Edge has specific quotas as well, that are in addition to the default CloudFront quotas\.
+CloudFront is subject to the following quotas \(formerly referred to as limits\)\.
 
 **Topics**
-+ [General Quotas](#limits-general)
-+ [General Quotas on Distributions](#limits-web-distributions)
-+ [General Quotas on Policies](#limits-policies)
-+ [Quotas on WebSocket Connections](#limits-websockets)
-+ [Quotas on Whitelisted Cookies](#limits-whitelisted-cookies)
-+ [Quotas on Whitelisted Query Strings \(Web Distributions Only\)](#limits-whitelisted-query-strings)
-+ [Quotas on Custom Headers](#limits-custom-headers)
-+ [Quotas on SSL Certificates](#limits-ssl-certificates)
-+ [Quotas on Invalidations](#limits-invalidations)
-+ [Quotas on key groups](#limits-key-groups)
-+ [Quotas on Field\-Level Encryption](#limits-field-level-encryption)
++ [General quotas](#limits-general)
++ [General quotas on distributions](#limits-web-distributions)
++ [General quotas on policies](#limits-policies)
++ [Quotas on CloudFront Functions](#limits-functions)
 + [Quotas on Lambda@Edge](#limits-lambda-at-edge)
-+ [Request Timeout](#limits-request-timeout)
++ [Quotas on SSL certificates](#limits-ssl-certificates)
++ [Quotas on invalidations](#limits-invalidations)
++ [Quotas on key groups](#limits-key-groups)
++ [Quotas on WebSocket connections](#limits-websockets)
++ [Quotas on field\-level encryption](#limits-field-level-encryption)
++ [Quotas on cookies \(legacy cache settings\)](#limits-whitelisted-cookies)
++ [Quotas on query strings \(legacy cache settings\)](#limits-whitelisted-query-strings)
++ [Quotas on headers](#limits-custom-headers)
 
-## General Quotas<a name="limits-general"></a>
+## General quotas<a name="limits-general"></a>
 
 
 ****  
@@ -31,7 +31,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Maximum length of a request, including headers and query strings, but not including the body content | 20,480 bytes | 
 | Maximum length of a URL | 8,192 bytes | 
 
-## General Quotas on Distributions<a name="limits-web-distributions"></a>
+## General quotas on distributions<a name="limits-web-distributions"></a>
 
 
 ****  
@@ -39,7 +39,8 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Entity | Default quota | 
 | --- | --- | 
 | Distributions per AWS account For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Maximum file size for HTTP GET, POST, and PUT requests | 20 GB | 
+| Maximum cacheable file size for HTTP GET, POST, and PUT requests | 30 GB | 
+|  Request timeout For more information, see [Origin Response Timeout](RequestAndResponseBehaviorCustomOrigin.md#request-custom-request-timeout)\.  |  30 seconds [ Request a higher quota](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
 | Response timeout per origin For more information, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 1\-60 seconds [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Connection timeout per origin For more information, see [Origin Connection Timeout](distribution-web-values-specify.md#origin-connection-timeout)\.  |  1\-10 seconds  | 
 |  Connection attempts per origin For more information, see [Origin Connection Attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  |  1\-3  | 
@@ -50,7 +51,7 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 |  Origin access identities per account  |  100 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Cache behaviors per distribution | 25 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
-## General Quotas on Policies<a name="limits-policies"></a>
+## General quotas on policies<a name="limits-policies"></a>
 
 
 ****  
@@ -68,103 +69,23 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 |  Headers per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Cookies per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
-## Quotas on WebSocket Connections<a name="limits-websockets"></a>
+## Quotas on CloudFront Functions<a name="limits-functions"></a>
 
 
 ****  
 
-| Entity | Default quota | 
+|  Entity  |  Default quota  | 
 | --- | --- | 
-| Origin response timeout \(idle timeout\) | 10 minutes If CloudFront hasn’t detected any bytes sent from the origin to the client within the past 10 minutes, the connection is assumed to be idle and is closed\. | 
-
-## Quotas on Whitelisted Cookies<a name="limits-whitelisted-cookies"></a>
-
-
-****  
-
-| Entity | Default quota | 
-| --- | --- | 
-| Whitelisted cookies per cache behavior For more information, see [Caching content based on cookies](Cookies.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Total number of bytes in whitelisted cookie names \(doesn’t apply if you configure CloudFront to forward all cookies to the origin\) | 512 minus the number of whitelisted cookies | 
-
-## Quotas on Whitelisted Query Strings \(Web Distributions Only\)<a name="limits-whitelisted-query-strings"></a>
-
-
-****  
-
-| Entity | Default quota | 
-| --- | --- | 
-| Maximum number of characters in a whitelisted query string  | 128 characters  | 
-| Maximum number of characters total for all whitelisted query strings in the same parameter  | 512 characters  | 
-| Whitelisted query strings per cache behavior For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-
-## Quotas on Custom Headers<a name="limits-custom-headers"></a>
-
-
-****  
-
-| Entity | Default quota | 
-| --- | --- | 
-| Whitelisted headers per cache behavior For more information, see [Caching content based on request headers](header-caching.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Custom headers: maximum number of custom headers that you can configure CloudFront to add to origin requests For more information, see [Adding custom headers to origin requests](add-origin-custom-headers.md)\.  | 10 name/value pairs [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Custom headers: maximum length of a header name | 256 characters | 
-| Custom headers: maximum length of a header value | 1,783 characters | 
-| Custom headers: maximum length of all header values and names combined | 10,240 characters | 
-
-## Quotas on SSL Certificates<a name="limits-ssl-certificates"></a>
-
-
-****  
-
-| Entity | Default quota | 
-| --- | --- | 
-| SSL certificates per AWS account when serving HTTPS requests using dedicated IP addresses \(no quota when serving HTTPS requests using SNI\) For more information, see [Using HTTPS with CloudFront](using-https.md)\.  | 2 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| SSL certificates that can be associated with a CloudFront distribution | 1 | 
-
-## Quotas on Invalidations<a name="limits-invalidations"></a>
-
-
-****  
-
-| Entity | Default quota | 
-| --- | --- | 
-| File invalidation: maximum number of files allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  | 3,000 | 
-| File invalidation: maximum number of active wildcard invalidations allowed | 15 | 
-| File invalidation: maximum number of files that one wildcard invalidation can process | No quota | 
-
-## Quotas on key groups<a name="limits-key-groups"></a>
-
-
-| Entity | Default quota | 
-| --- | --- | 
-|  Public keys in a single key group  |  5 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-|  Key groups associated with a single cache behavior  | 4[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
-|  Key groups per AWS account  | 10[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
-|  Distributions associated with a single key group  | 100[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
-
-## Quotas on Field\-Level Encryption<a name="limits-field-level-encryption"></a>
-
-
-****  
-
-| Entity | Default quota | 
-| --- | --- | 
-| Maximum length of a field to encrypt For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.  | 16 KB | 
-| Maximum number of fields in a request body when field\-level encryption is configured | 10 | 
-| Maximum length of a request body when field\-level encryption is configured | 1 MB | 
-| Maximum number of field\-level encryption configurations that can be associated with one AWS account | 10 | 
-| Maximum number of field\-level encryption profiles that can be associated with one AWS account | 10 | 
-| Maximum number of public keys that can be added to one AWS account | 10 | 
-| Maximum number of fields to encrypt that can be specified in one profile | 10 | 
-| Maximum number of CloudFront distributions that can be associated with a field\-level encryption configuration | 20 | 
-| Maximum number of query argument profile mappings that can be included in a field\-level encryption configuration | 5 | 
+|  Functions per AWS account  |  100  | 
+|  Maximum function size  |  10 KB  | 
+|  Maximum function memory  |  2 MB  | 
 
 ## Quotas on Lambda@Edge<a name="limits-lambda-at-edge"></a>
 
-The quotas in this section apply to Lambda@Edge\. These quotas are in addition to the default CloudFront and Lambda quotas, which also apply\. For the default quotas, see [Quotas](#cloudfront-limits) in this guide and [Quotas](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*\.
+The quotas in this section apply to Lambda@Edge\. These quotas are in addition to the default CloudFront and Lambda quotas, which also apply\. For the Lambda quotas, see [Quotas](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*\.
 
 **Note**  
-Lambda dynamically scales capacity in response to increased traffic, within your account’s quotas\. For more information, see [Function Scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.
+Lambda dynamically scales capacity in response to increased traffic, within your account’s quotas\. For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.
 
 In addition, be aware that there are some other restrictions when using Lambda@Edge functions\. For more information, see [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)\.
 
@@ -183,45 +104,131 @@ In addition, be aware that there are some other restrictions when using Lambda@E
 
 | Entity | Default quota | 
 | --- | --- | 
-| Distributions per AWS account that you can create triggers for |  25 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Triggers per distribution |  100 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Distributions per AWS account that can have Lambda@Edge functions |  25 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Lambda@Edge functions per distribution |  100 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 | Requests per second  |  10,000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-| Concurrent executions For more information, see [Function Scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+| Concurrent executions For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1,000 \(in each Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 
-### Size Quotas on URI and Query String<a name="limits-URI-size-limits-lambda-at-edge"></a>
+### Size quotas on URI and query string<a name="limits-URI-size-limits-lambda-at-edge"></a>
 
 When accessing or updating a URI or query string in a Lambda@Edge function, the total length of the URI including the query string must be less than 8,192 characters\.
 
-### Size Quotas on Request Body with the Include Body Option<a name="limits-body-size-limits-lambda-at-edge"></a>
+### Size quotas on request body with the include body option<a name="limits-body-size-limits-lambda-at-edge"></a>
 
 When you choose the **Include Body** option to expose the request body to your Lambda@Edge function, the following size quotas apply to the portions of the body that are exposed or replaced\.
 
 **Note**  
 The body is always base64 encoded by Lambda@Edge before it is exposed\.
 
-#### Size Quotas when Exposing the Body to a Lambda Function<a name="limits-exposing-body-size-limits-lambda-at-edge"></a>
+#### Size quotas when exposing the body to a Lambda function<a name="limits-exposing-body-size-limits-lambda-at-edge"></a>
 
 If the request body is large, Lambda@Edge truncates it before exposing it, as follows:
 + For viewer requests, the body is truncated at 40 KB\.
 + For origin requests, the body is truncated at 1 MB\.
 
-#### Size Quotas when Returning a Request Body from a Lambda Function<a name="limits-returning-body-size-limits-lambda-at-edge"></a>
+#### Size quotas when returning a request body from a Lambda function<a name="limits-returning-body-size-limits-lambda-at-edge"></a>
 
 If you access the request body as read\-only, the full original request body is sent to the origin\. However, if you choose to replace the request body, the following body size quotas apply when it’s returned from a Lambda function:
 
 
 ****  
 
-| Type of body encoding | Allowed body size: Viewer request | Allowed body size: Origin request | 
+| Type of body encoding | Allowed body size: viewer request | Allowed body size: origin request | 
 | --- | --- | --- | 
 |  text  |  40 KB  |  1 MB  | 
 |  base64  |  53\.2 KB  |  1\.33 MB  | 
 
-## Request Timeout<a name="limits-request-timeout"></a>
+## Quotas on SSL certificates<a name="limits-ssl-certificates"></a>
 
 
 ****  
 
 | Entity | Default quota | 
 | --- | --- | 
-| Request timeout For more information, see [Origin Response Timeout](RequestAndResponseBehaviorCustomOrigin.md#request-custom-request-timeout)\.  |  30 seconds [ Request a higher quota](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
+|  SSL certificates per AWS account when serving HTTPS requests using dedicated IP addresses \(no quota when serving HTTPS requests using SNI\) For more information, see [Using HTTPS with CloudFront](using-https.md)\.  |  2 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  SSL certificates that can be associated with a CloudFront distribution  |  1  | 
+
+## Quotas on invalidations<a name="limits-invalidations"></a>
+
+
+****  
+
+| Entity | Default quota | 
+| --- | --- | 
+|  File invalidation: maximum number of files allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  |  3,000  | 
+|  File invalidation: maximum number of active wildcard invalidations allowed  |  15  | 
+|  File invalidation: maximum number of files that one wildcard invalidation can process  |  No quota  | 
+
+## Quotas on key groups<a name="limits-key-groups"></a>
+
+
+| Entity | Default quota | 
+| --- | --- | 
+|  Public keys in a single key group  |  5 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Key groups associated with a single cache behavior  | 4[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
+|  Key groups per AWS account  | 10[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
+|  Distributions associated with a single key group  | 100[Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
+
+## Quotas on WebSocket connections<a name="limits-websockets"></a>
+
+
+****  
+
+| Entity | Default quota | 
+| --- | --- | 
+| Origin response timeout \(idle timeout\) | 10 minutes If CloudFront hasn’t detected any bytes sent from the origin to the client within the past 10 minutes, the connection is assumed to be idle and is closed\. | 
+
+## Quotas on field\-level encryption<a name="limits-field-level-encryption"></a>
+
+
+****  
+
+| Entity | Default quota | 
+| --- | --- | 
+|  Maximum length of a field to encrypt For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.  |  16 KB  | 
+|  Maximum number of fields in a request body when field\-level encryption is configured  |  10  | 
+|  Maximum length of a request body when field\-level encryption is configured  |  1 MB  | 
+|  Maximum number of field\-level encryption configurations that can be associated with one AWS account  |  10  | 
+|  Maximum number of field\-level encryption profiles that can be associated with one AWS account  |  10  | 
+|  Maximum number of public keys that can be added to one AWS account  |  10  | 
+|  Maximum number of fields to encrypt that can be specified in one profile  |  10  | 
+|  Maximum number of CloudFront distributions that can be associated with a field\-level encryption configuration  |  20  | 
+|  Maximum number of query argument profile mappings that can be included in a field\-level encryption configuration  |  5  | 
+
+## Quotas on cookies \(legacy cache settings\)<a name="limits-whitelisted-cookies"></a>
+
+These quotas apply to CloudFront’s legacy cache settings\. We recommend using a [cache policy or origin request policy](working-with-policies.md) instead of the legacy settings\.
+
+
+****  
+
+| Entity | Default quota | 
+| --- | --- | 
+| Cookies per cache behavior For more information, see [Caching content based on cookies](Cookies.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Total number of bytes in cookie names \(doesn’t apply if you configure CloudFront to forward all cookies to the origin\) | 512 minus the number of cookies | 
+
+## Quotas on query strings \(legacy cache settings\)<a name="limits-whitelisted-query-strings"></a>
+
+These quotas apply to CloudFront’s legacy cache settings\. We recommend using a [cache policy or origin request policy](working-with-policies.md) instead of the legacy settings\.
+
+
+****  
+
+| Entity | Default quota | 
+| --- | --- | 
+| Maximum number of characters in a query string  | 128 characters  | 
+| Maximum number of characters total for all query strings in the same parameter  | 512 characters  | 
+| Query strings per cache behavior For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+
+## Quotas on headers<a name="limits-custom-headers"></a>
+
+
+****  
+
+| Entity | Default quota | 
+| --- | --- | 
+| Headers per cache behavior \(legacy cache settings\) For more information, see [Caching content based on request headers](header-caching.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Custom headers: maximum number of custom headers that you can configure CloudFront to add to origin requests For more information, see [Adding custom headers to origin requests](add-origin-custom-headers.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Custom headers: maximum length of a header name | 256 characters | 
+| Custom headers: maximum length of a header value | 1,783 characters | 
+| Custom headers: maximum length of all header values and names combined | 10,240 characters | 

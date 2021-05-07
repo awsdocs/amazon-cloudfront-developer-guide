@@ -9,7 +9,7 @@ When you want to use CloudFront to distribute your content, you create a distrib
 + Geo\-restrictions—whether you want CloudFront to prevent users in selected countries from accessing your content\.
 + Access logs—whether you want CloudFront to create access logs that show viewer activity\.
 
-For the current maximum number of distributions that you can create for each AWS account, see [General Quotas on Distributions](cloudfront-limits.md#limits-web-distributions)\. There is no maximum number of files that you can serve per distribution\.
+For the current maximum number of distributions that you can create for each AWS account, see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\. There is no maximum number of files that you can serve per distribution\.
 
 You can use distributions to serve the following content over HTTP or HTTPS:
 + Static and dynamic download content, for example, \.html, \.css, \.js, and image files, using HTTP or HTTPS\.

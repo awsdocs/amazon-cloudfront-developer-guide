@@ -355,7 +355,7 @@ The log file for a distribution contains 33 fields\. The following list contains
    + `RejectedByQueryArgs` – The server rejected the request and returned an HTTP 400 status code to the viewer because no query argument was specified in the configuration for field\-level encryption\.
    + `ServerError` – The origin server returned an error\.
 
-   If the request exceeds a field\-level encryption quota \(formerly referred to as a limit\), this field contains one of the following error codes, and the server returns HTTP status code 400 to the viewer\. For a list of the current quotas on field\-level encryption, see [Quotas on Field\-Level Encryption](cloudfront-limits.md#limits-field-level-encryption)\.
+   If the request exceeds a field\-level encryption quota \(formerly referred to as a limit\), this field contains one of the following error codes, and the server returns HTTP status code 400 to the viewer\. For a list of the current quotas on field\-level encryption, see [Quotas on field\-level encryption](cloudfront-limits.md#limits-field-level-encryption)\.
    + `FieldLengthLimitClientError` – A field that is configured to be encrypted exceeded the maximum length allowed\.
    + `FieldNumberLimitClientError` – A request that the distribution is configured to encrypt contains more than the number of fields allowed\.
    + `RequestLengthLimitClientError` – The length of the request body exceeded the maximum length allowed when field\-level encryption is configured\.
