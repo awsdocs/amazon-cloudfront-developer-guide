@@ -353,7 +353,7 @@ CloudFront removes or updates the following header fields before forwarding the 
 
 ### Maximum File Size<a name="ResponseCustomMaxFileSize"></a>
 
-The maximum size of a response body that CloudFront will return to the viewer is 20 GB\. This includes chunked transfer responses that don't specify the `Content-Length` header value\.
+The maximum size of a response body that CloudFront will return to the viewer is 30 GB\. This includes chunked transfer responses that don't specify the `Content-Length` header value\.
 
 ### Origin Unavailable<a name="ResponseCustomOriginUnavailable"></a>
 
