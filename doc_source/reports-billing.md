@@ -36,7 +36,7 @@ You can also download a more detailed version of the report in CSV format\. The 
 
 **To display summary billing information and download the detailed billing report**
 
-1. Sign in to the AWS Management Console at [https://console\.aws\.amazon\.com/console/home](https://console.aws.amazon.com/console/home)\.
+1. Sign in to the AWS Management Console at [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)\.
 
 1. In the title bar, click your IAM user name, and click **Billing & Cost Management**\.
 
@@ -70,7 +70,7 @@ For detailed information about every request that CloudFront receives for your o
 
 **To download the usage report for CloudFront or Amazon S3**
 
-1. Sign in to the AWS Management Console at [https://console\.aws\.amazon\.com/console/home](https://console.aws.amazon.com/console/home)\.
+1. Sign in to the AWS Management Console at [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)\.
 
 1. In the title bar, click your IAM user name, and click **Billing & Cost Management**\.
 
