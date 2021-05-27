@@ -134,13 +134,19 @@ The number of times the function was started \(invoked\) in a given time period\
 
 **Validation errors**  
 The number of validation errors produced by the function in a given time period\. Validation errors occur when the function runs successfully but returns invalid data \(an invalid event object\)\.  
-+ Metric name: `ValidationErrors`
++ Metric name: `LambdaValidationError`
 + Valid statistic: `Sum`
 + Unit: `None`
 
 **Execution errors**  
 The number of execution errors that occurred in a given time period\. Execution errors occur when the function fails to complete successfully\.  
-+ Metric name: `ExecutionErrors`
++ Metric name: `LambdaExecutionError`
++ Valid statistic: `Sum`
++ Unit: `None`
+
+**Limit exceeded errors**  
+The number of execution errors that occured because limit was exceeded\. This can happen due to concurrent execution quotas, invocation frequency quotas, or a timeout quota\. See also [Lambda Limit Exceeded](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/http-503-lambda-limit-execeeded-error.html)\.  
++ Metric name: `LambdaLimitExceededErrors`
 + Valid statistic: `Sum`
 + Unit: `None`
 
