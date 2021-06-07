@@ -8,4 +8,4 @@ To find the IP address ranges that are associated with CloudFront edge servers, 
 
 `"service": "CLOUDFRONT"`
 
-Alternatively, you can view only the CloudFront IP ranges [here](http://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips)\.
+Alternatively, you can view only the CloudFront IP ranges [here](https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips)\.
