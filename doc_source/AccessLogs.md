@@ -49,10 +49,10 @@ When you enable logging for a distribution, you specify the Amazon S3 bucket tha
 
 **Note**  
 Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver access logs to buckets in these Regions:  
-Africa \(Cape Town\)  af\-south\-1
-Asia Pacific \(Hong Kong\)  ap\-east\-1
-Europe \(Milan\)  eu\-south\-1
-Middle East \(Bahrain\)  me\-south\-1
+Africa \(Cape Town\) af\-south\-1
+Asia Pacific \(Hong Kong\) ap\-east\-1
+Europe \(Milan\) eu\-south\-1
+Middle East \(Bahrain\) me\-south\-1
 The [Amazon S3 console](https://console.aws.amazon.com/s3/home) shows the bucket’s Region\.
 
 You can store the log files for multiple distributions in the same bucket\. When you enable logging, you can specify an optional prefix for the file names, so you can keep track of which log files are associated with which distributions\.
