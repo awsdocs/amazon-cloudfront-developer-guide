@@ -1,8 +1,5 @@
 # Requiring HTTPS for Communication Between Viewers and CloudFront<a name="using-https-viewers-to-cloudfront"></a>
 
-**Important**  
-Reminder: Amazon CloudFront is migrating the `*.cloudfront.net` certificate from DigiCert to Amazon Trust Services starting March 23rd, 2021\. This change does not impact workloads that use HTTP only or use HTTPS with a custom domain name such as `example.com`\. If you use a default CloudFront endpoint such as `d111111abcdef8.cloudfront.net` to serve HTTPS traffic, please [read the announcement](http://forums.aws.amazon.com/ann.jspa?annID=7541)\.
-
 You can configure one or more cache behaviors in your CloudFront distribution to require HTTPS for communication between viewers and CloudFront\. You also can configure one or more cache behaviors to allow both HTTP and HTTPS, so that CloudFront requires HTTPS for some objects but not for others\. The configuration steps depend on which domain name you're using in object URLs:
 + If you're using the domain name that CloudFront assigned to your distribution, such as d111111abcdef8\.cloudfront\.net, you change the **Viewer Protocol Policy** setting for one or more cache behaviors to require HTTPS communication\. In that configuration, CloudFront provides the SSL/TLS certificate\. 
 
