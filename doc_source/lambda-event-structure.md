@@ -192,7 +192,7 @@ The headers in the request\. Note the following:
   ```
 
   In this example, Lambda@Edge automatically inserts `"key": "User-Agent"`\.
-For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\.
+For information about restrictions on header usage, see [Restrictions on edge functions](edge-functions-restrictions.md)\.
 
 **`method` \(read\-only\)**  
 The HTTP method of the request\.
@@ -209,7 +209,7 @@ The relative path of the requested object\. If your Lambda function modifies the
 **`body` \(read/write\)**  
 The body of the HTTP request\. The `body` structure can contain the following fields:    
 **`inputTruncated` \(read\-only\)**  
-A Boolean flag that indicates whether the body was truncated by Lambda@Edge\. For more information, see [Size quotas on request body with the include body option](lambda-requirements-limits.md#lambda-at-the-edge-body-size-limits-lambda-at-edge)\.  
+A Boolean flag that indicates whether the body was truncated by Lambda@Edge\. For more information, see [Restrictions on the request body with the include body option](edge-functions-restrictions.md#lambda-at-edge-restrictions-request-body)\.  
 **`action` \(read/write\)**  
 The action that you intend to take with the body\. The options for `action` are the following:  
 + `read-only:` This is the default\. When returning the response from the Lambda function, if `action` is read\-only, Lambda@Edge ignores any changes to `encoding` or `data`\.
@@ -222,7 +222,7 @@ The request body content\.
 **`origin` \(read/write\) \(origin events only\)**  
 The origin to send the request to\. The `origin` structure must contain exactly one origin, which can be a custom origin or an Amazon S3 origin\. The origin structure can contain the following fields:    
 **`customHeaders` \(read/write\) \(custom and Amazon S3 origins\)**  
-You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can’t add headers that are blacklisted, and a header with the same name can’t be present in `Records.cf.request.headers`\. The [notes about request headers](#request-event-fields-request-headers) also apply to custom headers\. For more information, see [Custom headers that CloudFront can’t add to origin requests](add-origin-custom-headers.md#add-origin-custom-headers-denylist) and [Blacklisted Headers](lambda-requirements-limits.md#lambda-blacklisted-headers)\.  
+You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can’t add headers that are disallowed, and a header with the same name can’t be present in `Records.cf.request.headers`\. The [notes about request headers](#request-event-fields-request-headers) also apply to custom headers\. For more information, see [Custom headers that CloudFront can’t add to origin requests](add-origin-custom-headers.md#add-origin-custom-headers-denylist) and [Restrictions on edge functions](edge-functions-restrictions.md)\.  
 **`domainName` \(read/write\) \(custom and Amazon S3 origins\)**  
 The domain name of the origin\. The domain name can’t be empty\.  
 + **For custom origins** – Specify a DNS domain name, such as `www.example.com`\. The domain name can’t include a colon \(:\), and can’t be an IP address\. The domain name can be up to 253 characters\.
@@ -559,7 +559,7 @@ The headers in the response\. Note the following:
   ```
 
   In this example, Lambda@Edge automatically inserts `"key": "Content-Type"`\.
-For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\.
+For information about restrictions on header usage, see [Restrictions on edge functions](edge-functions-restrictions.md)\.
 
 **`status`**  
 The HTTP status code of the response\.

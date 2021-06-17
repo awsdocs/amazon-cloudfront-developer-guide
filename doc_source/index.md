@@ -179,7 +179,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Updating HTTP Responses in Origin-Response Triggers](lambda-updating-http-responses.md)
          + [Accessing the Request Body by Choosing the Include Body Option](lambda-include-body-access.md)
       + [Lambda@Edge Example Functions](lambda-examples.md)
-      + [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)
+   + [Restrictions on edge functions](edge-functions-restrictions.md)
 + [Reports, Metrics, and Logs](reports-and-monitoring.md)
    + [AWS Billing and Usage Reports for CloudFront](reports-billing.md)
       + [Interpreting Your AWS Bill and the AWS Usage Report for CloudFront](billing-and-usage-interpreting.md)

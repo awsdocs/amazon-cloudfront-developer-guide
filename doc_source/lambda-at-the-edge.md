@@ -29,4 +29,3 @@ For sample code and additional examples, see [Lambda@Edge Example Functions](lam
 + [Lambda@Edge Event Structure](lambda-event-structure.md)
 + [Working with Requests and Responses](lambda-generating-http-responses.md)
 + [Lambda@Edge Example Functions](lambda-examples.md)
-+ [Requirements and Restrictions on Lambda Functions](lambda-requirements-limits.md)

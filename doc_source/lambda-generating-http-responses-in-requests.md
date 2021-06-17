@@ -70,7 +70,7 @@ Headers that you want CloudFront to return in the generated response\. Note the 
   For example, you can add a header like the following, without a header key: `'content-type': [{ value: 'text/html;charset=UTF-8' }]`
 
   In this example, Lambda@Edge creates the following header key: `Content-Type`\.
-For information about restrictions on header usage, see [Headers](lambda-requirements-limits.md#lambda-header-restrictions)\. 
+For information about restrictions on header usage, see [Restrictions on edge functions](edge-functions-restrictions.md)\.
 
 **`status`**  
 The HTTP status code that you want CloudFront to use for the following:  
