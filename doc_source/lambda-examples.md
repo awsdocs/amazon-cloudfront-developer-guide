@@ -1215,7 +1215,7 @@ if (randomNumber <= BLUE_TRAFFIC_PERCENTAGE) {
      if randomNumber <= BLUE_TRAFFIC_PERCENTAGE:
          domainName = 'blue-bucket.s3.amazonaws.com'
          request['origin']['s3']['domainName'] = domainName
-         request['heaaders']['host'] = [{'key': 'host', 'value': domainName}]
+         request['headers']['host'] = [{'key': 'host', 'value': domainName}]
  
      return request
 ```

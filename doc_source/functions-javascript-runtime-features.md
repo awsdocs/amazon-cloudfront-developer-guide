@@ -206,7 +206,7 @@ All ES 5\.1 JSON features are supported, including `parse` and `stringify`\.
 **Array**  
 The following ES 5\.1 methods on arrays are supported:  
 + `isArray`
-+ `prototype.oncat`
++ `prototype.concat`
 + `prototype.every`
 + `prototype.filter`
 + `prototype.forEach`
@@ -306,7 +306,7 @@ The following ES 5\.1 global functions are supported:
 + `parseFloat`
 + `parseInt`
 
-The following global constraints are supported:
+The following global constants are supported:
 + `NaN`
 + `Infinity`
 + `undefined`
