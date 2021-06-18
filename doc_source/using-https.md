@@ -1,18 +1,18 @@
 # Using HTTPS with CloudFront<a name="using-https"></a>
 
-You can configure CloudFront to require that viewers use HTTPS to request your objects, so that connections are encrypted when CloudFront communicates with viewers\. You also can configure CloudFront to use HTTPS to get objects from your origin, so that connections are encrypted when CloudFront communicates with your origin\.
+You can configure CloudFront to require that viewers use HTTPS so that connections are encrypted when CloudFront communicates with viewers\. You also can configure CloudFront to use HTTPS with your origin so that connections are encrypted when CloudFront communicates with your origin\.
 
-If you configure CloudFront to require HTTPS both to communicate with viewers and to communicate with your origin, here's what happens when CloudFront receives a request for an object:
+If you configure CloudFront to require HTTPS both to communicate with viewers and to communicate with your origin, here’s what happens when CloudFront receives a request:
 
-1. A viewer submits an HTTPS request to CloudFront\. There's some SSL/TLS negotiation here between the viewer and CloudFront\. In the end, the viewer submits the request in an encrypted format\.
+1. A viewer submits an HTTPS request to CloudFront\. There’s some SSL/TLS negotiation here between the viewer and CloudFront\. In the end, the viewer submits the request in an encrypted format\.
 
-1. If the object is in the CloudFront edge cache, CloudFront encrypts the response and returns it to the viewer, and the viewer decrypts it\.
+1. If the CloudFront edge location contains a cached response, CloudFront encrypts the response and returns it to the viewer, and the viewer decrypts it\.
 
-1. If the object is not in the CloudFront cache, CloudFront performs SSL/TLS negotiation with your origin and, when the negotiation is complete, forwards the request to your origin in an encrypted format\.
+1. If the CloudFront edge location doesn’t contain a cached response, CloudFront performs SSL/TLS negotiation with your origin and, when the negotiation is complete, forwards the request to your origin in an encrypted format\.
 
-1. Your origin decrypts the request, encrypts the requested object, and returns the object to CloudFront\.
+1. Your origin decrypts the request, processes it \(generates a response\), encrypts the response, and returns the response to CloudFront\.
 
-1. CloudFront decrypts the response, re\-encrypts it, and forwards the object to the viewer\. CloudFront also saves the object in the edge cache so that the object is available the next time it's requested\.
+1. CloudFront decrypts the response, re\-encrypts it, and forwards it to the viewer\. CloudFront also caches the response in the edge location so that it’s available the next time it’s requested\.
 
 1. The viewer decrypts the response\.
 
