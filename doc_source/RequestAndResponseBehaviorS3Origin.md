@@ -185,7 +185,7 @@ The maximum size of a response body that CloudFront will return to the viewer is
 You can configure an Amazon S3 bucket to redirect all requests to another host name; this can be another Amazon S3 bucket or an HTTP server\. If you configure a bucket to redirect all requests and if the bucket is the origin for a CloudFront distribution, we recommend that you configure the bucket to redirect all requests to a CloudFront distribution using either the domain name for the distribution \(for example, d111111abcdef8\.cloudfront\.net\) or an alternate domain name \(a CNAME\) that is associated with a distribution \(for example, example\.com\)\. Otherwise, viewer requests bypass CloudFront, and the objects are served directly from the new origin\.
 
 **Note**  
-If you redirect requests to an alternate domain name, you must also update the DNS service for your domain by adding a CNAME record\. For more information, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+If you redirect requests to an alternate domain name, you must also update the DNS service for your domain by adding a CNAME record\. For more information, see [Using custom URLs by adding alternate domain names \(CNAMEs\)](CNAMEs.md)\.
 
 Here's what happens when you configure a bucket to redirect all requests:
 

@@ -385,7 +385,7 @@ Choose the protocol policy that you want viewers to use to access your content i
 + **Redirect HTTP to HTTPS**: Viewers can use both protocols, but HTTP requests are automatically redirected to HTTPS requests\.
 + **HTTPS Only**: Viewers can only access your content if they're using HTTPS\.
 
-For more information, see [ Requiring HTTPS for Communication Between Viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
+For more information, see [Requiring HTTPS for communication between viewers and CloudFront](using-https-viewers-to-cloudfront.md)\.
 
 ### Allowed HTTP Methods<a name="DownloadDistValuesAllowedHTTPMethods"></a>
 
@@ -609,14 +609,14 @@ You must have permission to create a CNAME record with the DNS service provider 
 
 For the current maximum number of alternate domain names that you can add to a distribution, or to request a higher quota \(formerly known as limit\), see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\.
 
-For more information about alternate domain names, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
+For more information about alternate domain names, see [Using custom URLs by adding alternate domain names \(CNAMEs\)](CNAMEs.md)\. For more information about CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
 
 ### SSL Certificate<a name="DownloadDistValuesSSLCertificate"></a>
 
 If you specified an alternate domain name to use with your distribution, choose **Custom SSL Certificate**, and then, to validate your authorization to use the alternate domain name, choose a certificate that covers it\. If you want viewers to use HTTPS to access your objects, choose the settings that support that\. 
 
 **Note**  
-Before you can specify a custom SSL certificate, you must specify a valid alternate domain name\. For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements) and [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+Before you can specify a custom SSL certificate, you must specify a valid alternate domain name\. For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements) and [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
 + **Default CloudFront Certificate \(\*\.cloudfront\.net\)** – Choose this option if you want to use the CloudFront domain name in the URLs for your objects, such as `https://d111111abcdef8.cloudfront.net/image1.jpg`\. 
 + **Custom SSL Certificate** – Choose this option if you want to use your own domain name in the URLs for your objects as an alternate domain name, such as `https://example.com/image1.jpg`\. Then choose a certificate to use that covers the alternate domain name\. The list of certificates can include any of the following:
   + Certificates provided by AWS Certificate Manager

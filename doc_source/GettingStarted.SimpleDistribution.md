@@ -119,4 +119,4 @@ When you upload new content to your S3 bucket, you can access the content throug
 
 `https://d111111abcdef8.cloudfront.net/new-page.html`
 
-You have successfully configured CloudFront to serve your website’s content that’s stored in Amazon S3\. If you want to go a step further, you can configure your CloudFront distribution to use a custom domain name \(for example, `www.example.com` instead of `d111111abcdef8.cloudfront.net`\)\. For more information, see [Using Custom URLs](CNAMEs.md)\.
+You have successfully configured CloudFront to serve your website’s content that’s stored in Amazon S3\. If you want to go a step further, you can configure your CloudFront distribution to use a custom domain name \(for example, `www.example.com` instead of `d111111abcdef8.cloudfront.net`\)\. For more information, see [Using custom URLs](CNAMEs.md)\.

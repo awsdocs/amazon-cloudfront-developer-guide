@@ -109,7 +109,7 @@ When you're using a custom origin, the SSL/TLS certificate on your origin includ
 
 **Important**  
 When you add an alternate domain name to a distribution, CloudFront checks that the alternate domain name is covered by the certificate that you've attached\. The certificate must cover the alternate domain name in the subject alternate name \(SAN\) field of the certificate\. This means the SAN field must contain an exact match for the alternate domain name, or contain a wildcard at the same level of the alternate domain name that you're adding\.  
-For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
+For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements)\.
 
 One of the domain names in the certificate must match the domain name that you specify for Origin Domain Name\. If no domain name matches, CloudFront returns HTTP status code `502 (Bad Gateway)` to the viewer\.
 

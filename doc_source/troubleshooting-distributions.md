@@ -14,7 +14,7 @@ If CloudFront returns an `InvalidViewerCertificate` error when you try to add an
 The following errors are listed in the order in which CloudFront checks for authorization to add an alternate domain name\. This can help you troubleshoot issues because based on the error that CloudFront returns, you can tell which verification checks have completed successfully\.
 
 **There's no certificate attached to your distribution\.**  
-To add an alternate domain name \(CNAME\), you must attach a trusted, valid certificate to your distribution\. Please review the requirements, obtain a valid certificate that meets them, attach it to your distribution, and then try again\. For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
+To add an alternate domain name \(CNAME\), you must attach a trusted, valid certificate to your distribution\. Please review the requirements, obtain a valid certificate that meets them, attach it to your distribution, and then try again\. For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements)\.
 
 **There are too many certificates in the certificate chain for the certificate that you've attached\.**  
 You can only have up to five certificates in a certificate chain\. Reduce the number of certificates in the chain, and then try again\.
@@ -23,7 +23,7 @@ You can only have up to five certificates in a certificate chain\. Reduce the nu
 The certificate chain for a certificate that you have added has one or more certificates that aren't valid, either because a certificate isn't valid yet or a certificate has expired\. Check the **Not Valid Before** and **Not Valid After** fields in the certificates in your certificate chain to make sure that all of the certificates are valid based on the dates that you’ve listed\.
 
 **The certificate that you've attached isn't signed by a trusted Certificate Authority \(CA\)\.**  
-The certificate that you attach to CloudFront to verify an alternate domain name cannot be a self\-signed certificate\. It must be signed by a trusted CA\. For more information, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
+The certificate that you attach to CloudFront to verify an alternate domain name cannot be a self\-signed certificate\. It must be signed by a trusted CA\. For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements)\.
 
 **The certificate that you've attached isn't formatted correctly**  
 The domain name and IP address format that are included in the certificate, and the format of the certificate itself, must follow the standard for certificates\.
@@ -32,7 +32,7 @@ The domain name and IP address format that are included in the certificate, and 
 CloudFront was blocked by an internal issue and couldn't make validation checks for certificates\. In this scenario, CloudFront returns an HTTP 500 status code and indicates that there is an internal CloudFront problem with attaching the certificate\. Wait a few minutes, and then try again to add the alternate domain name with the certificate\.
 
 **The certificate that you've attached doesn't cover the alternate domain name that you’re trying to add\.**  
-For each alternate domain name that you add, CloudFront requires that you attach a valid SSL/TLS certificate from a trusted Certificate Authority \(CA\) that covers the domain name, to validate your authorization to use it\. Please update your certificate to include a domain name that covers the CNAME that you’re trying to add\. For more information and examples of using domain names with wildcards, see [ Requirements for Using Alternate Domain Names](CNAMEs.md#alternate-domain-names-requirements)\.
+For each alternate domain name that you add, CloudFront requires that you attach a valid SSL/TLS certificate from a trusted Certificate Authority \(CA\) that covers the domain name, to validate your authorization to use it\. Please update your certificate to include a domain name that covers the CNAME that you’re trying to add\. For more information and examples of using domain names with wildcards, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements)\.
 
 ## I Can't View the Files in My Distribution<a name="troubleshooting-web-distribution"></a>
 
@@ -75,7 +75,7 @@ The following example shows a dig request for a domain name called `images.examp
 14. 	...
 ```
 
-For more information about CNAMEs, see [Using Custom URLs for Files by Adding Alternate Domain Names \(CNAMEs\)](CNAMEs.md)\.
+For more information about CNAMEs, see [Using custom URLs by adding alternate domain names \(CNAMEs\)](CNAMEs.md)\.
 
 ### Are You Referencing the Correct URL for Your CloudFront Distribution?<a name="Troubleshooting.URL"></a>
 
