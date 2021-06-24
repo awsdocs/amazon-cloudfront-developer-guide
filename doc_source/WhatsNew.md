@@ -7,6 +7,7 @@ The following entries describe important changes made to the CloudFront document
 
 | Change | Description | Date changed | 
 | --- | --- | --- | 
+|  New security policy  |  CloudFront now supports a new security policy, **TLSv1\.2\_2021**, with a smaller set of supported ciphers\. For more information, see [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.  |  June 23, 2021  | 
 |  New feature  |  Amazon CloudFront now supports CloudFront Functions, a native feature of CloudFront that enables you to write lightweight functions in JavaScript for high\-scale, latency\-sensitive CDN customizations\. For more information, see [Customizing at the edge with CloudFront Functions](cloudfront-functions.md)\.  |  May 3, 2021  | 
 |  Lambda@Edge supports newer runtime versions  |  Lambda@Edge now supports Lambda functions with the Node\.js 14 runtime\. For more information, see [Lambda features and supported runtimes](edge-functions-restrictions.md#lambda-at-edge-runtime-restrictions)\.  |  April 29, 2021  | 
 |  Remove documentation for RTMP distributions  |  [Amazon CloudFront deprecated real\-time messaging protocol \(RTMP\) distributions on December 31, 2020\.](http://forums.aws.amazon.com/ann.jspa?annID=7356) Documentation for RTMP distributions is now removed from the *Amazon CloudFront Developer Guide*\.  |  February 10, 2021  | 

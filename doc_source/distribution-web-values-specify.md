@@ -650,6 +650,7 @@ For more information about the security policies, including the protocols and ci
 The security policies that are available depend on the values that you specify for **SSL Certificate** and **Custom SSL Client Support** \(known as `CloudFrontDefaultCertificate` and `SSLSupportMethod` in the CloudFront API\):
 + When **SSL Certificate** is **Default CloudFront Certificate \(\*\.cloudfront\.net\)** \(when `CloudFrontDefaultCertificate` is `true` in the API\), CloudFront automatically sets the security policy to TLSv1\.
 + When **SSL Certificate** is **Custom SSL Certificate \(example\.com\)** *and* **Custom SSL Client Support** is **Clients that Support Server Name Indication \(SNI\) \- \(Recommended\)** \(when `CloudFrontDefaultCertificate` is `false` *and* `SSLSupportMethod` is `sni-only` in the API\), you can choose from the following security policies:
+  + TLSv1\.2\_2021
   + TLSv1\.2\_2019
   + TLSv1\.2\_2018
   + TLSv1\.1\_2016
@@ -659,12 +660,12 @@ The security policies that are available depend on the values that you specify f
   + TLSv1
   + SSLv3
 
-  In this configuration, the TLSv1\.2\_2019, TLSv1\.2\_2018, TLSv1\.1\_2016, and TLSv1\_2016 security policies aren’t available in the CloudFront console or API\. If you want to use one of these security policies, you have the following options:
+  In this configuration, the TLSv1\.2\_2021, TLSv1\.2\_2019, TLSv1\.2\_2018, TLSv1\.1\_2016, and TLSv1\_2016 security policies aren’t available in the CloudFront console or API\. If you want to use one of these security policies, you have the following options:
   + Evaluate whether your distribution needs Legacy Clients Support with dedicated IP addresses\. If your viewers support [server name indication \(SNI\)](https://en.wikipedia.org/wiki/Server_Name_Indication), we recommend that you update your distribution’s **Custom SSL Client Support** setting to **Clients that Support Server Name Indication \(SNI\)** \(set `SSLSupportMethod` to `sni-only` in the API\)\. This enables you to use any of the available TLS security policies, and it can also reduce your CloudFront charges\.
-  + If you must keep Legacy Clients Support with dedicated IP addresses, you can request one of the other TLS security policies \(TLSv1\.2\_2019, TLSv1\.2\_2018, TLSv1\.1\_2016, or TLSv1\_2016\) by creating a case in the [AWS Support Center](https://console.aws.amazon.com/support/home)\.
+  + If you must keep Legacy Clients Support with dedicated IP addresses, you can request one of the other TLS security policies \(TLSv1\.2\_2021, TLSv1\.2\_2019, TLSv1\.2\_2018, TLSv1\.1\_2016, or TLSv1\_2016\) by creating a case in the [AWS Support Center](https://console.aws.amazon.com/support/home)\.
 **Note**  
 Before you contact AWS Support to request this change, consider the following:  
-When you add one of these security policies \(TLSv1\.2\_2019, TLSv1\.2\_2018, TLSv1\.1\_2016, or TLSv1\_2016\) to a Legacy Clients Support distribution, the security policy is applied to *all* non\-SNI viewer requests for *all* Legacy Clients Support distributions in your AWS account\. However, when viewers send SNI requests to a distribution with Legacy Clients Support, the security policy of that distribution applies\. To make sure that your desired security policy is applied to *all* viewer requests sent to *all* Legacy Clients Support distributions in your AWS account, add the desired security policy to each distribution individually\.
+When you add one of these security policies \(TLSv1\.2\_2021, TLSv1\.2\_2019, TLSv1\.2\_2018, TLSv1\.1\_2016, or TLSv1\_2016\) to a Legacy Clients Support distribution, the security policy is applied to *all* non\-SNI viewer requests for *all* Legacy Clients Support distributions in your AWS account\. However, when viewers send SNI requests to a distribution with Legacy Clients Support, the security policy of that distribution applies\. To make sure that your desired security policy is applied to *all* viewer requests sent to *all* Legacy Clients Support distributions in your AWS account, add the desired security policy to each distribution individually\.
 By definition, the new security policy doesn’t support the same ciphers and protocols as the old one\. For example, if you chose to upgrade a distribution’s security policy from TLSv1 to TLSv1\.1\_2016, that distribution will no longer support the DES\-CBC3\-SHA cipher\. For more information about the ciphers and protocols that each security policy supports, see [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
 
 ### Supported HTTP Versions<a name="DownloadDistValuesSupportedHTTPVersions"></a>

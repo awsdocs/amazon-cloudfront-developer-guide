@@ -9,34 +9,32 @@ To choose a security policy, specify the applicable value for [Security Policy](
 A viewer must support at least one of the supported ciphers to establish an HTTPS connection with CloudFront\. If you’re using an SSL/TLS certificate in AWS Certificate Manager, a viewer must support one of the \*\-RSA\-\* ciphers\. CloudFront chooses a cipher in the listed order from among the ciphers that the viewer supports\. See also [OpenSSL, s2n, and RFC cipher names](#secure-connections-openssl-rfc-cipher-names)\.
 
 
-****  
-
-|  | Security policy |  | SSLv3 | TLSv1 | TLSv1\_2016 | TLSv1\.1\_2016 | TLSv1\.2\_2018 | TLSv1\.2\_2019 | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+|  | Security policy |  | SSLv3 | TLSv1 | TLSv1\_2016 | TLSv1\.1\_2016 | TLSv1\.2\_2018 | TLSv1\.2\_2019 | TLSv1\.2\_2021 | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | SSL/TLS protocols supported | 
-| TLSv1\.3¹ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| TLSv1\.2 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| TLSv1\.1 | ♦ | ♦ | ♦ | ♦ |  |  | 
-| TLSv1 | ♦ | ♦ | ♦ |  |  |  | 
-| SSLv3 | ♦ |  |  |  |  |  | 
+| TLSv1\.3¹ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| TLSv1\.2 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| TLSv1\.1 | ♦ | ♦ | ♦ | ♦ |  |  |  | 
+| TLSv1 | ♦ | ♦ | ♦ |  |  |  |  | 
+| SSLv3 | ♦ |  |  |  |  |  |  | 
 | Ciphers supported | 
-| TLS\_AES\_128\_GCM\_SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| TLS\_AES\_256\_GCM\_SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| TLS\_CHACHA20\_POLY1305\_SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES128\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES128\-SHA | ♦ | ♦ | ♦ | ♦ |  |  | 
-| ECDHE\-RSA\-AES256\-GCM\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-CHACHA20\-POLY1305 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES256\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
-| ECDHE\-RSA\-AES256\-SHA | ♦ | ♦ | ♦ | ♦ |  |  | 
-| AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ |  | 
-| AES256\-GCM\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ |  | 
-| AES128\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ |  | 
-| AES256\-SHA | ♦ | ♦ | ♦ | ♦ |  |  | 
-| AES128\-SHA | ♦ | ♦ | ♦ | ♦ |  |  | 
-| DES\-CBC3\-SHA | ♦ | ♦ |  |  |  |  | 
-| RC4\-MD5 | ♦ |  |  |  |  |  | 
+| TLS\_AES\_128\_GCM\_SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| TLS\_AES\_256\_GCM\_SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| TLS\_CHACHA20\_POLY1305\_SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| ECDHE\-RSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| ECDHE\-RSA\-AES128\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ |  | 
+| ECDHE\-RSA\-AES128\-SHA | ♦ | ♦ | ♦ | ♦ |  |  |  | 
+| ECDHE\-RSA\-AES256\-GCM\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| ECDHE\-RSA\-CHACHA20\-POLY1305 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| ECDHE\-RSA\-AES256\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ |  | 
+| ECDHE\-RSA\-AES256\-SHA | ♦ | ♦ | ♦ | ♦ |  |  |  | 
+| AES128\-GCM\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ |  |  | 
+| AES256\-GCM\-SHA384 | ♦ | ♦ | ♦ | ♦ | ♦ |  |  | 
+| AES128\-SHA256 | ♦ | ♦ | ♦ | ♦ | ♦ |  |  | 
+| AES256\-SHA | ♦ | ♦ | ♦ | ♦ |  |  |  | 
+| AES128\-SHA | ♦ | ♦ | ♦ | ♦ |  |  |  | 
+| DES\-CBC3\-SHA | ♦ | ♦ |  |  |  |  |  | 
+| RC4\-MD5 | ♦ |  |  |  |  |  |  | 
 
 ¹CloudFront supports one round trip time \(1\-RTT\) handshakes for TLSv1\.3, but does not support zero round trip time \(0\-RTT\) handshakes\.
 
