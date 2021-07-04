@@ -267,7 +267,10 @@ The `event` object is the input to your function\. Your function returns only th
             "value": "val1"
           },
           {
-            "value": "val2,val3"
+            "value": "val2"
+          },
+          {
+            "value": "val3"
           }
         ]
       }
