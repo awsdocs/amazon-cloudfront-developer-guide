@@ -20,7 +20,7 @@ You can add triggers only to a numbered version, not to **$LATEST**\.
 
       The number at the end \(**2** in this example\) is the version number of the function\.
 
-1. Open the CloudFront console at [ https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. In the list of distributions, choose the ID of the distribution that you want to add triggers to\.
 

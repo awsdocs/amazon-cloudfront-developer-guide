@@ -21,7 +21,7 @@ CloudFront Functions publishes the following four metrics to CloudWatch:
 + **Execution errors** \(`FunctionExecutionErrors`\) – The number of execution errors that occurred in a given time period\. Execution errors occur when the function fails to complete successfully\.
 + **Compute utilization** \(`ComputeUtilization`\) – The amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a value of 35 means that the function completed in 35% of the maximum allowed time\. This metric is a number between 0 and 100\.
 
-To view these metrics in the CloudFront console, go to the [Monitoring page](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring)\. To view graphs for a specific function, choose **Functions**, select the function, and then choose **View function metrics**\.
+To view these metrics in the CloudFront console, go to the [Monitoring page](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring)\. To view graphs for a specific function, choose **Functions**, select the function, and then choose **View function metrics**\.
 
 All of these metrics are published to CloudWatch in the US East \(N\. Virginia\) Region \(`us-east-1`\), in the CloudFront namespace\. You can also view these metrics in the CloudWatch console\. In the CloudWatch console, you can view the metrics per function or per function per distribution\.
 

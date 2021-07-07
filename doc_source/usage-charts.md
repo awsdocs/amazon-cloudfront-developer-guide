@@ -6,7 +6,7 @@ For more information, see [How the Usage Charts Are Related to Data in the Cloud
 
 **To display CloudFront usage charts**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. In **navigation** pane, click **Usage Reports**\.
 

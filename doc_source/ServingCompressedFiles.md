@@ -22,7 +22,7 @@ To configure a distribution to compress content, update the cache behavior that 
 1. Make sure the TTL values in the cache policy are set to a value higher than zero\. When you set the TTL values to zero, caching is disabled and CloudFront doesn’t compress content\.
 
 To update a cache behavior, you can use any of the following tools:
-+ The [CloudFront console](https://console.aws.amazon.com/cloudfront/home)
++ The [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home)
 + [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_CloudFront.html)
 + [The AWS SDKs and command line tools](http://aws.amazon.com/getting-started/tools-sdks/)
 

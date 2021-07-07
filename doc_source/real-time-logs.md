@@ -273,7 +273,7 @@ When you create a data stream, you need to specify the number of shards\. Use th
 
 1. Calculate \(or estimate\) the number of requests per second that your CloudFront distribution receives\.
 
-   You can use the [CloudFront usage reports](https://console.aws.amazon.com/cloudfront/home#usage_reports:) \(in the CloudFront console\) and the [CloudFront metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions) \(in the CloudFront and Amazon CloudWatch consoles\) to help you calculate your requests per second\.
+   You can use the [CloudFront usage reports](https://console.aws.amazon.com/cloudfront/v3/home#/usage) \(in the CloudFront console\) and the [CloudFront metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions) \(in the CloudFront and Amazon CloudWatch consoles\) to help you calculate your requests per second\.
 
 1. Determine the typical size of a single real\-time log record\.
 
@@ -372,7 +372,7 @@ To use a real\-time log configuration, you attach it to one or more cache behavi
 
 **To create a real\-time log configuration \(console\)**
 
-1. Sign in to the AWS Management Console and open the **Logs** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v2/home?#/logs](https://console.aws.amazon.com/cloudfront/v2/home?#/logs)\.
+1. Sign in to the AWS Management Console and open the **Logs** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home?#/logs](https://console.aws.amazon.com/cloudfront/v3/home?#/logs)\.
 
 1. Choose **Real\-time log configurations**\.
 

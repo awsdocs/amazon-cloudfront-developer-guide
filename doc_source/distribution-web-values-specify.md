@@ -1,6 +1,6 @@
 # Values That You Specify When You Create or Update a Distribution<a name="distribution-web-values-specify"></a>
 
-When you use the [CloudFront console](https://console.aws.amazon.com/cloudfront/home) to create a new distribution or update an existing distribution, you specify the following values\.
+When you use the [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home) to create a new distribution or update an existing distribution, you specify the following values\.
 
 For more information about creating or updating a distribution by using the CloudFront console, see [Creating a Distribution](distribution-web-creating-console.md) or [Updating a Distribution](HowToUpdateDistribution.md)\.
 
@@ -617,7 +617,7 @@ If you specified an alternate domain name to use with your distribution, choose 
 
 **Note**  
 Before you can specify a custom SSL certificate, you must specify a valid alternate domain name\. For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements) and [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
-+ **Default CloudFront Certificate \(\*\.cloudfront\.net\)** – Choose this option if you want to use the CloudFront domain name in the URLs for your objects, such as `https://d111111abcdef8.cloudfront.net/image1.jpg`\. 
++ **Default CloudFront Certificate \(\*\.cloudfront\.net\)** – Choose this option if you want to use the CloudFront domain name in the URLs for your objects, such as `https://d111111abcdef8.cloudfront.net/image1.jpg`\.
 + **Custom SSL Certificate** – Choose this option if you want to use your own domain name in the URLs for your objects as an alternate domain name, such as `https://example.com/image1.jpg`\. Then choose a certificate to use that covers the alternate domain name\. The list of certificates can include any of the following:
   + Certificates provided by AWS Certificate Manager
   + Certificates that you purchased from a third\-party certificate authority and uploaded to ACM

@@ -78,7 +78,7 @@ Complete the following procedure to set up a CloudFront distribution for the liv
 
 **To create a distribution for your live video channel**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose **Create Distribution**\.
 
@@ -102,7 +102,7 @@ For more information about how an origin path works, see [Origin Path](distribut
 
 1. Choose the default cache behavior, and specify the correct cache behavior settings for the channel that you chose for the origin\. Later, you’ll add one or more additional origins and edit cache behavior settings for them\.
 
-1. Go to the [**CloudFront Distributions** page](https://console.aws.amazon.com/cloudfront/home#distributions:)\.
+1. Go to the [**CloudFront Distributions** page](https://console.aws.amazon.com/cloudfront/v3/home#/distributions)\.
 
 1. Wait until the value of the **Status** column for your distribution has changed from **In Progress** to **Deployed**, indicating that CloudFront has created your distribution\.
 

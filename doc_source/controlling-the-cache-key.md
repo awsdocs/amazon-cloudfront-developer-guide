@@ -142,7 +142,7 @@ After you create a cache policy, you attach it to one or more cache behaviors in
 
 **To create a cache policy \(console\)**
 
-1. Sign in to the AWS Management Console and open the **Policies** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v2/home?#/policies](https://console.aws.amazon.com/cloudfront/v2/home?#/policies)\.
+1. Sign in to the AWS Management Console and open the **Policies** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home?#/policies](https://console.aws.amazon.com/cloudfront/v3/home?#/policies)\.
 
 1. Choose **Create cache policy**\.
 
@@ -154,7 +154,7 @@ After you create a cache policy, you can attach it to a cache behavior\.
 
 **To attach a cache policy to an existing distribution \(console\)**
 
-1. Open the **Distributions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/home#distributions:](https://console.aws.amazon.com/cloudfront/home#distributions:)\.
+1. Open the **Distributions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#/distributions](https://console.aws.amazon.com/cloudfront/v3/home#/distributions)\.
 
 1. Choose the distribution to update, then choose the **Behaviors** tab\.
 
@@ -170,7 +170,7 @@ After you create a cache policy, you can attach it to a cache behavior\.
 
 **To attach a cache policy to a new distribution \(console\)**
 
-1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/home](https://console.aws.amazon.com/cloudfront/home)\.
+1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose **Create Distribution**, then for **Web**, choose **Get Started**\.
 

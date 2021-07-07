@@ -16,7 +16,7 @@ You can use the CloudFront console to associate a function with an existing cach
 
 **To associate a function with an existing cache behavior \(console\)**
 
-1. To associate a function with a distribution, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v2/home#/functions](https://console.aws.amazon.com/cloudfront/v2/home#/functions), and then choose the function that you want to associate\.
+1. To associate a function with a distribution, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#/functions](https://console.aws.amazon.com/cloudfront/v3/home#/functions), and then choose the function that you want to associate\.
 
 1. On the function page, choose the **Associate** tab\. Then do the following:
 

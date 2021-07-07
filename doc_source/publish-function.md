@@ -15,7 +15,7 @@ To publish your function, you can use the CloudFront console\. The console also 
 
 **To publish a function \(console\)**
 
-1. To publish a function, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v2/home#/functions](https://console.aws.amazon.com/cloudfront/v2/home#/functions), and then choose the function that you want to publish\.
+1. To publish a function, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#/functions](https://console.aws.amazon.com/cloudfront/v3/home#/functions), and then choose the function that you want to publish\.
 
 1. On the function page, choose the **Publish** tab\. Then choose the **Publish** button \(or, if your function is already attached to one or more cache behaviors, the **Publish and update** button\)\.
 

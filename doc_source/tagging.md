@@ -41,7 +41,7 @@ The following procedure explains how to add, edit, and delete tags for your dist
 
 **To add tags, edit, or delete tags for a distribution**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose the ID for the distribution that you want to update\.
 

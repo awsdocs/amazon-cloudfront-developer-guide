@@ -1,6 +1,6 @@
 # Downloading data in CSV format<a name="cloudwatch-csv"></a>
 
-You can download the CloudWatch metrics data for a CloudFront distribution in CSV format\. You can download the data when you **View distribution metrics** for a particular distribution in the [CloudFront console](https://console.aws.amazon.com/cloudfront/home)\.
+You can download the CloudWatch metrics data for a CloudFront distribution in CSV format\. You can download the data when you **View distribution metrics** for a particular distribution in the [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 ## Information about the report<a name="cloudwatch-csv-header"></a>
 

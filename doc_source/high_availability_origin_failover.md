@@ -41,7 +41,7 @@ For more information, see the following:
 
 **To create an origin group**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose the distribution that you want to create the origin group for\.
 
@@ -78,7 +78,7 @@ The origin response timeout setting affects how long CloudFront waits to receive
 
 ### How to change these settings<a name="controlling-attempts-and-timeouts-how-to"></a>
 
-**To change these settings in the [CloudFront console](https://console.aws.amazon.com/cloudfront/home)**
+**To change these settings in the [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home)**
 + For a new origin or a new distribution, you specify these values when you create the resource\.
 + For an existing origin in an existing distribution, you specify these values when you edit the origin\.
 

@@ -12,7 +12,7 @@ When you create a function in the console, you can start with the default functi
 
 **To create a function \(console\)**
 
-1. Sign in to the AWS Management Console and open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v2/home#/functions](https://console.aws.amazon.com/cloudfront/v2/home#/functions)\.
+1. Sign in to the AWS Management Console and open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#/functions](https://console.aws.amazon.com/cloudfront/v3/home#/functions)\.
 
 1. Choose **Create function**\.
 

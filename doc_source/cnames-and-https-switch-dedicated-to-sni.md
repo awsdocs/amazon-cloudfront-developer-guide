@@ -7,7 +7,7 @@ This update to your CloudFront configuration has no effect on viewers that suppo
 
 **To switch from a custom SSL/TLS certificate with dedicated IP addresses to SNI**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose the ID of the distribution that you want to view or update\.
 

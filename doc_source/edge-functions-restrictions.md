@@ -160,7 +160,7 @@ The CloudFront Functions runtime environment does not support dynamic code evalu
 
 CloudFront Functions have a limit on the time they can take to run, measured as *compute utilization*\. Compute utilization is a number between 0 and 100 that indicates the amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a compute utilization of 35 means that the function completed in 35% of the maximum allowed time\.
 
-When you [test a function](test-function.md), you can see the compute utilization value in the output of the test event\. For production functions, you can view the [compute utilization metric](monitoring-functions.md#monitoring-functions-metrics) on the [Monitoring page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring), or in CloudWatch\.
+When you [test a function](test-function.md), you can see the compute utilization value in the output of the test event\. For production functions, you can view the [compute utilization metric](monitoring-functions.md#monitoring-functions-metrics) on the [Monitoring page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring), or in CloudWatch\.
 
 ## Restrictions on Lambda@Edge<a name="lambda-at-edge-function-restrictions"></a>
 

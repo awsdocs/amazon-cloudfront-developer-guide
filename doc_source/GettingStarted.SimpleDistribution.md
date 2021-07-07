@@ -83,7 +83,7 @@ If you created the bucket in the US East \(N\. Virginia\) Region \(us\-east\-1\)
 
 **To create a CloudFront distribution**
 
-1. Open the CloudFront console at [ https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose **Create Distribution**, and then choose **Get Started**\.
 

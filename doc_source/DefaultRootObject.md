@@ -27,7 +27,7 @@ If the file name of the default root object is too long or contains an invalid c
 
    To specify a default root object using the CloudFront console:
 
-   1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+   1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
    1. In the list of distributions in the top pane, select the distribution to update\.
 

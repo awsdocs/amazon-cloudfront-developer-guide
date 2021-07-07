@@ -90,7 +90,7 @@ If the path includes non\-ASCII characters or unsafe characters as defined in [R
  **Invalidation paths**  
 The path is relative to the distribution\. For example, to invalidate the file at `https://d111111abcdef8.cloudfront.net/images/image2.jpg`, you would specify the following:  
 `/images/image2.jpg`  
-In the [CloudFront console](https://console.aws.amazon.com/cloudfront/home), you can omit the leading slash in the path, like this: `images/image2.jpg`\. When you use the CloudFront API directly, invalidation paths must begin with a leading slash\.
+In the [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home), you can omit the leading slash in the path, like this: `images/image2.jpg`\. When you use the CloudFront API directly, invalidation paths must begin with a leading slash\.
 You can also invalidate multiple files simultaneously by using the `*` wildcard\. The `*`, which replaces 0 or more characters, must be the last character in the invalidation path\. Also, if you use the AWS Command Line Interface \(AWS CLI\) for invalidating files and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path \(like this: `"/*"`\)\.  
 The following are some examples:  
 + To invalidate all of the files in a directory:
@@ -134,7 +134,7 @@ To invalidate files using the CloudFront console, do the following\.<a name="inv
 
 **To invalidate files**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Select the distribution for which you want to invalidate files\.
 
@@ -159,7 +159,7 @@ If you copy an invalidation that is still in progress, update the list of invali
 
 **To copy, edit, and rerun an existing invalidation**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Select the distribution that contains the invalidation that you want to copy\.
 
@@ -187,7 +187,7 @@ You can display a list of the last 100 invalidations that you’ve created and r
 
 **To list invalidations**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Select the distribution for which you want to display a list of invalidations\.
 
@@ -204,7 +204,7 @@ You can display detailed information about an invalidation, including distributi
 
 **To display information about an invalidation**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Select the distribution that contains the invalidation that you want to display detailed information for\.
 

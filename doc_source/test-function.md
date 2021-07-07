@@ -22,7 +22,7 @@ In the CloudFront console, you can create and save event objects with a graphica
 
 1. If you haven’t already done so, follow the steps to [create a function](create-function.md#create-function-console)\.
 
-   To test a function, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v2/home#/functions](https://console.aws.amazon.com/cloudfront/v2/home#/functions), and then choose the function that you want to test\.
+   To test a function, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#/functions](https://console.aws.amazon.com/cloudfront/v3/home#/functions), and then choose the function that you want to test\.
 
 1. On the function page, choose the **Test** tab\. Then do the following:
 

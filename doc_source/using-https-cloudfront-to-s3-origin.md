@@ -10,7 +10,7 @@ When you use HTTPS with an Amazon S3 bucket that supports HTTPS communication, A
 
 **To configure CloudFront to require HTTPS to your Amazon S3 origin**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. In the top pane of the CloudFront console, choose the ID for the distribution that you want to update\.
 

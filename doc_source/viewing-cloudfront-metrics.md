@@ -1,6 +1,6 @@
 # Viewing CloudFront and Lambda@Edge metrics<a name="viewing-cloudfront-metrics"></a>
 
-You can view operational metrics about your CloudFront distributions and Lambda@Edge functions in the CloudFront console\. To view these metrics, see the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring)\. To view graphs about the activity for a specific CloudFront distribution or Lambda@Edge function, choose one, and then choose to view the metrics\.
+You can view operational metrics about your CloudFront distributions and Lambda@Edge functions in the CloudFront console\. To view these metrics, see the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring)\. To view graphs about the activity for a specific CloudFront distribution or Lambda@Edge function, choose one, and then choose to view the metrics\.
 
 **Topics**
 + [Viewing the default CloudFront distribution metrics](#monitoring-console.distributions)
@@ -29,7 +29,7 @@ The percentage of all viewer requests for which the response’s HTTP status cod
 **Total error rate**  
 The percentage of all viewer requests for which the response’s HTTP status code is `4xx` or `5xx`\.
 
-These metrics are shown in graphs for each CloudFront distribution on the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring)\. On each graph, the totals are displayed at 1\-minute granularity\. In addition to viewing the graphs, you can also [download metrics reports as CSV files](cloudwatch-csv.md)\.
+These metrics are shown in graphs for each CloudFront distribution on the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring)\. On each graph, the totals are displayed at 1\-minute granularity\. In addition to viewing the graphs, you can also [download metrics reports as CSV files](cloudwatch-csv.md)\.
 
 You can customize the graphs by doing the following:
 + To change the time range for the information displayed in the graphs, choose 1h \(1 hour\), 3h \(3 hours\), or another range, or specify a custom range\. 
@@ -60,7 +60,7 @@ You can enable additional metrics in the CloudFront console, with the AWS Comman
 
 **To enable additional metrics**
 
-1. Sign in to the AWS Management Console and open the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring)\.
+1. Sign in to the AWS Management Console and open the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring)\.
 
 1. Choose the distribution to enable additional metrics for, and then choose **View distribution metrics**\.
 
@@ -116,7 +116,7 @@ When you enable additional metrics for a distribution, CloudFront sends up to 8 
 
 ## Viewing the default Lambda@Edge function metrics<a name="monitoring-console.lambda-at-edge"></a>
 
-The following default metrics are shown in graphs for each Lambda@Edge function on the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/monitoring):
+The following default metrics are shown in graphs for each Lambda@Edge function on the [**Monitoring** page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring):
 + `5xx` error rate for Lambda@Edge
 + Lambda execution errors
 + Lambda invalid responses

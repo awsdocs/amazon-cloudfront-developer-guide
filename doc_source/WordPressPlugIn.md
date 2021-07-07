@@ -259,7 +259,7 @@ If you use the AWS for WordPress plugin with Amazon Polly, you can create a Clou
 
 1. In the **Cloud Storage** section, make note of your S3 bucket name\. It will begin with **audio\-for\-wordpress** or **audio\_for\_wordpress**\. You need this bucket name to complete the following steps\.
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose **Create Distribution**\.
 
@@ -326,7 +326,7 @@ The plugin might display the following error messages:
 + Caught exception in method AmazonAI\_Cloudformation
 + Stack is in an unexpected state\. CloudFront Distribution state is: *<distribution state>* and Stack state is: *stack state*
 
-If you see one of these errors, choose **Restart Setup** to try again\. If you're comfortable diagnosing errors using the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1), you can open the console to see what went wrong\.
+If you see one of these errors, choose **Restart Setup** to try again\. If you’re comfortable diagnosing errors using the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1), you can open the console to see what went wrong\.
 
 ### CloudFront distribution deployment seems stuck<a name="WordPressPlugin-troubleshooting-setup-seems-stuck"></a>
 
@@ -340,4 +340,4 @@ If you used the plugin to delete your CloudFront distribution and your alternate
 
 ### Can’t find AWS resources<a name="WordPressPlugin-troubleshooting-locate-AWS-resources"></a>
 
-The CloudFront feature of the plugin creates resources in several AWS services, including CloudFront, AWS Certificate Manager, and AWS CloudFormation\. If you're looking for these resources in the [AWS Management Console](https://console.aws.amazon.com/) or listing them using an API, make sure that you use the US East \(N\. Virginia\) Region \(us\-east\-1\)\.
+The CloudFront feature of the plugin creates resources in several AWS services, including CloudFront, AWS Certificate Manager, and AWS CloudFormation\. If you’re looking for these resources in the [AWS Management Console](https://console.aws.amazon.com/) or listing them using an API, make sure that you use the US East \(N\. Virginia\) Region \(us\-east\-1\)\.

@@ -28,7 +28,7 @@ To configure custom error responses in the CloudFront console, you must have a C
 
 **To configure custom error responses \(console\)**
 
-1. Sign in to the AWS Management Console and open the **Distributions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/home?#distributions:](https://console.aws.amazon.com/cloudfront/home?#distributions:)\.
+1. Sign in to the AWS Management Console and open the **Distributions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#distributions](https://console.aws.amazon.com/cloudfront/v3/home#distributions)\.
 
 1. In the list of distributions, choose the distribution to update\.
 

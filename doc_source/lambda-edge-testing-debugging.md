@@ -27,7 +27,7 @@ It's important to complete integration testing, where your function is associate
 As you iterate on integration testing with your function in the Lambda console, refer to the steps in the Lambda@Edge tutorial as you modify your code or change the CloudFront trigger that calls your function\. For example, make sure that you're working in a numbered version of your function, as described in this step of the tutorial: [Step 4: Add a CloudFront Trigger to Run the Function](lambda-edge-how-it-works-tutorial.md#lambda-edge-how-it-works-tutorial-add-trigger)\.   
 As you make changes and deploy them, be aware that it will take several minutes for your updated function and CloudFront triggers to replicate across all Regions\. This typically takes a few minutes but can take up to 15 minutes\.  
 You can check to see if replication is finished by going to the CloudFront console and viewing your distribution:  
-+ Go to the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront](https://console.aws.amazon.com/cloudfront)\.
++ Go to the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 Check for the distribution status to change from **In Progress** back to **Deployed**, which means that your function has been replicated\. Then follow the steps in the next section to verify that the function works\.  
 Be aware that testing in the console only validates your function’s logic, and does not apply any service quotas \(formerly known as limits\) that are specific to Lambda@Edge\.
 

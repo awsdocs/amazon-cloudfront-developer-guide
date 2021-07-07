@@ -10,7 +10,7 @@ To update your function code, you can use the visual code editor in the CloudFro
 
 **To update function code \(console\)**
 
-1. To update an existing function, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v2/home#/functions](https://console.aws.amazon.com/cloudfront/v2/home#/functions), and then choose the function that you want to update\.
+1. To update an existing function, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#/functions](https://console.aws.amazon.com/cloudfront/v3/home#/functions), and then choose the function that you want to update\.
 
 1. On the function page, choose the **Build** tab\. Then make sure that the **Development** version of the function is chosen\. You cannot update a function’s live version\.
 

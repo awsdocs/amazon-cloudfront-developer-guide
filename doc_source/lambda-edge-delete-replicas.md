@@ -10,7 +10,7 @@ Don’t build applications that use Lambda@Edge function replicas outside of Clo
 
 **To delete a Lambda@Edge function association from a CloudFront distribution \(console\)**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose the ID of the distribution that has the Lambda@Edge function association that you want to delete\.
 

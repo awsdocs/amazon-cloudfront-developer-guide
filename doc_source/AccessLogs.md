@@ -172,7 +172,7 @@ We recommend that you use the logs to understand the nature of the requests for 
 
 ## Editing your standard logging settings<a name="ChangeSettings"></a>
 
-You can enable or disable logging, change the Amazon S3 bucket where your logs are stored, and change the prefix for log files by using the [CloudFront console](https://console.aws.amazon.com/cloudfront/home) or the CloudFront API\. Your changes to logging settings take effect within 12 hours\.
+You can enable or disable logging, change the Amazon S3 bucket where your logs are stored, and change the prefix for log files by using the [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home) or the CloudFront API\. Your changes to logging settings take effect within 12 hours\.
 
 For more information, see the following topics:
 + To update a distribution using the CloudFront console, see [Updating a Distribution](HowToUpdateDistribution.md)\.

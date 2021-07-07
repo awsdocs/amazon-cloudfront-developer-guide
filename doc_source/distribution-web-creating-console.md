@@ -11,7 +11,7 @@ To see the current maximum number of distributions that you can create for each 
 
 **To create a CloudFront web distribution \(console\)**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose **Create Distribution**\.
 

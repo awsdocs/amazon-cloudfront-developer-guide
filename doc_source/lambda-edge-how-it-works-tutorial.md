@@ -44,7 +44,7 @@ There are several steps to take when you create a Lambda function\. In this tuto
 
 **To create a Lambda function**
 
-1. Sign in to the AWS Management Console and open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
+1. Sign in to the AWS Management Console and open the AWS Lambda console at [https://console.aws.amazon.com/lambda/](https://console.aws.amazon.com/lambda/)\.
 **Important**  
 Make sure that you’re in the **US\-East\-1 \(N\. Virginia\)** Region \(**us\-east\-1**\)\. You must be in this Region to create Lambda@Edge functions\.
 
@@ -126,7 +126,7 @@ The trigger that specifies when your function runs\. We want the security header
 
 1. Wait for the function to replicate\. This typically takes several minutes\.
 
-    You can check to see if replication is finished by [going to the CloudFront console](https://console.aws.amazon.com/cloudfront/) and viewing your distribution\. Wait for the distribution status to change from **In Progress** back to **Deployed**, which means that your function has been replicated\. To verify that the function works, follow the steps in the next section\.
+    You can check to see if replication is finished by [going to the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home) and viewing your distribution\. Wait for the distribution status to change from **In Progress** back to **Deployed**, which means that your function has been replicated\. To verify that the function works, follow the steps in the next section\.
 
 ## Step 5: Verify that the Function Runs<a name="lambda-edge-how-it-works-tutorial-verify"></a>
 
@@ -197,7 +197,7 @@ Before you delete a CloudFront distribution, you must disable it\. A disabled di
 
 **To disable and delete a CloudFront distribution**
 
-1. Open the CloudFront console at [ https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Select the distribution that you want to disable, and then choose **Disable**\.
 

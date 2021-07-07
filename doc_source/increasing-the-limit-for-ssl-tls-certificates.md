@@ -11,7 +11,7 @@ There are quotas \(formerly known as limits\) on the number of SSL/TLS certifica
 
 For the quota on the number of certificates that you can import into ACM, see [Quotas](https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html) in the *AWS Certificate Manager User Guide*\.
 
-To request a higher quota, [create a case](https://console.aws.amazon.com/support/cases#/create?issueType=service-limit-increase) in the AWS Support Center\. Specify the following values:
+To request a higher quota, [create a case](https://console.aws.amazon.com/support/cases#/create?issueType=service-limit-increase) in the Support Center Console\. Specify the following values:
 + Accept the default value of **Service limit increase**\.
 + For **Limit type**, choose **Certificate Manager**\.
 + For **Region**, choose the AWS Region where you want to import certificates\.
@@ -23,7 +23,7 @@ Then fill out the rest of the form and submit it\.
 
 For the quota \(formerly known as limit\) on the number of certificates that you can upload to IAM, see [IAM and STS Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html) in the *IAM User Guide*\.
 
-To request a higher quota, [create a case](https://console.aws.amazon.com/support/cases#/create?issueType=service-limit-increase) in the AWS Support Center\. Specify the following values:
+To request a higher quota, [create a case](https://console.aws.amazon.com/support/cases#/create?issueType=service-limit-increase) in the Support Center Console\. Specify the following values:
 + Accept the default value of **Service limit increase**\.
 + For **Limit type**, choose **Certificate Manager**\.
 + For **Region**, choose the AWS Region where you want to import certificates\.
@@ -35,7 +35,7 @@ Then fill out the rest of the form and submit it\.
 
 For the quota \(formerly known as limit\) on the number of SSL certificates that you can use for each AWS account when serving HTTPS requests using dedicated IP addresses, see [Quotas on SSL certificates](cloudfront-limits.md#limits-ssl-certificates)\.
 
-To request a higher quota, [create a case](https://console.aws.amazon.com/support/cases#/create?issueType=service-limit-increase) in the AWS Support Center\. Specify the following values:
+To request a higher quota, [create a case](https://console.aws.amazon.com/support/cases#/create?issueType=service-limit-increase) in the Support Center Console\. Specify the following values:
 + Accept the default value of **Service limit increase**\.
 + For **Limit Type**, choose **CloudFront Distributions**\.
 + For **Limit**, choose **Dedicated IP SSL Certificate Limit per Account**\.

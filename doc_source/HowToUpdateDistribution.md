@@ -4,7 +4,7 @@ In the CloudFront console, you can see the CloudFront distributions that are ass
 
 **To Update a CloudFront Distribution**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Select the ID of a distribution\. The list includes all of the distributions associated with the AWS account that you used to sign in to the CloudFront console\.
 

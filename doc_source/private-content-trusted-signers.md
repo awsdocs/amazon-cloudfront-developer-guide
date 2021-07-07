@@ -80,7 +80,7 @@ The following steps use OpenSSL as an example of one way to create a key pair\. 
 
 **To upload the public key to CloudFront**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. In the navigation menu, choose **Public keys**\.
 
@@ -108,7 +108,7 @@ The following steps use OpenSSL as an example of one way to create a key pair\. 
 
 **To add the public key to a key group**
 
-1. Open the CloudFront console at [ https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. In the navigation menu, choose **Key groups**\.
 
@@ -198,7 +198,7 @@ The following steps show how to add a trusted key group as a signer\. You can al
 
 1. Record the key group ID of the key group that you want to use as a trusted signer\. For more information, see [Create a key pair for a trusted key group \(recommended\)](#create-key-pair-and-key-group)\.
 
-1. Open the CloudFront console at [ https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose the distribution whose files you want to protect with signed URLs or signed cookies\.
 **Note**  

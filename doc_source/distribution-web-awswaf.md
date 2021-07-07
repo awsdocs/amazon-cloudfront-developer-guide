@@ -8,7 +8,7 @@ To associate or disassociate a web ACL and an existing distribution, or change t
 
 **To associate or disassociate an AWS WAF web ACL and an existing CloudFront distribution by using the CloudFront console**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose the ID for the distribution that you want to update\.
 

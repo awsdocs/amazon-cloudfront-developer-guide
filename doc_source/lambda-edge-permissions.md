@@ -162,7 +162,7 @@ You must follow separate procedures to manually delete each service\-linked role
 
 **To manually delete the AWSServiceRoleForLambdaReplicator service\-linked role**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. On the **CloudFront Distributions** page, click the avatar in the upper right\.  
 ![\[Screenshot that shows the avatar in the CloudFront.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/lambda-delete-slr-role-click-avatar.png)

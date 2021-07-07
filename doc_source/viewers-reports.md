@@ -22,7 +22,7 @@ To display CloudFront Viewers charts and reports, perform the following procedur
 
 **To display CloudFront Viewers charts and reports**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console\.aws\.amazon\.com/cloudfront/](https://console.aws.amazon.com/cloudfront/)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. In the navigation pane, click **Viewers**\.
 

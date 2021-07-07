@@ -2,7 +2,7 @@
 
 The CloudFront security savings bundle is a simple way to save up to 30% on the CloudFront charges on your AWS bill when you make an upfront commitment\. When you purchase a savings bundle, you also get credits for [AWS WAF](http://aws.amazon.com/waf/), a web application firewall that helps protect your CloudFront distribution against common web exploits\.
 
-For more information, see the following sections\. To purchase a savings bundle, go the [savings bundle overview page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/savings-bundle/overview)\.
+For more information, see the following sections\. To purchase a savings bundle, go the [savings bundle overview page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/savings-bundle/overview)\.
 
 **Topics**
 + [Savings bundle overview](#savings-bundle-overview)
@@ -32,7 +32,7 @@ When you purchase a CloudFront security savings bundle at a monthly commitment o
 
 ## Purchasing a savings bundle<a name="savings-bundle-purchasing"></a>
 
-To purchase a savings bundle, go to the [savings bundle overview page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/savings-bundle/overview) and choose **Get started**\.
+To purchase a savings bundle, go to the [savings bundle overview page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/savings-bundle/overview) and choose **Get started**\.
 
 In the first step, the console shows a recommended monthly commitment amount based on your historical usage of CloudFront over the past few months\. You can choose the **Calculator** tab to use the usage calculator to enter your estimated CloudFront usage and receive a recommended monthly commitment amount based on your estimates\.
 
@@ -44,7 +44,7 @@ Choose **Next** to review and then purchase your CloudFront security savings bun
 
 ## Viewing and updating your savings bundles<a name="savings-bundle-inventory"></a>
 
-To view or update the savings bundles that you purchased, go to the [savings bundle inventory page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v2/home?#/savings-bundle/inventory)\. This page shows the savings bundles that you purchased, and allows you to enable or disable the automatic renewal of a purchased savings bundle\.
+To view or update the savings bundles that you purchased, go to the [savings bundle inventory page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/savings-bundle/inventory)\. This page shows the savings bundles that you purchased, and allows you to enable or disable the automatic renewal of a purchased savings bundle\.
 
 You can purchase more than one savings bundle, and you can have multiple savings bundles that are active at the same time\. If you purchase a savings bundle and then find that your monthly CloudFront usage consistently exceeds the credits in the bundle, you can purchase another bundle to get additional savings\.
 

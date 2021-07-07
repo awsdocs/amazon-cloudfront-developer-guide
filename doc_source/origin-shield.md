@@ -137,7 +137,7 @@ You can enable Origin Shield in the CloudFront console, with the AWS CloudFormat
 
 **To enable Origin Shield for an existing origin \(console\)**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/home](https://console.aws.amazon.com/cloudfront/home)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. Choose the distribution that has the origin that you want to update\.
 
@@ -155,7 +155,7 @@ When your distribution status is **Deployed**, Origin Shield is ready\. This tak
 
 **To enable Origin Shield for a new origin \(console\)**
 
-1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/home](https://console.aws.amazon.com/cloudfront/home)\.
+1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
 1. To create the new origin in an existing distribution, do the following:
 
