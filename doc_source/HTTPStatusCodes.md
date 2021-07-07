@@ -121,7 +121,6 @@ CloudFront always caches the following HTTP 4xx and 5xx status codes returned by
 |  |  | 
 | --- |--- |
 | 404 | Not Found | 
-| 405 | Method Not Allowed | 
 | 414 | Request\-URI Too Large | 
 | 500 | Internal Server Error | 
 | 501 | Not Implemented | 
@@ -138,7 +137,8 @@ CloudFront only caches the following HTTP 4xx status codes returned by your orig
 
 |  |  | 
 | --- |--- |
-| 400 | Bad Request | 
-| 403 | Forbidden | 
-| 412 | Precondition Failed | 
-| 415 | Unsupported Media Type | 
+|  400  |  Bad Request  | 
+|  403  |  Forbidden  | 
+|  405  |  Method Not Allowed  | 
+|  412  |  Precondition Failed  | 
+|  415  |  Unsupported Media Type  | 
