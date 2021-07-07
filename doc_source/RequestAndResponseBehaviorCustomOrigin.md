@@ -146,53 +146,54 @@ For more information about caching based on header values, see [Caching content 
 
 | Header | Behavior If You Don't Configure CloudFront to Cache Based on Header Values | Caching Based on Header Values Is Supported | 
 | --- | --- | --- | 
-| Other\-defined headers | CloudFront forwards the headers to your origin\. | Yes | 
-| `Accept` | CloudFront removes the header\. | Yes | 
-| `Accept-Charset` | CloudFront removes the header\. | Yes | 
-| `Accept-Encoding` | If the value contains `gzip` or `br`, CloudFront forwards a normalized `Accept-Encoding` header to your origin\. For more information, see [Compression support](controlling-the-cache-key.md#cache-policy-compressed-objects) and [Serving compressed files](ServingCompressedFiles.md)\. | Yes | 
-| `Accept-Language` | CloudFront removes the header\. | Yes | 
-| `Authorization` |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html)  | Yes | 
-| `Cache-Control` | CloudFront forwards the header to your origin\. | No | 
-| `CloudFront-Forwarded-Proto` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the protocol of the request](header-caching.md#header-caching-web-protocol)\. | Yes | 
-| `CloudFront-Is-Desktop-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\. | Yes | 
-| `CloudFront-Is-Mobile-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\. | Yes | 
-| `CloudFront-Is-Tablet-Viewer` | CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\. | Yes | 
-| `CloudFront-Viewer-Country` | CloudFront does not add the header before forwarding the request to your origin\. | Yes | 
-| `Connection` | CloudFront replaces this header with `Connection: Keep-Alive` before forwarding the request to your origin\. | No | 
-| `Content-Length` | CloudFront forwards the header to your origin\. | No | 
-| `Content-MD5` | CloudFront forwards the header to your origin\. | Yes | 
-| `Content-Type` | CloudFront forwards the header to your origin\. | Yes | 
-| `Cookie` | If you configure CloudFront to forward cookies, it will forward the `Cookie` header field to your origin\. If you don't, CloudFront removes the `Cookie` header field\. For more information, see [Caching content based on cookies](Cookies.md)\. | No | 
-| `Date` | CloudFront forwards the header to your origin\. | Yes, but not recommended | 
-| `Expect` | CloudFront removes the header\. | Yes | 
-| `From` | CloudFront forwards the header to your origin\. | Yes | 
-| `Host` | CloudFront sets the value to the domain name of the origin that is associated with the requested object\. You can't cache based on the Host header for Amazon S3 or MediaStore origins\. | Yes \(custom\) No \(S3 and MediaStore\) | 
-| `If-Match` | CloudFront forwards the header to your origin\. | Yes | 
-| `If-Modified-Since` | CloudFront forwards the header to your origin\. | Yes | 
-| `If-None-Match` | CloudFront forwards the header to your origin\. | Yes | 
-| `If-Range` | CloudFront forwards the header to your origin\. | Yes | 
-| `If-Unmodified-Since` | CloudFront forwards the header to your origin\. | Yes | 
-| `Max-Forwards` | CloudFront forwards the header to your origin\. | No | 
-| `Origin` | CloudFront forwards the header to your origin\. | Yes | 
-| `Pragma` | CloudFront forwards the header to your origin\. | No | 
-| `Proxy-Authenticate` | CloudFront removes the header\. | No | 
-| `Proxy-Authorization` | CloudFront removes the header\. | No | 
-| `Proxy-Connection` | CloudFront removes the header\. | No | 
-| `Range` | CloudFront forwards the header to your origin\. For more information, see [How CloudFront Processes Partial Requests for an Object \(Range GETs\)](RangeGETs.md)\. | Yes, by default | 
-| `Referer` | CloudFront removes the header\. | Yes | 
-| `Request-Range` | CloudFront forwards the header to your origin\. | No | 
-| `TE` | CloudFront removes the header\. | No | 
-| `Trailer` | CloudFront removes the header\. | No | 
-| `Transfer-Encoding` | CloudFront forwards the header to your origin\. | No | 
-| `Upgrade` | CloudFront removes the header, unless you've established a WebSocket connection\. | No \(except for WebSocket connections\) | 
-| `User-Agent` | CloudFront replaces the value of this header field with `Amazon CloudFront`\. If you want CloudFront to cache your content based on the device the user is using, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\. | Yes, but not recommended | 
-| `Via` | CloudFront forwards the header to your origin\. | Yes | 
-| `Warning` | CloudFront forwards the header to your origin\. | Yes | 
-| `X-Amz-Cf-Id` | CloudFront adds the header to the viewer request before forwarding the request to your origin\. The header value contains an encrypted string that uniquely identifies the request\. | No | 
-| `X-Edge-*` | CloudFront removes all `X-Edge-*` headers\. | No | 
-| `X-Forwarded-For` | CloudFront forwards the header to your origin\. For more information, see [Client IP Addresses](#RequestCustomIPAddresses)\. | Yes | 
-| `X-Forwarded-Proto` | CloudFront removes the header\. | No | 
-| `X-Real-IP` | CloudFront removes the header\. | No | 
+|  Other\-defined headers  |  CloudFront forwards the headers to your origin\.  |  Yes  | 
+|  `Accept`  |  CloudFront removes the header\.  |  Yes  | 
+|  `Accept-Charset`  |  CloudFront removes the header\.  |  Yes  | 
+|  `Accept-Encoding`  |  If the value contains `gzip` or `br`, CloudFront forwards a normalized `Accept-Encoding` header to your origin\. For more information, see [Compression support](controlling-the-cache-key.md#cache-policy-compressed-objects) and [Serving compressed files](ServingCompressedFiles.md)\.  |  Yes  | 
+|  `Accept-Language`  |  CloudFront removes the header\.  |  Yes  | 
+|  `Authorization`  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html)  |  Yes  | 
+|  `Cache-Control`  |  CloudFront forwards the header to your origin\.  |  No  | 
+|  `CloudFront-Forwarded-Proto`  |  CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the protocol of the request](header-caching.md#header-caching-web-protocol)\.  |  Yes  | 
+|  `CloudFront-Is-Desktop-Viewer`  |  CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\.  |  Yes  | 
+|  `CloudFront-Is-Mobile-Viewer`  |  CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\.  |  Yes  | 
+|  `CloudFront-Is-Tablet-Viewer`  |  CloudFront does not add the header before forwarding the request to your origin\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\.  |  Yes  | 
+|  `CloudFront-Viewer-Country`  |  CloudFront does not add the header before forwarding the request to your origin\.  |  Yes  | 
+|  `Connection`  |  CloudFront replaces this header with `Connection: Keep-Alive` before forwarding the request to your origin\.  |  No  | 
+|  `Content-Length`  |  CloudFront forwards the header to your origin\.  |  No  | 
+|  `Content-MD5`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `Content-Type`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `Cookie`  |  If you configure CloudFront to forward cookies, it will forward the `Cookie` header field to your origin\. If you don't, CloudFront removes the `Cookie` header field\. For more information, see [Caching content based on cookies](Cookies.md)\.  |  No  | 
+|  `Date`  |  CloudFront forwards the header to your origin\.  |  Yes, but not recommended  | 
+|  `Expect`  |  CloudFront removes the header\.  |  Yes  | 
+|  `From`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `Host`  |  CloudFront sets the value to the domain name of the origin that is associated with the requested object\. You can't cache based on the Host header for Amazon S3 or MediaStore origins\.  |  Yes \(custom\) No \(S3 and MediaStore\)  | 
+|  `If-Match`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `If-Modified-Since`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `If-None-Match`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `If-Range`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `If-Unmodified-Since`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `Max-Forwards`  |  CloudFront forwards the header to your origin\.  |  No  | 
+|  `Origin`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `Pragma`  |  CloudFront forwards the header to your origin\.  |  No  | 
+|  `Proxy-Authenticate`  |  CloudFront removes the header\.  |  No  | 
+|  `Proxy-Authorization`  |  CloudFront removes the header\.  |  No  | 
+|  `Proxy-Connection`  |  CloudFront removes the header\.  |  No  | 
+|  `Range`  |  CloudFront forwards the header to your origin\. For more information, see [How CloudFront Processes Partial Requests for an Object \(Range GETs\)](RangeGETs.md)\.  |  Yes, by default  | 
+|  `Referer`  |  CloudFront removes the header\.  |  Yes  | 
+|  `Request-Range`  |  CloudFront forwards the header to your origin\.  |  No  | 
+|  `TE`  |  CloudFront removes the header\.  |  No  | 
+|  `Trailer`  |  CloudFront removes the header\.  |  No  | 
+|  `Transfer-Encoding`  |  CloudFront forwards the header to your origin\.  |  No  | 
+|  `Upgrade`  |  CloudFront removes the header, unless you've established a WebSocket connection\.  |  No \(except for WebSocket connections\)  | 
+|  `User-Agent`  |  CloudFront replaces the value of this header field with `Amazon CloudFront`\. If you want CloudFront to cache your content based on the device the user is using, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\.  |  Yes, but not recommended  | 
+|  `Via`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `Warning`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
+|  `X-Amz-Cf-Id`  |  CloudFront adds the header to the viewer request before forwarding the request to your origin\. The header value contains an encrypted string that uniquely identifies the request\.  |  No  | 
+|  `X-Edge-*`  |  CloudFront removes all `X-Edge-*` headers\.  |  No  | 
+|  `X-Forwarded-For`  |  CloudFront forwards the header to your origin\. For more information, see [Client IP Addresses](#RequestCustomIPAddresses)\.  |  Yes  | 
+|  `X-Forwarded-Proto`  |  CloudFront removes the header\.  |  No  | 
+|  `X-HTTP-Method-Override`  |  CloudFront removes the header\.  |  Yes  | 
+|  `X-Real-IP`  |  CloudFront removes the header\.  |  No  | 
 
 ### HTTP Version<a name="RequestCustomHTTPVersion"></a>
 
