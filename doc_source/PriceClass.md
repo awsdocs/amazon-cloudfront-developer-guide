@@ -1,15 +1,18 @@
 # Choosing the price class for a CloudFront distribution<a name="PriceClass"></a>
 
-CloudFront has edge locations all over the world\. Our cost for each edge location varies and, as a result, the price that we charge you varies depending on the edge location from which CloudFront serves your requests\.
+CloudFront has [edge locations all over the world](http://aws.amazon.com/cloudfront/features/#Global_Edge_Network)\. Our cost for each edge location varies and, as a result, the price that we charge varies depending on which edge location serves the requests\.
 
-CloudFront edge locations are grouped into geographic regions, and we've grouped regions into price classes\. The default price class includes all regions\. Another price class includes most regions \(the United States; Canada; Europe; Hong Kong, Philippines, South Korea, Taiwan,  and Singapore; Japan; India; South Africa; and Middle East regions\) but excludes the most expensive regions\. A third price class includes only the least expensive regions \(the United States, Canada, and Europe regions\)\.
+CloudFront edge locations are grouped into geographic regions, and we’ve grouped regions into price classes as shows in the following table\. You choose a price class when you [create](distribution-web-creating-console.md) or [update](HowToUpdateDistribution.md) a CloudFront distribution\.
 
-By default, CloudFront responds to requests for your objects based only on performance: objects are served from the edge location for which latency is lowest for that viewer\. If you're willing to accept higher latency for your viewers in some geographic regions in return for lower cost, you can choose a price class that doesn't include all CloudFront regions\. Although CloudFront will serve your objects only from the edge locations in that price class, it still serves content from the edge location that has the lowest latency among the edge locations in your selected price class\. However, some of your viewers, especially those in geographic regions that are not in your price class, may see higher latency than if your content were being served from all CloudFront edge locations\. For example, if you choose the price class that includes only the United States and Europe, viewers in Australia and in Asia may experience higher latency than if you choose the price class that includes Australia and Asia\.
 
-If you choose a price class that does not include all edge locations, CloudFront may still occasionally serve requests for your content from an edge location in a region that is not included in your price class\. When this happens, you are not charged the rate for the more expensive region from which your objects were served\. Instead, you're charged the rate for the least expensive region in your selected price class\.
+|  | North America \(United States, Mexico, Canada\) | Europe and Israel | South Africa, Kenya, and the Middle East | South America | Japan | Australia and New Zealand | Hong Kong, Indonesia, the Philippines, Singapore, South Korea, Taiwan, and Thailand | India | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| Price Class All | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | 
+| Price Class 200 | Yes | Yes | Yes | No | Yes | No | Yes | Yes | 
+| Price Class 100 | Yes | Yes | No | No | No | No | No | No | 
 
-You can choose a price class when you create or update a CloudFront distribution\. For more information, see [Working with distributions](distribution-working-with.md)\. 
+By default, CloudFront responds to requests based only on performance\. Objects are served from the edge location that has the lowest latency for the viewer\. If you’re willing to accept potentially higher latency for viewers in some geographic regions in return for lower cost, you can choose a price class that doesn’t include all geographic regions\. Some viewers, especially those in geographic regions that are not in your price class, might see higher latency than if your content was served from all CloudFront edge locations\. For example, if you choose **Price Class 100**, viewers in India might experience higher latency than if you choose **Price Class 200**\.
 
-If you're creating or updating a distribution by using the CloudFront API, one of the AWS SDKs, or AWS CloudFormation, see [DistributionConfig Complex Type](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html) \(search for `PriceClass`\)\.
+If you choose a price class that doesn’t include all edge locations, CloudFront might still occasionally serve requests from an edge location in a region that is not included in your price class\. When this happens, you are not charged the rate for the more expensive region\. Instead, you’re charged the rate for the least expensive region in your price class\.
 
-For more information about CloudFront pricing and price classes, see [ Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
+For more information about CloudFront pricing and price classes, see [ Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing)\.
