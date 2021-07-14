@@ -194,50 +194,50 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
- 
+
 import org.apache.commons.codec.binary.Base64;
- 
+
 import com.amazonaws.encryptionsdk.AwsCrypto;
 import com.amazonaws.encryptionsdk.CryptoResult;
 import com.amazonaws.encryptionsdk.jce.JceMasterKey;
- 
+
 /**
- * Sample example of decrypting data that has been encrypted by CloudFront Field-Level Encryption. 
+ * Sample example of decrypting data that has been encrypted by CloudFront Field-Level Encryption.
  */
 public class DecryptExample {
- 
+
     private static final String PRIVATE_KEY_FILENAME = "private_key.der";
     private static final String PUBLIC_KEY_FILENAME = "public_key.der";
     private static PublicKey publicKey;
     private static PrivateKey privateKey;
- 
+
     // CloudFront uses the following values to encrypt data, and your origin must use same values to decrypt it.
-    // In your own code, for PROVIDER_NAME, use the provider name that you specified when you created your Field Level 
+    // In your own code, for PROVIDER_NAME, use the provider name that you specified when you created your Field Level
     // Encryption Profile. This sample uses 'DEMO' for the value.
     private static final String PROVIDER_NAME = "DEMO";
-    // In your own code, use the Key name that you specified when you added your public key to CloudFront. This sample 
+    // In your own code, use the Key name that you specified when you added your public key to CloudFront. This sample
     // uses 'DEMOKEY' for the Key name.
     private static final String KEY_NAME = "DEMOKEY";
     // CloudFront uses this algorithm when encrypting data.
     private static final String ALGORITHM = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding";
- 
+
     public static void main(final String[] args) throws Exception {
- 
+
         final String dataToDecrypt = args[0];
- 
+
         // This sample uses files to get public and private keys.
-        // In practice, you should distribute the public key and save the private key in secure storage. 
+        // In practice, you should distribute the public key and save the private key in secure storage.
         populateKeyPair();
- 
+
         System.out.println(decrypt(debase64(dataToDecrypt)));
     }
- 
+
     private static String decrypt(final byte[] bytesToDecrypt) throws Exception {
-        // You can decrypt the stream only by using the private key. 
- 
+        // You can decrypt the stream only by using the private key.
+
         // 1. Instantiate the SDK
         final AwsCrypto crypto = new AwsCrypto();
- 
+
         // 2. Instantiate a JCE master key
         final JceMasterKey masterKey = JceMasterKey.getInstance(
                 publicKey,
@@ -245,17 +245,17 @@ public class DecryptExample {
                 PROVIDER_NAME,
                 KEY_NAME,
                 ALGORITHM);
- 
+
         // 3. Decrypt the data
         final CryptoResult <byte[], ? > result = crypto.decryptData(masterKey, bytesToDecrypt);
         return new String(result.getResult());
     }
- 
+
     // Function to decode base64 cipher text.
     private static byte[] debase64(final String value) {
         return Base64.decodeBase64(value.getBytes());
     }
- 
+
     private static void populateKeyPair() throws Exception {
         final byte[] PublicKeyBytes = Files.readAllBytes(Paths.get(PUBLIC_KEY_FILENAME));
         final byte[] privateKeyBytes = Files.readAllBytes(Paths.get(PRIVATE_KEY_FILENAME));
