@@ -7,10 +7,10 @@ When you add a certificate to your distribution, CloudFront immediately propagat
 
 **Topics**
 + [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)
-+ [Requirements for Using SSL/TLS Certificates with CloudFront](cnames-and-https-requirements.md)
++ [Requirements for using SSL/TLS certificates with CloudFront](cnames-and-https-requirements.md)
 + [Quotas on Using SSL/TLS Certificates with CloudFront \(HTTPS Between Viewers and CloudFront Only\)](cnames-and-https-limits.md)
 + [Configuring Alternate Domain Names and HTTPS](cnames-and-https-procedures.md)
-+ [Determining the Size of the Public Key in an SSL/TLS Certificate](cnames-and-https-size-of-public-key.md)
++ [Determining the size of the public key in an SSL/TLS RSA certificate](cnames-and-https-size-of-public-key.md)
 + [Increasing the Quotas for SSL/TLS Certificates](increasing-the-limit-for-ssl-tls-certificates.md)
 + [Rotating SSL/TLS Certificates](cnames-and-https-rotate-certificates.md)
 + [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)

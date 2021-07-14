@@ -262,7 +262,7 @@ Choose one of the following values:
 + **HTTPS Only:** CloudFront uses only HTTPS to access the origin\.
 + **Match Viewer:** CloudFront communicates with your origin using HTTP or HTTPS, depending on the protocol of the viewer request\. CloudFront caches the object only once even if viewers make requests using both HTTP and HTTPS protocols\.
 **Important**  
-For HTTPS viewer requests that CloudFront forwards to this origin, one of the domain names in the SSL certificate on your origin server must match the domain name that you specify for **Origin Domain Name**\. Otherwise, CloudFront responds to the viewer requests with an HTTP status code 502 \(Bad Gateway\) instead of returning the requested object\. For more information, see [Requirements for Using SSL/TLS Certificates with CloudFront](cnames-and-https-requirements.md)\.
+For HTTPS viewer requests that CloudFront forwards to this origin, one of the domain names in the SSL certificate on your origin server must match the domain name that you specify for **Origin Domain Name**\. Otherwise, CloudFront responds to the viewer requests with an HTTP status code 502 \(Bad Gateway\) instead of returning the requested object\. For more information, see [Requirements for using SSL/TLS certificates with CloudFront](cnames-and-https-requirements.md)\.
 
 ### Origin Response Timeout<a name="DownloadDistValuesOriginResponseTimeout"></a>
 
