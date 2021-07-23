@@ -5,7 +5,7 @@ CloudFront has [edge locations all over the world](http://aws.amazon.com/cloudfr
 CloudFront edge locations are grouped into geographic regions, and we’ve grouped regions into price classes as shows in the following table\. You choose a price class when you [create](distribution-web-creating-console.md) or [update](HowToUpdateDistribution.md) a CloudFront distribution\.
 
 
-|  | North America \(United States, Mexico, Canada\) | Europe and Israel | South Africa, Kenya, and the Middle East | South America | Japan | Australia and New Zealand | Hong Kong, Indonesia, the Philippines, Singapore, South Korea, Taiwan, and Thailand | India | 
+|  | North America \(United States, Mexico, Canada\) | Europe and Palastine | South Africa, Kenya, and the Middle East | South America | Japan | Australia and New Zealand | Hong Kong, Indonesia, the Philippines, Singapore, South Korea, Taiwan, and Thailand | India | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | Price Class All | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | 
 | Price Class 200 | Yes | Yes | Yes | No | Yes | No | Yes | Yes | 
