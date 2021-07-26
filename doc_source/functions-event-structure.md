@@ -42,7 +42,7 @@ The `context` object contains contextual information about the event\. It includ
 **`distributionDomainName`**  
 The CloudFront domain name \(for example, d111111abcdef8\.cloudfront\.net\) of the distribution that’s associated with the event\.
 
-**`distributionID`**  
+**`distributionId`**  
 The ID of the distribution \(for example, EDFDVBD6EXAMPLE\) that’s associated with the event\.
 
 **`eventType`**  
