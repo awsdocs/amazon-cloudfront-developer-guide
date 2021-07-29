@@ -46,7 +46,7 @@ To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both Clo
 
 If you are using CloudFront with an Amazon S3 origin, the original versions of your content are stored in an S3 bucket\. The easiest way to use CloudFront with Amazon S3 is to make all of your objects publicly readable in Amazon S3\. To do this, you must explicitly enable public read privileges for each object that you upload to Amazon S3\.
 
-If your content is not publicly readable, you must create a CloudFront origin access identity \(OAI\) so that CloudFront can access it\. For more information about CloudFront origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
+If your content is not publicly readable, you must create a CloudFront origin access identity \(OAI\) so that CloudFront can access it\. For more information about CloudFront origin access identities, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
 
 Object properties and bucket properties are independent\. You must explicitly grant privileges to each object in Amazon S3\. Objects do not inherit properties from buckets, and object properties must be set independently of the bucket\.
 
@@ -90,5 +90,5 @@ If you need AWS to help you troubleshoot a custom origin, we probably will need 
 **Problem:** You're trying to delete an SSL/TLS certificate from the IAM certificate store, and you're getting the message "Certificate: <certificate\-id> is being used by CloudFront\."
 
 **Solution:** Every CloudFront distribution must be associated either with the default CloudFront certificate or with a custom SSL/TLS certificate\. Before you can delete an SSL/TLS certificate, you must either rotate the certificate \(replace the current custom SSL/TLS certificate with another custom SSL/TLS certificate\) or revert from using a custom SSL/TLS certificate to using the default CloudFront certificate\. To fix that, complete the steps in one of the following procedures:
-+ [Rotating SSL/TLS Certificates](cnames-and-https-rotate-certificates.md)
-+ [Reverting from a Custom SSL/TLS Certificate to the Default CloudFront Certificate](cnames-and-https-revert-to-cf-certificate.md)
++ [Rotating SSL/TLS certificates](cnames-and-https-rotate-certificates.md)
++ [Reverting from a custom SSL/TLS certificate to the default CloudFront certificate](cnames-and-https-revert-to-cf-certificate.md)

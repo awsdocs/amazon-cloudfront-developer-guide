@@ -1,4 +1,4 @@
-# Using AWS WAF to Control Access to Your Content<a name="distribution-web-awswaf"></a>
+# Using AWS WAF to control access to your content<a name="distribution-web-awswaf"></a>
 
 AWS WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to CloudFront, and lets you control access to your content\. Based on conditions that you specify, such as the values of query strings or the IP addresses that requests originate from, CloudFront responds to requests either with the requested content or with an HTTP status code `403 (Forbidden)`\. You can also configure CloudFront to return a custom error page when a request is blocked\. For more information about AWS WAF, see the [AWS WAF Developer Guide](http://docs.aws.amazon.com/waf/latest/developerguide/)\.
 

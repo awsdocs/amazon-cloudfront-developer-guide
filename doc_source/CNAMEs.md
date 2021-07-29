@@ -19,7 +19,7 @@ If you want to use your own domain name, such as www\.example\.com, instead of t
 The following task list describes how to use the CloudFront console to add an alternate domain name to your distribution so that you can use your own domain name in your links instead of the CloudFront domain name\. For information about updating your distribution using the CloudFront API, see [Working with distributions](distribution-working-with.md)\.
 
 **Note**  
-If you want viewers to use HTTPS with your alternate domain name, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+If you want viewers to use HTTPS with your alternate domain name, see [Using alternate domain names and HTTPS](using-https-alternate-domain-names.md)\.
 
 **Before you begin:** Make sure that you do the following before you update your distribution to add an alternate domain name:
 + Register the domain name with Route 53 or another domain registrar\.
@@ -40,7 +40,7 @@ Add your alternate domain names\. Separate domain names with commas, or type eac
 Choose the following setting:  
    + **Use HTTPS** – Choose **Custom SSL Certificate**, and then choose a certificate from the list\. The list includes certificates provisioned by AWS Certificate Manager \(ACM\), certificates that you purchased from another CA and uploaded to ACM, and certificates that you purchased from another CA and uploaded to the IAM certificate store\. 
 
-     If you uploaded a certificate to the IAM certificate store but it doesn’t appear in the list, review the procedure [Importing an SSL/TLS Certificate](cnames-and-https-procedures.md#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\. 
+     If you uploaded a certificate to the IAM certificate store but it doesn’t appear in the list, review the procedure [Importing an SSL/TLS certificate](cnames-and-https-procedures.md#cnames-and-https-uploading-certificates) to confirm that you correctly uploaded the certificate\. 
 
      If you choose this setting, we recommend that you use only an alternate domain name in your object URLs \(https://www\.example\.com/logo\.jpg\)\. If you use your CloudFront distribution domain name \(https://d111111abcdef8\.cloudfront\.net\.cloudfront\.net/logo\.jpg\), a viewer might behave as follows, depending on the value that you choose for **Clients Supported**:
      + **All Clients**: If the viewer doesn’t support SNI, it displays a warning because the CloudFront domain name doesn’t match the domain name in your TLS/SSL certificate\.
@@ -49,7 +49,7 @@ Choose the following setting:
 Choose an option:  
    + **All Clients**: CloudFront serves your HTTPS content using dedicated IP addresses\. If you select this option, you incur additional charges when you associate your SSL/TLS certificate with a distribution that is enabled\. For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
    + **Only Clients that Support Server Name Indication \(SNI\) \(Recommended\)**: Older browsers or other clients that don't support SNI must use another method to access your content\.
-For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)\.
+For more information, see [Choosing how CloudFront serves HTTPS requests](cnames-https-dedicated-ip-or-sni.md)\.
 
 1. Choose **Yes, Edit**\.
 
@@ -284,7 +284,7 @@ The following examples illustrate how using wildcards in domain names in a certi
 When you add alternate domain names, you must create CNAME records to route DNS queries for the alternate domain names to your CloudFront distribution\. To do this, you must have permission to create CNAME records with the DNS service provider for the alternate domain names that you’re using\. Typically, this means that you own the domains, but you might be developing an application for the domain owner\.
 
 **Alternate domain names and HTTPS**  
-If you want viewers to use HTTPS with an alternate domain name, you must complete some additional configuration\. For more information, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+If you want viewers to use HTTPS with an alternate domain name, you must complete some additional configuration\. For more information, see [Using alternate domain names and HTTPS](using-https-alternate-domain-names.md)\.
 
 ## Restrictions on using alternate domain names<a name="alternate-domain-names-restrictions"></a>
 

@@ -99,7 +99,7 @@ When you're creating and updating distributions, lets you perform the following 
 This permission isn't required if you aren't using the CloudFront console\.
 
 **`S3:PutBucketPolicy`**  
-When you're creating or updating distributions that restrict access to S3 buckets, lets a user update the bucket policy to grant access to the CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.  
+When you're creating or updating distributions that restrict access to S3 buckets, lets a user update the bucket policy to grant access to the CloudFront origin access identity\. For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.  
 This permission isn't required if you aren't using the CloudFront console\.
 
 **`sns:ListSubscriptionsByTopic` and `sns:ListTopics`**  

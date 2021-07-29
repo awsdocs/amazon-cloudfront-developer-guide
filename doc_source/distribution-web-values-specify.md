@@ -125,7 +125,7 @@ If your origin is an Amazon S3 bucket, note the following:
   If your bucket is in the US Standard Region and you want Amazon S3 to route requests to a facility in northern Virginia, use the following format:
 
   `bucket-name.s3.us-east-1.amazonaws.com` 
-+ The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
++ The files must be publicly readable unless you secure your content in Amazon S3 by using a CloudFront origin access identity\. For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
 If the origin is an Amazon S3 bucket, the bucket name must conform to DNS naming requirements\. For more information, go to [ Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
@@ -202,7 +202,7 @@ Choose **Yes** if you want to require users to access objects in an Amazon S3 bu
 
 Choose **No** if you want users to be able to access objects by using either CloudFront URLs or Amazon S3 URLs\.
 
-For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
+For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
 
 For information about how to require users to access objects on a custom origin by using only CloudFront URLs, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
@@ -211,7 +211,7 @@ For information about how to require users to access objects on a custom origin 
 **Note**  
 This applies only to Amazon S3 bucket origins \(those that are *not* using the S3 static website endpoint\)\.
 
-If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
+If you chose **Yes** for **Restrict Bucket Access**, choose whether to create a new origin access identity or use an existing one that is associated with your AWS account\. If you already have an origin access identity, we recommend that you reuse it to simplify maintenance\. For more information about origin access identities, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
 
 ### Comment<a name="DownloadDistValuesOAIComment"></a>
 
@@ -235,7 +235,7 @@ This applies only to Amazon S3 bucket origins \(those that are *not* using the S
 If you want CloudFront to automatically grant the origin access identity the permission to read objects in your Amazon S3 bucket, choose **Yes, Update Bucket Policy**\. 
 
 **Important**  
-If you choose **Yes, Update Bucket Policy**, CloudFront updates the bucket policy to grant the specified origin access identity the permission to read objects in your bucket\. However, CloudFront does not remove existing permissions in the bucket policy or permissions on individual objects\. If users currently have permission to access the objects in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket policy\. To view or change the existing bucket policy and the existing permissions on the objects in your bucket, use a method provided by Amazon S3\. For more information, see [Granting the OAI Permission to Read Files in Your Amazon S3 Bucket](private-content-restricting-access-to-s3.md#private-content-granting-permissions-to-oai)\.
+If you choose **Yes, Update Bucket Policy**, CloudFront updates the bucket policy to grant the specified origin access identity the permission to read objects in your bucket\. However, CloudFront does not remove existing permissions in the bucket policy or permissions on individual objects\. If users currently have permission to access the objects in your bucket using Amazon S3 URLs, they will still have that permission after CloudFront updates your bucket policy\. To view or change the existing bucket policy and the existing permissions on the objects in your bucket, use a method provided by Amazon S3\. For more information, see [Granting the OAI permission to read files in your Amazon S3 bucket](private-content-restricting-access-to-s3.md#private-content-granting-permissions-to-oai)\.
 
 If you want to update permissions manually, for example, if you want to update ACLs on your objects instead of updating bucket permissions, choose **No, I will Update Permissions**\.
 
@@ -396,18 +396,18 @@ Specify the HTTP methods that you want CloudFront to process and forward to your
 **Note**  
 CloudFront caches responses to `GET` and `HEAD` requests and, optionally, `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
 
-If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 Regions and `PUT` requests in those Regions require an additional header\. For more information, see [Using an OAI in Amazon S3 Regions that Support Only Signature Version 4 Authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
+If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 Regions and `PUT` requests in those Regions require an additional header\. For more information, see [Using an OAI in Amazon S3 regions that support only signature version 4 authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
 
 **Important**  
 If you choose **GET, HEAD, OPTIONS** or **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**, you might need to restrict access to your Amazon S3 bucket or to your custom origin to prevent users from performing operations that you don't want them to perform\. The following examples explain how to restrict access:  
-**If you're using Amazon S3 as an origin for your distribution:** Create a CloudFront origin access identity to restrict access to your Amazon S3 content, and grant permissions to the origin access identity\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `PUT`, you must still configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
+**If you're using Amazon S3 as an origin for your distribution:** Create a CloudFront origin access identity to restrict access to your Amazon S3 content, and grant permissions to the origin access identity\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `PUT`, you must still configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately\. For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
 **If you're using a custom origin:** Configure your origin server to handle all methods\. For example, if you configure CloudFront to accept and forward these methods *only* because you want to use `POST`, you must still configure your origin server to handle `DELETE` requests appropriately\. 
 
 ### Field Level Encryption Config<a name="DownloadDistValuesFieldLevelEncryption"></a>
 
 If you want to enforce field\-level encryption on specific data fields, in the drop\-down list, choose a field\-level encryption configuration\.
 
-For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.
+For more information, see [Using field\-level encryption to help protect sensitive data](field-level-encryption.md)\.
 
 ### Cached HTTP Methods<a name="DownloadDistValuesCachedHTTPMethods"></a>
 
@@ -616,7 +616,7 @@ For more information about alternate domain names, see [Using custom URLs by add
 If you specified an alternate domain name to use with your distribution, choose **Custom SSL Certificate**, and then, to validate your authorization to use the alternate domain name, choose a certificate that covers it\. If you want viewers to use HTTPS to access your objects, choose the settings that support that\. 
 
 **Note**  
-Before you can specify a custom SSL certificate, you must specify a valid alternate domain name\. For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements) and [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+Before you can specify a custom SSL certificate, you must specify a valid alternate domain name\. For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements) and [Using alternate domain names and HTTPS](using-https-alternate-domain-names.md)\.
 + **Default CloudFront Certificate \(\*\.cloudfront\.net\)** – Choose this option if you want to use the CloudFront domain name in the URLs for your objects, such as `https://d111111abcdef8.cloudfront.net/image1.jpg`\.
 + **Custom SSL Certificate** – Choose this option if you want to use your own domain name in the URLs for your objects as an alternate domain name, such as `https://example.com/image1.jpg`\. Then choose a certificate to use that covers the alternate domain name\. The list of certificates can include any of the following:
   + Certificates provided by AWS Certificate Manager
@@ -637,7 +637,7 @@ If you specified one or more alternate domain names and a custom SSL certificate
 
   To apply this setting using the CloudFront API, specify `vip` in the `SSLSupportMethod` field\. In AWS CloudFormation, the field is named `SslSupportMethod` \(note the different capitalization\)\.
 
-For more information, see [Choosing How CloudFront Serves HTTPS Requests](cnames-https-dedicated-ip-or-sni.md)\.
+For more information, see [Choosing how CloudFront serves HTTPS requests](cnames-https-dedicated-ip-or-sni.md)\.
 
 ### Security Policy<a name="DownloadDistValues-security-policy"></a>
 
@@ -698,10 +698,10 @@ If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFro
 
 **Note**  
 Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver access logs to buckets in these Regions:  
-Africa \(Cape Town\) af\-south\-1
-Asia Pacific \(Hong Kong\) ap\-east\-1
-Europe \(Milan\) eu\-south\-1
-Middle East \(Bahrain\) me\-south\-1
+Africa \(Cape Town\)  af\-south\-1
+Asia Pacific \(Hong Kong\)  ap\-east\-1
+Europe \(Milan\)  eu\-south\-1
+Middle East \(Bahrain\)  me\-south\-1
 The [Amazon S3 console](https://console.aws.amazon.com/s3/home) shows the bucket’s Region\.
 
 If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
@@ -782,7 +782,7 @@ The HTTP status code that you want CloudFront to return to the viewer along with
 
 ## Restrictions<a name="DownloadDistValuesRestrictions"></a>
 
-If you need to prevent users in selected countries from accessing your content, you can configure your CloudFront distribution either to allow users in a whitelist of specified countries to access your content or to not allow users in a blacklist of specified countries to access your content\. For more information, see [Restricting the Geographic Distribution of Your Content](georestrictions.md)\.
+If you need to prevent users in selected countries from accessing your content, you can configure your CloudFront distribution either to allow users in a whitelist of specified countries to access your content or to not allow users in a blacklist of specified countries to access your content\. For more information, see [Restricting the geographic distribution of your content](georestrictions.md)\.
 
 **Note**  
 The following values aren't included in the Create Distribution wizard, so you can configure geo restrictions only when you update a distribution\.

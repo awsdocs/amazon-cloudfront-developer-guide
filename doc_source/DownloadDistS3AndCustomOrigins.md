@@ -18,7 +18,7 @@ When you use Amazon S3 as an origin for your distribution, you place any objects
 Using an existing Amazon S3 bucket as your CloudFront origin server doesn't change the bucket in any way; you can still use it as you normally would to store and access Amazon S3 objects at the standard Amazon S3 price\. You incur regular Amazon S3 charges for storing the objects in the bucket\. For more information about the charges to use CloudFront, see [CloudFront Reports in the Console](reports.md)\.
 
 **Important**  
-For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) in the *Amazon Simple Storage Service Developer Guide*\.
 
 When you specify the Amazon S3 bucket that you want CloudFront to get objects from, we recommend that you use the following format to access the bucket:
 
@@ -30,7 +30,7 @@ Another option might be to use the following more general format, but be aware t
 
 When you specify the bucket name in this format, you can use the following CloudFront features:
 + Configure CloudFront to communicate with your Amazon S3 bucket using SSL\. For more information, see [Using HTTPS with CloudFront](using-https.md)\.
-+ Use an origin access identity to require that your users access your content using CloudFront URLs, not by using Amazon S3 URLs\. For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
++ Use an origin access identity to require that your users access your content using CloudFront URLs, not by using Amazon S3 URLs\. For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
 + Update the content of your bucket by submitting `POST` and `PUT` requests to CloudFront\. For more information, see [HTTP Methods](RequestAndResponseBehaviorS3Origin.md#RequestS3HTTPMethods) in the topic [How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server](RequestAndResponseBehaviorS3Origin.md#RequestBehaviorS3Origin)\.
 
 Do not specify the bucket using the following formats:
@@ -145,6 +145,6 @@ If you're using Amazon S3 as the origin for a CloudFront distribution and you mo
 + You're using a CloudFront origin access identity \(OAI\) to restrict access to the bucket\.
 + You move the bucket to an Amazon S3 Region that requires Signature Version 4 for authentication\.
 
-When you're using OAIs, CloudFront uses the Region \(among other values\) to calculate the signature that it uses to request objects from your bucket\. For more information about OAIs, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\. For a list of Amazon S3 Regions and the signature versions that they support, see [Amazon Simple Storage Service \(Amazon S3\)](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the "Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.
+When you're using OAIs, CloudFront uses the Region \(among other values\) to calculate the signature that it uses to request objects from your bucket\. For more information about OAIs, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\. For a list of Amazon S3 Regions and the signature versions that they support, see [Amazon Simple Storage Service \(Amazon S3\)](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the "Regions and Endpoints" chapter of the *Amazon Web Services General Reference*\.
 
 To force a faster update to CloudFront's records, you can update your CloudFront distribution, for example, by updating the **Comment** field on the **General** tab in the CloudFront console\. When you update a distribution, CloudFront immediately checks on the Region that your bucket is in; propagation of the change to all edge locations should take less than 15 minutes\.

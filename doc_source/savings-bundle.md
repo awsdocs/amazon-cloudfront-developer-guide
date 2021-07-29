@@ -20,7 +20,7 @@ Here’s how the CloudFront security savings bundle works:
 
 1. In exchange for your commitment, CloudFront automatically applies credits to your AWS bill in each of the 12 billing periods of the one year term\. The value of these credits is more than your committed payment amount, resulting in up to a 30% discount on CloudFront’s standard pricing for the committed amount\. These credits automatically offset CloudFront charges on your AWS bill\. For a detailed example, see the following section\.
 
-1. In addition to the CloudFront credits, you get credits to offset the per\-request charges for using AWS WAF\. The amount of the AWS WAF credits is up to 10% of the amount of the monthly CloudFront commitment\. For more information about using AWS WAF with CloudFront, see [Using AWS WAF to Control Access to Your Content](distribution-web-awswaf.md)\.
+1. In addition to the CloudFront credits, you get credits to offset the per\-request charges for using AWS WAF\. The amount of the AWS WAF credits is up to 10% of the amount of the monthly CloudFront commitment\. For more information about using AWS WAF with CloudFront, see [Using AWS WAF to control access to your content](distribution-web-awswaf.md)\.
 
 ## Savings bundle example<a name="savings-bundle-example"></a>
 

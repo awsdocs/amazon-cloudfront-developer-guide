@@ -1,4 +1,4 @@
-# Using Field\-Level Encryption to Help Protect Sensitive Data<a name="field-level-encryption"></a>
+# Using field\-level encryption to help protect sensitive data<a name="field-level-encryption"></a>
 
 With Amazon CloudFront, you can enforce secure end\-to\-end connections to origin servers by using HTTPS\. Field\-level encryption adds an additional layer of security that lets you protect specific data throughout system processing so that only certain applications can see it\.
 
@@ -18,15 +18,13 @@ CloudFront field\-level encryption uses asymmetric encryption, also known as pub
 ![\[Encrypt only sensitive data\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/encryptedfields.png)
 
 **Topics**
-+ [Overview of Field\-Level Encryption](#field-level-encryption-overview)
-+ [Setting Up Field\-Level Encryption](#field-level-encryption-setting-up)
-+ [Decrypting Data Fields at Your Origin](#field-level-encryption-decrypt)
++ [Overview of field\-level encryption](#field-level-encryption-overview)
++ [Setting up field\-level encryption](#field-level-encryption-setting-up)
++ [Decrypting data fields at your origin](#field-level-encryption-decrypt)
 
-## Overview of Field\-Level Encryption<a name="field-level-encryption-overview"></a>
+## Overview of field\-level encryption<a name="field-level-encryption-overview"></a>
 
-The following steps provide an overview of setting up field\-level encryption\. For specific steps, see [Setting Up Field\-Level Encryption](#field-level-encryption-setting-up)\.
-
-****
+The following steps provide an overview of setting up field\-level encryption\. For specific steps, see [Setting up field\-level encryption](#field-level-encryption-setting-up)\.
 
 1. **Get a public key\-private key pair\.** You must obtain and add the public key before you start setting up field\-level encryption in CloudFront\.
 
@@ -36,16 +34,16 @@ The following steps provide an overview of setting up field\-level encryption\. 
 
 1. **Link to a cache behavior\.** Link the configuration to a cache behavior for a distribution, to specify when CloudFront should encrypt data\.
 
-## Setting Up Field\-Level Encryption<a name="field-level-encryption-setting-up"></a>
+## Setting up field\-level encryption<a name="field-level-encryption-setting-up"></a>
 
 Follow these steps to get started using field\-level encryption\. To learn about quotas \(formerly known as limits\) on field\-level encryption, see [Quotas](cloudfront-limits.md)\.
-+ [Step 1: Create an RSA Key Pair](#field-level-encryption-setting-up-step1)
-+ [Step 2: Add Your Public Key to CloudFront](#field-level-encryption-setting-up-step2)
-+ [Step 3: Create a Profile for Field\-Level Encryption](#field-level-encryption-setting-up-step3)
-+ [Step 4: Create a Configuration](#field-level-encryption-setting-up-step4)
-+ [Step 5: Add a Configuration to a Cache Behavior](#field-level-encryption-setting-up-step5)
++ [Step 1: Create an RSA key pair](#field-level-encryption-setting-up-step1)
++ [Step 2: Add your public key to CloudFront](#field-level-encryption-setting-up-step2)
++ [Step 3: Create a profile for field\-level encryption](#field-level-encryption-setting-up-step3)
++ [Step 4: Create a configuration](#field-level-encryption-setting-up-step4)
++ [Step 5: Add a configuration to a cache behavior](#field-level-encryption-setting-up-step5)
 
-### Step 1: Create an RSA Key Pair<a name="field-level-encryption-setting-up-step1"></a>
+### Step 1: Create an RSA key pair<a name="field-level-encryption-setting-up-step1"></a>
 
 To get started, you must create an RSA key pair that includes a public key and a private key\. The public key enables CloudFront to encrypt data, and the private key enables components at your origin to decrypt the fields that have been encrypted\. You can use OpenSSL or another tool to create a key pair\. The key size must be 2048 bits\.
 
@@ -63,7 +61,7 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
 
 The public key file \(`public_key.pem`\) contains the encoded key value that you paste in the following step\.
 
-### Step 2: Add Your Public Key to CloudFront<a name="field-level-encryption-setting-up-step2"></a>
+### Step 2: Add your public key to CloudFront<a name="field-level-encryption-setting-up-step2"></a>
 
 After you get your RSA key pair, add your public key to CloudFront\.<a name="field-level-encryption-setting-up-step2-procedure"></a>
 
@@ -85,7 +83,7 @@ After you get your RSA key pair, add your public key to CloudFront\.<a name="fie
 
 You can add more keys to use with CloudFront by repeating the steps in the procedure\.
 
-### Step 3: Create a Profile for Field\-Level Encryption<a name="field-level-encryption-setting-up-step3"></a>
+### Step 3: Create a profile for field\-level encryption<a name="field-level-encryption-setting-up-step3"></a>
 
 After you add at least one public key to CloudFront, create a profile that tells CloudFront which fields to encrypt\.<a name="field-level-encryption-setting-up-step3-procedure"></a>
 
@@ -113,7 +111,7 @@ Make sure that you don’t use overlapping characters for different field name p
 
 1. If you want to add more profiles, choose **Add profile**\.
 
-### Step 4: Create a Configuration<a name="field-level-encryption-setting-up-step4"></a>
+### Step 4: Create a configuration<a name="field-level-encryption-setting-up-step4"></a>
 
 After you create one or more field\-level encryption profiles, create a configuration that specifies the content type of the request that includes the data to be encrypted, the profile to use for encryption, and other options that specify how you want CloudFront to handle encryption\.
 
@@ -158,7 +156,7 @@ In the drop\-down list, choose the profile that you want to associate with the v
 **Forward request to origin when the profile specified in a query argument does not exist**  
 Select the check box if you want to allow the request to go to your origin *if the profile specified in a query argument isn't defined in CloudFront*\.
 
-### Step 5: Add a Configuration to a Cache Behavior<a name="field-level-encryption-setting-up-step5"></a>
+### Step 5: Add a configuration to a cache behavior<a name="field-level-encryption-setting-up-step5"></a>
 
 To use field\-level encryption, link a configuration to a cache behavior for a distribution by adding the configuration ID as a value for your distribution\.
 
@@ -170,7 +168,7 @@ The origin setting’s **Origin Protocol Policy** must be set to **Match Viewer*
 
 For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
-## Decrypting Data Fields at Your Origin<a name="field-level-encryption-decrypt"></a>
+## Decrypting data fields at your origin<a name="field-level-encryption-decrypt"></a>
 
 CloudFront encrypts data fields by using the [AWS Encryption SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/introduction.html)\. The data remains encrypted throughout your application stack and can be accessed only by applications that have the credentials to decrypt it\.
 
@@ -184,7 +182,7 @@ The following code example illustrates how applications can decrypt data at your
   + ALGORITHM: CloudFront uses `RSA/ECB/OAEPWithSHA-256AndMGF1Padding` as the algorithm for encrypting, so you must use the same algorithm to decrypt the data\.
 + If you run the following sample program with ciphertext as input, the decrypted data is output to your console\. For more information, see the [Java Example Code](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/java-example-code.html) in the AWS Encryption SDK\.
 
-### Sample Code<a name="field-level-encryption-decrypt-sample"></a>
+### Sample code<a name="field-level-encryption-decrypt-sample"></a>
 
 ```
 import java.nio.file.Files;

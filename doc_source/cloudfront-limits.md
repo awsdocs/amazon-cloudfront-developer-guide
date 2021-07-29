@@ -160,7 +160,7 @@ In addition to these quotas, there are some other restrictions when using Lambda
 
 | Entity | Default quota | 
 | --- | --- | 
-|  Maximum length of a field to encrypt For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.  |  16 KB  | 
+|  Maximum length of a field to encrypt For more information, see [Using field\-level encryption to help protect sensitive data](field-level-encryption.md)\.  |  16 KB  | 
 |  Maximum number of fields in a request body when field\-level encryption is configured  |  10  | 
 |  Maximum length of a request body when field\-level encryption is configured  |  1 MB  | 
 |  Maximum number of field\-level encryption configurations that can be associated with one AWS account  |  10  | 

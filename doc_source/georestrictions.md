@@ -1,14 +1,14 @@
-# Restricting the Geographic Distribution of Your Content<a name="georestrictions"></a>
+# Restricting the geographic distribution of your content<a name="georestrictions"></a>
 
 You can use *geo restriction*, also known as *geo blocking*, to prevent users in specific geographic locations from accessing content that you're distributing through a CloudFront distribution\. To use geo restriction, you have two options:
 + Use the CloudFront geo restriction feature\. Use this option to restrict access to all of the files that are associated with a distribution and to restrict access at the country level\. 
 + Use a third\-party geolocation service\. Use this option to restrict access to a subset of the files that are associated with a distribution or to restrict access at a finer granularity than the country level\.
 
 **Topics**
-+ [Using CloudFront Geo Restriction](#georestrictions-cloudfront)
-+ [Using a Third\-Party Geolocation Service](#georestrictions-geolocation-service)
++ [Using CloudFront geo restriction](#georestrictions-cloudfront)
++ [Using a third\-party geolocation service](#georestrictions-geolocation-service)
 
-## Using CloudFront Geo Restriction<a name="georestrictions-cloudfront"></a>
+## Using CloudFront geo restriction<a name="georestrictions-cloudfront"></a>
 
 When a user requests your content, CloudFront typically serves the requested content regardless of where the user is located\. If you need to prevent users in specific countries from accessing your content, you can use the CloudFront geo restriction feature to do one of the following:
 + Allow your users to access your content only if they're in one of the countries on a whitelist of approved countries\. 
@@ -51,7 +51,7 @@ The following procedure explains how to use the CloudFront console to add geo re
 
 1. Choose **Yes, Edit**\.
 
-## Using a Third\-Party Geolocation Service<a name="georestrictions-geolocation-service"></a>
+## Using a third\-party geolocation service<a name="georestrictions-geolocation-service"></a>
 
 The CloudFront geo restriction feature lets you control distribution of your content at the country level for all files that you're distributing with a given web distribution\. If you have geographic restrictions on where your content can be distributed and the restrictions don't follow country boundaries, or if you want to restrict access to only some of the files that you're distributing through CloudFront, you can combine CloudFront with a third\-party geolocation service\. This can allow you to control access to your content based not only on country but also based on city, zip or postal code, or even latitude and longitude\.
 

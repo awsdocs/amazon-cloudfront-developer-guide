@@ -174,7 +174,7 @@ IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, ar
 
 The following example policy statements show how to control access to a specific file, all of the files in a directory, or all of the files associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed cookie after a specified date and time\.
 
-If you copy and paste any of these examples, remove any white space \(including tabs and newline characters\), replace the values with your own values, and include a newline character after the closing brace \( \} \)\.
+If you copy and paste any of these examples, remove any white space \(including tabs and newline characters\), replace the values with your own values, and include a newline character after the closing brace \( \} \)\.
 
 For more information, see [Values that you specify in the policy statement for a custom policy for signed cookies](#private-content-custom-policy-statement-cookies-values)\.
 

@@ -28,7 +28,7 @@ To require that users access your content through CloudFront URLs, you do the fo
 + Give the origin access identity permission to read the files in your bucket\.
 + Remove permission for anyone else to use Amazon S3 URLs to read the files\.
 
-For more information, see [Restricting Access to Amazon S3 Content by Using an Origin Access Identity](private-content-restricting-access-to-s3.md)\.
+For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
 
 ## Restricting access to files on custom origins<a name="forward-custom-headers-restrict-access"></a>
 

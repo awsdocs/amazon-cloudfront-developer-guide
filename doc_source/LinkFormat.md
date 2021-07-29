@@ -25,7 +25,7 @@ Instead of using the default domain name that CloudFront assigns for you when yo
 
 `http://example.com/images/image.jpg`
 
-If you plan to use HTTPS between viewers and CloudFront, see [Using Alternate Domain Names and HTTPS](using-https-alternate-domain-names.md)\.
+If you plan to use HTTPS between viewers and CloudFront, see [Using alternate domain names and HTTPS](using-https-alternate-domain-names.md)\.
 
 ## Using a Trailing Slash \(/\) in URLs<a name="LinkFormat_TrailingSlash"></a>
 

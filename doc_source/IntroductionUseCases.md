@@ -29,7 +29,7 @@ For more information about how to deliver streaming content with CloudFront, see
 
 When you configure HTTPS with CloudFront, you already have secure end\-to\-end connections to origin servers\. When you add field\-level encryption, you can protect specific data throughout system processing in addition to HTTPS security, so that only certain applications at your origin can see the data\.
 
-To set up field\-level encryption, you add a public key to CloudFront, and then specify the set of fields that you want to be encrypted with the key\. For more information, see [Using Field\-Level Encryption to Help Protect Sensitive Data](field-level-encryption.md)\.
+To set up field\-level encryption, you add a public key to CloudFront, and then specify the set of fields that you want to be encrypted with the key\. For more information, see [Using field\-level encryption to help protect sensitive data](field-level-encryption.md)\.
 
 ## Customize at the edge<a name="IntroductionUseCasesProgrammableCDN"></a>
 
