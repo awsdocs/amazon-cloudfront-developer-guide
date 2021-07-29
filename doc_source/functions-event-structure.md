@@ -1,6 +1,6 @@
 # CloudFront Functions event structure<a name="functions-event-structure"></a>
 
-CloudFront Functions passes an `event` object to your function code as input when it runs the function\. When you [test a function](test-function.md), you create the `event` object and pass it to your function\. When you create an `event` object for testing a function, you can omit the `distributionDomainName`, `distributionId`, and `requestId` fields in the `context` object\. Also, make sure that the names of headers, cookies, and query strings are lowercase \(this is always the case in the `event` object that CloudFront Functions passes to your function in production\)\.
+CloudFront Functions passes an `event` object to your function code as input when it runs the function\. When you [test a function](test-function.md), you create the `event` object and pass it to your function\. When you create an `event` object for testing a function, you can omit the `distributionDomainName`, `distributionId`, and `requestId` fields in the `context` object\. Also, make sure that the names of headers are lowercase, which is always the case in the `event` object that CloudFront Functions passes to your function in production\.
 
 The following shows an overview of the structure of this event object\. For more information, see the topics that follow\.
 
@@ -74,15 +74,15 @@ The relative path of the requested object\. If your function modifies the `uri` 
 
 **`querystring`**  
 An object that represents the query string in the request\. If the request doesn’t include a query string, the `request` object still includes an empty `querystring` object\.  
-The `querystring` object contains one field for each query string parameter in the request\. Query string parameter names are converted to lowercase\.
+The `querystring` object contains one field for each query string parameter in the request\.
 
 **`headers`**  
 An object that represents the HTTP headers in the request\. If the request contains any `Cookie` headers, those headers are not part of the `headers` object\. Cookies are represented separately in the `cookies` object\.  
-The `headers` object contains one field for each header in the request\. Header names are converted to lowercase\.
+The `headers` object contains one field for each header in the request\. Header names are converted to lowercase in the event object, and header names must be lowercase when they’re added by your function code\. When CloudFront Functions converts the event object back into an HTTP request, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP request\.
 
 **`cookies`**  
 An object that represents the cookies in the request \(`Cookie` headers\)\.  
-The `cookies` object contains one field for each cookie in the request\. Cookie names are converted to lowercase\.
+The `cookies` object contains one field for each cookie in the request\.
 
 For more information about the structure of query strings, headers, and cookies, see [Query string, header, and cookie structure](#functions-event-structure-query-header-cookie)\.
 
@@ -105,11 +105,11 @@ The HTTP status description of the response\. If your function code generates a 
 
 **`headers`**  
 An object that represents the HTTP headers in the response\. If the response contains any `Set-Cookie` headers, those headers are not part of the `headers` object\. Cookies are represented separately in the `cookies` object\.  
-The `headers` object contains one field for each header in the response\. Header names are converted to lowercase\.
+The `headers` object contains one field for each header in the response\. Header names are converted to lowercase in the event object, and header names must be lowercase when they’re added by your function code\. When CloudFront Functions converts the event object back into an HTTP response, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP response\.
 
 **`cookies`**  
 An object that represents the cookies in the response \(`Set-Cookie` headers\)\.  
-The `cookies` object contains one field for each cookie in the response\. Cookie names are converted to lowercase\.
+The `cookies` object contains one field for each cookie in the response\.
 
 For more information about the structure of headers and cookies, see [Query string, header, and cookie structure](#functions-event-structure-query-header-cookie)\.
 
@@ -117,7 +117,9 @@ For an example `event` object, see [Example event](#functions-event-structure-ex
 
 ## Query string, header, and cookie structure<a name="functions-event-structure-query-header-cookie"></a>
 
-Query strings, headers, and cookies in the `request` and `response` objects share the same structure\. Each query string, header, or cookie is a unique field within the parent `querystring`, `headers`, or `cookies` object\. The field name is the name of the query string, header, or cookie, converted to lowercase\. Each field contains a `value` property with the value of the query string, header, or cookie\.
+Query strings, headers, and cookies in the `request` and `response` objects share the same structure\. Each query string, header, or cookie is a unique field within the parent `querystring`, `headers`, or `cookies` object\. The field name is the name of the query string, header, or cookie\. Each field contains a `value` property with the value of the query string, header, or cookie\.
+
+For headers only, the header names are converted to lowercase in the event object, and header names must be lowercase when they’re added by your function code\. When CloudFront Functions converts the event object back into an HTTP request or response, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP request or response\.
 
 For example, consider the following `Host` header in an HTTP request:
 
@@ -248,16 +250,16 @@ The `event` object is the input to your function\. Your function returns only th
     "method": "GET",
     "uri": "/media/index.mpd",
     "querystring": {
-      "id": {
+      "ID": {
         "value": "42"
       },
-      "exp": {
+      "Exp": {
         "value": "1619740800"
       },
-      "ttl": {
+      "TTL": {
         "value": "1440"
       },
-      "novalue": {
+      "NoValue": {
         "value": ""
       },
       "querymv": {
@@ -310,10 +312,10 @@ The `event` object is the input to your function\. Your function returns only th
       }
     },
     "cookies": {
-      "cookie1": {
+      "Cookie1": {
         "value": "value1"
       },
-      "cookie2": {
+      "Cookie2": {
         "value": "value2"
       },
       "cookie_consent": {
@@ -356,11 +358,11 @@ The `event` object is the input to your function\. Your function returns only th
       }
     },
     "cookies": {
-      "id": {
+      "ID": {
         "value": "id1234",
         "attributes": "Expires=Wed, 05 Apr 2021 07:28:00 GMT"
       },
-      "cookie1": {
+      "Cookie1": {
         "value": "val1",
         "attributes": "Secure; Path=/; Domain=example.com; Expires=Wed, 05 Apr 2021 07:28:00 GMT",
         "multiValue": [
