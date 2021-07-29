@@ -23,7 +23,7 @@ Use the following headers to determine the viewer’s device type\. Based on the
 
 ## Headers for determining the viewer’s location<a name="cloudfront-headers-viewer-location"></a>
 
-Use the following headers to determine the viewer’s location\. CloudFront determines the values for these headers based on the viewer’s IP address\.
+Use the following headers to determine the viewer’s location\. CloudFront determines the values for these headers based on the viewer’s IP address\. CloudFront doesn’t add these headers when the request originates from Amazon EC2\.
 
 **Note**  
 For non\-ASCII characters in these headers’ values, CloudFront percent encodes the character according to [section 1\.2 of RFC 3986](https://tools.ietf.org/html/rfc3986#section-2.1)\.
