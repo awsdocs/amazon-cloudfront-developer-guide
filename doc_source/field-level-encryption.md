@@ -200,7 +200,7 @@ import com.amazonaws.encryptionsdk.CryptoResult;
 import com.amazonaws.encryptionsdk.jce.JceMasterKey;
 
 /**
- * Sample example of decrypting data that has been encrypted by CloudFront Field-Level Encryption.
+ * Sample example of decrypting data that has been encrypted by CloudFront field-level encryption.
  */
 public class DecryptExample {
 
@@ -210,11 +210,11 @@ public class DecryptExample {
     private static PrivateKey privateKey;
 
     // CloudFront uses the following values to encrypt data, and your origin must use same values to decrypt it.
-    // In your own code, for PROVIDER_NAME, use the provider name that you specified when you created your Field Level
-    // Encryption Profile. This sample uses 'DEMO' for the value.
+    // In your own code, for PROVIDER_NAME, use the provider name that you specified when you created your field-level
+    // encryption profile. This sample uses 'DEMO' for the value.
     private static final String PROVIDER_NAME = "DEMO";
-    // In your own code, use the Key name that you specified when you added your public key to CloudFront. This sample
-    // uses 'DEMOKEY' for the Key name.
+    // In your own code, use the key name that you specified when you added your public key to CloudFront. This sample
+    // uses 'DEMOKEY' for the key name.
     private static final String KEY_NAME = "DEMOKEY";
     // CloudFront uses this algorithm when encrypting data.
     private static final String ALGORITHM = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding";
