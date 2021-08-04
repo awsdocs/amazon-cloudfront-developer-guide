@@ -13,69 +13,10 @@ Although the two kinds of policies are separate, they are related\. All URL quer
 
 You can also use an origin request policy to add additional HTTP headers to an origin request that were not included in the viewer request\. These additional headers are added by CloudFront before sending the origin request, with header values that are determined automatically based on the viewer request\. For more information, see [Using the CloudFront HTTP headers](using-cloudfront-headers.md)\.
 
-**Contents**
-+ [Understanding origin request policies](#origin-request-understand-origin-request-policy)
-  + [Policy information](#origin-request-understand-origin-request-policy-info)
-  + [Origin request settings](#origin-request-understand-origin-request-policy-settings)
+**Topics**
 + [Creating origin request policies](#origin-request-create-origin-request-policy)
++ [Understanding origin request policies](#origin-request-understand-origin-request-policy)
 + [Using the managed origin request policies](using-managed-origin-request-policies.md)
-  + [Attaching a managed origin request policy](using-managed-origin-request-policies.md#attaching-managed-origin-request-policies)
-  + [Understanding the managed origin request policies](using-managed-origin-request-policies.md#managed-origin-request-policies-list)
-
-## Understanding origin request policies<a name="origin-request-understand-origin-request-policy"></a>
-
-CloudFront provides some predefined origin request policies, known as *managed policies*, for common use cases\. You can use these managed policies, or you can create your own origin request policy that’s specific to your needs\. For more information about the managed policies, see [Using the managed origin request policies](using-managed-origin-request-policies.md)\.
-
-An origin request policy contains the following settings, which are categorized into *policy information* and *origin request settings*\.
-
-### Policy information<a name="origin-request-understand-origin-request-policy-info"></a>
-
-**Name**  
-A name to identify the origin request policy\. In the console, you use the name to attach the origin request policy to a cache behavior\.
-
-**Comment**  
-A comment to describe the origin request policy\. This is optional\.
-
-### Origin request settings<a name="origin-request-understand-origin-request-policy-settings"></a>
-
-Origin request settings specify the values in viewer requests that are included in requests that CloudFront sends to the origin \(known as origin requests\)\. The values can include URL query strings, HTTP headers, and cookies\. The values that you specify are included in origin requests, but are not included in the cache key\. For information about controlling the cache key, see [Controlling the cache key](controlling-the-cache-key.md)\.
-
-**Query strings**  
-The URL query strings in viewer requests that CloudFront includes in origin requests\. For query strings, you can choose one of the following settings:  
-+ **None** – The query strings in viewer requests are *not* included in origin requests\.
-+ **All** – All query strings in viewer requests are included in origin requests\.
-+ **Whitelist** – You specify which of the query strings in viewer requests are included in origin requests\.
-When you use the **Whitelist** setting, you specify query strings by their name, not their value\. For example, consider the following URL path:  
-
-```
-/content/stories/example-story.html?split-pages=false
-```
-In this case, you specify the query string as `split-pages`, not as `split-pages=false`\. However, CloudFront includes the full query string, including its value, in origin requests\.
-
-**Headers**  
-The HTTP headers in viewer requests that CloudFront includes in origin requests\. For headers, you can choose one of the following settings:  
-+ **None** – The HTTP headers in viewer requests are *not* included in origin requests\.
-+ **All viewer headers** – All HTTP headers in viewer requests are included in origin requests\.
-+ **Whitelist** – You specify which HTTP headers are included in origin requests\.
-+ **All viewer headers and whitelisted CloudFront\-\* headers** – All HTTP headers in viewer requests are included in origin requests\. Additionally, you specify which of the CloudFront headers you want to add to origin requests\. For more information about the CloudFront headers, see [Using the CloudFront HTTP headers](using-cloudfront-headers.md)\.
-When you use the **Whitelist** or **All viewer headers and whitelisted CloudFront\-\* headers** setting, you specify HTTP headers by their name, not their value\. For example, consider the following HTTP header:  
-
-```
-Accept-Language: en-US,en;q=0.5
-```
-In this case, you specify the header as `Accept-Language`, not as `Accept-Language: en-US,en;q=0.5`\. However, CloudFront includes the full header, including its value, in origin requests\.
-
-**Cookies**  
-The cookies in viewer requests that CloudFront includes in origin requests\. For cookies, you can choose one of the following settings:  
-+ **None** – The cookies in viewer requests are *not* included in origin requests\.
-+ **All** – All cookies in viewer requests are included in origin requests\.
-+ **Whitelist** – You specify which of the cookies in viewer requests are included in origin requests\.
-When you use the **Whitelist** setting, you specify cookies by their name, not their value\. For example, consider the following `Cookie` header:  
-
-```
-Cookie: session_ID=abcd1234
-```
-In this case, you specify the cookie as `session_ID`, not as `session_ID=abcd1234`\. However, CloudFront includes the full cookie, including its value, in origin requests\.
 
 ## Creating origin request policies<a name="origin-request-create-origin-request-policy"></a>
 
@@ -88,17 +29,18 @@ Origin request policies are not required\. When a cache behavior does not have a
 **Note**  
 To use an origin request policy, the cache behavior must also use a [cache policy](controlling-the-cache-key.md)\. You cannot use an origin request policy in a cache behavior without a cache policy\.
 
-### Creating origin request policies \(console\)<a name="origin-request-create-origin-request-policy-console"></a>
+------
+#### [ Console ]
 
 **To create an origin request policy \(console\)**
 
 1. Sign in to the AWS Management Console and open the **Policies** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home?#/policies](https://console.aws.amazon.com/cloudfront/v3/home?#/policies)\.
 
-1. Choose **Origin request policy**, then choose **Create origin request policy**\.
+1. Choose **Origin request**, then choose **Create origin request policy**\.
 
 1. Choose the desired setting for this origin request policy\. For more information, see [Understanding origin request policies](#origin-request-understand-origin-request-policy)\.
 
-1. When finished, choose **Create origin request policy**\.
+1. When finished, choose **Create**\.
 
 After you create an origin request policy, you can attach it to a cache behavior\.
 
@@ -110,29 +52,30 @@ After you create an origin request policy, you can attach it to a cache behavior
 
 1. Choose the cache behavior to update, then choose **Edit**\.
 
-   Or, to create a new cache behavior, choose **Create Behavior**\.
+   Or, to create a new cache behavior, choose **Create behavior**\.
 
-1. For **Cache and origin request settings**, make sure that **Use a cache policy and origin request policy** is chosen\.
+1. In the **Cache key and origin requests** section, make sure that **Cache policy and origin request policy** is chosen\.
 
-1. For **Origin Request Policy**, choose the origin request policy to attach to this cache behavior\.
+1. For **Origin request policy**, choose the origin request policy to attach to this cache behavior\.
 
-1. At the bottom of the page, choose **Yes, Edit**\.
+1. At the bottom of the page, choose **Save changes**\.
 
 **To attach an origin request policy to a new distribution \(console\)**
 
 1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
-1. Choose **Create Distribution**, then for **Web**, choose **Get Started**\.
+1. Choose **Create distribution**\.
 
-1. For **Cache and origin request settings**, make sure that **Use a cache policy and origin request policy** is chosen\.
+1. In the **Cache key and origin requests** section, make sure that **Cache policy and origin request policy** is chosen\.
 
-1. For **Origin Request Policy**, choose the origin request policy to attach to this distribution’s default cache behavior\.
+1. For **Origin request policy**, choose the origin request policy to attach to this distribution’s default cache behavior\.
 
-1. Choose the desired settings for the origin, default cache behavior, and distribution\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+1. Choose the desired settings for the origin, default cache behavior, and other distribution settings\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
 
-1. When finished, choose **Create Distribution**\.
+1. When finished, choose **Create distribution**\.
 
-### Creating origin request policies \(AWS CLI\)<a name="origin-request-create-origin-request-policy-cli"></a>
+------
+#### [ CLI ]
 
 To create an origin request policy with the AWS Command Line Interface \(AWS CLI\), use the aws cloudfront create\-origin\-request\-policy command\. You can use an input file to provide the command’s input parameters, rather than specifying each individual parameter as command line input\.
 
@@ -200,7 +143,8 @@ The `yaml-input` option is available only in [version 2 of the AWS CLI](https://
    aws cloudfront create-distribution --cli-input-yaml file://distribution.yaml
    ```
 
-### Creating origin request policies \(API\)<a name="origin-request-create-origin-request-policy-api"></a>
+------
+#### [ API ]
 
 To create an origin request policy with the CloudFront API, use [CreateOriginRequestPolicy](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateOriginRequestPolicy.html)\. For more information about the fields that you specify in this API call, see [Understanding origin request policies](#origin-request-understand-origin-request-policy) and the API reference documentation for your AWS SDK or other API client\.
 
@@ -209,3 +153,60 @@ After you create an origin request policy, you can attach it to a cache behavior
 + To attach it to a cache behavior in a new distribution, use [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)\.
 
 For both of these API calls, provide the origin request policy’s ID in the `OriginRequestPolicyId` field, inside a cache behavior\. For more information about the other fields that you specify in these API calls, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) and the API reference documentation for your AWS SDK or other API client\.
+
+------
+
+## Understanding origin request policies<a name="origin-request-understand-origin-request-policy"></a>
+
+CloudFront provides some predefined origin request policies, known as *managed policies*, for common use cases\. You can use these managed policies, or you can create your own origin request policy that’s specific to your needs\. For more information about the managed policies, see [Using the managed origin request policies](using-managed-origin-request-policies.md)\.
+
+An origin request policy contains the following settings, which are categorized into *policy information* and *origin request settings*\.
+
+### Policy information<a name="origin-request-understand-origin-request-policy-info"></a>
+
+**Name**  
+A name to identify the origin request policy\. In the console, you use the name to attach the origin request policy to a cache behavior\.
+
+**Description**  
+A comment to describe the origin request policy\. This is optional\.
+
+### Origin request settings<a name="origin-request-understand-origin-request-policy-settings"></a>
+
+Origin request settings specify the values in viewer requests that are included in requests that CloudFront sends to the origin \(known as origin requests\)\. The values can include URL query strings, HTTP headers, and cookies\. The values that you specify are included in origin requests, but are not included in the cache key\. For information about controlling the cache key, see [Controlling the cache key](controlling-the-cache-key.md)\.
+
+**Headers**  
+The HTTP headers in viewer requests that CloudFront includes in origin requests\. For headers, you can choose one of the following settings:  
++ **None** – The HTTP headers in viewer requests are *not* included in origin requests\.
++ **All viewer headers** – All HTTP headers in viewer requests are included in origin requests\.
++ **Include the following headers** – You specify which HTTP headers are included in origin requests\.
++ **All viewer headers and the following CloudFront headers** – All HTTP headers in viewer requests are included in origin requests\. Additionally, you specify which of the CloudFront headers you want to add to origin requests\. For more information about the CloudFront headers, see [Using the CloudFront HTTP headers](using-cloudfront-headers.md)\.
+When you use the **Include the following headers** or **All viewer headers and the following CloudFront headers** setting, you specify HTTP headers by their name, not their value\. For example, consider the following HTTP header:  
+
+```
+Accept-Language: en-US,en;q=0.5
+```
+In this case, you specify the header as `Accept-Language`, not as `Accept-Language: en-US,en;q=0.5`\. However, CloudFront includes the full header, including its value, in origin requests\.
+
+**Cookies**  
+The cookies in viewer requests that CloudFront includes in origin requests\. For cookies, you can choose one of the following settings:  
++ **None** – The cookies in viewer requests are *not* included in origin requests\.
++ **All** – All cookies in viewer requests are included in origin requests\.
++ **Include specified cookies** – You specify which of the cookies in viewer requests are included in origin requests\.
+When you use the **Include specified cookies** setting, you specify cookies by their name, not their value\. For example, consider the following `Cookie` header:  
+
+```
+Cookie: session_ID=abcd1234
+```
+In this case, you specify the cookie as `session_ID`, not as `session_ID=abcd1234`\. However, CloudFront includes the full cookie, including its value, in origin requests\.
+
+**Query strings**  
+The URL query strings in viewer requests that CloudFront includes in origin requests\. For query strings, you can choose one of the following settings:  
++ **None** – The query strings in viewer requests are *not* included in origin requests\.
++ **All** – All query strings in viewer requests are included in origin requests\.
++ **Include specified query strings** – You specify which of the query strings in viewer requests are included in origin requests\.
+When you use the **Include specified query strings** setting, you specify query strings by their name, not their value\. For example, consider the following URL path:  
+
+```
+/content/stories/example-story.html?split-pages=false
+```
+In this case, you specify the query string as `split-pages`, not as `split-pages=false`\. However, CloudFront includes the full query string, including its value, in origin requests\.
