@@ -107,13 +107,16 @@ CloudFront does the following:
 
 1. After the error caching minimum TTL has elapsed, CloudFront tries again to get the requested object by forwarding another request to your origin\. Note that if the object is not requested frequently, CloudFront might evict it from the edge cache while your origin server is still returning 5xx responses\. For information about how long objects stay in CloudFront edge caches, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
+**Note**
+The caching of Status Codes returned by origin is different from caching of the custom error page retured by origin for that Status Code. For caching the error page in distribution, add Cache-Control max-age header or a Cache-Control s-maxage to the error page object metatdata. For caching the Status Code itself, the origin needs to return the Cache-Control max-age header with the Status Codes. Setting the headers only on the custom error page wont cache the Status Code in Cloudfront but only the page.
+
 ## HTTP 4xx and 5xx Status Codes that CloudFront Caches<a name="HTTPStatusCodes-cached-errors"></a>
 
 CloudFront caches HTTP 4xx and 5xx status codes returned by your origin, depending on the specific status code that is returned and whether your origin returns specific headers in the response\.
 
 ### HTTP 4xx and 5xx Status Codes that CloudFront Always Caches<a name="HTTPStatusCodes-cached-errors-general"></a>
 
-CloudFront always caches the following HTTP 4xx and 5xx status codes returned by your origin\. If you have configured a custom error page for an HTTP status code, CloudFront caches the custom error page\. 
+CloudFront always caches the following HTTP 4xx and 5xx status codes returned by your origin\. If you have configured a custom error page for an HTTP status code, CloudFront caches the custom error page\.
 
 
 ****  
@@ -130,7 +133,7 @@ CloudFront always caches the following HTTP 4xx and 5xx status codes returned by
 
 ### HTTP 4xx Status Codes that CloudFront Caches Based on Cache Control Headers<a name="HTTPStatusCodes-cached-errors-with-cache-control"></a>
 
-CloudFront only caches the following HTTP 4xx status codes returned by your origin if your origin returns a `Cache-Control max-age` or `Cache-Control s-maxage` header\. If you have configured a custom error page for one of these HTTP status codes—and your origin returns one of the cache control headers—CloudFront caches the custom error page\. 
+CloudFront only caches the following HTTP 4xx status codes returned by your origin if your origin returns a `Cache-Control max-age` or `Cache-Control s-maxage` header\. If you have configured a custom error page for one of these HTTP status codes—and your origin returns one of the cache control headers—CloudFront caches the custom error page\. To cache these Status Codes, see [Updating HTTP Responses in Origin-Response Triggers](lambda-updating-http-responses.html)\.
 
 
 ****  
