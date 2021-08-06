@@ -185,8 +185,9 @@ You must follow separate procedures to manually delete each service\-linked role
 ### Supported Regions for CloudFront Service\-Linked Roles<a name="slr-regions"></a>
 
 CloudFront supports using service\-linked roles for Lambda@Edge in the following Regions:
-+ US East \(Ohio\) – `us-east-2`
 + US East \(N\. Virginia\) – `us-east-1`
++ US East \(Ohio\) – `us-east-2`
++ US West \(N\. California\) – `us-west-1`
 + US West \(Oregon\) – `us-west-2`
 + Asia Pacific \(Mumbai\) – `ap-south-1`
 + Asia Pacific \(Seoul\) – `ap-northeast-2`
