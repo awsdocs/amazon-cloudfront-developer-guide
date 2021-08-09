@@ -123,7 +123,7 @@ The `--output yaml` option is available only in [version 2 of the AWS CLI](https
    aws cloudfront update-distribution --id distribution_ID --cli-input-yaml file://dist-config.yaml
    ```
 
-**To attach a cache policy to a new distribution \(CLI with input file\)**
+**To attach an origin request policy to a new distribution \(CLI with input file\)**
 
 1. Use the following command to create a file named `distribution.yaml` that contains all of the input parameters for the create\-distribution command\.
 
