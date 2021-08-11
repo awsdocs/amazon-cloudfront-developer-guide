@@ -38,7 +38,7 @@ The Chrome and Firefox web browsers support Brotli compression only when the req
 
    If the compressed object is not in the cache, CloudFront forwards the request to the origin\.
 **Note**  
-If CloudFront has an uncompressed copy of the object in the cache, it still forwards a request to the origin\.
+If an uncompressed copy of the object is already in the cache, CloudFront might send it to the viewer without forwarding the request to the origin\. For example, this can happen when CloudFront previously skipped compression for this object due to an unusually busy host\. When this happens, CloudFront caches the uncompressed object and continues to serve it until the object expires, is evicted, or is invalidated\.
 
 1. If the origin returns a compressed object, as indicated by the presence of a `Content-Encoding` header in the HTTP response, CloudFront sends the compressed object to the viewer, adds it to the cache, and skips the remaining steps\. CloudFront doesn’t compress the object again\.
 
@@ -57,8 +57,8 @@ If a request to CloudFront uses HTTP 1\.0, CloudFront removes the `Accept-Encodi
 If the `Accept-Encoding` header is missing from the viewer request, or if it doesn’t contain `gzip` or `br` as a value, CloudFront does not compress the object in the response\. If the `Accept-Encoding` header includes additional values such as `deflate`, CloudFront removes them before forwarding the request to the origin\.  
 When CloudFront is [configured to compress objects](#compressed-content-cloudfront-configuring), it includes the `Accept-Encoding` header in the cache key and in origin requests automatically\. However, if the `Accept-Encoding` header is explicitly listed in the cache policy \(or in the legacy cache settings\), CloudFront does not compress the object in the response\.
 
-**Request method**  
-CloudFront compresses objects only when the HTTP request method is `GET`, `HEAD`, or `OPTIONS`\. CloudFront does not compress objects when the request uses other HTTP methods \(`DELETE`, `PATCH`, `POST`, `PUT`, and so on\)\.
+**Dynamic content**  
+CloudFront does not always compress dynamic content\. Sometimes responses for dynamic content are compressed, and sometimes they are not\.
 
 **Content is already cached when you configure CloudFront to compress objects**  
 CloudFront compresses objects when it gets them from the origin\. When you configure CloudFront to compress objects, CloudFront doesn’t compress objects that are already cached in edge locations\. In addition, when a cached object expires in an edge location and CloudFront forwards another request for the object to your origin, CloudFront doesn’t compress the object when your origin returns an HTTP status code 304, which means that the edge location already has the latest version of the object\. If you want CloudFront to compress objects that are already cached in edge locations, you need to invalidate those objects\. For more information, see [Invalidating Files](Invalidation.md)\.
@@ -85,7 +85,8 @@ When the HTTP response from the origin has no body, there is nothing for CloudFr
 CloudFront sometimes modifies the `ETag` header in the HTTP response when it compresses objects\. For more information, see [`ETag` header conversion](#compressed-content-cloudfront-etag-header)\.
 
 **CloudFront is busy**  
-In rare cases when a CloudFront edge location is unusually busy, CloudFront might not compress some objects\.
+In rare cases when a CloudFront host is unusually busy, CloudFront might not compress some objects\.  
+If CloudFront skips compression for an object due to an unusually busy host, it caches the uncompressed object and continues to serve it until the object expires, is evicted, or is invalidated\.
 
 ## File types that CloudFront compresses<a name="compressed-content-cloudfront-file-types"></a>
 
