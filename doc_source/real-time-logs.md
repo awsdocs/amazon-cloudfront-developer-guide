@@ -291,7 +291,7 @@ When you create a data stream, you need to specify the number of shards\. Use th
 **IAM role**  
 The AWS Identity and Access Management \(IAM\) role that gives CloudFront permission to deliver real\-time logs to your Kinesis data stream\.  
 When you create a real\-time log configuration with the CloudFront console, you can choose **Create new service role** to let the console create the IAM role for you\.  
-When you create a real\-time log configuration with AWS CloudFormation or the CloudFront API \(AWS CLI or SDK\), you must create the IAM role yourself and provide the role ARN\. To create the IAM yourself, use the following policies\.  
+When you create a real\-time log configuration with AWS CloudFormation or the CloudFront API \(AWS CLI or SDK\), you must create the IAM role yourself and provide the role ARN\. To create the IAM role yourself, use the following policies\.  
 **IAM role trust policy**  
 
 ```
@@ -331,7 +331,7 @@ To use the following policy, replace *Kinesis data stream ARN* with the ARN of y
 }
 ```
 **IAM role permissions policy for an encrypted data stream**  
-To use the following policy, replace *Kinesis data stream ARN* with the ARN of your Kinesis data stream and *AWS KMS key* with the ARN of your customer master key in AWS Key Management Service \(AWS KMS\)\.  
+To use the following policy, replace *Kinesis data stream ARN* with the ARN of your Kinesis data stream and *KMS key ARN* with the ARN of your AWS KMS key\.  
 
 ```
 {
@@ -355,7 +355,7 @@ To use the following policy, replace *Kinesis data stream ARN* with the ARN of y
                 "kms:GenerateDataKey"
             ],
             "Resource": [
-                "AWS KMS key"
+                "KMS key ARN"
             ]
         }
     ]

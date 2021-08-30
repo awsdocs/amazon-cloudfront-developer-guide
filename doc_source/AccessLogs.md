@@ -10,7 +10,7 @@ CloudFront also offers real\-time logs, which give you information about request
 + [How standard logging works](#AccessLogsOverview)
 + [Choosing an Amazon S3 bucket for your standard logs](#access-logs-choosing-s3-bucket)
 + [Permissions required to configure standard logging and to access your log files](#AccessLogsBucketAndFileOwnership)
-+ [Required CMK key policy for SSE\-KMS buckets](#AccessLogsKMSPermissions)
++ [Required key policy for SSE\-KMS buckets](#AccessLogsKMSPermissions)
 + [File name format](#AccessLogsFileNaming)
 + [Timing of standard log file delivery](#access-logs-timing)
 + [How requests are logged when the request URL or headers exceed the maximum size](#access-logs-request-URL-size)
@@ -87,9 +87,9 @@ In addition to the ACL on the bucket, there's an ACL on each log file\. The buck
 **Disabling logging**  
 If you disable logging, CloudFront doesn't delete the ACLs for either the bucket or the log files\. If you want, you can do that yourself\.
 
-## Required CMK key policy for SSE\-KMS buckets<a name="AccessLogsKMSPermissions"></a>
+## Required key policy for SSE\-KMS buckets<a name="AccessLogsKMSPermissions"></a>
 
-If the S3 bucket for your standard logs uses server\-side encryption with AWS KMS\-managed keys \(SSE\-KMS\) using a customer\-managed Customer Master Key \(CMK\), you must add the following statement to the key policy for your CMK\. This allows CloudFront to write log files to the bucket\. \(You can’t use SSE\-KMS with the default CMK because CloudFront won’t be able to write log files to the bucket\.\)
+If the S3 bucket for your standard logs uses server\-side encryption with AWS KMS keys \(SSE\-KMS\) using a customer managed key, you must add the following statement to the key policy for your customer managed key\. This allows CloudFront to write log files to the bucket\. \(You can’t use SSE\-KMS with the AWS managed key because CloudFront won’t be able to write log files to the bucket\.\)
 
 ```
 {
