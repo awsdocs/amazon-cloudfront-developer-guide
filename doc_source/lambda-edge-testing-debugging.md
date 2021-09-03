@@ -109,7 +109,7 @@ For more information about viewing graphs in the **Monitoring** section of the C
 
 ## Determining if Your Account Pushes Logs to CloudWatch<a name="lambda-edge-testing-debugging-cloudwatch-logs-enabled"></a>
 
-By default, CloudFront enables logging invalid Lambda function responses, and pushes the log files to CloudWatch by using one of the [Service\-Linked Roles for Lambda@Edge](lambda-edge-permissions.md#using-service-linked-roles)\. If you have Lambda@Edge functions that you added to CloudFront before the invalid Lambda function response log feature was released, logging is enabled when you next update your Lambda@Edge configuration, for example, by adding a CloudFront trigger\.
+By default, CloudFront enables logging invalid Lambda function responses, and pushes the log files to CloudWatch by using one of the [Service\-linked roles for Lambda@Edge](lambda-edge-permissions.md#using-service-linked-roles)\. If you have Lambda@Edge functions that you added to CloudFront before the invalid Lambda function response log feature was released, logging is enabled when you next update your Lambda@Edge configuration, for example, by adding a CloudFront trigger\.
 
 You can verify that pushing the log files to CloudWatch is enabled for your account by doing the following:
 + **Check to see if the logs appear in CloudWatch\.** Make sure that you look in the Region where the Lambda@Edge function executed\. For more information, see [ Determining the Lambda@Edge Region](#lambda-edge-testing-debugging-determine-region)\.
