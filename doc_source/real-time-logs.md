@@ -7,7 +7,7 @@ CloudFront real\-time logs are configurable\. You can choose:
 + The specific fields that you want to receive in the log records\.
 + The specific cache behaviors \(path patterns\) that you want to receive real\-time logs for\.
 
-CloudFront real\-time logs are delivered to the data stream of your choice in Amazon Kinesis Data Streams\. You can build your own [Kinesis data stream consumer](https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-consumers.html), or use Amazon Kinesis Data Firehose to send the log data to Amazon Simple Storage Service \(Amazon S3\), Amazon Redshift, Amazon Elasticsearch Service \(Amazon ES\), or a third\-party log processing service\.
+CloudFront real\-time logs are delivered to the data stream of your choice in Amazon Kinesis Data Streams\. You can build your own [Kinesis data stream consumer](https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-consumers.html), or use Amazon Kinesis Data Firehose to send the log data to Amazon Simple Storage Service \(Amazon S3\), Amazon Redshift, Amazon OpenSearch Service \(OpenSearch Service\), or a third\-party log processing service\.
 
 CloudFront charges for real\-time logs, in addition to the charges you incur for using Kinesis Data Streams\. For more information about pricing, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/) and [Amazon Kinesis Data Streams pricing](http://aws.amazon.com/kinesis/data-streams/pricing/)\.
 

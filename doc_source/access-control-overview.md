@@ -77,7 +77,7 @@ For information about the permissions required to perform operations by using th
 
 ### Resource\-level policies<a name="access-control-manage-access-intro-resource-policies"></a>
 
-In some scenarios, you might want to grant a specific level of access to a resource that you specify; for example, access to only specific actions on that resource\. One way that some AWS services implement this is to allow you to directly attach a policy on the resource\. For example, that’s how Amazon S3 and Elasticsearch implement resource access control\. CloudFront allows the same flexibility but uses a different method\. Instead of attaching a policy to a resource, you specify the resource in a policy\.
+In some scenarios, you might want to grant a specific level of access to a resource that you specify; for example, access to only specific actions on that resource\. One way that some AWS services implement this is to allow you to directly attach a policy on the resource\. For example, that’s how Amazon S3 and OpenSearch implement resource access control\. CloudFront allows the same flexibility but uses a different method\. Instead of attaching a policy to a resource, you specify the resource in a policy\.
 
 For example, the following policy shows how you might allow update, delete, and create invalidations access to a distribution that you specify by the distribution’s ARN\. This policy grants the permissions necessary to complete these actions from the AWS API or AWS CLI only\. \(To use this policy, replace the italicized text in the example policy with your own resource information\.\)
 
