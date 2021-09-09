@@ -205,6 +205,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Overview of managing access permissions to your CloudFront resources](access-control-overview.md)
       + [Using identity-based policies (IAM policies) for CloudFront](access-control-managing-permissions.md)
       + [CloudFront API permissions: actions, resources, and conditions reference](cf-api-permissions-ref.md)
+      + [AWS managed policies for Amazon CloudFront](security-iam-awsmanpol.md)
    + [Logging and monitoring in Amazon CloudFront](logging-and-monitoring.md)
    + [Compliance validation for Amazon CloudFront](compliance.md)
    + [Resilience in Amazon CloudFront](disaster-recovery-resiliency.md)

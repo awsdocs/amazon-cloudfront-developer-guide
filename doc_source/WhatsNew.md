@@ -7,6 +7,7 @@ The following entries describe important changes made to the CloudFront document
 
 | Change | Description | Date changed | 
 | --- | --- | --- | 
+|  [AWS managed policy update](security-iam-awsmanpol.md#security-iam-awsmanpol-updates)  |  CloudFront updated the **CloudFrontReadOnlyAccess** policy\. For more information, see [CloudFront updates to AWS managed policies](security-iam-awsmanpol.md#security-iam-awsmanpol-updates)\.  |  September 8, 2021  | 
 |  New feature  |  CloudFront now supports ECDSA certificates for viewer\-facing HTTPS connections\. For more information, see [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md) and [Requirements for using SSL/TLS certificates with CloudFront](cnames-and-https-requirements.md)\.  |  July 14, 2021  | 
 |  New feature  |  CloudFront now supports more ways to move an alternate domain name from one distribution to another, without contacting AWS Support\. For more information, see [Moving an alternate domain name to a different distribution](CNAMEs.md#alternate-domain-names-move)\.  |  July 7, 2021  | 
 |  New security policy  |  CloudFront now supports a new security policy, **TLSv1\.2\_2021**, with a smaller set of supported ciphers\. For more information, see [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.  |  June 23, 2021  | 
