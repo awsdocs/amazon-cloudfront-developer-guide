@@ -4,7 +4,7 @@ You can use the following Linux command\-line command and OpenSSL to hash and si
 
 For information about OpenSSL, go to [https://www.openssl.org](https://www.openssl.org)\.
 
-`![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) cat policy | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) tr -d "\n" | tr -d " \t\n\r" | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png) openssl sha1 -sign private_key.pem | ![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) openssl base64 | ![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) tr -- '+=/' '-_~'`
+`![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) cat policy | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) tr -d "\n" | tr -d " \t\n\r" | ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png) openssl sha1 -sign private_key.pem | ![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) openssl base64 -A | ![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) tr -- '+=/' '-_~'`
 
 where:
 
