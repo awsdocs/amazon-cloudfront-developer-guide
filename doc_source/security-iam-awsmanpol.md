@@ -24,7 +24,7 @@ This policy includes the following permissions\.
 + `cloudfront:List*` – Allows principals to get lists of CloudFront resources\.
 + `acm:ListCertificates` – Allows principals to get a list of ACM certificates\.
 + `iam:ListServerCertificates` – Allows principals to get a list of server certificates stored in IAM\.
-+ `route53:List*` – Allows principals to get lists of Route 53 resources\.
++ `route53:List*` – Allows principals to get lists of Route 53 resources\.
 + `waf:ListWebACLs` – Allows principals to get a list of web ACLs in AWS WAF\.
 + `waf:GetWebACL` – Allows principals to get detailed information about web ACLs in AWS WAF\.
 + `wafv2:ListWebACLs` – Allows principals to get a list of web ACLs in AWS WAF\.

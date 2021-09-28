@@ -47,7 +47,7 @@ To deploy this secure static website solution, you can choose from either of the
 ### Prerequisites<a name="deploy-website-cloudformation-prerequisites"></a>
 
 To use this solution, you must have the following prerequisites:
-+ A registered domain name, such as example\.com, that’s pointed to an Amazon Route 53 hosted zone\. The hosted zone must be in the same AWS account where you deploy this solution\. If you don’t have a registered domain name, you can [register one with Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar.html)\. If you have a registered domain name but it’s not pointed to a Route 53 hosted zone, [configure Route 53 as your DNS service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html)\.
++ A registered domain name, such as example\.com, that’s pointed to an Amazon Route 53 hosted zone\. The hosted zone must be in the same AWS account where you deploy this solution\. If you don’t have a registered domain name, you can [register one with Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar.html)\. If you have a registered domain name but it’s not pointed to a Route 53 hosted zone, [configure Route 53 as your DNS service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html)\.
 + AWS Identity and Access Management \(IAM\) permissions to launch CloudFormation templates that create IAM roles, and permissions to create all the AWS resources in the solution\.
 
 You are responsible for the costs incurred while using this solution\. For more information about costs, see [the pricing pages for each AWS service](http://aws.amazon.com/pricing/)\.
@@ -66,7 +66,7 @@ You are responsible for the costs incurred while using this solution\. For more 
 
 1. On the **Specify stack details** page, enter values for the following fields:
    + **SubDomain** – Enter the subdomain to use for your website\. For example, if the subdomain is *www*, your website is available at *www*\.example\.com\. \(Replace example\.com with your domain name, as explained in the following bullet\.\)
-   + **DomainName** – Enter your domain name, such as *example\.com*\. This domain must be pointed to a Route 53 hosted zone\.
+   + **DomainName** – Enter your domain name, such as *example\.com*\. This domain must be pointed to a Route 53 hosted zone\.
 
    When finished, choose **Next**\.
 
@@ -131,7 +131,7 @@ To add your website content before deploying this solution, you must package the
 
 1. Run the following command to deploy the solution with AWS CloudFormation, replacing the following values:
    + *your\-CloudFormation\-stack\-name* – Replace with a name for the AWS CloudFormation stack\.
-   + *example\.com* – Replace with your domain name\. This domain must be pointed to a Route 53 hosted zone in the same AWS account\.
+   + *example\.com* – Replace with your domain name\. This domain must be pointed to a Route 53 hosted zone in the same AWS account\.
    + *www* – Replace with the subdomain to use for your website\. For example, if the subdomain is *www*, your website is available at www\.example\.com\.
 
    ```

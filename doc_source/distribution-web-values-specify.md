@@ -727,13 +727,13 @@ IPv6 is a new version of the IP protocol\. It's the eventual replacement for IPv
 
 In general, you should enable IPv6 if you have users on IPv6 networks who want to access your content\. However, if you're using signed URLs or signed cookies to restrict access to your content, and if you're using a custom policy that includes the `IpAddress` parameter to restrict the IP addresses that can access your content, do not enable IPv6\. If you want to restrict access to some content by IP address and not restrict access to other content \(or restrict access but not by IP address\), you can create two distributions\. For information about creating signed URLs by using a custom policy, see [Creating a signed URL using a custom policy](private-content-creating-signed-url-custom-policy.md)\. For information about creating signed cookies by using a custom policy, see [Setting signed cookies using a custom policy](private-content-setting-signed-cookie-custom-policy.md)\.
 
-If you're using a Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:
+If you're using a Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:
 + You enable IPv6 for the distribution
 + You're using alternate domain names in the URLs for your objects
 
-For more information, see [Routing traffic to an Amazon CloudFront distribution by using your domain name](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
+For more information, see [Routing traffic to an Amazon CloudFront distribution by using your domain name](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.
 
-If you created a CNAME resource record set, either with Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record routes traffic to your distribution regardless of the IP address format of the viewer request\.
+If you created a CNAME resource record set, either with Route 53 or with another DNS service, you don't need to make any changes\. A CNAME record routes traffic to your distribution regardless of the IP address format of the viewer request\.
 
 If you enable IPv6 and CloudFront access logs, the `c-ip` column includes values in IPv4 and IPv6 format\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
