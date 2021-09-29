@@ -188,6 +188,7 @@ The following Lambda features are not supported by Lambda@Edge:
 + [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html) is not supported\.
 + [Lambda reserved concurrency and provisioned concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html) are not supported\.
 + [Lambda functions defined as container images](https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html) are not supported\.
++ [Lambda functions that use the arm64 architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html) are not supported\.
 
 Lambda@Edge supports Lambda functions with the following runtimes:
 
