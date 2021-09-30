@@ -16,19 +16,21 @@ To include these headers in the cache key, use a *cache policy*\. For more infor
 Use the following headers to determine the viewer’s device type\. Based on the value of the `User-Agent` header, CloudFront sets the value of these headers to `true` or `false`\. If a device falls into more than one category, more than one value might be `true`\. For example, for some tablet devices, CloudFront might set both `CloudFront-Is-Mobile-Viewer` and `CloudFront-Is-Tablet-Viewer` to `true`\.
 + `CloudFront-Is-Android-Viewer` – Set to `true` when CloudFront determines that the viewer is a device with the Android operating system\.
 + `CloudFront-Is-Desktop-Viewer` – Set to `true` when CloudFront determines that the viewer is a desktop device\.
-+ `CloudFront-Is-IOS-Viewer` – Set to `true` when CloudFront determines that the viewer is a device with an Apple operating system\.
++ `CloudFront-Is-IOS-Viewer` – Set to `true` when CloudFront determines that the viewer is a device with an Apple mobile operating system, such as iPhone, iPod touch, and some iPad devices\.
 + `CloudFront-Is-Mobile-Viewer` – Set to `true` when CloudFront determines that the viewer is a mobile device\.
 + `CloudFront-Is-SmartTV-Viewer` – Set to `true` when CloudFront determines that the viewer is a smart TV\.
 + `CloudFront-Is-Tablet-Viewer` – Set to `true` when CloudFront determines that the viewer is a tablet\.
 
 ## Headers for determining the viewer’s location<a name="cloudfront-headers-viewer-location"></a>
 
-Use the following headers to determine the viewer’s location\. CloudFront determines the values for these headers based on the viewer’s IP address\. CloudFront doesn’t add these headers when the request originates from Amazon EC2\.
+Use the following headers to determine the viewer’s location\. CloudFront determines the values for these headers based on the viewer’s IP address\. CloudFront doesn’t add these headers when the request originates from Amazon EC2, except as noted in the following list\.
 
 **Note**  
 For non\-ASCII characters in these headers’ values, CloudFront percent encodes the character according to [section 1\.2 of RFC 3986](https://tools.ietf.org/html/rfc3986#section-2.1)\.
 + `CloudFront-Viewer-City` – Contains the name of the viewer’s city\.
 + `CloudFront-Viewer-Country` – Contains the two\-letter country code for the viewer’s country\. For a list of country codes, see [ISO 3166\-1 alpha\-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)\.
+**Note**  
+CloudFront adds this header for all requests including those that originate from Amazon EC2\.
 + `CloudFront-Viewer-Country-Name` – Contains the name of the viewer’s country\.
 + `CloudFront-Viewer-Country-Region` – Contains a code \(up to three characters\) that represent the viewer’s region\. The region is the most specific subdivision of the [ISO 3166\-2](https://en.wikipedia.org/wiki/ISO_3166-2) code\.
 + `CloudFront-Viewer-Country-Region-Name` – Contains the name of the viewer’s region\. The region is the most specific subdivision of the [ISO 3166\-2](https://en.wikipedia.org/wiki/ISO_3166-2) code\.
