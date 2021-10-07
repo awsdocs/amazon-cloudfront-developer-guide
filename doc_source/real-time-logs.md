@@ -154,7 +154,6 @@ This field is truncated to 800 bytes\.
    Possible values include:
    + `Hit` – The server served the object to the viewer from the cache\.
    + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
-   + `OriginShieldHit` – The object was served to the viewer from the Origin Shield cache\.
    + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin and returned the result to the viewer\.
    + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
    + `CapacityExceeded` – The server returned an HTTP 503 status code because it didn’t have enough capacity at the time of the request to serve the object\.
@@ -207,7 +206,7 @@ This field is truncated to 800 bytes\.
 
 1. **`x-edge-detailed-result-type`**
 
-   When the `x-edge-result-type` field is not `Error`, this field contains the same value as `x-edge-result-type`\. When the `x-edge-result-type` field is `Error`, this field contains the specific type of error\. Possible values include:
+   When the value of the `x-edge-result-type` field is `Error`, this field contains the specific type of error\. When the object was served to the viewer from the [Origin Shield](origin-shield.md) cache, this field contains `OriginShieldHit`\. In all other cases, this field contains the same value as `x-edge-result-type`\. Possible values for this field include:
    + `AbortedOrigin` – The server encountered an issue with the origin\.
    + `ClientCommError` – The response to the viewer was interrupted due to a communication problem between the server and the viewer\.
    + `ClientGeoBlocked` – The distribution is configured to refuse requests from the viewer’s geographic location\.
@@ -225,6 +224,7 @@ This field is truncated to 800 bytes\.
    + `OriginHeaderTooBigError` – A header returned by the origin is too big for the edge server to process\.
    + `OriginInvalidResponseError` – The origin returned an invalid response\.
    + `OriginReadError` – The server couldn’t read from the origin\.
+   + `OriginShieldHit` – The object was served to the viewer from the [Origin Shield](origin-shield.md) cache\.
    + `OriginWriteError` – The server couldn’t write to the origin\.
    + `OriginZeroSizeObjectError` – A zero size object sent from the origin resulted in an error\.
    + `SlowReaderOriginError` – The viewer was slow to read the message that caused the origin error\.
