@@ -131,9 +131,10 @@ You can use Origin Shield with an origin that is on\-premises or is not in an AW
 
 You can enable Origin Shield to improve your cache hit ratio, reduce the load on your origin, and help improve performance\. To enable Origin Shield, change the origin settings in a CloudFront distribution\. Origin Shield is a property of the origin\. For each origin in your CloudFront distributions, you can separately enable Origin Shield in whichever AWS Region provides the best performance for that origin\.
 
-You can enable Origin Shield in the CloudFront console, with the AWS CloudFormation, or with the CloudFront API\.
+You can enable Origin Shield in the CloudFront console, with AWS CloudFormation, or with the CloudFront API\.
 
-### Enabling Origin Shield \(console\)<a name="enable-origin-shield-console"></a>
+------
+#### [ Console ]
 
 **To enable Origin Shield for an existing origin \(console\)**
 
@@ -179,7 +180,8 @@ When your distribution status is **Deployed**, Origin Shield is ready\. This tak
 
 When your distribution status is **Deployed**, Origin Shield is ready\. This takes a few minutes\.
 
-### Enabling Origin Shield \(AWS CloudFormation\)<a name="enable-origin-shield-cloudformation"></a>
+------
+#### [ AWS CloudFormation ]
 
 To enable Origin Shield with AWS CloudFormation, use the `OriginShield` property in the `Origin` property type in an `AWS::CloudFront::Distribution` resource\. You can add the `OriginShield` property to an existing `Origin`, or include it when you create a new `Origin`\.
 
@@ -199,7 +201,8 @@ Origins:
 
 For more information, see [AWS::CloudFront::Distribution Origin](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-origin.html) in the resource and property reference section of the *AWS CloudFormation User Guide*\.
 
-### Enabling Origin Shield \(CloudFront API, AWS SDKs, AWS CLI\)<a name="enable-origin-shield-api-cli"></a>
+------
+#### [ API ]
 
 To enable Origin Shield with the CloudFront API using the AWS SDKs or AWS Command Line Interface \(AWS CLI\), use the `OriginShield` type\. You specify `OriginShield` in an `Origin`, in a `DistributionConfig`\. For information about the `OriginShield` type, see the following information in the *Amazon CloudFront API Reference*\.
 + [OriginShield](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginShield.html) \(type\)
@@ -209,6 +212,8 @@ To enable Origin Shield with the CloudFront API using the AWS SDKs or AWS Comman
 + [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) \(operation\)
 
 The specific syntax for using these types and operations varies based on the SDK, CLI, or API client\. For more information, see the reference documentation for your SDK, CLI, or client\.
+
+------
 
 ## Estimating Origin Shield costs<a name="origin-shield-costs"></a>
 
