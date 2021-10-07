@@ -309,7 +309,7 @@ When you create a real\-time log configuration with AWS CloudFormation or the Cl
 }
 ```
 **IAM role permissions policy for an unencrypted data stream**  
-To use the following policy, replace *Kinesis data stream ARN* with the ARN of your Kinesis data stream\.  
+To use the following policy, replace *arn:aws:kinesis:us\-east\-2:123456789012:stream/StreamName* with the ARN of your Kinesis data stream\.  
 
 ```
 {
@@ -324,14 +324,14 @@ To use the following policy, replace *Kinesis data stream ARN* with the ARN of y
                 "kinesis:PutRecords"
             ],
             "Resource": [
-                "Kinesis data stream ARN"
+                "arn:aws:kinesis:us-east-2:123456789012:stream/StreamName"
             ]
         }
     ]
 }
 ```
 **IAM role permissions policy for an encrypted data stream**  
-To use the following policy, replace *Kinesis data stream ARN* with the ARN of your Kinesis data stream and *KMS key ARN* with the ARN of your AWS KMS key\.  
+To use the following policy, replace *arn:aws:kinesis:us\-east\-2:123456789012:stream/StreamName* with the ARN of your Kinesis data stream and *arn:aws:kms:us\-east\-2:123456789012:key/e58a3d0b\-fe4f\-4047\-a495\-ae03cc73d486* with the ARN of your AWS KMS key\.  
 
 ```
 {
@@ -346,7 +346,7 @@ To use the following policy, replace *Kinesis data stream ARN* with the ARN of y
                 "kinesis:PutRecords"
             ],
             "Resource": [
-                "Kinesis data stream ARN"
+                "arn:aws:kinesis:us-east-2:123456789012:stream/StreamName"
             ]
         },
         {
@@ -355,7 +355,7 @@ To use the following policy, replace *Kinesis data stream ARN* with the ARN of y
                 "kms:GenerateDataKey"
             ],
             "Resource": [
-                "KMS key ARN"
+                "arn:aws:kms:us-east-2:123456789012:key/e58a3d0b-fe4f-4047-a495-ae03cc73d486"
             ]
         }
     ]
