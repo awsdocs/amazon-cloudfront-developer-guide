@@ -21,7 +21,7 @@ If the file name of the default root object is too long or contains an invalid c
 
 1. Confirm that the permissions for the object grant CloudFront at least `read` access\.
 
-   For more information about Amazon S3 permissions, see [Access Control](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAuthAccess.html) in the *Amazon Simple Storage Service Developer Guide*\. For information on using the Amazon S3 console to update permissions, go to the [http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html](http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html)\. 
+   For more information about Amazon S3 permissions, see [Access Control](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAuthAccess.html) in the *Amazon Simple Storage Service User Guide*\. For information on using the Amazon S3 console to update permissions, go to the [http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html](http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html)\. 
 
 1. Update your distribution to refer to the default root object using the CloudFront console or the CloudFront API\.
 
@@ -73,7 +73,7 @@ CloudFront does not return the default root object even if a copy of `index.html
 
 If you configure your distribution to allow all of the HTTP methods that CloudFront supports, the default root object applies to all methods\. For example, if your default root object is index\.php and you write your application to submit a `POST` request to the root of your domain \(http://example\.com\), CloudFront sends the request to http://example\.com/index\.php\.
 
-The behavior of CloudFront default root objects is different from the behavior of Amazon S3 index documents\. When you configure an Amazon S3 bucket as a website and specify the index document, Amazon S3 returns the index document even if a user requests a subdirectory in the bucket\. \(A copy of the index document must appear in every subdirectory\.\) For more information about configuring Amazon S3 buckets as websites and about index documents, see the [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) chapter in the *Amazon Simple Storage Service Developer Guide*\.
+The behavior of CloudFront default root objects is different from the behavior of Amazon S3 index documents\. When you configure an Amazon S3 bucket as a website and specify the index document, Amazon S3 returns the index document even if a user requests a subdirectory in the bucket\. \(A copy of the index document must appear in every subdirectory\.\) For more information about configuring Amazon S3 buckets as websites and about index documents, see the [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) chapter in the *Amazon Simple Storage Service User Guide*\.
 
 **Important**  
 Remember that a default root object applies only to your CloudFront distribution\. You still need to manage security for your origin\. For example, if you are using an Amazon S3 origin, you still need to set your Amazon S3 bucket ACLs appropriately to ensure the level of access you want on your bucket\.

@@ -47,7 +47,7 @@ For more information about the `Cache-Control` and `Expires` header fields, see 
 + [Section 14\.9 Cache Control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 + [Section 14\.21 Expires](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21)
 
-For an example of how to add `Cache-Control` and `Expires` header fields using the AWS SDK for PHP, see [Upload an Object Using the AWS SDK for PHP](https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpPHP.html) in the *Amazon Simple Storage Service Developer Guide*\. Some third\-party tools are also able to add these fields\.
+For an example of how to add `Cache-Control` and `Expires` header fields using the AWS SDK for PHP, see [Upload an Object Using the AWS SDK for PHP](https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpPHP.html) in the *Amazon Simple Storage Service User Guide*\. Some third\-party tools are also able to add these fields\.
 
 ## Specifying the amount of time that CloudFront caches objects<a name="ExpirationDownloadDist"></a>
 

@@ -7,7 +7,7 @@ To deliver video on demand \(VOD\) streaming with CloudFront, use the following 
 
 **To create a VOD solution with CloudFront**
 
-1. Upload your content to an Amazon S3 bucket\. To learn more about working with Amazon S3, see [the Amazon Simple Storage Service Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/)\.
+1. Upload your content to an Amazon S3 bucket\. To learn more about working with Amazon S3, see [the Amazon Simple Storage Service User Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/)\.
 
 1. Transcode your content by using a MediaConvert job\. The job converts your video into the formats required by the players that your viewers use\. You can also use the job to create assets that vary in resolution and bitrate\. These assets are used for adaptive bitrate \(ABR\) streaming, which adjusts the viewing quality depending on the viewer’s available bandwidth\. MediaConvert stores the transcoded video in an S3 bucket\.
 

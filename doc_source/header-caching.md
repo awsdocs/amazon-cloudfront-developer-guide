@@ -68,7 +68,7 @@ If you have enabled cross\-origin resource sharing \(CORS\) on an Amazon S3 buck
 
 You configure CloudFront to forward headers by whitelisting the headers in a cache behavior for your CloudFront distribution\. For more information about working with header forwarding, see [Headers and distributions – overview](#header-caching-web)\.
 
-For more information about CORS and Amazon S3, see [Enabling Cross\-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information about CORS and Amazon S3, see [Enabling Cross\-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the *Amazon Simple Storage Service User Guide*\.
 
 ## Configuring caching based on the device type<a name="header-caching-web-device"></a>
 

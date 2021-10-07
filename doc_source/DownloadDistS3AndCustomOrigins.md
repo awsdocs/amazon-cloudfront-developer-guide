@@ -18,7 +18,7 @@ When you use Amazon S3 as an origin for your distribution, you place any objects
 Using an existing Amazon S3 bucket as your CloudFront origin server doesn't change the bucket in any way; you can still use it as you normally would to store and access Amazon S3 objects at the standard Amazon S3 price\. You incur regular Amazon S3 charges for storing the objects in the bucket\. For more information about the charges to use CloudFront, see [CloudFront Reports in the Console](reports.md)\.
 
 **Important**  
-For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) in the *Amazon Simple Storage Service User Guide*\.
 
 When you specify the Amazon S3 bucket that you want CloudFront to get objects from, we recommend that you use the following format to access the bucket:
 
@@ -44,7 +44,7 @@ You can set up an Amazon S3 bucket that is configured as a website endpoint as c
 
   `http://bucket-name.s3-website-region.amazonaws.com`
 
-For more information about specifying Amazon S3 static website endpoints, see [Website endpoints](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteEndpoints.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information about specifying Amazon S3 static website endpoints, see [Website endpoints](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteEndpoints.html) in the *Amazon Simple Storage Service User Guide*\.
 
 When you specify the bucket name in this format as your origin, you can use Amazon S3 redirects and Amazon S3 custom error documents\. For more information about Amazon S3 features, see the [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)\. \(CloudFront also provides custom error pages\. For more information, see [Creating a custom error page for specific HTTP status codes](GeneratingCustomErrorResponses.md#creating-custom-error-pages)\.\)
 
@@ -113,7 +113,7 @@ If you currently distribute content directly from your Amazon S3 bucket using yo
 
    When you create the distribution, specify the name of your Amazon S3 bucket as the origin server\.
 **Important**  
-For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, see [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, see [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service User Guide*\.
 
    If you're using a CNAME with Amazon S3, specify the CNAME for your distribution, too\.
 

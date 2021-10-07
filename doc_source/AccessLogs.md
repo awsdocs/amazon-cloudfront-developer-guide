@@ -79,7 +79,7 @@ If you remove permissions for the `awslogsdelivery` account, CloudFront won't be
 
   
 
-  For more information about adding ACLs to S3 buckets, see [How Do I Set ACL Bucket Permissions?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-bucket-permissions.html) in the *Amazon Simple Storage Service Console User Guide*\.
+  For more information about adding ACLs to S3 buckets, see [How Do I Set ACL Bucket Permissions?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-bucket-permissions.html) in the *Amazon Simple Storage Service User Guide*\.
 
 **ACL for each log file**  
 In addition to the ACL on the bucket, there's an ACL on each log file\. The bucket owner has `FULL_CONTROL` permission on each log file, the distribution owner \(if different from the bucket owner\) has no permission, and the `awslogsdelivery` account has read and write permissions\. 

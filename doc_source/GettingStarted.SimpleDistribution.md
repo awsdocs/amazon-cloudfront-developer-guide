@@ -37,7 +37,7 @@ If you want to restrict who can download your content, you can use the CloudFron
 
 1. For **Bucket name**, enter a bucket name\.
 **Important**  
-For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, see [Bucket restrictions and limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, see [Bucket restrictions and limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service User Guide*\.
 
 1. For **Region**, choose an AWS Region for your bucket\. We recommend that you choose a Region close to you to optimize latency and minimize costs, or you might choose another Region to address regulatory requirements\.
 

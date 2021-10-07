@@ -158,7 +158,7 @@ Also, when you use the OAI’s canonical ID in a bucket policy, AWS replaces the
 
 #### Give permissions to an OAI<a name="private-content-updating-s3-bucket-policies-permissions"></a>
 
-To give the OAI the permissions to access objects in your Amazon S3 bucket, use keywords in the policy that relate to specific Amazon S3 API operations\. For example, the `s3:GetObject` permission allows the OAI to read objects in the bucket\. For more information, see the examples in the following section, or see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) in the *Amazon Simple Storage Service Developer Guide*\.
+To give the OAI the permissions to access objects in your Amazon S3 bucket, use keywords in the policy that relate to specific Amazon S3 API operations\. For example, the `s3:GetObject` permission allows the OAI to read objects in the bucket\. For more information, see the examples in the following section, or see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) in the *Amazon Simple Storage Service User Guide*\.
 
 #### Amazon S3 bucket policy examples<a name="private-content-updating-s3-bucket-policies-examples"></a>
 
@@ -217,7 +217,7 @@ You can give a CloudFront OAI access to files in an Amazon S3 bucket by creating
 
 When you grant access to an OAI using an ACL, you must specify the OAI using its Amazon S3 canonical user ID\. This is the value of **Amazon S3 Canonical User ID** on the [Origin Access Identity page](https://console.aws.amazon.com/cloudfront/v3/home#/oai) in the CloudFront console\. If you’re using the CloudFront API, use the value of the `S3CanonicalUserId` element that was returned when you created the OAI, or call [ListCloudFrontOriginAccessIdentities](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListCloudFrontOriginAccessIdentities.html) in the CloudFront API\.
 
-For more information about Amazon S3 object ACLs, see [Managing Access with ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service Developer Guide*\.
+For more information about Amazon S3 object ACLs, see [Managing Access with ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html) in the *Amazon Simple Storage Service User Guide*\.
 
 ## Using an OAI in Amazon S3 regions that support only signature version 4 authentication<a name="private-content-origin-access-identity-signature-version-4"></a>
 
