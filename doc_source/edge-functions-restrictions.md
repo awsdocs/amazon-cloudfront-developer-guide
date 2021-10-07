@@ -55,7 +55,6 @@ The following HTTP headers are not exposed to edge functions, and functions canâ
 + `X-Accel-Limit-Rate`
 + `X-Accel-Redirect`
 + `X-Amz-Cf-*`
-+ `X-Amzn-*`
 + `X-Cache`
 + `X-Edge-*`
 + `X-Forwarded-Proto`
