@@ -1,32 +1,32 @@
-# Request and Response Behavior for Amazon S3 Origins<a name="RequestAndResponseBehaviorS3Origin"></a>
+# Request and response behavior for Amazon S3 origins<a name="RequestAndResponseBehaviorS3Origin"></a>
 
 **Topics**
-+ [How CloudFront Processes HTTP and HTTPS Requests](HTTPandHTTPSRequests.md)
-+ [How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server](#RequestBehaviorS3Origin)
-+ [How CloudFront Processes Responses from Your Amazon S3 Origin Server](#ResponseBehaviorS3Origin)
++ [How CloudFront processes HTTP and HTTPS requests](HTTPandHTTPSRequests.md)
++ [How CloudFront processes and forwards requests to your Amazon S3 origin](#RequestBehaviorS3Origin)
++ [How CloudFront processes responses from your Amazon S3 origin](#ResponseBehaviorS3Origin)
 
-## How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server<a name="RequestBehaviorS3Origin"></a>
+## How CloudFront processes and forwards requests to your Amazon S3 origin<a name="RequestBehaviorS3Origin"></a>
 
 This topic contains information about how CloudFront processes viewer requests and forwards the requests to your Amazon S3 origin\.
 
 **Topics**
-+ [Caching Duration and Minimum TTL](#RequestS3Caching)
-+ [Client IP Addresses](#RequestS3IPAddresses)
++ [Caching duration and minimum TTL](#RequestS3Caching)
++ [Client IP addresses](#RequestS3IPAddresses)
 + [Conditional GETs](#RequestS3ConditionalGETs)
 + [Cookies](#RequestS3Cookies)
-+ [Cross\-Origin Resource Sharing \(CORS\)](#RequestS3-cors)
-+ [GET Requests That Include a Body](#RequestS3-get-body)
-+ [HTTP Methods](#RequestS3HTTPMethods)
-+ [HTTP Request Headers That CloudFront Removes or Updates](#request-s3-removed-headers)
-+ [Maximum Length of a Request and Maximum Length of a URL](#RequestS3MaxRequestStringLength)
-+ [OCSP Stapling](#request-s3-ocsp-stapling)
++ [Cross\-origin resource sharing \(CORS\)](#RequestS3-cors)
++ [GET requests that include a body](#RequestS3-get-body)
++ [HTTP methods](#RequestS3HTTPMethods)
++ [HTTP request headers that CloudFront removes or updates](#request-s3-removed-headers)
++ [Maximum length of a request and maximum length of a URL](#RequestS3MaxRequestStringLength)
++ [OCSP stapling](#request-s3-ocsp-stapling)
 + [Protocols](#RequestS3Protocol)
-+ [Query Strings](#RequestS3QueryStrings)
-+ [Origin Connection Timeout and Attempts](#s3-origin-timeout-attempts)
-+ [Origin Response Timeout](#RequestS3RequestTimeout)
-+ [Simultaneous Requests for the Same Object \(Traffic Spikes\)](#request-s3-traffic-spikes)
++ [Query strings](#RequestS3QueryStrings)
++ [Origin connection timeout and attempts](#s3-origin-timeout-attempts)
++ [Origin response timeout](#RequestS3RequestTimeout)
++ [Simultaneous requests for the same object \(traffic spikes\)](#request-s3-traffic-spikes)
 
-### Caching Duration and Minimum TTL<a name="RequestS3Caching"></a>
+### Caching duration and minimum TTL<a name="RequestS3Caching"></a>
 
 To control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin, you can:
 + Configure your origin to add a `Cache-Control` or an `Expires` header field to each object\.
@@ -35,7 +35,7 @@ To control how long your objects stay in a CloudFront cache before CloudFront fo
 
 For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
-### Client IP Addresses<a name="RequestS3IPAddresses"></a>
+### Client IP addresses<a name="RequestS3IPAddresses"></a>
 
 If a viewer sends a request to CloudFront and does not include an `X-Forwarded-For` request header, CloudFront gets the IP address of the viewer from the TCP connection, adds an `X-Forwarded-For` header that includes the IP address, and forwards the request to the origin\. For example, if CloudFront gets the IP address `192.0.2.2` from the TCP connection, it forwards the following header to the origin:
 
@@ -60,15 +60,15 @@ Amazon S3 uses this information to determine whether the object has been updated
 
 Amazon S3 doesn't process cookies\. If you configure a cache behavior to forward cookies to an Amazon S3 origin, CloudFront forwards the cookies, but Amazon S3 ignores them\. All future requests for the same object, regardless if you vary the cookie, are served from the existing object in the cache\.
 
-### Cross\-Origin Resource Sharing \(CORS\)<a name="RequestS3-cors"></a>
+### Cross\-origin resource sharing \(CORS\)<a name="RequestS3-cors"></a>
 
 If you want CloudFront to respect Amazon S3 cross\-origin resource sharing settings, configure CloudFront to forward selected headers to Amazon S3\. For more information, see [Caching content based on request headers](header-caching.md)\.
 
-### GET Requests That Include a Body<a name="RequestS3-get-body"></a>
+### GET requests that include a body<a name="RequestS3-get-body"></a>
 
 If a viewer `GET` request includes a body, CloudFront returns an HTTP status code 403 \(Forbidden\) to the viewer\.
 
-### HTTP Methods<a name="RequestS3HTTPMethods"></a>
+### HTTP methods<a name="RequestS3HTTPMethods"></a>
 
 If you configure CloudFront to process all of the HTTP methods that it supports, CloudFront accepts the following requests from viewers and forwards them to your Amazon S3 origin:
 + `DELETE`
@@ -90,11 +90,11 @@ If you configure CloudFront to accept and forward to Amazon S3 all of the HTTP m
 
 For information about the operations supported by Amazon S3, see the [ Amazon S3 documentation](http://aws.amazon.com/documentation/s3/)\.
 
-### HTTP Request Headers That CloudFront Removes or Updates<a name="request-s3-removed-headers"></a>
+### HTTP request headers that CloudFront removes or updates<a name="request-s3-removed-headers"></a>
 
-CloudFront removes or updates some headers before forwarding requests to your Amazon S3 origin\. For most headers this behavior is the same as for custom origins\. For a full list of HTTP request headers and how CloudFront processes them, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
+CloudFront removes or updates some headers before forwarding requests to your Amazon S3 origin\. For most headers this behavior is the same as for custom origins\. For a full list of HTTP request headers and how CloudFront processes them, see [HTTP request headers and CloudFront behavior \(custom and Amazon S3 origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
-### Maximum Length of a Request and Maximum Length of a URL<a name="RequestS3MaxRequestStringLength"></a>
+### Maximum length of a request and maximum length of a URL<a name="RequestS3MaxRequestStringLength"></a>
 
 The maximum length of a request, including the path, the query string \(if any\), and headers, is 20,480 bytes\.
 
@@ -102,7 +102,7 @@ CloudFront constructs a URL from the request\. The maximum length of this URL is
 
 If a request or a URL exceeds these maximums, CloudFront returns HTTP status code 413, Request Entity Too Large, to the viewer, and then terminates the TCP connection to the viewer\.
 
-### OCSP Stapling<a name="request-s3-ocsp-stapling"></a>
+### OCSP stapling<a name="request-s3-ocsp-stapling"></a>
 
 When a viewer submits an HTTPS request for an object, either CloudFront or the viewer must confirm with the certificate authority \(CA\) that the SSL certificate for the domain has not been revoked\. OCSP stapling speeds up certificate validation by allowing CloudFront to validate the certificate and to cache the response from the CA, so the client doesn't need to validate the certificate directly with the CA\.
 
@@ -115,11 +115,11 @@ CloudFront forwards HTTP or HTTPS requests to the origin server based on the pro
 **Important**  
 If your Amazon S3 bucket is configured as a website endpoint, you cannot configure CloudFront to use HTTPS to communicate with your origin because Amazon S3 doesn't support HTTPS connections in that configuration\.
 
-### Query Strings<a name="RequestS3QueryStrings"></a>
+### Query strings<a name="RequestS3QueryStrings"></a>
 
 You can configure whether CloudFront forwards query string parameters to your Amazon S3 origin\. For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
-### Origin Connection Timeout and Attempts<a name="s3-origin-timeout-attempts"></a>
+### Origin connection timeout and attempts<a name="s3-origin-timeout-attempts"></a>
 
 *Origin connection timeout* is the number of seconds that CloudFront waits when trying to establish a connection to the origin\.
 
@@ -129,7 +129,7 @@ Together, these settings determine how long CloudFront tries to connect to the o
 
 For more information, see [Controlling origin timeouts and attempts](high_availability_origin_failover.md#controlling-attempts-and-timeouts)\.
 
-### Origin Response Timeout<a name="RequestS3RequestTimeout"></a>
+### Origin response timeout<a name="RequestS3RequestTimeout"></a>
 
 The *origin response timeout*, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following:
 + The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to the origin\.
@@ -141,27 +141,27 @@ CloudFront behavior depends on the HTTP method of the viewer request:
 
 You can’t change the response timeout for an Amazon S3 origin \(an S3 bucket that is *not* configured with static website hosting\)\.
 
-### Simultaneous Requests for the Same Object \(Traffic Spikes\)<a name="request-s3-traffic-spikes"></a>
+### Simultaneous requests for the same object \(traffic spikes\)<a name="request-s3-traffic-spikes"></a>
 
 When a CloudFront edge location receives a request for an object and either the object isn't currently in the cache or the object has expired, CloudFront immediately sends the request to your Amazon S3 origin\. If there's a traffic spike—if additional requests for the same object arrive at the edge location before Amazon S3 responds to the first request—CloudFront pauses briefly before forwarding additional requests for the object to your origin\. Typically, the response to the first request will arrive at the CloudFront edge location before the response to subsequent requests\. This brief pause helps to reduce unnecessary load on Amazon S3\. If additional requests are not identical because, for example, you configured CloudFront to cache based on request headers or query strings, CloudFront forwards all of the unique requests to your origin\.
 
 When the response from the origin includes a `Cache-Control: no-cache` header, CloudFront typically forwards the next request for the same object to the origin to determine whether the object has been updated\. However, when there's a traffic spike and CloudFront pauses after forwarding the first request to your origin, multiple viewer requests might arrive before CloudFront receives a response from the origin\. When CloudFront receives a response that contains a `Cache-Control: no-cache` header, it sends the object in the response to the viewer that made the original request and to all of the viewers that requested the object during the pause\. After the response arrives from the origin, CloudFront forwards the next viewer request for the same object to the origin\. In CloudFront access logs, the first request is identified as a `Miss` in the `x-edge-result-type` column, and all subsequent requests that CloudFront received during the pause are identified as a `Hit`\. For more information about access log file format, see [Standard log file fields](AccessLogs.md#BasicDistributionFileFormat)\.
 
-## How CloudFront Processes Responses from Your Amazon S3 Origin Server<a name="ResponseBehaviorS3Origin"></a>
+## How CloudFront processes responses from your Amazon S3 origin<a name="ResponseBehaviorS3Origin"></a>
 
 This topic contains information about how CloudFront processes responses from your Amazon S3 origin\.
 
 **Topics**
-+ [Canceled Requests](#response-s3-canceled-requests)
-+ [HTTP Response Headers That CloudFront Removes or Updates](#response-s3-removed-headers)
-+ [Maximum File Size](#ResponseS3MaxFileSize)
++ [Canceled requests](#response-s3-canceled-requests)
++ [HTTP response headers that CloudFront removes or updates](#response-s3-removed-headers)
++ [Maximum file size](#ResponseS3MaxFileSize)
 + [Redirects](#ResponseS3Redirects)
 
-### Canceled Requests<a name="response-s3-canceled-requests"></a>
+### Canceled requests<a name="response-s3-canceled-requests"></a>
 
 If an object is not in the edge cache, and if a viewer terminates a session \(for example, closes a browser\) after CloudFront gets the object from your origin but before it can deliver the requested object, CloudFront does not cache the object in the edge location\.
 
-### HTTP Response Headers That CloudFront Removes or Updates<a name="response-s3-removed-headers"></a>
+### HTTP response headers that CloudFront removes or updates<a name="response-s3-removed-headers"></a>
 
 CloudFront removes or updates the following header fields before forwarding the response from your Amazon S3 origin to the viewer: 
 + `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Caching content based on cookies](Cookies.md)\.
@@ -176,7 +176,7 @@ CloudFront removes or updates the following header fields before forwarding the 
 
   `Via: 1.1 1026589cc7887e7a0dc7827b4example.cloudfront.net (CloudFront)`
 
-### Maximum File Size<a name="ResponseS3MaxFileSize"></a>
+### Maximum file size<a name="ResponseS3MaxFileSize"></a>
 
 The maximum size of a response body that CloudFront will return to the viewer is 30 GB\. This includes chunked transfer responses that don't specify the `Content-Length` header value\.
 

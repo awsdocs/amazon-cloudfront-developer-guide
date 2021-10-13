@@ -29,7 +29,7 @@ The following diagram illustrates how origin failover works\.
 
 For more information, see the following:
 + **Cache hits and misses:** [How caching works with CloudFront edge locations](cache-hit-ratio-explained.md)
-+ **Request and response behavior with origin failover:** [Request and Response Behavior for Origin Groups](RequestAndResponseBehaviorOriginGroups.md)
++ **Request and response behavior with origin failover:** [Request and response behavior for origin groups](RequestAndResponseBehaviorOriginGroups.md)
 
 **Topics**
 + [Creating an origin group](#concept_origin_groups.creating)

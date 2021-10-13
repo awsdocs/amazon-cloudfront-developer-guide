@@ -68,7 +68,7 @@ You can create a custom error page for HTTP status code 416 \(Requested Range No
 **Note**  
 In some cases, CloudFront doesn’t return a custom error page for the HTTP 503 status code even if you configure CloudFront to do so\. If the CloudFront error code is `Capacity Exceeded` or `Limit Exceeded`, CloudFront returns a 503 status code to the viewer without using your custom error page\.
 
-For a detailed explanation of how CloudFront handles error responses from your origin, see [How CloudFront Processes and Caches HTTP 4xx and 5xx Status Codes from Your Origin](HTTPStatusCodes.md)\.
+For a detailed explanation of how CloudFront handles error responses from your origin, see [How CloudFront processes and caches HTTP 4xx and 5xx status codes from your origin](HTTPStatusCodes.md)\.
 
 ## Storing objects and custom error pages in different locations<a name="custom-error-pages-different-locations"></a>
 

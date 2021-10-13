@@ -31,7 +31,7 @@ Another option might be to use the following more general format, but be aware t
 When you specify the bucket name in this format, you can use the following CloudFront features:
 + Configure CloudFront to communicate with your Amazon S3 bucket using SSL\. For more information, see [Using HTTPS with CloudFront](using-https.md)\.
 + Use an origin access identity to require that your users access your content using CloudFront URLs, not by using Amazon S3 URLs\. For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
-+ Update the content of your bucket by submitting `POST` and `PUT` requests to CloudFront\. For more information, see [HTTP Methods](RequestAndResponseBehaviorS3Origin.md#RequestS3HTTPMethods) in the topic [How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server](RequestAndResponseBehaviorS3Origin.md#RequestBehaviorS3Origin)\.
++ Update the content of your bucket by submitting `POST` and `PUT` requests to CloudFront\. For more information, see [HTTP methods](RequestAndResponseBehaviorS3Origin.md#RequestS3HTTPMethods) in the topic [How CloudFront processes and forwards requests to your Amazon S3 origin](RequestAndResponseBehaviorS3Origin.md#RequestBehaviorS3Origin)\.
 
 Do not specify the bucket using the following formats:
 + The Amazon S3 path style, `s3.amazonaws.com/bucket-name`
@@ -77,7 +77,7 @@ Follow these guidelines for using Amazon EC2 instances and other custom origins 
 + Synchronize the clocks of all servers in your implementation\. Note that CloudFront uses Coordinated Universal Time \(UTC\) for signed URLs and signed cookies, for access logs, and reports\. In addition, if you monitor CloudFront activity using CloudWatch metrics, note that CloudWatch also uses UTC\.
 + Use redundant servers to handle failures\.
 + For information about using a custom origin to serve private content, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
-+ For information about request and response behavior and about supported HTTP status codes, see [Request and Response Behavior](RequestAndResponseBehavior.md)\.
++ For information about request and response behavior and about supported HTTP status codes, see [Request and response behavior](RequestAndResponseBehavior.md)\.
 
 If you use Amazon EC2 for your custom origins, we recommend that you do the following:
 

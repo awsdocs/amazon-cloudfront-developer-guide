@@ -1,4 +1,4 @@
-# How CloudFront Processes HTTP 3xx Status Codes from Your Origin<a name="http-3xx-status-codes"></a>
+# How CloudFront processes HTTP 3xx status codes from your origin<a name="http-3xx-status-codes"></a>
 
 When CloudFront requests an object from your Amazon S3 bucket or custom origin server, your origin sometimes returns an HTTP 3xx status code\. This typically indicates one of the following:
 + The object’s URL has changed \(for example, status codes 301, 302, 307, or 308\)

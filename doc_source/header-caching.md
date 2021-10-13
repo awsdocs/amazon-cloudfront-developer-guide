@@ -52,7 +52,7 @@ The headers that you can forward to the origin and that CloudFront bases caching
 
   You can configure CloudFront to cache objects based on values in the `Date` and `User-Agent` headers, but we don’t recommend it\. These headers have numerous possible values, and caching based on their values could cause CloudFront to forward significantly more requests to your origin\.
 
-For a full list of HTTP request headers and how CloudFront processes them, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
+For a full list of HTTP request headers and how CloudFront processes them, see [HTTP request headers and CloudFront behavior \(custom and Amazon S3 origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
 ## Configuring CloudFront to respect CORS settings<a name="header-caching-web-cors"></a>
 
@@ -111,5 +111,5 @@ When CloudFront caches based on header values, it doesn't consider the case of t
 ## Headers that CloudFront returns to the viewer<a name="header-caching-web-response"></a>
 
 Configuring CloudFront to forward and cache headers does not affect which headers CloudFront returns to the viewer\. CloudFront returns all of the headers that it gets from the origin with a few exceptions\. For more information, see the applicable topic:
-+ **Amazon S3 origins – ** See [HTTP Response Headers That CloudFront Removes or Updates](RequestAndResponseBehaviorS3Origin.md#response-s3-removed-headers)\.
-+ **Custom origins – ** See [HTTP Response Headers that CloudFront Removes or Replaces](RequestAndResponseBehaviorCustomOrigin.md#ResponseCustomRemovedHeaders)\.
++ **Amazon S3 origins – ** See [HTTP response headers that CloudFront removes or updates](RequestAndResponseBehaviorS3Origin.md#response-s3-removed-headers)\.
++ **Custom origins – ** See [HTTP response headers that CloudFront removes or replaces](RequestAndResponseBehaviorCustomOrigin.md#ResponseCustomRemovedHeaders)\.

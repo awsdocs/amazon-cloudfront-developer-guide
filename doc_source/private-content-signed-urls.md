@@ -74,7 +74,7 @@ You can also distribute private content using a signed URL that is valid for a l
 
 CloudFront checks the expiration date and time in a signed URL at the time of the HTTP request\. If a client begins to download a large file immediately before the expiration time, the download should complete even if the expiration time passes during the download\. If the TCP connection drops and the client tries to restart the download after the expiration time passes, the download will fail\.
 
-If a client uses Range GETs to get a file in smaller pieces, any GET request that occurs after the expiration time passes will fail\. For more information about Range GETs, see [How CloudFront Processes Partial Requests for an Object \(Range GETs\)](RangeGETs.md)\.
+If a client uses Range GETs to get a file in smaller pieces, any GET request that occurs after the expiration time passes will fail\. For more information about Range GETs, see [How CloudFront processes partial requests for an object \(range GETs\)](RangeGETs.md)\.
 
 ## Example code and third\-party tools<a name="private-content-overview-sample-code"></a>
 

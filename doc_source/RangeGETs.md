@@ -1,4 +1,4 @@
-# How CloudFront Processes Partial Requests for an Object \(Range GETs\)<a name="RangeGETs"></a>
+# How CloudFront processes partial requests for an object \(range GETs\)<a name="RangeGETs"></a>
 
 For a large object, an end user's browser or client might make multiple `GET` requests and use the `Range` request header to download the object in smaller units\. These requests for ranges of bytes, sometimes known as `Range GET` requests, improve the efficiency of partial downloads and the recovery from partially failed transfers\. 
 

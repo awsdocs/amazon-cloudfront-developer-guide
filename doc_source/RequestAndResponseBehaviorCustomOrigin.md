@@ -1,36 +1,36 @@
-# Request and Response Behavior for Custom Origins<a name="RequestAndResponseBehaviorCustomOrigin"></a>
+# Request and response behavior for custom origins<a name="RequestAndResponseBehaviorCustomOrigin"></a>
 
 **Topics**
-+ [How CloudFront Processes and Forwards Requests to Your Custom Origin Server](#RequestBehaviorCustomOrigin)
-+ [How CloudFront Processes Responses from Your Custom Origin Server](#ResponseBehaviorCustomOrigin)
++ [How CloudFront processes and forwards requests to your custom origin](#RequestBehaviorCustomOrigin)
++ [How CloudFront processes responses from your custom origin](#ResponseBehaviorCustomOrigin)
 
-## How CloudFront Processes and Forwards Requests to Your Custom Origin Server<a name="RequestBehaviorCustomOrigin"></a>
+## How CloudFront processes and forwards requests to your custom origin<a name="RequestBehaviorCustomOrigin"></a>
 
 This topic contains information about how CloudFront processes viewer requests and forwards the requests to your custom origin\.
 
 **Topics**
 + [Authentication](#RequestCustomClientAuth)
-+ [Caching Duration and Minimum TTL](#RequestCustomCaching)
-+ [Client IP Addresses](#RequestCustomIPAddresses)
-+ [Client\-Side SSL Authentication](#RequestCustomClientSideSslAuth)
++ [Caching duration and minimum TTL](#RequestCustomCaching)
++ [Client IP addresses](#RequestCustomIPAddresses)
++ [Client\-side SSL authentication](#RequestCustomClientSideSslAuth)
 + [Compression](#RequestCustomCompression)
-+ [Conditional Requests](#RequestCustomConditionalGETs)
++ [Conditional requests](#RequestCustomConditionalGETs)
 + [Cookies](#RequestCustomCookies)
-+ [Cross\-Origin Resource Sharing \(CORS\)](#request-custom-cors)
++ [Cross\-origin resource sharing \(CORS\)](#request-custom-cors)
 + [Encryption](#RequestCustomEncryption)
-+ [GET Requests That Include a Body](#RequestCustom-get-body)
-+ [HTTP Methods](#RequestCustomHTTPMethods)
-+ [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](#request-custom-headers-behavior)
-+ [HTTP Version](#RequestCustomHTTPVersion)
-+ [Maximum Length of a Request and Maximum Length of a URL](#RequestCustomMaxRequestStringLength)
-+ [OCSP Stapling](#request-custom-ocsp-stapling)
-+ [Persistent Connections](#request-custom-persistent-connections)
++ [GET requests that include a body](#RequestCustom-get-body)
++ [HTTP methods](#RequestCustomHTTPMethods)
++ [HTTP request headers and CloudFront behavior \(custom and Amazon S3 origins\)](#request-custom-headers-behavior)
++ [HTTP version](#RequestCustomHTTPVersion)
++ [Maximum length of a request and maximum length of a URL](#RequestCustomMaxRequestStringLength)
++ [OCSP stapling](#request-custom-ocsp-stapling)
++ [Persistent connections](#request-custom-persistent-connections)
 + [Protocols](#RequestCustomProtocols)
-+ [Query Strings](#RequestCustomQueryStrings)
-+ [Origin Connection Timeout and Attempts](#custom-origin-timeout-attempts)
-+ [Origin Response Timeout](#request-custom-request-timeout)
-+ [Simultaneous Requests for the Same Object \(Traffic Spikes\)](#request-custom-traffic-spikes)
-+ [User\-Agent Header](#request-custom-user-agent-header)
++ [Query strings](#RequestCustomQueryStrings)
++ [Origin connection timeout and attempts](#custom-origin-timeout-attempts)
++ [Origin response timeout](#request-custom-request-timeout)
++ [Simultaneous requests for the same object \(traffic spikes\)](#request-custom-traffic-spikes)
++ [`User-Agent` header](#request-custom-user-agent-header)
 
 ### Authentication<a name="RequestCustomClientAuth"></a>
 
@@ -42,7 +42,7 @@ For `OPTIONS` requests, you can configure your origin server to request client a
 
 You can configure CloudFront to forward requests to your origin using either HTTP or HTTPS; for more information, see [Using HTTPS with CloudFront](using-https.md)\.
 
-### Caching Duration and Minimum TTL<a name="RequestCustomCaching"></a>
+### Caching duration and minimum TTL<a name="RequestCustomCaching"></a>
 
 To control how long your objects stay in a CloudFront cache before CloudFront forwards another request to your origin, you can:
 + Configure your origin to add a `Cache-Control` or an `Expires` header field to each object\.
@@ -51,7 +51,7 @@ To control how long your objects stay in a CloudFront cache before CloudFront fo
 
 For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
-### Client IP Addresses<a name="RequestCustomIPAddresses"></a>
+### Client IP addresses<a name="RequestCustomIPAddresses"></a>
 
 If a viewer sends a request to CloudFront and does not include an `X-Forwarded-For` request header, CloudFront gets the IP address of the viewer from the TCP connection, adds an `X-Forwarded-For` header that includes the IP address, and forwards the request to the origin\. For example, if CloudFront gets the IP address `192.0.2.2` from the TCP connection, it forwards the following header to the origin:
 
@@ -68,7 +68,7 @@ Some applications, such as load balancers \(including Elastic Load Balancing\), 
 **Note**  
 The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334\)\.
 
-### Client\-Side SSL Authentication<a name="RequestCustomClientSideSslAuth"></a>
+### Client\-side SSL authentication<a name="RequestCustomClientSideSslAuth"></a>
 
 CloudFront does not support client authentication with client\-side SSL certificates\. If an origin requests a client\-side certificate, CloudFront drops the request\. 
 
@@ -76,7 +76,7 @@ CloudFront does not support client authentication with client\-side SSL certific
 
 For more information, see [Serving compressed files](ServingCompressedFiles.md)\. 
 
-### Conditional Requests<a name="RequestCustomConditionalGETs"></a>
+### Conditional requests<a name="RequestCustomConditionalGETs"></a>
 
 When CloudFront receives a request for an object that has expired from an edge cache, it forwards the request to the origin either to get the latest version of the object or to get confirmation from the origin that the CloudFront edge cache already has the latest version\. Typically, when the origin last sent the object to CloudFront, it included an `ETag` value, a `LastModified` value, or both values in the response\. In the new request that CloudFront forwards to the origin, CloudFront adds one or both of the following:
 + An `If-Match` or `If-None-Match` header that contains the `ETag` value for the expired version of the object\.
@@ -88,7 +88,7 @@ The origin uses this information to determine whether the object has been update
 
 You can configure CloudFront to forward cookies to your origin\. For more information, see [Caching content based on cookies](Cookies.md)\.
 
-### Cross\-Origin Resource Sharing \(CORS\)<a name="request-custom-cors"></a>
+### Cross\-origin resource sharing \(CORS\)<a name="request-custom-cors"></a>
 
 If you want CloudFront to respect cross\-origin resource sharing settings, configure CloudFront to forward the `Origin` header to your origin\. For more information, see [Caching content based on request headers](header-caching.md)\.
 
@@ -109,11 +109,11 @@ Other versions of SSL and TLS are not supported\.
 
 For more information about using HTTPS with CloudFront, see [Using HTTPS with CloudFront](using-https.md)\. For lists of the ciphers that CloudFront supports for HTTPS communication between viewers and CloudFront, and between CloudFront and your origin, see [Supported protocols and ciphers between viewers and CloudFront](secure-connections-supported-viewer-protocols-ciphers.md)\.
 
-### GET Requests That Include a Body<a name="RequestCustom-get-body"></a>
+### GET requests that include a body<a name="RequestCustom-get-body"></a>
 
 If a viewer `GET` request includes a body, CloudFront returns an HTTP status code 403 \(Forbidden\) to the viewer\.
 
-### HTTP Methods<a name="RequestCustomHTTPMethods"></a>
+### HTTP methods<a name="RequestCustomHTTPMethods"></a>
 
 If you configure CloudFront to process all of the HTTP methods that it supports, CloudFront accepts the following requests from viewers and forwards them to your custom origin:
 + `DELETE`
@@ -131,7 +131,7 @@ For information about configuring whether your custom origin processes these met
 **Important**  
 If you configure CloudFront to accept and forward to your origin all of the HTTP methods that CloudFront supports, configure your origin server to handle all methods\. For example, if you configure CloudFront to accept and forward these methods because you want to use `POST`, you must configure your origin server to handle `DELETE` requests appropriately so viewers can't delete resources that you don't want them to\. For more information, see the documentation for your HTTP server\.
 
-### HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)<a name="request-custom-headers-behavior"></a>
+### HTTP request headers and CloudFront behavior \(custom and Amazon S3 origins\)<a name="request-custom-headers-behavior"></a>
 
 The following table lists HTTP request headers that you can forward to both custom and Amazon S3 origins \(with the exceptions that are noted\)\. For each header, the table includes information about the following:
 + CloudFront behavior if you don't configure CloudFront to forward the header to your origin, which causes CloudFront to cache your objects based on header values\.
@@ -142,9 +142,7 @@ The following table lists HTTP request headers that you can forward to both cust
 For more information about caching based on header values, see [Caching content based on request headers](header-caching.md)\.
 
 
-****  
-
-| Header | Behavior If You Don't Configure CloudFront to Cache Based on Header Values | Caching Based on Header Values Is Supported | 
+| Header | Behavior if you don't configure CloudFront to cache based on header values | Caching based on header values is supported | 
 | --- | --- | --- | 
 |  Other\-defined headers  |  CloudFront forwards the headers to your origin\.  |  Yes  | 
 |  `Accept`  |  CloudFront removes the header\.  |  Yes  | 
@@ -178,7 +176,7 @@ For more information about caching based on header values, see [Caching content 
 |  `Proxy-Authenticate`  |  CloudFront removes the header\.  |  No  | 
 |  `Proxy-Authorization`  |  CloudFront removes the header\.  |  No  | 
 |  `Proxy-Connection`  |  CloudFront removes the header\.  |  No  | 
-|  `Range`  |  CloudFront forwards the header to your origin\. For more information, see [How CloudFront Processes Partial Requests for an Object \(Range GETs\)](RangeGETs.md)\.  |  Yes, by default  | 
+|  `Range`  |  CloudFront forwards the header to your origin\. For more information, see [How CloudFront processes partial requests for an object \(range GETs\)](RangeGETs.md)\.  |  Yes, by default  | 
 |  `Referer`  |  CloudFront removes the header\.  |  Yes  | 
 |  `Request-Range`  |  CloudFront forwards the header to your origin\.  |  No  | 
 |  `TE`  |  CloudFront removes the header\.  |  No  | 
@@ -190,16 +188,16 @@ For more information about caching based on header values, see [Caching content 
 |  `Warning`  |  CloudFront forwards the header to your origin\.  |  Yes  | 
 |  `X-Amz-Cf-Id`  |  CloudFront adds the header to the viewer request before forwarding the request to your origin\. The header value contains an encrypted string that uniquely identifies the request\.  |  No  | 
 |  `X-Edge-*`  |  CloudFront removes all `X-Edge-*` headers\.  |  No  | 
-|  `X-Forwarded-For`  |  CloudFront forwards the header to your origin\. For more information, see [Client IP Addresses](#RequestCustomIPAddresses)\.  |  Yes  | 
+|  `X-Forwarded-For`  |  CloudFront forwards the header to your origin\. For more information, see [Client IP addresses](#RequestCustomIPAddresses)\.  |  Yes  | 
 |  `X-Forwarded-Proto`  |  CloudFront removes the header\.  |  No  | 
 |  `X-HTTP-Method-Override`  |  CloudFront removes the header\.  |  Yes  | 
 |  `X-Real-IP`  |  CloudFront removes the header\.  |  No  | 
 
-### HTTP Version<a name="RequestCustomHTTPVersion"></a>
+### HTTP version<a name="RequestCustomHTTPVersion"></a>
 
 CloudFront forwards requests to your custom origin using HTTP/1\.1\.
 
-### Maximum Length of a Request and Maximum Length of a URL<a name="RequestCustomMaxRequestStringLength"></a>
+### Maximum length of a request and maximum length of a URL<a name="RequestCustomMaxRequestStringLength"></a>
 
 The maximum length of a request, including the path, the query string \(if any\), and headers, is 20,480 bytes\.
 
@@ -207,13 +205,13 @@ CloudFront constructs a URL from the request\. The maximum length of this URL is
 
 If a request or a URL exceeds these maximums, CloudFront returns HTTP status code 413, Request Entity Too Large, to the viewer, and then terminates the TCP connection to the viewer\.
 
-### OCSP Stapling<a name="request-custom-ocsp-stapling"></a>
+### OCSP stapling<a name="request-custom-ocsp-stapling"></a>
 
 When a viewer submits an HTTPS request for an object, either CloudFront or the viewer must confirm with the certificate authority \(CA\) that the SSL certificate for the domain has not been revoked\. OCSP stapling speeds up certificate validation by allowing CloudFront to validate the certificate and to cache the response from the CA, so the client doesn't need to validate the certificate directly with the CA\.
 
 The performance improvement of OCSP stapling is more pronounced when CloudFront receives numerous HTTPS requests for objects in the same domain\. Each server in a CloudFront edge location must submit a separate validation request\. When CloudFront receives a lot of HTTPS requests for the same domain, every server in the edge location soon has a response from the CA that it can "staple" to a packet in the SSL handshake; when the viewer is satisfied that the certificate is valid, CloudFront can serve the requested object\. If your distribution doesn't get much traffic in a CloudFront edge location, new requests are more likely to be directed to a server that hasn't validated the certificate with the CA yet\. In that case, the viewer separately performs the validation step and the CloudFront server serves the object\. That CloudFront server also submits a validation request to the CA, so the next time it receives a request that includes the same domain name, it has a validation response from the CA\.
 
-### Persistent Connections<a name="request-custom-persistent-connections"></a>
+### Persistent connections<a name="request-custom-persistent-connections"></a>
 
 When CloudFront gets a response from your origin, it tries to maintain the connection for several seconds in case another request arrives during that period\. Maintaining a persistent connection saves the time required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. 
 
@@ -234,11 +232,11 @@ If CloudFront forwards a request to the origin using the HTTPS protocol, and if 
 
 For information about how to update a distribution using the CloudFront console, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
 
-### Query Strings<a name="RequestCustomQueryStrings"></a>
+### Query strings<a name="RequestCustomQueryStrings"></a>
 
 You can configure whether CloudFront forwards query string parameters to your origin\. For more information, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
-### Origin Connection Timeout and Attempts<a name="custom-origin-timeout-attempts"></a>
+### Origin connection timeout and attempts<a name="custom-origin-timeout-attempts"></a>
 
 *Origin connection timeout* is the number of seconds that CloudFront waits when trying to establish a connection to the origin\.
 
@@ -248,7 +246,7 @@ Together, these settings determine how long CloudFront tries to connect to the o
 
 For more information, see [Controlling origin timeouts and attempts](high_availability_origin_failover.md#controlling-attempts-and-timeouts)\.
 
-### Origin Response Timeout<a name="request-custom-request-timeout"></a>
+### Origin response timeout<a name="request-custom-request-timeout"></a>
 
 The *origin response timeout*, also known as the *origin read timeout* or *origin request timeout*, applies to both of the following:
 + The amount of time, in seconds, that CloudFront waits for a response after forwarding a request to the origin\.
@@ -260,11 +258,11 @@ CloudFront behavior depends on the HTTP method of the viewer request:
 
 For more information, including how to configure the origin response timeout, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
 
-### Simultaneous Requests for the Same Object \(Traffic Spikes\)<a name="request-custom-traffic-spikes"></a>
+### Simultaneous requests for the same object \(traffic spikes\)<a name="request-custom-traffic-spikes"></a>
 
 When a CloudFront edge location receives a request for an object and either the object isn't currently in the cache or the object has expired, CloudFront immediately sends the request to your origin\. If there's a traffic spike—if additional requests for the same object arrive at the edge location before your origin responds to the first request—CloudFront pauses briefly before forwarding additional requests for the object to your origin\. Typically, the response to the first request will arrive at the CloudFront edge location before the response to subsequent requests\. This brief pause helps to reduce unnecessary load on your origin server\. If additional requests are not identical because, for example, you configured CloudFront to cache based on request headers or cookies, CloudFront forwards all of the unique requests to your origin\.
 
-### User\-Agent Header<a name="request-custom-user-agent-header"></a>
+### `User-Agent` header<a name="request-custom-user-agent-header"></a>
 
 If you want CloudFront to cache different versions of your objects based on the device that a user is using to view your content, we recommend that you configure CloudFront to forward one or more of the following headers to your custom origin:
 + `CloudFront-Is-Desktop-Viewer`
@@ -282,47 +280,47 @@ If you do not configure CloudFront to cache objects based on values in the `User
 
 CloudFront adds this header regardless of whether the request from the viewer includes a `User-Agent` header\. If the request from the viewer includes a `User-Agent` header, CloudFront removes it\.
 
-## How CloudFront Processes Responses from Your Custom Origin Server<a name="ResponseBehaviorCustomOrigin"></a>
+## How CloudFront processes responses from your custom origin<a name="ResponseBehaviorCustomOrigin"></a>
 
 This topic contains information about how CloudFront processes responses from your custom origin\.
 
 **Topics**
-+ [100\-Continue Responses](#Response100Continue)
++ [`100 Continue` responses](#Response100Continue)
 + [Caching](#ResponseCustomCaching)
-+ [Canceled Requests](#response-custom-canceled-requests)
-+ [Content Negotiation](#ResponseCustomContentNegotiation)
++ [Canceled requests](#response-custom-canceled-requests)
++ [Content negotiation](#ResponseCustomContentNegotiation)
 + [Cookies](#ResponseCustomCookies)
-+ [Dropped TCP Connections](#ResponseCustomDroppedTCPConnections)
-+ [HTTP Response Headers that CloudFront Removes or Replaces](#ResponseCustomRemovedHeaders)
-+ [Maximum File Size](#ResponseCustomMaxFileSize)
-+ [Origin Unavailable](#ResponseCustomOriginUnavailable)
++ [Dropped TCP connections](#ResponseCustomDroppedTCPConnections)
++ [HTTP response headers that CloudFront removes or replaces](#ResponseCustomRemovedHeaders)
++ [Maximum file size](#ResponseCustomMaxFileSize)
++ [Origin unavailable](#ResponseCustomOriginUnavailable)
 + [Redirects](#ResponseCustomRedirects)
-+ [Transfer Encoding](#ResponseCustomTransferEncoding)
++ [`Transfer-Encoding` header](#ResponseCustomTransferEncoding)
 
-### 100\-Continue Responses<a name="Response100Continue"></a>
+### `100 Continue` responses<a name="Response100Continue"></a>
 
 Your origin cannot send more than one 100\-Continue response to CloudFront\. After the first 100\-Continue response, CloudFront expects an HTTP 200 OK response\. If your origin sends another 100\-Continue response after the first one, CloudFront will return an error\.
 
 ### Caching<a name="ResponseCustomCaching"></a>
 + Ensure that the origin server sets valid and accurate values for the `Date` and `Last-Modified` header fields\.
 + If requests from viewers include the `If-Match` or `If-None-Match` request header fields, set the `ETag` response header field\. If you do not specify an `ETag` value, CloudFront ignores subsequent `If-Match` or `If-None-Match` headers\.
-+ CloudFront normally respects a `Cache-Control: no-cache` header in the response from the origin\. For an exception, see [Simultaneous Requests for the Same Object \(Traffic Spikes\)](#request-custom-traffic-spikes)\.
++ CloudFront normally respects a `Cache-Control: no-cache` header in the response from the origin\. For an exception, see [Simultaneous requests for the same object \(traffic spikes\)](#request-custom-traffic-spikes)\.
 
-### Canceled Requests<a name="response-custom-canceled-requests"></a>
+### Canceled requests<a name="response-custom-canceled-requests"></a>
 
 If an object is not in the edge cache, and if a viewer terminates a session \(for example, closes a browser\) after CloudFront gets the object from your origin but before it can deliver the requested object, CloudFront does not cache the object in the edge location\.
 
-### Content Negotiation<a name="ResponseCustomContentNegotiation"></a>
+### Content negotiation<a name="ResponseCustomContentNegotiation"></a>
 
 If your origin returns `Vary:*` in the response, and if the value of **Minimum TTL** for the corresponding cache behavior is **0**, CloudFront caches the object but still forwards every subsequent request for the object to the origin to confirm that the cache contains the latest version of the object\. CloudFront doesn't include any conditional headers, such as `If-None-Match` or `If-Modified-Since`\. As a result, your origin returns the object to CloudFront in response to every request\.
 
-If your origin returns `Vary:*` in the response, and if the value of **Minimum TTL** for the corresponding cache behavior is any other value, CloudFront processes the `Vary` header as described in [HTTP Response Headers that CloudFront Removes or Replaces](#ResponseCustomRemovedHeaders)\.
+If your origin returns `Vary:*` in the response, and if the value of **Minimum TTL** for the corresponding cache behavior is any other value, CloudFront processes the `Vary` header as described in [HTTP response headers that CloudFront removes or replaces](#ResponseCustomRemovedHeaders)\.
 
 ### Cookies<a name="ResponseCustomCookies"></a>
 
 If you enable cookies for a cache behavior, and if the origin returns cookies with an object, CloudFront caches both the object and the cookies\. Note that this reduces cacheability for an object\. For more information, see [Caching content based on cookies](Cookies.md)\.
 
-### Dropped TCP Connections<a name="ResponseCustomDroppedTCPConnections"></a>
+### Dropped TCP connections<a name="ResponseCustomDroppedTCPConnections"></a>
 
 If the TCP connection between CloudFront and your origin drops while your origin is returning an object to CloudFront, CloudFront behavior depends on whether your origin included a `Content-Length` header in the response:
 + **Content\-Length header** – CloudFront returns the object to the viewer as it gets the object from your origin\. However, if the value of the `Content-Length` header doesn't match the size of the object, CloudFront doesn't cache the object\.
@@ -331,7 +329,7 @@ If the TCP connection between CloudFront and your origin drops while your origin
 
 We recommend that you configure your HTTP server to add a `Content-Length` header to prevent CloudFront from caching partial objects\.
 
-### HTTP Response Headers that CloudFront Removes or Replaces<a name="ResponseCustomRemovedHeaders"></a>
+### HTTP response headers that CloudFront removes or replaces<a name="ResponseCustomRemovedHeaders"></a>
 
 CloudFront removes or updates the following header fields before forwarding the response from your origin to the viewer: 
 + `Set-Cookie` – If you configure CloudFront to forward cookies, it will forward the `Set-Cookie` header field to clients\. For more information, see [Caching content based on cookies](Cookies.md)\.
@@ -342,7 +340,7 @@ CloudFront removes or updates the following header fields before forwarding the 
   + If you configure CloudFront to forward any of the device\-specific headers to your origin \(`CloudFront-Is-Desktop-Viewer`, `CloudFront-Is-Mobile-Viewer`, `CloudFront-Is-SmartTV-Viewer`, `CloudFront-Is-Tablet-Viewer`\) and you configure your origin to return `Vary:User-Agent` to CloudFront, CloudFront returns `Vary:User-Agent` to the viewer\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\.
   + If you configure your origin to include either `Accept-Encoding` or `Cookie` in the `Vary` header, CloudFront includes the values in the response to the viewer\.
   + If you configure CloudFront to forward a whitelist of headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those values to the viewer\.
-  + For information about how CloudFront processes a value of `*` in the `Vary` header, see [Content Negotiation](#ResponseCustomContentNegotiation)\.
+  + For information about how CloudFront processes a value of `*` in the `Vary` header, see [Content negotiation](#ResponseCustomContentNegotiation)\.
   + If you configure your origin to include any other values in the `Vary` header, CloudFront removes the values before returning the response to the viewer\.
 + `Via` – CloudFront sets the value to the following in the response to the viewer:
 
@@ -352,13 +350,13 @@ CloudFront removes or updates the following header fields before forwarding the 
 
   `Via: 1.1 1026589cc7887e7a0dc7827b4example.cloudfront.net (CloudFront)`
 
-### Maximum File Size<a name="ResponseCustomMaxFileSize"></a>
+### Maximum file size<a name="ResponseCustomMaxFileSize"></a>
 
 The maximum size of a response body that CloudFront will return to the viewer is 30 GB\. This includes chunked transfer responses that don't specify the `Content-Length` header value\.
 
-### Origin Unavailable<a name="ResponseCustomOriginUnavailable"></a>
+### Origin unavailable<a name="ResponseCustomOriginUnavailable"></a>
 
-If your origin server is unavailable and CloudFront gets a request for an object that is in the edge cache but that has expired \(for example, because the period of time specified in the `Cache-Control max-age` directive has passed\), CloudFront either serves the expired version of the object or serves a custom error page\. For more information about CloudFront behavior when you've configured custom error pages, see [How CloudFront Processes Errors When You Have Configured Custom Error Pages](HTTPStatusCodes.md#HTTPStatusCodes-custom-error-pages)\. 
+If your origin server is unavailable and CloudFront gets a request for an object that is in the edge cache but that has expired \(for example, because the period of time specified in the `Cache-Control max-age` directive has passed\), CloudFront either serves the expired version of the object or serves a custom error page\. For more information about CloudFront behavior when you've configured custom error pages, see [How CloudFront processes errors when you have configured custom error pages](HTTPStatusCodes.md#HTTPStatusCodes-custom-error-pages)\. 
 
 In some cases, an object that is seldom requested is evicted and is no longer available in the edge cache\. CloudFront can't serve an object that has been evicted\.
 
@@ -370,10 +368,10 @@ You can configure your web server to redirect requests to one of the following l
 + The new URL of the object on the origin server\. When the viewer follows the redirect to the new URL, the viewer bypasses CloudFront and goes straight to the origin\. As a result, we recommend that you not redirect requests to the new URL of the object on the origin\.
 + The new CloudFront URL for the object\. When the viewer submits the request that contains the new CloudFront URL, CloudFront gets the object from the new location on your origin, caches it at the edge location, and returns the object to the viewer\. Subsequent requests for the object will be served by the edge location\. This avoids the latency and load associated with viewers requesting the object from the origin\. However, every new request for the object will incur charges for two requests to CloudFront\.
 
-### Transfer Encoding<a name="ResponseCustomTransferEncoding"></a>
+### `Transfer-Encoding` header<a name="ResponseCustomTransferEncoding"></a>
 
 CloudFront supports only the `chunked` value of the `Transfer-Encoding` header\. If your origin returns `Transfer-Encoding: chunked`, CloudFront returns the object to the client as the object is received at the edge location, and caches the object in chunked format for subsequent requests\.
 
 If the viewer makes a `Range GET` request and the origin returns `Transfer-Encoding: chunked`, CloudFront returns the entire object to the viewer instead of the requested range\.
 
-We recommend that you use chunked encoding if the content length of your response cannot be predetermined\. For more information, see [Dropped TCP Connections](#ResponseCustomDroppedTCPConnections)\. 
+We recommend that you use chunked encoding if the content length of your response cannot be predetermined\. For more information, see [Dropped TCP connections](#ResponseCustomDroppedTCPConnections)\. 

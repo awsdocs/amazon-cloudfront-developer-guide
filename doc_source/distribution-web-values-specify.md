@@ -420,7 +420,7 @@ Specify whether you want CloudFront to cache objects based on the values of spec
 + **Whitelist** – CloudFront caches your objects based only on the values of the specified headers\. Use **Whitelist Headers** to choose the headers that you want CloudFront to base caching on\.
 + **All** – CloudFront doesn't cache the objects that are associated with this cache behavior\. Instead, CloudFront sends every request to the origin\. \(Not recommended for Amazon S3 origins\.\)
 
-Regardless of the option that you choose, CloudFront forwards certain headers to your origin and takes specific actions based on the headers that you forward\. For more information about how CloudFront handles header forwarding, see [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
+Regardless of the option that you choose, CloudFront forwards certain headers to your origin and takes specific actions based on the headers that you forward\. For more information about how CloudFront handles header forwarding, see [HTTP request headers and CloudFront behavior \(custom and Amazon S3 origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)\.
 
 For more information about how to configure caching in CloudFront by using request headers, see [Caching content based on request headers](header-caching.md)\.
 

@@ -53,8 +53,8 @@ If you configure CloudFront to cache based on request headers, you can improve c
 + Configure CloudFront to forward and cache based on only specified headers instead of forwarding and caching based on all headers\. For the headers that you specify, CloudFront forwards every combination of header name and value\. It then separately caches the objects that your origin returns even if they're all identical\.
 **Note**  
 CloudFront always forwards to your origin the headers specified in the following topics:  
-How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server > [HTTP Request Headers That CloudFront Removes or Updates](RequestAndResponseBehaviorS3Origin.md#request-s3-removed-headers)
-How CloudFront Processes and Forwards Requests to Your Custom Origin Server > [HTTP Request Headers and CloudFront Behavior \(Custom and S3 Origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)
+How CloudFront Processes and Forwards Requests to Your Amazon S3 Origin Server > [HTTP request headers that CloudFront removes or updates](RequestAndResponseBehaviorS3Origin.md#request-s3-removed-headers)
+How CloudFront Processes and Forwards Requests to Your Custom Origin Server > [HTTP request headers and CloudFront behavior \(custom and Amazon S3 origins\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-headers-behavior)
 
   When you configure CloudFront to cache based on request headers, you don't change the headers that CloudFront forwards, only whether CloudFront caches objects based on the header values\.
 + Try to avoid caching based on request headers that have large numbers of unique values\.

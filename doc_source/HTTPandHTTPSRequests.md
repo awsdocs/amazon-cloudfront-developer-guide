@@ -1,4 +1,4 @@
-# How CloudFront Processes HTTP and HTTPS Requests<a name="HTTPandHTTPSRequests"></a>
+# How CloudFront processes HTTP and HTTPS requests<a name="HTTPandHTTPSRequests"></a>
 
 For Amazon S3 origins, CloudFront accepts requests in both HTTP and HTTPS protocols for objects in a CloudFront distribution by default\. CloudFront then forwards the requests to your Amazon S3 bucket using the same protocol in which the requests were made\. 
 
