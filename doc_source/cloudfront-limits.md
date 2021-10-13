@@ -77,10 +77,9 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 |  Entity  |  Default quota  | 
 | --- | --- | 
 |  Functions per AWS account  |  100  | 
-|  Distributions per AWS account that can have CloudFront functions  |  25  | 
-|  CloudFront functions per distribution  |  100  | 
 |  Maximum function size  |  10 KB  | 
 |  Maximum function memory  |  2 MB  | 
+|  Distributions associated with the same function  |  100  | 
 
 In addition to these quotas, there are some other restrictions when using CloudFront Functions\. For more information, see [Restrictions on CloudFront Functions](edge-functions-restrictions.md#cloudfront-function-restrictions)\.
 
@@ -100,6 +99,7 @@ Lambda dynamically scales capacity in response to increased traffic, within your
 |  Lambda@Edge functions per distribution  |  100 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 |  Requests per second  |  10,000 \(in each AWS Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 |  Concurrent executions For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1,000 \(in each AWS Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+|  Distributions associated with the same function  |  100  | 
 
 
 **Quotas that differ by event type**  
