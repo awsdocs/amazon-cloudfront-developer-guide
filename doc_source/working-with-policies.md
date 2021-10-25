@@ -29,7 +29,7 @@ For more information, see the following\.
   + [Using the managed origin request policies](using-managed-origin-request-policies.md)
     + [Attaching a managed origin request policy](using-managed-origin-request-policies.md#attaching-managed-origin-request-policies)
     + [Understanding the managed origin request policies](using-managed-origin-request-policies.md#managed-origin-request-policies-list)
-+ [Using the CloudFront HTTP headers](using-cloudfront-headers.md)
++ [Adding the CloudFront HTTP headers](using-cloudfront-headers.md)
   + [Headers for determining the viewer’s device type](using-cloudfront-headers.md#cloudfront-headers-device-type)
   + [Headers for determining the viewer’s location](using-cloudfront-headers.md#cloudfront-headers-viewer-location)
   + [Other CloudFront headers](using-cloudfront-headers.md#cloudfront-headers-other)

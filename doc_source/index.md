@@ -51,7 +51,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Understanding the cache key](understanding-the-cache-key.md)
    + [Controlling origin requests](controlling-origin-requests.md)
       + [Using the managed origin request policies](using-managed-origin-request-policies.md)
-   + [Using the CloudFront HTTP headers](using-cloudfront-headers.md)
+   + [Adding the CloudFront HTTP headers](using-cloudfront-headers.md)
 + [Adding, Removing, or Replacing Content That CloudFront Distributes](AddRemoveReplaceObjects.md)
    + [Adding and Accessing Content That CloudFront Distributes](AddingObjects.md)
    + [Updating Existing Content with a CloudFront Distribution](UpdatingExistingObjects.md)

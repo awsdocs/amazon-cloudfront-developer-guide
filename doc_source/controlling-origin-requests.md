@@ -11,7 +11,7 @@ Origin request policies are separate from [cache policies](controlling-the-cache
 
 Although the two kinds of policies are separate, they are related\. All URL query strings, HTTP headers, and cookies that you include in the cache key \(using a cache policy\) are automatically included in origin requests\. Use the origin request policy to specify the information that you want to include in origin requests, but *not* include in the cache key\. Just like a cache policy, you attach an origin request policy to one or more cache behaviors in a CloudFront distribution\.
 
-You can also use an origin request policy to add additional HTTP headers to an origin request that were not included in the viewer request\. These additional headers are added by CloudFront before sending the origin request, with header values that are determined automatically based on the viewer request\. For more information, see [Using the CloudFront HTTP headers](using-cloudfront-headers.md)\.
+You can also use an origin request policy to add additional HTTP headers to an origin request that were not included in the viewer request\. These additional headers are added by CloudFront before sending the origin request, with header values that are determined automatically based on the viewer request\. For more information, see [Adding the CloudFront HTTP headers](using-cloudfront-headers.md)\.
 
 **Topics**
 + [Creating origin request policies](#origin-request-create-origin-request-policy)
@@ -179,7 +179,7 @@ The HTTP headers in viewer requests that CloudFront includes in origin requests\
 + **None** – The HTTP headers in viewer requests are *not* included in origin requests\.
 + **All viewer headers** – All HTTP headers in viewer requests are included in origin requests\.
 + **Include the following headers** – You specify which HTTP headers are included in origin requests\.
-+ **All viewer headers and the following CloudFront headers** – All HTTP headers in viewer requests are included in origin requests\. Additionally, you specify which of the CloudFront headers you want to add to origin requests\. For more information about the CloudFront headers, see [Using the CloudFront HTTP headers](using-cloudfront-headers.md)\.
++ **All viewer headers and the following CloudFront headers** – All HTTP headers in viewer requests are included in origin requests\. Additionally, you specify which of the CloudFront headers you want to add to origin requests\. For more information about the CloudFront headers, see [Adding the CloudFront HTTP headers](using-cloudfront-headers.md)\.
 When you use the **Include the following headers** or **All viewer headers and the following CloudFront headers** setting, you specify HTTP headers by their name, not their value\. For example, consider the following HTTP header:  
 
 ```
