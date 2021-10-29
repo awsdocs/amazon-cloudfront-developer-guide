@@ -33,7 +33,7 @@ CloudFront does not invoke edge functions for viewer response events when the or
 
 Edge functions for viewer response events cannot modify the HTTP status code of the response, regardless of whether the response came from the origin or the CloudFront cache\.
 
-Lambda@Edge functions for origin response events are invoked for *all* origin responses, including when the origin returns HTTP status code 400 or higher\. For more information, see [Updating HTTP Responses in Origin\-Response Triggers](lambda-updating-http-responses.md)\.
+Lambda@Edge functions for origin response events are invoked for *all* origin responses, including when the origin returns HTTP status code 400 or higher\. For more information, see [Updating HTTP responses in origin response triggers](lambda-updating-http-responses.md)\.
 
 ### HTTP headers<a name="function-restrictions-headers"></a>
 
@@ -175,7 +175,7 @@ The Lambda function must be in the US East \(N\. Virginia\) Region\.
 
 ### Lambda role permissions<a name="lambda-at-edge-restrictions-role-permissions"></a>
 
-The IAM execution role associated with the Lambda function must allow the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com` to assume the role\. For more information, see [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)\.
+The IAM execution role associated with the Lambda function must allow the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com` to assume the role\. For more information, see [Setting IAM permissions and roles for Lambda@Edge](lambda-edge-permissions.md)\.
 
 ### Lambda features and supported runtimes<a name="lambda-at-edge-runtime-restrictions"></a>
 

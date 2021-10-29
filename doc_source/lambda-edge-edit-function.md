@@ -1,4 +1,4 @@
-# Editing a Lambda Function for Lambda@Edge<a name="lambda-edge-edit-function"></a>
+# Editing a Lambda@Edge function<a name="lambda-edge-edit-function"></a>
 
 When you want to edit a Lambda function, note the following:
 + The original version is labeled $LATEST\.

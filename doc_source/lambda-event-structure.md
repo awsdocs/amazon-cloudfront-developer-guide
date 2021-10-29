@@ -1,30 +1,30 @@
-# Lambda@Edge Event Structure<a name="lambda-event-structure"></a>
+# Lambda@Edge event structure<a name="lambda-event-structure"></a>
 
 The following topics describe the request and response event objects that CloudFront passes to a Lambda@Edge function when it’s triggered\.
 
 **Topics**
-+ [Dynamic Origin Selection](#lambda-event-content-based-routing)
-+ [Request Events](#lambda-event-structure-request)
-+ [Response Events](#lambda-event-structure-response)
++ [Dynamic origin selection](#lambda-event-content-based-routing)
++ [Request events](#lambda-event-structure-request)
++ [Response events](#lambda-event-structure-response)
 
-## Dynamic Origin Selection<a name="lambda-event-content-based-routing"></a>
+## Dynamic origin selection<a name="lambda-event-content-based-routing"></a>
 
 You can use [the path pattern in a cache behavior](distribution-web-values-specify.md#DownloadDistValuesPathPattern) to route requests to an origin based on the path and name of the requested object, such as `images/*.jpg`\. Using Lambda@Edge, you can also route requests to an origin based on other characteristics, such as the values in request headers\. 
 
-There are a number of ways that this dynamic origin selection can be useful\. For example, you can distribute requests across origins in different geographic areas to help with global load balancing\. Or you can selectively route requests to different origins that each serve a particular function: bot handling, SEO optimization, authentication, and so on\. For code examples that demonstrate how to use this feature, see [Content\-Based Dynamic Origin Selection \- Examples](lambda-examples.md#lambda-examples-content-based-routing-examples)\.
+There are a number of ways that this dynamic origin selection can be useful\. For example, you can distribute requests across origins in different geographic areas to help with global load balancing\. Or you can selectively route requests to different origins that each serve a particular function: bot handling, SEO optimization, authentication, and so on\. For code examples that demonstrate how to use this feature, see [Content\-based dynamic origin selection \- examples](lambda-examples.md#lambda-examples-content-based-routing-examples)\.
 
 In the CloudFront origin request event, the `origin` object in the event structure contains information about the origin that the request would be routed to, based on the path pattern\. You can update the values in the `origin` object to route a request to a different origin\. When you update the `origin` object, you don’t need to define the origin in the distribution\. You can also replace an Amazon S3 origin object with a custom origin object, and vice versa\. You can only specify a single origin per request, though; either a custom origin or an Amazon S3 origin, but not both\.
 
-## Request Events<a name="lambda-event-structure-request"></a>
+## Request events<a name="lambda-event-structure-request"></a>
 
 The following topics show the structure of the object that CloudFront passes to a Lambda function for [viewer and origin request events](lambda-cloudfront-trigger-events.md)\. These examples show a `GET` request with no body\. Following the examples is a list of all the possible fields in viewer and origin request events\.
 
 **Topics**
-+ [Example Viewer Request](#example-viewer-request)
-+ [Example Origin Request](#example-origin-request)
-+ [Request Event Fields](#request-event-fields)
++ [Example viewer request](#example-viewer-request)
++ [Example origin request](#example-origin-request)
++ [Request event fields](#request-event-fields)
 
-### Example Viewer Request<a name="example-viewer-request"></a>
+### Example viewer request<a name="example-viewer-request"></a>
 
 The following example shows a viewer request event object\.
 
@@ -71,7 +71,7 @@ The following example shows a viewer request event object\.
 }
 ```
 
-### Example Origin Request<a name="example-origin-request"></a>
+### Example origin request<a name="example-origin-request"></a>
 
 The following example shows an origin request event object\.
 
@@ -146,11 +146,11 @@ The following example shows an origin request event object\.
 }
 ```
 
-### Request Event Fields<a name="request-event-fields"></a>
+### Request event fields<a name="request-event-fields"></a>
 
 Request event object data is contained in two subobjects: `config` \(`Records.cf.config`\) and `request` \(`Records.cf.request`\)\. The following lists describe each subobject’s fields\.
 
-#### Fields in the Config Object<a name="request-event-fields-config"></a>
+#### Fields in the config object<a name="request-event-fields-config"></a>
 
 The following list describes the fields in the `config` object \(`Records.cf.config`\)\.
 
@@ -166,7 +166,7 @@ The type of trigger that’s associated with the request: `viewer-request` or `o
 **`requestId` \(read\-only\)**  
 An encrypted string that uniquely identifies a viewer\-to\-CloudFront request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md) and [Standard log file fields](AccessLogs.md#BasicDistributionFileFormat)\.
 
-#### Fields in the Request Object<a name="request-event-fields-request"></a>
+#### Fields in the request object<a name="request-event-fields-request"></a>
 
 The following list describes the fields in the `request` object \(`Records.cf.request`\)\.
 
@@ -247,16 +247,16 @@ If you’re using an [origin access identity \(OAI\)](private-content-restrictin
 **`region` \(read/write\) \(Amazon S3 origins only\)**  
 The AWS Region of your Amazon S3 bucket\. This is required only when you set `authMethod` to `origin-access-identity`\.
 
-## Response Events<a name="lambda-event-structure-response"></a>
+## Response events<a name="lambda-event-structure-response"></a>
 
 The following topics show the structure of the object that CloudFront passes to a Lambda function for [viewer and origin response events](lambda-cloudfront-trigger-events.md)\. Following the examples is a list of all the possible fields in viewer and origin response events\.
 
 **Topics**
-+ [Example Origin Response](#lambda-event-structure-response-origin)
-+ [Example Viewer Response](#lambda-event-structure-response-viewer)
-+ [Response Event Fields](#response-event-fields)
++ [Example origin response](#lambda-event-structure-response-origin)
++ [Example viewer response](#lambda-event-structure-response-viewer)
++ [Response event fields](#response-event-fields)
 
-### Example Origin Response<a name="lambda-event-structure-response-origin"></a>
+### Example origin response<a name="lambda-event-structure-response-origin"></a>
 
 The following example shows an origin response event object\.
 
@@ -397,7 +397,7 @@ The following example shows an origin response event object\.
 }
 ```
 
-### Example Viewer Response<a name="lambda-event-structure-response-viewer"></a>
+### Example viewer response<a name="lambda-event-structure-response-viewer"></a>
 
 The following example shows a viewer response event object\.
 
@@ -516,11 +516,11 @@ The following example shows a viewer response event object\.
 }
 ```
 
-### Response Event Fields<a name="response-event-fields"></a>
+### Response event fields<a name="response-event-fields"></a>
 
-Response event object data is contained in three subobjects: `config` \(`Records.cf.config`\), `request` \(`Records.cf.request`\), and `response` \(`Records.cf.response`\)\. For more information about the fields in the request object, see [Fields in the Request Object](#request-event-fields-request)\. The following lists describe the fields in the `config` and `response` subobjects\.
+Response event object data is contained in three subobjects: `config` \(`Records.cf.config`\), `request` \(`Records.cf.request`\), and `response` \(`Records.cf.response`\)\. For more information about the fields in the request object, see [Fields in the request object](#request-event-fields-request)\. The following lists describe the fields in the `config` and `response` subobjects\.
 
-#### Fields in the Config Object<a name="response-event-fields-config"></a>
+#### Fields in the config object<a name="response-event-fields-config"></a>
 
 The following list describes the fields in the `config` object \(`Records.cf.config`\)\.
 
@@ -536,9 +536,9 @@ The type of trigger that’s associated with the response: `origin-response` or 
 **`requestId` \(read\-only\)**  
 An encrypted string that uniquely identifies the viewer\-to\-CloudFront request that this response is associated with\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md) and [Standard log file fields](AccessLogs.md#BasicDistributionFileFormat)\.
 
-#### Fields in the Response Object<a name="response-event-fields-response"></a>
+#### Fields in the response object<a name="response-event-fields-response"></a>
 
-The following list describes the fields in the `response` object \(`Records.cf.response`\)\. For information about using a Lambda@Edge function to generate an HTTP response, see [Generating HTTP Responses in Request Triggers](lambda-generating-http-responses-in-requests.md)\.
+The following list describes the fields in the `response` object \(`Records.cf.response`\)\. For information about using a Lambda@Edge function to generate an HTTP response, see [Generating HTTP responses in request triggers](lambda-generating-http-responses-in-requests.md)\.
 
 **`headers` \(read/write\)**  
 The headers in the response\. Note the following:  

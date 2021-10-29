@@ -1,4 +1,4 @@
-# Adding Triggers by Using the CloudFront Console<a name="lambda-edge-add-triggers-cf-console"></a><a name="lambda-create-functions-add-triggers-cloudfront-console-procedure"></a>
+# Adding triggers by using the CloudFront console<a name="lambda-edge-add-triggers-cf-console"></a><a name="lambda-create-functions-add-triggers-cloudfront-console-procedure"></a>
 
 **To add triggers for CloudFront events to a Lambda function \(CloudFront console\)**
 
@@ -30,7 +30,7 @@ You can add triggers only to a numbered version, not to **$LATEST**\.
 
 1. At **Lambda Function Associations**, in the **Event Type** list, choose when you want the function to execute: for viewer requests, viewer responses, origin requests, or origin responses\. 
 
-   For more information, see [How to Decide Which CloudFront Event to Use to Trigger a Lambda Function](lambda-how-to-choose-event.md)\.
+   For more information, see [How to decide which CloudFront event to use to trigger a Lambda@Edge function](lambda-how-to-choose-event.md)\.
 
 1. Paste the ARN of the Lambda function that you want to execute when the chosen event occurs\. This is the value that you copied in step 1\.
 

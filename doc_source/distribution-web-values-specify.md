@@ -561,7 +561,7 @@ You can choose to run a Lambda function when one or more of the following CloudF
 + When CloudFront receives a response from the origin \(origin response\)
 + Before CloudFront returns the response to the viewer \(viewer response\)
 
-For more information, see [How to Decide Which CloudFront Event to Use to Trigger a Lambda Function](lambda-how-to-choose-event.md)\.
+For more information, see [How to decide which CloudFront event to use to trigger a Lambda@Edge function](lambda-how-to-choose-event.md)\.
 
 ### Lambda Function ARN<a name="DownloadDistValuesLambdaFunctionARN"></a>
 

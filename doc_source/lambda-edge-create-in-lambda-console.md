@@ -1,4 +1,4 @@
-# Creating a Lambda@Edge Function in the Lambda Console<a name="lambda-edge-create-in-lambda-console"></a>
+# Creating a Lambda@Edge function in the Lambda console<a name="lambda-edge-create-in-lambda-console"></a>
 
 To set up AWS Lambda to run Lambda functions that are based on CloudFront events, follow this procedure\.<a name="lambda-edge-create-function-procedure"></a>
 
@@ -55,4 +55,4 @@ Why add triggers later? Generally it's best to test and debug the function befor
 
 1. Test and debug the function\. For more information about testing in the Lambda console, see the *Invoke the Lambda Function and Verify Results, Logs, and Metrics* section in [ Create a Lambda Function with the Console](https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html) in the *AWS Lambda Developer Guide*\.
 
-1. When you're ready to have the function execute for CloudFront events, publish another version and edit the function to add triggers\. For more information, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.
+1. When you're ready to have the function execute for CloudFront events, publish another version and edit the function to add triggers\. For more information, see [Adding triggers for a Lambda@Edge function](lambda-edge-add-triggers.md)\.

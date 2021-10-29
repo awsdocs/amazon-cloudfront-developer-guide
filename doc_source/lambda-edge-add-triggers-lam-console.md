@@ -1,4 +1,4 @@
-# Adding Triggers by Using the Lambda Console<a name="lambda-edge-add-triggers-lam-console"></a><a name="lambda-edge-add-triggers-procedure"></a>
+# Adding triggers by using the Lambda console<a name="lambda-edge-add-triggers-lam-console"></a><a name="lambda-edge-add-triggers-procedure"></a>
 
 **To add triggers to a Lambda@Edge function \(AWS Lambda console\)**
 

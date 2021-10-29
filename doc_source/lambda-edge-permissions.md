@@ -1,13 +1,13 @@
-# Setting IAM Permissions and Roles for Lambda@Edge<a name="lambda-edge-permissions"></a>
+# Setting IAM permissions and roles for Lambda@Edge<a name="lambda-edge-permissions"></a>
 
 To configure Lambda@Edge, you must set up specific IAM permissions and an IAM execution role\. Lambda@Edge also creates service\-linked roles to replicate Lambda functions to CloudFront Regions and to enable CloudWatch to use CloudFront log files\.
 
 **Topics**
-+ [IAM Permissions Required to Associate Lambda Functions with CloudFront Distributions](#lambda-edge-permissions-required)
-+ [Function Execution Role for Service Principals](#lambda-edge-permissions-function-execution)
++ [IAM permissions required to associate Lambda@Edge functions with CloudFront distributions](#lambda-edge-permissions-required)
++ [Function execution role for service principals](#lambda-edge-permissions-function-execution)
 + [Service\-linked roles for Lambda@Edge](#using-service-linked-roles)
 
-## IAM Permissions Required to Associate Lambda Functions with CloudFront Distributions<a name="lambda-edge-permissions-required"></a>
+## IAM permissions required to associate Lambda@Edge functions with CloudFront distributions<a name="lambda-edge-permissions-required"></a>
 
 In addition to the IAM permissions that you need to use AWS Lambda, the IAM user needs the following IAM permissions to associate Lambda functions with CloudFront distributions:
 + `lambda:GetFunction`
@@ -37,7 +37,7 @@ For more information, see the following documentation:
 + [Identity and Access Management \(IAM\) in CloudFront](auth-and-access-control.md) in this guide\.
 + [Authentication and Access Control for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/auth-and-access-control.html) in the *AWS Lambda Developer Guide*
 
-## Function Execution Role for Service Principals<a name="lambda-edge-permissions-function-execution"></a>
+## Function execution role for service principals<a name="lambda-edge-permissions-function-execution"></a>
 
 You must create an IAM role that can be assumed by the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com`\. This role is assumed by the service principals when they execute your function\. For more information, see [Creating roles and attaching policies \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions_create-policies.html) in the *IAM User Guide*\.
 
@@ -66,7 +66,7 @@ Here's an example role trust policy:
 For information about the permissions that you need to grant to the execution role, see [Manage Permissions: Using an IAM Role \(Execution Role\)](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role) in the *AWS Lambda Developer Guide*\. Note the following:
 + By default, whenever a CloudFront event triggers a Lambda function, data is written to CloudWatch Logs\. If you want to use these logs, the execution role needs permission to write data to CloudWatch Logs\. You can use the predefined AWSLambdaBasicExecutionRole to grant permission to the execution role\.
 
-  For more information about CloudWatch Logs, see [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)\.
+  For more information about CloudWatch Logs, see [CloudWatch metrics and logs for Lambda@Edge functions](lambda-cloudwatch-metrics-logging.md)\.
 + If your Lambda function code accesses other AWS resources, such as reading an object from an S3 bucket, the execution role needs permission to perform that operation\. 
 
 ## Service\-linked roles for Lambda@Edge<a name="using-service-linked-roles"></a>

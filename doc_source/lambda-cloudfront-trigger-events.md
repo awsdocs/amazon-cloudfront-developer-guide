@@ -1,4 +1,4 @@
-# CloudFront Events That Can Trigger a Lambda Function<a name="lambda-cloudfront-trigger-events"></a>
+# CloudFront events that can trigger a Lambda@Edge function<a name="lambda-cloudfront-trigger-events"></a>
 
 For each cache behavior in a CloudFront distribution, you can add up to four triggers \(associations\) that cause a Lambda function to execute when specific CloudFront events occur\. CloudFront triggers can be based on one of four CloudFront events, as shown in the following diagram\.
 
@@ -6,19 +6,19 @@ For each cache behavior in a CloudFront distribution, you can add up to four tri
 
 The CloudFront events that can be used to trigger Lambda@Edge functions are the following:
 
-**Viewer Request**  
+**Viewer request**  
 The function executes when CloudFront receives a request from a viewer, before it checks to see whether the requested object is in the CloudFront cache\.
 
-**Origin Request**  
+**Origin request**  
 The function executes *only* when CloudFront forwards a request to your origin\. When the requested object is in the CloudFront cache, the function doesn’t execute\.
 
-**Origin Response**  
+**Origin response**  
 The function executes after CloudFront receives a response from the origin and before it caches the object in the response\. Note that the function executes even if an error is returned from the origin\.  
 The function doesn’t execute in the following cases:  
 + When the requested file is in the CloudFront cache and is not expired\.
 + When the response is generated from a function that was triggered by an origin request event\.
 
-**Viewer Response**  
+**Viewer response**  
 The function executes before returning the requested file to the viewer\. Note that the function executes regardless of whether the file is already in the CloudFront cache\.  
 The function doesn’t execute in the following cases:  
 + When the origin returns an HTTP status code of 400 or higher\.

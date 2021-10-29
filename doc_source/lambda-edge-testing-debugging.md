@@ -1,4 +1,4 @@
-# Testing and Debugging Lambda@Edge Functions<a name="lambda-edge-testing-debugging"></a>
+# Testing and debugging Lambda@Edge functions<a name="lambda-edge-testing-debugging"></a>
 
 This topic includes sections that describe strategies for testing and debugging Lambda@Edge functions\. It's important to test your Lambda@Edge function code standalone, to make sure that it completes the intended task, and to do integration testing, to make sure that the function works correctly with CloudFront\. 
 
@@ -8,14 +8,14 @@ During integration testing or after your function has been deployed, you might n
 When you review CloudWatch log files or metrics when you're troubleshooting errors, be aware that they are displayed or stored in the Region closest to the location where the function executed\. So, if you have a website or web application with users in the United Kingdom, and you have a Lambda function associated with your distribution, for example, you must change the Region to view the CloudWatch metrics or log files for the London AWS Region\. For more information, see *Determining the Lambda@Edge Region* later in this topic\.
 
 **Topics**
-+ [Testing your Lambda@Edge Functions](#lambda-edge-testing-debugging-test-function)
-+ [Identifying Lambda Function Errors in CloudFront](#lambda-edge-identifying-function-errors)
-+ [Troubleshooting Invalid Lambda Function Responses \(Validation Errors\)](#lambda-edge-testing-debugging-troubleshooting-invalid-responses)
-+ [Troubleshooting Lambda Function Execution Errors](#lambda-edge-testing-debugging-execution-errors)
++ [Testing your Lambda@Edge functions](#lambda-edge-testing-debugging-test-function)
++ [Identifying Lambda@Edge function errors in CloudFront](#lambda-edge-identifying-function-errors)
++ [Troubleshooting invalid Lambda@Edge function responses \(validation errors\)](#lambda-edge-testing-debugging-troubleshooting-invalid-responses)
++ [Troubleshooting Lambda@Edge function execution errors](#lambda-edge-testing-debugging-execution-errors)
 + [Determining the Lambda@Edge Region](#lambda-edge-testing-debugging-determine-region)
-+ [Determining if Your Account Pushes Logs to CloudWatch](#lambda-edge-testing-debugging-cloudwatch-logs-enabled)
++ [Determining if your account pushes logs to CloudWatch](#lambda-edge-testing-debugging-cloudwatch-logs-enabled)
 
-## Testing your Lambda@Edge Functions<a name="lambda-edge-testing-debugging-test-function"></a>
+## Testing your Lambda@Edge functions<a name="lambda-edge-testing-debugging-test-function"></a>
 
 There are two steps to testing your Lambda function: standalone testing and integration testing\.
 
@@ -24,20 +24,20 @@ Before you add your Lambda function to CloudFront, make sure to test the functio
 
 **Test your function's operation in CloudFront**  
 It's important to complete integration testing, where your function is associated with a distribution and runs based on a CloudFront event\. Make sure that the function is triggered for the right event, and returns a response that is valid and correct for CloudFront\. For example, make sure that the event structure correct, that only valid headers are included, and so on\.  
-As you iterate on integration testing with your function in the Lambda console, refer to the steps in the Lambda@Edge tutorial as you modify your code or change the CloudFront trigger that calls your function\. For example, make sure that you're working in a numbered version of your function, as described in this step of the tutorial: [Step 4: Add a CloudFront Trigger to Run the Function](lambda-edge-how-it-works-tutorial.md#lambda-edge-how-it-works-tutorial-add-trigger)\.   
+As you iterate on integration testing with your function in the Lambda console, refer to the steps in the Lambda@Edge tutorial as you modify your code or change the CloudFront trigger that calls your function\. For example, make sure that you're working in a numbered version of your function, as described in this step of the tutorial: [Step 4: Add a CloudFront trigger to run the function](lambda-edge-how-it-works-tutorial.md#lambda-edge-how-it-works-tutorial-add-trigger)\.   
 As you make changes and deploy them, be aware that it will take several minutes for your updated function and CloudFront triggers to replicate across all Regions\. This typically takes a few minutes but can take up to 15 minutes\.  
 You can check to see if replication is finished by going to the CloudFront console and viewing your distribution:  
 + Go to the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 Check for the distribution status to change from **In Progress** back to **Deployed**, which means that your function has been replicated\. Then follow the steps in the next section to verify that the function works\.  
 Be aware that testing in the console only validates your function’s logic, and does not apply any service quotas \(formerly known as limits\) that are specific to Lambda@Edge\.
 
-## Identifying Lambda Function Errors in CloudFront<a name="lambda-edge-identifying-function-errors"></a>
+## Identifying Lambda@Edge function errors in CloudFront<a name="lambda-edge-identifying-function-errors"></a>
 
 After you’ve verified that your function logic works correctly, you might still see HTTP 5xx errors when your function runs in CloudFront\. HTTP 5xx errors can be returned for a variety of reasons, which can include Lambda function errors or other issues in CloudFront\.
 + If you use Lambda@Edge functions, you can use graphs in the CloudFront console to help track down what's causing the error, and then work to fix it\. For example, you can see if HTTP 5xx errors are caused by CloudFront or by Lambda functions, and then, for specific functions, you can view related log files to investigate the issue\.
 + To troubleshoot HTTP errors in general in CloudFront, see the troubleshooting steps in the following topic: [Troubleshooting Error Responses from Your Origin](troubleshooting-response-errors.md)\.
 
-### What Causes Lambda Function Errors in CloudFront<a name="lambda-edge-testing-debugging-function-errors"></a>
+### What causes Lambda@Edge function errors in CloudFront<a name="lambda-edge-testing-debugging-function-errors"></a>
 
 There are several reasons why a Lambda function might cause an HTTP 5xx error, and the troubleshooting steps you should take depend on the type of error\. Errors can be categorized as the following:
 
@@ -45,12 +45,12 @@ There are several reasons why a Lambda function might cause an HTTP 5xx error, a
 An execution error results when CloudFront doesn’t get a response from Lambda because there are unhandled exceptions in the function or there’s an error in the code\. For example, if the code includes callback\(Error\)\. For more information, see [Lambda Function Errors](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-mode-exceptions.html) in the AWS Lambda Developer Guide\.
 
 **An invalid Lambda function response is returned to CloudFront**  
-After the function runs, CloudFront receives a response from Lambda\. An error is returned if the object structure of the response doesn't conform to the [Lambda@Edge Event Structure](lambda-event-structure.md), or the response contains invalid headers or other invalid fields\.
+After the function runs, CloudFront receives a response from Lambda\. An error is returned if the object structure of the response doesn't conform to the [Lambda@Edge event structure](lambda-event-structure.md), or the response contains invalid headers or other invalid fields\.
 
 **The execution in CloudFront is throttled due to Lambda service quotas \(formerly known as limits\)**  
 The Lambda service throttles executions in each Region, and returns an error if you exceed the quota\.
 
-### How to Determine the Type of Failure<a name="lambda-edge-testing-debugging-failure-type"></a>
+### How to determine the type of failure<a name="lambda-edge-testing-debugging-failure-type"></a>
 
 To help you decide where to focus as you debug and work to resolve errors returned by CloudFront, it's helpful to identify why CloudFront is returning an HTTP error\. To get started, you can use the graphs provided in the **Monitoring** section of the CloudFront console on the AWS Management Console\. For more information about viewing graphs in the **Monitoring** section of the CloudFront console, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
 
@@ -78,13 +78,13 @@ The **Lambda@Edge errors** tab also includes a **Throttles** graph\. On occasion
 
 For an example about how to use this information in troubleshooting HTTP errors, see [Four steps for debugging your content delivery on AWS](http://aws.amazon.com/blogs/networking-and-content-delivery/four-steps-for-debugging-your-content-delivery-on-aws/)\.
 
-## Troubleshooting Invalid Lambda Function Responses \(Validation Errors\)<a name="lambda-edge-testing-debugging-troubleshooting-invalid-responses"></a>
+## Troubleshooting invalid Lambda@Edge function responses \(validation errors\)<a name="lambda-edge-testing-debugging-troubleshooting-invalid-responses"></a>
 
 If you identify that your problem is a Lambda validation error, it means that your Lambda function is returning an invalid response to CloudFront\. Follow the guidance in this section to take steps to review your function and make sure that your response conforms to CloudFront requirements\. 
 
 CloudFront validates the response from a Lambda function in two ways:
-+ **The Lambda response must conform to the required object structure\.** Examples of bad object structure include the following: unparsable JSON, missing required fields, and an invalid object in the response\. For more information, see the [Lambda@Edge Event Structure](lambda-event-structure.md)\.
-+ **The response must include only valid object values\.** An error will occur if the response includes a valid object but has values that are not supported\. Examples include the following: adding or updating disallowed or read\-only headers \(see [Restrictions on edge functions](edge-functions-restrictions.md)\), exceeding the maximum body size \(see *Restrictions on the Size of the Generated Response* in the Lambda@Edge [Errors](lambda-generating-http-responses-in-requests.md#lambda-generating-http-responses-errors) topic\), and invalid characters or values \(see the [Lambda@Edge Event Structure](lambda-event-structure.md)\)\.
++ **The Lambda response must conform to the required object structure\.** Examples of bad object structure include the following: unparsable JSON, missing required fields, and an invalid object in the response\. For more information, see the [Lambda@Edge event structure](lambda-event-structure.md)\.
++ **The response must include only valid object values\.** An error will occur if the response includes a valid object but has values that are not supported\. Examples include the following: adding or updating disallowed or read\-only headers \(see [Restrictions on edge functions](edge-functions-restrictions.md)\), exceeding the maximum body size \(see *Restrictions on the Size of the Generated Response* in the Lambda@Edge [Errors](lambda-generating-http-responses-in-requests.md#lambda-generating-http-responses-errors) topic\), and invalid characters or values \(see the [Lambda@Edge event structure](lambda-event-structure.md)\)\.
 
 When Lambda returns an invalid response to CloudFront, error messages are written to log files which CloudFront pushes to CloudWatch in the Region of where the Lambda function executed\. It's the default behavior to send the log files to CloudWatch when there's an invalid response\. However, if you associated a Lambda function with CloudFront before the functionality was released, it might not be enabled for your function\. For more information, see *Determine if Your Account Pushes Logs to CloudWatch* later in the topic\.
 
@@ -94,7 +94,7 @@ If the error is reproducible, you can create a new request that results in the e
 
 If an error is intermittent, you can use CloudFront access logs to find the request id for a request that has failed, and then search CloudWatch logs for the corresponding error messages\. For more information, see the previous section, *Determining the Type of Failure*\.
 
-## Troubleshooting Lambda Function Execution Errors<a name="lambda-edge-testing-debugging-execution-errors"></a>
+## Troubleshooting Lambda@Edge function execution errors<a name="lambda-edge-testing-debugging-execution-errors"></a>
 
 If the problem is a Lambda execution error, it can be helpful to create logging statements for Lambda functions, to write messages to CloudWatch log files that monitor the execution of your function in CloudFront and determine if it's working as expected\. Then you can search for those statements in the CloudWatch log files to verify that your function is working\.
 
@@ -107,7 +107,7 @@ To see the Regions where your Lambda@Edge function is receiving traffic, view me
 
 For more information about viewing graphs in the **Monitoring** section of the CloudFront console, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
 
-## Determining if Your Account Pushes Logs to CloudWatch<a name="lambda-edge-testing-debugging-cloudwatch-logs-enabled"></a>
+## Determining if your account pushes logs to CloudWatch<a name="lambda-edge-testing-debugging-cloudwatch-logs-enabled"></a>
 
 By default, CloudFront enables logging invalid Lambda function responses, and pushes the log files to CloudWatch by using one of the [Service\-linked roles for Lambda@Edge](lambda-edge-permissions.md#using-service-linked-roles)\. If you have Lambda@Edge functions that you added to CloudFront before the invalid Lambda function response log feature was released, logging is enabled when you next update your Lambda@Edge configuration, for example, by adding a CloudFront trigger\.
 

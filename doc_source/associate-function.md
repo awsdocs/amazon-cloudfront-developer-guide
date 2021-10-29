@@ -4,7 +4,7 @@ To use a function in CloudFront Functions with a CloudFront distribution, you as
 
 When you associate a function with a cache behavior, you must choose an *event type*\. The event type determines when CloudFront Functions runs the function\. There are two event types to choose from:
 
-For more information about event types, see [CloudFront Events That Can Trigger a Lambda Function](lambda-cloudfront-trigger-events.md)\. You cannot use origin\-facing event types \(*origin request* and *origin response*\) with CloudFront Functions\.
+For more information about event types, see [CloudFront events that can trigger a Lambda@Edge function](lambda-cloudfront-trigger-events.md)\. You cannot use origin\-facing event types \(*origin request* and *origin response*\) with CloudFront Functions\.
 + **Viewer request** – The function runs when CloudFront receives a request from a viewer\.
 + **Viewer response** – The function runs before CloudFront returns a response to the viewer\.
 

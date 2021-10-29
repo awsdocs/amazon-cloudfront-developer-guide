@@ -16,16 +16,16 @@ There are many uses for Lambda@Edge processing\. For example:
 + A function can inspect headers or authorization tokens, and insert a header to control access to your content before CloudFront forwards the request to your origin\.
 + A Lambda function can also make network calls to external resources to confirm user credentials, or fetch additional content to customize a response\.
 
-For sample code and additional examples, see [Lambda@Edge Example Functions](lambda-examples.md)\.
+For sample code and additional examples, see [Lambda@Edge example functions](lambda-examples.md)\.
 
 **Topics**
-+ [Get Started Creating and Using Lambda@Edge Functions](lambda-edge-how-it-works.md)
-+ [Setting IAM Permissions and Roles for Lambda@Edge](lambda-edge-permissions.md)
-+ [Writing and Creating a Lambda@Edge Function](lambda-edge-create-function.md)
-+ [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)
-+ [Testing and Debugging Lambda@Edge Functions](lambda-edge-testing-debugging.md)
-+ [CloudWatch Metrics and CloudWatch Logs for Lambda Functions](lambda-cloudwatch-metrics-logging.md)
-+ [Deleting Lambda@Edge Functions and Replicas](lambda-edge-delete-replicas.md)
-+ [Lambda@Edge Event Structure](lambda-event-structure.md)
-+ [Working with Requests and Responses](lambda-generating-http-responses.md)
-+ [Lambda@Edge Example Functions](lambda-examples.md)
++ [Get started creating and using Lambda@Edge functions](lambda-edge-how-it-works.md)
++ [Setting IAM permissions and roles for Lambda@Edge](lambda-edge-permissions.md)
++ [Writing and creating a Lambda@Edge function](lambda-edge-create-function.md)
++ [Adding triggers for a Lambda@Edge function](lambda-edge-add-triggers.md)
++ [Testing and debugging Lambda@Edge functions](lambda-edge-testing-debugging.md)
++ [CloudWatch metrics and logs for Lambda@Edge functions](lambda-cloudwatch-metrics-logging.md)
++ [Deleting Lambda@Edge functions and replicas](lambda-edge-delete-replicas.md)
++ [Lambda@Edge event structure](lambda-event-structure.md)
++ [Working with requests and responses](lambda-generating-http-responses.md)
++ [Lambda@Edge example functions](lambda-examples.md)

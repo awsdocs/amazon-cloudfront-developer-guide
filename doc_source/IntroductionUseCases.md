@@ -35,7 +35,7 @@ To set up field\-level encryption, you add a public key to CloudFront, and then 
 
 Running serverless code at the edge opens up a number of possibilities for customizing the content and experience for viewers, at reduced latency\. For example, you can return a custom error message when your origin server is down for maintenance, so viewers don't get a generic HTTP error message\. Or you can use a function to help authorize users and control access to your content, before CloudFront forwards a request to your origin\.
 
-Using Lambda@Edge with CloudFront enables a variety of ways to customize the content that CloudFront delivers\. To learn more about Lambda@Edge and how to create and deploy functions with CloudFront, see [Customizing at the edge with Lambda@Edge](lambda-at-the-edge.md)\. To see a number of code samples that you can customize for your own solutions, see [Lambda@Edge Example Functions](lambda-examples.md)\.
+Using Lambda@Edge with CloudFront enables a variety of ways to customize the content that CloudFront delivers\. To learn more about Lambda@Edge and how to create and deploy functions with CloudFront, see [Customizing at the edge with Lambda@Edge](lambda-at-the-edge.md)\. To see a number of code samples that you can customize for your own solutions, see [Lambda@Edge example functions](lambda-examples.md)\.
 
 ## Serve private content by using Lambda@Edge customizations<a name="IntroductionUseCasesPrivateContentAtTheEdge"></a>
 

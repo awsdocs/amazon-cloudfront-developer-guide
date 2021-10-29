@@ -100,7 +100,7 @@ The following diagram illustrates how origin failover works when you include a L
 
 ![\[How origin failover works with Lambda@Edge functions\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/origingroups-with-lambda-edge.png)
 
-For more information about using Lambda@Edge triggers, see [Adding Triggers for a Lambda@Edge Function](lambda-edge-add-triggers.md)\.
+For more information about using Lambda@Edge triggers, see [Adding triggers for a Lambda@Edge function](lambda-edge-add-triggers.md)\.
 
 ## Use custom error pages with origin failover<a name="concept_origin_groups.custom-error"></a>
 

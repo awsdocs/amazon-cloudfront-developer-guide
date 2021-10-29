@@ -1,4 +1,4 @@
-# Adding Triggers for a Lambda@Edge Function<a name="lambda-edge-add-triggers"></a>
+# Adding triggers for a Lambda@Edge function<a name="lambda-edge-add-triggers"></a>
 
 A Lambda@Edge trigger is one combination of CloudFront distribution, cache behavior, and event that causes a function to execute\. You can specify one or more CloudFront triggers that cause the function to run\. For example, you can create a trigger that causes the function to execute when CloudFront receives a request from a viewer for a specific cache behavior you set up for your distribution\.
 
@@ -10,10 +10,10 @@ At the time that you create a Lambda function, you can specify only one trigger\
 + Using the CloudFront console can be better if you want to add triggers for multiple distributions because it's easier to find the distribution that you want to update\. You can also update other CloudFront settings at the same time\.
 
 **Note**  
-If you want to work with Lambda@Edge programmatically, there are several resources to help you\. For more information, see [Creating Lambda Functions and CloudFront Triggers Programmatically](lambda-edge-create-programmatically.md)\.
+If you want to work with Lambda@Edge programmatically, there are several resources to help you\. For more information, see [Creating Lambda@Edge functions and CloudFront triggers programmatically](lambda-edge-create-programmatically.md)\.
 
 **Topics**
-+ [CloudFront Events That Can Trigger a Lambda Function](lambda-cloudfront-trigger-events.md)
-+ [How to Decide Which CloudFront Event to Use to Trigger a Lambda Function](lambda-how-to-choose-event.md)
-+ [Adding Triggers by Using the Lambda Console](lambda-edge-add-triggers-lam-console.md)
-+ [Adding Triggers by Using the CloudFront Console](lambda-edge-add-triggers-cf-console.md)
++ [CloudFront events that can trigger a Lambda@Edge function](lambda-cloudfront-trigger-events.md)
++ [How to decide which CloudFront event to use to trigger a Lambda@Edge function](lambda-how-to-choose-event.md)
++ [Adding triggers by using the Lambda console](lambda-edge-add-triggers-lam-console.md)
++ [Adding triggers by using the CloudFront console](lambda-edge-add-triggers-cf-console.md)
