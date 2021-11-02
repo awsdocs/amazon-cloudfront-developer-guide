@@ -1,35 +1,21 @@
 # Working with policies<a name="working-with-policies"></a>
 
-With CloudFront *policies*, you can control the values that are included in the *cache key* for objects that are cached at CloudFront edge locations\. These values can include HTTP request query strings, headers, and cookies\. The cache key determines whether a viewer request results in a *cache hit* \(the object is served to the viewer from a CloudFront edge location\)\.
+Amazon CloudFront offers three different kinds of *policies* that you can use to customize CloudFront in the following ways:
 
-When there’s a *cache miss* \(the requested object is not cached at the edge location\), CloudFront sends a request to the origin to retrieve the object\. This is called an *origin request*\. You can separately control which of these values \(query strings, headers, and cookies\) are included in the origin request\.
+**Specify cache and compression settings**  
+With a CloudFront *cache policy*, you can specify the HTTP headers, cookies, and query strings that CloudFront includes in the *cache key*\. The cache key determines whether a viewer’s HTTP request results in a *cache hit* \(the object is served to the viewer from the CloudFront cache\)\. Including fewer values in the cache key increases the likelihood of a cache hit\.  
+You can also use the cache policy to specify time to live \(TTL\) settings for objects in the CloudFront cache, and enable CloudFront to request and cache compressed objects\.
 
-You control the cache key with a *cache policy* and the origin request with an *origin request policy*\. By controlling the cache key and the origin request separately, you can forward request values to your origin without duplicating cached content when the content doesn’t differ based on those values\.
+**Specify the values to include in origin requests \(but not in the cache key\)**  
+With a CloudFront *origin request policy*, you can specify the HTTP headers, cookies, and query strings that CloudFront includes in *origin requests*\. These are the requests that CloudFront sends to the origin when there’s a cache miss\.  
+All of the values in the cache policy are automatically included in origin requests, but with an origin request policy you can include additional values in origin requests without including them in the cache key\.
 
-For more information, see the following\.
+**Specify the HTTP headers to add to viewer responses**  
+With a CloudFront *response headers policy*, you can specify the HTTP headers \(and their values\) that CloudFront adds to HTTP responses that it sends to viewers \(web browsers or other clients\)\. You can specify that responses from CloudFront include the desired headers without making any changes to your origin or writing any code\.
 
-**Contents**
+For more information, see the following topics\.
+
+**Topics**
 + [Controlling the cache key](controlling-the-cache-key.md)
-  + [Creating cache policies](controlling-the-cache-key.md#cache-key-create-cache-policy)
-  + [Understanding cache policies](controlling-the-cache-key.md#cache-key-understand-cache-policy)
-    + [Policy information](controlling-the-cache-key.md#cache-key-understand-cache-policy-info)
-    + [Time to live \(TTL\) settings](controlling-the-cache-key.md#cache-key-understand-cache-policy-ttl)
-    + [Cache key settings](controlling-the-cache-key.md#cache-key-understand-cache-policy-settings)
-  + [Using the managed cache policies](using-managed-cache-policies.md)
-    + [Attaching a managed cache policy](using-managed-cache-policies.md#attaching-managed-cache-policies)
-    + [Understanding the managed cache policies](using-managed-cache-policies.md#managed-cache-policies-list)
-  + [Understanding the cache key](understanding-the-cache-key.md)
-    + [The default cache key](understanding-the-cache-key.md#cache-key-default)
-    + [Customizing the cache key](understanding-the-cache-key.md#cache-key-custom)
 + [Controlling origin requests](controlling-origin-requests.md)
-  + [Creating origin request policies](controlling-origin-requests.md#origin-request-create-origin-request-policy)
-  + [Understanding origin request policies](controlling-origin-requests.md#origin-request-understand-origin-request-policy)
-    + [Policy information](controlling-origin-requests.md#origin-request-understand-origin-request-policy-info)
-    + [Origin request settings](controlling-origin-requests.md#origin-request-understand-origin-request-policy-settings)
-  + [Using the managed origin request policies](using-managed-origin-request-policies.md)
-    + [Attaching a managed origin request policy](using-managed-origin-request-policies.md#attaching-managed-origin-request-policies)
-    + [Understanding the managed origin request policies](using-managed-origin-request-policies.md#managed-origin-request-policies-list)
-+ [Adding the CloudFront HTTP headers](using-cloudfront-headers.md)
-  + [Headers for determining the viewer’s device type](using-cloudfront-headers.md#cloudfront-headers-device-type)
-  + [Headers for determining the viewer’s location](using-cloudfront-headers.md#cloudfront-headers-viewer-location)
-  + [Other CloudFront headers](using-cloudfront-headers.md#cloudfront-headers-other)
++ [Adding response headers](adding-response-headers.md)

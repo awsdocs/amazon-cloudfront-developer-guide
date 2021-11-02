@@ -5,6 +5,7 @@ The following entries describe important changes made to the CloudFront document
 
 | Change | Description | Date changed | 
 | --- | --- | --- | 
+|  New feature  |  CloudFront adds support for *response headers policies*, which allow you to specify the HTTP headers that CloudFront adds to HTTP responses that it sends to viewers \(web browsers or other clients\)\. You can specify the desired headers \(and their values\) without making any changes to the origin or writing any code\. For more information, see [Adding HTTP headers to CloudFront responses](adding-response-headers.md)\.  |  November 2, 2021  | 
 |  New `CloudFront-Viewer-Address` request header  |  CloudFront adds support for a new header, `CloudFront-Viewer-Address`, that contains the IP address of the viewer that sent the HTTP request to CloudFront\. For more information, see [Adding the CloudFront HTTP headers](using-cloudfront-headers.md)\.  |  October 25, 2021  | 
 |  Lambda@Edge supports new runtime version  |  Lambda@Edge now supports Lambda functions with the Python 3\.9 runtime\. For more information, see [Lambda features and supported runtimes](edge-functions-restrictions.md#lambda-at-edge-runtime-restrictions)\.  |  September 22, 2021  | 
 |  [AWS managed policy update](security-iam-awsmanpol.md#security-iam-awsmanpol-updates)  |  CloudFront updated the **CloudFrontReadOnlyAccess** policy\. For more information, see [CloudFront updates to AWS managed policies](security-iam-awsmanpol.md#security-iam-awsmanpol-updates)\.  |  September 8, 2021  | 
