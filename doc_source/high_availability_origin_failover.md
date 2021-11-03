@@ -7,9 +7,9 @@ To set up origin failover, you must have a distribution with at least two origin
 To see the steps for setting up origin groups and configuring specific origin failover options, see [Creating an origin group](#concept_origin_groups.creating)\.
 
 After you configure origin failover for a cache behavior, CloudFront does the following for viewer requests:
-+ When there’s a cache hit, CloudFront returns the requested file\.
++ When there’s a cache hit, CloudFront returns the requested object\.
 + When there’s a cache miss, CloudFront routes the request to the primary origin in the origin group\.
-+ When the primary origin returns a status code that is not configured for failover, such as an HTTP 2xx or 3xx status code, CloudFront serves the requested content to the viewer\.
++ When the primary origin returns a status code that is not configured for failover, such as an HTTP 2xx or 3xx status code, CloudFront serves the requested object to the viewer\.
 + When any of the following occur:
   + The primary origin returns an HTTP status code that you’ve configured for failover
   + CloudFront fails to connect to the primary origin
@@ -45,17 +45,21 @@ For more information, see the following:
 
 1. Choose the distribution that you want to create the origin group for\.
 
-1. Choose the **Origins and Origin Groups** tab\.
+1. Choose the **Origins** tab\.
 
-1. On the **Origin and Origin Groups** tab, choose **Create Origin Group**\.
+1. Make sure the distribution has more than one origin\. If it doesn’t, add a second origin\.
+
+1. On the **Origins** tab, in the **Origin groups** pane, choose **Create origin group**\.
 
 1. Choose the origins for the origin group\. After you add origins, use the arrows to set the priority—that is, which origin is primary and which is secondary\.
 
-1. Choose the HTTP status codes to use as failover criteria\. You can choose any combination of the following status codes: 500, 502, 503, 504, 404, or 403\. When CloudFront receives a response with one of the status codes that you specify, it fails over to the secondary origin\.
+1. Enter a name for the origin group\.
+
+1. Choose the HTTP status codes to use as failover criteria\. You can choose any combination of the following status codes: 403, 404, 500, 502, 503, or 504\. When CloudFront receives a response with one of the status codes that you specify, it fails over to the secondary origin\.
 **Note**  
 CloudFront fails over to the secondary origin only when the HTTP method of the viewer request is `GET`, `HEAD`, or `OPTIONS`\. CloudFront does not fail over when the viewer sends a different HTTP method \(for example `POST`, `PUT`, and so on\)\.
 
-1. Enter a unique identifier for the origin group\. You can’t use an identifier that’s already in use for a different origin or origin group in your AWS account\.
+1. Choose **Create origin group**\.
 
 For information about specifying an origin group for a distribution, see [Origin ID](distribution-web-values-specify.md#DownloadDistValuesId)\.
 

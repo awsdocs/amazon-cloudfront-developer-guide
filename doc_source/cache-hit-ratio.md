@@ -10,7 +10,7 @@ The following sections explain how to improve your cache hit ratio\.
 + [Caching based on query string parameters](#cache-hit-ratio-query-string-parameters)
 + [Caching based on cookie values](#cache-hit-ratio-cookies)
 + [Caching based on request headers](#cache-hit-ratio-request-headers)
-+ [Remove Accept\-Encoding header when compression is not needed](#cache-hit-ratio-remove-accept-encoding)
++ [Remove `Accept-Encoding` header when compression is not needed](#cache-hit-ratio-remove-accept-encoding)
 + [Serving media content by using HTTP](#cache-hit-ratio-http-streaming)
 
 ## Specifying how long CloudFront caches your objects<a name="cache-hit-ratio-duration"></a>
@@ -63,7 +63,7 @@ How CloudFront Processes and Forwards Requests to Your Custom Origin Server > [H
 
 For more information, see [Caching content based on request headers](header-caching.md)\.
 
-## Remove Accept\-Encoding header when compression is not needed<a name="cache-hit-ratio-remove-accept-encoding"></a>
+## Remove `Accept-Encoding` header when compression is not needed<a name="cache-hit-ratio-remove-accept-encoding"></a>
 
 If compression is not enabled—because the origin doesn’t support it, CloudFront doesn’t support it, or the content is not compressible—you can increase the cache hit ratio by associating a cache behavior in your distribution to an origin that sets the Custom Origin Header as follows:
 + **Header name**: `Accept-Encoding`

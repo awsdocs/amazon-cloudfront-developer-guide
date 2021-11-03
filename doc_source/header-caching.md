@@ -27,21 +27,21 @@ You can configure each cache behavior in a distribution to do one of the followi
 + Forward all headers to your origin
 **Important**  
 If you configure CloudFront to forward all headers to your origin, CloudFront doesn't cache the objects associated with this cache behavior\. Instead, it sends every request to the origin\.
-+ Forward a whitelist of headers that you specify\. CloudFront caches your objects based on the values in all of the specified headers\. CloudFront also forwards the headers that it forwards by default, but it caches your objects based only on the headers that you specify\. 
++ Forward a list of headers that you specify\. CloudFront caches your objects based on the values in all of the specified headers\. CloudFront also forwards the headers that it forwards by default, but it caches your objects based only on the headers that you specify\. 
 + Forward only the default headers\. In this configuration, CloudFront doesn't cache your objects based on the values in the request headers\.
 
-For the current quota on the number of headers that you can whitelist for each cache behavior or to request a higher quota, see [Quotas on headers](cloudfront-limits.md#limits-custom-headers)\.
+For the current quota on the number of headers that you can forward for each cache behavior or to request a higher quota, see [Quotas on headers](cloudfront-limits.md#limits-custom-headers)\.
 
 For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing distribution, see [Update Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 ## Selecting the headers to base caching on<a name="header-caching-web-selecting"></a>
 
 The headers that you can forward to the origin and that CloudFront bases caching on depend on whether your origin is an Amazon S3 bucket or a custom origin\.
-+ **Amazon S3 – **You can configure CloudFront to forward and to cache your objects based on a number of specific headers \(see the following list of exceptions\)\. However, we recommend that you avoid whitelisting headers with an Amazon S3 origin unless you need to implement cross\-origin resource sharing \(CORS\) or you want to personalize content by using Lambda@Edge in origin\-facing events\.
++ **Amazon S3 – **You can configure CloudFront to forward and to cache your objects based on a number of specific headers \(see the following list of exceptions\)\. However, we recommend that you avoid forwarding headers with an Amazon S3 origin unless you need to implement cross\-origin resource sharing \(CORS\) or you want to personalize content by using Lambda@Edge in origin\-facing events\.
   + To configure CORS, you must forward headers that allow CloudFront to distribute content for websites that are enabled for cross\-origin resource sharing \(CORS\)\. For more information, see [Configuring CloudFront to respect CORS settings](#header-caching-web-cors)\. 
   + To personalize content by using headers that you forward to your Amazon S3 origin, you write and add Lambda@Edge functions and associate them with your CloudFront distribution to be triggered by an origin\-facing event\. For more information about working with headers to personalize content, see [Personalize content by country or device type headers \- examples](lambda-examples.md#lambda-examples-redirecting-examples)\.
 
-    We recommend that you avoid whitelisting headers that you aren’t using to personalize content because forwarding extra headers can reduce your cache hit ratio\. That is, CloudFront can’t serve as many requests from edge caches, as a proportion of all requests\.
+    We recommend that you avoid forwarding headers that you aren’t using to personalize content because forwarding extra headers can reduce your cache hit ratio\. That is, CloudFront can’t serve as many requests from edge caches, as a proportion of all requests\.
 + **Custom origin ** – You can configure CloudFront to cache based on the value of any request header except the following:
   + `Connection`
   + `Cookie` – If you want to forward and cache based on cookies, you use a separate setting in your distribution\. For more information, see [Caching content based on cookies](Cookies.md)\.
@@ -66,9 +66,9 @@ If you have enabled cross\-origin resource sharing \(CORS\) on an Amazon S3 buck
 
 **Custom origins** – Forward the `Origin` header along with any other headers required by your origin\.
 
-You configure CloudFront to forward headers by whitelisting the headers in a cache behavior for your CloudFront distribution\. For more information about working with header forwarding, see [Headers and distributions – overview](#header-caching-web)\.
+You configure CloudFront to forward headers by using a cache policy or an origin request policy\. For more information, see [Working with policies](working-with-policies.md)\.
 
-For more information about CORS and Amazon S3, see [Enabling Cross\-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) in the *Amazon Simple Storage Service User Guide*\.
+For more information about CORS and Amazon S3, see [Using cross\-origin resource sharing \(CORS\)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html) in the *Amazon Simple Storage Service User Guide*\.
 
 ## Configuring caching based on the device type<a name="header-caching-web-device"></a>
 
@@ -86,7 +86,7 @@ If you want CloudFront to cache different versions of your objects based on the 
 
 ## Configuring caching based on the location of the viewer<a name="header-caching-web-location"></a>
 
-If you want CloudFront to cache different versions of your objects based on the country that the request came from, configure CloudFront to forward the `CloudFront-Viewer-Country` header to your origin\. CloudFront automatically converts the IP address that the request came from into a two\-letter country code\. For an easy\-to\-use list of country codes, sortable by code and by country name, see the Wikipedia entry [ISO 3166\-1 alpha\-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)\.
+If you want CloudFront to cache different versions of your objects based on the country that the request came from, configure CloudFront to forward the `CloudFront-Viewer-Country` header to your origin\. CloudFront automatically converts the IP address that the request came from into a two\-letter country code\. For an easy\-to\-use list of country codes, sortable by code and by country name, see the Wikipedia entry [ISO 3166\-1 alpha\-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)\.
 
 ## Configuring caching based on the protocol of the request<a name="header-caching-web-protocol"></a>
 
@@ -94,7 +94,7 @@ If you want CloudFront to cache different versions of your objects based on the 
 
 ## Configuring caching for compressed files<a name="header-caching-web-compressed"></a>
 
-If your origin supports brotli compression, you can whitelist the `Accept-Encoding` header and cache based on the header\. Configure caching based on `Accept-Encoding` only if your origin serves different content based on the header\.
+If your origin supports Brotli compression, you can cache based on the `Accept-Encoding` header\. Configure caching based on `Accept-Encoding` only if your origin serves different content based on the header\.
 
 ## How caching based on headers affects performance<a name="header-caching-web-performance"></a>
 

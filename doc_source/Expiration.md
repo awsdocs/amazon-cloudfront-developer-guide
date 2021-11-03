@@ -33,7 +33,7 @@ You can use the `Cache-Control` and `Expires` headers to control how long object
   `Cache-Control: max-age=3600`
 
   If you want objects to stay in CloudFront edge caches for a different duration than they stay in browser caches, you can use the `Cache-Control max-age` and `Cache-Control s-maxage` directives together\. For more information, see [Specifying the amount of time that CloudFront caches objects](#ExpirationDownloadDist)\.
-+ The `Expires` header field lets you specify an expiration date and time using the format specified in [RFC 2616, Hypertext Transfer Protocol \-\- HTTP/1\.1 Section 3\.3\.1, Full Date](http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1), for example:
++ The `Expires` header field lets you specify an expiration date and time using the format specified in [RFC 2616, Hypertext Transfer Protocol \-\- HTTP/1\.1 Section 3\.3\.1, Full Date](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1), for example:
 
   `Sat, 27 Jun 2015 23:59:59 GMT`
 
@@ -44,10 +44,8 @@ For more information, see [Specifying the amount of time that CloudFront caches 
 You cannot use the HTTP `Cache-Control` or `Pragma` header fields in a `GET` request from a viewer to force CloudFront to go back to the origin server for the object\. CloudFront ignores those header fields in viewer requests\.
 
 For more information about the `Cache-Control` and `Expires` header fields, see the following sections in *RFC 2616, Hypertext Transfer Protocol \-\- HTTP/1\.1*: 
-+ [Section 14\.9 Cache Control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-+ [Section 14\.21 Expires](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21)
-
-For an example of how to add `Cache-Control` and `Expires` header fields using the AWS SDK for PHP, see [Upload an Object Using the AWS SDK for PHP](https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpPHP.html) in the *Amazon Simple Storage Service User Guide*\. Some third\-party tools are also able to add these fields\.
++ [Section 14\.9 Cache Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
++ [Section 14\.21 Expires](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21)
 
 ## Specifying the amount of time that CloudFront caches objects<a name="ExpirationDownloadDist"></a>
 
@@ -66,7 +64,7 @@ The following table explains how the `Cache-Control` and `Expires` headers sent 
 |  **The origin does not add a `Cache-Control: max-age` directive to the object**  |  **CloudFront caching** CloudFront caches the object for the value of the CloudFront default TTL\. **Browser caching** Depends on the browser\.  |  **CloudFront caching** CloudFront caches the object for the greater of the value of the CloudFront minimum TTL or default TTL\. **Browser caching** Depends on the browser\.  | 
 |  **The origin adds `Cache-Control: max-age` and `Cache-Control: s-maxage` directives to the object**  |  **CloudFront caching** CloudFront caches the object for the lesser of the value of the `Cache-Control: s-maxage` directive or the value of the CloudFront maximum TTL\. **Browser caching** Browsers cache the object for the value of the `Cache-Control max-age` directive\.  |  **CloudFront caching** CloudFront caching depends on the values of the CloudFront minimum TTL and maximum TTL and the `Cache-Control: s-maxage` directive: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html) **Browser caching** Browsers cache the object for the value of the `Cache-Control: max-age` directive\.  | 
 |  **The origin adds an `Expires` header to the object**  |  **CloudFront caching** CloudFront caches the object until the date in the `Expires` header or for the value of the CloudFront maximum TTL, whichever is sooner\. **Browser caching** Browsers cache the object until the date in the `Expires` header\.  |  **CloudFront caching** CloudFront caching depends on the values of the CloudFront minimum TTL and maximum TTL and the `Expires` header: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html) **Browser caching** Browsers cache the object until the date and time in the `Expires` header\.  | 
-|  **Origin adds `Cache-Control: no-cache`, `no-store`, and/or `private` directives to the object**  |  CloudFront and browsers respect the headers\. For an exception to how CloudFront handles the `Cache-Control: no-cache` header, see [Simultaneous requests for the same object \(traffic spikes\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-traffic-spikes)\.  |  **CloudFront caching** CloudFront caches the object for the value of the CloudFront minimum TTL\. [See the warning below this table\.](#stale-if-error) **Browser caching** Browsers respect the headers\.  | 
+|  **Origin adds `Cache-Control: no-cache`, `no-store`, and/or `private` directives to the object**  |  CloudFront and browsers respect the headers\. For an exception to how CloudFront handles the `Cache-Control: no-cache` header, see [Simultaneous requests for the same object \(traffic spikes\)](RequestAndResponseBehaviorCustomOrigin.md#request-custom-traffic-spikes)\.  |  **CloudFront caching** CloudFront caches the object for the value of the CloudFront minimum TTL\. [See the warning below this table](#stale-if-error)\. **Browser caching** Browsers respect the headers\.  | 
 
 **Warning**  
 If CloudFront gets an object from the origin that includes the `Cache-Control: no-cache`, `no-store`, and/or `private` directives, and then later CloudFront gets another viewer request for the same object, CloudFront tries to contact the origin to fulfill the viewer request\.  
