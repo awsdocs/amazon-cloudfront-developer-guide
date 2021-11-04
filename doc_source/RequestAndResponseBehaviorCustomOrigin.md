@@ -352,7 +352,11 @@ CloudFront removes or updates the following header fields before forwarding the 
 
 ### Maximum file size<a name="ResponseCustomMaxFileSize"></a>
 
-The maximum size of a response body that CloudFront will return to the viewer is 30 GB\. This includes chunked transfer responses that don't specify the `Content-Length` header value\.
+The maximum size of a response body that CloudFront saves in its cache is 30 GB\. This includes chunked transfer responses that don’t specify the `Content-Length` header value\.
+
+When caching is disabled, CloudFront can retrieve an object that is larger than 30 GB from the origin and pass it along to the viewer\. However, CloudFront doesn’t cache the object\.
+
+You can use CloudFront to cache an object that is larger than 30 GB by using range requests to request the objects in parts that are each 30 GB or smaller\. CloudFront caches these parts because each of them is 30 GB or smaller\. After the viewer retrieves all the parts of the object, it can reconstruct the original, larger object\. For more information, see [Use range requests to cache large objects](RangeGETs.md#cache-large-objects-with-range-requests)\.
 
 ### Origin unavailable<a name="ResponseCustomOriginUnavailable"></a>
 
