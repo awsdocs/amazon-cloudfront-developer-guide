@@ -77,21 +77,17 @@ Properties:
       AccessControlAllowHeaders: 
         Items: 
           - '*'
-        Quantity: 1
       AccessControlAllowMethods: 
         Items: 
           - GET
           - OPTIONS
-        Quantity: 2
       AccessControlAllowOrigins: 
         Items: 
           - https://example.com
           - https://docs.example.com
-        Quantity: 2
       AccessControlExposeHeaders: 
         Items: 
           - '*'
-        Quantity: 1
       AccessControlMaxAgeSec: 600
       OriginOverride: false
     CustomHeadersConfig: 
@@ -102,7 +98,6 @@ Properties:
         - Header: Example-Custom-Header-2
           Value: value-2
           Override: true
-      Quantity: 2
     SecurityHeadersConfig: 
       ContentSecurityPolicy: 
         ContentSecurityPolicy: default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; frame-ancestors 'none'
