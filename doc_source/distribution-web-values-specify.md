@@ -394,7 +394,7 @@ Specify the HTTP methods that you want CloudFront to process and forward to your
 + **GET, HEAD, OPTIONS:** You can use CloudFront only to get objects from your origin, get object headers, or retrieve a list of the options that your origin server supports\.
 + **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE:** You can use CloudFront to get, add, update, and delete objects, and to get object headers\. In addition, you can perform other POST operations such as submitting data from a web form\. 
 **Note**  
-CloudFront caches responses to `GET` and `HEAD` requests and, optionally, `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
+CloudFront caches responses to `GET` and `HEAD` requests and, optionally, `OPTIONS` requests\. Responses to `OPTIONS` requests are cached separately from responses to `GET` and `HEAD` requests \(the `OPTIONS` method is included in the [cache key](understanding-the-cache-key.md) for `OPTIONS` requests\)\. CloudFront does not cache responses to requests that use other methods\.
 
 If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 Regions and `PUT` requests in those Regions require an additional header\. For more information, see [Using an OAI in Amazon S3 regions that support only signature version 4 authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
 

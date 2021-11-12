@@ -16,6 +16,9 @@ By default, the cache key for a CloudFront distribution includes the following i
 + The domain name of the CloudFront distribution \(for example, d111111abcdef8\.cloudfront\.net\)
 + The URL path of the requested object \(for example, `/content/stories/example-story.html`\)
 
+**Note**  
+The `OPTIONS` method is included in the cache key for `OPTIONS` requests\. This means that responses to `OPTIONS` requests are cached separately from responses to `GET` and `HEAD` requests\.
+
 Other values from the viewer request are not included in the cache key, by default\. Consider the following HTTP request from a web browser\.
 
 ```
