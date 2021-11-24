@@ -43,6 +43,8 @@ This list focuses on how to specify setting and valid values in a response heade
 + `Content-Security-Policy` – Specifies the content security policy directives that CloudFront uses as values for the `Content-Security-Policy` response header\.
 
   For more information about this header and valid policy directives, see [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) in the MDN Web Docs\.
+**Note**  
+The `Content-Security-Policy` header value is limited to 1783 characters\.
 + `Referrer-Policy` – Specifies the referrer policy directive that CloudFront uses as the value for the `Referrer-Policy` response header\. Valid values for this setting are `no-referrer`, `no-referrer-when-downgrade`, `origin`, `origin-when-cross-origin`, `same-origin`, `strict-origin`, `strict-origin-when-cross-origin`, or `unsafe-url`\.
 
   For more information about this header and these directives, see [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) in the MDN Web Docs\.
