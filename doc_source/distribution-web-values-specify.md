@@ -702,7 +702,6 @@ Africa \(Cape Town\)  af\-south\-1
 Asia Pacific \(Hong Kong\)  ap\-east\-1
 Europe \(Milan\)  eu\-south\-1
 Middle East \(Bahrain\)  me\-south\-1
-The [Amazon S3 console](https://console.aws.amazon.com/s3/home) shows the bucket’s Region\.
 
 If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 

@@ -47,17 +47,20 @@ We recommend that you use the logs to understand the nature of the requests for 
 
 When you enable logging for a distribution, you specify the Amazon S3 bucket that you want CloudFront to store log files in\. If you’re using Amazon S3 as your origin, we recommend that you don’t use the same bucket for your log files; using a separate bucket simplifies maintenance\.
 
-**Note**  
+**Important**  
+Don’t choose an Amazon S3 bucket with [S3 Object Ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html) set to **bucket owner enforced**\. That setting disables ACLs for the bucket and the objects in it, which prevents CloudFront from delivering log files to the bucket\.  
 Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver access logs to buckets in these Regions:  
 Africa \(Cape Town\)  af\-south\-1
 Asia Pacific \(Hong Kong\)  ap\-east\-1
 Europe \(Milan\)  eu\-south\-1
 Middle East \(Bahrain\)  me\-south\-1
-The [Amazon S3 console](https://console.aws.amazon.com/s3/home) shows the bucket’s Region\.
 
 You can store the log files for multiple distributions in the same bucket\. When you enable logging, you can specify an optional prefix for the file names, so you can keep track of which log files are associated with which distributions\.
 
 ## Permissions required to configure standard logging and to access your log files<a name="AccessLogsBucketAndFileOwnership"></a>
+
+**Important**  
+Don’t choose an Amazon S3 bucket with [S3 Object Ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html) set to **bucket owner enforced**\. That setting disables ACLs for the bucket and the objects in it, which prevents CloudFront from delivering log files to the bucket\.
 
 Your AWS account must have the following permissions for the bucket that you specify for log files:
 + The S3 access control list \(ACL\) for the bucket must grant you `FULL_CONTROL`\. If you're the bucket owner, your account has this permission by default\. If you're not, the bucket owner must update the ACL for the bucket\.
