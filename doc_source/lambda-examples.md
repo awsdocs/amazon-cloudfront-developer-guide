@@ -1196,7 +1196,7 @@ def getRandomInt(min, max):
     # Random number is inclusive of min and max
     return math.floor(random.random() * (max - min + 1)) + min
 
-def lambda_handler(min, max):
+def lambda_handler(event, context):
     request = event['Records'][0]['cf']['request']
     BLUE_TRAFFIC_PERCENTAGE = 80
 
