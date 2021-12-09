@@ -41,6 +41,6 @@ Using Lambda@Edge with CloudFront enables a variety of ways to customize the con
 
 Using Lambda@Edge can help you configure your CloudFront distribution to serve private content from your own custom origin, as an option to using signed URLs or signed cookies\.
 
-You can use several techniques to restrict access to your origin exclusively to CloudFront, including using whitelisting CloudFront IPs in your firewall and using a custom header to carry a shared secret\.
+You can use several techniques to restrict access to your origin exclusively to CloudFront, including using allowlisting CloudFront IPs in your firewall and using a custom header to carry a shared secret\.
 
 For more information and step\-by\-step instructions, including sample code, see [ Serving Private Content Using Amazon CloudFront & AWS Lambda@Edge](https://aws.amazon.com/blogs/networking-and-content-delivery/serving-private-content-using-amazon-cloudfront-aws-lambdaedge/)\.
