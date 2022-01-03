@@ -16,4 +16,4 @@ You can use distributions to serve the following content over HTTP or HTTPS:
 + Video on demand in different formats, such as Apple HTTP Live Streaming \(HLS\) and Microsoft Smooth Streaming\. For more information, see the [Delivering Video on Demand \(VOD\) with CloudFront](on-demand-video.md)\.
 + A live event, such as a meeting, conference, or concert, in real time\. For live streaming, you can create the distribution automatically by using an AWS CloudFormation stack\. For more information, see [Delivering Live Streaming Video with CloudFront and AWS Media Services](live-streaming.md)\.
 
-For information about creating a distribution, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.
+For information about creating a distribution, see [Steps for creating a distribution \(overview\)](distribution-web-creating.md)\.

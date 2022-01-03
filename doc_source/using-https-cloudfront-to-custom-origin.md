@@ -45,7 +45,7 @@ Choose the **Origin SSL Protocols** for the applicable origins in your distribut
 
 1. Confirm the following before you use the updated configuration in a production environment:
    + The path pattern in each cache behavior applies only to the requests that you want viewers to use HTTPS for\.
-   + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path Pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
+   + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
    + The cache behaviors are routing requests to the origins that you changed the **Origin Protocol Policy** for\. 
 
 ## Installing an SSL/TLS certificate on your custom origin<a name="using-https-cloudfront-to-origin-certificate"></a>

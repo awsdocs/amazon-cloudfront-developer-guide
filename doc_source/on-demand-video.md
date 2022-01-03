@@ -28,7 +28,7 @@ If you specify a web server running Microsoft IIS as your origin, do *not* enabl
 If you enable Smooth Streaming in a cache behavior \(that is, you do not have a server that is running Microsoft IIS\), note the following:
 + You can still distribute other content using the same cache behavior if the content matches the value of **Path Pattern** for that cache behavior\.
 + CloudFront can use either an Amazon S3 bucket or a custom origin for Smooth Streaming media files\. CloudFront cannot use a Microsoft IIS Server as an origin if you enable Smooth Streaming for the cache behavior\. 
-+ You cannot invalidate media files in the Smooth Streaming format\. If you want to update files before they expire, you must rename them\. For more information, see [Adding, Removing, or Replacing Content That CloudFront Distributes](AddRemoveReplaceObjects.md)\.
++ You cannot invalidate media files in the Smooth Streaming format\. If you want to update files before they expire, you must rename them\. For more information, see [Adding, removing, or replacing content that CloudFront distributes](AddRemoveReplaceObjects.md)\.
 
 For information about Smooth Streaming clients, see [Smooth Streaming Primer](https://docs.microsoft.com/en-us/iis/media/smooth-streaming/smooth-streaming-primer) on the Microsoft documentation website\.
 

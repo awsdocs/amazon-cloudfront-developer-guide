@@ -24,7 +24,7 @@ The function doesn’t execute in the following cases:
 + When the origin returns an HTTP status code of 400 or higher\.
 + When a custom error page is returned\.
 + When the response is generated from a function that was triggered by a viewer request event\.
-+ When CloudFront automatically redirects an HTTP request to HTTPS \(when the value of [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy) is **Redirect HTTP to HTTPS**\)\.
++ When CloudFront automatically redirects an HTTP request to HTTPS \(when the value of [Viewer protocol policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy) is **Redirect HTTP to HTTPS**\)\.
 
 When you add multiple triggers to the same cache behavior, you can use them to run the same function or run different functions for each trigger\. You can also associate the same function with more than one distribution\.
 

@@ -1,8 +1,8 @@
-# Invalidating Files<a name="Invalidation"></a>
+# Invalidating files<a name="Invalidation"></a>
 
 If you need to remove a file from CloudFront edge caches before it expires, you can do one of the following:
 + Invalidate the file from edge caches\. The next time a viewer requests the file, CloudFront returns to the origin to fetch the latest version of the file\.
-+ Use file versioning to serve a different version of the file that has a different name\. For more information, see [Updating Existing Files Using Versioned File Names](UpdatingExistingObjects.md#ReplacingObjects)\.
++ Use file versioning to serve a different version of the file that has a different name\. For more information, see [Updating existing files using versioned file names](UpdatingExistingObjects.md#ReplacingObjects)\.
 
 To invalidate files, you can specify either the path for individual files or a path that ends with the `*` wildcard, which might apply to one file or to many, as shown in the following examples:
 + `/images/image1.jpg`
@@ -13,18 +13,18 @@ To invalidate files, you can specify either the path for individual files or a p
 If you use the AWS Command Line Interface \(AWS CLI\) for invalidating files and you specify a path that includes the `*` wildcard, you must use quotes \(`"`\) around the path\.   
 For example: `aws cloudfront create-invalidation --distribution-id distribution_ID --paths "/*"`
 
-You can submit a certain number of invalidation paths each month for free\. If you submit more than the allotted number of invalidation paths in a month, you pay a fee for each invalidation path that you submit\. For more information about the charges for invalidation, see [Paying for File Invalidation](#PayingForInvalidation)\. 
+You can submit a certain number of invalidation paths each month for free\. If you submit more than the allotted number of invalidation paths in a month, you pay a fee for each invalidation path that you submit\. For more information about the charges for invalidation, see [Paying for file invalidation](#PayingForInvalidation)\. 
 
 **Topics**
-+ [Choosing Between Invalidating Files and Using Versioned File Names](#Invalidation_Expiration)
-+ [Determining Which Files to Invalidate](#invalidation-access-logs)
-+ [Specifying the Files to Invalidate](#invalidation-specifying-objects)
-+ [Invalidating Files Using the Console](#Invalidation_Requests)
-+ [Invalidating Files Using the CloudFront API](#invalidating-objects-api)
-+ [Concurrent Invalidation Request Maximum](#InvalidationLimits)
-+ [Paying for File Invalidation](#PayingForInvalidation)
++ [Choosing between invalidating files and using versioned file names](#Invalidation_Expiration)
++ [Determining which files to invalidate](#invalidation-access-logs)
++ [Specifying the files to invalidate](#invalidation-specifying-objects)
++ [Invalidating files using the console](#Invalidation_Requests)
++ [Invalidating files using the CloudFront API](#invalidating-objects-api)
++ [Concurrent invalidation request maximum](#InvalidationLimits)
++ [Paying for file invalidation](#PayingForInvalidation)
 
-## Choosing Between Invalidating Files and Using Versioned File Names<a name="Invalidation_Expiration"></a>
+## Choosing between invalidating files and using versioned file names<a name="Invalidation_Expiration"></a>
 
 To control the versions of files that are served from your distribution, you can either invalidate files or give them versioned file names\. If you want to update your files frequently, we recommend that you primarily use file versioning for the following reasons:
 + Versioning enables you to control which file a request returns even when the user has a version cached either locally or behind a corporate caching proxy\. If you invalidate the file, the user might continue to see the old version until it expires from those caches\.
@@ -33,22 +33,22 @@ To control the versions of files that are served from your distribution, you can
 + Versioning simplifies rolling forward and back between file revisions\.
 + Versioning is less expensive\. You still have to pay for CloudFront to transfer new versions of your files to edge locations, but you don't have to pay for invalidating files\. 
 
-For more information about file versioning, see [Updating Existing Files Using Versioned File Names](UpdatingExistingObjects.md#ReplacingObjects)\.
+For more information about file versioning, see [Updating existing files using versioned file names](UpdatingExistingObjects.md#ReplacingObjects)\.
 
-## Determining Which Files to Invalidate<a name="invalidation-access-logs"></a>
+## Determining which files to invalidate<a name="invalidation-access-logs"></a>
 
 If you want to invalidate multiple files such as all of the files in a directory or all files that begin with the same characters, you can include the `*` wildcard at the end of the invalidation path\. For more information about using the `*` wildcard, see [Invalidation paths](#invalidation-specifying-objects-paths)\.
 
 If you want to invalidate selected files but your users don’t necessarily access every file on your origin, you can determine which files viewers have requested from CloudFront and invalidate only those files\. To determine which files viewers have requested, enable CloudFront access logging\. For more information about access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
-## Specifying the Files to Invalidate<a name="invalidation-specifying-objects"></a>
+## Specifying the files to invalidate<a name="invalidation-specifying-objects"></a>
 
 Note the following about specifying the files that you want to invalidate\.
 
 **Case sensitivity**  
 Invalidation paths are case sensitive, so `/images/image.jpg` and `/images/Image.jpg` specify two different files\.
 
- **Changing the URI Using a Lambda Function**  
+**Changing the URI using a Lambda function**  
 If your CloudFront distribution triggers a Lambda function on viewer request events, and if the function changes the URI of the requested file, we recommend that you invalidate both URIs to remove the file from CloudFront edge caches:  
 + The URI in the viewer request
 + The URI after the function changed it
@@ -78,8 +78,8 @@ If client requests include five different query strings for the same file, you c
 `/images/image.jpg*`  
 For more information about using wildcards in the invalidation path, see [Invalidation paths](#invalidation-specifying-objects-paths)\. For more information about query strings, see [Caching content based on query string parameters](QueryStringParameters.md)\. To determine which query strings are in use, you can enable CloudFront logging\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
-**Maximum Allowed**  
-For information about the maximum number of invalidations allowed, see [Concurrent Invalidation Request Maximum](#InvalidationLimits)\.
+**Maximum allowed**  
+For information about the maximum number of invalidations allowed, see [Concurrent invalidation request maximum](#InvalidationLimits)\.
 
  **Microsoft Smooth Streaming files**  
 You cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior\. 
@@ -119,16 +119,16 @@ If the invalidation path is a directory and if you have not standardized on a me
 **Signed URLs**  
 If you are using signed URLs, invalidate a file by including only the portion of the URL before the question mark \(?\)\. 
 
-## Invalidating Files Using the Console<a name="Invalidation_Requests"></a>
+## Invalidating files using the console<a name="Invalidation_Requests"></a>
 
 You can use the CloudFront console to create and run an invalidation, display a list of the invalidations that you submitted previously, and display detailed information about an individual invalidation\. You can also copy an existing invalidation, edit the list of file paths, and run the edited invalidation\. You can't remove invalidations from the list\.
-+ [Invalidating Files](#invalidating-objects-console)
-+ [Copying, Editing, and Rerunning an Existing Invalidation](#invalidating-objects-copy-console)
-+ [Canceling Invalidations](#canceling-invalidations)
-+ [Listing Invalidations](#listing-invalidations-console)
-+ [Displaying Information about an Invalidation](#invalidation-details-console)
++ [Invalidating files](#invalidating-objects-console)
++ [Copying, editing, and rerunning an existing invalidation](#invalidating-objects-copy-console)
++ [Canceling invalidations](#canceling-invalidations)
++ [Listing invalidations](#listing-invalidations-console)
++ [Displaying information about an invalidation](#invalidation-details-console)
 
-### Invalidating Files<a name="invalidating-objects-console"></a>
+### Invalidating files<a name="invalidating-objects-console"></a>
 
 To invalidate files using the CloudFront console, do the following\.<a name="invalidating-objects-console-procedure"></a>
 
@@ -144,18 +144,18 @@ To invalidate files using the CloudFront console, do the following\.<a name="inv
 
 1. Choose **Create Invalidation**\.
 
-1. For the files that you want to invalidate, enter one invalidation path per line\. For information about specifying invalidation paths, see [Specifying the Files to Invalidate](#invalidation-specifying-objects)\. 
+1. For the files that you want to invalidate, enter one invalidation path per line\. For information about specifying invalidation paths, see [Specifying the files to invalidate](#invalidation-specifying-objects)\. 
 **Important**  
 Specify file paths carefully\. You can’t cancel an invalidation request after you start it\.
 
 1. Choose **Invalidate**\.
 
-### Copying, Editing, and Rerunning an Existing Invalidation<a name="invalidating-objects-copy-console"></a>
+### Copying, editing, and rerunning an existing invalidation<a name="invalidating-objects-copy-console"></a>
 
 You can copy an invalidation that you created previously, update the list of invalidation paths, and run the updated invalidation\. You cannot copy an existing invalidation, update the invalidation paths, and then save the updated invalidation without running it\.
 
 **Important**  
-If you copy an invalidation that is still in progress, update the list of invalidation paths, and then run the updated invalidation, CloudFront will not stop or delete the invalidation that you copied\. If any invalidation paths appear in the original and in the copy, CloudFront will try to invalidate the files twice, and both invalidations will count against your maximum number of free invalidations for the month\. If you’ve already reached the maximum number of free invalidations, you'll be charged for both invalidations of each file\. For more information, see [Concurrent Invalidation Request Maximum](#InvalidationLimits)\.<a name="invalidating-objects-copy-console-procedure"></a>
+If you copy an invalidation that is still in progress, update the list of invalidation paths, and then run the updated invalidation, CloudFront will not stop or delete the invalidation that you copied\. If any invalidation paths appear in the original and in the copy, CloudFront will try to invalidate the files twice, and both invalidations will count against your maximum number of free invalidations for the month\. If you’ve already reached the maximum number of free invalidations, you'll be charged for both invalidations of each file\. For more information, see [Concurrent invalidation request maximum](#InvalidationLimits)\.<a name="invalidating-objects-copy-console-procedure"></a>
 
 **To copy, edit, and rerun an existing invalidation**
 
@@ -177,11 +177,11 @@ If you copy an invalidation that is still in progress, update the list of invali
 
 1. Choose **Invalidate**\.
 
-### Canceling Invalidations<a name="canceling-invalidations"></a>
+### Canceling invalidations<a name="canceling-invalidations"></a>
 
 When you submit an invalidation request to CloudFront, CloudFront forwards the request to all edge locations within a few seconds, and each edge location starts processing the invalidation immediately\. As a result, you can’t cancel an invalidation after you submit it\.
 
-### Listing Invalidations<a name="listing-invalidations-console"></a>
+### Listing invalidations<a name="listing-invalidations-console"></a>
 
 You can display a list of the last 100 invalidations that you’ve created and run for a distribution by using the CloudFront console\. If you want to get a list of more than 100 invalidations, use the `ListInvalidations` API action\. For more information, see [ListInvalidations](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html) in the *Amazon CloudFront API Reference*\.<a name="listing-invalidations-console-procedure"></a>
 
@@ -198,7 +198,7 @@ You can display a list of the last 100 invalidations that you’ve created and r
 **Note**  
 You can’t remove invalidations from the list\.
 
-### Displaying Information about an Invalidation<a name="invalidation-details-console"></a>
+### Displaying information about an invalidation<a name="invalidation-details-console"></a>
 
 You can display detailed information about an invalidation, including distribution ID, invalidation ID, the status of the invalidation, the date and time that the invalidation was created, and a complete list of the invalidation paths\. <a name="invalidation-details-console-procedure"></a>
 
@@ -216,20 +216,20 @@ You can display detailed information about an invalidation, including distributi
 
 1. Choose **Details**\.
 
-## Invalidating Files Using the CloudFront API<a name="invalidating-objects-api"></a>
+## Invalidating files using the CloudFront API<a name="invalidating-objects-api"></a>
 
 For information about invalidating objects and about displaying information about invalidations using the CloudFront API, see the following topics in the *Amazon CloudFront API Reference*:
 + Invalidating files: [CreateInvalidation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html) 
 + Getting a list of your invalidations: [ListInvalidations](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListInvalidations.html)
 + Getting information about a specific invalidation: [GetInvalidation](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetInvalidation.html)
 
-## Concurrent Invalidation Request Maximum<a name="InvalidationLimits"></a>
+## Concurrent invalidation request maximum<a name="InvalidationLimits"></a>
 
 If you’re invalidating files individually, you can have invalidation requests for up to 3,000 files per distribution in progress at one time\. This can be one invalidation request for up to 3,000 files, up to 3,000 requests for one file each, or any other combination that doesn’t exceed 3,000 files\. For example, you can submit 30 invalidation requests that invalidate 100 files each\. As long as all 30 invalidation requests are still in progress, you can’t submit any more invalidation requests\. If you exceed the maximum, CloudFront returns an error message\.
 
 If you’re using the \* wildcard, you can have requests for up to 15 invalidation paths in progress at one time\. You can also have invalidation requests for up to 3,000 individual files per distribution in progress at the same time; the maximum on wildcard invalidation requests allowed is independent of the maximum on invalidating files individually\.
 
-## Paying for File Invalidation<a name="PayingForInvalidation"></a>
+## Paying for file invalidation<a name="PayingForInvalidation"></a>
 
 The first 1,000 invalidation paths that you submit per month are free; you pay for each invalidation path over 1,000 in a month\. An invalidation path can be for a single file \(such as `/images/logo.jpg`\) or for multiple files \(such as `/images/*`\)\. A path that includes the `*` wildcard counts as one path even if it causes CloudFront to invalidate thousands of files\.
 

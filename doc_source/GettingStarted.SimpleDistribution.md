@@ -6,7 +6,7 @@ The procedures in this section show you how to use CloudFront to set up a basic 
 + Uses the CloudFront domain name in URLs for your objects \(for example, `http://d111111abcdef8.cloudfront.net/index.html`\)
 + Keeps your objects in CloudFront edge locations for the default duration of 24 hours \(the minimum duration is 0 seconds\)
 
-Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can restrict who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.
+Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can restrict who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for creating a distribution \(overview\)](distribution-web-creating.md)\.
 
 You have to complete only a few basic steps to start delivering your content with CloudFront\. The first step is signing up\. After that, you create a CloudFront distribution, and then use the CloudFront domain name in URLs in your webpages or applications to reference the content\.
 
@@ -93,11 +93,11 @@ If you created the bucket in the US East \(N\. Virginia\) Region \(us\-east\-1\)
 
 1. For the settings under **Default Cache Behavior Settings**, accept the default values\.
 
-   For more information about cache behavior options, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.
+   For more information about cache behavior options, see [Cache behavior settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.
 
 1. For the settings under **Distribution Settings**, accept the default values\.
 
-   For more information about distribution options, see [Distribution Settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)\.
+   For more information about distribution options, see [Distribution settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)\.
 
 1. At the bottom of the page, choose **Create Distribution**\.
 

@@ -1,4 +1,4 @@
-# Updating Existing Content with a CloudFront Distribution<a name="UpdatingExistingObjects"></a>
+# Updating existing content with a CloudFront distribution<a name="UpdatingExistingObjects"></a>
 
 There are two ways to update existing content that CloudFront is set up to distribute for you: 
 + Update files by using the same name
@@ -6,7 +6,7 @@ There are two ways to update existing content that CloudFront is set up to distr
 
 We recommend that you use a version identifier in file names or in folder names, to help give you more control over managing the content that CloudFront serves\.
 
-## Updating Existing Files Using Versioned File Names<a name="ReplacingObjects"></a>
+## Updating existing files using versioned file names<a name="ReplacingObjects"></a>
 
 When you update existing files in a CloudFront distribution, we recommend that you include some sort of version identifier either in your file names or in your directory names to give yourself better control over your content\. This identifier might be a date\-time stamp, a sequential number, or some other method of distinguishing two versions of the same object\. 
 
@@ -17,7 +17,7 @@ Even if you version your files, we still recommend that you set an expiration da
 **Note**  
 Specifying versioned file names or directory names is not related to Amazon S3 object versioning\.
 
-## Updating Existing Content Using the Same File Names<a name="ReplacingObjectsSameName"></a>
+## Updating existing content using the same file names<a name="ReplacingObjectsSameName"></a>
 
 Although you can update existing files in a CloudFront distribution and use the same file names, we don't recommend it\. CloudFront distributes files to edge locations only when the files are requested, not when you put new or updated files in your origin\. If you update an existing file in your origin with a newer version that has the same name, an edge location won't get that new version from your origin until both of the following occur:
 + The old version of the file in the cache expires\. For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.

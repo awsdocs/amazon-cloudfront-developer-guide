@@ -116,7 +116,7 @@ Now that you have a Lambda function to update security headers, configure the Cl
 **Distribution**  
 The CloudFront distribution ID to associate with your function\. In the drop\-down list, choose the distribution ID\.  
 **Cache behavior**  
-The cache behavior to use with the trigger\. For this example, leave the value set to **\***, which means your distribution’s default cache behavior\. For more information, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.  
+The cache behavior to use with the trigger\. For this example, leave the value set to **\***, which means your distribution’s default cache behavior\. For more information, see [Cache behavior settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the [Values that you specify when you create or update a distribution](distribution-web-values-specify.md) topic\.  
 **CloudFront event**  
 The trigger that specifies when your function runs\. We want the security headers function to run whenever CloudFront returns a response from the origin\. So in the drop\-down list, choose **Origin response**\. For more information, see [Adding triggers for a Lambda@Edge function](lambda-edge-add-triggers.md)\.
 
@@ -136,7 +136,7 @@ Now that you've created your Lambda function and configured a trigger to run it 
 
 1. In a browser, enter the URL for a file in your S3 bucket\. For example, you might use a URL similar to `http://d111111abcdef8.cloudfront.net/image.jpg`\.
 
-   For more information about the CloudFront domain name to use in the file URL, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
+   For more information about the CloudFront domain name to use in the file URL, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.
 
 1. Open your browser’s Web Developer toolbar\. For example, in your browser window in Chrome, open the context \(right\-click\) menu, and then choose **Inspect**\.
 

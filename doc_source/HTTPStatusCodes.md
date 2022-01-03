@@ -19,8 +19,8 @@ If the origin doesn't respond, the CloudFront request to the origin times out wh
 If you have enabled logging, CloudFront writes the results to the logs regardless of the HTTP status code\.
 
 For more information about features and options that relate to the error message returned from CloudFront, see the following:
-+ For information about settings for custom error pages in the CloudFront console, see [Custom Error Pages and Error Caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages)\. 
-+ For information about the error caching minimum TTL in the CloudFront console, see [Error Caching Minimum TTL \(seconds\)](distribution-web-values-specify.md#DownloadDistValuesErrorCachingMinTTL)\.
++ For information about settings for custom error pages in the CloudFront console, see [Custom error pages and error caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages)\. 
++ For information about the error caching minimum TTL in the CloudFront console, see [Error caching minimum TTL \(seconds\)](distribution-web-values-specify.md#DownloadDistValuesErrorCachingMinTTL)\.
 + For a list of the HTTP status codes that CloudFront caches, see [HTTP 4xx and 5xx status codes that CloudFront caches](#HTTPStatusCodes-cached-errors)\.
 
 ## How CloudFront processes errors when you have configured custom error pages<a name="HTTPStatusCodes-custom-error-pages"></a>

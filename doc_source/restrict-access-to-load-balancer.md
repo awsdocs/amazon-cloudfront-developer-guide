@@ -31,7 +31,7 @@ In the CloudFront console, use the **Origin Custom Headers** setting in **Origin
 The header name and value in this example are just for demonstration\. In production, use randomly generated values\. Treat the header name and value as a secure credential, like a user name and password\.
 
 ![\[Origin Custom Headers fields in the CloudFront console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/origin-custom-header.png)
-You can edit the **Origin Custom Headers** setting when you create or edit an origin for an existing CloudFront distribution, and when you create a new distribution\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md) and [Creating a Distribution](distribution-web-creating-console.md)\.
+You can edit the **Origin Custom Headers** setting when you create or edit an origin for an existing CloudFront distribution, and when you create a new distribution\. For more information, see [Updating a distribution](HowToUpdateDistribution.md) and [Creating a distribution](distribution-web-creating-console.md)\.
 
 **To add a custom HTTP header \(AWS CloudFormation\)**  
 In an AWS CloudFormation template, use the `OriginCustomHeaders` property, as shown in the following example\.  
@@ -134,11 +134,11 @@ You can verify that the solution works by sending a request to your CloudFront d
 To improve the security of this solution, you can configure your CloudFront distribution to always use HTTPS when sending requests to your Application Load Balancer\. Remember, this solution only works if you keep the custom header name and value secret\. Using HTTPS can help prevent an eavesdropper from discovering the header name and value\. We also recommend rotating the header name and value periodically\.
 
 **Use HTTPS for origin requests**  
-To configure CloudFront to use HTTPS for origin requests, set the **Origin Protocol Policy** setting to **HTTPS Only**\. This setting is available in the CloudFront console, AWS CloudFormation, and the CloudFront API\. For more information, see [Origin Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)\.
+To configure CloudFront to use HTTPS for origin requests, set the **Origin Protocol Policy** setting to **HTTPS Only**\. This setting is available in the CloudFront console, AWS CloudFormation, and the CloudFront API\. For more information, see [Origin protocol policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)\.
 
 When you configure CloudFront to use HTTPS for origin requests, you need to make sure that your Application Load Balancer has an HTTPS listener \(as shown in [the preceding section](#restrict-alb-route-based-on-header)\)\. This requires that you have an SSL/TLS certificate that matches the domain name that is routed to your Application Load Balancer\. For more information, see [Create an HTTPS listener](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html) in the *User Guide for Application Load Balancers*\.
 
-If the end users \(also known as *viewers*, or *clients*\) of your web application can use HTTPS, you can also configure CloudFront to prefer \(or even require\) HTTPS connections from the end users\. To do this, use the **Viewer Protocol Policy** setting\. You can set it to redirect end users from HTTP to HTTPS, or to reject requests that use HTTP\. This setting is available in the CloudFront console, AWS CloudFormation, and the CloudFront API\. For more information, see [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.
+If the end users \(also known as *viewers*, or *clients*\) of your web application can use HTTPS, you can also configure CloudFront to prefer \(or even require\) HTTPS connections from the end users\. To do this, use the **Viewer Protocol Policy** setting\. You can set it to redirect end users from HTTP to HTTPS, or to reject requests that use HTTP\. This setting is available in the CloudFront console, AWS CloudFormation, and the CloudFront API\. For more information, see [Viewer protocol policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.
 
 **Rotate the header name and value**  
 In addition to using HTTPS, we also recommend rotating the header name and value periodically\. The high\-level steps for doing this are as follows:

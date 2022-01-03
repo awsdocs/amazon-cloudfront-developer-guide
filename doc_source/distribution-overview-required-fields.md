@@ -5,7 +5,7 @@ When you update a distribution by using the [UpdateDistribution](https://docs.aw
 **DistributionConfig**
 
 
-| Members | Required in Create API Call | Required in Update API Call | 
+| Members | Required in CreateDistribution API call | Required in UpdateDistribution API call | 
 | --- | --- | --- | 
 | CallerReference | Y | Y | 
 | Aliases | \- | Y | 
@@ -27,7 +27,7 @@ When you update a distribution by using the [UpdateDistribution](https://docs.aw
 **CacheBehavior**
 
 
-| Members | Required in Create API Call | Required in Update API Call | 
+| Members | Required in CreateDistribution API call | Required in UpdateDistribution API call | 
 | --- | --- | --- | 
 | PathPattern | Y | Y | 
 | TargetOriginId | Y | Y | 

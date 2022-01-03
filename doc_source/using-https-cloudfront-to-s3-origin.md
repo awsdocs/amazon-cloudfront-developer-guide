@@ -2,7 +2,7 @@
 
 When your origin is an Amazon S3 bucket, your options for using HTTPS for communications with CloudFront depend on how you're using the bucket\. If your Amazon S3 bucket is configured as a website endpoint, you can't configure CloudFront to use HTTPS to communicate with your origin because Amazon S3 doesn't support HTTPS connections in that configuration\.
 
-When your origin is an Amazon S3 bucket that supports HTTPS communication, CloudFront always forwards requests to S3 by using the protocol that viewers used to submit the requests\. The default setting for the [Origin Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy) setting is **Match Viewer** and can't be changed\. 
+When your origin is an Amazon S3 bucket that supports HTTPS communication, CloudFront always forwards requests to S3 by using the protocol that viewers used to submit the requests\. The default setting for the [Origin protocol policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy) setting is **Match Viewer** and can't be changed\. 
 
 If you want to require HTTPS for communication between CloudFront and Amazon S3, you must change the value of **Viewer Protocol Policy** to **Redirect HTTP to HTTPS** or **HTTPS Only**\. The procedure later in this section explains how to use the CloudFront console to change **Viewer Protocol Policy**\. For information about using the CloudFront API to update the `ViewerProtocolPolicy` element for a distribution, see [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
 
@@ -30,5 +30,5 @@ Viewers can access your content only if they're using HTTPS\. If a viewer sends 
 
 1. Confirm the following before you use the updated configuration in a production environment:
    + The path pattern in each cache behavior applies only to the requests that you want viewers to use HTTPS for\.
-   + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path Pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
+   + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
    + The cache behaviors are routing requests to the correct origins\. 

@@ -2,7 +2,7 @@
 
 You can configure CloudFront to create log files that contain detailed information about every user request that CloudFront receives\. These are called *standard logs*, also known as *access logs*\. If you enable standard logs, you can also specify the Amazon S3 bucket that you want CloudFront to save files in\.
 
-You can enable standard logs when you create or update a distribution\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+You can enable standard logs when you create or update a distribution\. For more information, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 CloudFront also offers real\-time logs, which give you information about requests made to a distribution in real time \(logs are delivered within seconds of receiving the requests\)\. You can use real\-time logs to monitor, analyze, and take action based on content delivery performance\. For more information, see [Real\-time logs](real-time-logs.md)\.
 
@@ -75,7 +75,7 @@ In some circumstances, if you programmatically submit a request to create a buck
 
 **Restoring the ACL for the bucket**  
 If you remove permissions for the `awslogsdelivery` account, CloudFront won't be able to save logs to the S3 bucket\. To enable CloudFront to start saving logs for your distribution again, restore the ACL permission by doing one of the following:  
-+ Disable logging for your distribution in CloudFront, and then enable it again\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
++ Disable logging for your distribution in CloudFront, and then enable it again\. For more information, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 + Add the ACL permission for `awslogsdelivery` manually by navigating to the S3 bucket in the Amazon S3 console and adding permission\. To add the ACL for `awslogsdelivery`, you must provide the canonical ID for the account, which is the following:
 
   `c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0`
@@ -178,7 +178,7 @@ We recommend that you use the logs to understand the nature of the requests for 
 You can enable or disable logging, change the Amazon S3 bucket where your logs are stored, and change the prefix for log files by using the [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home) or the CloudFront API\. Your changes to logging settings take effect within 12 hours\.
 
 For more information, see the following topics:
-+ To update a distribution using the CloudFront console, see [Updating a Distribution](HowToUpdateDistribution.md)\.
++ To update a distribution using the CloudFront console, see [Updating a distribution](HowToUpdateDistribution.md)\.
 + To update a distribution using the CloudFront API, see [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 ## Deleting standard log files from an Amazon S3 bucket<a name="DeletingLogFiles"></a>

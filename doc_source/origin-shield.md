@@ -174,7 +174,7 @@ When your distribution status is **Deployed**, Origin Shield is ready\. This tak
 
 1. For **Origin Shield Region**, choose the AWS Region where you want to enable Origin Shield\. For help choosing a Region, see [Choosing the AWS Region for Origin Shield](#choose-origin-shield-region)\.
 
-   If you are creating a new distribution, continue configuring your distribution, using the other settings on the page\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+   If you are creating a new distribution, continue configuring your distribution, using the other settings on the page\. For more information, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 1. Make sure to save your changes by choosing **Create** \(for a new origin in an existing distribution\) or **Create Distribution** \(for a new origin in a new distribution\)\.
 

@@ -83,7 +83,7 @@ Make sure that the URL that you're referencing uses the domain name \(or CNAME\)
 
 ### Do You Need Help Troubleshooting a Custom Origin?<a name="Troubleshooting.CustomOrigin"></a>
 
-If you need AWS to help you troubleshoot a custom origin, we probably will need to inspect the `X-Amz-Cf-Id` header entries from your requests\. If you are not already logging these entries, you might want to consider it for the future\. For more information, see [Using Amazon EC2 or Other Custom Origins](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\. For further help, see the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
+If you need AWS to help you troubleshoot a custom origin, we probably will need to inspect the `X-Amz-Cf-Id` header entries from your requests\. If you are not already logging these entries, you might want to consider it for the future\. For more information, see [Using Amazon EC2 or other custom origins](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\. For further help, see the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
 ## Error Message: Certificate: <certificate\-id> Is Being Used by CloudFront<a name="troubleshooting-certificate-error"></a>
 

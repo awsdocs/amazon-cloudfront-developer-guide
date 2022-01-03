@@ -35,7 +35,7 @@ Geo restriction applies to an entire distribution\. If you need to apply one res
 
 If you enable CloudFront access logging, you can identify the requests that CloudFront rejected by searching for the log entries for which the value of `sc-status` \(the HTTP status code\) is `403`\. However, using only the access logs, you can't distinguish a request that CloudFront rejected based on the location of the user from a request that CloudFront rejected because the user didn't have permission to access the file for another reason\. If you have a third\-party geolocation service such as Digital Element or MaxMind, you can identify the location of requests based on the IP address in the `c-ip` \(client IP\) column in the access logs\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
-The following procedure explains how to use the CloudFront console to add geo restriction to an existing distribution\. For information about how to use the console to create a distribution, see [Creating a Distribution](distribution-web-creating-console.md)\.<a name="restrictions-geo-procedure"></a>
+The following procedure explains how to use the CloudFront console to add geo restriction to an existing distribution\. For information about how to use the console to create a distribution, see [Creating a distribution](distribution-web-creating-console.md)\.<a name="restrictions-geo-procedure"></a>
 
 **To add geo restriction to your CloudFront web distribution \(console\)**
 

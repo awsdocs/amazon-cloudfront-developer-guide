@@ -12,7 +12,7 @@ You can associate a function with a distribution in the CloudFront console or wi
 
 ## Associating functions with distributions \(console\)<a name="associate-function-console"></a>
 
-You can use the CloudFront console to associate a function with an existing cache behavior in an existing CloudFront distribution\. For more information about creating a distribution, see [Creating a Distribution](distribution-web-creating-console.md)\.
+You can use the CloudFront console to associate a function with an existing cache behavior in an existing CloudFront distribution\. For more information about creating a distribution, see [Creating a distribution](distribution-web-creating-console.md)\.
 
 **To associate a function with an existing cache behavior \(console\)**
 

@@ -34,7 +34,7 @@ To configure custom error responses in the CloudFront console, you must have a C
 
 1. Choose the **Error Pages** tab, then choose **Create Custom Error Response**\.
 
-1. Enter the applicable values\. For more information, see [Custom Error Pages and Error Caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages) in *Values That You Specify When You Create or Update a Distribution*\.
+1. Enter the applicable values\. For more information, see [Custom error pages and error caching](distribution-web-values-specify.md#DownloadDistValuesErrorPages) in *Values That You Specify When You Create or Update a Distribution*\.
 
 1. After entering the desired values, choose **Create**\.
 
@@ -76,7 +76,7 @@ If you want to store your objects and your custom error pages in different locat
 + The value of **Path Pattern** matches the path to your custom error messages\. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named `/4xx-errors`\. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, `/4xx-errors/*`\.
 + The value of **Origin** specifies the value of **Origin ID** for the origin that contains your custom error pages\.
 
-For more information, see [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information, see [Cache behavior settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the topic [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 ## Changing response codes returned by CloudFront<a name="custom-error-pages-response-code"></a>
 
@@ -113,4 +113,4 @@ If you want to control how long CloudFront caches errors for individual objects,
 
   CloudFront caches error responses for the value of **Error Caching Minimum TTL**\.
 
-If the expiration time for a 4xx or 5xx status code for an object is longer than you want, and the object is available again, you can invalidate cached error code by using the URL of the requested object\. If your origin is returning an error response for multiple objects, you need to invalidate each object separately\. For more information about invalidating objects, see [Invalidating Files](Invalidation.md)\.
+If the expiration time for a 4xx or 5xx status code for an object is longer than you want, and the object is available again, you can invalidate cached error code by using the URL of the requested object\. If your origin is returning an error response for multiple objects, you need to invalidate each object separately\. For more information about invalidating objects, see [Invalidating files](Invalidation.md)\.

@@ -38,12 +38,12 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 
 | Entity | Default quota | 
 | --- | --- | 
-| Distributions per AWS account For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Distributions per AWS account For more information, see [Creating a distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Maximum cacheable file size for HTTP GET, POST, and PUT requests | 30 GB | 
 |  Request timeout For more information, see [Origin response timeout](RequestAndResponseBehaviorCustomOrigin.md#request-custom-request-timeout)\.  |  30 seconds [ Request a higher quota](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
-| Response timeout per origin For more information, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 1\-60 seconds [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-|  Connection timeout per origin For more information, see [Origin Connection Timeout](distribution-web-values-specify.md#origin-connection-timeout)\.  |  1\-10 seconds  | 
-|  Connection attempts per origin For more information, see [Origin Connection Attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  |  1\-3  | 
+| Response timeout per origin For more information, see [Origin response timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 1\-60 seconds [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Connection timeout per origin For more information, see [Origin connection timeout](distribution-web-values-specify.md#origin-connection-timeout)\.  |  1\-10 seconds  | 
+|  Connection attempts per origin For more information, see [Origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  |  1\-3  | 
 | File compression: range of file sizes that CloudFront compresses For more information, see [Serving compressed files](ServingCompressedFiles.md)\.  | 1,000 to 10,000,000 bytes | 
 | Alternate domain names \(CNAMEs\) per distribution For more information, see [Using custom URLs by adding alternate domain names \(CNAMEs\)](CNAMEs.md)\.  | 100 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Origins per distribution | 25 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
@@ -133,7 +133,7 @@ In addition to these quotas, there are some other restrictions when using Lambda
 
 | Entity | Default quota | 
 | --- | --- | 
-|  File invalidation: maximum number of files allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating Files](Invalidation.md)\.  |  3,000  | 
+|  File invalidation: maximum number of files allowed in active invalidation requests, excluding wildcard invalidations For more information, see [Invalidating files](Invalidation.md)\.  |  3,000  | 
 |  File invalidation: maximum number of active wildcard invalidations allowed  |  15  | 
 |  File invalidation: maximum number of files that one wildcard invalidation can process  |  No quota  | 
 

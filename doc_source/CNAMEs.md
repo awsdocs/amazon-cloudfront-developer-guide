@@ -113,9 +113,9 @@ Before you can move an alternate domain name, you must set up the target distrib
 
 1. Get an SSL/TLS certificate that includes the alternate domain name that you are moving\. If you don’t have one, you can request one from [AWS Certificate Manager \(ACM\)](https://console.aws.amazon.com/acm), or get one from another certificate authority \(CA\) and import it into ACM\. Make sure that you request or import the certificate in the US East \(N\. Virginia\) \(`us-east-1`\) Region\.
 
-1. If you haven’t created the target distribution, create one now\. As part of creating the target distribution, associate your certificate \(from the previous step\) with the distribution\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
+1. If you haven’t created the target distribution, create one now\. As part of creating the target distribution, associate your certificate \(from the previous step\) with the distribution\. For more information, see [Creating a distribution](distribution-web-creating-console.md)\.
 
-   If you already have a target distribution, associate your certificate \(from the previous step\) with the target distribution\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
+   If you already have a target distribution, associate your certificate \(from the previous step\) with the target distribution\. For more information, see [Updating a distribution](HowToUpdateDistribution.md)\.
 
 1. Create a DNS TXT record that associates the alternate domain name with the distribution domain name of the target distribution\. Create your TXT record with an underscore \(\_\) in front of the alternate domain name\. The following shows an example TXT record in DNS:
 
@@ -188,15 +188,15 @@ You can’t use a wildcard to move an apex domain \(like example\.com\)\. To mov
 **Note**  
 This process involves multiple updates to your distributions\. Wait for each distribution to fully deploy the latest change before proceeding to the next step\.
 
-1. Update the target distribution to add a wildcard alternate domain name that covers the alternate domain name that you are moving\. For example, if the alternate domain name that you’re moving is www\.example\.com, add the alternate domain name \*\.example\.com to the target distribution\. To do this, the SSL/TLS certificate on the target distribution must include the wildcard domain name\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
+1. Update the target distribution to add a wildcard alternate domain name that covers the alternate domain name that you are moving\. For example, if the alternate domain name that you’re moving is www\.example\.com, add the alternate domain name \*\.example\.com to the target distribution\. To do this, the SSL/TLS certificate on the target distribution must include the wildcard domain name\. For more information, see [Updating a distribution](HowToUpdateDistribution.md)\.
 
 1. Update the DNS settings for the alternate domain name to point to the domain name of the target distribution\. For example, if the alternate domain name that you’re moving is www\.example\.com, update the DNS record for www\.example\.com to route traffic to the domain name of the target distribution \(for example d111111abcdef8\.cloudfront\.net\)\.
 **Note**  
 Even after you update the DNS settings, the alternate domain name is still served by the source distribution because that’s where the alternate domain name is currently configured\.
 
-1. Update the source distribution to remove the alternate domain name\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
+1. Update the source distribution to remove the alternate domain name\. For more information, see [Updating a distribution](HowToUpdateDistribution.md)\.
 
-1. Update the target distribution to add the alternate domain name\. For more information, see [Updating a Distribution](HowToUpdateDistribution.md)\.
+1. Update the target distribution to add the alternate domain name\. For more information, see [Updating a distribution](HowToUpdateDistribution.md)\.
 
 1. Use dig \(or a similar DNS query tool\) to validate that the DNS record for the alternate domain name resolves to the domain name of the target distribution\.
 
@@ -305,5 +305,5 @@ If the two AWS account numbers do not match, CloudFront responds with an HTTP 42
 **Adding an alternate domain name at the top node \(zone apex\) for a domain**  
 When you add an alternate domain name to a distribution, you typically create a CNAME record in your DNS configuration to route DNS queries for the domain name to your CloudFront distribution\. However, you can’t create a CNAME record for the top node of a DNS namespace, also known as the zone apex; the DNS protocol doesn’t allow it\. For example, if you register the DNS name example\.com, the zone apex is example\.com\. You can’t create a CNAME record for example\.com, but you can create CNAME records for www\.example\.com, newproduct\.example\.com, and so on\.  
 If you’re using Route 53 as your DNS service, you can create an alias resource record set, which has two advantages over CNAME records\. You can create an alias resource record set for a domain name at the top node \(example\.com\)\. In addition, when you use an alias resource record set, you don’t pay for Route 53 queries\.  
-If you enable IPv6, you must create two alias resource record sets: one to route IPv4 traffic \(an A record\) and one to route IPv6 traffic \(an AAAA record\)\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\. 
+If you enable IPv6, you must create two alias resource record sets: one to route IPv4 traffic \(an A record\) and one to route IPv6 traffic \(an AAAA record\)\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\. 
 For more information, see [Routing traffic to an Amazon CloudFront web distribution by using your domain name](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html) in the *Amazon Route 53 Developer Guide*\.

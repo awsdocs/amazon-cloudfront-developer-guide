@@ -70,15 +70,15 @@ By default, CloudFront tries to connect to the primary origin in an origin group
 To fail over more quickly, specify a shorter connection timeout, fewer connection attempts, or both\. For custom origins \(including Amazon S3 bucket origins that *are* configured with static website hosting\), you can also adjust the origin response timeout\.
 
 **Origin connection timeout**  
-The origin connection timeout setting affects how long CloudFront waits when trying to establish a connection to the origin\. By default, CloudFront waits 10 seconds to establish a connection, but you can specify 1–10 seconds \(inclusive\)\. For more information, see [Origin Connection Timeout](distribution-web-values-specify.md#origin-connection-timeout)\.
+The origin connection timeout setting affects how long CloudFront waits when trying to establish a connection to the origin\. By default, CloudFront waits 10 seconds to establish a connection, but you can specify 1–10 seconds \(inclusive\)\. For more information, see [Origin connection timeout](distribution-web-values-specify.md#origin-connection-timeout)\.
 
 **Origin connection attempts**  
-The origin connection attempts setting affects the number of times that CloudFront attempts to connect to the origin\. By default, CloudFront tries 3 times to connect, but you can specify 1–3 \(inclusive\)\. For more information, see [Origin Connection Attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  
+The origin connection attempts setting affects the number of times that CloudFront attempts to connect to the origin\. By default, CloudFront tries 3 times to connect, but you can specify 1–3 \(inclusive\)\. For more information, see [Origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  
 For a custom origin \(including an Amazon S3 bucket that’s configured with static website hosting\), this setting also affects the number of times that CloudFront attempts to get a response from the origin in the case of an origin response timeout\.
 
 **Origin response timeout**  
 This applies only to custom origins\.
-The origin response timeout setting affects how long CloudFront waits to receive a response \(or to receive the complete response\) from the origin\. By default, CloudFront waits for 30 seconds, but you can specify 1–60 seconds \(inclusive\)\. For more information, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
+The origin response timeout setting affects how long CloudFront waits to receive a response \(or to receive the complete response\) from the origin\. By default, CloudFront waits for 30 seconds, but you can specify 1–60 seconds \(inclusive\)\. For more information, see [Origin response timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
 
 ### How to change these settings<a name="controlling-attempts-and-timeouts-how-to"></a>
 
@@ -86,7 +86,7 @@ The origin response timeout setting affects how long CloudFront waits to receive
 + For a new origin or a new distribution, you specify these values when you create the resource\.
 + For an existing origin in an existing distribution, you specify these values when you edit the origin\.
 
-For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 ## Use origin failover with Lambda@Edge functions<a name="concept_origin_groups.lambda"></a>
 

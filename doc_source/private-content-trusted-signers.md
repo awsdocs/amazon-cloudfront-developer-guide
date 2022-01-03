@@ -181,7 +181,7 @@ Similarly, a signer can only sign URLs or cookies for files that are associated 
 Before you add a signer to your distribution, do the following:  
 Define the path patterns in cache behaviors and the sequence of cache behaviors carefully so you don’t give users unintended access to your content or prevent them from accessing content that you want to be available to everyone\.  
 For example, suppose a request matches the path pattern for two cache behaviors\. The first cache behavior does not require signed URLs or signed cookies and the second cache behavior does\. Users will be able to access the files without using signed URLs or signed cookies because CloudFront processes the cache behavior that is associated with the first match\.  
-For more information about path patterns, see [Path Pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
+For more information about path patterns, see [Path pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
 For a distribution that you’re already using to distribute content, make sure you’re ready to start generating signed URLs and signed cookies before you add a signer\. When you add a signer, CloudFront rejects requests that don’t include a valid signed URL or signed cookie\.
 
 You can add signers to your distribution using either the CloudFront console or the CloudFront API\.

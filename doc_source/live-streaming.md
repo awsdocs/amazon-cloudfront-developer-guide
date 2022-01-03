@@ -29,13 +29,13 @@ To get started, you grant CloudFront access to your MediaStore container\. Then 
 
 1. Create a distribution with the following settings:  
 Origin Domain Name  
-The data endpoint that is assigned to your MediaStore container\. From the dropdown list, choose the MediaStore container for your live video\. The format of a MediaStore origin is Container\-OriginEndpointURL\. For example, mymediastore\.data\.mediastore\.us\-east\-1\.amazonaws\.com\. For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
+The data endpoint that is assigned to your MediaStore container\. From the dropdown list, choose the MediaStore container for your live video\. The format of a MediaStore origin is Container\-OriginEndpointURL\. For example, mymediastore\.data\.mediastore\.us\-east\-1\.amazonaws\.com\. For more information, see [Origin domain name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
 Origin Path  
-The folder structure in the MediaStore container where your objects are stored\. For more information, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.  
+The folder structure in the MediaStore container where your objects are stored\. For more information, see [Origin path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.  
 Origin Custom Headers  
 Add header names and values if you want CloudFront to include custom headers when it forwards requests to your origin\.  
 Viewer Protocol Policy  
-Choose **Redirect HTTP to HTTPS**\. For more information, see [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.   
+Choose **Redirect HTTP to HTTPS**\. For more information, see [Viewer protocol policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.   
 Object Caching  
 If the encoder that you use can’t set cache controls on all objects, choose **Customize**\. If your encoder can set cache controls on all objects, choose **Origin Cache Headers**\.   
 Minimum TTL, Maximum TTL, and Default TTL  
@@ -43,7 +43,7 @@ Set as appropriate for your caching needs and segment durations\.
 Error Caching Minimum TTL  
 Set to 5 seconds or less, to help prevent serving stale content\.
 
-   For the other settings, you can set specific values based on other technical requirements or the needs of your business\. For a list of all the options for distributions and information about setting them, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+   For the other settings, you can set specific values based on other technical requirements or the needs of your business\. For a list of all the options for distributions and information about setting them, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 1. After CloudFront provisions your distribution, edit the cache behavior to set up cross\-origin resource sharing \(CORS\) for your origin:
 
@@ -88,13 +88,13 @@ Complete the following procedure to set up a CloudFront distribution for the liv
 **Origin Domain Name**  
 The origin where your MediaPackage live video channel and endpoints are\. Choose the text field, then from the dropdown list, choose the MediaPackage channel for your live video\. You can map one channel to several origin endpoints\.  
 If you created your channel using another AWS account, type the origin URL value into the field\. The origin must be an HTTPS URL\.  
-For more information, see [Origin Domain Name](distribution-web-values-specify.md#DownloadDistValuesDomainName) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
+For more information, see [Origin domain name](distribution-web-values-specify.md#DownloadDistValuesDomainName) in the [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.  
 **Origin Path**  
 The path to the MediaPackage endpoint from where the content is served\. When you choose an origin domain name, CloudFront populates the origin path\.  
 If you used a channel from another AWS account for **Origin Domain Name**, the **Origin Path** field is not filled in for you\. You must get the correct origin path from the other account so that you can enter it manually\.  
-For more information about how an origin path works, see [Origin Path](distribution-web-values-specify.md#DownloadDistValuesOriginPath) in [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information about how an origin path works, see [Origin path](distribution-web-values-specify.md#DownloadDistValuesOriginPath) in [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
-   For the other distribution settings, set specific values based on other technical requirements or the needs of your business\. For a list of all the options for distributions and information about setting them, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+   For the other distribution settings, set specific values based on other technical requirements or the needs of your business\. For a list of all the options for distributions and information about setting them, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
    When you finish choosing the other distribution settings, choose **Create Distribution**\.
 
@@ -118,7 +118,7 @@ Repeat the steps here to add each of your MediaPackage channel endpoints to your
 
 1. For **Origin Domain Name**, in the dropdown list, choose a MediaPackage endpoint for your channel\. CloudFront automatically completes the **Origin Path** field\.
 
-1. For the other settings, set the values based on other technical requirements or the needs of your business\. For more information, see [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+1. For the other settings, set the values based on other technical requirements or the needs of your business\. For more information, see [Origin settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 1. Choose **Create**\.
 
@@ -156,7 +156,7 @@ Choose **Redirect HTTP to HTTPS**\.
 Choose **None \(improves caching\)**\.  
 For more information about improving caching, see [Increasing the proportion of requests that are served directly from the CloudFront caches \(cache hit ratio\)](cache-hit-ratio.md)\.  
 **Object Caching**  
-MediaPackage sets default `Cache-Control` headers that ensure correct playback behavior\. If you want to use those values, choose **Use Origin Cache Headers**\. However, you can increase cache times for video segments\. For more information about customizing the time that objects stay in the CloudFront cache, see [Object Caching](distribution-web-values-specify.md#DownloadDistValuesObjectCaching) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.  
+MediaPackage sets default `Cache-Control` headers that ensure correct playback behavior\. If you want to use those values, choose **Use Origin Cache Headers**\. However, you can increase cache times for video segments\. For more information about customizing the time that objects stay in the CloudFront cache, see [Object caching](distribution-web-values-specify.md#DownloadDistValuesObjectCaching) in the [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.  
 **Minimum TTL**  
 Set to 5 seconds or less, to help prevent serving stale content\.  
 **Query String Forwarding and Caching**  
@@ -174,4 +174,4 @@ If you’re using the manifest filtering feature in MediaPackage, specify `aws.m
 
 After you create the distribution, add the origins, and create the cache behaviors, you can serve the live stream channel using CloudFront\. CloudFront routes requests from viewers to the correct MediaPackage endpoints based on the settings that you configured for the cache behaviors\.
 
-For links in your application \(for example, a media player\), specify the URL for the media file in the standard format for CloudFront URLs\. For more information, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
+For links in your application \(for example, a media player\), specify the URL for the media file in the standard format for CloudFront URLs\. For more information, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.

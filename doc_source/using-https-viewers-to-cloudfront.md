@@ -9,7 +9,7 @@ You can configure one or more cache behaviors in your CloudFront distribution to
 + If you're using your own domain name, such as example\.com, you need to change several CloudFront settings\. You also need to use an SSL/TLS certificate provided by AWS Certificate Manager \(ACM\), or import a certificate from a third\-party certificate authority into ACM or the IAM certificate store\. For more information, see [Using alternate domain names and HTTPS](using-https-alternate-domain-names.md)\.
 
 **Note**  
-If you want to ensure that the objects that viewers get from CloudFront were encrypted when CloudFront got them from your origin, always use HTTPS between CloudFront and your origin\. If you recently changed from HTTP to HTTPS between CloudFront and your origin, we recommend that you invalidate objects in CloudFront edge locations\. CloudFront will return an object to a viewer regardless of whether the protocol used by the viewer \(HTTP or HTTPS\) matches the protocol that CloudFront used to get the object\. For more information about removing or replacing objects in a distribution, see [Adding, Removing, or Replacing Content That CloudFront Distributes](AddRemoveReplaceObjects.md)\.
+If you want to ensure that the objects that viewers get from CloudFront were encrypted when CloudFront got them from your origin, always use HTTPS between CloudFront and your origin\. If you recently changed from HTTP to HTTPS between CloudFront and your origin, we recommend that you invalidate objects in CloudFront edge locations\. CloudFront will return an object to a viewer regardless of whether the protocol used by the viewer \(HTTP or HTTPS\) matches the protocol that CloudFront used to get the object\. For more information about removing or replacing objects in a distribution, see [Adding, removing, or replacing content that CloudFront distributes](AddRemoveReplaceObjects.md)\.
 
 To require HTTPS between viewers and CloudFront for one or more cache behaviors, perform the following procedure\.<a name="using-https-viewers-to-cloudfront-procedure"></a>
 
@@ -36,5 +36,5 @@ Viewers can access your content only if they're using HTTPS\. If a viewer sends 
 
 1. Confirm the following before you use the updated configuration in a production environment:
    + The path pattern in each cache behavior applies only to the requests that you want viewers to use HTTPS for\.
-   + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path Pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
+   + The cache behaviors are listed in the order that you want CloudFront to evaluate them in\. For more information, see [Path pattern](distribution-web-values-specify.md#DownloadDistValuesPathPattern)\.
    + The cache behaviors are routing requests to the correct origins\. 

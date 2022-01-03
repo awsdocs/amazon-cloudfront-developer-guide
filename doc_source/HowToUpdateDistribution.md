@@ -1,8 +1,8 @@
-# Updating a Distribution<a name="HowToUpdateDistribution"></a>
+# Updating a distribution<a name="HowToUpdateDistribution"></a>
 
 In the CloudFront console, you can see the CloudFront distributions that are associated with your AWS account, view the settings for a distribution, and update most settings\. Be aware that settings changes that you make won't take effect until the distribution has propagated to the AWS edge locations\.<a name="HowToUpdateDistributionProcedure"></a>
 
-**To Update a CloudFront Distribution**
+**To update a CloudFront distribution**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
@@ -13,9 +13,9 @@ In the CloudFront console, you can see the CloudFront distributions that are ass
 1. To update general settings, choose **Edit**\. Otherwise, choose the tab for the settings that you want to update: **Origins** or **Behaviors**\.
 
 1. Make the updates, and then, to save your changes, choose **Yes, Edit**\. For information about the fields, see the following topics: 
-   + **General settings:** [Distribution Settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)
-   + **Origin settings:** [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin)
-   + **Cache behavior settings:** [Cache Behavior Settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)
+   + **General settings:** [Distribution settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)
+   + **Origin settings:** [Origin settings](distribution-web-values-specify.md#DownloadDistValuesOrigin)
+   + **Cache behavior settings:** [Cache behavior settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)
 
 1. If you want to delete an origin in your distribution, do the following:
 

@@ -137,7 +137,7 @@ You cannot use edge functions with a CloudFront distribution that you’re using
 
 ### Tagging<a name="function-restrictions-tagging"></a>
 
-You cannot add tags to edge functions\. To learn more about tagging in CloudFront, see [Tagging Amazon CloudFront Distributions](tagging.md)\.
+You cannot add tags to edge functions\. To learn more about tagging in CloudFront, see [Tagging Amazon CloudFront distributions](tagging.md)\.
 
 ## Restrictions on CloudFront Functions<a name="cloudfront-function-restrictions"></a>
 
