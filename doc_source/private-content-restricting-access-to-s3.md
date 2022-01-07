@@ -14,7 +14,7 @@ If you restrict access to files by using CloudFront signed URLs or signed cookie
 This topic explains in detail how to set up the OAI and grant permissions to maintain secure access to your S3 files\.
 
 **Important**  
-If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin\. You can’t use the origin access identity feature described in this topic\. However, you *can* restrict access to content on a custom origin by setting up custom headers and configuring your origin to require them\. For more information, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
+If you use an Amazon S3 bucket configured as a website endpoint, you must set it up with CloudFront as a custom origin\. You can’t use the origin access identity feature described in this topic\. However, you *can* restrict access to content on a custom origin by setting up custom headers and configuring your origin to require them\. For more information, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\. Note that website endpoint buckets use origin domains of the form `DOC-EXAMPLE-BUCKET.s3-website-us-east-1.amazonaws.com`\.
 
 **Topics**
 + [Overview of OAI setup](#private-content-restricting-access-to-s3-overview)
@@ -59,6 +59,8 @@ If you didn’t create an OAI when you created your distribution, do the followi
 1. Select the Amazon S3 origin, and then choose **Edit**\.
 
 1. For **S3 bucket access**, choose **Yes use OAI**\.
+**Important**
+If this option is not available, the S3 bucket does not support use of an OAI and must be configured as a custom origin\. See [Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access)\.
 
 1. If you already have an OAI that you want to use, select the OAI from the drop\-down list\. If you already have an OAI, we recommend that you reuse it to simplify maintenance\.
 
