@@ -1,9 +1,9 @@
-# Delivering Video on Demand \(VOD\) with CloudFront<a name="on-demand-video"></a>
+# Delivering video on demand \(VOD\) with CloudFront<a name="on-demand-video"></a>
 
 To deliver video on demand \(VOD\) streaming with CloudFront, use the following services:
 + Amazon S3 to store the content in its original format and to store the transcoded video\.
 + An encoder \(such as AWS Elemental MediaConvert\) to transcode the video into streaming formats\.
-+ CloudFront to deliver the transcoded video to viewers\. For Microsoft Smooth Streaming, see [Configuring Video on Demand for Microsoft Smooth Streaming](#on-demand-streaming-smooth)\.
++ CloudFront to deliver the transcoded video to viewers\. For Microsoft Smooth Streaming, see [Configuring video on demand for Microsoft Smooth Streaming](#on-demand-streaming-smooth)\.
 
 **To create a VOD solution with CloudFront**
 
@@ -16,7 +16,7 @@ To deliver video on demand \(VOD\) streaming with CloudFront, use the following 
 **Tip**  
 You can explore how to use an AWS CloudFormation template to deploy a VOD AWS solution together with all the associated components\. To see the steps for using the template, see [Automated Deployment](https://docs.aws.amazon.com/solutions/latest/video-on-demand/deployment.html) in the *Video on Demand on AWS* guide\.
 
-## Configuring Video on Demand for Microsoft Smooth Streaming<a name="on-demand-streaming-smooth"></a>
+## Configuring video on demand for Microsoft Smooth Streaming<a name="on-demand-streaming-smooth"></a>
 
 You have the following options for using CloudFront to distribute video on demand \(VOD\) content that you’ve transcoded into the Microsoft Smooth Streaming format:
 + Specify a web server that runs Microsoft IIS and supports Smooth Streaming as the origin for your distribution\.

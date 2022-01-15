@@ -1,12 +1,12 @@
-# Delivering Live Streaming Video with CloudFront and AWS Media Services<a name="live-streaming"></a>
+# Delivering live streaming video with CloudFront and AWS Media Services<a name="live-streaming"></a>
 
 To use AWS Media Services with CloudFront to deliver live content to a global audience, follow the guidance included in this section\.
 
 Use [AWS Elemental MediaLive](https://docs.aws.amazon.com/medialive/latest/ug/getting-started.html) to encode live video streams in real time\. To encode a large video stream, MediaLive compresses it into smaller versions \(*encodes*\) that can be distributed to your viewers\.
 
 After you compress a live video stream, you can use either of the following two main options to prepare and serve the content:
-+ **Convert your content into required formats, and then serve it:** If you require content in multiple formats, use [AWS Elemental MediaPackage](https://aws.amazon.com/mediapackage/) to package the content for different device types\. When you package the content, you can also implement extra features and add digital rights management \(DRM\) to prevent unauthorized use of your content\. For step\-by\-step instructions for using CloudFront to serve content that MediaPackage formatted, see [Serving Live Video Formatted with AWS Elemental MediaPackage](#live-streaming-with-mediapackage)\.
-+ **Store and serve your content using scalable origin:** If MediaLive encoded content in the formats required by all of the devices that your viewers use, use a highly scalable origin like [AWS Elemental MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/getting-started.html) to serve the content\. For step\-by\-step instructions for using CloudFront to serve content that is stored in a MediaStore container, see [Serving Video Using AWS Elemental MediaStore as the Origin](#video-streaming-mediastore)\.
++ **Convert your content into required formats, and then serve it:** If you require content in multiple formats, use [AWS Elemental MediaPackage](https://aws.amazon.com/mediapackage/) to package the content for different device types\. When you package the content, you can also implement extra features and add digital rights management \(DRM\) to prevent unauthorized use of your content\. For step\-by\-step instructions for using CloudFront to serve content that MediaPackage formatted, see [Serving live video formatted with AWS Elemental MediaPackage](#live-streaming-with-mediapackage)\.
++ **Store and serve your content using scalable origin:** If MediaLive encoded content in the formats required by all of the devices that your viewers use, use a highly scalable origin like [AWS Elemental MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/getting-started.html) to serve the content\. For step\-by\-step instructions for using CloudFront to serve content that is stored in a MediaStore container, see [Serving video using AWS Elemental MediaStore as the origin](#video-streaming-mediastore)\.
 
 After you’ve set up your origin by using one of these options, you can distribute live streaming video to viewers by using CloudFront\.
 
@@ -14,10 +14,10 @@ After you’ve set up your origin by using one of these options, you can distrib
 You can learn about an AWS solution that automatically deploys services for building a highly available real\-time viewing experience\. To see the steps to automatically deploy this solution, see [Live Streaming Automated Deployment](https://docs.aws.amazon.com/solutions/latest/live-streaming/deployment.html)\.
 
 **Topics**
-+ [Serving Video Using AWS Elemental MediaStore as the Origin](#video-streaming-mediastore)
-+ [Serving Live Video Formatted with AWS Elemental MediaPackage](#live-streaming-with-mediapackage)
++ [Serving video using AWS Elemental MediaStore as the origin](#video-streaming-mediastore)
++ [Serving live video formatted with AWS Elemental MediaPackage](#live-streaming-with-mediapackage)
 
-## Serving Video Using AWS Elemental MediaStore as the Origin<a name="video-streaming-mediastore"></a>
+## Serving video using AWS Elemental MediaStore as the origin<a name="video-streaming-mediastore"></a>
 
 If you have video stored in an [AWS Elemental MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/getting-started.html) container, you can create a CloudFront distribution to serve the content\.
 
@@ -28,19 +28,19 @@ To get started, you grant CloudFront access to your MediaStore container\. Then 
 1. Follow the procedure at [ Allowing Amazon CloudFront to Access Your MediaStore Container](https://docs.aws.amazon.com/mediastore/latest/ug/cdns-allowing-cloudfront-to-access-mediastore.html), and then return to these steps to create your distribution\.
 
 1. Create a distribution with the following settings:  
-Origin Domain Name  
+**Origin Domain Name**  
 The data endpoint that is assigned to your MediaStore container\. From the dropdown list, choose the MediaStore container for your live video\. The format of a MediaStore origin is Container\-OriginEndpointURL\. For example, mymediastore\.data\.mediastore\.us\-east\-1\.amazonaws\.com\. For more information, see [Origin domain name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
-Origin Path  
+**Origin Path**  
 The folder structure in the MediaStore container where your objects are stored\. For more information, see [Origin path](distribution-web-values-specify.md#DownloadDistValuesOriginPath)\.  
-Origin Custom Headers  
+**Origin Custom Headers**  
 Add header names and values if you want CloudFront to include custom headers when it forwards requests to your origin\.  
-Viewer Protocol Policy  
+**Viewer Protocol Policy**  
 Choose **Redirect HTTP to HTTPS**\. For more information, see [Viewer protocol policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\.   
-Object Caching  
-If the encoder that you use can’t set cache controls on all objects, choose **Customize**\. If your encoder can set cache controls on all objects, choose **Origin Cache Headers**\.   
-Minimum TTL, Maximum TTL, and Default TTL  
+**Object Caching**  
+If the encoder that you use can’t set cache controls on all objects, choose **Customize**\. If your encoder can set cache controls on all objects, choose **Origin Cache Headers**\.  
+**Minimum TTL, Maximum TTL, and Default TTL**  
 Set as appropriate for your caching needs and segment durations\.  
-Error Caching Minimum TTL  
+**Error Caching Minimum TTL**  
 Set to 5 seconds or less, to help prevent serving stale content\.
 
    For the other settings, you can set specific values based on other technical requirements or the needs of your business\. For a list of all the options for distributions and information about setting them, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
@@ -57,7 +57,7 @@ Set to 5 seconds or less, to help prevent serving stale content\.
 
 1. For links in your application \(for example, a media player\), specify the name of the media file in the same format that you use for other objects that you're distributing using CloudFront\.
 
-## Serving Live Video Formatted with AWS Elemental MediaPackage<a name="live-streaming-with-mediapackage"></a>
+## Serving live video formatted with AWS Elemental MediaPackage<a name="live-streaming-with-mediapackage"></a>
 
 If you formatted a live stream by using AWS Elemental MediaPackage, you can create a CloudFront distribution and configure cache behaviors to serve the live stream\. The following process assumes that you have already [ created a channel](https://docs.aws.amazon.com/mediapackage/latest/ug/channels-create.html) and [added endpoints](https://docs.aws.amazon.com/mediapackage/latest/ug/channels-add-endpoint.html) for your live video using MediaPackage\.
 

@@ -23,7 +23,7 @@ CloudFront offers several options for streaming your media to global viewers—b
 + For video on demand \(VOD\) streaming, you can use CloudFront to stream in common formats such as MPEG DASH, Apple HLS, Microsoft Smooth Streaming, and CMAF, to any device\.
 + For broadcasting a live stream, you can cache media fragments at the edge, so that multiple requests for the manifest file that delivers the fragments in the right order can be combined, to reduce the load on your origin server\.
 
-For more information about how to deliver streaming content with CloudFront, see [Video on Demand and Live Streaming Video with CloudFront](on-demand-streaming-video.md)\.
+For more information about how to deliver streaming content with CloudFront, see [Video on demand and live streaming video with CloudFront](on-demand-streaming-video.md)\.
 
 ## Encrypt specific fields throughout system processing<a name="IntroductionUseCasesFieldLevelEncryption"></a>
 

@@ -276,7 +276,7 @@ The origin response timeout, also known as the *origin read timeout* or *origin 
 The default timeout is 30 seconds\. You can change the value to be from 1 to 60 seconds\. If you need a timeout value outside that range, [create a case in the AWS Support Center](https://console.aws.amazon.com/support/home?region=us-east-1#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)\.
 
 **Tip**  
-If you want to increase the timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troubleshooting suggestions in [HTTP 504 Status Code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
+If you want to increase the timeout value because viewers are experiencing HTTP 504 status code errors, consider exploring other ways to eliminate those errors before changing the timeout value\. See the troubleshooting suggestions in [HTTP 504 status code \(Gateway Timeout\)](http-504-gateway-timeout.md)\.
 
 CloudFront behavior depends on the HTTP method in the viewer request:
 + `GET` and `HEAD` requests – If the origin doesn’t respond or stops responding within the duration of the response timeout, CloudFront drops the connection\. CloudFront tries again to connect according to the value of [Origin connection attempts](#origin-connection-attempts)\.
@@ -345,7 +345,7 @@ When you create a new distribution, the value of **Path Pattern** for the defaul
 **Important**  
 Define path patterns and their sequence carefully or you may give users undesired access to your content\. For example, suppose a request matches the path pattern for two cache behaviors\. The first cache behavior does not require signed URLs and the second cache behavior does require signed URLs\. Users are able to access the objects without using a signed URL because CloudFront processes the cache behavior associated with the first match\.
 
-If you're working with a MediaPackage channel, you must include specific path patterns for the cache behavior that you define for the endpoint type for your origin\. For example, for a DASH endpoint, you type `*.mpd` for **Path Pattern**\. For more information and specific instructions, see [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)\.
+If you're working with a MediaPackage channel, you must include specific path patterns for the cache behavior that you define for the endpoint type for your origin\. For example, for a DASH endpoint, you type `*.mpd` for **Path Pattern**\. For more information and specific instructions, see [Serving live video formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)\.
 
 The path you specify applies to requests for all files in the specified directory and in subdirectories below the specified directory\. CloudFront does not consider query strings or cookies when evaluating the path pattern\. For example, if an `images` directory contains `product1` and `product2` subdirectories, the path pattern `images/*.jpg` applies to requests for any \.jpg file in the `images`, `images/product1`, and `images/product2` directories\. If you want to apply a different cache behavior to the files in the `images/product1` directory than the files in the `images` and `images/product2` directories, create a separate cache behavior for `images/product1` and move that cache behavior to a position above \(before\) the cache behavior for the `images` directory\.
 
@@ -520,7 +520,7 @@ Choose **No** if you have a Microsoft IIS server that you want to use as an orig
 **Note**  
 If you specify **Yes**, you can still distribute other content using this cache behavior if that content matches the value of **Path Pattern**\.
 
-For more information, see [Configuring Video on Demand for Microsoft Smooth Streaming](on-demand-video.md#on-demand-streaming-smooth)\.
+For more information, see [Configuring video on demand for Microsoft Smooth Streaming](on-demand-video.md#on-demand-streaming-smooth)\.
 
 ### Restrict viewer access \(use signed URLs or signed cookies\)<a name="DownloadDistValuesRestrictViewerAccess"></a>
 

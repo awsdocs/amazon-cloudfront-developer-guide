@@ -58,8 +58,8 @@ If you use the CloudFront API to create your distribution with an Amazon S3 buck
 To stream video by using CloudFront, you can set up an Amazon S3 bucket that is configured as a MediaStore container, or create a channel and endpoints with MediaPackage\. Then you create and configure a distribution in CloudFront to stream the video\.
 
 For more information and step\-by\-step instructions, see the following topics:
-+ [Serving Video Using AWS Elemental MediaStore as the Origin](live-streaming.md#video-streaming-mediastore)
-+ [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)
++ [Serving video using AWS Elemental MediaStore as the origin](live-streaming.md#video-streaming-mediastore)
++ [Serving live video formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)
 
 ## Using Amazon EC2 or other custom origins<a name="concept_CustomOrigin"></a>
 
