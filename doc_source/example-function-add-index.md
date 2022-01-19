@@ -11,13 +11,28 @@ function handler(event) {
     var request = event.request;
     var uri = request.uri;
 
-    // Check whether the URI is missing a file name.
-    if (uri.endsWith('/')) {
-        request.uri += 'index.html';
-    }
-    // Check whether the URI is missing a file extension.
-    else if (!uri.includes('.')) {
-        request.uri += '/index.html';
+    // Check whether the URI has a trailing slash and assume a directory with "index.html".
+    if (uri.endsWith("/")) {
+        request.uri += "index.html";
+    } else {
+        // Check whether the URI is missing a file extension.
+        // This has the limitation that we can not use dots (.) in the last path segment.
+        // We can use them in all other path segments without problems though.
+        //
+        // Examples:
+        // - Correct        /some/path/file.zip     => /some/path/file.zip
+        // - Correct        /some/path              => /some/path/index.html
+        // - Correct:       /dir.with.dots/file.zip => /dir.with.dots/file.zip
+        // - Correct:       /dir.with.dots/boom     => /dir.with.dots/boom/index.html
+        // - Correct:       /dir.with.dots/         => /dir.with.dots/index.html
+        // - Limitation:    /dir.with.dots          => /dir.with.dots
+        //
+        // To treat the last one properly we need to request it with a trailing slash.
+        //
+        var trailingSlash = uri.lastIndexOf("/");
+        if (trailingSlash > -1 && !uri.includes(".", trailingSlash+1)) {
+            request.uri += "/index.html";
+        }
     }
 
     return request;
