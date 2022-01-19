@@ -697,11 +697,12 @@ Whether you want CloudFront to log information about each request for an object 
 If you chose **On** for **Logging**, the Amazon S3 bucket that you want CloudFront to store access logs in, for example, `myLogs-DOC-EXAMPLE-BUCKET.s3.amazonaws.com`\.
 
 **Note**  
-Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver access logs to buckets in these Regions:  
-Africa \(Cape Town\)  af\-south\-1
-Asia Pacific \(Hong Kong\)  ap\-east\-1
+Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver standard logs to buckets in these Regions:  
+Africa \(Cape Town\)  af\-south\-1
+Asia Pacific \(Hong Kong\)  ap\-east\-1
+Asia Pacific \(Jakarta\)  ap\-southeast\-3
 Europe \(Milan\)  eu\-south\-1
-Middle East \(Bahrain\)  me\-south\-1
+Middle East \(Bahrain\)  me\-south\-1
 
 If you enable logging, CloudFront records information about each end\-user request for an object and stores the files in the specified Amazon S3 bucket\. You can enable or disable logging at any time\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 

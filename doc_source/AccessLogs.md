@@ -49,11 +49,12 @@ When you enable logging for a distribution, you specify the Amazon S3 bucket tha
 
 **Important**  
 Don’t choose an Amazon S3 bucket with [S3 Object Ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html) set to **bucket owner enforced**\. That setting disables ACLs for the bucket and the objects in it, which prevents CloudFront from delivering log files to the bucket\.  
-Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver access logs to buckets in these Regions:  
-Africa \(Cape Town\)  af\-south\-1
-Asia Pacific \(Hong Kong\)  ap\-east\-1
+Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver standard logs to buckets in these Regions:  
+Africa \(Cape Town\)  af\-south\-1
+Asia Pacific \(Hong Kong\)  ap\-east\-1
+Asia Pacific \(Jakarta\)  ap\-southeast\-3
 Europe \(Milan\)  eu\-south\-1
-Middle East \(Bahrain\)  me\-south\-1
+Middle East \(Bahrain\)  me\-south\-1
 
 You can store the log files for multiple distributions in the same bucket\. When you enable logging, you can specify an optional prefix for the file names, so you can keep track of which log files are associated with which distributions\.
 
