@@ -1,9 +1,9 @@
-# CloudFront Viewers Reports<a name="viewers-reports"></a>
+# CloudFront viewers reports<a name="viewers-reports"></a>
 
 The CloudFront console can display four reports about the physical devices \(desktop computers, mobile devices\) and about the viewers \(typically web browsers\) that are accessing your content:
 + **Devices** – The type of the devices that your users use most frequently to access your content, for example, Desktop or Mobile\. 
 + **Browsers** – The name \(or the name and version\) of the browsers that your users use most frequently to access your content, for example, Chrome or Firefox\. The report lists the top 10 browsers\.
-+ **Operating Systems** – The name \(or the name and version\) of the operating system that viewers run on most frequently when accessing your content, for example, Linux, Mac OS X, or Windows\. The report lists the top 10 operating systems\.
++ **Operating systems** – The name \(or the name and version\) of the operating system that viewers run on most frequently when accessing your content, for example, Linux, macOS, or Windows\. The report lists the top 10 operating systems\.
 + **Locations** – The locations, by country or by U\.S\. state/territory, of the viewers that access your content most frequently\. The report lists the top 50 countries or U\.S\. states/territories\.
 
 You can display all four Viewers reports for any date range in the previous 60 days\. For the Locations report, you can also display the report with data points every hour for any date range of up to 14 days in the previous 60 days\. 
@@ -12,15 +12,15 @@ You can display all four Viewers reports for any date range in the previous 60 d
 You don't need to enable access logging to view Viewers charts and reports\.
 
 **Topics**
-+ [Displaying Viewers Charts and Reports](#viewers-reports-displaying)
-+ [Downloading Data in CSV Format](#viewer-csv)
-+ [How Data in the Locations Report Is Related to Data in the CloudFront Access Logs](#viewers-reports-data)
++ [Displaying viewers charts and reports](#viewers-reports-displaying)
++ [Downloading data in CSV format](#viewer-csv)
++ [How data in the locations report is related to data in the CloudFront standard logs \(access logs\)](#viewers-reports-data)
 
-## Displaying Viewers Charts and Reports<a name="viewers-reports-displaying"></a>
+## Displaying viewers charts and reports<a name="viewers-reports-displaying"></a>
 
-To display CloudFront Viewers charts and reports, perform the following procedure\.<a name="viewers-reports-procedure"></a>
+To display CloudFront viewers charts and reports, perform the following procedure\.<a name="viewers-reports-procedure"></a>
 
-**To display CloudFront Viewers charts and reports**
+**To display CloudFront viewers charts and reports**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
@@ -48,11 +48,11 @@ To display CloudFront Viewers charts and reports, perform the following procedur
 
 1. To view data for a daily or hourly data point within a chart, move your mouse pointer over the data point\.
 
-## Downloading Data in CSV Format<a name="viewer-csv"></a>
+## Downloading data in CSV format<a name="viewer-csv"></a>
 
-You can download each of the Viewer reports in CSV format\. This section explains how to download the reports and describes the values in the report\.<a name="viewer-csv-procedure"></a>
+You can download each of the viewer reports in CSV format\. This section explains how to download the reports and describes the values in the report\.<a name="viewer-csv-procedure"></a>
 
-**To download the Viewer reports in CSV format**
+**To download the viewer reports in CSV format**
 
 1. While viewing the Viewer report, click **CSV**\.
 
@@ -61,17 +61,17 @@ You can download each of the Viewer reports in CSV format\. This section explain
 1. In the **Opening *file name*** dialog box, choose whether to open or save the file\.
 
 **Topics**
-+ [Information About the Reports](#viewer-csv-header)
-+ [Devices Report](#viewer-devices-csv-data)
-+ [Device Trends Report](#viewer-device-trends-csv-data)
-+ [Browsers Report](#viewer-browsers-csv-data)
-+ [Browser Trends Report](#viewer-browser-trends-csv-data)
-+ [Operating Systems Report](#viewer-operating-system-csv-data)
-+ [Operating System Trends Report](#viewer-operating-system-trends-csv-data)
-+ [Locations Report](#viewer-locations-csv-data)
-+ [Location Trends Report](#viewer-location-trends-csv-data)
++ [Information about the reports](#viewer-csv-header)
++ [Devices report](#viewer-devices-csv-data)
++ [Device trends report](#viewer-device-trends-csv-data)
++ [Browsers report](#viewer-browsers-csv-data)
++ [Browser trends report](#viewer-browser-trends-csv-data)
++ [Operating systems report](#viewer-operating-system-csv-data)
++ [Operating system trends report](#viewer-operating-system-trends-csv-data)
++ [Locations report](#viewer-locations-csv-data)
++ [Location trends report](#viewer-location-trends-csv-data)
 
-### Information About the Reports<a name="viewer-csv-header"></a>
+### Information about the reports<a name="viewer-csv-header"></a>
 
 The first few rows of each report includes the following information:
 
@@ -93,16 +93,16 @@ The end of the date range for which you ran the report, in Coordinated Universal
 **GeneratedTimeUTC**  
 The date and time on which you ran the report, in Coordinated Universal Time \(UTC\)\.
 
-**Grouping \(Browsers and Operating Systems Reports Only\)**  
+**Grouping \(browsers and operating systems reports only\)**  
 Whether the data is grouped by the name or by the name and version of the browser or operating system\.
 
 **Granularity**  
 Whether each row in the report represents one hour or one day\. 
 
-**Details \(Locations Report Only\)**  
+**Details \(locations report only\)**  
 Whether requests are listed by country or by U\.S\. state\.
 
-### Devices Report<a name="viewer-devices-csv-data"></a>
+### Devices report<a name="viewer-devices-csv-data"></a>
 
 The report includes the following values:
 
@@ -118,7 +118,7 @@ The number of requests that CloudFront received from each type of device\.
 **RequestsPct**  
 The number of requests that CloudFront received from each type of device as a percentage of the total number of requests that CloudFront received from all devices\.
 
-### Device Trends Report<a name="viewer-device-trends-csv-data"></a>
+### Device trends report<a name="viewer-device-trends-csv-data"></a>
 
 The report includes the following values:
 
@@ -149,7 +149,7 @@ Requests for which the value of the `User-Agent` HTTP header was not associated 
 **Empty**  
 The number of requests that CloudFront received that didn't include a value in the HTTP `User-Agent` header during the period\.
 
-### Browsers Report<a name="viewer-browsers-csv-data"></a>
+### Browsers report<a name="viewer-browsers-csv-data"></a>
 
 The report includes the following values:
 
@@ -172,7 +172,7 @@ The number of requests that CloudFront received from each type of browser\.
 **RequestsPct**  
 The number of requests that CloudFront received from each type of browser as a percentage of the total number of requests that CloudFront received during the time period\.
 
-### Browser Trends Report<a name="viewer-browser-trends-csv-data"></a>
+### Browser trends report<a name="viewer-browser-trends-csv-data"></a>
 
 The report includes the following values:
 
@@ -192,7 +192,7 @@ The remaining columns in the report list the browsers or the browsers and their 
 + **Other** – browsers that CloudFront identified but that aren't among the most popular\. If `Bot/Crawler`, `Empty`, and/or `Unknown` don't appear among the first nine values, then they're also included in `Other`\.
 + **Unknown** – requests for which the value of the `User-Agent` HTTP header was not associated with a standard browser\. Most requests in this category come from custom applications or scripts\.
 
-### Operating Systems Report<a name="viewer-operating-system-csv-data"></a>
+### Operating systems report<a name="viewer-operating-system-csv-data"></a>
 
 The report includes the following values:
 
@@ -215,7 +215,7 @@ The number of requests that CloudFront received from each type of operating syst
 **RequestsPct**  
 The number of requests that CloudFront received from each type of operating system as a percentage of the total number of requests that CloudFront received during the time period\.
 
-### Operating System Trends Report<a name="viewer-operating-system-trends-csv-data"></a>
+### Operating system trends report<a name="viewer-operating-system-trends-csv-data"></a>
 
 The report includes the following values:
 
@@ -235,7 +235,7 @@ The remaining columns in the report list the operating systems or the operating 
 + **Other** – operating systems that CloudFront identified but that aren't among the most popular\. If `Bot/Crawler`, `Empty`, and/or `Unknown` don't appear among the first nine values, then they're also included in `Other`\.
 + **Unknown** – requests for which the operating system isn't specified in the `User-Agent` HTTP header\.
 
-### Locations Report<a name="viewer-locations-csv-data"></a>
+### Locations report<a name="viewer-locations-csv-data"></a>
 
 The report includes the following values:
 
@@ -246,7 +246,7 @@ The ID of the distribution that you ran the report for, or `ALL` if you ran the 
 An alternate domain name \(CNAME\) for the distribution, if any\. If a distribution has no alternate domain names, the list includes an origin domain name for the distribution\.
 
 **LocationCode**  
-The abbreviation for the location that CloudFront received requests from\. For more information about possible values, see the description of Location in [How Data in the Locations Report Is Related to Data in the CloudFront Access Logs](#viewers-reports-data)\.
+The abbreviation for the location that CloudFront received requests from\. For more information about possible values, see the description of Location in [How data in the locations report is related to data in the CloudFront standard logs \(access logs\)](#viewers-reports-data)\.
 
 **LocationName**  
 The name of the location that CloudFront received requests from\.
@@ -260,7 +260,7 @@ The number of requests that CloudFront received from each location as a percenta
 **TotalBytes**  
 The number of bytes that CloudFront served to viewers in this country or state, for the specified distribution and period\.
 
-### Location Trends Report<a name="viewer-location-trends-csv-data"></a>
+### Location trends report<a name="viewer-location-trends-csv-data"></a>
 
 The report includes the following values:
 
@@ -274,9 +274,9 @@ An alternate domain name \(CNAME\) for the distribution, if any\. If a distribut
 The hour or the day that the data applies to, in Coordinated Universal Time \(UTC\)\.
 
 **\(Locations\)**  
-The remaining columns in the report list the locations that CloudFront received requests from\. For more information about possible values, see the description of Location in [How Data in the Locations Report Is Related to Data in the CloudFront Access Logs](#viewers-reports-data)\.
+The remaining columns in the report list the locations that CloudFront received requests from\. For more information about possible values, see the description of Location in [How data in the locations report is related to data in the CloudFront standard logs \(access logs\)](#viewers-reports-data)\.
 
-## How Data in the Locations Report Is Related to Data in the CloudFront Access Logs<a name="viewers-reports-data"></a>
+## How data in the locations report is related to data in the CloudFront standard logs \(access logs\)<a name="viewers-reports-data"></a>
 
 The following list shows how data in the Locations report in the CloudFront console corresponds with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 

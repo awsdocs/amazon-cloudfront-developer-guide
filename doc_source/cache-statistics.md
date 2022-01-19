@@ -1,4 +1,4 @@
-# CloudFront Cache Statistics Reports<a name="cache-statistics"></a>
+# CloudFront cache statistics reports<a name="cache-statistics"></a>
 
 You can use the Amazon CloudFront console to display a graphical representation of statistics related to CloudFront edge locations\. Data for these statistics are drawn from the same source as CloudFront access logs\. You can display charts for a specified date range in the last 60 days, with data points every hour or every day\. You can usually view data about requests that CloudFront received as recently as an hour ago, but data can occasionally be delayed by as much as 24 hours\. 
 
@@ -32,20 +32,20 @@ You don't need to enable access logging to view cache statistics\.<a name="cache
 1. For charts that show data transferred, note that you can change the vertical scale to gigabytes, megabytes, or kilobytes for each chart\.
 
 **Topics**
-+ [Downloading Data in CSV Format](#cache-statistics-csv)
-+ [How Cache Statistics Charts Are Related to Data in the CloudFront Access Logs](#cache-statistics-data)
++ [Downloading data in CSV format](#cache-statistics-csv)
++ [How cache statistics charts are related to data in the CloudFront standard logs \(access logs\)](#cache-statistics-data)
 
-## Downloading Data in CSV Format<a name="cache-statistics-csv"></a>
+## Downloading data in CSV format<a name="cache-statistics-csv"></a>
 
-You can download the Cache Statistics report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="cache-statistics-csv-procedure"></a>
+You can download the cache statistics report in CSV format\. This section explains how to download the report and describes the values in the report\.<a name="cache-statistics-csv-procedure"></a>
 
-**To download the Cache Statistics report in CSV format**
+**To download the cache statistics report in CSV format**
 
 1. While viewing the Cache Statistics report, click **CSV**\.
 
 1. In the **Opening *file name*** dialog box, choose whether to open or save the file\.
 
-### Information About the Report<a name="cache-statistics-csv-header"></a>
+### Information about the report<a name="cache-statistics-csv-header"></a>
 
 The first few rows of the report include the following information:
 
@@ -73,7 +73,7 @@ Whether each row in the report represents one hour or one day\.
 **ViewerLocation**  
 The continent that viewer requests originated from, or `ALL`, if you chose to download the report for all locations\.
 
-### Data in the Cache Statistics Report<a name="cache-statistics-csv-data"></a>
+### Data in the cache statistics report<a name="cache-statistics-csv-data"></a>
 
 The report includes the following values:
 
@@ -122,31 +122,31 @@ The total number of bytes served to viewers by CloudFront in response to all req
 **BytesFromMisses**  
 The number of bytes served to viewers for objects that were not in the edge cache at the time of the request\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
 
-## How Cache Statistics Charts Are Related to Data in the CloudFront Access Logs<a name="cache-statistics-data"></a>
+## How cache statistics charts are related to data in the CloudFront standard logs \(access logs\)<a name="cache-statistics-data"></a>
 
 The following table shows how cache statistics charts in the CloudFront console correspond with values in CloudFront access logs\. For more information about CloudFront access logs, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
 
-**Total Requests**  
+**Total requests**  
 This chart shows the total number of requests for all HTTP status codes \(for example, 200 or 404\) and all methods \(for example, `GET`, `HEAD`, or `POST`\)\. Total requests shown in this chart equal the total number of requests in the access log files for the same time period\.
 
-**Percentage of Viewer Requests by Result Type**  
+**Percentage of viewer requests by result type**  
 This chart shows hits, misses, and errors as a percentage of total viewer requests for the selected CloudFront distribution:  
 + **Hit** – A viewer request for which the object is served from a CloudFront edge cache\. In access logs, these are requests for which the value of `x-edge-response-result-type` is `Hit`\.
 + **Miss** – A viewer request for which the object isn't currently in an edge cache, so CloudFront must get the object from your origin\. In access logs, these are requests for which the value of `x-edge-response-result-type` is `Miss`\.
 + **Error** – A viewer request that resulted in an error, so CloudFront didn't serve the object\. In access logs, these are requests for which the value of `x-edge-response-result-type` is `Error`, `LimitExceeded`, or `CapacityExceeded`\.
 The chart does not include refresh hits—requests for objects that are in the edge cache but that have expired\. In access logs, refresh hits are requests for which the value of `x-edge-response-result-type` is `RefreshHit`\.
 
-**Bytes Transferred to Viewers**  
+**Bytes transferred to viewers**  
 This chart shows two values:  
-+ **Total Bytes** – The total number of bytes served to viewers by CloudFront in response to all requests for all HTTP methods\. In CloudFront access logs, **Total Bytes** is the sum of the values in the `sc-bytes` column for all of the requests during the same time period\.
-+ **Bytes from Misses** – The number of bytes served to viewers for objects that were not in the edge cache at the time of the request\. In CloudFront access logs, **Bytes from Misses** is the sum of the values in the `sc-bytes` column for requests for which the value of `x-edge-result-type` is `Miss`\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
++ **Total bytes** – The total number of bytes served to viewers by CloudFront in response to all requests for all HTTP methods\. In CloudFront access logs, **Total Bytes** is the sum of the values in the `sc-bytes` column for all of the requests during the same time period\.
++ **Bytes from misses** – The number of bytes served to viewers for objects that were not in the edge cache at the time of the request\. In CloudFront access logs, **bytes from misses** is the sum of the values in the `sc-bytes` column for requests for which the value of `x-edge-result-type` is `Miss`\. This value is a good approximation of bytes transferred from your origin to CloudFront edge caches\. However, it excludes requests for objects that are already in the edge cache but that have expired\.
 
-**HTTP Status Codes**  
+**HTTP status codes**  
 This chart shows viewer requests by HTTP status code\. In CloudFront access logs, status codes appear in the `sc-status` column:  
 + **2xx** – The request succeeded\.
 + **3xx** – Additional action is required\. For example, 301 \(Moved Permanently\) means that the requested object has moved to a different location\.
 + **4xx** – The client apparently made an error\. For example, 404 \(Not Found\) means that the client requested an object that could not be found\.
 + **5xx** – The origin server didn't fill the request\. For example, 503 \(Service Unavailable\) means that the origin server is currently unavailable\.
 
-**Percentage of GET Requests that Didn't Finish Downloading**  
+**Percentage of GET requests that didn't finish downloading**  
 This chart shows viewer `GET` requests that didn't finish downloading the requested object as a percentage of total requests\. Typically, downloading an object doesn't complete because the viewer canceled the download, for example, by clicking a different link or by closing the browser\. In CloudFront access logs, these requests have a value of `200` in the `sc-status` column and a value of `Error` in the `x-edge-result-type` column\.
