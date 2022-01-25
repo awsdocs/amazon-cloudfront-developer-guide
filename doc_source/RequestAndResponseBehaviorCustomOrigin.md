@@ -303,7 +303,6 @@ Your origin cannot send more than one 100\-Continue response to CloudFront\. Aft
 
 ### Caching<a name="ResponseCustomCaching"></a>
 + Ensure that the origin server sets valid and accurate values for the `Date` and `Last-Modified` header fields\.
-+ If requests from viewers include the `If-Match` or `If-None-Match` request header fields, set the `ETag` response header field\. If you do not specify an `ETag` value, CloudFront ignores subsequent `If-Match` or `If-None-Match` headers\.
 + CloudFront normally respects a `Cache-Control: no-cache` header in the response from the origin\. For an exception, see [Simultaneous requests for the same object \(traffic spikes\)](#request-custom-traffic-spikes)\.
 
 ### Canceled requests<a name="response-custom-canceled-requests"></a>

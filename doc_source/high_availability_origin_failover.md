@@ -27,10 +27,6 @@ The following diagram illustrates how origin failover works\.
 
 ![\[How origin failover works\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/origingroups-overview.png)
 
-**Important**  
-When the primary origin is an Amazon S3 bucket and CloudFront fails over to a secondary origin that is a custom origin \(not an Amazon S3 bucket\), CloudFront removes any `Set-Cookie` headers that it received in the response from the secondary origin, and does not include them in the response it sends to the viewer\.  
-When both the primary and secondary origins are custom origins and CloudFront fails over to the secondary origin, CloudFront does not remove `Set-Cookie` headers\. It includes the `Set-Cookie` headers it received from the secondary origin in the response it sends to the viewer\.
-
 **Topics**
 + [Creating an origin group](#concept_origin_groups.creating)
 + [Controlling origin timeouts and attempts](#controlling-attempts-and-timeouts)
