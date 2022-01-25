@@ -1,6 +1,6 @@
-# Tracking Configuration Changes with AWS Config<a name="TrackingChanges"></a>
+# Tracking configuration changes with AWS Config<a name="TrackingChanges"></a>
 
-You can use AWS Config to record configuration changes for CloudFront distribution settings changes\. For example, you can capture changes to distribution states, price classes, origins, geo restriction settings, and Lambda@Edge configurations\. 
+You can use AWS Config to record configuration changes for CloudFront distribution settings changes\. For example, you can capture changes to distribution states, price classes, origins, geographic restriction settings, and Lambda@Edge configurations\.
 
 **Note**  
 AWS Config does not record key–value tags for CloudFront distributions\.
@@ -32,7 +32,7 @@ To set up AWS Config with CloudFront by using the AWS CLI or by using an API, se
 + **Use the AWS CLI:** [Setting up AWS Config with the AWS CLI](https://docs.aws.amazon.com/config/latest/developerguide/gs-cli.html) in the *AWS Config Developer Guide*
 + **Use an API:** The [ StartConfigurationRecorder](https://docs.aws.amazon.com/config/latest/APIReference/API_StartConfigurationRecorder.html) action and other information in the *AWS Config API Reference*
 
-## View CloudFront Configuration History<a name="TrackingChangesGetHistory"></a>
+## View CloudFront configuration history<a name="TrackingChangesGetHistory"></a>
 
 After AWS Config starts recording configuration changes to your distributions, you can get the configuration history of any distribution that you have configured for CloudFront\.
 

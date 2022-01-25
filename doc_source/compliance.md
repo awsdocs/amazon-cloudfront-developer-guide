@@ -21,7 +21,7 @@ This section provides best practices and recommendations for compliance when you
 
 If you run PCI\-compliant or HIPAA\-compliant workloads that are based on the [AWS shared responsibility model](https://aws.amazon.com/compliance/shared-responsibility-model/), we recommend that you log your CloudFront usage data for the last 365 days for future auditing purposes\. To log usage data, you can do the following:
 + Enable CloudFront access logs\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md)\.
-+ Capture requests that are sent to the CloudFront API\. For more information, see [Using AWS CloudTrail to Capture Requests Sent to the CloudFront API](logging_using_cloudtrail.md)\.
++ Capture requests that are sent to the CloudFront API\. For more information, see [Using AWS CloudTrail to capture requests sent to the CloudFront API](logging_using_cloudtrail.md)\.
 
 In addition, see the following for details about how CloudFront is compliant with the PCI DSS and SOC standards\.
 

@@ -205,7 +205,7 @@ Each entry in a log file gives details about a single viewer request\. The log f
   The URL encoding standard is defined in [RFC 1738](https://tools.ietf.org/html/rfc1738.html)\.
 
 
-| URL\-Encoded Value | Character | 
+| URL\-Encoded value | Character | 
 | --- | --- | 
 | %3C | < | 
 | %3E | > | 

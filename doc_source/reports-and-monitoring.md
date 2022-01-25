@@ -7,4 +7,4 @@ This section includes topics that provide details on your options for reports an
 + [CloudFront reports in the console](reports.md)
 + [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)
 + [CloudFront logging](logging.md)
-+ [Tracking Configuration Changes with AWS Config](TrackingChanges.md)
++ [Tracking configuration changes with AWS Config](TrackingChanges.md)
