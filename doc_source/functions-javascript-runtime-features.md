@@ -118,7 +118,7 @@ The following ES 9 methods on strings are supported:
 + `prototype.trimStart`
 + `prototype.trimEnd`
 The following nonstandard methods on strings are supported:  
-+ `prototype.bytesFrom(array | string, encoding)`
++ `bytesFrom(array | string, encoding)`
 
   Creates a byte string from an array of octets or an encoded string\. The string encoding options are `hex`, `base64`, and `base64url`\.
 + `prototype.fromBytes(start[, end])`
