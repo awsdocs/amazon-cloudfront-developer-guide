@@ -19,7 +19,7 @@ CloudFront Functions publishes the following four metrics to CloudWatch:
 + **Invocations** \(`FunctionInvocations`\) – The number of times the function was started \(invoked\) in a given time period\.
 + **Validation errors** \(`FunctionValidationErrors`\) – The number of validation errors produced by the function in a given time period\. Validation errors occur when the function runs successfully but returns invalid data \(an invalid [event object](functions-event-structure.md)\)\.
 + **Execution errors** \(`FunctionExecutionErrors`\) – The number of execution errors that occurred in a given time period\. Execution errors occur when the function fails to complete successfully\.
-+ **Compute utilization** \(`ComputeUtilization`\) – The amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a value of 35 means that the function completed in 35% of the maximum allowed time\. This metric is a number between 0 and 100\.
++ **Compute utilization** \(`FunctionComputeUtilization`\) – The amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a value of 35 means that the function completed in 35% of the maximum allowed time\. This metric is a number between 0 and 100\.
 
 To view these metrics in the CloudFront console, go to the [Monitoring page](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring)\. To view graphs for a specific function, choose **Functions**, select the function, and then choose **View function metrics**\.
 
