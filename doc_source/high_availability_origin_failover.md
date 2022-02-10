@@ -57,7 +57,7 @@ CloudFront fails over to the secondary origin only when the HTTP method of the v
 
 1. Choose **Create origin group**\.
 
-For information about specifying an origin group for a distribution, see [Origin ID](distribution-web-values-specify.md#DownloadDistValuesId)\.
+For information about specifying an origin group for a distribution, see [Origin name](distribution-web-values-specify.md#DownloadDistValuesId)\.
 
 ## Controlling origin timeouts and attempts<a name="controlling-attempts-and-timeouts"></a>
 

@@ -9,7 +9,7 @@ For more information about creating or updating a distribution by using the Clou
 The following values apply to all types of origins:
 + [Origin domain name](#DownloadDistValuesDomainName)
 + [Origin path](#DownloadDistValuesOriginPath)
-+ [Origin ID](#DownloadDistValuesId)
++ [Origin name](#DownloadDistValuesId)
 + [Origin connection attempts](#origin-connection-attempts)
 + [Origin connection timeout](#origin-connection-timeout)
 + [Origin custom headers](#DownloadDistValuesOriginCustomHeaders)
@@ -147,9 +147,9 @@ When a user enters **example\.com/index\.html** in a browser, CloudFront sends a
 
 When a user enters **example\.com/acme/index\.html** in a browser, CloudFront sends a request to Amazon S3 for **DOC\-EXAMPLE\-BUCKET/production/acme/index\.html**\.
 
-### Origin ID<a name="DownloadDistValuesId"></a>
+### Origin name<a name="DownloadDistValuesId"></a>
 
-A string that uniquely distinguishes this origin or origin group in this distribution\. If you create cache behaviors in addition to the default cache behavior, you use the ID that you specify here to identify the origin or origin group that you want CloudFront to route a request to when the request matches the path pattern for that cache behavior\. 
+A string that uniquely identifies this origin or origin group in this distribution\. If you create cache behaviors in addition to the default cache behavior, you use the name that you specify here to identify the origin or origin group that you want CloudFront to route a request to when the request matches the path pattern for that cache behavior\.
 
 For more information, see the following:
 + **Origins that you can specify:** [Using CloudFront origin groups](DownloadDistS3AndCustomOrigins.md#concept_origin_groups)
