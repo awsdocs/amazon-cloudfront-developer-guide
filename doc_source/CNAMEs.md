@@ -154,8 +154,7 @@ Use the associate\-alias command in the AWS CLI to move the alternate domain nam
 
 **If the source and target distributions are in different AWS accounts**  
 If you have access to the source distribution, the alternate domain name is *not* an apex domain \(also called a root domain, like `example.com`\), and you are not already using a wildcard that overlaps with that alternate domain name, use a wildcard to move the alternate domain name\. For more information, see [Use a wildcard to move an alternate domain name](#alternate-domain-names-move-use-wildcard)\.  
-If you don’t have access to the source distribution’s AWS account, you can try to use the `associate-alias` command in the AWS CLI to move the alternate domain name\. If the source distribution is disabled, you can move the alternate domain name\. For more information, see [Use associate\-alias to move an alternate domain name](#alternate-domain-names-move-associate-alias)\.  
-If the alternate domain name that you’re moving is an apex domain or you don’t have access to the source distribution’s AWS account, contact AWS Support\. For more information, see [Contact AWS Support to move an alternate domain name](#alternate-domain-names-move-contact-support)\.
+If you don’t have access to the source distribution’s AWS account, you can try using the associate\-alias command in the AWS CLI to move the alternate domain name\. If the source distribution is disabled, you can move the alternate domain name\. For more information, see [Use associate\-alias to move an alternate domain name](#alternate-domain-names-move-associate-alias)\. If the associate\-alias command doesn’t work, contact AWS Support\. For more information, see [Contact AWS Support to move an alternate domain name](#alternate-domain-names-move-contact-support)\.
 
 #### Use associate\-alias to move an alternate domain name<a name="alternate-domain-names-move-associate-alias"></a>
 
@@ -204,7 +203,7 @@ Even after you update the DNS settings, the alternate domain name is still serve
 
 #### Contact AWS Support to move an alternate domain name<a name="alternate-domain-names-move-contact-support"></a>
 
-If the alternate domain name that you’re moving is an apex domain, the source and target distributions are in different AWS accounts, and you don’t have access to the source distribution’s AWS account or can’t disable the source distribution, you can contact AWS Support to move the alternate domain name\.
+If the source and target distributions are in different AWS accounts, and you don’t have access to the source distribution’s AWS account or can’t disable the source distribution, you can contact AWS Support to move the alternate domain name\.
 
 **To contact AWS Support to move an alternate domain name**
 
