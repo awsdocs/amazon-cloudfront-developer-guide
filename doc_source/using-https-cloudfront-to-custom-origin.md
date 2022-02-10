@@ -54,9 +54,11 @@ You can use an SSL/TLS certificate from the following sources on your custom ori
 + If your origin is an Elastic Load Balancing load balancer, you can use a certificate provided by AWS Certificate Manager \(ACM\)\. You also can use a certificate that is signed by a trusted third\-party certificate authority and imported into ACM\.
 + For origins other than Elastic Load Balancing load balancers, you must use a certificate that is signed by a trusted third\-party certificate authority \(CA\), for example, Comodo, DigiCert, or Symantec\.
 
-When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted certificate authority\. CloudFront supports the same certificate authorities that Mozilla does\. For the current list, see [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)\. You can't use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
+The certificate returned from the origin must include one of the following domain names:
++ The domain name in the origin’s **Origin domain** field \(the `DomainName` field in the CloudFront API\)\.
++ The domain name in the `Host` header, if the cache behavior is configured to forward the `Host` header to the origin\.
+
+When CloudFront uses HTTPS to communicate with your origin, CloudFront verifies that the certificate was issued by a trusted certificate authority\. CloudFront supports the same certificate authorities that Mozilla does\. For the current list, see [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)\. You can’t use a self\-signed certificate for HTTPS communication between CloudFront and your origin\.
 
 **Important**  
-If the origin server returns an expired certificate, an invalid certificate, or a self\-signed certificate, or if the origin server returns the certificate chain in the wrong order, CloudFront drops the TCP connection, returns HTTP status code 502 \(Bad Gateway\), and sets the `X-Cache` header to `Error from cloudfront`\. Also, if the full chain of certificates, including the intermediate certificate, is not present, CloudFront drops the TCP connection\. 
-
-The certificate returned from the origin must cover the domain that you specified for **Origin Domain Name** for the corresponding origin in your distribution\. In addition, if you configured CloudFront to forward the `Host` header to your origin, the origin must respond with a certificate matching the domain in the `Host` header\.
+If the origin server returns an expired certificate, an invalid certificate, or a self\-signed certificate, or if the origin server returns the certificate chain in the wrong order, CloudFront drops the TCP connection, returns HTTP status code 502 \(Bad Gateway\) to the viewer, and sets the `X-Cache` header to `Error from cloudfront`\. Also, if the full chain of certificates, including the intermediate certificate, is not present, CloudFront drops the TCP connection\.
