@@ -434,7 +434,12 @@ For the current maximum number of headers that you can whitelist for each cache 
 
 If your origin server is adding a `Cache-Control` header to your objects to control how long the objects stay in the CloudFront cache and if you don't want to change the `Cache-Control` value, choose **Use Origin Cache Headers**\.
 
-To specify a minimum and maximum time that your objects stay in the CloudFront cache regardless of `Cache-Control` headers, and a default time that your objects stay in the CloudFront cache when the `Cache-Control` header is missing from an object, choose **Customize**\. Then specify values in the **Minimum TTL**, **Default TTL**, and **Maximum TTL** fields\.
+Choose **Customize** to specify:
++ a minimum time that your objects stay in the CloudFront cache regardless of `Cache-Control` headers 
++ a maximum time that your objects stay in the CloudFront cache when the `Cache-Control` header is provided in an object
++ a default time that your objects stay in the CloudFront cache when the `Cache-Control` header is missing from an object
+
+Then specify values in the **Minimum TTL**, **Default TTL**, and **Maximum TTL** fields\.
 
 For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.
 
