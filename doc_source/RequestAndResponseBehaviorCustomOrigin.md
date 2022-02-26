@@ -338,7 +338,7 @@ CloudFront removes or updates the following header fields before forwarding the 
 + `Vary` – Note the following:
   + If you configure CloudFront to forward any of the device\-specific headers to your origin \(`CloudFront-Is-Desktop-Viewer`, `CloudFront-Is-Mobile-Viewer`, `CloudFront-Is-SmartTV-Viewer`, `CloudFront-Is-Tablet-Viewer`\) and you configure your origin to return `Vary:User-Agent` to CloudFront, CloudFront returns `Vary:User-Agent` to the viewer\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\.
   + If you configure your origin to include either `Accept-Encoding` or `Cookie` in the `Vary` header, CloudFront includes the values in the response to the viewer\.
-  + If you configure CloudFront to forward a whitelist of headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those values to the viewer\.
+  + If you configure CloudFront to forward headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those values to the viewer\.
   + For information about how CloudFront processes a value of `*` in the `Vary` header, see [Content negotiation](#ResponseCustomContentNegotiation)\.
   + If you configure your origin to include any other values in the `Vary` header, CloudFront removes the values before returning the response to the viewer\.
 + `Via` – CloudFront sets the value to the following in the response to the viewer:
