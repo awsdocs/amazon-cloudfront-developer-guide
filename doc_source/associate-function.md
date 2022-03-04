@@ -1,6 +1,6 @@
 # Associating functions with distributions<a name="associate-function"></a>
 
-To use a function in CloudFront Functions with a CloudFront distribution, you associate the function with one or more cache behaviors in the distribution\. You can associate a function with multiple cache behaviors in multiple distributions\. Before you associate a function, you must [publish it](publish-function.md) to the `LIVE` stage\.
+To use a function in CloudFront Functions with a CloudFront distribution, you associate the function with one or more cache behaviors in the distribution\. You can associate a function with multiple cache behaviors in [multiple distributions](cloudfront-limits.md#limits-functions)\. Before you associate a function, you must [publish it](publish-function.md) to the `LIVE` stage\.
 
 When you associate a function with a cache behavior, you must choose an *event type*\. The event type determines when CloudFront Functions runs the function\. There are two event types to choose from:
 
@@ -10,7 +10,8 @@ For more information about event types, see [CloudFront events that can trigger 
 
 You can associate a function with a distribution in the CloudFront console or with the AWS CLI\.
 
-## Associating functions with distributions \(console\)<a name="associate-function-console"></a>
+------
+#### [ Console ]
 
 You can use the CloudFront console to associate a function with an existing cache behavior in an existing CloudFront distribution\. For more information about creating a distribution, see [Creating a distribution](distribution-web-creating-console.md)\.
 
@@ -37,7 +38,8 @@ When successful, you see a banner at the top of the page that says ***Function n
 
 The distribution’s `Status` changes to `InProgress` while the distribution is redeployed\. As soon as the new distribution configuration reaches a CloudFront edge location, that edge location begins using the associated function\. When the distribution is fully deployed, the `Status` changes back to `Deployed`, which indicates that the associated CloudFront function is live in all CloudFront edge locations worldwide\. This typically takes a few minutes\.
 
-## Associating functions with distributions \(AWS CLI\)<a name="associate-function-cli"></a>
+------
+#### [ CLI ]
 
 You can associate a function with an existing cache behavior, with a new cache behavior in an existing distribution, or with a new cache behavior in a new distribution\. The following procedure shows how to associate a function with an existing cache behavior\. You can associate a function with a new cache behavior \(in an existing or new distribution\) using a process similar to what’s described here\.
 
@@ -110,3 +112,5 @@ If you’re using version 1 of the AWS CLI, you can follow a similar process usi
    ```
 
    When you update a distribution, the distribution’s `Status` changes to `InProgress` while the distribution is redeployed\. As soon as the new distribution configuration reaches a CloudFront edge location, that edge location begins using the associated function\. When the distribution is fully deployed, the `Status` changes back to `Deployed`, which indicates that the associated CloudFront function is live in all CloudFront edge locations worldwide\. This typically takes a few minutes\.
+
+------

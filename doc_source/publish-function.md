@@ -9,7 +9,8 @@ If no cache behaviors are associated with the function, publishing it enables yo
 
 You can publish a function in the CloudFront console or with the AWS CLI\.
 
-## Publishing functions \(console\)<a name="publish-function-console"></a>
+------
+#### [ Console ]
 
 To publish your function, you can use the CloudFront console\. The console also shows the CloudFront distributions that are associated with the function\.
 
@@ -23,7 +24,8 @@ To publish your function, you can use the CloudFront console\. The console also 
 
 When successful, you see a banner at the top of the page that says ***Function name* published successfully**\. You can also choose the **Build** tab and then choose **Live** to see the live version of the function code\.
 
-## Publishing functions \(AWS CLI\)<a name="publish-function-cli"></a>
+------
+#### [ CLI ]
 
 To publish a function, use the aws cloudfront publish\-function command in the AWS CLI, as in the following example\. To use this example, do the following:
 + Replace *`ExampleFunction`* with the name of the function that you’re publishing\.
@@ -54,3 +56,5 @@ FunctionSummary:
   Name: ExampleFunction
   Status: UNASSOCIATED
 ```
+
+------
