@@ -28,7 +28,7 @@ You can use custom headers to control access to content\. By configuring your or
 ## Configuring CloudFront to add custom headers to origin requests<a name="add-origin-custom-headers-configure"></a>
 
 To configure a distribution to add custom headers to requests that it sends to your origin, update the origin configuration using one of the following methods:
-+ **CloudFront console** – When you create or update a distribution, specify header names and values in the **Origin Custom Headers** settings\. For more information, see [Creating a Distribution](distribution-web-creating-console.md) or [Updating a Distribution](HowToUpdateDistribution.md)\.
++ **CloudFront console** – When you create or update a distribution, specify header names and values in the **Origin Custom Headers** settings\. For more information, see [Creating a distribution](distribution-web-creating-console.md) or [Updating a distribution](HowToUpdateDistribution.md)\.
 + **CloudFront API** – For each origin that you want to add custom headers to, specify the header names and values in the `CustomHeaders` field inside `Origin`\. For more information, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) or [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\.
 
 If the header names and values that you specify are not already present in the viewer request, CloudFront adds them to the origin request\. If a header is present, CloudFront overwrites the header value before forwarding the request to the origin\.

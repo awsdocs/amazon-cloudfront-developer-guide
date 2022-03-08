@@ -95,11 +95,11 @@ If you want CloudFront to respect cross\-origin resource sharing settings, confi
 ### Encryption<a name="RequestCustomEncryption"></a>
 
 You can require viewers to use HTTPS to send requests to CloudFront and require CloudFront to forward requests to your custom origin by using the protocol that is used by the viewer\. For more information, see the following distribution settings:
-+ [Viewer Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)
-+ [Origin Protocol Policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)
++ [Viewer protocol policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)
++ [Origin protocol policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)
 
 CloudFront forwards HTTPS requests to the origin server using the SSLv3, TLSv1\.0, TLSv1\.1, and TLSv1\.2 protocols\. For custom origins, you can choose the SSL protocols that you want CloudFront to use when communicating with your origin:
-+ If you're using the CloudFront console, choose protocols by using the **Origin SSL Protocols** check boxes\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\. 
++ If you're using the CloudFront console, choose protocols by using the **Origin SSL Protocols** check boxes\. For more information, see [Creating a distribution](distribution-web-creating-console.md)\. 
 + If you're using the CloudFront API, specify protocols by using the `OriginSslProtocols` element\. For more information, see [ OriginSslProtocols](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_OriginSslProtocols.html) and [ DistributionConfig](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html) in the *Amazon CloudFront API Reference*\.
 
 If the origin is an Amazon S3 bucket, CloudFront always uses TLSv1\.2\.
@@ -215,7 +215,7 @@ The performance improvement of OCSP stapling is more pronounced when CloudFront 
 
 When CloudFront gets a response from your origin, it tries to maintain the connection for several seconds in case another request arrives during that period\. Maintaining a persistent connection saves the time required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. 
 
-For more information, including how to configure the duration of persistent connections, see [Origin Keep\-alive Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information, including how to configure the duration of persistent connections, see [Origin keep\-alive timeout](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 ### Protocols<a name="RequestCustomProtocols"></a>
 
@@ -230,7 +230,7 @@ If you specify **Match Viewer**, CloudFront forwards requests to the origin serv
 **Important**  
 If CloudFront forwards a request to the origin using the HTTPS protocol, and if the origin server returns an invalid certificate or a self\-signed certificate, CloudFront drops the TCP connection\.
 
-For information about how to update a distribution using the CloudFront console, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
+For information about how to update a distribution using the CloudFront console, see [Updating a distribution](HowToUpdateDistribution.md)\. For information about how to update a distribution using the CloudFront API, go to [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\. 
 
 ### Query strings<a name="RequestCustomQueryStrings"></a>
 
@@ -256,7 +256,7 @@ CloudFront behavior depends on the HTTP method of the viewer request:
 + `GET` and `HEAD` requests – If the origin doesn’t respond or stops responding within the duration of the response timeout, CloudFront drops the connection\. If the specified number of [origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts) is more than 1, CloudFront tries again to get a complete response\. CloudFront tries up to 3 times, as determined by the value of the *origin connection attempts* setting\. If the origin doesn’t respond during the final attempt, CloudFront doesn’t try again until it receives another request for content on the same origin\.
 + `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn’t respond within 30 seconds, CloudFront drops the connection and doesn’t try again to contact the origin\. The client can resubmit the request if necessary\.
 
-For more information, including how to configure the origin response timeout, see [Origin Response Timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
+For more information, including how to configure the origin response timeout, see [Origin response timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
 
 ### Simultaneous requests for the same object \(traffic spikes\)<a name="request-custom-traffic-spikes"></a>
 
@@ -303,7 +303,6 @@ Your origin cannot send more than one 100\-Continue response to CloudFront\. Aft
 
 ### Caching<a name="ResponseCustomCaching"></a>
 + Ensure that the origin server sets valid and accurate values for the `Date` and `Last-Modified` header fields\.
-+ If requests from viewers include the `If-Match` or `If-None-Match` request header fields, set the `ETag` response header field\. If you do not specify an `ETag` value, CloudFront ignores subsequent `If-Match` or `If-None-Match` headers\.
 + CloudFront normally respects a `Cache-Control: no-cache` header in the response from the origin\. For an exception, see [Simultaneous requests for the same object \(traffic spikes\)](#request-custom-traffic-spikes)\.
 
 ### Canceled requests<a name="response-custom-canceled-requests"></a>
@@ -339,7 +338,7 @@ CloudFront removes or updates the following header fields before forwarding the 
 + `Vary` – Note the following:
   + If you configure CloudFront to forward any of the device\-specific headers to your origin \(`CloudFront-Is-Desktop-Viewer`, `CloudFront-Is-Mobile-Viewer`, `CloudFront-Is-SmartTV-Viewer`, `CloudFront-Is-Tablet-Viewer`\) and you configure your origin to return `Vary:User-Agent` to CloudFront, CloudFront returns `Vary:User-Agent` to the viewer\. For more information, see [Configuring caching based on the device type](header-caching.md#header-caching-web-device)\.
   + If you configure your origin to include either `Accept-Encoding` or `Cookie` in the `Vary` header, CloudFront includes the values in the response to the viewer\.
-  + If you configure CloudFront to forward a whitelist of headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those values to the viewer\.
+  + If you configure CloudFront to forward headers to your origin, and if you configure your origin to return the header names to CloudFront in the `Vary` header \(for example, `Vary:Accept-Charset,Accept-Language`\), CloudFront returns the `Vary` header with those values to the viewer\.
   + For information about how CloudFront processes a value of `*` in the `Vary` header, see [Content negotiation](#ResponseCustomContentNegotiation)\.
   + If you configure your origin to include any other values in the `Vary` header, CloudFront removes the values before returning the response to the viewer\.
 + `Via` – CloudFront sets the value to the following in the response to the viewer:

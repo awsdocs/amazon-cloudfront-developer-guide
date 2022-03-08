@@ -1,21 +1,21 @@
-# Using Amazon S3 Origins, MediaPackage Channels, and Custom Origins for Web Distributions<a name="DownloadDistS3AndCustomOrigins"></a>
+# Using Amazon S3 origins, MediaPackage channels, and custom origins for CloudFront distributions<a name="DownloadDistS3AndCustomOrigins"></a>
 
 When you create a distribution, you specify where CloudFront sends requests for the files\. CloudFront supports using several AWS resources as origins\. For example, you can specify an Amazon S3 bucket or a MediaStore container, a MediaPackage channel, or a custom origin, such as an Amazon EC2 instance or your own HTTP web server\.
 
 **Topics**
-+ [Using Amazon S3 Buckets for Your Origin](#concept_S3Origin)
-+ [Using Amazon S3 Buckets Configured as Website Endpoints for Your Origin](#concept_S3Origin_website)
-+ [Using a MediaStore Container or a MediaPackage Channel for Your Origin](#concept_AWS_Media)
-+ [Using Amazon EC2 or Other Custom Origins](#concept_CustomOrigin)
-+ [Using CloudFront Origin Groups](#concept_origin_groups)
-+ [Adding CloudFront When You're Already Distributing Content from Amazon S3](#adding-cloudfront-to-s3)
-+ [Moving an Amazon S3 Bucket to a Different Region](#move-s3-bucket-different-region)
++ [Using Amazon S3 buckets for your origin](#concept_S3Origin)
++ [Using Amazon S3 buckets configured as website endpoints for your origin](#concept_S3Origin_website)
++ [Using a MediaStore container or a MediaPackage channel for your origin](#concept_AWS_Media)
++ [Using Amazon EC2 or other custom origins](#concept_CustomOrigin)
++ [Using CloudFront origin groups](#concept_origin_groups)
++ [Adding CloudFront when you’re already distributing content from Amazon S3](#adding-cloudfront-to-s3)
++ [Moving an Amazon S3 bucket to a different region](#move-s3-bucket-different-region)
 
-## Using Amazon S3 Buckets for Your Origin<a name="concept_S3Origin"></a>
+## Using Amazon S3 buckets for your origin<a name="concept_S3Origin"></a>
 
 When you use Amazon S3 as an origin for your distribution, you place any objects that you want CloudFront to deliver in an Amazon S3 bucket\. You can use any method that is supported by Amazon S3 to get your objects into Amazon S3, for example, the Amazon S3 console or API, or a third\-party tool\. You can create a hierarchy in your bucket to store the objects, just as you would with any other Amazon S3 bucket\.
 
-Using an existing Amazon S3 bucket as your CloudFront origin server doesn't change the bucket in any way; you can still use it as you normally would to store and access Amazon S3 objects at the standard Amazon S3 price\. You incur regular Amazon S3 charges for storing the objects in the bucket\. For more information about the charges to use CloudFront, see [CloudFront Reports in the Console](reports.md)\.
+Using an existing Amazon S3 bucket as your CloudFront origin server doesn't change the bucket in any way; you can still use it as you normally would to store and access Amazon S3 objects at the standard Amazon S3 price\. You incur regular Amazon S3 charges for storing the objects in the bucket\. For more information about the charges to use CloudFront, see [CloudFront reports in the console](reports.md)\.
 
 **Important**  
 For your bucket to work with CloudFront, the name must conform to DNS naming requirements\. For more information, go to [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) in the *Amazon Simple Storage Service User Guide*\.
@@ -37,7 +37,7 @@ Do not specify the bucket using the following formats:
 + The Amazon S3 path style, `s3.amazonaws.com/bucket-name`
 + The Amazon S3 CNAME, if any
 
-## Using Amazon S3 Buckets Configured as Website Endpoints for Your Origin<a name="concept_S3Origin_website"></a>
+## Using Amazon S3 buckets configured as website endpoints for your origin<a name="concept_S3Origin_website"></a>
 
 You can set up an Amazon S3 bucket that is configured as a website endpoint as custom origin with CloudFront\.
 + When you configure your CloudFront distribution, for the origin, enter the Amazon S3 static website hosting endpoint for your bucket\. This value appears in the Amazon S3 console, on the **Properties** tab, in the **Static website hosting** pane\. For example:
@@ -53,15 +53,15 @@ Using an Amazon S3 bucket as your CloudFront origin server doesn’t change it i
 **Note**  
 If you use the CloudFront API to create your distribution with an Amazon S3 bucket that is configured as a website endpoint, you must configure it by using `CustomOriginConfig`, even though the website is hosted in an Amazon S3 bucket\. For more information about creating distributions by using the CloudFront API, see [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
-## Using a MediaStore Container or a MediaPackage Channel for Your Origin<a name="concept_AWS_Media"></a>
+## Using a MediaStore container or a MediaPackage channel for your origin<a name="concept_AWS_Media"></a>
 
 To stream video by using CloudFront, you can set up an Amazon S3 bucket that is configured as a MediaStore container, or create a channel and endpoints with MediaPackage\. Then you create and configure a distribution in CloudFront to stream the video\.
 
 For more information and step\-by\-step instructions, see the following topics:
-+ [Serving Video Using AWS Elemental MediaStore as the Origin](live-streaming.md#video-streaming-mediastore)
-+ [Serving Live Video Formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)
++ [Serving video using AWS Elemental MediaStore as the origin](live-streaming.md#video-streaming-mediastore)
++ [Serving live video formatted with AWS Elemental MediaPackage](live-streaming.md#live-streaming-with-mediapackage)
 
-## Using Amazon EC2 or Other Custom Origins<a name="concept_CustomOrigin"></a>
+## Using Amazon EC2 or other custom origins<a name="concept_CustomOrigin"></a>
 
 A custom origin is an HTTP server, for example, a web server\. The HTTP server can be an Amazon Elastic Compute Cloud \(Amazon EC2\) instance or an HTTP server that you manage privately\. An Amazon S3 origin configured as a website endpoint is also considered a custom origin\.
 
@@ -71,7 +71,7 @@ Most CloudFront features are supported when you use a custom origin with the fol
 + **Private content**—Although you can use a signed URL to distribute content from a custom origin, for CloudFront to access the custom origin, the origin must remain publicly accessible\. For more information, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 
 Follow these guidelines for using Amazon EC2 instances and other custom origins with CloudFront\. 
-+ Host and serve the same content on all servers that are serving content for the same CloudFront origin\. For more information, see [Origin Settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in the [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) topic\.
++ Host and serve the same content on all servers that are serving content for the same CloudFront origin\. For more information, see [Origin settings](distribution-web-values-specify.md#DownloadDistValuesOrigin) in the [Values that you specify when you create or update a distribution](distribution-web-values-specify.md) topic\.
 + Log the `X-Amz-Cf-Id` header entries on all servers; CloudFront requires this information for debugging\.
 + Restrict access requests to the HTTP and HTTPS ports that your custom origin listens on\.
 + Synchronize the clocks of all servers in your implementation\. Note that CloudFront uses Coordinated Universal Time \(UTC\) for signed URLs and signed cookies, for access logs, and reports\. In addition, if you monitor CloudFront activity using CloudWatch metrics, note that CloudWatch also uses UTC\.
@@ -85,20 +85,20 @@ If you use Amazon EC2 for your custom origins, we recommend that you do the foll
 
 1. Use an Elastic Load Balancing load balancer to handle traffic across multiple Amazon EC2 instances and to isolate your application from changes to Amazon EC2 instances\. For example, if you use a load balancer, you can add and delete Amazon EC2 instances without changing your application\. For more information, see the [Elastic Load Balancing documentation](http://aws.amazon.com/documentation/elasticloadbalancing/)\.
 
-1. When you create your CloudFront distribution, specify the URL of the load balancer for the domain name of your origin server\. For more information, see [Creating a Distribution](distribution-web-creating-console.md)\.
+1. When you create your CloudFront distribution, specify the URL of the load balancer for the domain name of your origin server\. For more information, see [Creating a distribution](distribution-web-creating-console.md)\.
 
-## Using CloudFront Origin Groups<a name="concept_origin_groups"></a>
+## Using CloudFront origin groups<a name="concept_origin_groups"></a>
 
 You can specify an origin group for your CloudFront origin if, for example, you want to configure origin failover for scenarios when you need high availability\. Use origin failover to designate a primary origin for CloudFront plus a second origin that CloudFront automatically switches to when the primary origin returns specific HTTP status code failure responses\. 
 
 To see the steps for setting up an origin group and for more information, see [Optimizing high availability with CloudFront origin failover](high_availability_origin_failover.md)\.
 
-## Adding CloudFront When You're Already Distributing Content from Amazon S3<a name="adding-cloudfront-to-s3"></a>
+## Adding CloudFront when you’re already distributing content from Amazon S3<a name="adding-cloudfront-to-s3"></a>
 
 If you store your objects in an Amazon S3 bucket, you can either have users get your objects directly from S3, or you can configure CloudFront to get your objects from S3 and then distribute them to your users\.
 
 **Note**  
-To learn more about using Amazon S3 buckets for your origin with CloudFront, including when you have an Amazon S3 bucket configured as a website endpoint, see [Using Amazon S3 Origins, MediaPackage Channels, and Custom Origins for Web Distributions](#DownloadDistS3AndCustomOrigins)\.
+To learn more about using Amazon S3 buckets for your origin with CloudFront, including when you have an Amazon S3 bucket configured as a website endpoint, see [Using Amazon S3 origins, MediaPackage channels, and custom origins for CloudFront distributions](#DownloadDistS3AndCustomOrigins)\.
 
 Using CloudFront can be more cost effective if your users access your objects frequently because, at higher usage, the price for CloudFront data transfer is lower than the price for Amazon S3 data transfer\. In addition, downloads are faster with CloudFront than with Amazon S3 alone because your objects are stored closer to your users\.
 
@@ -109,7 +109,7 @@ If you currently distribute content directly from your Amazon S3 bucket using yo
 
 **To add CloudFront when you're already distributing your content from Amazon S3**
 
-1. Create a CloudFront distribution\. For more information, see [Steps for Creating a Distribution \(Overview\)](distribution-web-creating.md)\.
+1. Create a CloudFront distribution\. For more information, see [Steps for creating a distribution \(overview\)](distribution-web-creating.md)\.
 
    When you create the distribution, specify the name of your Amazon S3 bucket as the origin server\.
 **Important**  
@@ -119,7 +119,7 @@ For your bucket to work with CloudFront, the name must conform to DNS naming req
 
 1. Create a test webpage that contains links to publicly readable objects in your Amazon S3 bucket, and test the links\. For this initial test, use the CloudFront domain name of your distribution in the object URLs, for example, `http://d111111abcdef8.cloudfront.net/images/image.jpg`\. 
 
-   For more information about the format of CloudFront URLs, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.
+   For more information about the format of CloudFront URLs, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.
 
 1. If you're using Amazon S3 CNAMEs, your application uses your domain name \(for example, example\.com\) to reference the objects in your Amazon S3 bucket instead of using the name of your bucket \(for example, *DOC\-EXAMPLE\-BUCKET1*\.s3\.amazonaws\.com\)\. To continue using your domain name to reference objects instead of using the CloudFront domain name for your distribution \(for example, d111111abcdef8\.cloudfront\.net\), you need to update your settings with your DNS service provider\.
 
@@ -139,7 +139,7 @@ If you're using Route 53 as your DNS service, you can use either a CNAME resour
 
    After you update the CNAME resource record set, it can take up to 72 hours for the change to propagate throughout the DNS system, although it usually happens faster\. During this time, some requests for your content will continue to be routed to your Amazon S3 bucket, and others will be routed to CloudFront\. 
 
-## Moving an Amazon S3 Bucket to a Different Region<a name="move-s3-bucket-different-region"></a>
+## Moving an Amazon S3 bucket to a different region<a name="move-s3-bucket-different-region"></a>
 
 If you're using Amazon S3 as the origin for a CloudFront distribution and you move the bucket to a different Region, CloudFront can take up to an hour to update its records to include the change of Region when both of the following are true:
 + You're using a CloudFront origin access identity \(OAI\) to restrict access to the bucket\.

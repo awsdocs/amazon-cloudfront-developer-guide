@@ -93,7 +93,7 @@ Make sure to choose the bucket with **s3bucketroot** in its name, not **s3bucket
 
 1. Delete the website’s default content, then upload your own\.
 **Note**  
-If you viewed your website with this solution’s default content, then it’s likely that some of the default content is cached in a CloudFront edge location\. To make sure that viewers see your updated website content, *invalidate* the files to remove the cached copies from CloudFront edge locations\. For more information, see [Invalidating Files](Invalidation.md)\.
+If you viewed your website with this solution’s default content, then it’s likely that some of the default content is cached in a CloudFront edge location\. To make sure that viewers see your updated website content, *invalidate* the files to remove the cached copies from CloudFront edge locations\. For more information, see [Invalidating files](Invalidation.md)\.
 
 ### Cloning the solution locally<a name="deploy-website-cloudformation-clone"></a>
 

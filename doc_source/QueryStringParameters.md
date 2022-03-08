@@ -41,9 +41,9 @@ For more information, see [Optimizing caching](#query-string-parameters-optimizi
 
 ## Console and API settings for query string forwarding and caching<a name="query-string-parameters-console"></a>
 
-To configure query string forwarding and caching in the CloudFront console, see the following settings in [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md):
-+ [Query String Forwarding and Caching](distribution-web-values-specify.md#DownloadDistValuesQueryString)
-+ [Query String Whitelist](distribution-web-values-specify.md#DownloadDistValuesQueryStringWhiteList)
+To configure query string forwarding and caching in the CloudFront console, see the following settings in [Values that you specify when you create or update a distribution](distribution-web-values-specify.md):
++ [Query string forwarding and caching](distribution-web-values-specify.md#DownloadDistValuesQueryString)
++ [Query string whitelist](distribution-web-values-specify.md#DownloadDistValuesQueryStringWhiteList)
 
 To configure query string forwarding and caching with the CloudFront API, see the following settings in [DistributionConfig](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html) and in [DistributionConfigWithTags](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfigWithTags.html) in the *Amazon CloudFront API Reference*:
 + `QueryString`

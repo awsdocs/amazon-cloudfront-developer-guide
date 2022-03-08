@@ -57,7 +57,7 @@ After you create a response headers policy, you can attach it to a cache behavio
 
 1. For **Response headers policy**, choose the policy to add to the cache behavior\.
 
-1. Choose the other settings for your distribution\. For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+1. Choose the other settings for your distribution\. For more information, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 1. Choose **Create distribution** to create the distribution\.
 
@@ -185,7 +185,7 @@ The `yaml-input` option is available only in [version 2 of the AWS CLI](https://
 
 1. Open the file named `distribution.yaml` that you just created\. In the default cache behavior, in the `ResponseHeadersPolicyId` field, enter the response headers policy ID that you noted after creating the policy\. Continue editing the file to specify the distribution settings that you want, then save the file when finished\.
 
-   For more information about the distribution settings, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+   For more information about the distribution settings, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 1. Use the following command to create the distribution using input parameters from the `distribution.yaml` file\.
 
@@ -202,6 +202,6 @@ After you create a response headers policy, you can attach it to a cache behavio
 + To attach it to a cache behavior in an existing distribution, use [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\.
 + To attach it to a cache behavior in a new distribution, use [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)\.
 
-For both of these API calls, provide the request headers policy’s ID in the `RequestHeadersPolicyId` field, inside a cache behavior\. For more information about the other fields that you specify in these API calls, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) and the API reference documentation for your AWS SDK or other API client\.
+For both of these API calls, provide the request headers policy’s ID in the `RequestHeadersPolicyId` field, inside a cache behavior\. For more information about the other fields that you specify in these API calls, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md) and the API reference documentation for your AWS SDK or other API client\.
 
 ------

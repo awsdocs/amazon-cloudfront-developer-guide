@@ -7,20 +7,21 @@ To test a function, you provide an *event object* that represents an HTTP reques
 1. Returns the function’s result \(the modified event object\) along with any function logs or error messages and the function’s *compute utilization*\. The compute utilization is a number between 0 and 100 that indicates the amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a compute utilization of 35 means that the function completed in 35% of the maximum allowed time\.
 
 Before you test a function, you must create the *event object* to test it with\. To create an event object, you have the following options:
-+ Use the visual editor in the CloudFront console\. With the visual editor, you can create event objects with a graphical interface and use them to test your function\. After you create an event object, you can also copy a JSON representation of the event object to use for testing your function through other interfaces such as the AWS CLI or CloudFront API\. For more information, see [Testing functions \(console\)](#test-function-console)\.
++ Use the visual editor in the CloudFront console\. With the visual editor, you can create event objects with a graphical interface and use them to test your function\. After you create an event object, you can also copy a JSON representation of the event object to use for testing your function through other interfaces such as the AWS CLI or CloudFront API\. For more information, see the console tab at [Testing functions](#test-function)\.
 + Write the event object by hand in JSON format\. For more information about the structure of an event object, see [Event structure](functions-event-structure.md)\.
 **Note**  
 When you create an event object for testing a function, you can omit the `distributionDomainName`, `distributionId`, and `requestId` fields\. Also, make sure the names of headers, cookies, and query strings are lowercase\.
 
 You can test a function in the CloudFront console or with the AWS CLI\.
 
-## Testing functions \(console\)<a name="test-function-console"></a>
+------
+#### [ Console ]
 
 In the CloudFront console, you can create and save event objects with a graphical interface \(the visual editor\) and use them to test your function\. You can also copy a JSON representation of the event object to use for testing your function through other interfaces\.
 
 **To create event objects and test a function \(console\)**
 
-1. If you haven’t already done so, follow the steps to [create a function](create-function.md#create-function-console)\.
+1. If you haven’t already done so, follow the steps to [create a function](create-function.md)\.
 
    To test a function, open the **Functions** page in the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home#/functions](https://console.aws.amazon.com/cloudfront/v3/home#/functions), and then choose the function that you want to test\.
 
@@ -46,7 +47,8 @@ In the CloudFront console, you can create and save event objects with a graphica
 1. To test your function with the event object that you created, choose **Test event**\. The console shows the output of the test, including function logs, query strings, and headers and cookies in the request \(and in the response, if applicable\)\. It also shows the *compute utilization*, which is a number between 0 and 100 that indicates the amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a compute utilization of 35 means that the function completed in 35% of the maximum allowed time\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/functions-test-result.png)
 
-## Testing functions \(AWS CLI\)<a name="test-function-cli"></a>
+------
+#### [ CLI ]
 
 After you create an event object, you can use it to test your function with the aws cloudfront test\-function command in the AWS CLI, as in the following example\. This example command uses an input file \(*`event-object.json`*\) to provide the event object to the command\. The following is an example of a simple event object for testing, in the *`event-object.json`* file\.
 
@@ -114,3 +116,5 @@ TestResult:
     Name: ExampleFunction
     Status: UNPUBLISHED
 ```
+
+------

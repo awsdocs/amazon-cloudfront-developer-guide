@@ -2,7 +2,7 @@
 
 This section describes how to set up and manage the caching of objects to improve performance and meet your business requirements\.
 
-To learn about adding and removing the content that you want CloudFront to serve, see [Adding, Removing, or Replacing Content That CloudFront Distributes](AddRemoveReplaceObjects.md)\.
+To learn about adding and removing the content that you want CloudFront to serve, see [Adding, removing, or replacing content that CloudFront distributes](AddRemoveReplaceObjects.md)\.
 
 **Topics**
 + [How caching works with CloudFront edge locations](cache-hit-ratio-explained.md)

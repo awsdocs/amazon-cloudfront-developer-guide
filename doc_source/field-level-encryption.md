@@ -166,7 +166,7 @@ The cache behavior’s **Viewer Protocol Policy** must be set to **Redirect HTTP
 The cache behavior’s **Allowed HTTP Methods** must be set to **GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE**\. \(In AWS CloudFormation or the CloudFront API, `AllowedMethods` must be set to `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE`\. These can be specified in any order\.\)
 The origin setting’s **Origin Protocol Policy** must be set to **Match Viewer** or **HTTPS Only**\. \(In AWS CloudFormation or the CloudFront API, `OriginProtocolPolicy` must be set to `match-viewer` or `https-only`\.\)
 
-For more information, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 ## Decrypting data fields at your origin<a name="field-level-encryption-decrypt"></a>
 

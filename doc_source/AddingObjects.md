@@ -1,4 +1,4 @@
-# Adding and Accessing Content That CloudFront Distributes<a name="AddingObjects"></a>
+# Adding and accessing content that CloudFront distributes<a name="AddingObjects"></a>
 
 When you want CloudFront to distribute content \(objects\), you add files to one of the origins that you specified for the distribution, and you expose a CloudFront link to the files\. A CloudFront edge location doesn't fetch the new files from an origin until the edge location receives viewer requests for them\. For more information, see [How CloudFront delivers content](HowCloudFrontWorks.md)\. 
 

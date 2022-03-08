@@ -4,7 +4,8 @@ In the course of [testing a function](test-function.md), you might want to updat
 
 You can update a function’s code in the CloudFront console or with the AWS CLI\.
 
-## Updating functions \(console\)<a name="update-function-console"></a>
+------
+#### [ Console ]
 
 To update your function code, you can use the visual code editor in the CloudFront console\.
 
@@ -22,7 +23,8 @@ To update your function code, you can use the visual code editor in the CloudFro
 
 When successful, you see a banner at the top of the page that says ***Function name* saved successfully**\.
 
-## Updating functions \(AWS CLI\)<a name="update-function-cli"></a>
+------
+#### [ CLI ]
 
 After you update your function code locally, you can use the AWS CLI to update it in CloudFront Functions with the aws cloudfront update\-function command, as in the following example\. This example command uses input files to provide the function configuration and the updated function code to the command\. To use this example, do the following:
 + Replace *`ExampleFunction`* with the name of the function whose code you’re updating\.
@@ -58,3 +60,5 @@ FunctionSummary:
   Name: ExampleFunction
   Status: UNPUBLISHED
 ```
+
+------

@@ -32,8 +32,8 @@ You can add `CloudFront-Viewer-Address` in an origin request policy, but not in 
 For the following headers, CloudFront adds them to all requests *except* those that originate from Amazon EC2\.
 + `CloudFront-Viewer-City` – Contains the name of the viewer’s city\.
 + `CloudFront-Viewer-Country-Name` – Contains the name of the viewer’s country\.
-+ `CloudFront-Viewer-Country-Region` – Contains a code \(up to three characters\) that represent the viewer’s region\. The region is the most specific subdivision of the [ISO 3166\-2](https://en.wikipedia.org/wiki/ISO_3166-2) code\.
-+ `CloudFront-Viewer-Country-Region-Name` – Contains the name of the viewer’s region\. The region is the most specific subdivision of the [ISO 3166\-2](https://en.wikipedia.org/wiki/ISO_3166-2) code\.
++ `CloudFront-Viewer-Country-Region` – Contains a code \(up to three characters\) that represent the viewer’s region\. The region is the first\-level subdivision \(the broadest or least specific\) of the [ISO 3166\-2](https://en.wikipedia.org/wiki/ISO_3166-2) code\.
++ `CloudFront-Viewer-Country-Region-Name` – Contains the name of the viewer’s region\. The region is the first\-level subdivision \(the broadest or least specific\) of the [ISO 3166\-2](https://en.wikipedia.org/wiki/ISO_3166-2) code\.
 + `CloudFront-Viewer-Latitude` – Contains the viewer’s approximate latitude\.
 + `CloudFront-Viewer-Longitude` – Contains the viewer’s approximate longitude\.
 + `CloudFront-Viewer-Metro-Code` – Contains the viewer’s metro code\. This is present only when the viewer is in the United States\.

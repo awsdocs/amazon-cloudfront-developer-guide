@@ -4,7 +4,7 @@ When you [require HTTPS between viewers and your CloudFront distribution](distri
 + The minimum SSL/TLS protocol that CloudFront uses to communicate with viewers\.
 + The ciphers that CloudFront can use to encrypt the communication with viewers\.
 
-To choose a security policy, specify the applicable value for [Security Policy](distribution-web-values-specify.md#DownloadDistValues-security-policy)\. The following table lists the protocols and ciphers that CloudFront can use for each security policy\.
+To choose a security policy, specify the applicable value for [Security policy](distribution-web-values-specify.md#DownloadDistValues-security-policy)\. The following table lists the protocols and ciphers that CloudFront can use for each security policy\.
 
 A viewer must support at least one of the supported ciphers to establish an HTTPS connection with CloudFront\. CloudFront chooses a cipher in the listed order from among the ciphers that the viewer supports\. See also [OpenSSL, s2n, and RFC cipher names](#secure-connections-openssl-rfc-cipher-names)\.
 

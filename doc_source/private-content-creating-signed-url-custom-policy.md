@@ -13,7 +13,7 @@ To create a signed URL using a custom policy, do the following procedure\.<a nam
 
 1. Concatenate the following values in the specified order, and remove the white space \(including tabs and newline characters\) between the parts\. You might have to include escape characters in the string in application code\. All values have a type of String\. Each part is keyed by number \(![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)\) to the two examples that follow\.  
 **![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) *Base URL for the file***  
-The base URL is the CloudFront URL that you would use to access the file if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for distributions, see [Customizing the URL Format for Files in CloudFront](LinkFormat.md)\.  
+The base URL is the CloudFront URL that you would use to access the file if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for distributions, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.  
 The following examples show values that you specify for distributions\.  
    + The following CloudFront URL is for an image file in a distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the file in the URL must match the path to the file on your HTTP server or in your Amazon S3 bucket\.
 
@@ -140,7 +140,7 @@ The IP address of the client making the GET request\. Note the following:
 **Important**  
 IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, are not supported\. 
 
-  If you're using a custom policy that includes `IpAddress`, do not enable IPv6 for the distribution\. If you want to restrict access to some content by IP address and support IPv6 requests for other content, you can create two distributions\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+  If you're using a custom policy that includes `IpAddress`, do not enable IPv6 for the distribution\. If you want to restrict access to some content by IP address and support IPv6 requests for other content, you can create two distributions\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 ## Example policy statements for a signed URL that uses a custom policy<a name="private-content-custom-policy-statement-examples"></a>
 

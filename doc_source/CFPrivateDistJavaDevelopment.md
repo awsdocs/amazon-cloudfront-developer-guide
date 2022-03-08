@@ -7,7 +7,7 @@ Creating a signed URL is just one part of the process of [serving private conten
 
 The following example shows how to create a CloudFront signed URL\. You must convert the private key from PEM to DER format for Java implementations to use it\.
 
-**Example Java Policy and Signature Encryption Methods**  <a name="ExampleJavaPolicyAndSignatureEncryptionMethods"></a>
+**Example Java policy and signature encryption methods**  <a name="ExampleJavaPolicyAndSignatureEncryptionMethods"></a>
 
 ```
 // Signed URLs for a private distribution
@@ -74,4 +74,4 @@ System.out.println(signedUrl);
 See also:
 + [Create a URL signature using Perl](CreateURLPerl.md)
 + [Create a URL signature using PHP](CreateURL_PHP.md)
-+ [Create a URL signature using C\# and the \.NET framework](CreateSignatureInCSharp.md)
++ [Create a URL signature using C\# and the \.NET Framework](CreateSignatureInCSharp.md)

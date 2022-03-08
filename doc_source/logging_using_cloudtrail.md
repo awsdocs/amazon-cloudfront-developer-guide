@@ -1,4 +1,4 @@
-# Using AWS CloudTrail to Capture Requests Sent to the CloudFront API<a name="logging_using_cloudtrail"></a>
+# Using AWS CloudTrail to capture requests sent to the CloudFront API<a name="logging_using_cloudtrail"></a>
 
 CloudFront is integrated with CloudTrail, an AWS service that captures information about every request that is sent to the CloudFront API by your AWS account, including your IAM users\. CloudTrail periodically saves log files of these requests to an Amazon S3 bucket that you specify\. CloudTrail captures information about all requests, whether they were made using the CloudFront console, the CloudFront API, the AWS SDKs, the CloudFront CLI, or another service, for example, AWS CloudFormation\.
 
@@ -8,10 +8,10 @@ You can use information in the CloudTrail log files to determine which requests 
 CloudFront is a global service\. To view CloudFront requests in CloudTrail logs, you must update an existing trail to include global services\. For more information, see [Updating a Trail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html) and [About Global Service Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-global-service-events) in the *AWS CloudTrail User Guide*\. 
 
 **Topics**
-+ [CloudFront Information in CloudTrail](#service-name-info-in-cloudtrail)
-+ [Understanding CloudFront Log File Entries](#understanding_cloudfront_entries)
++ [CloudFront information in CloudTrail](#service-name-info-in-cloudtrail)
++ [Understanding CloudFront log file entries](#understanding_cloudfront_entries)
 
-## CloudFront Information in CloudTrail<a name="service-name-info-in-cloudtrail"></a>
+## CloudFront information in CloudTrail<a name="service-name-info-in-cloudtrail"></a>
 
 CloudTrail is enabled on your AWS account when you create the account\. When activity occurs in CloudFront, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. Because CloudFront is a global service, events for the service are logged in US East \(N\. Virginia\)\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
@@ -30,7 +30,7 @@ Every event or log entry contains information about who generated the request\. 
 
 For more information, see the [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
 
-## Understanding CloudFront Log File Entries<a name="understanding_cloudfront_entries"></a>
+## Understanding CloudFront log file entries<a name="understanding_cloudfront_entries"></a>
 
 Each JSON\-formatted CloudTrail log file can contain one or more log entries\. A log entry represents a single request from any source and includes information about the requested action, including any parameters, the date and time of the action, and so on\. The log entries are not guaranteed to be in any particular order; they are not an ordered stack trace of API calls\.
 

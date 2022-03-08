@@ -450,7 +450,7 @@ After you create a real\-time log configuration, you can attach it to a cache be
 + To attach it to a cache behavior in an existing distribution, use [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)\.
 + To attach it to a cache behavior in a new distribution, use [CreateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html)\.
 
-For both of these API calls, provide the ARN of the real\-time log configuration in the `RealtimeLogConfigArn` field, inside a cache behavior\. For more information about the other fields that you specify in these API calls, see [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md) and the API reference documentation for your AWS SDK or other API client\.
+For both of these API calls, provide the ARN of the real\-time log configuration in the `RealtimeLogConfigArn` field, inside a cache behavior\. For more information about the other fields that you specify in these API calls, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md) and the API reference documentation for your AWS SDK or other API client\.
 
 ## Creating a Kinesis Data Streams consumer<a name="real-time-log-consumer-guidance"></a>
 

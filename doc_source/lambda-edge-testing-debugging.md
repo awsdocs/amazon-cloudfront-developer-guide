@@ -35,7 +35,7 @@ Be aware that testing in the console only validates your function’s logic, and
 
 After you’ve verified that your function logic works correctly, you might still see HTTP 5xx errors when your function runs in CloudFront\. HTTP 5xx errors can be returned for a variety of reasons, which can include Lambda function errors or other issues in CloudFront\.
 + If you use Lambda@Edge functions, you can use graphs in the CloudFront console to help track down what's causing the error, and then work to fix it\. For example, you can see if HTTP 5xx errors are caused by CloudFront or by Lambda functions, and then, for specific functions, you can view related log files to investigate the issue\.
-+ To troubleshoot HTTP errors in general in CloudFront, see the troubleshooting steps in the following topic: [Troubleshooting Error Responses from Your Origin](troubleshooting-response-errors.md)\.
++ To troubleshoot HTTP errors in general in CloudFront, see the troubleshooting steps in the following topic: [Troubleshooting error responses from your origin](troubleshooting-response-errors.md)\.
 
 ### What causes Lambda@Edge function errors in CloudFront<a name="lambda-edge-testing-debugging-function-errors"></a>
 
@@ -61,7 +61,7 @@ One of the graphs that you can view on the **Overview** tab for each of your dis
 
 ![\[Error rates graph for a CloudFront distribution\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/Distribution-error-rate-pct-full.png)
 + If you see Lambda errors, you can investigate further by looking at the specific types of errors that the function returns\. The **Lambda@Edge errors** tab includes graphs that categorize function errors by type to help you pinpoint the issue for a specific function\.
-+ If you see CloudFront errors, you can troubleshoot and work to fix origin errors or change your CloudFront configuration\. For more information, see [Troubleshooting Error Responses from Your Origin](troubleshooting-response-errors.md)\.
++ If you see CloudFront errors, you can troubleshoot and work to fix origin errors or change your CloudFront configuration\. For more information, see [Troubleshooting error responses from your origin](troubleshooting-response-errors.md)\.
 
 **Execution errors and invalid function responses graphs**  
 The **Lambda@Edge errors** tab includes graphs that categorize the Lambda@Edge errors for a specific distribution, by type\. For example, one graph shows all execution errors by AWS Region\. To make it easier to troubleshoot issues, on the same page, you can look for specific problems by opening and examining the log files for specific functions by Region\. Under **View execution error logs** or **View invalid function response** logs, choose a Region \(and, for execution errors, a function\), and then choose **View logs**\.   

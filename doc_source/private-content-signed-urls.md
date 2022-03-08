@@ -21,7 +21,7 @@ When you create a signed URL, you write a policy statement in JSON format that s
 
 ****  
 
-| Description | Canned Policy | Custom Policy | 
+| Description | Canned policy | Custom policy | 
 | --- | --- | --- | 
 | You can reuse the policy statement for multiple files\. To reuse the policy statement, you must use wildcard characters in the `Resource` object\. For more information, see [Values that you specify in the policy statement for a signed URL that uses a custom policy](private-content-creating-signed-url-custom-policy.md#private-content-custom-policy-statement-values)\.\)  | No | Yes | 
 | You can specify the date and time that users can begin to access your content\. | No | Yes \(optional\) | 
@@ -81,5 +81,5 @@ If a client uses Range GETs to get a file in smaller pieces, any GET request tha
 For example code that creates the hashed and signed part of signed URLs, see the following topics:
 + [Create a URL signature using Perl](CreateURLPerl.md)
 + [Create a URL signature using PHP](CreateURL_PHP.md)
-+ [Create a URL signature using C\# and the \.NET framework](CreateSignatureInCSharp.md)
++ [Create a URL signature using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
 + [Create a URL signature using Java](CFPrivateDistJavaDevelopment.md)

@@ -1,4 +1,4 @@
-# HTTP 400 Status Code \(Bad Request\)<a name="http-400-bad-request"></a>
+# HTTP 400 status code \(Bad Request\)<a name="http-400-bad-request"></a>
 
 Your CloudFront distribution might send error responses with HTTP status code 400 Bad Request, and a message similar to the following:
 

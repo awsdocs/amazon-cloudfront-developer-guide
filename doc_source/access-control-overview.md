@@ -115,7 +115,7 @@ For example, the following policy shows how you might allow update, delete, and 
 When you design IAM policies, you might set granular permissions by granting access to specific resources\. As the number of resources that you manage grows, this task becomes more difficult\. Tagging resources and using tags in policy statement conditions can make this task easier\. You grant access in bulk to any resource with a certain tag\. Then you repeatedly apply this tag to relevant resources, during creation or later\.
 
 **Note**  
-Using tags in conditions is one way to control access to resources and requests\. For information about tagging in CloudFront, see [Tagging Amazon CloudFront Distributions](tagging.md)\.
+Using tags in conditions is one way to control access to resources and requests\. For information about tagging in CloudFront, see [Tagging Amazon CloudFront distributions](tagging.md)\.
 
 Tags can be attached to the resource or passed in the request to services that support tagging\. In CloudFront, resources can have tags, and some actions can include tags\. When you create an IAM policy, you can use tag condition keys to control:
 + Which users can perform actions on a distribution, based on tags that it already has\.

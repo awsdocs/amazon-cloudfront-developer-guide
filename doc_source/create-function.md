@@ -6,7 +6,8 @@ When you create a new function in CloudFront Functions, the function is in the `
 
 You can create a function in the CloudFront console or with the AWS Command Line Interface \(AWS CLI\)\.
 
-## Creating functions \(console\)<a name="create-function-console"></a>
+------
+#### [ Console ]
 
 When you create a function in the console, you can start with the default function, copy a function from [example code on GitHub](https://github.com/aws-samples/amazon-cloudfront-functions), or create your own function code from the beginning\.
 
@@ -32,7 +33,8 @@ When successful, you see a banner at the top of the page that says ***Function n
 
 After you save your function, [you can test it](test-function.md)\.
 
-## Creating functions \(AWS CLI\)<a name="create-function-cli"></a>
+------
+#### [ CLI ]
 
 After you write the function code, you can create the function with the AWS CLI using the aws cloudfront create\-function command, as in the following example\. The following example command uses an input file to provide the function code to the create\-function command\. To use this example, do the following:
 + Replace *`ExampleFunction`* with a name for the function\.
@@ -67,3 +69,5 @@ FunctionSummary:
   Status: UNPUBLISHED
 Location: https://cloudfront.amazonaws.com/2020-05-31/function/arn:aws:cloudfront::111122223333:function/ExampleFunction
 ```
+
+------

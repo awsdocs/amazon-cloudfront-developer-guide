@@ -3,7 +3,7 @@
 The following example function generates a response to redirect the viewer to a country\-specific URL when the request comes from within a particular country\. This function relies on the value of the `CloudFront-Viewer-Country` header to determine the viewer’s country\.
 
 **Important**  
-For this function to work, you must configure CloudFront to add the `CloudFront-Viewer-Country` header to incoming requests by adding it to the [allowed headers list in a cache policy](controlling-the-cache-key.md#cache-policy-headers)\.
+For this function to work, you must configure CloudFront to add the `CloudFront-Viewer-Country` header to incoming requests by adding it to the allowed headers in a [cache policy](controlling-the-cache-key.md) or an [origin request policy](controlling-origin-requests.md)\.
 
 This example redirects the viewer to a Germany\-specific URL when the viewer request comes from Germany\. If the viewer request doesn’t come from Germany, the function returns the original, unmodified request\.
 

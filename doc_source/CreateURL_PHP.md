@@ -9,7 +9,7 @@ Creating a URL signature is just one part of the process of serving private cont
 
 **Topics**
 + [Sample: RSA SHA\-1 signature](#sample-rsa-sign)
-+ [Example: create canned policy](#sample-canned-policy)
++ [Example: create a canned policy](#sample-canned-policy)
 + [Example: create a custom policy](#sample-custom-policy)
 + [Full code example](#full-example)
 
@@ -47,7 +47,7 @@ function url_safe_base64_encode($value) {
 }
 ```
 
-## Example: create canned policy<a name="sample-canned-policy"></a>
+## Example: create a canned policy<a name="sample-canned-policy"></a>
 
 The following example code constructs a *canned* policy statement for the signature\. For more information about canned policies, see [Creating a signed URL using a canned policy](private-content-creating-signed-url-canned-policy.md)\.
 
@@ -255,5 +255,5 @@ $custom_policy_stream_name = get_custom_policy_stream_name($video_path, $private
 
 See also:
 + [Create a URL signature using Perl](CreateURLPerl.md)
-+ [Create a URL signature using C\# and the \.NET framework](CreateSignatureInCSharp.md)
++ [Create a URL signature using C\# and the \.NET Framework](CreateSignatureInCSharp.md)
 + [Create a URL signature using Java](CFPrivateDistJavaDevelopment.md)

@@ -1,13 +1,13 @@
-# Specifying a Default Root Object<a name="DefaultRootObject"></a>
+# Specifying a default root object<a name="DefaultRootObject"></a>
 
 You can configure CloudFront to return a specific object \(the default root object\) when a user requests the root URL for your distribution instead of requesting an object in your distribution\. Specifying a default root object lets you avoid exposing the contents of your distribution\.
 
 **Topics**
-+ [How to Specify a Default Root Object](#DefaultRootObjectHowToDefine)
-+ [How Headers Work With Default Root Objects](#DefaultRootObjectHow)
-+ [How CloudFront Works if You Don't Define a Root Object](#DefaultRootObjectNotSet)
++ [How to specify a default root object](#DefaultRootObjectHowToDefine)
++ [How headers work with default root objects](#DefaultRootObjectHow)
++ [How CloudFront works if you don’t define a root object](#DefaultRootObjectNotSet)
 
-## How to Specify a Default Root Object<a name="DefaultRootObjectHowToDefine"></a>
+## How to specify a default root object<a name="DefaultRootObjectHowToDefine"></a>
 
 To avoid exposing the contents of your distribution or returning an error, specify a default root object for your distribution by completing the following steps\.<a name="DefaultRootObjectProcedure"></a>
 
@@ -15,7 +15,7 @@ To avoid exposing the contents of your distribution or returning an error, speci
 
 1. Upload the default root object to the origin that your distribution points to\.
 
-   The file can be any type supported by CloudFront\. For a list of constraints on the file name, see the description of the `DefaultRootObject` element in [DistributionConfig Complex Type](https://docs.aws.amazon.com/cloudfront/latest/APIReference/DistributionConfigDatatype.html)\.
+   The file can be any type supported by CloudFront\. For a list of constraints on the file name, see the description of the `DefaultRootObject` element in [DistributionConfig](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_DistributionConfig.html)\.
 **Note**  
 If the file name of the default root object is too long or contains an invalid character, CloudFront returns the error `HTTP 400 Bad Request - InvalidDefaultRootObject`\. In addition, CloudFront caches the code for 10 seconds \(by default\) and writes the results to the access logs\.
 
@@ -39,7 +39,7 @@ If the file name of the default root object is too long or contains an invalid c
 
    1. To save your changes, choose **Yes, Edit**\.
 
-   To update your configuration using the CloudFront API, you specify a value for the `DefaultRootObject` element in your distribution\. For information about using the CloudFront API to specify a default root object, see [PUT Distribution Config](https://docs.aws.amazon.com/cloudfront/latest/APIReference/PutConfig.html) in the *Amazon CloudFront API Reference*\.
+   To update your configuration using the CloudFront API, you specify a value for the `DefaultRootObject` element in your distribution\. For information about using the CloudFront API to specify a default root object, see [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 1. Confirm that you have enabled the default root object by requesting your root URL\. If your browser doesn't display the default root object, perform the following steps:
 
@@ -47,27 +47,27 @@ If the file name of the default root object is too long or contains an invalid c
 
    1. Repeat steps 2 and 3 to verify that you granted the correct permissions and that you correctly updated the configuration of your distribution to specify the default root object\.
 
-## How Headers Work With Default Root Objects<a name="DefaultRootObjectHow"></a>
+## How headers work with default root objects<a name="DefaultRootObjectHow"></a>
 
 Here's an example of how a default root object works\. Suppose the following request points to the object `image.jpg`:
 
-`http://d111111abcdef8.cloudfront.net/image.jpg`
+`https://d111111abcdef8.cloudfront.net/image.jpg`
 
 In contrast, the following request points to the root URL of the same distribution instead of to a specific object, as in the first example:
 
-`http://d111111abcdef8.cloudfront.net/`
+`https://d111111abcdef8.cloudfront.net/`
 
 When you define a default root object, an end\-user request that calls the root of your distribution returns the default root object\. For example, if you designate the file `index.html` as your default root object, a request for:
 
-`http://d111111abcdef8.cloudfront.net/`
+`https://d111111abcdef8.cloudfront.net/`
 
 Returns:
 
-`http://d111111abcdef8.cloudfront.net/index.html`
+`https://d111111abcdef8.cloudfront.net/index.html`
 
 However, if you define a default root object, an end\-user request for a subdirectory of your distribution does not return the default root object\. For example, suppose `index.html` is your default root object and that CloudFront receives an end\-user request for the `install` directory under your CloudFront distribution:
 
-`http://d111111abcdef8.cloudfront.net/install/`
+`https://d111111abcdef8.cloudfront.net/install/`
 
 CloudFront does not return the default root object even if a copy of `index.html` appears in the `install` directory\.
 
@@ -78,12 +78,12 @@ The behavior of CloudFront default root objects is different from the behavior o
 **Important**  
 Remember that a default root object applies only to your CloudFront distribution\. You still need to manage security for your origin\. For example, if you are using an Amazon S3 origin, you still need to set your Amazon S3 bucket ACLs appropriately to ensure the level of access you want on your bucket\.
 
-## How CloudFront Works if You Don't Define a Root Object<a name="DefaultRootObjectNotSet"></a>
+## How CloudFront works if you don’t define a root object<a name="DefaultRootObjectNotSet"></a>
 
 If you don't define a default root object, requests for the root of your distribution pass to your origin server\. If you are using an Amazon S3 origin, any of the following might be returned:
-+ **A list of the contents of your Amazon S3 bucket**—Under any of the following conditions, the contents of your origin are visible to anyone who uses CloudFront to access your distribution:
++ **A list of the contents of your Amazon S3 bucket** – Under any of the following conditions, the contents of your origin are visible to anyone who uses CloudFront to access your distribution:
   + Your bucket is not properly configured\. 
   + The Amazon S3 permissions on the bucket associated with your distribution and on the objects in the bucket grant access to *everyone*\.
   + An end user accesses your origin using your origin root URL\. 
-+ **A list of the private contents of your origin**—If you configure your origin as a private distribution \(only you and CloudFront have access\), the contents of the Amazon S3 bucket associated with your distribution are visible to anyone who has the credentials to access your distribution through CloudFront\. In this case, users are not able to access your content through your origin root URL\. For more information about distributing private content, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
++ **A list of the private contents of your origin** – If you configure your origin as a private distribution \(only you and CloudFront have access\), the contents of the Amazon S3 bucket associated with your distribution are visible to anyone who has the credentials to access your distribution through CloudFront\. In this case, users are not able to access your content through your origin root URL\. For more information about distributing private content, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\.
 + `Error 403 Forbidden`—CloudFront returns this error if the permissions on the Amazon S3 bucket associated with your distribution or the permissions on the objects in that bucket deny access to CloudFront and to everyone\.

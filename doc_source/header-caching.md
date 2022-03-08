@@ -32,7 +32,7 @@ If you configure CloudFront to forward all headers to your origin, CloudFront do
 
 For the current quota on the number of headers that you can forward for each cache behavior or to request a higher quota, see [Quotas on headers](cloudfront-limits.md#limits-custom-headers)\.
 
-For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Updating a Distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing distribution, see [Update Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
+For information about using the CloudFront console to update a distribution so CloudFront forwards headers to the origin, see [Updating a distribution](HowToUpdateDistribution.md)\. For information about using the CloudFront API to update an existing distribution, see [Update Distribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
 ## Selecting the headers to base caching on<a name="header-caching-web-selecting"></a>
 

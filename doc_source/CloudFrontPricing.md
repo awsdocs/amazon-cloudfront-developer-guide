@@ -5,7 +5,7 @@ Amazon CloudFront is designed so you don’t have to pay any up\-front fees or c
 **Tip**  
 To avoid surprise charges from CloudFront \(or any AWS service\), you can use AWS Budgets\. With AWS Budgets you can set cost thresholds and get notifications by email or Amazon SNS topic when your actual or forecasted charges exceed a threshold\. For more information, see [Managing your costs with AWS Budgets](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html) and [Creating a budget](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-create.html) in the *AWS Billing and Cost Management User Guide*\. To get started, go to [AWS Budgets in the console](https://console.aws.amazon.com/billing/home?#/budgets)\.
 
-AWS provides two usage reports for CloudFront: a billing report and a report that summarizes usage activity\. To learn more about these reports, see [AWS Billing and Usage Reports for CloudFront](reports-billing.md)\.
+AWS provides two usage reports for CloudFront: a billing report and a report that summarizes usage activity\. To learn more about these reports, see [AWS billing and usage reports for CloudFront](reports-billing.md)\.
 
 The following diagram and list summarize the charges to use CloudFront\.
 
@@ -21,4 +21,4 @@ Your monthly bill from AWS allocates your usage and dollar amounts by AWS servic
 
 Be aware of the following:
 + You also incur a surcharge for HTTPS requests, and an additional surcharge for requests that also have field\-level encryption enabled or that use [Origin Shield](origin-shield.md) as an incremental caching layer\. For more information about prices, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
-+ You do not incur any additional CloudFront charges when you use origin groups\. You continue to pay the same request fees and data transfer rates as you do when you use CloudFront with any other AWS or non\-AWS origin\. For more information, see [Using CloudFront Origin Groups](DownloadDistS3AndCustomOrigins.md#concept_origin_groups)\. 
++ You do not incur any additional CloudFront charges when you use origin groups\. You continue to pay the same request fees and data transfer rates as you do when you use CloudFront with any other AWS or non\-AWS origin\. For more information, see [Using CloudFront origin groups](DownloadDistS3AndCustomOrigins.md#concept_origin_groups)\. 

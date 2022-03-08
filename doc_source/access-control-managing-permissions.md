@@ -7,7 +7,7 @@ We recommend that you first review the introductory topics that explain the basi
 
 **Topics**
 + [Permissions required to use the CloudFront console](#console-required-permissions)
-+ [AWS Managed \(Predefined\) Policies for CloudFront](#access-policy-examples-aws-managed)
++ [AWS managed \(predefined\) policies for CloudFront](#access-policy-examples-aws-managed)
 + [Customer managed policy examples](#access-policy-examples-for-sdk-cli)
 
 The following shows a permissions policy\. The `Sid`, or statement ID, is optional\.
@@ -110,7 +110,7 @@ These permissions aren't required if you aren't using the CloudFront console\.
 Lets you view a list of AWS WAF web ACLs in the CloudFront console\.  
 These permissions aren't required if you aren't using the CloudFront console\.
 
-## AWS Managed \(Predefined\) Policies for CloudFront<a name="access-policy-examples-aws-managed"></a>
+## AWS managed \(predefined\) policies for CloudFront<a name="access-policy-examples-aws-managed"></a>
 
 AWS addresses many common use cases by providing standalone IAM policies that are created and administered by AWS\. These AWS managed policies grant necessary permissions for common use cases so that you can avoid having to investigate what permissions are needed\. For more information, see [AWS Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) in the *IAM User Guide*\. For CloudFront, IAM provides two managed policies:
 + **CloudFrontFullAccess** – Grants full access to CloudFront resources\.

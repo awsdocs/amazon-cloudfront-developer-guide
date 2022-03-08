@@ -1,4 +1,4 @@
-# Deleting a Distribution<a name="HowToDeleteDistribution"></a>
+# Deleting a distribution<a name="HowToDeleteDistribution"></a>
 
 If you no longer want to use a distribution, you can delete it by using the CloudFront console or by using the CloudFront API\. 
 
@@ -7,7 +7,7 @@ Be aware that before you can delete a distribution, you must disable it, which r
 **Note**  
 If you disable a distribution that has an alternate domain name associated with it, CloudFront stops accepting traffic for that domain name \(such as www\.example\.com\), even if another distribution has an alternate domain name with a wildcard \(\*\) that matches the same domain \(such as \*\.example\.com\)\.<a name="HowToDeleteDistributionProcedure"></a>
 
-**To Delete a CloudFront Distribution**
+**To delete a CloudFront distribution**
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 

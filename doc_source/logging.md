@@ -20,11 +20,11 @@ For more information, see [Real\-time logs](real-time-logs.md)\.
 
 You can use AWS CloudTrail to log the CloudFront service activity in your AWS account\. CloudTrail provides a record of actions taken by a user, role, or AWS service in CloudFront\. Using the information collected by CloudTrail, you can determine the request that was made to CloudFront, the IP address from which the request was made, who made the request, when it was made, and additional details\.
 
-For more information, see [Capturing API Requests with CloudTrail](logging_using_cloudtrail.md)\.
+For more information, see [Capturing API requests with CloudTrail](logging_using_cloudtrail.md)\.
 
 **Topics**
 + [Logging requests](#logging-requests)
 + [Logging service activity](#logging-service-activity)
 + [Using standard logs \(access logs\)](AccessLogs.md)
 + [Real\-time logs](real-time-logs.md)
-+ [Capturing API Requests with CloudTrail](logging_using_cloudtrail.md)
++ [Capturing API requests with CloudTrail](logging_using_cloudtrail.md)

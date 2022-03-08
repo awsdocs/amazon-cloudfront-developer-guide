@@ -114,8 +114,8 @@ For more information, see [Requirements for using alternate domain names](CNAMEs
 
 If you’re using dedicated IP addresses, set the minimum SSL/TLS protocol version for the connection between viewers and CloudFront by choosing a security policy\.
 
-For more information, see [Security Policy](distribution-web-values-specify.md#DownloadDistValues-security-policy) in the topic [Values That You Specify When You Create or Update a Distribution](distribution-web-values-specify.md)\.
+For more information, see [Security policy](distribution-web-values-specify.md#DownloadDistValues-security-policy) in the topic [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 ## Supported HTTP versions<a name="https-requirements-supported-http-versions"></a>
 
-If you associate one certificate with more than one CloudFront distribution, all the distributions associated with the certificate must use the same option for [Supported HTTP Versions](distribution-web-values-specify.md#DownloadDistValuesSupportedHTTPVersions)\. You specify this option when you create or update a CloudFront distribution\.
+If you associate one certificate with more than one CloudFront distribution, all the distributions associated with the certificate must use the same option for [Supported HTTP versions](distribution-web-values-specify.md#DownloadDistValuesSupportedHTTPVersions)\. You specify this option when you create or update a CloudFront distribution\.

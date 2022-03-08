@@ -647,7 +647,7 @@ The following example shows how to generate an HTTP redirect response with a cou
 + If you're streaming video but you don't have rights to stream the content in a specific country, you can redirect users in that country to a page that explains why they can't view the video\. 
 
 Note the following:
-+ You must configure your distribution to cache based on the `CloudFront-Viewer-Country` header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
++ You must configure your distribution to cache based on the `CloudFront-Viewer-Country` header\. For more information, see [Cache based on selected request headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
 + CloudFront adds the `CloudFront-Viewer-Country` header after the viewer request event\. To use this example, you must create a trigger for the origin request event\.
 
 ------
@@ -747,7 +747,7 @@ def lambda_handler(event, context):
 ### Example: Serving different versions of an object based on the device<a name="lambda-examples-vary-on-device-type"></a>
 
 The following example shows how to serve different versions of an object based on the type of device that the user is using, for example, a mobile device or a tablet\. Note the following:
-+ You must configure your distribution to cache based on the `CloudFront-Is-*-Viewer` headers\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
++ You must configure your distribution to cache based on the `CloudFront-Is-*-Viewer` headers\. For more information, see [Cache based on selected request headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
 + CloudFront adds the `CloudFront-Is-*-Viewer` headers after the viewer request event\. To use this example, you must create a trigger for the origin request event\.
 
 ------
@@ -935,7 +935,7 @@ In this example, we use the value of the `CloudFront-Viewer-Country` header to u
 + It provides data sovereignty by making sure that data is served from an origin that's in the same country that the request came from\.
 
 To use this example, you must do the following:
-+ Configure your distribution to cache based on the `CloudFront-Viewer-Country` header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\. 
++ Configure your distribution to cache based on the `CloudFront-Viewer-Country` header\. For more information, see [Cache based on selected request headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\. 
 + Create a trigger for this function in the origin request event\. CloudFront adds the `CloudFront-Viewer-Country` header after the viewer request event, so to use this example, you must make sure that the function executes for an origin request\.
 
 ------
@@ -1229,7 +1229,7 @@ Implementing this functionality for your distribution can have advantages such a
 + Reducing latencies when the Region specified is nearer to the viewer's country
 + Providing data sovereignty by making sure that data is served from an origin that's in the same country that the request came from
 
-Note that to enable this functionality you must configure your distribution to cache based on the `CloudFront-Viewer-Country` header\. For more information, see [Cache Based on Selected Request Headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
+Note that to enable this functionality you must configure your distribution to cache based on the `CloudFront-Viewer-Country` header\. For more information, see [Cache based on selected request headers](distribution-web-values-specify.md#DownloadDistValuesForwardHeaders)\.
 
 ------
 #### [ Node\.js ]
