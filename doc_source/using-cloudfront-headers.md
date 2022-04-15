@@ -24,7 +24,7 @@ You can add the following headers to determine the viewer’s device type\. Base
 ## Headers for determining the viewer’s location<a name="cloudfront-headers-viewer-location"></a>
 
 You can add the following headers to determine the viewer’s location\. CloudFront determines the values for these headers based on the viewer’s IP address\. For non\-ASCII characters in these headers’ values, CloudFront percent encodes the character according to [section 1\.2 of RFC 3986](https://tools.ietf.org/html/rfc3986#section-2.1)\.
-+ `CloudFront-Viewer-Address` – Contains the IP address of the viewer that sent the request to CloudFront, and the port used for the request\. For example, a header value of `198.51.100.10:443` means the viewer’s IP address is 198\.51\.100\.10 and the request port is 443\.
++ `CloudFront-Viewer-Address` – Contains the IP address of the viewer that sent the request to CloudFront, and the source port of the request\. For example, a header value of `198.51.100.10:46532` means the viewer’s IP address is 198\.51\.100\.10 and the request source port is 46532\.
 **Note**  
 You can add `CloudFront-Viewer-Address` in an origin request policy, but not in a cache policy\.
 + `CloudFront-Viewer-Country` – Contains the two\-letter country code for the viewer’s country\. For a list of country codes, see [ISO 3166\-1 alpha\-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)\.
