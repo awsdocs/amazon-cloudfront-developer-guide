@@ -96,4 +96,8 @@ For more information about the structure of the `event` and `response` objects, 
 **Note**  
 When you modify an HTTP response with CloudFront Functions, you cannot alter or modify the response body\. If you need to alter the response body, [use Lambda@Edge](lambda-generating-http-responses-in-requests.md)\. With Lambda@Edge, you can replace the entire response body with a new one, or remove the response body\. However, you cannot modify individual properties within the response body\.
 
+**Note**  
+A function associated with a *viewer response* event type cannot change the statusCode that it received\.
+
+
 For more information about writing function code for CloudFront Functions, see [Event structure](functions-event-structure.md), [JavaScript runtime features](functions-javascript-runtime-features.md), and [Example code](functions-example-code.md)\.
