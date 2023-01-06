@@ -2,7 +2,7 @@
 
 The CloudFront security savings bundle is a simple way to save up to 30% on the CloudFront charges on your AWS bill when you make an upfront commitment\. When you purchase a savings bundle, you also get credits for [AWS WAF](http://aws.amazon.com/waf/), a web application firewall that helps protect your CloudFront distribution against common web exploits\.
 
-For more information, see the following sections\. To purchase a savings bundle, go the [savings bundle overview page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/savings-bundle/overview)\.
+For more information, see the following sections\. To purchase a savings bundle, go to the [savings bundle overview page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/savings-bundle/overview)\.
 
 **Topics**
 + [Savings bundle overview](#savings-bundle-overview)
