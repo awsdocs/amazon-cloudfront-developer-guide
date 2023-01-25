@@ -1,5 +1,8 @@
 # Add security headers to the response<a name="example-function-add-security-headers"></a>
 
+**Note**  
+Consider using [CloudFront Response Headers Policies](https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-cloudfront-introduces-response-headers-policies/) instead of CloudFront Functions to configure CORS, security, and custom HTTP response headers\.
+
 The following example function adds several common security\-related HTTP headers to the response\. For more information, see the following pages on the MDN Web Docs website:
 + [Strict\-Transport\-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
 + [Content\-Security\-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
