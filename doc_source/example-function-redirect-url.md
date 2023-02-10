@@ -26,7 +26,7 @@ function handler(event) {
                 statusCode: 302,
                 statusDescription: 'Found',
                 headers:
-                    { "location": { "value": newurl } }
+                    { 'location': { 'value': newurl } }
                 }
 
             return response;
