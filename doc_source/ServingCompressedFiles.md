@@ -138,6 +138,8 @@ If you configure CloudFront to compress objects, CloudFront only compresses obje
 + `text/x-script`
 + `vnd.apple.mpegurl`
 
+Note that, image and video formats (such as `image/jpeg`, `image/png`, and `video/mpeg4`) are almost always already compressed, so CloudFront doesn't compress them. Re-compressing an already compressed response rarely reduces file size, and clients might exhibit unexpected behavior when receiving a response of this kind.
+
 ## `ETag` header conversion<a name="compressed-content-cloudfront-etag-header"></a>
 
 When the uncompressed object from the origin includes a valid, strong `ETag` HTTP header, and CloudFront compresses the object, CloudFront also converts the strong `ETag` header value to a weak `ETag`, and returns the weak `ETag` value to the viewer\. Viewers can store the weak `ETag` value and use it to send conditional requests with the `If-None-Match` HTTP header\. This allows viewers, CloudFront, and the origin to treat the compressed and uncompressed versions of an object as semantically equivalent, which reduces unnecessary data transfer\.
