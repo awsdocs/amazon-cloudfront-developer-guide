@@ -6,7 +6,7 @@ You can delete a Lambda@Edge function only when the replicas of the function hav
 
 Replicas are typically deleted within a few hours\. You cannot manually delete Lambda@Edge function replicas\. This helps prevent a situation where a replica is deleted that is still in use, which would result in an error\.
 
-Don’t build applications that use Lambda@Edge function replicas outside of CloudFront\. These replicas are deleted when their associations with distributions are removed, or when distributions themselves are deleted\. The replica that an outside application depends on might be removed without warning, causing it to fail\.
+Don't build applications that use Lambda@Edge function replicas outside of CloudFront\. These replicas are deleted when their associations with distributions are removed, or when distributions themselves are deleted\. The replica that an outside application depends on might be removed without warning, causing it to fail\.
 
 **To delete a Lambda@Edge function association from a CloudFront distribution \(console\)**
 
@@ -22,4 +22,4 @@ Don’t build applications that use Lambda@Edge function replicas outside of Clo
 
 1. Choose **Yes, Edit** to save your changes\.
 
-After you delete a Lambda@Edge function association from a CloudFront distribution, you can optionally delete the Lambda function or function version from AWS Lambda\. You can also delete a specific version of a Lambda function if the version doesn’t have any CloudFront distributions associated with it\. If you remove all the associations for a Lambda function version, you can typically delete the function version a few hours later\.
+After you delete a Lambda@Edge function association from a CloudFront distribution, you can optionally delete the Lambda function or function version from AWS Lambda\. You can also delete a specific version of a Lambda function if the version doesn't have any CloudFront distributions associated with it\. If you remove all the associations for a Lambda function version, you can typically delete the function version a few hours later\.

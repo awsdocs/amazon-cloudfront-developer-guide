@@ -13,9 +13,7 @@ To see the current maximum number of distributions that you can create for each 
 
 1. Sign in to the AWS Management Console and open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
-1. Choose **Create Distribution**\.
-
-1. On the first page of the **Create Distribution Wizard**, in the **Web** section, choose **Get Started**\.
+1. Choose **Create distribution**\.
 
 1. Specify settings for the distribution\. For more information, see [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 

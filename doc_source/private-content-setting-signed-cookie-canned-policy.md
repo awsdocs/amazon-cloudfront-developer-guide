@@ -111,7 +111,7 @@ When you create a policy statement for a canned policy, you specify the followin
 
 **Resource**  
 The base URL including your query strings, if any, for example:  
-`http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
+`https://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
 You can specify only one value for `Resource`\.  
 Note the following:  
 + **Protocol** – The value must begin with `http://` or `https://`\.
@@ -126,13 +126,13 @@ For more information, see [When does CloudFront check the expiration date and ti
 
 #### Example policy statement for a canned policy<a name="private-content-canned-policy-cookies-sample-policy-statement"></a>
 
-When you use the following example policy statement in a signed cookie, a user can access the file `http://d111111abcdef8.cloudfront.net/horizon.jpg` until March 16, 2015 10:00 am UTC:
+When you use the following example policy statement in a signed cookie, a user can access the file `https://d111111abcdef8.cloudfront.net/horizon.jpg` until March 16, 2015 10:00 am UTC:
 
 ```
 {
     "Statement": [
         {
-            "Resource": "http://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes",
+            "Resource": "https://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes",
             "Condition": {
                 "DateLessThan": {
                     "AWS:EpochTime": 1426500000

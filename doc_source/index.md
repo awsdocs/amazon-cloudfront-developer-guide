@@ -4,13 +4,13 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -19,15 +19,12 @@ Amazon's trademarks and trade dress may not be used in
    + [How CloudFront delivers content](HowCloudFrontWorks.md)
    + [Locations and IP address ranges of CloudFront edge servers](LocationsOfEdgeServers.md)
    + [Accessing CloudFront](introduction-accessing-cloudfront.md)
-   + [How to get started with Amazon CloudFront](welcome-how-to-get-started.md)
-   + [AWS Identity and Access Management](IAMCloudFront.md)
    + [CloudFront pricing](CloudFrontPricing.md)
       + [CloudFront security savings bundle](savings-bundle.md)
       + [Choosing the price class for a CloudFront distribution](PriceClass.md)
-+ [Setting up Amazon CloudFront](setting-up-cloudfront.md)
 + [Getting started with Amazon CloudFront](GettingStarted.md)
+   + [Setting up](setting-up-cloudfront.md)
    + [Getting started with a simple CloudFront distribution](GettingStarted.SimpleDistribution.md)
-   + [Getting started with the AWS for WordPress plugin](WordPressPlugIn.md)
    + [Getting started with a secure static website](getting-started-secure-static-website-cloudformation-template.md)
 + [Working with distributions](distribution-working-with.md)
    + [Overview of distributions](distribution-overview.md)
@@ -42,7 +39,8 @@ Amazon's trademarks and trade dress may not be used in
       + [Updating a distribution](HowToUpdateDistribution.md)
       + [Tagging Amazon CloudFront distributions](tagging.md)
       + [Deleting a distribution](HowToDeleteDistribution.md)
-   + [Using Amazon S3 origins, MediaPackage channels, and custom origins for CloudFront distributions](DownloadDistS3AndCustomOrigins.md)
+   + [Using CloudFront continuous deployment to safely test CDN configuration changes](continuous-deployment.md)
+   + [Using various origins with CloudFront distributions](DownloadDistS3AndCustomOrigins.md)
    + [Using custom URLs by adding alternate domain names (CNAMEs)](CNAMEs.md)
    + [Using WebSockets with CloudFront distributions](distribution-working-with.websockets.md)
 + [Working with policies](working-with-policies.md)
@@ -51,8 +49,9 @@ Amazon's trademarks and trade dress may not be used in
       + [Understanding the cache key](understanding-the-cache-key.md)
    + [Controlling origin requests](controlling-origin-requests.md)
       + [Using the managed origin request policies](using-managed-origin-request-policies.md)
-   + [Adding the CloudFront HTTP headers](using-cloudfront-headers.md)
-   + [Adding HTTP headers to CloudFront responses](adding-response-headers.md)
+      + [Adding CloudFront request headers](adding-cloudfront-headers.md)
+      + [Understanding how origin request policies and cache policies work together](understanding-how-origin-request-policies-and-cache-policies-work-together.md)
+   + [Adding or removing HTTP headers in CloudFront responses](modifying-response-headers.md)
       + [Creating response headers policies](creating-response-headers-policies.md)
       + [Using the managed response headers policies](using-managed-response-headers-policies.md)
       + [Understanding response headers policies](understanding-response-headers-policies.md)
@@ -100,7 +99,9 @@ Amazon's trademarks and trade dress may not be used in
          + [Create a URL signature using PHP](CreateURL_PHP.md)
          + [Create a URL signature using C# and the .NET Framework](CreateSignatureInCSharp.md)
          + [Create a URL signature using Java](CFPrivateDistJavaDevelopment.md)
-   + [Restricting access to Amazon S3 content by using an origin access identity (OAI)](private-content-restricting-access-to-s3.md)
+   + [Restricting access to an AWS origin](private-content-restricting-access-to-origin.md)
+      + [Restricting access to a MediaStore origin](private-content-restricting-access-to-mediastore.md)
+      + [Restricting access to an Amazon S3 origin](private-content-restricting-access-to-s3.md)
    + [Restricting access to Application Load Balancers](restrict-access-to-load-balancer.md)
    + [Using AWS WAF to control access to your content](distribution-web-awswaf.md)
    + [Restricting the geographic distribution of your content](georestrictions.md)
@@ -121,6 +122,7 @@ Amazon's trademarks and trade dress may not be used in
       + [HTTP 500 status code (Lambda execution error)](http-500-lambda-execution-error.md)
       + [HTTP 502 status code (Bad Gateway)](http-502-bad-gateway.md)
       + [HTTP 502 status code (Lambda validation error)](http-502-lambda-validation-error.md)
+      + [HTTP 502 status code (DNS error)](http-502-dns-error.md)
       + [HTTP 503 status code (Lambda limit exceeded)](http-503-lambda-limit-execeeded-error.md)
       + [HTTP 503 status code (Service Unavailable)](http-503-service-unavailable.md)
       + [HTTP 504 status code (Gateway Timeout)](http-504-gateway-timeout.md)
@@ -158,7 +160,6 @@ Amazon's trademarks and trade dress may not be used in
          + [Updating functions](update-function.md)
          + [Publishing functions](publish-function.md)
          + [Associating functions with distributions](associate-function.md)
-      + [Monitoring CloudFront Functions](monitoring-functions.md)
    + [Customizing at the edge with Lambda@Edge](lambda-at-the-edge.md)
       + [Get started creating and using Lambda@Edge functions](lambda-edge-how-it-works.md)
          + [Tutorial: Creating a simple Lambda@Edge function](lambda-edge-how-it-works-tutorial.md)
@@ -174,7 +175,6 @@ Amazon's trademarks and trade dress may not be used in
          + [Adding triggers by using the Lambda console](lambda-edge-add-triggers-lam-console.md)
          + [Adding triggers by using the CloudFront console](lambda-edge-add-triggers-cf-console.md)
       + [Testing and debugging Lambda@Edge functions](lambda-edge-testing-debugging.md)
-      + [CloudWatch metrics and logs for Lambda@Edge functions](lambda-cloudwatch-metrics-logging.md)
       + [Deleting Lambda@Edge functions and replicas](lambda-edge-delete-replicas.md)
       + [Lambda@Edge event structure](lambda-event-structure.md)
       + [Working with requests and responses](lambda-generating-http-responses.md)
@@ -193,23 +193,24 @@ Amazon's trademarks and trade dress may not be used in
       + [CloudFront top referrers report](top-referrers-report.md)
       + [CloudFront usage reports](usage-charts.md)
       + [CloudFront viewers reports](viewers-reports.md)
-   + [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)
-      + [Viewing CloudFront and Lambda@Edge metrics](viewing-cloudfront-metrics.md)
-      + [Setting alarms to receive notifications](receiving-notifications.md)
-      + [Downloading data in CSV format](cloudwatch-csv.md)
+   + [Monitoring CloudFront metrics with Amazon CloudWatch](monitoring-using-cloudwatch.md)
+      + [Viewing CloudFront and edge function metrics](viewing-cloudfront-metrics.md)
+      + [Creating alarms for metrics](receiving-notifications.md)
+      + [Downloading metrics data in CSV format](cloudwatch-csv.md)
       + [Getting metrics using the CloudWatch API](programming-cloudwatch-metrics.md)
-   + [CloudFront logging](logging.md)
+   + [CloudFront and edge function logging](logging.md)
       + [Configuring and using standard logs (access logs)](AccessLogs.md)
       + [Real-time logs](real-time-logs.md)
+      + [Edge function logs](edge-functions-logs.md)
       + [Using AWS CloudTrail to capture requests sent to the CloudFront API](logging_using_cloudtrail.md)
    + [Tracking configuration changes with AWS Config](TrackingChanges.md)
 + [Security in Amazon CloudFront](security.md)
    + [Data protection in Amazon CloudFront](data-protection-summary.md)
-   + [Identity and Access Management (IAM) in CloudFront](auth-and-access-control.md)
-      + [Overview of managing access permissions to your CloudFront resources](access-control-overview.md)
-      + [Using identity-based policies (IAM policies) for CloudFront](access-control-managing-permissions.md)
-      + [CloudFront API permissions: actions, resources, and conditions reference](cf-api-permissions-ref.md)
+   + [Identity and Access Management for Amazon CloudFront](security-iam.md)
+      + [How Amazon CloudFront works with IAM](security_iam_service-with-iam.md)
+      + [Identity-based policy examples for Amazon CloudFront](security_iam_id-based-policy-examples.md)
       + [AWS managed policies for Amazon CloudFront](security-iam-awsmanpol.md)
+      + [Troubleshooting Amazon CloudFront identity and access](security_iam_troubleshoot.md)
    + [Logging and monitoring in Amazon CloudFront](logging-and-monitoring.md)
    + [Compliance validation for Amazon CloudFront](compliance.md)
    + [Resilience in Amazon CloudFront](disaster-recovery-resiliency.md)
@@ -217,4 +218,5 @@ Amazon's trademarks and trade dress may not be used in
 + [Quotas](cloudfront-limits.md)
 + [Amazon CloudFront related information](Resources.md)
 + [Document history](WhatsNew.md)
+   + [Updates before 2022](EarlierUpdates.md)
 + [AWS glossary](glossary.md)

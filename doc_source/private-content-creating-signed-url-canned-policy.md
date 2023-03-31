@@ -11,15 +11,15 @@ To create a signed URL using a canned policy, complete the following steps\.<a n
 The base URL is the CloudFront URL that you would use to access the file if you were not using signed URLs, including your own query string parameters, if any\. For more information about the format of URLs for distributions, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.  
    + The following CloudFront URL is for an image file in a distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the file in the URL must match the path to the file on your HTTP server or in your Amazon S3 bucket\.
 
-     `http://d111111abcdef8.cloudfront.net/images/image.jpg`
+     `https://d111111abcdef8.cloudfront.net/images/image.jpg`
    + The following CloudFront URL includes a query string:
 
-     `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
+     `https://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
    + The following CloudFront URLs are for image files in a distribution\. Both use an alternate domain name; the second one includes a query string:
 
-     `http://www.example.com/images/image.jpg`
+     `https://www.example.com/images/image.jpg`
 
-     `http://www.example.com/images/image.jpg?color=red`
+     `https://www.example.com/images/image.jpg?color=red`
    + The following CloudFront URL is for an image file in a distribution that uses an alternate domain name and the HTTPS protocol:
 
      `https://www.example.com/images/image.jpg`  
@@ -42,7 +42,7 @@ This public key must belong to a key group that is a trusted signer in the distr
 
 Example signed URL:
 
-** ![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) `http://d111111abcdef8.cloudfront.net/image.jpg ` ![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) `? ` ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png) `color=red&size=medium& ` ![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) `Expires=1357034400 ` ![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) `&Signature=nitfHRCrtziwO2HwPfWw~yYDhUF5EwRunQA-j19DzZrvDh6hQ73lDx~-ar3UocvvRQVw6EkC~GdpGQyyOSKQim-TxAnW7d8F5Kkai9HVx0FIu-5jcQb0UEmatEXAMPLE3ReXySpLSMj0yCd3ZAB4UcBCAqEijkytL6f3fVYNGQI6 ` ![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=K2JCJMDEHXQW5F`**
+** ![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png) `https://d111111abcdef8.cloudfront.net/image.jpg ` ![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png) `? ` ![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png) `color=red&size=medium& ` ![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png) `Expires=1357034400 ` ![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png) `&Signature=nitfHRCrtziwO2HwPfWw~yYDhUF5EwRunQA-j19DzZrvDh6hQ73lDx~-ar3UocvvRQVw6EkC~GdpGQyyOSKQim-TxAnW7d8F5Kkai9HVx0FIu-5jcQb0UEmatEXAMPLE3ReXySpLSMj0yCd3ZAB4UcBCAqEijkytL6f3fVYNGQI6 ` ![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png) `&Key-Pair-Id=K2JCJMDEHXQW5F`**
 
 ## Creating a signature for a signed URL that uses a canned policy<a name="private-content-canned-policy-creating-signature"></a>
 
@@ -84,9 +84,9 @@ When you create a policy statement for a canned policy, you specify the followin
 **Resource**  
 You can specify only one value for `Resource`\.
 The base URL including your query strings, if any, but excluding the CloudFront `Expires`, `Signature`, and `Key-Pair-Id` parameters, for example:  
-`http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
+`https://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
 Note the following:  
-+ **Protocol** – The value must begin with `http://` or `https://`\. 
++ **Protocol** – The value must begin with `http://` or `https://`\.
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
 + **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the file in your webpage or application\. Do not specify the Amazon S3 URL for the object\.
 
@@ -97,13 +97,13 @@ For more information, see [When does CloudFront check the expiration date and ti
 
 #### Example policy statement for a signed URL that uses a canned policy<a name="private-content-canned-policy-creating-policy-statement-example"></a>
 
-When you use the following example policy statement in a signed URL, a user can access the file `http://d111111abcdef8.cloudfront.net/horizon.jpg` until January 1, 2013 10:00 am UTC:
+When you use the following example policy statement in a signed URL, a user can access the file `https://d111111abcdef8.cloudfront.net/horizon.jpg` until January 1, 2013 10:00 am UTC:
 
 ```
 {
     "Statement": [
         {
-            "Resource": "http://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes",
+            "Resource": "https://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes",
             "Condition": {
                 "DateLessThan": {
                     "AWS:EpochTime": 1357034400

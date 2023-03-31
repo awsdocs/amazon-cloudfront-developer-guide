@@ -5,7 +5,7 @@ You can get started with Amazon CloudFront by using the solution described in th
 + **Is sped up by the Amazon CloudFront content delivery network** – This solution creates a CloudFront distribution to serve your website to viewers with low latency\. The distribution is configured with an [origin access identity](private-content-restricting-access-to-s3.md) to make sure that the website is accessible only through CloudFront, not directly from S3\.
 + **Is secured by HTTPS and additional security headers** – This solution creates an SSL/TLS certificate in [AWS Certificate Manager \(ACM\)](https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html), and attaches it to the CloudFront distribution\. This certificate enables the distribution to serve your domain’s website securely with HTTPS\.
 
-  This solution also uses [Lambda@Edge](lambda-at-the-edge.md) to add security headers to every server response\. Security headers are a group of headers in the web server response that tell web browsers to take extra security precautions\. For more information, refer to this blog post: [Adding HTTP Security Headers Using Lambda@Edge and Amazon CloudFront](http://aws.amazon.com/blogs/networking-and-content-delivery/adding-http-security-headers-using-lambdaedge-and-amazon-cloudfront/)\.
+  This solution also uses [Lambda@Edge](lambda-at-the-edge.md) to add security headers to every server response\. Security headers are a group of headers in the web server response that tell web browsers to take extra security precautions\. For more information, refer to this blog post: [Adding HTTP Security Headers Using Lambda@Edge and Amazon CloudFront](https://aws.amazon.com/blogs/networking-and-content-delivery/adding-http-security-headers-using-lambdaedge-and-amazon-cloudfront/)\.
 + **Is configured and deployed with [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)** – This solution uses an AWS CloudFormation template to set up all the components, so you can focus more on your website’s content and less on configuring components\.
 
 This solution is open source on GitHub\. To view the code, submit a pull request, or open an issue, go to [https://github.com/aws-samples/amazon-cloudfront-secure-static-site](https://github.com/aws-samples/amazon-cloudfront-secure-static-site)\.
@@ -50,7 +50,7 @@ To use this solution, you must have the following prerequisites:
 + A registered domain name, such as example\.com, that’s pointed to an Amazon Route 53 hosted zone\. The hosted zone must be in the same AWS account where you deploy this solution\. If you don’t have a registered domain name, you can [register one with Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar.html)\. If you have a registered domain name but it’s not pointed to a Route 53 hosted zone, [configure Route 53 as your DNS service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html)\.
 + AWS Identity and Access Management \(IAM\) permissions to launch CloudFormation templates that create IAM roles, and permissions to create all the AWS resources in the solution\.
 
-You are responsible for the costs incurred while using this solution\. For more information about costs, see [the pricing pages for each AWS service](http://aws.amazon.com/pricing/)\.
+You are responsible for the costs incurred while using this solution\. For more information about costs, see [the pricing pages for each AWS service](https://aws.amazon.com/pricing/)\.
 
 ### Using the AWS CloudFormation console<a name="deploy-website-cloudformation-console"></a>
 
@@ -108,7 +108,7 @@ To add your website content before deploying this solution, you must package the
 1. Run the following command to install and package the solution’s artifacts:
 
    ```
-   make package-function
+   make package-static
    ```
 
 1. Copy your website’s content into the `www` folder, overwriting the default website content\.

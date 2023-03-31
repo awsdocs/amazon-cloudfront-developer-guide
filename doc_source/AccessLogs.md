@@ -41,7 +41,7 @@ If no users access your content during a given hour, you don't receive any log f
 Each entry in a log file gives details about a single request\. For more information about log file format, see [Standard log file format](#LogFileFormat)\.
 
 **Important**  
-We recommend that you use the logs to understand the nature of the requests for your content, not as a complete accounting of all requests\. CloudFront delivers access logs on a best\-effort basis\. The log entry for a particular request might be delivered long after the request was actually processed and, in rare cases, a log entry might not be delivered at all\. When a log entry is omitted from access logs, the number of entries in the access logs won't match the usage that appears in the AWS usage and billing reports\.
+We recommend that you use the logs to understand the nature of the requests for your content, not as a complete accounting of all requests\. CloudFront delivers access logs on a best\-effort basis\. The log entry for a particular request might be delivered long after the request was actually processed and, in rare cases, a log entry might not be delivered at all\. When a log entry is omitted from access logs, the number of entries in the access logs won't match the usage that appears in the AWS billing and usage reports\.
 
 ## Choosing an Amazon S3 bucket for your standard logs<a name="access-logs-choosing-s3-bucket"></a>
 
@@ -49,7 +49,7 @@ When you enable logging for a distribution, you specify the Amazon S3 bucket tha
 
 **Important**  
 Don’t choose an Amazon S3 bucket with [S3 Object Ownership](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html) set to **bucket owner enforced**\. That setting disables ACLs for the bucket and the objects in it, which prevents CloudFront from delivering log files to the bucket\.  
-Don’t choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn’t deliver standard logs to buckets in these Regions:  
+Don't choose an Amazon S3 bucket in any of the following Regions, because CloudFront doesn't deliver standard logs to buckets in these Regions:  
 Africa \(Cape Town\)  af\-south\-1
 Asia Pacific \(Hong Kong\)  ap\-east\-1
 Asia Pacific \(Jakarta\)  ap\-southeast\-3
@@ -165,11 +165,11 @@ If the request body exceeds the maximum size, the request is logged, including t
 
 Because you can receive multiple access logs per hour, we recommend that you combine all the log files you receive for a given time period into one file\. You can then analyze the data for that period more accurately and completely\.
 
-One way to analyze your access logs is to use [Amazon Athena](http://aws.amazon.com/athena/)\. Athena is an interactive query service that can help you analyze data for AWS services, including CloudFront\. To learn more, see [ Querying Amazon CloudFront Logs](https://docs.aws.amazon.com/athena/latest/ug/cloudfront-logs.html) in the *Amazon Athena User Guide*\.
+One way to analyze your access logs is to use [Amazon Athena](https://aws.amazon.com/athena/)\. Athena is an interactive query service that can help you analyze data for AWS services, including CloudFront\. To learn more, see [ Querying Amazon CloudFront Logs](https://docs.aws.amazon.com/athena/latest/ug/cloudfront-logs.html) in the *Amazon Athena User Guide*\.
 
 In addition, the following AWS blog posts discuss some ways to analyze access logs\.
-+ [ Amazon CloudFront Request Logging](http://aws.amazon.com/blogs/aws/amazon-cloudfront-request-logging/) \(for content delivered via HTTP\)
-+ [ Enhanced CloudFront Logs, Now With Query Strings](http://aws.amazon.com/blogs/aws/enhanced-cloudfront-logs-now-with-query-strings/)
++ [ Amazon CloudFront Request Logging](https://aws.amazon.com/blogs/aws/amazon-cloudfront-request-logging/) \(for content delivered via HTTP\)
++ [ Enhanced CloudFront Logs, Now With Query Strings](https://aws.amazon.com/blogs/aws/enhanced-cloudfront-logs-now-with-query-strings/)
 
 **Important**  
 We recommend that you use the logs to understand the nature of the requests for your content, not as a complete accounting of all requests\. CloudFront delivers access logs on a best\-effort basis\. The log entry for a particular request might be delivered long after the request was actually processed and, in rare cases, a log entry might not be delivered at all\. When a log entry is omitted from access logs, the number of entries in the access logs won't match the usage that appears in the AWS usage and billing reports\.
@@ -238,7 +238,7 @@ The log file for a distribution contains 33 fields\. The following list contains
 
 1. **`x-edge-location`**
 
-   The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number \(for example, DFW3\)\. The three\-letter code typically corresponds with the International Air Transport Association \(IATA\) airport code for an airport near the edge location’s geographic location\. \(These abbreviations might change in the future\.\)
+   The edge location that served the request\. Each edge location is identified by a three\-letter code and an arbitrarily assigned number \(for example, DFW3\)\. The three\-letter code typically corresponds with the International Air Transport Association \(IATA\) airport code for an airport near the edge location's geographic location\. \(These abbreviations might change in the future\.\)
 
 1. **`sc-bytes`**
 
@@ -246,7 +246,7 @@ The log file for a distribution contains 33 fields\. The following list contains
 
 1. **`c-ip`**
 
-   The IP address of the viewer that made the request, for example, `192.0.2.183` or `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of this field is the IP address of the proxy or load balancer\. See also the `x-forwarded-for` field\.
+   The IP address of the viewer that made the request, for example, `192.0.2.183` or `2001:0db8:85a3::8a2e:0370:7334`\. If the viewer used an HTTP proxy or a load balancer to send the request, the value of this field is the IP address of the proxy or load balancer\. See also the `x-forwarded-for` field\.
 
 1. **`cs-method`**
 
@@ -299,7 +299,7 @@ The log file for a distribution contains 33 fields\. The following list contains
    + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
    + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin and returned the result to the viewer\.
    + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
-   + `CapacityExceeded` – The server returned an HTTP 503 status code because it didn’t have enough capacity at the time of the request to serve the object\.
+   + `CapacityExceeded` – The server returned an HTTP 503 status code because it didn't have enough capacity at the time of the request to serve the object\.
    + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\. If the value of the `sc-status` field is `200`, or if the value of this field is `Error` and the value of the `x-edge-response-result-type` field is not `Error`, it means the HTTP request was successful but the client disconnected before receiving all of the bytes\.
    + `Redirect` – The server redirected the viewer from HTTP to HTTPS according to the distribution settings\.
 
@@ -309,7 +309,7 @@ The log file for a distribution contains 33 fields\. The following list contains
 
 1. **`x-host-header`**
 
-   The value that the viewer included in the `Host` header of the request\. If you’re using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you’re using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
+   The value that the viewer included in the `Host` header of the request\. If you're using the CloudFront domain name in your object URLs \(such as d111111abcdef8\.cloudfront\.net\), this field contains that domain name\. If you're using alternate domain names \(CNAMEs\) in your object URLs \(such as www\.example\.com\), this field contains the alternate domain name\.
 
    If you’re using alternate domain names, see `cs(Host)` in field 7 for the domain name that is associated with your distribution\.
 
@@ -323,11 +323,11 @@ The log file for a distribution contains 33 fields\. The following list contains
 
 1. **`time-taken`**
 
-   The number of seconds \(to the thousandth of a second, for example, 0\.082\) from when the server receives the viewer’s request to when the server writes the last byte of the response to the output queue, as measured on the server\. From the perspective of the viewer, the total time to get the full response will be longer than this value because of network latency and TCP buffering\.
+   The number of seconds \(to the thousandth of a second, for example, 0\.082\) from when the server receives the viewer's request to when the server writes the last byte of the response to the output queue, as measured on the server\. From the perspective of the viewer, the total time to get the full response will be longer than this value because of network latency and TCP buffering\.
 
 1. **`x-forwarded-for`**
 
-   If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\. This field contains an IPv4 address \(for example, `192.0.2.183`\) or an IPv6 address \(for example, `2001:0db8:85a3:0000:0000:8a2e:0370:7334`\)\.
+   If the viewer used an HTTP proxy or a load balancer to send the request, the value of the `c-ip` field is the IP address of the proxy or load balancer\. In that case, this field is the IP address of the viewer that originated the request\. This field contains an IPv4 address \(for example, `192.0.2.183`\) or an IPv6 address \(for example, `2001:0db8:85a3::8a2e:0370:7334`\)\.
 
    If the viewer did not use an HTTP proxy or a load balancer, the value of this field is a hyphen \(\-\)\.
 
@@ -350,7 +350,7 @@ The log file for a distribution contains 33 fields\. The following list contains
    + `RefreshHit` – The server found the object in the cache but the object had expired, so the server contacted the origin to verify that the cache had the latest version of the object\.
    + `Miss` – The request could not be satisfied by an object in the cache, so the server forwarded the request to the origin server and returned the result to the viewer\.
    + `LimitExceeded` – The request was denied because a CloudFront quota \(formerly referred to as a limit\) was exceeded\.
-   + `CapacityExceeded` – The server returned a 503 error because it didn’t have enough capacity at the time of the request to serve the object\.
+   + `CapacityExceeded` – The server returned a 503 error because it didn't have enough capacity at the time of the request to serve the object\.
    + `Error` – Typically, this means the request resulted in a client error \(the value of the `sc-status` field is in the `4xx` range\) or a server error \(the value of the `sc-status` field is in the `5xx` range\)\.
 
      If the value of the `x-edge-result-type` field is `Error` and the value of this field is not `Error`, the client disconnected before finishing the download\.
@@ -358,7 +358,7 @@ The log file for a distribution contains 33 fields\. The following list contains
 
 1. **`cs-protocol-version`**
 
-   The HTTP version that the viewer specified in the request\. Possible values include `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, and `HTTP/2.0`\.
+   The HTTP version that the viewer specified in the request\. Possible values include `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, `HTTP/2.0`, and `HTTP/3.0`\.
 
 1. **`fle-status`**
 
@@ -366,7 +366,7 @@ The log file for a distribution contains 33 fields\. The following list contains
 
    Possible values for this field include:
    + `ForwardedByContentType` – The server forwarded the request to the origin without parsing or encryption because no content type was configured\.
-   + `ForwardedByQueryArgs` – The server forwarded the request to the origin without parsing or encryption because the request contains a query argument that wasn’t in the configuration for field\-level encryption\.
+   + `ForwardedByQueryArgs` – The server forwarded the request to the origin without parsing or encryption because the request contains a query argument that wasn't in the configuration for field\-level encryption\.
    + `ForwardedDueToNoProfile` – The server forwarded the request to the origin without parsing or encryption because no profile was specified in the configuration for field\-level encryption\.
    + `MalformedContentTypeClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because the value of the `Content-Type` header was in an invalid format\.
    + `MalformedInputClientError` – The server rejected the request and returned an HTTP 400 status code to the viewer because the request body was in an invalid format\.
@@ -400,24 +400,25 @@ The log file for a distribution contains 33 fields\. The following list contains
 
    When the value of the `x-edge-result-type` field is `Error`, this field contains the specific type of error\. When the object was served to the viewer from the [Origin Shield](origin-shield.md) cache, this field contains `OriginShieldHit`\. In all other cases, this field contains the same value as `x-edge-result-type`\. Possible values for this field include:
    + `AbortedOrigin` – The server encountered an issue with the origin\.
+   + `OriginCommError` – The request timed out while connecting to the origin, or reading data from the origin\.
    + `ClientCommError` – The response to the viewer was interrupted due to a communication problem between the server and the viewer\.
-   + `ClientGeoBlocked` – The distribution is configured to refuse requests from the viewer’s geographic location\.
+   + `ClientGeoBlocked` – The distribution is configured to refuse requests from the viewer's geographic location\.
    + `ClientHungUpRequest` – The viewer stopped prematurely while sending the request\.
-   + `Error` – An error occurred for which the error type doesn’t fit any of the other categories\. This error type can occur when the server serves an error response from the cache\.
+   + `Error` – An error occurred for which the error type doesn't fit any of the other categories\. This error type can occur when the server serves an error response from the cache\.
    + `InvalidRequest` – The server received an invalid request from the viewer\.
    + `InvalidRequestBlocked` – Access to the requested resource is blocked\.
-   + `InvalidRequestCertificate` – The distribution doesn’t match the SSL/TLS certificate for which the HTTPS connection was established\.
+   + `InvalidRequestCertificate` – The distribution doesn't match the SSL/TLS certificate for which the HTTPS connection was established\.
    + `InvalidRequestHeader` – The request contained an invalid header\.
    + `InvalidRequestMethod` – The distribution is not configured to handle the HTTP request method that was used\. This can happen when the distribution supports only cacheable requests\.
-   + `OriginConnectError` – The server couldn’t connect to the origin\.
-   + `OriginContentRangeLengthError` – The `Content-Length` header in the origin’s response doesn’t match the length in the `Content-Range` header\.
-   + `OriginDnsError` – The server couldn’t resolve the origin’s domain name\.
+   + `OriginConnectError` – The server couldn't connect to the origin\.
+   + `OriginContentRangeLengthError` – The `Content-Length` header in the origin's response doesn't match the length in the `Content-Range` header\.
+   + `OriginDnsError` – The server couldn't resolve the origin's domain name\.
    + `OriginError` – The origin returned an incorrect response\.
    + `OriginHeaderTooBigError` – A header returned by the origin is too big for the edge server to process\.
    + `OriginInvalidResponseError` – The origin returned an invalid response\.
-   + `OriginReadError` – The server couldn’t read from the origin\.
+   + `OriginReadError` – The server couldn't read from the origin\.
    + `OriginShieldHit` – The object was served to the viewer from the [Origin Shield](origin-shield.md) cache\.
-   + `OriginWriteError` – The server couldn’t write to the origin\.
+   + `OriginWriteError` – The server couldn't write to the origin\.
    + `OriginZeroSizeObjectError` – A zero size object sent from the origin resulted in an error\.
    + `SlowReaderOriginError` – The viewer was slow to read the message that caused the origin error\.
 
@@ -454,6 +455,6 @@ The following is an example log file for a distribution:
 
 Standard logging is an optional feature of CloudFront\. There is no extra charge for enabling standard logging\. However, you accrue the usual Amazon S3 charges for storing and accessing the files on Amazon S3 \(you can delete them at any time\)\.
 
-For more information about Amazon S3 pricing, see [Amazon S3 Pricing](http://aws.amazon.com/s3/pricing/)\.
+For more information about Amazon S3 pricing, see [Amazon S3 Pricing](https://aws.amazon.com/s3/pricing/)\.
 
-For more information about CloudFront pricing, see [CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
+For more information about CloudFront pricing, see [CloudFront Pricing](https://aws.amazon.com/cloudfront/pricing/)\.

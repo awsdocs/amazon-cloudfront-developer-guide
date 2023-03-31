@@ -1,8 +1,8 @@
 # AWS billing and usage reports for CloudFront<a name="reports-billing"></a>
 
 AWS provides two usage reports for CloudFront:
-+ The billing report is a high\-level view of all of the activity for the AWS services that you’re using, including CloudFront\. For more information, see [AWS billing report for CloudFront](#billing-report)\.
-+ The usage report is a summary of activity for a specific service, aggregated by hour, day, or month\. It also includes usage charts the provide a graphical representation of your CloudFront usage\. For more information, see [AWS usage report for CloudFront](#usage-report)\.
++ The billing report is a high\-level view of all of the activity for the AWS services that you're using, including CloudFront\. For more information, see [AWS billing report for CloudFront](#billing-report)\.
++ The usage report is a summary of activity for a specific service, aggregated by hour, day, or month\. It also includes usage charts that provide a graphical representation of your CloudFront usage\. For more information, see [AWS usage report for CloudFront](#usage-report)\.
 
 To help you understand these reports, see the detailed information in [Interpreting your AWS bill and the AWS usage report for CloudFront](billing-and-usage-interpreting.md)\.
 

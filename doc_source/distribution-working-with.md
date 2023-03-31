@@ -5,6 +5,7 @@ You create a CloudFront distribution to tell CloudFront where you want content t
 **Topics**
 + [Overview of distributions](distribution-overview.md)
 + [Creating, updating, and deleting distributions](distribution-create-delete.md)
-+ [Using Amazon S3 origins, MediaPackage channels, and custom origins for CloudFront distributions](DownloadDistS3AndCustomOrigins.md)
++ [Using CloudFront continuous deployment to safely test CDN configuration changes](continuous-deployment.md)
++ [Using various origins with CloudFront distributions](DownloadDistS3AndCustomOrigins.md)
 + [Using custom URLs by adding alternate domain names \(CNAMEs\)](CNAMEs.md)
 + [Using WebSockets with CloudFront distributions](distribution-working-with.websockets.md)

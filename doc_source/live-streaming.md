@@ -73,7 +73,7 @@ Complete the following procedure to set up a CloudFront distribution for the liv
 **Origin domain**  
 The origin where your MediaPackage live video channel and endpoints are\. Choose the text field, then from the dropdown list, choose the MediaPackage channel for your live video\. You can map one channel to several origin endpoints\.  
 If you created your channel using another AWS account, type the origin URL value into the field\. The origin must be an HTTPS URL\.  
-For more information, see [Origin domain name](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
+For more information, see [Origin domain](distribution-web-values-specify.md#DownloadDistValuesDomainName)\.  
 **Origin path**  
 The path to the MediaPackage endpoint from where the content is served\. When you choose an origin domain name, CloudFront populates the origin path\.  
 If you used a channel from another AWS account for **Origin domain**, the **Origin path** field is not filled in for you\. You must get the correct origin path from the other account so that you can enter it manually\.  

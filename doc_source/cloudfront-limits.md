@@ -39,16 +39,17 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 | Entity | Default quota | 
 | --- | --- | 
 | Distributions per AWS account For more information, see [Creating a distribution](distribution-web-creating-console.md)\.  | 200 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Staging distributions per AWS account For more information, see [Using CloudFront continuous deployment to safely test CDN configuration changes](continuous-deployment.md)\. | 20 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
 | Maximum cacheable file size for HTTP GET, POST, and PUT requests | 30 GB | 
-|  Request timeout For more information, see [Origin response timeout](RequestAndResponseBehaviorCustomOrigin.md#request-custom-request-timeout)\.  |  30 seconds [ Request a higher quota](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorCustomOrigin.html#request-custom-request-timeout)  | 
-| Response timeout per origin For more information, see [Origin response timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 1\-60 seconds [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-|  Connection timeout per origin For more information, see [Origin connection timeout](distribution-web-values-specify.md#origin-connection-timeout)\.  |  1\-10 seconds  | 
-|  Connection attempts per origin For more information, see [Origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  |  1\-3  | 
+| Response timeout per origin For more information, see [Response timeout \(custom origins only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.  | 1\-60 seconds [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Connection timeout per origin For more information, see [Connection timeout](distribution-web-values-specify.md#origin-connection-timeout)\.  |  1\-10 seconds  | 
+|  Connection attempts per origin For more information, see [Connection attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  |  1\-3  | 
 | File compression: range of file sizes that CloudFront compresses For more information, see [Serving compressed files](ServingCompressedFiles.md)\.  | 1,000 to 10,000,000 bytes | 
 | Alternate domain names \(CNAMEs\) per distribution For more information, see [Using custom URLs by adding alternate domain names \(CNAMEs\)](CNAMEs.md)\.  | 100 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Origins per distribution | 25 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 | Origin groups per distribution | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-|  Origin access identities per account  |  100 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Origin access identities per AWS account  |  100 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Origin access controls per AWS account  |  100  | 
 | Cache behaviors per distribution | 25 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 
 ## General quotas on policies<a name="limits-policies"></a>
@@ -63,14 +64,17 @@ CloudFront is subject to the following quotas \(formerly referred to as limits\)
 |  Query strings per cache policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Headers per cache policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Cookies per cache policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Total combined length of all query string, header, and cookie names in a cache policy  |  1024  | 
 |  Origin request policies per AWS account  |  20  | 
 |  Distributions associated with the same origin request policy  |  100  | 
 |  Query strings per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Headers per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
 |  Cookies per origin request policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+|  Total combined length of all query string, header, and cookie names in an origin request policy  |  1024  | 
 |  Response headers policies per AWS account  |  20  | 
 |  Distributions associated with the same response headers policy  |  100  | 
 |  Custom headers per response headers policy  |  10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
+| Continuous deployment policies per AWS account | 20 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions) | 
 
 ## Quotas on CloudFront Functions<a name="limits-functions"></a>
 
@@ -91,18 +95,18 @@ In addition to these quotas, there are some other restrictions when using CloudF
 The quotas in this section apply to Lambda@Edge\. These quotas are in addition to the default AWS Lambda quotas, which also apply\. For the Lambda quotas, see [Quotas](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*\.
 
 **Note**  
-Lambda dynamically scales capacity in response to increased traffic, within your account’s quotas\. For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.
+Lambda dynamically scales capacity in response to increased traffic, within your AWS account's quotas\. For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.
 
 
 **General quotas**  
 
 |  Entity  |  Default quota  | 
 | --- | --- | 
-|  Distributions per AWS account that can have Lambda@Edge functions  |  25 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
+|  Distributions per AWS account that can have Lambda@Edge functions  |  500 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 |  Lambda@Edge functions per distribution  |  100 [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 |  Requests per second  |  10,000 \(in each AWS Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
 |  Concurrent executions For more information, see [Function scaling](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) in the *AWS Lambda Developer Guide*\.  |  1,000 \(in each AWS Region\) [ Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-aws-lambda-edge)  | 
-|  Distributions associated with the same function  |  100  | 
+|  Distributions associated with the same function  |  500  | 
 
 
 **Quotas that differ by event type**  
@@ -154,7 +158,7 @@ In addition to these quotas, there are some other restrictions when using Lambda
 
 | Entity | Default quota | 
 | --- | --- | 
-| Origin response timeout \(idle timeout\) | 10 minutes If CloudFront hasn’t detected any bytes sent from the origin to the client within the past 10 minutes, the connection is assumed to be idle and is closed\. | 
+| Origin response timeout \(idle timeout\) | 10 minutes If CloudFront hasn't detected any bytes sent from the origin to the client within the past 10 minutes, the connection is assumed to be idle and is closed\. | 
 
 ## Quotas on field\-level encryption<a name="limits-field-level-encryption"></a>
 
@@ -175,7 +179,7 @@ In addition to these quotas, there are some other restrictions when using Lambda
 
 ## Quotas on cookies \(legacy cache settings\)<a name="limits-whitelisted-cookies"></a>
 
-These quotas apply to CloudFront’s legacy cache settings\. We recommend using a [cache policy or origin request policy](working-with-policies.md) instead of the legacy settings\.
+These quotas apply to CloudFront's legacy cache settings\. We recommend using a [cache policy or origin request policy](working-with-policies.md) instead of the legacy settings\.
 
 
 ****  
@@ -183,11 +187,11 @@ These quotas apply to CloudFront’s legacy cache settings\. We recommend using 
 | Entity | Default quota | 
 | --- | --- | 
 | Cookies per cache behavior For more information, see [Caching content based on cookies](Cookies.md)\.  | 10 [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 
-| Total number of bytes in cookie names \(doesn’t apply if you configure CloudFront to forward all cookies to the origin\) | 512 minus the number of cookies | 
+| Total number of bytes in cookie names \(doesn't apply if you configure CloudFront to forward all cookies to the origin\) | 512 minus the number of cookies | 
 
 ## Quotas on query strings \(legacy cache settings\)<a name="limits-whitelisted-query-strings"></a>
 
-These quotas apply to CloudFront’s legacy cache settings\. We recommend using a [cache policy or origin request policy](working-with-policies.md) instead of the legacy settings\.
+These quotas apply to CloudFront's legacy cache settings\. We recommend using a [cache policy or origin request policy](working-with-policies.md) instead of the legacy settings\.
 
 
 ****  
@@ -211,3 +215,4 @@ These quotas apply to CloudFront’s legacy cache settings\. We recommend using 
 | Custom headers: maximum length of a header name | 256 characters | 
 | Custom headers: maximum length of a header value | 1,783 characters | 
 | Custom headers: maximum length of all header values and names combined | 10,240 characters | 
+| Maximum length of the value of the Content\-Security\-Policy header |  1,783 characters [Request a higher quota](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudfront-distributions)  | 

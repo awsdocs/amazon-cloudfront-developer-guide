@@ -133,7 +133,7 @@ When you create a policy statement for a custom policy, you specify the followin
 
 **Resource**  
 The base URL including your query strings, if any:  
-`http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
+`https://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
 If you omit the `Resource` parameter, users can access all of the files associated with any distribution that is associated with the key pair that you use to create the signed URL\.
 You can specify only one value for `Resource`\.  
 Note the following:  
@@ -141,12 +141,12 @@ Note the following:
 + **Query string parameters** – If you have no query string parameters, omit the question mark\.
 + **Wildcards** – You can use the wildcard character that matches zero or more characters \(\*\) or the wild\-card character that matches exactly one character \(?\) anywhere in the string\. For example, the value:
 
-  `http://d111111abcdef8.cloudfront.net/*game_download.zip*`
+  `https://d111111abcdef8.cloudfront.net/*game_download.zip*`
 
   would include \(for example\) the following files:
-  + `http://d111111abcdef8.cloudfront.net/game_download.zip`
-  + `http://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
-  + `http://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
+  + `https://d111111abcdef8.cloudfront.net/game_download.zip`
+  + `https://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
+  + `https://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
 + **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the file in your webpage or application\. Do not specify the Amazon S3 URL for the file\.
 
 **DateLessThan**  
@@ -166,7 +166,7 @@ The IP address of the client making the GET request\. Note the following:
   `"`*IPv4 IP address*`/32"`
 + You must specify IP address ranges in standard IPv4 CIDR format \(for example, `192.0.2.0/24`\)\. For more information, go to *RFC 4632, Classless Inter\-domain Routing \(CIDR\): The Internet Address Assignment and Aggregation Plan*, [https://tools.ietf.org/html/rfc4632](https://tools.ietf.org/html/rfc4632)\.
 **Important**  
-IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, are not supported\. 
+IP addresses in IPv6 format, such as 2001:0db8:85a3::8a2e:0370:7334, are not supported\. 
 
   If you're using a custom policy that includes `IpAddress`, do not enable IPv6 for the distribution\. If you want to restrict access to some content by IP address and support IPv6 requests for other content, you can create two distributions\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
@@ -185,13 +185,13 @@ For more information, see [Values that you specify in the policy statement for a
 
 ### Example policy statement: accessing one file from a range of IP addresses<a name="private-content-custom-policy-statement-signed-cookies-example-one-object"></a>
 
-The following example custom policy in a signed cookie specifies that a user can access the file `http://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
+The following example custom policy in a signed cookie specifies that a user can access the file `https://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
 
 ```
 {
     "Statement": [
         {
-            "Resource": "http://d111111abcdef8.cloudfront.net/game_download.zip",
+            "Resource": "https://d111111abcdef8.cloudfront.net/game_download.zip",
             "Condition": {
                 "IpAddress": {
                     "AWS:SourceIp": "192.0.2.0/24"
@@ -213,7 +213,7 @@ The following example custom policy allows you to create signed cookies for any 
 {
     "Statement": [
         {
-            "Resource": "http://d111111abcdef8.cloudfront.net/training/*",
+            "Resource": "https://d111111abcdef8.cloudfront.net/training/*",
             "Condition": {
                 "IpAddress": {
                     "AWS:SourceIp": "192.0.2.0/24"
@@ -229,7 +229,7 @@ The following example custom policy allows you to create signed cookies for any 
 
 Each signed cookie in which you use this policy includes a base URL that identifies a specific file, for example:
 
-`http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
+`https://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 
 ### Example policy statement: accessing all files associated with a key pair ID from one IP address<a name="private-content-custom-policy-statement-signed-cookies-example-one-ip"></a>
 
@@ -239,7 +239,7 @@ The following sample custom policy allows you to set signed cookies for any file
 {
     "Statement": [
         {
-            "Resource": "http://*",
+            "Resource": "https://*",
             "Condition": {
                 "IpAddress": {
                     "AWS:SourceIp": "192.0.2.10/32"
@@ -258,7 +258,7 @@ The following sample custom policy allows you to set signed cookies for any file
 
 Each signed cookie in which you use this policy includes a base URL that identifies a specific file in a specific CloudFront distribution, for example:
 
-`http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
+`https://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 
 The signed cookie also includes a key pair ID, which must be associated with a trusted key group in the distribution \(d111111abcdef8\.cloudfront\.net\) that you specify in the base URL\.
 

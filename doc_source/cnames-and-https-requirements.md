@@ -21,7 +21,7 @@ The requirements for SSL/TLS certificates are described in this topic\. They app
 
 ## Certificate issuer<a name="https-requirements-certificate-issuer"></a>
 
-We recommend that you use a certificate issued by [AWS Certificate Manager \(ACM\)](http://aws.amazon.com/certificate-manager/)\. For information about getting a certificate from ACM, see the *[AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)*\. To use an ACM certificate with CloudFront, make sure you request \(or import\) the certificate in the US East \(N\. Virginia\) Region \(`us-east-1`\)\.
+We recommend that you use a certificate issued by [AWS Certificate Manager \(ACM\)](https://aws.amazon.com/certificate-manager/)\. For information about getting a certificate from ACM, see the *[AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)*\. To use an ACM certificate with CloudFront, make sure you request \(or import\) the certificate in the US East \(N\. Virginia\) Region \(`us-east-1`\)\.
 
  CloudFront supports the same certificate authorities \(CAs\) as Mozilla, so if you don’t use ACM, use a certificate issued by a CA on the [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)\. For more information about getting and installing a certificate, refer to the documentation for your HTTP server software and to the documentation for the CA\.
 
@@ -87,12 +87,7 @@ CloudFront supports 256\-bit keys\. To use an ECDSA certificate in ACM to requir
 
 ## Supported types of certificates<a name="https-requirements-supported-types"></a>
 
-CloudFront supports all types of certificates, including the following:
-+ Domain\-validated certificates
-+ Extended validation \(EV\) certificates
-+ High\-assurance certificates
-+ Wildcard certificates \(`*.example.com`\)
-+ Subject alternative name \(SAN\) certificates \(`example.com` and `example.net`\)
+CloudFront supports all types of certificates issued by a trusted certificate authority\.
 
 ## Certificate expiration date and renewal<a name="https-requirements-cert-expiration"></a>
 

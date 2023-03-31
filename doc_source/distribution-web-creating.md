@@ -8,7 +8,7 @@ The following task list summarizes the process for creating a distribution\.<a n
 
    If you're using Amazon S3, note that the name of your bucket must be all lowercase and cannot contain spaces\.
 
-   If you're using an Amazon EC2 server or another custom origin, review [Using Amazon EC2 or other custom origins](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\.
+   If you're using an Amazon EC2 server or another custom origin, review [Using Amazon EC2 \(or another custom origin\)](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\.
 
    For the current maximum number of origins that you can create for a distribution, or to request a higher quota \(formerly known as limit\), see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\.
 
@@ -24,9 +24,9 @@ You are responsible for ensuring the security of your origin server\. You must e
 
 1. Test your distribution\. For more information, see [Testing a distribution](distribution-web-testing.md)\.
 
-1. Develop your website or application to access your content using the domain name that CloudFront returned after you created your distribution in Step 3\. For example, if CloudFront returns d111111abcdef8\.cloudfront\.net as the domain name for your distribution, the URL for the file `image.jpg` in an Amazon S3 bucket or in the root directory on an HTTP server will be `http://d111111abcdef8.cloudfront.net/image.jpg`\. 
+1. Develop your website or application to access your content using the domain name that CloudFront returned after you created your distribution in Step 3\. For example, if CloudFront returns d111111abcdef8\.cloudfront\.net as the domain name for your distribution, the URL for the file `image.jpg` in an Amazon S3 bucket or in the root directory on an HTTP server will be `https://d111111abcdef8.cloudfront.net/image.jpg`\. 
 
-   If you specified one or more alternate domain names \(CNAMEs\) when you created your distribution, you can use your own domain name\. In that case, the URL for `image.jpg` might be `http://www.example.com/image.jpg`\.
+   If you specified one or more alternate domain names \(CNAMEs\) when you created your distribution, you can use your own domain name\. In that case, the URL for `image.jpg` might be `https://www.example.com/image.jpg`\.
 
    Note the following:
    + If you want to use signed URLs to restrict access to your content, see [Serving private content with signed URLs and signed cookies](PrivateContent.md)\. 

@@ -4,7 +4,7 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
 + If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately\.
 + If the content is not in that edge location, CloudFront retrieves it from an origin that you've defined—such as an Amazon S3 bucket, a MediaPackage channel, or an HTTP server \(for example, a web server\) that you have identified as the source for the definitive version of your content\.
 
-As an example, suppose that you're serving an image from a traditional web server, not from CloudFront\. For example, you might serve an image, sunsetphoto\.png, using the URL `http://example.com/sunsetphoto.png`\.
+As an example, suppose that you're serving an image from a traditional web server, not from CloudFront\. For example, you might serve an image, sunsetphoto\.png, using the URL `https://example.com/sunsetphoto.png`\.
 
 Your users can easily navigate to this URL and see the image\. But they probably don't know that their request is routed from one network to another—through the complex collection of interconnected networks that comprise the internet—until the image is found\.
 
@@ -18,8 +18,6 @@ You also get increased reliability and availability because copies of your files
 + [How CloudFront delivers content](HowCloudFrontWorks.md)
 + [Locations and IP address ranges of CloudFront edge servers](LocationsOfEdgeServers.md)
 + [Accessing CloudFront](introduction-accessing-cloudfront.md)
-+ [How to get started with Amazon CloudFront](welcome-how-to-get-started.md)
-+ [AWS Identity and Access Management](IAMCloudFront.md)
 + [CloudFront pricing](CloudFrontPricing.md)
 
 ## How you set up CloudFront to deliver content<a name="HowCloudFrontWorksOverview"></a>
@@ -44,8 +42,8 @@ You create a CloudFront distribution to tell CloudFront where you want content t
 
 1. CloudFront sends your distribution's configuration \(but not your content\) to all of its *edge locations* or *points of presence* \(POPs\)— collections of servers in geographically\-dispersed data centers where CloudFront caches copies of your files\.
 
-As you develop your website or application, you use the domain name that CloudFront provides for your URLs\. For example, if CloudFront returns `d111111abcdef8.cloudfront.net` as the domain name for your distribution, the URL for logo\.jpg in your Amazon S3 bucket \(or in the root directory on an HTTP server\) is `http://d111111abcdef8.cloudfront.net/logo.jpg`\.
+As you develop your website or application, you use the domain name that CloudFront provides for your URLs\. For example, if CloudFront returns `d111111abcdef8.cloudfront.net` as the domain name for your distribution, the URL for logo\.jpg in your Amazon S3 bucket \(or in the root directory on an HTTP server\) is `https://d111111abcdef8.cloudfront.net/logo.jpg`\.
 
-Or you can set up CloudFront to use your own domain name with your distribution\. In that case, the URL might be `http://www.example.com/logo.jpg`\.
+Or you can set up CloudFront to use your own domain name with your distribution\. In that case, the URL might be `https://www.example.com/logo.jpg`\.
 
 Optionally, you can configure your origin server to add headers to the files, to indicate how long you want the files to stay in the cache in CloudFront edge locations\. By default, each file stays in an edge location for 24 hours before it expires\. The minimum expiration time is 0 seconds; there isn't a maximum expiration time\. For more information, see [Managing how long content stays in the cache \(expiration\)](Expiration.md)\.

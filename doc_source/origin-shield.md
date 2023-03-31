@@ -11,7 +11,7 @@ Origin Shield can further reduce the number of [simultaneous requests](RequestAn
 **Better network performance**  
 When you enable Origin Shield in the AWS Region [that has the lowest latency to your origin](#choose-origin-shield-region), you can get better network performance\. For origins in an AWS Region, CloudFront network traffic remains on the high throughput CloudFront network all the way to your origin\. For origins outside of AWS, CloudFront network traffic remains on the CloudFront network all the way to Origin Shield, which has a low latency connection to your origin\.
 
-You incur additional charges for using Origin Shield\. For more information, see [CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
+You incur additional charges for using Origin Shield\. For more information, see [CloudFront Pricing](https://aws.amazon.com/cloudfront/pricing/)\.
 
 **Topics**
 + [Use cases for Origin Shield](#origin-shield-use-cases)
@@ -39,7 +39,7 @@ The following sections explain the benefits of Origin Shield for the following u
 
 ### Viewers in different geographical regions<a name="os-use-cases-global-viewers"></a>
 
-With Amazon CloudFront, you inherently get a reduced load on your origin because requests that CloudFront can serve from the cache don’t go to your origin\. In addition to CloudFront’s [global network of edge locations](http://aws.amazon.com/cloudfront/features/#Amazon_CloudFront_Infrastructure), [regional edge caches](HowCloudFrontWorks.md#CloudFrontRegionaledgecaches) serve as a mid\-tier caching layer to provide cache hits and consolidate origin requests for viewers in nearby geographical regions\. Viewer requests are routed first to a nearby CloudFront edge location, and if the object isn’t cached in that location, the request is sent on to a regional edge cache\.
+With Amazon CloudFront, you inherently get a reduced load on your origin because requests that CloudFront can serve from the cache don’t go to your origin\. In addition to CloudFront’s [global network of edge locations](https://aws.amazon.com/cloudfront/features/#Amazon_CloudFront_Infrastructure), [regional edge caches](HowCloudFrontWorks.md#CloudFrontRegionaledgecaches) serve as a mid\-tier caching layer to provide cache hits and consolidate origin requests for viewers in nearby geographical regions\. Viewer requests are routed first to a nearby CloudFront edge location, and if the object isn’t cached in that location, the request is sent on to a regional edge cache\.
 
 When viewers are in different geographical regions, requests can be routed through different regional edge caches, each of which can send a request to your origin for the same content\. But with Origin Shield, you get an additional layer of caching between the regional edge caches and your origin\. All requests from all regional edge caches go through Origin Shield, further reducing the load on your origin\. The following diagrams illustrate this\. In the following diagrams, the origin is AWS Elemental MediaPackage\.
 
@@ -65,7 +65,7 @@ When you combine Origin Shield with using your CloudFront distribution as the or
 + Improved network performance\. Network traffic from other CDNs is terminated at a nearby CloudFront edge location, which might provide a hit from the local cache\. If the requested object is not in the edge location cache, the request to the origin remains on the CloudFront network all the way to Origin Shield, which provides high throughput and low latency to the origin\. If the requested object is in Origin Shield’s cache, the request to your origin is avoided entirely\.
 
 **Important**  
-If you are interested in using Origin Shield in a multi\-CDN architecture, and have discounted pricing, [contact us](http://aws.amazon.com/contact-us/) or your AWS sales representative for more information\. Additional charges may apply\.
+If you are interested in using Origin Shield in a multi\-CDN architecture, and have discounted pricing, [contact us](https://aws.amazon.com/contact-us/) or your AWS sales representative for more information\. Additional charges may apply\.
 
 The following diagrams show how this configuration can help minimize the load on your origin when you serve popular live video events with multiple CDNs\. In the following diagrams, the origin is AWS Elemental MediaPackage\.
 
@@ -231,11 +231,11 @@ To estimate your charges for Origin Shield for cacheable requests, use the follo
 
 Total number of cacheable requests **x** \(1 – cache hit rate\) **x** percentage of requests that go to Origin Shield from a regional edge cache in a different region **x** Origin Shield charge per 10,000 requests **/** 10,000
 
-For more information about the charge per 10,000 requests for Origin Shield, see [CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
+For more information about the charge per 10,000 requests for Origin Shield, see [CloudFront Pricing](https://aws.amazon.com/cloudfront/pricing/)\.
 
 ## Origin Shield high availability<a name="origin-shield-high-availability"></a>
 
-Origin Shield leverages Amazon CloudFront’s [regional edge caches](HowCloudFrontWorks.md#CloudFrontRegionaledgecaches)\. Each of these edge caches is built in an AWS Region using at least three [Availability Zones](http://aws.amazon.com/about-aws/global-infrastructure/regions_az/) with fleets of auto\-scaling Amazon EC2 instances\. Connections from CloudFront locations to Origin Shield also use active error tracking for each request to automatically route the request to a secondary Origin Shield location if the primary Origin Shield location is unavailable\.
+Origin Shield leverages Amazon CloudFront’s [regional edge caches](HowCloudFrontWorks.md#CloudFrontRegionaledgecaches)\. Each of these edge caches is built in an AWS Region using at least three [Availability Zones](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) with fleets of auto\-scaling Amazon EC2 instances\. Connections from CloudFront locations to Origin Shield also use active error tracking for each request to automatically route the request to a secondary Origin Shield location if the primary Origin Shield location is unavailable\.
 
 ## How Origin Shield interacts with other CloudFront features<a name="origin-shield-and-other-features"></a>
 
@@ -245,7 +245,7 @@ The following sections explain how Origin Shield interacts with other CloudFront
 
 To see when Origin Shield handled a request, you must enable one of the following:
 + [CloudFront standard logs \(access logs\)](AccessLogs.md)\. Standard logs are provided free of charge\.
-+ [CloudFront real\-time logs](real-time-logs.md)\. You incur additional charges for using real\-time logs\. See [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/)\.
++ [CloudFront real\-time logs](real-time-logs.md)\. You incur additional charges for using real\-time logs\. See [Amazon CloudFront Pricing](https://aws.amazon.com/cloudfront/pricing/)\.
 
 Cache hits from Origin Shield appear as `OriginShieldHit` in the `x-edge-detailed-result-type` field in CloudFront logs\. Origin Shield leverages Amazon CloudFront’s [regional edge caches](HowCloudFrontWorks.md#CloudFrontRegionaledgecaches)\. If a request is routed from a CloudFront edge location to the regional edge cache that is acting as Origin Shield, it is reported as a `Hit` in the logs, not as an `OriginShieldHit`\.
 

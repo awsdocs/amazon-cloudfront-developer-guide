@@ -5,6 +5,7 @@ With CloudFront Functions in Amazon CloudFront, you can write lightweight functi
 CloudFront Functions is ideal for lightweight, short\-running functions for use cases like the following:
 + **Cache key normalization** – You can transform HTTP request attributes \(headers, query strings, cookies, even the URL path\) to create an optimal [cache key](understanding-the-cache-key.md), which can improve your cache hit ratio\.
 + **Header manipulation** – You can insert, modify, or delete HTTP headers in the request or response\. For example, you can add a `True-Client-IP` header to every request\.
++ **Status code modification and body generation** – You can evaluate headers and respond back to viewers with customized content\.
 + **URL redirects or rewrites** – You can redirect viewers to other pages based on information in the request, or rewrite all requests from one path to another\.
 + **Request authorization** – You can validate hashed authorization tokens, such as JSON web tokens \(JWT\), by inspecting authorization headers or other request metadata\.
 

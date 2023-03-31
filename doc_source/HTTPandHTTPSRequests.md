@@ -7,4 +7,4 @@ For custom origins, when you create your distribution, you can specify how Cloud
 For information about how to restrict your distribution so that end users can only access objects using HTTPS, see [Using HTTPS with CloudFront](using-https.md)\.
 
 **Note**  
-The charge for HTTPS requests is higher than the charge for HTTP requests\. For more information about billing rates, go to the [CloudFront pricing plan](http://aws.amazon.com/cloudfront/#pricing)\.
+The charge for HTTPS requests is higher than the charge for HTTP requests\. For more information about billing rates, go to the [CloudFront pricing plan](https://aws.amazon.com/cloudfront/#pricing)\.

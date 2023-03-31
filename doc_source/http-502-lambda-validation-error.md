@@ -1,3 +1,3 @@
 # HTTP 502 status code \(Lambda validation error\)<a name="http-502-lambda-validation-error"></a>
 
-If you’re using Lambda@Edge, an HTTP 502 status code can indicate that your Lambda function response was incorrectly formed or included invalid content\. For more information about troubleshooting Lambda@Edge errors, see [Testing and debugging Lambda@Edge functions](lambda-edge-testing-debugging.md)\.
+If you're using Lambda@Edge, an HTTP 502 status code can indicate that your Lambda function response was incorrectly formed or included invalid content\. For more information about troubleshooting Lambda@Edge errors, see [Testing and debugging Lambda@Edge functions](lambda-edge-testing-debugging.md)\.

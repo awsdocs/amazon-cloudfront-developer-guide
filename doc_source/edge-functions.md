@@ -4,7 +4,7 @@ With Amazon CloudFront, you can write your own code to customize how your CloudF
 
 The code that you write and attach to your CloudFront distribution is called an *edge function*\. CloudFront provides two ways to write and manage edge functions:
 + **CloudFront Functions** – With CloudFront Functions, you can write lightweight functions in JavaScript for high\-scale, latency\-sensitive CDN customizations\. The CloudFront Functions runtime environment offers submillisecond startup times, scales immediately to handle millions of requests per second, and is highly secure\. CloudFront Functions is a native feature of CloudFront, which means you can build, test, and deploy your code entirely within CloudFront\.
-+ **Lambda@Edge** – Lambda@Edge is an extension of [AWS Lambda](http://aws.amazon.com/lambda/) that offers powerful and flexible computing for complex functions and full application logic closer to your viewers, and is highly secure\. Lambda@Edge functions run in a Node\.js or Python runtime environment\. You publish them to a single AWS Region, but when you associate the function with a CloudFront distribution, Lambda@Edge automatically replicates your code around the world\.
++ **Lambda@Edge** – Lambda@Edge is an extension of [AWS Lambda](https://aws.amazon.com/lambda/) that offers powerful and flexible computing for complex functions and full application logic closer to your viewers, and is highly secure\. Lambda@Edge functions run in a Node\.js or Python runtime environment\. You publish them to a single AWS Region, but when you associate the function with a CloudFront distribution, Lambda@Edge automatically replicates your code around the world\.
 
 ## Choosing between CloudFront Functions and Lambda@Edge<a name="edge-functions-choosing"></a>
 

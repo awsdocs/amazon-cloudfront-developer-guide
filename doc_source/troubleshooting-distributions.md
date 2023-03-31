@@ -4,7 +4,7 @@ Use the information here to help you diagnose and fix certificate errors, access
 
 **Topics**
 + [CloudFront returns an InvalidViewerCertificate error when I try to add an alternate domain name](#troubleshooting-distributions-certificates)
-+ [I can’t view the files in my distribution](#troubleshooting-web-distribution)
++ [I can't view the files in my distribution](#troubleshooting-web-distribution)
 + [Error message: Certificate: <certificate\-id> is being used by CloudFront](#troubleshooting-certificate-error)
 
 ## CloudFront returns an InvalidViewerCertificate error when I try to add an alternate domain name<a name="troubleshooting-distributions-certificates"></a>
@@ -20,7 +20,7 @@ To add an alternate domain name \(CNAME\), you must attach a trusted, valid cert
 You can only have up to five certificates in a certificate chain\. Reduce the number of certificates in the chain, and then try again\.
 
 **The certificate chain includes one or more certificates that aren't valid for the current date\.**  
-The certificate chain for a certificate that you have added has one or more certificates that aren't valid, either because a certificate isn't valid yet or a certificate has expired\. Check the **Not Valid Before** and **Not Valid After** fields in the certificates in your certificate chain to make sure that all of the certificates are valid based on the dates that you’ve listed\.
+The certificate chain for a certificate that you have added has one or more certificates that aren't valid, either because a certificate isn't valid yet or a certificate has expired\. Check the **Not Valid Before** and **Not Valid After** fields in the certificates in your certificate chain to make sure that all of the certificates are valid based on the dates that you've listed\.
 
 **The certificate that you've attached isn't signed by a trusted Certificate Authority \(CA\)\.**  
 The certificate that you attach to CloudFront to verify an alternate domain name cannot be a self\-signed certificate\. It must be signed by a trusted CA\. For more information, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements)\.
@@ -31,22 +31,22 @@ The domain name and IP address format that are included in the certificate, and 
 **There was a CloudFront internal error\.**  
 CloudFront was blocked by an internal issue and couldn't make validation checks for certificates\. In this scenario, CloudFront returns an HTTP 500 status code and indicates that there is an internal CloudFront problem with attaching the certificate\. Wait a few minutes, and then try again to add the alternate domain name with the certificate\.
 
-**The certificate that you've attached doesn't cover the alternate domain name that you’re trying to add\.**  
-For each alternate domain name that you add, CloudFront requires that you attach a valid SSL/TLS certificate from a trusted Certificate Authority \(CA\) that covers the domain name, to validate your authorization to use it\. Please update your certificate to include a domain name that covers the CNAME that you’re trying to add\. For more information and examples of using domain names with wildcards, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements)\.
+**The certificate that you've attached doesn't cover the alternate domain name that you're trying to add\.**  
+For each alternate domain name that you add, CloudFront requires that you attach a valid SSL/TLS certificate from a trusted Certificate Authority \(CA\) that covers the domain name, to validate your authorization to use it\. Please update your certificate to include a domain name that covers the CNAME that you're trying to add\. For more information and examples of using domain names with wildcards, see [Requirements for using alternate domain names](CNAMEs.md#alternate-domain-names-requirements)\.
 
-## I can’t view the files in my distribution<a name="troubleshooting-web-distribution"></a>
+## I can't view the files in my distribution<a name="troubleshooting-web-distribution"></a>
 
 If you can't view the files in your CloudFront distribution, see the following topics for some common solutions\.
 
 ### Did you sign up for both CloudFront and Amazon S3?<a name="Troubleshooting.SigningUp"></a>
 
-To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both CloudFront and Amazon S3, separately\. For more information about signing up for CloudFront and Amazon S3, see [Setting up Amazon CloudFront](setting-up-cloudfront.md)\.
+To use Amazon CloudFront with an Amazon S3 origin, you must sign up for both CloudFront and Amazon S3, separately\. For more information about signing up for CloudFront and Amazon S3, see [Setting up](setting-up-cloudfront.md)\.
 
 ### Are your Amazon S3 bucket and object permissions set correctly?<a name="Troubleshooting.Permissions"></a>
 
 If you are using CloudFront with an Amazon S3 origin, the original versions of your content are stored in an S3 bucket\. The easiest way to use CloudFront with Amazon S3 is to make all of your objects publicly readable in Amazon S3\. To do this, you must explicitly enable public read privileges for each object that you upload to Amazon S3\.
 
-If your content is not publicly readable, you must create a CloudFront origin access identity \(OAI\) so that CloudFront can access it\. For more information about CloudFront origin access identities, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
+If your content is not publicly readable, you must create a CloudFront origin access control \(OAC\) so that CloudFront can access it\. For more information about CloudFront origin access control, see [Restricting access to an Amazon S3 origin](private-content-restricting-access-to-s3.md)\.
 
 Object properties and bucket properties are independent\. You must explicitly grant privileges to each object in Amazon S3\. Objects do not inherit properties from buckets, and object properties must be set independently of the bucket\.
 
@@ -82,7 +82,7 @@ Make sure that the URL that you're referencing uses the domain name \(or CNAME\)
 
 ### Do you need help troubleshooting a custom origin?<a name="Troubleshooting.CustomOrigin"></a>
 
-If you need AWS to help you troubleshoot a custom origin, we probably will need to inspect the `X-Amz-Cf-Id` header entries from your requests\. If you are not already logging these entries, you might want to consider it for the future\. For more information, see [Using Amazon EC2 or other custom origins](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\. For further help, see the [AWS Support Center](https://console.aws.amazon.com/support/home?#/)\.
+If you need AWS to help you troubleshoot a custom origin, we probably will need to inspect the `X-Amz-Cf-Id` header entries from your requests\. If you are not already logging these entries, you might want to consider it for the future\. For more information, see [Using Amazon EC2 \(or another custom origin\)](DownloadDistS3AndCustomOrigins.md#concept_CustomOrigin)\. For further help, see the [AWS Support Center](https://console.aws.amazon.com/support/home?#/)\.
 
 ## Error message: Certificate: <certificate\-id> is being used by CloudFront<a name="troubleshooting-certificate-error"></a>
 

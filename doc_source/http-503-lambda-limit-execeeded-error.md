@@ -1,6 +1,6 @@
 # HTTP 503 status code \(Lambda limit exceeded\)<a name="http-503-lambda-limit-execeeded-error"></a>
 
-If you’re using Lambda@Edge, an HTTP 503 status code can indicate that the Lambda service returned an error\. The error might be caused by one of the following:
+If you're using Lambda@Edge, an HTTP 503 status code can indicate that the Lambda service returned an error\. The error might be caused by one of the following:
 + The number of function executions exceeded one of the quotas \(formerly known as limits\) that Lambda sets to throttle executions in an AWS Region \(concurrent executions or invocation frequency\)\.
 + The function exceeded the Lambda function timeout quota\.
 

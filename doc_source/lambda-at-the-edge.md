@@ -24,7 +24,6 @@ For sample code and additional examples, see [Lambda@Edge example functions](lam
 + [Writing and creating a Lambda@Edge function](lambda-edge-create-function.md)
 + [Adding triggers for a Lambda@Edge function](lambda-edge-add-triggers.md)
 + [Testing and debugging Lambda@Edge functions](lambda-edge-testing-debugging.md)
-+ [CloudWatch metrics and logs for Lambda@Edge functions](lambda-cloudwatch-metrics-logging.md)
 + [Deleting Lambda@Edge functions and replicas](lambda-edge-delete-replicas.md)
 + [Lambda@Edge event structure](lambda-event-structure.md)
 + [Working with requests and responses](lambda-generating-http-responses.md)

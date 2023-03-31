@@ -1,6 +1,6 @@
 # Lambda@Edge event structure<a name="lambda-event-structure"></a>
 
-The following topics describe the request and response event objects that CloudFront passes to a Lambda@Edge function when it’s triggered\.
+The following topics describe the request and response event objects that CloudFront passes to a Lambda@Edge function when it's triggered\.
 
 **Topics**
 + [Dynamic origin selection](#lambda-event-content-based-routing)
@@ -13,7 +13,7 @@ You can use [the path pattern in a cache behavior](distribution-web-values-speci
 
 There are a number of ways that this dynamic origin selection can be useful\. For example, you can distribute requests across origins in different geographic areas to help with global load balancing\. Or you can selectively route requests to different origins that each serve a particular function: bot handling, SEO optimization, authentication, and so on\. For code examples that demonstrate how to use this feature, see [Content\-based dynamic origin selection \- examples](lambda-examples.md#lambda-examples-content-based-routing-examples)\.
 
-In the CloudFront origin request event, the `origin` object in the event structure contains information about the origin that the request would be routed to, based on the path pattern\. You can update the values in the `origin` object to route a request to a different origin\. When you update the `origin` object, you don’t need to define the origin in the distribution\. You can also replace an Amazon S3 origin object with a custom origin object, and vice versa\. You can only specify a single origin per request, though; either a custom origin or an Amazon S3 origin, but not both\.
+In the CloudFront origin request event, the `origin` object in the event structure contains information about the origin that the request would be routed to, based on the path pattern\. You can update the values in the `origin` object to route a request to a different origin\. When you update the `origin` object, you don't need to define the origin in the distribution\. You can also replace an Amazon S3 origin object with a custom origin object, and vice versa\. You can only specify a single origin per request, though; either a custom origin or an Amazon S3 origin, but not both\.
 
 ## Request events<a name="lambda-event-structure-request"></a>
 
@@ -148,20 +148,20 @@ The following example shows an origin request event object\.
 
 ### Request event fields<a name="request-event-fields"></a>
 
-Request event object data is contained in two subobjects: `config` \(`Records.cf.config`\) and `request` \(`Records.cf.request`\)\. The following lists describe each subobject’s fields\.
+Request event object data is contained in two subobjects: `config` \(`Records.cf.config`\) and `request` \(`Records.cf.request`\)\. The following lists describe each subobject's fields\.
 
 #### Fields in the config object<a name="request-event-fields-config"></a>
 
 The following list describes the fields in the `config` object \(`Records.cf.config`\)\.
 
 **`distributionDomainName` \(read\-only\)**  
-The domain name of the distribution that’s associated with the request\.
+The domain name of the distribution that's associated with the request\.
 
 **`distributionID` \(read\-only\)**  
-The ID of the distribution that’s associated with the request\.
+The ID of the distribution that's associated with the request\.
 
 **`eventType` \(read\-only\)**  
-The type of trigger that’s associated with the request: `viewer-request` or `origin-request`\.
+The type of trigger that's associated with the request: `viewer-request` or `origin-request`\.
 
 **`requestId` \(read\-only\)**  
 An encrypted string that uniquely identifies a viewer\-to\-CloudFront request\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md) and [Standard log file fields](AccessLogs.md#BasicDistributionFileFormat)\.
@@ -179,7 +179,7 @@ The headers in the request\. Note the following:
 + Each header object \(for example, `headers["accept"]` or `headers["host"]`\) is an array of key–value pairs\. For a given header, the array contains one key–value pair for each value in the request\.
 + `key` contains the case\-sensitive name of the header as it appeared in the HTTP request; for example, `Host`, `User-Agent`, `X-Forwarded-For`, and so on\.
 + `value` contains the header value as it appeared in the HTTP request\.
-+ When your Lambda function adds or modifies request headers and you don’t include the header `key` field, Lambda@Edge automatically inserts a header `key` using the header name that you provide\. Regardless of how you’ve formatted the header name, the header key that’s inserted automatically is formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
++ When your Lambda function adds or modifies request headers and you don't include the header `key` field, Lambda@Edge automatically inserts a header `key` using the header name that you provide\. Regardless of how you've formatted the header name, the header key that's inserted automatically is formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
 
   For example, you can add a header like the following, without a header `key`:
 
@@ -198,13 +198,13 @@ For information about restrictions on header usage, see [Restrictions on edge fu
 The HTTP method of the request\.
 
 **`querystring` \(read/write\)**  
-The query string, if any, in the request\. If the request doesn’t include a query string, the event object still includes `querystring` with an empty value\. For more information about query strings, see [Caching content based on query string parameters](QueryStringParameters.md)\.
+The query string, if any, in the request\. If the request doesn't include a query string, the event object still includes `querystring` with an empty value\. For more information about query strings, see [Caching content based on query string parameters](QueryStringParameters.md)\.
 
 **`uri` \(read/write\)**  
 The relative path of the requested object\. If your Lambda function modifies the `uri` value, note the following:  
 + The new `uri` value must begin with a forward slash \(/\)\.
 + When a function changes the `uri` value, that changes the object that the viewer is requesting\.
-+ When a function changes the `uri` value, that *doesn’t* change the cache behavior for the request or the origin that the request is sent to\.
++ When a function changes the `uri` value, that *doesn't* change the cache behavior for the request or the origin that the request is sent to\.
 
 **`body` \(read/write\)**  
 The body of the HTTP request\. The `body` structure can contain the following fields:    
@@ -222,13 +222,13 @@ The request body content\.
 **`origin` \(read/write\) \(origin events only\)**  
 The origin to send the request to\. The `origin` structure must contain exactly one origin, which can be a custom origin or an Amazon S3 origin\. The origin structure can contain the following fields:    
 **`customHeaders` \(read/write\) \(custom and Amazon S3 origins\)**  
-You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can’t add headers that are disallowed, and a header with the same name can’t be present in `Records.cf.request.headers`\. The [notes about request headers](#request-event-fields-request-headers) also apply to custom headers\. For more information, see [Custom headers that CloudFront can’t add to origin requests](add-origin-custom-headers.md#add-origin-custom-headers-denylist) and [Restrictions on edge functions](edge-functions-restrictions.md)\.  
+You can include custom headers with the request by specifying a header name and value pair for each custom header\. You can't add headers that are disallowed, and a header with the same name can't be present in `Records.cf.request.headers`\. The [notes about request headers](#request-event-fields-request-headers) also apply to custom headers\. For more information, see [Custom headers that CloudFront can’t add to origin requests](add-origin-custom-headers.md#add-origin-custom-headers-denylist) and [Restrictions on edge functions](edge-functions-restrictions.md)\.  
 **`domainName` \(read/write\) \(custom and Amazon S3 origins\)**  
-The domain name of the origin\. The domain name can’t be empty\.  
-+ **For custom origins** – Specify a DNS domain name, such as `www.example.com`\. The domain name can’t include a colon \(:\), and can’t be an IP address\. The domain name can be up to 253 characters\.
+The domain name of the origin\. The domain name can't be empty\.  
++ **For custom origins** – Specify a DNS domain name, such as `www.example.com`\. The domain name can't include a colon \(:\), and can't be an IP address\. The domain name can be up to 253 characters\.
 + **For Amazon S3 origins** – Specify the DNS domain name of the Amazon S3 bucket, such as `awsexamplebucket.s3.eu-west-1.amazonaws.com`\. The name can be up to 128 characters, and must be all lowercase\.  
 **`path` \(read/write\) \(custom and Amazon S3 origins\)**  
-The directory path at the origin where the request should locate content\. The path should start with a forward slash \(/\) but shouldn’t end with one \(for example, it shouldn’t end with `example-path/`\)\. For custom origins only, the path should be URL encoded and have a maximum length of 255 characters\.  
+The directory path at the origin where the request should locate content\. The path should start with a forward slash \(/\) but shouldn't end with one \(for example, it shouldn't end with `example-path/`\)\. For custom origins only, the path should be URL encoded and have a maximum length of 255 characters\.  
 **`keepaliveTimeout` \(read/write\) \(custom origins only\)**  
 How long, in seconds, that CloudFront should try to maintain the connection to the origin after receiving the last packet of the response\. The value must be a number from 1–60, inclusive\.  
 **`port` \(read/write\) \(custom origins only\)**  
@@ -240,10 +240,11 @@ How long, in seconds, CloudFront should wait for a response after sending a requ
 **`sslProtocols` \(read/write\) \(custom origins only\)**  
 The minimum SSL/TLS protocol that CloudFront can use when establishing an HTTPS connection with your origin\. Values can be any of the following: `TLSv1.2`, `TLSv1.1`, `TLSv1`, or `SSLv3`\.  
 **`authMethod` \(read/write\) \(Amazon S3 origins only\)**  
-If you’re using an [origin access identity \(OAI\)](private-content-restricting-access-to-s3.md), set this field to `origin-access-identity`, or set it to `none` if you aren’t using an OAI\. If you set `authMethod` to `origin-access-identity`, there are several requirements:   
+If you're using an [origin access identity \(OAI\)](private-content-restricting-access-to-s3.md#private-content-restricting-access-to-s3-oai), set this field to `origin-access-identity`\. If you aren't using an OAI, set it to `none`\. If you set `authMethod` to `origin-access-identity`, there are several requirements:   
 + You must specify the `region` \(see the following field\)\.
 + You must use the same OAI when you change the request from one Amazon S3 origin to another\.
-+ You can’t use an OAI when you change the request from a custom origin to an Amazon S3 origin\.  
++ You can't use an OAI when you change the request from a custom origin to an Amazon S3 origin\.
+This field does not support [origin access control \(OAC\)](private-content-restricting-access-to-s3.md)\.  
 **`region` \(read/write\) \(Amazon S3 origins only\)**  
 The AWS Region of your Amazon S3 bucket\. This is required only when you set `authMethod` to `origin-access-identity`\.
 
@@ -525,13 +526,13 @@ Response event object data is contained in three subobjects: `config` \(`Records
 The following list describes the fields in the `config` object \(`Records.cf.config`\)\.
 
 **`distributionDomainName` \(read\-only\)**  
-The domain name of the distribution that’s associated with the response\.
+The domain name of the distribution that's associated with the response\.
 
 **`distributionID` \(read\-only\)**  
-The ID of the distribution that’s associated with the response\.
+The ID of the distribution that's associated with the response\.
 
 **`eventType` \(read\-only\)**  
-The type of trigger that’s associated with the response: `origin-response` or `viewer-response`\.
+The type of trigger that's associated with the response: `origin-response` or `viewer-response`\.
 
 **`requestId` \(read\-only\)**  
 An encrypted string that uniquely identifies the viewer\-to\-CloudFront request that this response is associated with\. The `requestId` value also appears in CloudFront access logs as `x-edge-request-id`\. For more information, see [Configuring and using standard logs \(access logs\)](AccessLogs.md) and [Standard log file fields](AccessLogs.md#BasicDistributionFileFormat)\.
@@ -546,7 +547,7 @@ The headers in the response\. Note the following:
 + Each header object \(for example, `headers["content-type"]` or `headers["content-length"]`\) is an array of key–value pairs\. For a given header, the array contains one key–value pair for each value in the response\.
 + `key` contains the case\-sensitive name of the header as it appears in the HTTP response; for example, `Content-Type`, `Content-Length`, and so on\.
 + `value` contains the header value as it appears in the HTTP response\.
-+ When your Lambda function adds or modifies response headers and you don’t include the header `key` field, Lambda@Edge automatically inserts a header `key` using the header name that you provide\. Regardless of how you’ve formatted the header name, the header key that’s inserted automatically is formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
++ When your Lambda function adds or modifies response headers and you don't include the header `key` field, Lambda@Edge automatically inserts a header `key` using the header name that you provide\. Regardless of how you've formatted the header name, the header key that's inserted automatically is formatted with initial capitalization for each part, separated by hyphens \(\-\)\.
 
   For example, you can add a header like the following, without a header `key`:
 

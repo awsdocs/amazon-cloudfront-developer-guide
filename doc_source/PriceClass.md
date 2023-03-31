@@ -1,6 +1,6 @@
 # Choosing the price class for a CloudFront distribution<a name="PriceClass"></a>
 
-CloudFront has [edge locations all over the world](http://aws.amazon.com/cloudfront/features/#Global_Edge_Network)\. Our cost for each edge location varies and, as a result, the price that we charge varies depending on which edge location serves the requests\.
+CloudFront has [edge locations all over the world](https://aws.amazon.com/cloudfront/features/#Global_Edge_Network)\. Our cost for each edge location varies and, as a result, the price that we charge varies depending on which edge location serves the requests\.
 
 CloudFront edge locations are grouped into geographic regions, and we’ve grouped regions into price classes as shows in the following table\. You choose a price class when you [create](distribution-web-creating-console.md) or [update](HowToUpdateDistribution.md) a CloudFront distribution\.
 
@@ -15,4 +15,4 @@ By default, CloudFront responds to requests based only on performance\. Objects 
 
 If you choose a price class that doesn’t include all edge locations, CloudFront might still occasionally serve requests from an edge location in a region that is not included in your price class\. When this happens, you are not charged the rate for the more expensive region\. Instead, you’re charged the rate for the least expensive region in your price class\.
 
-For more information about CloudFront pricing and price classes, see [ Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing)\.
+For more information about CloudFront pricing and price classes, see [ Amazon CloudFront Pricing](https://aws.amazon.com/cloudfront/pricing)\.

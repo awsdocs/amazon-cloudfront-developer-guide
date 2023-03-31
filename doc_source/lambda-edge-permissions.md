@@ -9,7 +9,7 @@ To configure Lambda@Edge, you must set up specific IAM permissions and an IAM ex
 
 ## IAM permissions required to associate Lambda@Edge functions with CloudFront distributions<a name="lambda-edge-permissions-required"></a>
 
-In addition to the IAM permissions that you need to use AWS Lambda, the IAM user needs the following IAM permissions to associate Lambda functions with CloudFront distributions:
+In addition to the IAM permissions that you need to use AWS Lambda, the user needs the following IAM permissions to associate Lambda functions with CloudFront distributions:
 + `lambda:GetFunction`
 
   Allows the user to get configuration information for the Lambda function and a presigned URL to download a \.zip file that contains the function\.
@@ -23,18 +23,18 @@ In addition to the IAM permissions that you need to use AWS Lambda, the IAM user
 **Important**  
 The asterisk \(`*`\) at the end of the permission is required: `lambda:EnableReplication*`
 
-  For the resource, specify the ARN of the function \(without the version number\) that you want to execute when a CloudFront event occurs, as shown in the following example:
+  For the resource, specify the ARN of the function version that you want to execute when a CloudFront event occurs, as shown in the following example:
 
-  `arn:aws:lambda:us-east-1:123456789012:function:TestFunction`
+  `arn:aws:lambda:us-east-1:123456789012:function:TestFunction:2`
 + `iam:CreateServiceLinkedRole`
 
-  Allows the user to create a service linked role that is used by Lambda@Edge to replicate Lambda functions in CloudFront\. After this role has been created by the first distribution you use with Lambda@Edge, you don’t need to add permission to other distributions that you use with Lambda@Edge\.
+  Allows the user to create a service linked role that is used by Lambda@Edge to replicate Lambda functions in CloudFront\. After this role has been created by the first distribution you use with Lambda@Edge, you don't need to add permission to other distributions that you use with Lambda@Edge\.
 + `cloudfront:UpdateDistribution` or `cloudfront:CreateDistribution`
 
   Use `cloudfront:UpdateDistribution` to update a distribution or `cloudfront:CreateDistribution` to create a distribution\.
 
 For more information, see the following documentation:
-+ [Identity and Access Management \(IAM\) in CloudFront](auth-and-access-control.md) in this guide\.
++ [Identity and Access Management for Amazon CloudFront](security-iam.md) in this guide\.
 + [Authentication and Access Control for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/auth-and-access-control.html) in the *AWS Lambda Developer Guide*
 
 ## Function execution role for service principals<a name="lambda-edge-permissions-function-execution"></a>
@@ -66,7 +66,7 @@ Here's an example role trust policy:
 For information about the permissions that you need to grant to the execution role, see [Manage Permissions: Using an IAM Role \(Execution Role\)](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role) in the *AWS Lambda Developer Guide*\. Note the following:
 + By default, whenever a CloudFront event triggers a Lambda function, data is written to CloudWatch Logs\. If you want to use these logs, the execution role needs permission to write data to CloudWatch Logs\. You can use the predefined AWSLambdaBasicExecutionRole to grant permission to the execution role\.
 
-  For more information about CloudWatch Logs, see [CloudWatch metrics and logs for Lambda@Edge functions](lambda-cloudwatch-metrics-logging.md)\.
+  For more information about CloudWatch Logs, see [Edge function logs](edge-functions-logs.md)\.
 + If your Lambda function code accesses other AWS resources, such as reading an object from an S3 bucket, the execution role needs permission to perform that operation\. 
 
 ## Service\-linked roles for Lambda@Edge<a name="using-service-linked-roles"></a>

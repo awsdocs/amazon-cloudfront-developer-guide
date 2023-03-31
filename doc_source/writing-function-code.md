@@ -16,12 +16,14 @@ Before you write your function code, determine the purpose of your function\. Mo
 
 Regardless of your function’s purpose, the `handler` is the entry point for any function\. It takes a single argument called `event`, which is passed to the function by CloudFront\. The `event` is a JSON object that contains a representation of the HTTP request \(and the response, if your function modifies the HTTP response\)\. For more information about the structure of the `event` object, see [CloudFront Functions event structure](functions-event-structure.md)\.
 
-**Topics**
-+ [Modify the HTTP request](#function-code-modify-request)
-+ [Generate an HTTP response at the edge](#function-code-generate-response)
-+ [Modify the HTTP response](#function-code-modify-response)
+For more information about restrictions that apply to CloudFront Functions and Lambda@Edge, see [Restrictions on edge functions](edge-functions-restrictions.md)\.
 
-### Modify the HTTP request<a name="function-code-modify-request"></a>
+**Topics**
++ [Modify the HTTP request in a viewer request event type](#function-code-modify-request)
++ [Generate an HTTP response in a viewer request event type](#function-code-generate-response)
++ [Modify the HTTP response in a viewer response event type](#function-code-modify-response)
+
+### Modify the HTTP request in a viewer request event type<a name="function-code-modify-request"></a>
 
 Your function can modify the HTTP request that CloudFront receives from the viewer \(client\), and return the modified request to CloudFront for continued processing\. For example, your function code might normalize the [cache key](understanding-the-cache-key.md) or modify request headers\.
 
@@ -43,7 +45,7 @@ The function returns the modified `request` object to CloudFront\. CloudFront co
 
 For more information about the structure of the `event` and `request` objects, see [Event structure](functions-event-structure.md)\.
 
-### Generate an HTTP response at the edge<a name="function-code-generate-response"></a>
+### Generate an HTTP response in a viewer request event type<a name="function-code-generate-response"></a>
 
 Your function can generate an HTTP response at the edge and return it directly to the viewer \(client\) without checking for a cached response or any further processing by CloudFront\. For example, your function code might redirect the request to a new URL, or check for authorization and return a `401` or `403` response to unauthorized requests\.
 
@@ -66,12 +68,9 @@ The function returns a `response` object to CloudFront, which CloudFront immedia
 
 For more information about the structure of the `event`, `request`, and `response` objects, see [Event structure](functions-event-structure.md)\.
 
-**Note**  
-When you generate an HTTP response with CloudFront Functions, you cannot include a response body\. If you need to include a response body with your generated HTTP response, [use Lambda@Edge](lambda-generating-http-responses-in-requests.md)\.
+### Modify the HTTP response in a viewer response event type<a name="function-code-modify-response"></a>
 
-### Modify the HTTP response<a name="function-code-modify-response"></a>
-
-Your function can modify the HTTP response before CloudFront sends it to the viewer \(client\), regardless of whether the response comes from the CloudFront cache or the origin\. For example, your function code might add or modify response headers\.
+Your function can modify the HTTP response before CloudFront sends it to the viewer \(client\), regardless of whether the response comes from the CloudFront cache or the origin\. For example, your function code might add or modify response headers, status codes, and body content\.
 
 When you create a function that modifies the HTTP response, make sure to choose the *viewer response* event type\. This means that the function runs before CloudFront returns a response to the viewer, regardless of whether the response comes from the CloudFront cache or the origin\.
 
@@ -92,8 +91,5 @@ function handler(event) {
 The function returns the modified `response` object to CloudFront, which CloudFront immediately returns to the viewer\.
 
 For more information about the structure of the `event` and `response` objects, see [Event structure](functions-event-structure.md)\.
-
-**Note**  
-When you modify an HTTP response with CloudFront Functions, you cannot alter or modify the response body\. If you need to alter the response body, [use Lambda@Edge](lambda-generating-http-responses-in-requests.md)\. With Lambda@Edge, you can replace the entire response body with a new one, or remove the response body\. However, you cannot modify individual properties within the response body\.
 
 For more information about writing function code for CloudFront Functions, see [Event structure](functions-event-structure.md), [JavaScript runtime features](functions-javascript-runtime-features.md), and [Example code](functions-example-code.md)\.

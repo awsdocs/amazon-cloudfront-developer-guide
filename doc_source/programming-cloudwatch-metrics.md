@@ -29,55 +29,55 @@ To get the CloudFront metrics from the CloudWatch API, you must use the US East 
 
 ## Values for CloudFront distribution metrics<a name="cloudfront-metrics-distribution-values"></a>
 
-Use information from the following list to get details about specific CloudFront distribution metrics from the CloudWatch API\. Some of these metrics are available only when you have enabled additional metrics for the distribution\.
+Use information from the following list to get details about specific CloudFront distribution metrics from the CloudWatch API\. Some of these metrics are available only when you have turned on additional metrics for the distribution\.
 
 **Note**  
 Only one statistic, `Average` or `Sum`, is applicable for each metric\. The following list specifies which statistic is applicable to that metric\.
 
 **4xx error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `4xx`\.  
+The percentage of all viewer requests for which the response's HTTP status code is `4xx`\.  
 + Metric name: `4xxErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **401 error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `401`\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The percentage of all viewer requests for which the response's HTTP status code is `401`\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `401ErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **403 error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `403`\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The percentage of all viewer requests for which the response's HTTP status code is `403`\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `403ErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **404 error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `404`\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The percentage of all viewer requests for which the response's HTTP status code is `404`\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `404ErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **5xx error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `5xx`\.  
+The percentage of all viewer requests for which the response's HTTP status code is `5xx`\.  
 + Metric name: `5xxErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **502 error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `502`\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The percentage of all viewer requests for which the response's HTTP status code is `502`\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `502ErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **503 error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `503`\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The percentage of all viewer requests for which the response's HTTP status code is `503`\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `503ErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **504 error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `504`\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The percentage of all viewer requests for which the response's HTTP status code is `504`\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `504ErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
@@ -95,13 +95,13 @@ The total number of bytes that viewers uploaded to your origin with CloudFront, 
 + Unit: `None`
 
 **Cache hit rate**  
-The percentage of all cacheable requests for which CloudFront served the content from its cache\. HTTP `POST` and `PUT` requests, and errors, are not considered cacheable requests\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The percentage of all cacheable requests for which CloudFront served the content from its cache\. HTTP `POST` and `PUT` requests, and errors, are not considered cacheable requests\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `CacheHitRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
 
 **Origin latency**  
-The total time spent, in milliseconds, from when CloudFront receives a request to when it starts providing a response to the network \(not the viewer\), for requests that are served from the origin, not the CloudFront cache\. This is also known as *first byte latency*, or *time\-to\-first\-byte*\. To get this metric, you must first [enable additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
+The total time spent, in milliseconds, from when CloudFront receives a request to when it starts providing a response to the network \(not the viewer\), for requests that are served from the origin, not the CloudFront cache\. This is also known as *first byte latency*, or *time\-to\-first\-byte*\. To get this metric, you must first [turn on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional)\.  
 + Metric name: `OriginLatency`
 + Valid statistic: `Percentile`
 + Unit: `Milliseconds`
@@ -114,7 +114,7 @@ The total number of viewer requests received by CloudFront, for all HTTP methods
 + Unit: `None`
 
 **Total error rate**  
-The percentage of all viewer requests for which the response’s HTTP status code is `4xx` or `5xx`\.  
+The percentage of all viewer requests for which the response's HTTP status code is `4xx` or `5xx`\.  
 + Metric name: `TotalErrorRate`
 + Valid statistic: `Average`
 + Unit: `Percent`
@@ -145,7 +145,13 @@ The number of execution errors that occurred in a given time period\. Execution 
 + Unit: `None`
 
 **Execution time**  
-The amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a value of 35 means that the function completed in 35% of the maximum allowed time\. This metric is a number between 0 and 100\.  
+The amount of time \(0\-100\) that the function took to run as a percentage of the maximum allowed time\. For example, a value of 35 means that the function completed in 35% of the maximum allowed time\.  
 + Metric name: `ExecutionTime`
 + Valid statistic: `Average`
 + Unit: `Percent`
+
+**Throttles**  
+The number of times that the function was throttled in a given time period\.  
++ Metric name: `FunctionThrottles`
++ Valid statistic: `Sum`
++ Unit: `None`

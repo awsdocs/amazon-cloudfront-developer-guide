@@ -24,7 +24,7 @@ The examples in this section illustrate some common ways to use Lambda@Edge in C
 
 ### Example: A/B testing<a name="lambda-examples-a-b-testing"></a>
 
-You can use the following example to test two different versions of an image without creating redirects or changing the URL\. This example reads the cookies in the viewer request and modifies the request URL accordingly\. If the viewer doesn’t send a cookie with one of the expected values, the example randomly assigns the viewer to one of the URLs\.
+You can use the following example to test two different versions of an image without creating redirects or changing the URL\. This example reads the cookies in the viewer request and modifies the request URL accordingly\. If the viewer doesn't send a cookie with one of the expected values, the example randomly assigns the viewer to one of the URLs\.
 
 ------
 #### [ Node\.js ]
@@ -331,7 +331,7 @@ exports.handler = (event, context, callback) => {
         headers: {
             location: [{
                 key: 'Location',
-                value: 'http://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html',
+                value: 'https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html',
             }],
         },
     };
@@ -469,7 +469,7 @@ exports.handler = (event, context, callback) => {
      * are lowercase and parameter names are in alphabetical order.
      *
      * For more information, see:
-     * http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
+     * https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
      */
 
     console.log('Query String: ', request.querystring);
@@ -667,7 +667,7 @@ exports.handler = (event, context, callback) => {
      * URL in the Location header.
      * NOTE: 1. You must configure your distribution to cache based on the
      *          CloudFront-Viewer-Country header. For more information, see
-     *          http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+     *          https://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
      *       2. CloudFront adds the CloudFront-Viewer-Country header after the viewer
      *          request event. To use this example, you must create a trigger for the
      *          origin request event.
@@ -713,7 +713,7 @@ def lambda_handler(event, context):
     URL in the Location header.
     NOTE: 1. You must configure your distribution to cache based on the
             CloudFront-Viewer-Country header. For more information, see
-            http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+            https://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
           2. CloudFront adds the CloudFront-Viewer-Country header after the viewer
             request event. To use this example, you must create a trigger for the
             origin request event.
@@ -766,8 +766,8 @@ exports.handler = (event, context, callback) => {
      * NOTE: 1. You must configure your distribution to cache based on the
      *          CloudFront-Is-*-Viewer headers. For more information, see
      *          the following documentation:
-     *          http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
-     *          http://docs.aws.amazon.com/console/cloudfront/cache-on-device-type
+     *          https://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+     *          https://docs.aws.amazon.com/console/cloudfront/cache-on-device-type
      *       2. CloudFront adds the CloudFront-Is-*-Viewer headers after the viewer
      *          request event. To use this example, you must create a trigger for the
      *          origin request event.
@@ -811,8 +811,8 @@ def lambda_handler(event, context):
     NOTE: 1. You must configure your distribution to cache based on the
             CloudFront-Is-*-Viewer headers. For more information, see
             the following documentation:
-            http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
-            http://docs.aws.amazon.com/console/cloudfront/cache-on-device-type
+            https://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+            https://docs.aws.amazon.com/console/cloudfront/cache-on-device-type
           2. CloudFront adds the CloudFront-Is-*-Viewer headers after the viewer
             request event. To use this example, you must create a trigger for the
             origin request event.
@@ -955,14 +955,14 @@ exports.handler = (event, context, callback) => {
      * the viewer.
      * 
      * This can be useful in several ways:
-     *      1) Reduces latencies when the Region specified is nearer to the viewer’s
+     *      1) Reduces latencies when the Region specified is nearer to the viewer's
      *         country.
      *      2) Provides data sovereignty by making sure that data is served from an
-     *         origin that’s in the same country that the request came from.
+     *         origin that's in the same country that the request came from.
      * 
      * NOTE: 1. You must configure your distribution to cache based on the
      *          CloudFront-Viewer-Country header. For more information, see
-     *          http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+     *          https://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
      *       2. CloudFront adds the CloudFront-Viewer-Country header after the viewer
      *          request event. To use this example, you must create a trigger for the
      *          origin request event.
@@ -987,7 +987,7 @@ exports.handler = (event, context, callback) => {
          */  
         if (region) {
             /**
-             * If you’ve set up OAI, the bucket policy in the destination bucket
+             * If you've set up OAI, the bucket policy in the destination bucket
              * should allow the OAI GetObject operation, as configured by default
              * for an S3 origin with OAI. Another requirement with OAI is to provide
              * the Region so it can be used for the SIGV4 signature. Otherwise, the
@@ -1019,14 +1019,14 @@ def lambda_handler(event, context):
     the viewer.
     
     This can be useful in several ways:
-        1) Reduces latencies when the Region specified is nearer to the viewer’s
+        1) Reduces latencies when the Region specified is nearer to the viewer's
             country.
         2) Provides data sovereignty by making sure that data is served from an
-            origin that’s in the same country that the request came from.
+            origin that's in the same country that the request came from.
     
     NOTE: 1. You must configure your distribution to cache based on the
             CloudFront-Viewer-Country header. For more information, see
-            http://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
+            https://docs.aws.amazon.com/console/cloudfront/cache-on-selected-headers
           2. CloudFront adds the CloudFront-Viewer-Country header after the viewer
             request event. To use this example, you must create a trigger for the
             origin request event.
@@ -1050,7 +1050,7 @@ def lambda_handler(event, context):
         # goes to the default S3 bucket you've configured
         if region:
             '''
-            If you’ve set up OAI, the bucket policy in the destination bucket
+            If you've set up OAI, the bucket policy in the destination bucket
             should allow the OAI GetObject operation, as configured by default
             for an S3 origin with OAI. Another requirement with OAI is to provide
             the Region so it can be used for the SIGV4 signature. Otherwise, the
@@ -1408,7 +1408,7 @@ def lambda_handler(event, context):
 The examples in this section illustrate how you can use Lambda@Edge to work with POST requests\.
 
 **Note**  
-To use these examples, you must enable the *include body* option in the distribution’s Lambda function association\. It is not enabled by default\.  
+To use these examples, you must enable the *include body* option in the distribution's Lambda function association\. It is not enabled by default\.  
 To enable this setting in the CloudFront console, select the check box for **Include Body** in the **Lambda Function Association**\.
 To enable this setting in the CloudFront API or with AWS CloudFormation, set the `IncludeBody` field to `true` in `LambdaFunctionAssociation`\.
 
@@ -1422,7 +1422,7 @@ This function demonstrates how you can process the body of a POST request genera
 
 ```
 <html>
-  <form action="http://example.com" method="post">
+  <form action="https://example.com" method="post">
     Param 1: <input type="text" name="name1"><br>
     Param 2: <input type="text" name="name2"><br>
     input type="submit" value="Submit">
@@ -1480,7 +1480,7 @@ from urllib.parse import parse_qs
 Say there is a POST request body generated by an HTML such as:
 
 <html>
-<form action="http://example.com" method="post">
+<form action="https://example.com" method="post">
     Param 1: <input type="text" name="name1"><br>
     Param 2: <input type="text" name="name2"><br>
     input type="submit" value="Submit">

@@ -28,8 +28,8 @@ When successful, you see a banner at the top of the page that says ***Function n
 #### [ CLI ]
 
 To publish a function, use the aws cloudfront publish\-function command in the AWS CLI, as in the following example\. To use this example, do the following:
-+ Replace *`ExampleFunction`* with the name of the function that you’re publishing\.
-+ Replace *`ETVXYZEXAMPLE`* with the `ETag` value of the function that you’re publishing\. To get this value, you can use the aws cloudfront describe\-function command\.
++ Replace *`ExampleFunction`* with the name of the function that you're publishing\.
++ Replace *`ETVXYZEXAMPLE`* with the `ETag` value of the function that you're publishing\. To get this value, you can use the aws cloudfront describe\-function command\.
 + Run the command on one line\. In the example, line breaks are provided to make the example more readable\.
 
 ```
@@ -39,9 +39,6 @@ aws cloudfront publish-function \
 ```
 
 When the command is successful, you see output like the following that describes the function that was just published\.
-
-**Note**  
-The following output is formatted as a YAML string\. This feature is only available in version 2 of the AWS CLI\. For more information, see [Setting the AWS CLI output format]() in the *AWS Command Line Interface User Guide*\.
 
 ```
 FunctionSummary:

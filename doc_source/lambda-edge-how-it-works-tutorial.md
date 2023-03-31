@@ -1,6 +1,6 @@
 # Tutorial: Creating a simple Lambda@Edge function<a name="lambda-edge-how-it-works-tutorial"></a>
 
-This tutorial shows you how to get started with Lambda@Edge by helping you create and add a sample Node\.js function that runs in CloudFront\. The example that we walk through adds HTTP security headers to a response, which can improve security and privacy for a website\. You don’t need a website for this walkthrough\. In it, we simply add security headers to a response when CloudFront retrieves a file\.
+This tutorial shows you how to get started with Lambda@Edge by helping you create and add a sample Node\.js function that runs in CloudFront\. The example that we walk through adds HTTP security headers to a response, which can improve security and privacy for a website\. You don't need a website for this walkthrough\. In it, we simply add security headers to a response when CloudFront retrieves a file\.
 
 This example describes the steps to create and configure a Lambda@Edge function\. When you create your own Lambda@Edge solution, you follow similar steps and choose from the same options\.
 
@@ -22,7 +22,7 @@ If you haven't already done so, sign up for Amazon Web Services at https://aws\.
 
 Before you create the example Lambda@Edge function, you must have a CloudFront environment to work with that includes an origin to serve content from\.
 
-**Are you new to CloudFront?** CloudFront delivers content through a worldwide network of edge locations\. When you set up a Lambda function with CloudFront, the function can customize content closer to viewers, improving performance\. If you’re not familiar with CloudFront, take a few minutes before you complete the tutorial to [read a short overview](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/introduction.html) and [learn a bit about how CloudFront caches and serves content](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)\.
+**Are you new to CloudFront?** CloudFront delivers content through a worldwide network of edge locations\. When you set up a Lambda function with CloudFront, the function can customize content closer to viewers, improving performance\. If you're not familiar with CloudFront, take a few minutes before you complete the tutorial to [read a short overview](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/introduction.html) and [learn a bit about how CloudFront caches and serves content](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)\.
 
 For this example, you create a CloudFront distribution that uses an Amazon S3 bucket as the origin for the distribution\. If you already have an environment to use, you can skip this step\.<a name="lambda-edge-how-it-works-tutorial-cf-proc"></a>
 
@@ -46,7 +46,7 @@ There are several steps to take when you create a Lambda function\. In this tuto
 
 1. Sign in to the AWS Management Console and open the AWS Lambda console at [https://console.aws.amazon.com/lambda/](https://console.aws.amazon.com/lambda/)\.
 **Important**  
-Make sure that you’re in the **US\-East\-1 \(N\. Virginia\)** Region \(**us\-east\-1**\)\. You must be in this Region to create Lambda@Edge functions\.
+Make sure that you're in the **US\-East\-1 \(N\. Virginia\)** Region \(**us\-east\-1**\)\. You must be in this Region to create Lambda@Edge functions\.
 
 1. Choose **Create function**\.
 
@@ -116,7 +116,7 @@ Now that you have a Lambda function to update security headers, configure the Cl
 **Distribution**  
 The CloudFront distribution ID to associate with your function\. In the drop\-down list, choose the distribution ID\.  
 **Cache behavior**  
-The cache behavior to use with the trigger\. For this example, leave the value set to **\***, which means your distribution’s default cache behavior\. For more information, see [Cache behavior settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the [Values that you specify when you create or update a distribution](distribution-web-values-specify.md) topic\.  
+The cache behavior to use with the trigger\. For this example, leave the value set to **\***, which means your distribution's default cache behavior\. For more information, see [Cache behavior settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior) in the [Values that you specify when you create or update a distribution](distribution-web-values-specify.md) topic\.  
 **CloudFront event**  
 The trigger that specifies when your function runs\. We want the security headers function to run whenever CloudFront returns a response from the origin\. So in the drop\-down list, choose **Origin response**\. For more information, see [Adding triggers for a Lambda@Edge function](lambda-edge-add-triggers.md)\.
 
@@ -134,11 +134,11 @@ Now that you've created your Lambda function and configured a trigger to run it 
 
 **To verify that your Lambda@Edge function adds security headers**
 
-1. In a browser, enter the URL for a file in your S3 bucket\. For example, you might use a URL similar to `http://d111111abcdef8.cloudfront.net/image.jpg`\.
+1. In a browser, enter the URL for a file in your S3 bucket\. For example, you might use a URL similar to `https://d111111abcdef8.cloudfront.net/image.jpg`\.
 
    For more information about the CloudFront domain name to use in the file URL, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.
 
-1. Open your browser’s Web Developer toolbar\. For example, in your browser window in Chrome, open the context \(right\-click\) menu, and then choose **Inspect**\.
+1. Open your browser's Web Developer toolbar\. For example, in your browser window in Chrome, open the context \(right\-click\) menu, and then choose **Inspect**\.
 
 1. Choose the **Network** tab\.
 
@@ -151,7 +151,7 @@ If the security headers are included in your headers list, great\! You've succes
 
 ## Step 6: Troubleshoot issues<a name="lambda-edge-how-it-works-tutorial-troubleshoot"></a>
 
-If CloudFront returns errors or doesn't add the security headers as expected, you can investigate your function’s execution by looking at CloudWatch Logs\. Be sure to use the logs stored in the AWS location that is closest to the location where the function is executed\.
+If CloudFront returns errors or doesn't add the security headers as expected, you can investigate your function's execution by looking at CloudWatch Logs\. Be sure to use the logs stored in the AWS location that is closest to the location where the function is executed\.
 
 For example, if you view the file from London, try changing the Region in the CloudWatch console to Europe \(London\)\.<a name="lambda-edge-how-it-works-tutorial-cloudwatch-proc"></a>
 
@@ -163,7 +163,7 @@ For example, if you view the file from London, try changing the Region in the Cl
 
 1. In the left pane, choose **Logs** to view the logs for your distribution\. 
 
-For more information, see [Monitoring CloudFront with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
+For more information, see [Monitoring CloudFront metrics with Amazon CloudWatch](monitoring-using-cloudwatch.md)\.
 
 ## Step 7: Clean up your example resources<a name="lambda-edge-how-it-works-tutorial-cleanup-resources"></a>
 

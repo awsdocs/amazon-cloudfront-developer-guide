@@ -31,17 +31,15 @@ All other combinations of edge functions are allowed\. The following table expla
 
 CloudFront does not invoke edge functions for viewer response events when the origin returns HTTP status code 400 or higher\.
 
-Edge functions for viewer response events cannot modify the HTTP status code of the response, regardless of whether the response came from the origin or the CloudFront cache\.
-
 Lambda@Edge functions for origin response events are invoked for *all* origin responses, including when the origin returns HTTP status code 400 or higher\. For more information, see [Updating HTTP responses in origin response triggers](lambda-updating-http-responses.md)\.
 
 ### HTTP headers<a name="function-restrictions-headers"></a>
 
-Certain HTTP headers are disallowed, which means they’re not exposed to edge functions and functions can’t add them\. Other headers are read\-only, which means functions can read them but can’t add or modify them\.
+Certain HTTP headers are disallowed, which means they're not exposed to edge functions and functions can't add them\. Other headers are read\-only, which means functions can read them but can't add or modify them\.
 
 #### Disallowed headers<a name="function-restrictions-disallowed-headers"></a>
 
-The following HTTP headers are not exposed to edge functions, and functions can’t add them\. If your function adds one of these headers, it fails CloudFront validation and CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
+The following HTTP headers are not exposed to edge functions, and functions can't add them\. If your function adds one of these headers, it fails CloudFront validation and CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
 + `Connection` 
 + `Expect`
 + `Keep-Alive`
@@ -55,6 +53,16 @@ The following HTTP headers are not exposed to edge functions, and functions can�
 + `X-Accel-Limit-Rate`
 + `X-Accel-Redirect`
 + `X-Amz-Cf-*`
++ `X-Amzn-Auth`
++ `X-Amzn-Cf-Billing`
++ `X-Amzn-Cf-Id`
++ `X-Amzn-Cf-Xff`
++ `X-Amzn-Errortype`
++ `X-Amzn-Fle-Profile`
++ `X-Amzn-Header-Count`
++ `X-Amzn-Header-Order`
++ `X-Amzn-Lambda-Integration-Tag`
++ `X-Amzn-RequestId`
 + `X-Cache`
 + `X-Edge-*`
 + `X-Forwarded-Proto`
@@ -62,7 +70,7 @@ The following HTTP headers are not exposed to edge functions, and functions can�
 
 #### Read\-only headers<a name="function-restrictions-read-only-headers"></a>
 
-The following headers are read\-only\. Your function can read them and use them as input to the function logic, but it can’t change the values\. If your function adds or edits a read\-only header, the request fails CloudFront validation and CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
+The following headers are read\-only\. Your function can read them and use them as input to the function logic, but it can't change the values\. If your function adds or edits a read\-only header, the request fails CloudFront validation and CloudFront returns HTTP status code 502 \(Bad Gateway\) to the viewer\.
 
 ##### Read\-only headers in viewer request events<a name="function-restrictions-read-only-headers-viewer-request"></a>
 
@@ -93,9 +101,6 @@ The following headers are read\-only in origin response events, which exist only
 ##### Read\-only headers in viewer response events<a name="function-restrictions-read-only-headers-viewer-response"></a>
 
 The following headers are read\-only in viewer response events\.
-+ `Content-Encoding`
-+ `Content-Length`
-+ `Transfer-Encoding`
 + `Warning`
 + `Via`
 
@@ -106,13 +111,13 @@ The following restrictions apply to functions that read, update, or create a que
 + A function can create or update a query string for viewer request and origin request events \(origin request events exist only in Lambda@Edge\)\.
 + A function can read a query string, but cannot create or update one, for origin response and viewer response events \(origin response events exist only in Lambda@Edge\)\.
 + If a function creates or updates a query string, the following restrictions apply:
-  + The query string can’t include spaces, control characters, or the fragment identifier \(`#`\)\.
+  + The query string can't include spaces, control characters, or the fragment identifier \(`#`\)\.
   + The total size of the URI, including the query string, must be less than 8,192 characters\.
   + We recommend that you use percent encoding for the URI and query string\. For more information, see [URI and query string encoding](#function-restrictions-encoding)\.
 
 ### URI<a name="function-restrictions-uri"></a>
 
-If a function changes the URI for a request, that doesn’t change the cache behavior for the request or the origin that the request is forwarded to\.
+If a function changes the URI for a request, that doesn't change the cache behavior for the request or the origin that the request is forwarded to\.
 
 The total size of the URI, including the query string, must be less than 8,192 characters\.
 
@@ -123,7 +128,7 @@ URI and query string values passed to edge functions are UTF\-8 encoded\. Your f
 The following list explains how CloudFront handles URI and query string value encoding:
 + When values in the request are UTF\-8 encoded, CloudFront forwards the values to your function without changing them\.
 + When values in the request are [ISO\-8859\-1 encoded](https://en.wikipedia.org/wiki/ISO/IEC_8859-1), CloudFront converts the values to UTF\-8 encoding before forwarding them to your function\.
-+ When values in the request are encoded using some other character encoding, CloudFront assumes that they’re ISO\-8859\-1 encoded and tries to convert from ISO\-8859\-1 to UTF\-8\.
++ When values in the request are encoded using some other character encoding, CloudFront assumes that they're ISO\-8859\-1 encoded and tries to convert from ISO\-8859\-1 to UTF\-8\.
 **Important**  
 The converted characters might be an inaccurate interpretation of the values in the original request\. This might cause your function or your origin to produce an unintended result\.
 
@@ -133,7 +138,7 @@ The URI and query string values that CloudFront forwards to your origin depend o
 
 ### Microsoft Smooth Streaming<a name="function-restrictions-microsoft-smooth-streaming"></a>
 
-You cannot use edge functions with a CloudFront distribution that you’re using for streaming media files that you’ve transcoded into the Microsoft Smooth Streaming format\.
+You cannot use edge functions with a CloudFront distribution that you're using for streaming media files that you've transcoded into the Microsoft Smooth Streaming format\.
 
 ### Tagging<a name="function-restrictions-tagging"></a>
 
@@ -159,11 +164,15 @@ The CloudFront Functions runtime environment does not support dynamic code evalu
 
 CloudFront Functions have a limit on the time they can take to run, measured as *compute utilization*\. Compute utilization is a number between 0 and 100 that indicates the amount of time that the function took to run as a percentage of the maximum allowed time\. For example, a compute utilization of 35 means that the function completed in 35% of the maximum allowed time\.
 
-When you [test a function](test-function.md), you can see the compute utilization value in the output of the test event\. For production functions, you can view the [compute utilization metric](monitoring-functions.md#monitoring-functions-metrics) on the [Monitoring page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring), or in CloudWatch\.
+When you [test a function](test-function.md), you can see the compute utilization value in the output of the test event\. For production functions, you can view the [compute utilization metric](viewing-cloudfront-metrics.md#monitoring-console.cloudfront-functions) on the [Monitoring page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/monitoring), or in CloudWatch\.
 
 ## Restrictions on Lambda@Edge<a name="lambda-at-edge-function-restrictions"></a>
 
 The following restrictions apply only to Lambda@Edge\.
+
+### HTTP status codes<a name="lambda-at-edge-restrictions-status-codes"></a>
+
+Lambda@Edge functions for viewer response events cannot modify the HTTP status code of the response, regardless of whether the response came from the origin or the CloudFront cache\.
 
 ### Lambda function version<a name="lambda-at-edge-restrictions-version"></a>
 
@@ -177,17 +186,21 @@ The Lambda function must be in the US East \(N\. Virginia\) Region\.
 
 The IAM execution role associated with the Lambda function must allow the service principals `lambda.amazonaws.com` and `edgelambda.amazonaws.com` to assume the role\. For more information, see [Setting IAM permissions and roles for Lambda@Edge](lambda-edge-permissions.md)\.
 
-### Lambda features and supported runtimes<a name="lambda-at-edge-runtime-restrictions"></a>
+### Lambda features<a name="lambda-at-edge-restrictions-features"></a>
 
 The following Lambda features are not supported by Lambda@Edge:
-+ You can’t configure your Lambda function to access resources inside your VPC\.
-+ [Lambda function dead letter queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq) are not supported\.
-+ [Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html) are not supported\.
-+ Lambda functions with [AWS Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) are not supported\.
-+ [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html) is not supported\.
-+ [Lambda reserved concurrency and provisioned concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html) are not supported\.
-+ [Lambda functions defined as container images](https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html) are not supported\.
-+ [Lambda functions that use the arm64 architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html) are not supported\.
++ [Lambda runtime management configurations](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html#runtime-management-controls) other than **Auto** \(default\)\.
++ Configuration of your Lambda function to access resources inside your VPC\.
++ [Lambda function dead letter queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq)\.
++ [Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html)\.
++ Lambda functions with [AWS Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)\.
++ [Using AWS X\-Ray](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html)\.
++ [Lambda reserved concurrency and provisioned concurrency](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html)\.
++ [Lambda functions defined as container images](https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html)\.
++ [Lambda functions that use the arm64 architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html)\.
++ Lambda functions with more than 512 MB of ephemeral storage\.
+
+### Supported runtimes<a name="lambda-at-edge-restrictions-runtime"></a>
 
 Lambda@Edge supports Lambda functions with the following runtimes:
 
@@ -196,9 +209,9 @@ Lambda@Edge supports Lambda functions with the following runtimes:
 | --- | --- | 
 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions-restrictions.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions-restrictions.html)  | 
 
-¹This version of Node\.js has reached end of life\. You can’t create or update functions with this version\. If you have an existing function with this version, you can associate it with a CloudFront distribution\. Functions with this version that are already associated with a distribution continue to run\. However, we recommend moving your function to a newer version of Node\.js\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule](https://github.com/nodejs/Release#release-schedule) on GitHub\.
+¹This version of Node\.js has reached end of life and is fully deprecated by AWS Lambda\. You can't create or update functions with this version of Node\.js\. If you have an existing function with this version, you can associate it with a CloudFront distribution\. Functions with this version that are associated with a distribution will continue to run\. However, we recommend moving your function to a newer version of Node\.js\. For more information, see [Runtime deprecation policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule](https://github.com/nodejs/Release#release-schedule) on GitHub\.
 
-²This version of Node\.js has reached end of life, and it reaches end of support phase 2 in Lambda on August 30, 2021\. Starting on August 30, 2021, you can’t create or update functions with this version\. If you have an existing function with this version, you can associate it with a CloudFront distribution\. Functions with this version that are already associated with a distribution continue to run\. However, we recommend moving your function to a newer version of Node\.js\. For more information, see [ Runtime Support Policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule](https://github.com/nodejs/Release#release-schedule) on GitHub\.
+²This version of Node\.js has reached end of life, and it will soon be deprecated by AWS Lambda\. Starting on March 31, 2023 you can't create new functions with this version of Node\.js\. If you have an existing function with this version after that date, you can associate it with a CloudFront distribution\. Functions with this version that are associated with a distribution will continue to run\. However, we recommend moving your function to a newer version of Node\.js\. For more information, see [Runtime deprecation policy](https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html) in the *AWS Lambda Developer Guide* and the [Node\.js release schedule](https://github.com/nodejs/Release#release-schedule) on GitHub\.
 
 ### CloudFront headers<a name="lambda-at-edge-restrictions-cloudfront-headers"></a>
 

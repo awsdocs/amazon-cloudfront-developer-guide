@@ -13,7 +13,7 @@ Your compliance responsibility when using CloudFront is determined by the sensit
   The AWS HIPAA compliance program includes CloudFront as a HIPAA eligible service\. If you have an executed Business Associate Addendum \(BAA\) with AWS, you can use CloudFront to deliver content that contains protected health information \(PHI\)\. For more information, see [HIPAA Compliance\.](https://aws.amazon.com/compliance/hipaa-compliance/) 
 + [AWS Compliance Resources](https://aws.amazon.com/compliance/resources/) – This collection of workbooks and guides might apply to your industry and location\.
 + [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html) – This AWS service assesses how well your resource configurations comply with internal practices, industry guidelines, and regulations\.
-+ [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html) – This AWS service provides a comprehensive view of your security state within AWS that helps you check your compliance with security industry standards and best practices\.
++ [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html) – This AWS service uses security controls to evaluate resource configurations and security standards to help you comply with various compliance frameworks\. For more information about using Security Hub to evaluate CloudFront resources, see [ Amazon CloudFront controls](https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html) in the *AWS Security Hub User Guide*\.
 
 ## CloudFront compliance best practices<a name="compliance-best-practices"></a>
 

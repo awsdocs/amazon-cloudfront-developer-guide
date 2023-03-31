@@ -24,7 +24,7 @@ This topic contains information about how CloudFront processes viewer requests a
 + [Query strings](#RequestS3QueryStrings)
 + [Origin connection timeout and attempts](#s3-origin-timeout-attempts)
 + [Origin response timeout](#RequestS3RequestTimeout)
-+ [Simultaneous requests for the same object \(traffic spikes\)](#request-s3-traffic-spikes)
++ [Simultaneous requests for the same object \(request collapsing\)](#request-s3-traffic-spikes)
 
 ### Caching duration and minimum TTL<a name="RequestS3Caching"></a>
 
@@ -46,7 +46,7 @@ If a viewer sends a request to CloudFront and includes an `X-Forwarded-For` requ
 `X-Forwarded-For: 192.0.2.4,192.0.2.3,192.0.2.2`
 
 **Note**  
-The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334\)\.
+The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3::8a2e:0370:7334\)\.
 
 ### Conditional GETs<a name="RequestS3ConditionalGETs"></a>
 
@@ -81,14 +81,12 @@ If you configure CloudFront to process all of the HTTP methods that it supports,
 
 CloudFront always caches responses to `GET` and `HEAD` requests\. You can also configure CloudFront to cache responses to `OPTIONS` requests\. CloudFront does not cache responses to requests that use the other methods\.
 
-If you use an Amazon S3 bucket as the origin for your distribution and if you use CloudFront origin access identities, `POST` requests aren't supported in some Amazon S3 Regions and `PUT` requests in those Regions require an additional header\. For more information, see [Using an OAI in Amazon S3 regions that support only signature version 4 authentication](private-content-restricting-access-to-s3.md#private-content-origin-access-identity-signature-version-4)\.
-
-If you want to use multi\-part uploads to add objects to an Amazon S3 bucket, you must add a CloudFront origin access identity to your distribution and grant the origin access identity the needed permissions\. For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
+If you want to use multi\-part uploads to add objects to an Amazon S3 bucket, you must add a CloudFront origin access control \(OAC\) to your distribution and give the OAC the needed permissions\. For more information, see [Restricting access to an Amazon S3 origin](private-content-restricting-access-to-s3.md)\.
 
 **Important**  
-If you configure CloudFront to accept and forward to Amazon S3 all of the HTTP methods that CloudFront supports, you must create a CloudFront origin access identity to restrict access to your Amazon S3 content and grant the origin access identity the required permissions\. For example, if you configure CloudFront to accept and forward these methods because you want to use `PUT`, you must configure Amazon S3 bucket policies or ACLs to handle `DELETE` requests appropriately so viewers can't delete resources that you don't want them to\. For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
+If you configure CloudFront to accept and forward to Amazon S3 all of the HTTP methods that CloudFront supports, you must create a CloudFront origin access control \(OAC\) to restrict access to your Amazon S3 content and give the OAC the required permissions\. For example, if you configure CloudFront to accept and forward these methods because you want to use `PUT`, you must configure Amazon S3 bucket policies to handle `DELETE` requests appropriately so viewers can't delete resources that you don't want them to\. For more information, see [Restricting access to an Amazon S3 origin](private-content-restricting-access-to-s3.md)\.
 
-For information about the operations supported by Amazon S3, see the [ Amazon S3 documentation](http://aws.amazon.com/documentation/s3/)\.
+For information about the operations supported by Amazon S3, see the [ Amazon S3 documentation](https://docs.aws.amazon.com/s3/index.html)\.
 
 ### HTTP request headers that CloudFront removes or updates<a name="request-s3-removed-headers"></a>
 
@@ -141,11 +139,17 @@ CloudFront behavior depends on the HTTP method of the viewer request:
 
 You can’t change the response timeout for an Amazon S3 origin \(an S3 bucket that is *not* configured with static website hosting\)\.
 
-### Simultaneous requests for the same object \(traffic spikes\)<a name="request-s3-traffic-spikes"></a>
+### Simultaneous requests for the same object \(request collapsing\)<a name="request-s3-traffic-spikes"></a>
 
-When a CloudFront edge location receives a request for an object and either the object isn't currently in the cache or the object has expired, CloudFront immediately sends the request to your Amazon S3 origin\. If there's a traffic spike—if additional requests for the same object arrive at the edge location before Amazon S3 responds to the first request—CloudFront pauses briefly before forwarding additional requests for the object to your origin\. Typically, the response to the first request will arrive at the CloudFront edge location before the response to subsequent requests\. This brief pause helps to reduce unnecessary load on Amazon S3\. If additional requests are not identical because, for example, you configured CloudFront to cache based on request headers or query strings, CloudFront forwards all of the unique requests to your origin\.
+When a CloudFront edge location receives a request for an object and the object isn't in the cache or the cached object is expired, CloudFront immediately sends the request to the origin\. However, if there are simultaneous requests for the same object—that is, if additional requests for the same object \(with the same cache key\) arrive at the edge location before CloudFront receives the response to the first request—CloudFront pauses before forwarding the additional requests to the origin\. This brief pause helps to reduce the load on the origin\. CloudFront sends the response from the original request to all the requests that it received while it was paused\. This is called *request collapsing*\. In CloudFront logs, the first request is identified as a `Miss` in the `x-edge-result-type` field, and the collapsed requests are identified as a `Hit`\. For more information about CloudFront logs, see [CloudFront and edge function logging](logging.md)\.
 
-When the response from the origin includes a `Cache-Control: no-cache` header, CloudFront typically forwards the next request for the same object to the origin to determine whether the object has been updated\. However, when there's a traffic spike and CloudFront pauses after forwarding the first request to your origin, multiple viewer requests might arrive before CloudFront receives a response from the origin\. When CloudFront receives a response that contains a `Cache-Control: no-cache` header, it sends the object in the response to the viewer that made the original request and to all of the viewers that requested the object during the pause\. After the response arrives from the origin, CloudFront forwards the next viewer request for the same object to the origin\. In CloudFront access logs, the first request is identified as a `Miss` in the `x-edge-result-type` column, and all subsequent requests that CloudFront received during the pause are identified as a `Hit`\. For more information about access log file format, see [Standard log file fields](AccessLogs.md#BasicDistributionFileFormat)\.
+CloudFront only collapses requests that share a [*cache key*](understanding-the-cache-key.md)\. If the additional requests do not share the same cache key because, for example, you configured CloudFront to cache based on request headers or cookies or query strings, CloudFront forwards all the requests with a unique cache key to your origin\.
+
+If you would like to prevent all request collapsing, you can do one of the following:
++ Use the managed cache policy `CachingDisabled`, which also prevents caching\. For more information, see [Using the managed cache policies](using-managed-cache-policies.md)\.
++ Forward cookies to the origin, either by using a cache policy to cache based on the `Cookie` header, or by using an origin request policy to include the `Cookie` header in origin requests\.
+
+If you would like to prevent request collapsing for specific objects, you can set the minimum TTL for the cache behavior to 0 *and* configure the origin to send `Cache-Control: private`, `Cache-Control: no-store`, `Cache-Control: no-cache`, `Cache-Control: max-age=0`, or `Cache-Control: s-maxage=0`\. These configurations will increase the load on your origin and introduce additional latency for the simultaneous requests that are paused while CloudFront waits for the response to the first request\.
 
 ## How CloudFront processes responses from your Amazon S3 origin<a name="ResponseBehaviorS3Origin"></a>
 
@@ -154,7 +158,7 @@ This topic contains information about how CloudFront processes responses from yo
 **Topics**
 + [Canceled requests](#response-s3-canceled-requests)
 + [HTTP response headers that CloudFront removes or updates](#response-s3-removed-headers)
-+ [Maximum file size](#ResponseS3MaxFileSize)
++ [Maximum cacheable file size](#ResponseS3MaxFileSize)
 + [Redirects](#ResponseS3Redirects)
 
 ### Canceled requests<a name="response-s3-canceled-requests"></a>
@@ -176,11 +180,9 @@ CloudFront removes or updates the following header fields before forwarding the 
 
   `Via: 1.1 1026589cc7887e7a0dc7827b4example.cloudfront.net (CloudFront)`
 
-### Maximum file size<a name="ResponseS3MaxFileSize"></a>
+### Maximum cacheable file size<a name="ResponseS3MaxFileSize"></a>
 
-The maximum size of a response body that CloudFront saves in its cache is 30 GB\. This includes chunked transfer responses that don’t specify the `Content-Length` header value\.
-
-When caching is disabled, CloudFront can retrieve an object that is larger than 30 GB from the origin and pass it along to the viewer\. However, CloudFront doesn’t cache the object\.
+The maximum size of a response body that CloudFront saves in its cache is 30 GB\. This includes chunked transfer responses that don't specify the `Content-Length` header value\.
 
 You can use CloudFront to cache an object that is larger than 30 GB by using range requests to request the objects in parts that are each 30 GB or smaller\. CloudFront caches these parts because each of them is 30 GB or smaller\. After the viewer retrieves all the parts of the object, it can reconstruct the original, larger object\. For more information, see [Use range requests to cache large objects](RangeGETs.md#cache-large-objects-with-range-requests)\.
 

@@ -1,13 +1,13 @@
 # Overview of distributions<a name="distribution-overview"></a>
 
 When you want to use CloudFront to distribute your content, you create a distribution and choose the configuration settings you want\. For example:
-+ Your content origin—that is, the Amazon S3 bucket, MediaPackage channel, or HTTP server from which CloudFront gets the files to distribute\. You can specify any combination of up to 25 Amazon S3 buckets, channels, and/or HTTP servers as your origins\. 
++ Your content origin—that is, the Amazon S3 bucket, AWS Elemental MediaPackage channel, AWS Elemental MediaStore container, Elastic Load Balancing load balancer, or HTTP server from which CloudFront gets the files to distribute\. You can specify any combination of up to 25 origins for a single distribution\.
 + Access—whether you want the files to be available to everyone or restrict access to some users\.
 + Security—whether you want CloudFront to require users to use HTTPS to access your content\.
 + Cache key—which values, if any, you want to include in the *cache key*\. The cache key uniquely identifies each file in the cache for a given distribution\.
 + Origin request settings—whether you want CloudFront to include HTTP headers, cookies, or query strings in requests that it sends to your origin\.
-+ Geo\-restrictions—whether you want CloudFront to prevent users in selected countries from accessing your content\.
-+ Access logs—whether you want CloudFront to create access logs that show viewer activity\.
++ Geographic restrictions—whether you want CloudFront to prevent users in selected countries from accessing your content\.
++ Logs—whether you want CloudFront to create standard logs or real\-time logs that show viewer activity\.
 
 For the current maximum number of distributions that you can create for each AWS account, see [General quotas on distributions](cloudfront-limits.md#limits-web-distributions)\. There is no maximum number of files that you can serve per distribution\.
 

@@ -27,29 +27,26 @@ You can use the CloudFront console to associate a function with an existing cach
       + To run the function every time CloudFront receives a request, choose **Viewer Request**\.
       + To run the function every time CloudFront returns a response, choose **Viewer Response**\.
 
-   1. For **Cache behavior**, choose a cache behavior to associate this function with \(choose **\*** for the default cache behavior\)\. The function runs when the request \(or in the case of a viewer response function, the response’s corresponding request\) matches this cache behavior\.
+   1. For **Cache behavior**, choose a cache behavior to associate this function with \(choose **\*** for the default cache behavior\)\. The function runs when the request \(or in the case of a viewer response function, the response's corresponding request\) matches this cache behavior\.
 
    1. Choose **Add association**\. Then, in the **Associate function to cache behavior** pop\-up window, choose **Associate**\.  
 ![\[Associate tab of a function page in the CloudFront console.\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/functions-associate.png)
 
-When successful, you see a banner at the top of the page that says ***Function name* associated successfully**\. You also see the associated distribution in the **Associated CloudFront distributions** table\. Wait a few minutes for the associated distribution to finish deploying\. To check the distribution’s status, choose the associated distribution, then choose **View distribution**\.
+When successful, you see a banner at the top of the page that says ***Function name* associated successfully**\. You also see the associated distribution in the **Associated CloudFront distributions** table\. Wait a few minutes for the associated distribution to finish deploying\. To check the distribution's status, choose the associated distribution, then choose **View distribution**\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/functions-view-distribution.png)
 
-The distribution’s `Status` changes to `InProgress` while the distribution is redeployed\. As soon as the new distribution configuration reaches a CloudFront edge location, that edge location begins using the associated function\. When the distribution is fully deployed, the `Status` changes back to `Deployed`, which indicates that the associated CloudFront function is live in all CloudFront edge locations worldwide\. This typically takes a few minutes\.
+The distribution's `Status` changes to `InProgress` while the distribution is redeployed\. As soon as the new distribution configuration reaches a CloudFront edge location, that edge location begins using the associated function\. When the distribution is fully deployed, the `Status` changes back to `Deployed`, which indicates that the associated CloudFront function is live in all CloudFront edge locations worldwide\. This typically takes a few minutes\.
 
 ------
 #### [ CLI ]
 
-You can associate a function with an existing cache behavior, with a new cache behavior in an existing distribution, or with a new cache behavior in a new distribution\. The following procedure shows how to associate a function with an existing cache behavior\. You can associate a function with a new cache behavior \(in an existing or new distribution\) using a process similar to what’s described here\.
+You can associate a function with an existing cache behavior, with a new cache behavior in an existing distribution, or with a new cache behavior in a new distribution\. The following procedure shows how to associate a function with an existing cache behavior\. You can associate a function with a new cache behavior \(in an existing or new distribution\) using a process similar to what's described here\.
 
 **To associate a function with an existing cache behavior \(AWS CLI\)**
-**Note**  
-The following example commands use input files and output that are formatted as a YAML string\. This feature is only available in version 2 of the AWS CLI\. For more information, see [Setting the AWS CLI output format]() in the *AWS Command Line Interface User Guide*\.  
-If you’re using version 1 of the AWS CLI, you can follow a similar process using JSON for the input files and output\.
 
 1. Use the following command to save the distribution configuration for the distribution whose cache behavior you want to associate with a function\. This command saves the distribution configuration to a file named `dist-config.yaml`\. To use this command, do the following:
-   + Replace *`DistributionID`* with the distribution’s ID\.
+   + Replace *`DistributionID`* with the distribution's ID\.
    + Run the command on one line\. In the example, line breaks are provided to make the example more readable\.
 
    ```
@@ -62,11 +59,11 @@ If you’re using version 1 of the AWS CLI, you can follow a similar process usi
 
 1. Open the file named `dist-config.yaml` that you just created\. Edit the file, making the following changes:
 
-   1. Rename the `ETag` field to `IfMatch`, but don’t change the field’s value\.
+   1. Rename the `ETag` field to `IfMatch`, but don't change the field's value\.
 
    1. In the cache behavior, find the object named `FunctionAssociations`\. Update this object to add a function association\. The YAML syntax for a function association looks like the following example\.
       + The following example shows a viewer request event type \(trigger\)\. To use a viewer response event type, replace `viewer-request` with `viewer-response`\.
-      + Replace *`arn:aws:cloudfront::111122223333:function/ExampleFunction`* with the Amazon Resource Name \(ARN\) of the function that you’re associating with this cache behavior\. To get the function ARN, you can use the aws cloudfront list\-functions command\.
+      + Replace *`arn:aws:cloudfront::111122223333:function/ExampleFunction`* with the Amazon Resource Name \(ARN\) of the function that you're associating with this cache behavior\. To get the function ARN, you can use the aws cloudfront list\-functions command\.
 
       ```
       FunctionAssociations:
@@ -79,7 +76,7 @@ If you’re using version 1 of the AWS CLI, you can follow a similar process usi
    After making these changes, save the file\.
 
 1. Use the following command to update the distribution, adding the function association\. To use this command, do the following:
-   + Replace *`DistributionID`* with the distribution’s ID\.
+   + Replace *`DistributionID`* with the distribution's ID\.
    + Run the command on one line\. In the example, line breaks are provided to make the example more readable\.
 
    ```
@@ -111,6 +108,6 @@ If you’re using version 1 of the AWS CLI, you can follow a similar process usi
    ETag: E2VJGGQEG1JT8S
    ```
 
-   When you update a distribution, the distribution’s `Status` changes to `InProgress` while the distribution is redeployed\. As soon as the new distribution configuration reaches a CloudFront edge location, that edge location begins using the associated function\. When the distribution is fully deployed, the `Status` changes back to `Deployed`, which indicates that the associated CloudFront function is live in all CloudFront edge locations worldwide\. This typically takes a few minutes\.
+   When you update a distribution, the distribution's `Status` changes to `InProgress` while the distribution is redeployed\. As soon as the new distribution configuration reaches a CloudFront edge location, that edge location begins using the associated function\. When the distribution is fully deployed, the `Status` changes back to `Deployed`, which indicates that the associated CloudFront function is live in all CloudFront edge locations worldwide\. This typically takes a few minutes\.
 
 ------

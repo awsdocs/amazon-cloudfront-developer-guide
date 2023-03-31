@@ -1,6 +1,6 @@
 # CloudFront Functions event structure<a name="functions-event-structure"></a>
 
-CloudFront Functions passes an `event` object to your function code as input when it runs the function\. When you [test a function](test-function.md), you create the `event` object and pass it to your function\. When you create an `event` object for testing a function, you can omit the `distributionDomainName`, `distributionId`, and `requestId` fields in the `context` object\. Also, make sure that the names of headers are lowercase, which is always the case in the `event` object that CloudFront Functions passes to your function in production\.
+CloudFront Functions passes an `event` object to your function code as input when it runs the function\. When you [test a function](test-function.md), you create the `event` object and pass it to your function\. When you create an `event` object for testing a function, you can omit the `distributionDomainName`, `distributionId`, and `requestId` fields in the `context` object\. Make sure that the names of headers are lowercase, which is always the case in the `event` object that CloudFront Functions passes to your function in production\.
 
 The following shows an overview of the structure of this event object\. For more information, see the topics that follow\.
 
@@ -28,8 +28,10 @@ The following shows an overview of the structure of this event object\. For more
 + [Viewer object](#functions-event-structure-viewer)
 + [Request object](#functions-event-structure-request)
 + [Response object](#functions-event-structure-response)
++ [Status code and body](#functions-event-structure-status-body)
 + [Query string, header, and cookie structure](#functions-event-structure-query-header-cookie)
-+ [Example event](#functions-event-structure-example)
++ [Example event object](#functions-event-structure-example)
++ [Example response object](#functions-response-structure-example)
 
 ## Version field<a name="functions-event-structure-version"></a>
 
@@ -40,10 +42,10 @@ The `version` field contains a string that specifies the version of the CloudFro
 The `context` object contains contextual information about the event\. It includes the following fields:
 
 **`distributionDomainName`**  
-The CloudFront domain name \(for example, d111111abcdef8\.cloudfront\.net\) of the distribution that’s associated with the event\.
+The CloudFront domain name \(for example, d111111abcdef8\.cloudfront\.net\) of the distribution that's associated with the event\.
 
 **`distributionId`**  
-The ID of the distribution \(for example, EDFDVBD6EXAMPLE\) that’s associated with the event\.
+The ID of the distribution \(for example, EDFDVBD6EXAMPLE\) that's associated with the event\.
 
 **`eventType`**  
 The event type, either `viewer-request` or `viewer-response`\.
@@ -57,7 +59,7 @@ The `viewer` object contains an `ip` field whose value is the IP address of the 
 
 ## Request object<a name="functions-event-structure-request"></a>
 
-The `request` object contains a representation of a viewer\-to\-CloudFront HTTP request\. In the `event` object that’s passed to your function, the `request` object represents the actual request that CloudFront received from the viewer\.
+The `request` object contains a representation of a viewer\-to\-CloudFront HTTP request\. In the `event` object that's passed to your function, the `request` object represents the actual request that CloudFront received from the viewer\.
 
 If your function code returns a `request` object to CloudFront, it must use this same structure\.
 
@@ -70,15 +72,15 @@ The HTTP method of the request\. If your function code returns a `request`, it c
 The relative path of the requested object\. If your function modifies the `uri` value, note the following:  
 + The new `uri` value must begin with a forward slash \(`/`\)\.
 + When a function changes the `uri` value, it changes the object that the viewer is requesting\.
-+ When a function changes the `uri` value, it *doesn’t* change the cache behavior for the request or the origin that an origin request is sent to\.
++ When a function changes the `uri` value, it *doesn't* change the cache behavior for the request or the origin that an origin request is sent to\.
 
 **`querystring`**  
-An object that represents the query string in the request\. If the request doesn’t include a query string, the `request` object still includes an empty `querystring` object\.  
+An object that represents the query string in the request\. If the request doesn't include a query string, the `request` object still includes an empty `querystring` object\.  
 The `querystring` object contains one field for each query string parameter in the request\.
 
 **`headers`**  
 An object that represents the HTTP headers in the request\. If the request contains any `Cookie` headers, those headers are not part of the `headers` object\. Cookies are represented separately in the `cookies` object\.  
-The `headers` object contains one field for each header in the request\. Header names are converted to lowercase in the event object, and header names must be lowercase when they’re added by your function code\. When CloudFront Functions converts the event object back into an HTTP request, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP request\.
+The `headers` object contains one field for each header in the request\. Header names are converted to lowercase in the event object, and header names must be lowercase when they're added by your function code\. When CloudFront Functions converts the event object back into an HTTP request, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP request\.
 
 **`cookies`**  
 An object that represents the cookies in the request \(`Cookie` headers\)\.  
@@ -86,11 +88,11 @@ The `cookies` object contains one field for each cookie in the request\.
 
 For more information about the structure of query strings, headers, and cookies, see [Query string, header, and cookie structure](#functions-event-structure-query-header-cookie)\.
 
-For an example `event` object, see [Example event](#functions-event-structure-example)\.
+For an example `event` object, see [Example event object](#functions-event-structure-example)\.
 
 ## Response object<a name="functions-event-structure-response"></a>
 
-The `response` object contains a representation of a CloudFront\-to\-viewer HTTP response\. In the `event` object that’s passed to your function, the `response` object represents CloudFront’s actual response to a viewer request\.
+The `response` object contains a representation of a CloudFront\-to\-viewer HTTP response\. In the `event` object that's passed to your function, the `response` object represents CloudFront's actual response to a viewer request\.
 
 If your function code returns a `response` object, it must use this same structure\.
 
@@ -98,28 +100,58 @@ The `response` object contains the following fields:
 
 **`statusCode`**  
 The HTTP status code of the response\. This value is an integer, not a string\.  
-If the function is associated with a *viewer response* event type, your function code cannot change the `statusCode` that it received\. If the function is associated with a *viewer request* event type and [generates an HTTP response](writing-function-code.md#function-code-generate-response), your function code can set the `statusCode`\.
+Your function can generate or modify the `statusCode`\.
 
 **`statusDescription`**  
 The HTTP status description of the response\. If your function code generates a response, this field is optional\.
 
 **`headers`**  
 An object that represents the HTTP headers in the response\. If the response contains any `Set-Cookie` headers, those headers are not part of the `headers` object\. Cookies are represented separately in the `cookies` object\.  
-The `headers` object contains one field for each header in the response\. Header names are converted to lowercase in the event object, and header names must be lowercase when they’re added by your function code\. When CloudFront Functions converts the event object back into an HTTP response, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP response\.
+The `headers` object contains one field for each header in the response\. Header names are converted to lowercase in the event object, and header names must be lowercase when they're added by your function code\. When CloudFront Functions converts the event object back into an HTTP response, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP response\.
 
 **`cookies`**  
 An object that represents the cookies in the response \(`Set-Cookie` headers\)\.  
 The `cookies` object contains one field for each cookie in the response\.
 
+**`body`**  
+Adding the `body` field is optional, and it will not be present in the `response` object unless you specify it in your function\. Your function does not have access to the original body returned by the CloudFront cache or origin\. If you don't specify the `body` field in your viewer response function, the original body returned by the CloudFront cache or origin is returned to viewer\.  
+If you want CloudFront to return a custom body to the viewer, specify the body content in the `data` field, and the body encoding in the `encoding` field\. You can specify the encoding as plain text \(`"encoding": "text"`\) or as Base64\-encoded content \(`"encoding": "base64"`\)\.  
+As a shortcut, you can also specify the body content directly in the `body` field \(`"body": "<specify the body content here>"`\)\. When you do this, omit the `data` and `encoding` fields\. CloudFront treats the body as plain text in this case\.    
+`encoding`  
+The encoding for the `body` content \(`data` field\)\. The only valid encodings are `text` and `base64`\.  
+If you specify `encoding` as `base64` but the body is not valid base64, CloudFront returns an error\.  
+`data`  
+The `body` content\.
+
+For more information about modified status codes and body content, see [Status code and body](#functions-event-structure-status-body)\.
+
 For more information about the structure of headers and cookies, see [Query string, header, and cookie structure](#functions-event-structure-query-header-cookie)\.
 
-For an example `event` object, see [Example event](#functions-event-structure-example)\.
+For an example `response` object, see [Example response object](#functions-response-structure-example)\.
+
+## Status code and body<a name="functions-event-structure-status-body"></a>
+
+With CloudFront Functions, you can update the viewer response status code, replace the entire response body with a new one, or remove the response body\. Some common scenarios for updating the viewer response after evaluating aspects of the response from the CloudFront cache or origin include the following:
++ Changing the status to set an HTTP 200 status code and creating static body content to return to the viewer\.
++ Changing the status to set an HTTP 301 or 302 status code to redirect the user to another website\.
++ Deciding whether to serve or drop the body of the viewer response\.
+
+**Note**  
+If the origin returns an HTTP error of 400 and above, the CloudFront Function will not run\. For more information see [Restrictions on all edge functions](edge-functions-restrictions.md#edge-function-restrictions-all)\.
+
+When you're working with the HTTP response, CloudFront Functions does not have access to the response body\. You can replace the body content by setting it to the desired value, or you can remove the body by setting the value to be empty\. If you don't update the body field in your function, the original body returned by the CloudFront cache or origin is returned back to viewer\.
+
+**Tip**  
+When using CloudFront Functions to replace a body, be sure to align the corresponding headers, such as `content-encoding`, `content-type`, or `content-length`, to the new body content\.   
+For example, if the CloudFront origin or cache returns `content-encoding: gzip` but the viewer response function sets a body that's plain text, the function also needs to change the `content-encoding` and `content-type` headers accordingly\.
+
+If your CloudFront Function is configured to return an HTTP error of 400 or above, your viewer will not see a [custom error page](GeneratingCustomErrorResponses.md#creating-custom-error-pages) that you have specified for the same status code\.
 
 ## Query string, header, and cookie structure<a name="functions-event-structure-query-header-cookie"></a>
 
 Query strings, headers, and cookies in the `request` and `response` objects share the same structure\. Each query string, header, or cookie is a unique field within the parent `querystring`, `headers`, or `cookies` object\. The field name is the name of the query string, header, or cookie\. Each field contains a `value` property with the value of the query string, header, or cookie\.
 
-For headers only, the header names are converted to lowercase in the event object, and header names must be lowercase when they’re added by your function code\. When CloudFront Functions converts the event object back into an HTTP request or response, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP request or response\.
+For headers only, the header names are converted to lowercase in the event object, and header names must be lowercase when they're added by your function code\. When CloudFront Functions converts the event object back into an HTTP request or response, the first letter of each word in header names is capitalized\. Words are separated by a hyphen \(`-`\)\. For example, if your function code adds a header named `example-header-name`, CloudFront converts this to `Example-Header-Name` in the HTTP request or response\.
 
 For example, consider the following `Host` header in an HTTP request:
 
@@ -227,7 +259,7 @@ In the `response` object, these attributes are represented in the `attributes` p
 }
 ```
 
-## Example event<a name="functions-event-structure-example"></a>
+## Example event object<a name="functions-event-structure-example"></a>
 
 The following example shows a complete `event` object\.
 
@@ -376,6 +408,71 @@ The `event` object is the input to your function\. Your function returns only th
           }
         ]
       }
+    }
+  }
+}
+```
+
+## Example response object<a name="functions-response-structure-example"></a>
+
+The following example shows a `response` object — the output of a viewer response function — in which the body has been replaced by a viewer response function\.
+
+```
+{
+  "response": {
+    "statusCode": 200,
+    "statusDescription": "OK",
+    "headers": {
+      "date": {
+        "value": "Mon, 04 Apr 2021 18:57:56 GMT"
+      },
+      "server": {
+        "value": "gunicorn/19.9.0"
+      },
+      "access-control-allow-origin": {
+        "value": "*"
+      },
+      "access-control-allow-credentials": {
+        "value": "true"
+      },
+      "content-type": {
+        "value": "text/html"
+      },
+      "content-length": {
+        "value": "86"
+      }
+    },
+    "cookies": {
+      "ID": {
+        "value": "id1234",
+        "attributes": "Expires=Wed, 05 Apr 2021 07:28:00 GMT"
+      },
+      "Cookie1": {
+        "value": "val1",
+        "attributes": "Secure; Path=/; Domain=example.com; Expires=Wed, 05 Apr 2021 07:28:00 GMT",
+        "multiValue": [
+          {
+            "value": "val1",
+            "attributes": "Secure; Path=/; Domain=example.com; Expires=Wed, 05 Apr 2021 07:28:00 GMT"
+          },
+          {
+            "value": "val2",
+            "attributes": "Path=/cat; Domain=example.com; Expires=Wed, 10 Jan 2021 07:28:00 GMT"
+          }
+        ]
+      }
+    },
+    
+    // Adding the body field is optional and it will not be present in the response object
+    // unless you specify it in your function.
+    // Your function does not have access to the original body returned by the CloudFront
+    // cache or origin.
+    // If you don't specify the body field in your viewer response function, the original
+    // body returned by the CloudFront cache or origin is returned to viewer.
+
+     "body": {
+      "encoding": "text",
+      "data": "<!DOCTYPE html><html><body><p>Here is your custom content.</p></body></html>"
     }
   }
 }

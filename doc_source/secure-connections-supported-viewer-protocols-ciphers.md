@@ -12,7 +12,7 @@ A viewer must support at least one of the supported ciphers to establish an HTTP
 |  | Security policy |  | SSLv3 | TLSv1 | TLSv1\_2016 | TLSv1\.1\_2016 | TLSv1\.2\_2018 | TLSv1\.2\_2019 | TLSv1\.2\_2021 | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | Supported SSL/TLS protocols | 
-| TLSv1\.3¹ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
+| TLSv1\.3 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
 | TLSv1\.2 | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | ♦ | 
 | TLSv1\.1 | ♦ | ♦ | ♦ | ♦ |  |  |  | 
 | TLSv1 | ♦ | ♦ | ♦ |  |  |  |  | 
@@ -44,8 +44,6 @@ A viewer must support at least one of the supported ciphers to establish an HTTP
 | AES128\-SHA | ♦ | ♦ | ♦ | ♦ |  |  |  | 
 | DES\-CBC3\-SHA | ♦ | ♦ |  |  |  |  |  | 
 | RC4\-MD5 | ♦ |  |  |  |  |  |  | 
-
-¹CloudFront supports one round\-trip time \(1\-RTT\) handshakes for TLSv1\.3, but does not support zero round\-trip time \(0\-RTT\) handshakes\.
 
 ## OpenSSL, s2n, and RFC cipher names<a name="secure-connections-openssl-rfc-cipher-names"></a>
 

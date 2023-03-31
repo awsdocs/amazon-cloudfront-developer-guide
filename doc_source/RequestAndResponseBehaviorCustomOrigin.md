@@ -29,7 +29,7 @@ This topic contains information about how CloudFront processes viewer requests a
 + [Query strings](#RequestCustomQueryStrings)
 + [Origin connection timeout and attempts](#custom-origin-timeout-attempts)
 + [Origin response timeout](#request-custom-request-timeout)
-+ [Simultaneous requests for the same object \(traffic spikes\)](#request-custom-traffic-spikes)
++ [Simultaneous requests for the same object \(request collapsing\)](#request-custom-traffic-spikes)
 + [`User-Agent` header](#request-custom-user-agent-header)
 
 ### Authentication<a name="RequestCustomClientAuth"></a>
@@ -66,7 +66,7 @@ Some applications, such as load balancers \(including Elastic Load Balancing\), 
 `X-Forwarded-For: 192.0.2.2,192.0.2.199`
 
 **Note**  
-The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334\)\.
+The `X-Forwarded-For` header contains IPv4 addresses \(such as 192\.0\.2\.44\) and IPv6 addresses \(such as 2001:0db8:85a3::8a2e:0370:7334\)\.
 
 ### Client\-side SSL authentication<a name="RequestCustomClientSideSslAuth"></a>
 
@@ -96,7 +96,7 @@ If you want CloudFront to respect cross\-origin resource sharing settings, confi
 
 You can require viewers to use HTTPS to send requests to CloudFront and require CloudFront to forward requests to your custom origin by using the protocol that is used by the viewer\. For more information, see the following distribution settings:
 + [Viewer protocol policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)
-+ [Origin protocol policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)
++ [Protocol \(custom origins only\)](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)
 
 CloudFront forwards HTTPS requests to the origin server using the SSLv3, TLSv1\.0, TLSv1\.1, and TLSv1\.2 protocols\. For custom origins, you can choose the SSL protocols that you want CloudFront to use when communicating with your origin:
 + If you're using the CloudFront console, choose protocols by using the **Origin SSL Protocols** check boxes\. For more information, see [Creating a distribution](distribution-web-creating-console.md)\. 
@@ -215,7 +215,7 @@ The performance improvement of OCSP stapling is more pronounced when CloudFront 
 
 When CloudFront gets a response from your origin, it tries to maintain the connection for several seconds in case another request arrives during that period\. Maintaining a persistent connection saves the time required to re\-establish the TCP connection and perform another TLS handshake for subsequent requests\. 
 
-For more information, including how to configure the duration of persistent connections, see [Origin keep\-alive timeout](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
+For more information, including how to configure the duration of persistent connections, see [Keep\-alive timeout \(custom origins only\)](distribution-web-values-specify.md#DownloadDistValuesOriginKeepaliveTimeout) in the section [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
 ### Protocols<a name="RequestCustomProtocols"></a>
 
@@ -256,11 +256,19 @@ CloudFront behavior depends on the HTTP method of the viewer request:
 + `GET` and `HEAD` requests – If the origin doesn’t respond or stops responding within the duration of the response timeout, CloudFront drops the connection\. If the specified number of [origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts) is more than 1, CloudFront tries again to get a complete response\. CloudFront tries up to 3 times, as determined by the value of the *origin connection attempts* setting\. If the origin doesn’t respond during the final attempt, CloudFront doesn’t try again until it receives another request for content on the same origin\.
 + `DELETE`, `OPTIONS`, `PATCH`, `PUT`, and `POST` requests – If the origin doesn’t respond within 30 seconds, CloudFront drops the connection and doesn’t try again to contact the origin\. The client can resubmit the request if necessary\.
 
-For more information, including how to configure the origin response timeout, see [Origin response timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
+For more information, including how to configure the origin response timeout, see [Response timeout \(custom origins only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
 
-### Simultaneous requests for the same object \(traffic spikes\)<a name="request-custom-traffic-spikes"></a>
+### Simultaneous requests for the same object \(request collapsing\)<a name="request-custom-traffic-spikes"></a>
 
-When a CloudFront edge location receives a request for an object and either the object isn't currently in the cache or the object has expired, CloudFront immediately sends the request to your origin\. If there's a traffic spike—if additional requests for the same object arrive at the edge location before your origin responds to the first request—CloudFront pauses briefly before forwarding additional requests for the object to your origin\. Typically, the response to the first request will arrive at the CloudFront edge location before the response to subsequent requests\. This brief pause helps to reduce unnecessary load on your origin server\. If additional requests are not identical because, for example, you configured CloudFront to cache based on request headers or cookies, CloudFront forwards all of the unique requests to your origin\.
+When a CloudFront edge location receives a request for an object and the object isn't in the cache or the cached object is expired, CloudFront immediately sends the request to the origin\. However, if there are simultaneous requests for the same object—that is, if additional requests for the same object \(with the same cache key\) arrive at the edge location before CloudFront receives the response to the first request—CloudFront pauses before forwarding the additional requests to the origin\. This brief pause helps to reduce the load on the origin\. CloudFront sends the response from the original request to all the requests that it received while it was paused\. This is called *request collapsing*\. In CloudFront logs, the first request is identified as a `Miss` in the `x-edge-result-type` field, and the collapsed requests are identified as a `Hit`\. For more information about CloudFront logs, see [CloudFront and edge function logging](logging.md)\.
+
+CloudFront only collapses requests that share a [*cache key*](understanding-the-cache-key.md)\. If the additional requests do not share the same cache key because, for example, you configured CloudFront to cache based on request headers or cookies or query strings, CloudFront forwards all the requests with a unique cache key to your origin\.
+
+If you would like to prevent all request collapsing, you can do one of the following:
++ Use the managed cache policy `CachingDisabled`, which also prevents caching\. For more information, see [Using the managed cache policies](using-managed-cache-policies.md)\.
++ Forward cookies to the origin, either by using a cache policy to cache based on the `Cookie` header, or by using an origin request policy to include the `Cookie` header in origin requests\.
+
+If you would like to prevent request collapsing for specific objects, you can set the minimum TTL for the cache behavior to 0 *and* configure the origin to send `Cache-Control: private`, `Cache-Control: no-store`, `Cache-Control: no-cache`, `Cache-Control: max-age=0`, or `Cache-Control: s-maxage=0`\. These configurations will increase the load on your origin and introduce additional latency for the simultaneous requests that are paused while CloudFront waits for the response to the first request\.
 
 ### `User-Agent` header<a name="request-custom-user-agent-header"></a>
 
@@ -292,7 +300,7 @@ This topic contains information about how CloudFront processes responses from yo
 + [Cookies](#ResponseCustomCookies)
 + [Dropped TCP connections](#ResponseCustomDroppedTCPConnections)
 + [HTTP response headers that CloudFront removes or replaces](#ResponseCustomRemovedHeaders)
-+ [Maximum file size](#ResponseCustomMaxFileSize)
++ [Maximum cacheable file size](#ResponseCustomMaxFileSize)
 + [Origin unavailable](#ResponseCustomOriginUnavailable)
 + [Redirects](#ResponseCustomRedirects)
 + [`Transfer-Encoding` header](#ResponseCustomTransferEncoding)
@@ -303,7 +311,7 @@ Your origin cannot send more than one 100\-Continue response to CloudFront\. Aft
 
 ### Caching<a name="ResponseCustomCaching"></a>
 + Ensure that the origin server sets valid and accurate values for the `Date` and `Last-Modified` header fields\.
-+ CloudFront normally respects a `Cache-Control: no-cache` header in the response from the origin\. For an exception, see [Simultaneous requests for the same object \(traffic spikes\)](#request-custom-traffic-spikes)\.
++ CloudFront normally respects a `Cache-Control: no-cache` header in the response from the origin\. For an exception, see [Simultaneous requests for the same object \(request collapsing\)](#request-custom-traffic-spikes)\.
 
 ### Canceled requests<a name="response-custom-canceled-requests"></a>
 
@@ -349,11 +357,9 @@ CloudFront removes or updates the following header fields before forwarding the 
 
   `Via: 1.1 1026589cc7887e7a0dc7827b4example.cloudfront.net (CloudFront)`
 
-### Maximum file size<a name="ResponseCustomMaxFileSize"></a>
+### Maximum cacheable file size<a name="ResponseCustomMaxFileSize"></a>
 
-The maximum size of a response body that CloudFront saves in its cache is 30 GB\. This includes chunked transfer responses that don’t specify the `Content-Length` header value\.
-
-When caching is disabled, CloudFront can retrieve an object that is larger than 30 GB from the origin and pass it along to the viewer\. However, CloudFront doesn’t cache the object\.
+The maximum size of a response body that CloudFront saves in its cache is 30 GB\. This includes chunked transfer responses that don't specify the `Content-Length` header value\.
 
 You can use CloudFront to cache an object that is larger than 30 GB by using range requests to request the objects in parts that are each 30 GB or smaller\. CloudFront caches these parts because each of them is 30 GB or smaller\. After the viewer retrieves all the parts of the object, it can reconstruct the original, larger object\. For more information, see [Use range requests to cache large objects](RangeGETs.md#cache-large-objects-with-range-requests)\.
 

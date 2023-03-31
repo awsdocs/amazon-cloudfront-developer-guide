@@ -282,7 +282,7 @@ The following list shows how data in the Locations report in the CloudFront cons
 
 **Location**  
 The country or U\.S\. state that the viewer is in\. In access logs, the `c-ip` column contains the IP address of the device that the viewer is running on\. We use geolocation data to identify the geographic location of the device based on the IP address\.  
-If you're displaying the **Locations** report by country, note that the country list is based on [ISO 3166\-2, *Codes for the representation of names of countries and their subdivisions – Part 2: Country subdivision code*](http://en.wikipedia.org/wiki/ISO_3166-2)\. The country list includes the following additional values:  
+If you're displaying the **Locations** report by country, note that the country list is based on [ISO 3166\-2, *Codes for the representation of names of countries and their subdivisions – Part 2: Country subdivision code*](https://en.wikipedia.org/wiki/ISO_3166-2)\. The country list includes the following additional values:  
 + **Anonymous Proxy** – The request originated from an anonymous proxy\.
 + **Satellite Provider** – The request originated from a satellite provider that provides internet service to multiple countries\. Users might be in countries with a high risk of fraud\.
 + **Europe \(Unknown\)** – The request originated from an IP in a block that is used by multiple European countries\. The country that the request originated from cannot be determined\. CloudFront uses **Europe \(Unknown\)** as the default\. 

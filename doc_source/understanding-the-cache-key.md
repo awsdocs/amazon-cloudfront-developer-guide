@@ -22,27 +22,27 @@ The `OPTIONS` method is included in the cache key for `OPTIONS` requests\. This 
 Other values from the viewer request are not included in the cache key, by default\. Consider the following HTTP request from a web browser\.
 
 ```
-GET /content/stories/example-story.html?ref=0123abc&split-pages=false HTTP/1.1
-Host: d111111abcdef8.cloudfront.net
-User-Agent: Mozilla/5.0 Gecko/20100101 Firefox/68.0
-Accept: text/html,*/*
-Accept-Language: en-US,en
-Cookie: session_id=01234abcd
-Referer: https://news.example.com/
+            GET /content/stories/example-story.html?ref=0123abc&split-pages=false HTTP/1.1
+            Host: d111111abcdef8.cloudfront.net
+            User-Agent: Mozilla/5.0 Gecko/20100101 Firefox/68.0
+            Accept: text/html,*/*
+            Accept-Language: en-US,en
+            Cookie: session_id=01234abcd
+            Referer: https://news.example.com/
 ```
 
-When a viewer request like this one comes in to a CloudFront edge location, CloudFront uses the cache key to determine if there’s a cache hit\. By default, only the information shown in bold is included in the cache key\. If the requested object is not in the cache \(a cache miss\), then CloudFront sends a request to the origin to get the object\. After getting the object, CloudFront returns it to the viewer and stores it in the edge location’s cache\.
+When a viewer request like this example comes in to a CloudFront edge location, CloudFront uses the cache key to determine if there’s a cache hit\. By default, only the following components of the request are included in the cache key: `/content/stories/example-story.html` and `d111111abcdef8.cloudfront.net`\. If the requested object is not in the cache \(a cache miss\), then CloudFront sends a request to the origin to get the object\. After getting the object, CloudFront returns it to the viewer and stores it in the edge location’s cache\.
 
 When CloudFront receives another request for the same object, as determined by the cache key, CloudFront serves the cached object to the viewer immediately, without sending a request to the origin\. For example, consider the following HTTP request that comes in after the previous request\.
 
 ```
-GET /content/stories/example-story.html?ref=xyz987&split-pages=true HTTP/1.1
-Host: d111111abcdef8.cloudfront.net
-User-Agent: Mozilla/5.0 AppleWebKit/537.36 Chrome/83.0.4103.116
-Accept: text/html,*/*
-Accept-Language: en-US,en
-Cookie: session_id=wxyz9876
-Referer: https://rss.news.example.net/
+            GET /content/stories/example-story.html?ref=xyz987&split-pages=true HTTP/1.1
+            Host: d111111abcdef8.cloudfront.net
+            User-Agent: Mozilla/5.0 AppleWebKit/537.36 Chrome/83.0.4103.116
+            Accept: text/html,*/*
+            Accept-Language: en-US,en
+            Cookie: session_id=wxyz9876
+            Referer: https://rss.news.example.net/
 ```
 
 This request is for the same object as the previous request, but is different from the previous request\. It has a different URL query string, different `User-Agent` and `Referer` headers, and a different `session_id` cookie\. However, none of these values are part of the cache key by default, so this second request results in a cache hit\.

@@ -1,21 +1,18 @@
-# Setting up Amazon CloudFront<a name="setting-up-cloudfront"></a>
+# Setting up<a name="setting-up-cloudfront"></a>
 
-The overview and procedures in this section help you get started with AWS\.
+This topic describes preliminary steps, such as creating an AWS account, to prepare you to use Amazon CloudFront\.
 
 **Topics**
-+ [Sign up for AWS](#setting-up-sign-up-for-aws)
-+ [Access your account](#setting-up-access-account)
-+ [Create an IAM user](#setting-up-create-iam-user)
++ [Sign up for an AWS account](#sign-up-for-aws)
++ [Create an administrative user](#create-an-admin)
 + [Set up the AWS Command Line Interface or AWS Tools for Windows PowerShell](#setting-up-aws-cli)
 + [Download an AWS SDK](#setting-up-sdk)
 
-## Sign up for AWS<a name="setting-up-sign-up-for-aws"></a>
+## Sign up for an AWS account<a name="sign-up-for-aws"></a>
 
-When you sign up for AWS, your AWS account is automatically signed up for all services in AWS, including Amazon CloudFront\. You are charged only for the services that you use\.
+If you do not have an AWS account, complete the following steps to create one\.
 
-If you have an AWS account already, skip to [Access your account](#setting-up-access-account)\. Otherwise, create one\.<a name="setting-up-sign-up-for-aws-procedure"></a>
-
-**To create an AWS account**
+**To sign up for an AWS account**
 
 1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
@@ -23,108 +20,33 @@ If you have an AWS account already, skip to [Access your account](#setting-up-ac
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-Note your AWS account number, because you'll need it later\.
+   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/accounts/latest/reference/root-user-tasks.html)\.
 
-**Tip**  
-If you plan to use CloudFront to distribute content that you store in an S3 bucket, make sure that you also complete the steps to sign up for S3\. For more information, see [Sign Up for Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/gsg/SigningUpforS3.html)\.
+AWS sends you a confirmation email after the sign\-up process is complete\. At any time, you can view your current account activity and manage your account by going to [https://aws\.amazon\.com/](https://aws.amazon.com/) and choosing **My Account**\.
 
-## Access your account<a name="setting-up-access-account"></a>
+## Create an administrative user<a name="create-an-admin"></a>
 
-You use AWS services by using any of the following options:
-+ AWS Management Console
-+ API for each service
-+ AWS Command Line Interface \(AWS CLI\)
-+ AWS Tools for Windows PowerShell
-+ AWS SDKs
+After you sign up for an AWS account, create an administrative user so that you don't use the root user for everyday tasks\.
 
-For each of those options, you need to access your AWS account by providing credentials that verify that you have permissions to use the services\.
+**Secure your AWS account root user**
 
-### Access the console<a name="setting-up-access-account-console"></a>
+1.  Sign in to the [AWS Management Console](https://console.aws.amazon.com/) as the account owner by choosing **Root user** and entering your AWS account email address\. On the next page, enter your password\.
 
-To access the AWS Management Console for the first time, you provide an email address and a password\. This combination of your email address and password is called your *root identity* or *root account credentials*\. After you access your account for the first time, we strongly recommend that you don't use your root account credentials again for everyday use\. Instead, you should create new credentials by using [AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)\. To do that, you create a user account for yourself known as an *IAM user*, and then add the IAM user to an IAM group with administrative permissions or grant the IAM user administrative permissions\. You then can access AWS using a special URL and the credentials for the IAM user\. You also can add other IAM users later, and restrict their access to specified resources in the account\.
+   For help signing in by using root user, see [Signing in as the root user](https://docs.aws.amazon.com/signin/latest/userguide/console-sign-in-tutorials.html#introduction-to-root-user-sign-in-tutorial) in the *AWS Sign\-In User Guide*\.
 
-**Note**  
-Some ad\-blocking plugins for web browsers interfere with Amazon CloudFront console operations, which can cause the console to behave unpredictably\. If you installed an ad\-blocking plugin for your browser, we recommend that you add the URL for the CloudFront console, [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home), to the whitelist for the plugin\.
+1. Turn on multi\-factor authentication \(MFA\) for your root user\.
 
-### Access the API, AWS CLI, AWS Tools for Windows PowerShell, or the AWS SDKs<a name="setting-up-access-account-api-cli"></a>
+   For instructions, see [Enable a virtual MFA device for your AWS account root user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html#enable-virt-mfa-for-root) in the *IAM User Guide*\.
 
-To use the API, the AWS CLI, AWS Tools for Windows PowerShell, or the AWS SDKs, you must create *access keys*\. These keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS\.
+**Create an administrative user**
++ For your daily administrative tasks, grant administrative access to an administrative user in AWS IAM Identity Center \(successor to AWS Single Sign\-On\)\.
 
-To create the keys, you sign in to the AWS Management Console\. We strongly recommend that you sign in with your IAM user credentials instead of your root credentials\. For more information, see [Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) in the *IAM User Guide*\.
+  For instructions, see [Getting started](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) in the *AWS IAM Identity Center \(successor to AWS Single Sign\-On\) User Guide*\.
 
-## Create an IAM user<a name="setting-up-create-iam-user"></a>
+**Sign in as the administrative user**
++ To sign in with your IAM Identity Center user, use the sign\-in URL that was sent to your email address when you created the IAM Identity Center user\.
 
-Use the following procedures to create a group for administrators, create an IAM user, and then add the IAM user to the administrators group\. If you signed up for AWS but have not created an IAM user for yourself, you can create one using the IAM console\. If you aren't familiar with using the console, see [Working with the AWS Management Console](https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html) for an overview\.
-
-**To create an administrator user for yourself and add the user to an administrators group \(console\)**
-
-1. Sign in to the [IAM console](https://console.aws.amazon.com/iam/) as the account owner by choosing **Root user** and entering your AWS account email address\. On the next page, enter your password\.
-**Note**  
-We strongly recommend that you adhere to the best practice of using the **Administrator** IAM user that follows and securely lock away the root user credentials\. Sign in as the root user only to perform a few [account and service management tasks](https://docs.aws.amazon.com/general/latest/gr/aws_tasks-that-require-root.html)\.
-
-1. In the navigation pane, choose **Users** and then choose **Add user**\.
-
-1. For **User name**, enter **Administrator**\.
-
-1. Select the check box next to **AWS Management Console access**\. Then select **Custom password**, and then enter your new password in the text box\.
-
-1. \(Optional\) By default, AWS requires the new user to create a new password when first signing in\. You can clear the check box next to **User must create a new password at next sign\-in** to allow the new user to reset their password after they sign in\.
-
-1. Choose **Next: Permissions**\.
-
-1. Under **Set permissions**, choose **Add user to group**\.
-
-1. Choose **Create group**\.
-
-1. In the **Create group** dialog box, for **Group name** enter **Administrators**\.
-
-1. Choose **Filter policies**, and then select **AWS managed \- job function** to filter the table contents\.
-
-1. In the policy list, select the check box for **AdministratorAccess**\. Then choose **Create group**\.
-**Note**  
-You must activate IAM user and role access to Billing before you can use the `AdministratorAccess` permissions to access the AWS Billing and Cost Management console\. To do this, follow the instructions in [step 1 of the tutorial about delegating access to the billing console](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_billing.html)\.
-
-1. Back in the list of groups, select the check box for your new group\. Choose **Refresh** if necessary to see the group in the list\.
-
-1. Choose **Next: Tags**\.
-
-1. \(Optional\) Add metadata to the user by attaching tags as key\-value pairs\. For more information about using tags in IAM, see [Tagging IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the *IAM User Guide*\.
-
-1. Choose **Next: Review** to see the list of group memberships to be added to the new user\. When you are ready to proceed, choose **Create user**\.
-
-You can use this same process to create more groups and users and to give your users access to your AWS account resources\. To learn about using policies that restrict user permissions to specific AWS resources, see [Access management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html) and [Example policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html)\.<a name="setting-up-sign-in-iam-user-procedure"></a>
-
-**To sign in as your new IAM user**
-
-1. Sign out of the AWS console\.
-
-1. Sign in by using the following URL, where *your\_account\_id* is your AWS account number without the hyphens\. For example, if your AWS account number is 1234\-5678\-9012, your AWS account ID is 123456789012:
-
-   ```
-   https://your_account_id.signin.aws.amazon.com/console/
-   ```
-
-1. Enter the IAM user name \(not your email address\) and password that you just created\. When you're signed in, the navigation bar displays "*your\_user\_name* @ *your\_account\_id*"\.
-
-If you don't want the URL for your sign\-in page to contain your AWS account ID, you can create an account alias\.<a name="setting-up-create-account-alias-procedure"></a>
-
-**To create an account alias and conceal your account ID**
-
-1. On the IAM console, choose **Dashboard** in the navigation pane\. 
-
-1. On the dashboard, choose **Customize** and enter an alias such as your company name\.
-
-1. Sign out of the AWS console\.
-
-1. Sign in by using the following URL:
-
-   ```
-   https://your_account_alias.signin.aws.amazon.com/console/
-   ```
-
-To verify the sign\-in link for IAM users for your account, open the IAM console and check under **IAM users sign\-in link** on the dashboard\.
-
-For more information about using IAM, see [Identity and Access Management \(IAM\) in CloudFront](auth-and-access-control.md)\.
+  For help signing in using an IAM Identity Center user, see [Signing in to the AWS access portal](https://docs.aws.amazon.com/signin/latest/userguide/iam-id-center-sign-in-tutorial.html) in the *AWS Sign\-In User Guide*\.
 
 ## Set up the AWS Command Line Interface or AWS Tools for Windows PowerShell<a name="setting-up-aws-cli"></a>
 
@@ -134,4 +56,4 @@ If you have experience with Windows PowerShell, you might prefer to use AWS Tool
 
 ## Download an AWS SDK<a name="setting-up-sdk"></a>
 
-If you're using a programming language that AWS provides an SDK for, we recommend that you use an SDK instead of the Amazon CloudFront API\. The SDKs make authentication simpler, integrate easily with your development environment, and provide easy access to CloudFront commands\. For more information, see [Tools to Build on AWS](http://aws.amazon.com/tools/)\.
+If you're using a programming language that AWS provides an SDK for, we recommend that you use an SDK instead of the Amazon CloudFront API\. The SDKs make authentication simpler, integrate easily with your development environment, and provide easy access to CloudFront commands\. For more information, see [Tools to Build on AWS](https://aws.amazon.com/tools/)\.

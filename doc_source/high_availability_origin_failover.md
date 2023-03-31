@@ -51,13 +51,13 @@ The following diagram illustrates how origin failover works\.
 
 1. Enter a name for the origin group\.
 
-1. Choose the HTTP status codes to use as failover criteria\. You can choose any combination of the following status codes: 403, 404, 500, 502, 503, or 504\. When CloudFront receives a response with one of the status codes that you specify, it fails over to the secondary origin\.
+1. Choose the HTTP status codes to use as failover criteria\. You can choose any combination of the following status codes: 400, 403, 404, 416, 500, 502, 503, or 504\. When CloudFront receives a response with one of the status codes that you specify, it fails over to the secondary origin\.
 **Note**  
 CloudFront fails over to the secondary origin only when the HTTP method of the viewer request is `GET`, `HEAD`, or `OPTIONS`\. CloudFront does not fail over when the viewer sends a different HTTP method \(for example `POST`, `PUT`, and so on\)\.
 
 1. Choose **Create origin group**\.
 
-For information about specifying an origin group for a distribution, see [Origin name](distribution-web-values-specify.md#DownloadDistValuesId)\.
+For information about specifying an origin group for a distribution, see [Name](distribution-web-values-specify.md#DownloadDistValuesId)\.
 
 ## Controlling origin timeouts and attempts<a name="controlling-attempts-and-timeouts"></a>
 
@@ -66,15 +66,15 @@ By default, CloudFront tries to connect to the primary origin in an origin group
 To fail over more quickly, specify a shorter connection timeout, fewer connection attempts, or both\. For custom origins \(including Amazon S3 bucket origins that *are* configured with static website hosting\), you can also adjust the origin response timeout\.
 
 **Origin connection timeout**  
-The origin connection timeout setting affects how long CloudFront waits when trying to establish a connection to the origin\. By default, CloudFront waits 10 seconds to establish a connection, but you can specify 1–10 seconds \(inclusive\)\. For more information, see [Origin connection timeout](distribution-web-values-specify.md#origin-connection-timeout)\.
+The origin connection timeout setting affects how long CloudFront waits when trying to establish a connection to the origin\. By default, CloudFront waits 10 seconds to establish a connection, but you can specify 1–10 seconds \(inclusive\)\. For more information, see [Connection timeout](distribution-web-values-specify.md#origin-connection-timeout)\.
 
 **Origin connection attempts**  
-The origin connection attempts setting affects the number of times that CloudFront attempts to connect to the origin\. By default, CloudFront tries 3 times to connect, but you can specify 1–3 \(inclusive\)\. For more information, see [Origin connection attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  
+The origin connection attempts setting affects the number of times that CloudFront attempts to connect to the origin\. By default, CloudFront tries 3 times to connect, but you can specify 1–3 \(inclusive\)\. For more information, see [Connection attempts](distribution-web-values-specify.md#origin-connection-attempts)\.  
 For a custom origin \(including an Amazon S3 bucket that’s configured with static website hosting\), this setting also affects the number of times that CloudFront attempts to get a response from the origin in the case of an origin response timeout\.
 
 **Origin response timeout**  
 This applies only to custom origins\.
-The origin response timeout setting affects how long CloudFront waits to receive a response \(or to receive the complete response\) from the origin\. By default, CloudFront waits for 30 seconds, but you can specify 1–60 seconds \(inclusive\)\. For more information, see [Origin response timeout](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
+The origin response timeout setting affects how long CloudFront waits to receive a response \(or to receive the complete response\) from the origin\. By default, CloudFront waits for 30 seconds, but you can specify 1–60 seconds \(inclusive\)\. For more information, see [Response timeout \(custom origins only\)](distribution-web-values-specify.md#DownloadDistValuesOriginResponseTimeout)\.
 
 ### How to change these settings<a name="controlling-attempts-and-timeouts-how-to"></a>
 

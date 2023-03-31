@@ -7,6 +7,7 @@ If CloudFront requests an object from your origin, and the origin returns an HTT
 + [HTTP 500 status code \(Lambda execution error\)](http-500-lambda-execution-error.md)
 + [HTTP 502 status code \(Bad Gateway\)](http-502-bad-gateway.md)
 + [HTTP 502 status code \(Lambda validation error\)](http-502-lambda-validation-error.md)
++ [HTTP 502 status code \(DNS error\)](http-502-dns-error.md)
 + [HTTP 503 status code \(Lambda limit exceeded\)](http-503-lambda-limit-execeeded-error.md)
 + [HTTP 503 status code \(Service Unavailable\)](http-503-service-unavailable.md)
 + [HTTP 504 status code \(Gateway Timeout\)](http-504-gateway-timeout.md)

@@ -13,7 +13,7 @@ Using CloudFront can help you accomplish a variety of goals\. This section lists
 
 CloudFront can speed up the delivery of your static content \(for example, images, style sheets, JavaScript, and so on\) to viewers across the globe\. By using CloudFront, you can take advantage of the AWS backbone network and CloudFront edge servers to give your viewers a fast, safe, and reliable experience when they visit your website\.
 
-A simple approach for storing and delivering static content is to use an Amazon S3 bucket\. Using S3 together with CloudFront has a number of advantages, including the option to use Origin Access Identity \(OAI\) to easily restrict access to your S3 content\.
+A simple approach for storing and delivering static content is to use an Amazon S3 bucket\. Using S3 together with CloudFront has a number of advantages, including the option to use [origin access control](private-content-restricting-access-to-s3.md) to easily restrict access to your S3 content\.
 
 For more information about using S3 together with CloudFront, including a AWS CloudFormation template to help you get started quickly, see [ Amazon S3 \+ Amazon CloudFront: A Match Made in the Cloud](https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-s3-amazon-cloudfront-a-match-made-in-the-cloud/)\.
 
@@ -43,9 +43,9 @@ Using Lambda@Edge can help you configure your CloudFront distribution to serve p
 
 To serve private content using CloudFront, you do the following:
 + Require that your users \(viewers\) access content using [signed URLs or signed cookies](PrivateContent.md)\.
-+ Restrict access to your origin so that it’s only available from CloudFront’s origin\-facing servers\. To do this, you can do one of the following:
-  + For an Amazon S3 origin, you can [use an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
++ Restrict access to your origin so that it's only available from CloudFront's origin\-facing servers\. To do this, you can do one of the following:
+  + For an Amazon S3 origin, you can [use an origin access control \(OAC\)](private-content-restricting-access-to-s3.md)\.
   + For a custom origin, you can do the following:
-    + If the custom origin is protected by an Amazon VPC security group or AWS Firewall Manager, you can [use the CloudFront managed prefix list](LocationsOfEdgeServers.md#managed-prefix-list) to allow inbound traffic to your origin from only CloudFront’s origin\-facing IP addresses\.
+    + If the custom origin is protected by an Amazon VPC security group or AWS Firewall Manager, you can [use the CloudFront managed prefix list](LocationsOfEdgeServers.md#managed-prefix-list) to allow inbound traffic to your origin from only CloudFront's origin\-facing IP addresses\.
     + Use a custom HTTP header to restrict access to only requests from CloudFront\. For more information, see [ Restricting access to files on custom origins](private-content-overview.md#forward-custom-headers-restrict-access) and [Adding custom headers to origin requests](add-origin-custom-headers.md)\. For an example that uses a custom header to restrict access to an Application Load Balancer origin, see [Restricting access to Application Load Balancers](restrict-access-to-load-balancer.md)\.
-    + If the custom origin requires custom access control logic, you can use Lambda@Edge to implement that logic, as described in this blog post: [Serving Private Content Using Amazon CloudFront & Lambda@Edge](http://aws.amazon.com/blogs/networking-and-content-delivery/serving-private-content-using-amazon-cloudfront-aws-lambdaedge/)\.
+    + If the custom origin requires custom access control logic, you can use Lambda@Edge to implement that logic, as described in this blog post: [Serving Private Content Using Amazon CloudFront & Lambda@Edge](https://aws.amazon.com/blogs/networking-and-content-delivery/serving-private-content-using-amazon-cloudfront-aws-lambdaedge/)\.

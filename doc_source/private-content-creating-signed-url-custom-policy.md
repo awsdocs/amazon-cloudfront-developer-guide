@@ -17,15 +17,15 @@ The base URL is the CloudFront URL that you would use to access the file if you 
 The following examples show values that you specify for distributions\.  
    + The following CloudFront URL is for an image file in a distribution \(using the CloudFront domain name\)\. Note that `image.jpg` is in an `images` directory\. The path to the file in the URL must match the path to the file on your HTTP server or in your Amazon S3 bucket\.
 
-     `http://d111111abcdef8.cloudfront.net/images/image.jpg`
+     `https://d111111abcdef8.cloudfront.net/images/image.jpg`
    + The following CloudFront URL includes a query string:
 
-     `http://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
+     `https://d111111abcdef8.cloudfront.net/images/image.jpg?size=large`
    + The following CloudFront URLs are for image files in a distribution\. Both use an alternate domain name; the second one includes a query string:
 
-     `http://www.example.com/images/image.jpg`
+     `https://www.example.com/images/image.jpg`
 
-     `http://www.example.com/images/image.jpg?color=red`
+     `https://www.example.com/images/image.jpg?color=red`
    + The following CloudFront URL is for an image file in a distribution that uses an alternate domain name and the HTTPS protocol:
 
      `https://www.example.com/images/image.jpg`  
@@ -48,39 +48,39 @@ This public key must belong to a key group that is a trusted signer in the distr
 
 Example signed URL:
 
-** ![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)`http://d111111abcdef8.cloudfront.net/image.jpg `![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png)`? `![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png)`color=red&size=medium& `![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png)`Policy=eyANCiAgICEXAMPLEW1lbnQiOiBbeyANCiAgICAgICJSZXNvdXJjZSI6Imh0dHA 6Ly9kemJlc3FtN3VuMW0wLmNsb3VkZnJvbnQubmV0L2RlbW8ucGhwIiwgDQogICAgICAiQ 29uZGl0aW9uIjp7IA0KICAgICAgICAgIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiI yMDcuMTcxLjE4MC4xMDEvMzIifSwNCiAgICAgICAgICJEYXRlR3JlYXRlclRoYW4iOnsiQ VdTOkVwb2NoVGltZSI6MTI5Njg2MDE3Nn0sDQogICAgICAgICAiRGF0ZUxlc3NUaGFuIjp 7IkFXUzpFcG9jaFRpbWUiOjEyOTY4NjAyMjZ9DQogICAgICB9IA0KICAgfV0gDQp9DQo `![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png)`&Signature=nitfHRCrtziwO2HwPfWw~yYDhUF5EwRunQA-j19DzZrvDh6hQ73lDx~ -ar3UocvvRQVw6EkC~GdpGQyyOSKQim-TxAnW7d8F5Kkai9HVx0FIu-5jcQb0UEmat EXAMPLE3ReXySpLSMj0yCd3ZAB4UcBCAqEijkytL6f3fVYNGQI6 `![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png)`&Key-Pair-Id=K2JCJMDEHXQW5F`**
+** ![\[1\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/1.png)`https://d111111abcdef8.cloudfront.net/image.jpg `![\[2\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/2.png)`? `![\[3\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/3.png)`color=red&size=medium& `![\[4\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/4.png)`Policy=eyANCiAgICEXAMPLEW1lbnQiOiBbeyANCiAgICAgICJSZXNvdXJjZSI6Imh0dHA 6Ly9kemJlc3FtN3VuMW0wLmNsb3VkZnJvbnQubmV0L2RlbW8ucGhwIiwgDQogICAgICAiQ 29uZGl0aW9uIjp7IA0KICAgICAgICAgIklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiI yMDcuMTcxLjE4MC4xMDEvMzIifSwNCiAgICAgICAgICJEYXRlR3JlYXRlclRoYW4iOnsiQ VdTOkVwb2NoVGltZSI6MTI5Njg2MDE3Nn0sDQogICAgICAgICAiRGF0ZUxlc3NUaGFuIjp 7IkFXUzpFcG9jaFRpbWUiOjEyOTY4NjAyMjZ9DQogICAgICB9IA0KICAgfV0gDQp9DQo `![\[5\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/5.png)`&Signature=nitfHRCrtziwO2HwPfWw~yYDhUF5EwRunQA-j19DzZrvDh6hQ73lDx~ -ar3UocvvRQVw6EkC~GdpGQyyOSKQim-TxAnW7d8F5Kkai9HVx0FIu-5jcQb0UEmat EXAMPLE3ReXySpLSMj0yCd3ZAB4UcBCAqEijkytL6f3fVYNGQI6 `![\[6\]](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/images/callouts/6.png)`&Key-Pair-Id=K2JCJMDEHXQW5F`**
 
 ## Creating a policy statement for a signed URL that uses a custom policy<a name="private-content-custom-policy-statement"></a>
 
-To create a policy statement for a custom policy, do the following procedure\. For several example policy statements that control access to files in a variety of ways, see [Example policy statements for a signed URL that uses a custom policy](#private-content-custom-policy-statement-examples)\.<a name="private-content-custom-policy-creating-policy-procedure"></a>
+Complete the following steps to create a policy statement for a signed URL that uses a custom policy\.
+
+For example policy statements that control access to files in a variety of ways, see [Example policy statements for a signed URL that uses a custom policy](#private-content-custom-policy-statement-examples)\.<a name="private-content-custom-policy-creating-policy-procedure"></a>
 
 **To create the policy statement for a signed URL that uses a custom policy**
 
-1. Construct the policy statement using the following JSON format\. For more information, see [Values that you specify in the policy statement for a signed URL that uses a custom policy](#private-content-custom-policy-statement-values)\.
+1. Construct the policy statement using the following JSON format\. Replace the less than \(`<`\) and greater than \(`>`\) symbols, and the descriptions within them, with your own values\. For more information, see [Values that you specify in the policy statement for a signed URL that uses a custom policy](#private-content-custom-policy-statement-values)\.
 
    ```
    {
-       "Statement": [
-           {
-               "Resource": "URL or stream name of the file",
-               "Condition": {
-                   "DateLessThan": {
-                       "AWS:EpochTime": required ending date and time in Unix time format and UTC
-                   },
-                   "DateGreaterThan": {
-                       "AWS:EpochTime": optional beginning date and time in Unix time format and UTC
-                   },
-                   "IpAddress": {
-                       "AWS:SourceIp": "optional IP address"
-                   }
-               }
-           }
-       ]
+     "Statement": {
+       "Resource": "<Optional but recommended: URL of the file>",
+       "Condition": {
+         "DateLessThan": {
+           "AWS:EpochTime": <Required: ending date and time in Unix time format and UTC>
+         },
+         "DateGreaterThan": {
+           "AWS:EpochTime": <Optional: beginning date and time in Unix time format and UTC>
+         },
+         "IpAddress": {
+           "AWS:SourceIp": "<Optional: IP address>"
+         }
+       }
+     }
    }
    ```
 
    Note the following:
-   + You can include only one statement\.
+   + You can include only one statement in the policy\.
    + Use UTF\-8 character encoding\.
    + Include all punctuation and parameter names exactly as specified\. Abbreviations for parameter names are not accepted\.
    + The order of the parameters in the `Condition` section doesn't matter\.
@@ -103,26 +103,44 @@ To create a policy statement for a custom policy, do the following procedure\. F
 When you create a policy statement for a custom policy, you specify the following values\.
 
 **Resource**  
-You can specify only one value for `Resource`\.
-The base URL including your query strings, if any, but excluding the CloudFront `Policy`, `Signature`, and `Key-Pair-Id` parameters, for example:  
-`http://d111111abcdef8.cloudfront.net/images/horizon.jpg?size=large&license=yes`  
-If you omit the Resource parameter for a distribution, users can access all of the files associated with any distribution that is associated with the key pair that you use to create the signed URL\.
+The URL, including any query strings, but excluding the CloudFront `Policy`, `Signature`, and `Key-Pair-Id` parameters\. For example:  
+`https://d111111abcdef8.cloudfront.net/images/horizon.jpg\?size=large&license=yes`  
+You can specify only one URL value for `Resource`\.  
+You can omit the `Resource` parameter in a policy, but doing so means that anyone with the signed URL can access *all* of the files in *any* distribution that is associated with the key pair that you use to create the signed URL\.
 Note the following:  
-+ **Protocol** – The value must begin with `http://`, `https://`, or `*`\. 
-+ **Query string parameters** – If you have no query string parameters, omit the question mark\.
-+ **Wildcard characters** – You can use the wildcard character that matches zero or more characters \(\*\) or the wild\-card character that matches exactly one character \(?\) anywhere in the string\. For example, the value:
++ **Protocol** – The value must begin with `http://`, `https://`, or `*://`\.
++ **Query string parameters** – If the URL has query string parameters, use a backslash character \(`\`\) to escape the question mark character \(`?`\) that begins the query string\. For example:
 
-  `http://d111111abcdef8.cloudfront.net/*game_download.zip*`
+  `https://d111111abcdef8.cloudfront.net/images/horizon.jpg\?size=large&license=yes`
++ **Wildcard characters** – You can use wildcard characters in the URL in the policy\. The following wildcard characters are supported:
+  + asterisk \(`*`\), which matches zero or more characters
+  + question mark \(`?`\), which matches exactly one character
 
-  would include \(for example\) the following files:
-  + `http://d111111abcdef8.cloudfront.net/game_download.zip`
-  + `http://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
-  + `http://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
-+ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL, you must specify the alternate domain name when referencing the file in your webpage or application\. Do not specify the Amazon S3 URL for the file\.
+  When CloudFront matches the URL in the policy to the URL in the HTTP request, the URL in the policy is divided into four sections—protocol, domain, path, and query string—as follows:
+
+  `[protocol]://[domain]/[path]\?[query string]`
+
+  When you use a wildcard character in the URL in the policy, the wildcard matching applies only within the boundaries of the section that contains the wildcard\. For example, consider this URL in a policy:
+
+  `https://www.example.com/hello*world`
+
+  In this example, the asterisk wildcard \(`*`\) only applies within the path section, so it matches the URLs `https://www.example.com/helloworld` and `https://www.example.com/hello-world`, but it does not match the URL `https://www.example.net/hello?world`\.
+
+  The following exceptions apply to the section boundaries for wildcard matching:
+  + A trailing asterisk in the path section implies an asterisk in the query string section\. For example, `http://example.com/hello*` is equivalent to `http://example.com/hello*\?*`\.
+  + A trailing asterisk in the domain section implies an asterisk in both the path and query string sections\. For example, `http://example.com*` is equivalent to `http://example.com*/*\?*`\.
+  + A URL in the policy can omit the protocol section and start with an asterisk in the domain section\. In that case, the protocol section is implicitly set to an asterisk\. For example, the URL `*example.com` in a policy is equivalent to `*://*example.com/`\.
+  + An asterisk by itself \(`"Resource": "*"`\) matches any URL\.
+
+  For example, the value: `https://d111111abcdef8.cloudfront.net/*game_download.zip*` in a policy matches all of the following URLs:
+  + `https://d111111abcdef8.cloudfront.net/game_download.zip`
+  + `https://d111111abcdef8.cloudfront.net/example_game_download.zip?license=yes`
+  + `https://d111111abcdef8.cloudfront.net/test_game_download.zip?license=temp`
++ **Alternate domain names** – If you specify an alternate domain name \(CNAME\) in the URL in the policy, the HTTP request must use the alternate domain name in your webpage or application\. Do not specify the Amazon S3 URL for the file in a policy\.
 
 **DateLessThan**  
-The expiration date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Do not enclose the value in quotation marks\. For information about UTC, see *RFC 3339, Date and Time on the Internet: Timestamps*, [https://tools.ietf.org/html/rfc3339](https://tools.ietf.org/html/rfc3339)\.  
-For example, January 1, 2013 10:00 am UTC converts to 1357034400 in Unix time format\.   
+The expiration date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. In the policy, do not enclose the value in quotation marks\. For information about UTC, see [Date and Time on the Internet: Timestamps](https://tools.ietf.org/html/rfc3339)\.  
+For example, January 31, 2023 10:00 AM UTC converts to 1675159200 in Unix time format\.  
 This is the only required parameter in the `Condition` section\. CloudFront requires this value to prevent users from having permanent access to your private content\.  
 For more information, see [When does CloudFront check the expiration date and time in a signed URL?](private-content-signed-urls.md#private-content-check-expiration)
 
@@ -130,15 +148,15 @@ For more information, see [When does CloudFront check the expiration date and ti
 An optional start date and time for the URL in Unix time format \(in seconds\) and Coordinated Universal Time \(UTC\)\. Users are not allowed to access the file before the specified date and time\. Do not enclose the value in quotation marks\. 
 
 **IpAddress \(Optional\)**  
-The IP address of the client making the GET request\. Note the following:  
+The IP address of the client making the HTTP request\. Note the following:  
 + To allow any IP address to access the file, omit the `IpAddress` parameter\.
-+ You can specify either one IP address or one IP address range\. For example, you can't set the policy to allow access if the client's IP address is in one of two separate ranges\.
++ You can specify either one IP address or one IP address range\. You can't use the policy to allow access if the client's IP address is in one of two separate ranges\.
 + To allow access from a single IP address, you specify:
 
   `"`*IPv4 IP address*`/32"`
-+ You must specify IP address ranges in standard IPv4 CIDR format \(for example, `192.0.2.0/24`\)\. For more information, see *RFC 4632, Classless Inter\-domain Routing \(CIDR\): The Internet Address Assignment and Aggregation Plan*, [https://tools.ietf.org/html/rfc4632](https://tools.ietf.org/html/rfc4632)\.
++ You must specify IP address ranges in standard IPv4 CIDR format \(for example, `192.0.2.0/24`\)\. For more information, see [Classless Inter\-domain Routing \(CIDR\): The Internet Address Assignment and Aggregation Plan](https://tools.ietf.org/html/rfc4632)\.
 **Important**  
-IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, are not supported\. 
+IP addresses in IPv6 format, such as 2001:0db8:85a3::8a2e:0370:7334, are not supported\. 
 
   If you're using a custom policy that includes `IpAddress`, do not enable IPv6 for the distribution\. If you want to restrict access to some content by IP address and support IPv6 requests for other content, you can create two distributions\. For more information, see [Enable IPv6](distribution-web-values-specify.md#DownloadDistValuesEnableIPv6) in the topic [Values that you specify when you create or update a distribution](distribution-web-values-specify.md)\.
 
@@ -146,7 +164,7 @@ IP addresses in IPv6 format, such as 2001:0db8:85a3:0000:0000:8a2e:0370:7334, ar
 
 The following example policy statements show how to control access to a specific file, all of the files in a directory, or all of the files associated with a key pair ID\. The examples also show how to control access from an individual IP address or a range of IP addresses, and how to prevent users from using the signed URL after a specified date and time\.
 
-If you copy and paste any of these examples, remove any white space \(including tabs and newline characters\), replace the values with your own values, and include a newline character after the closing brace \( \} \)\.
+If you copy and paste any of these examples, remove any white space \(including tabs and newline characters\), replace the values with your own values, and include a newline character after the closing brace \(`}`\)\.
 
 For more information, see [Values that you specify in the policy statement for a signed URL that uses a custom policy](#private-content-custom-policy-statement-values)\.
 
@@ -157,82 +175,76 @@ For more information, see [Values that you specify in the policy statement for a
 
 ### Example policy statement: accessing one file from a range of IP addresses<a name="private-content-custom-policy-statement-example-one-object"></a>
 
-The following example custom policy in a signed URL specifies that a user can access the file `http://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
+The following example custom policy in a signed URL specifies that a user can access the file `https://d111111abcdef8.cloudfront.net/game_download.zip` from IP addresses in the range `192.0.2.0/24` until January 31, 2023 10:00 AM UTC:
 
 ```
 {
-    "Statement": [
-        {
-            "Resource": "http://d111111abcdef8.cloudfront.net/game_download.zip",
-            "Condition": {
-                "IpAddress": {
-                    "AWS:SourceIp": "192.0.2.0/24"
-                },
-                "DateLessThan": {
-                    "AWS:EpochTime": 1357034400
-                }
-            }
-        }
-    ]
+  "Statement": {
+    "Resource": "https://d111111abcdef8.cloudfront.net/game_download.zip",
+    "Condition": {
+      "IpAddress": {
+        "AWS:SourceIp": "192.0.2.0/24"
+      },
+      "DateLessThan": {
+        "AWS:EpochTime": 1675159200
+      }
+    }
+  }
 }
 ```
 
 ### Example policy statement: accessing all files in a directory from a range of IP addresses<a name="private-content-custom-policy-statement-example-all-objects"></a>
 
-The following example custom policy allows you to create signed URLs for any file in the `training` directory, as indicated by the \* wildcard character in the `Resource` parameter\. Users can access the file from an IP address in the range `192.0.2.0/24` until January 1, 2013 10:00 am UTC:
+The following example custom policy allows you to create signed URLs for any file in the `training` directory, as indicated by the asterisk wildcard character \(`*`\) in the `Resource` parameter\. Users can access the file from an IP address in the range `192.0.2.0/24` until January 31, 2023 10:00 AM UTC:
 
 ```
 {
-    "Statement": [
-        {
-            "Resource": "http://d111111abcdef8.cloudfront.net/training/*",
-            "Condition": {
-                "IpAddress": {
-                    "AWS:SourceIp": "192.0.2.0/24"
-                },
-                "DateLessThan": {
-                    "AWS:EpochTime": 1357034400
-                }
-            }
-        }
-    ]
+  "Statement": {
+    "Resource": "https://d111111abcdef8.cloudfront.net/training/*",
+    "Condition": {
+      "IpAddress": {
+        "AWS:SourceIp": "192.0.2.0/24"
+      },
+      "DateLessThan": {
+        "AWS:EpochTime": 1675159200
+      }
+    }
+  }
 }
 ```
 
-Each signed URL in which you use this policy includes a base URL that identifies a specific file, for example:
+Each signed URL with which you use this policy has a URL that identifies a specific file, for example:
 
-`http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
+`https://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 
 ### Example policy statement: accessing all files associated with a key pair ID from one IP address<a name="private-content-custom-policy-statement-example-one-ip"></a>
 
-The following sample custom policy allows you to create signed URLs for any file associated with any distribution, as indicated by the \* wildcard character in the `Resource` parameter\. The user must use the IP address `192.0.2.10/32`\. \(The value `192.0.2.10/32` in CIDR notation refers to a single IP address, `192.0.2.10`\.\) The files are available only from January 1, 2013 10:00 am UTC until January 2, 2013 10:00 am UTC:
+The following example custom policy allows you to create signed URLs for any file associated with any distribution, as indicated by the asterisk wildcard character \(`*`\) in the `Resource` parameter\. The signed URL must use the `https://` protocol, not `http://`\. The user must use the IP address `192.0.2.10/32`\. \(The value `192.0.2.10/32` in CIDR notation refers to a single IP address, `192.0.2.10`\.\) The files are available only from January 31, 2023 10:00 AM UTC until February 2, 2023 10:00 AM UTC:
 
 ```
 {
-    "Statement": [
-        {
-            "Resource": "http://*",
-            "Condition": {
-                "IpAddress": {
-                    "AWS:SourceIp": "192.0.2.10/32"
-                },
-                "DateGreaterThan": {
-                    "AWS:EpochTime": 1357034400
-                },
-                "DateLessThan": {
-                    "AWS:EpochTime": 1357120800
-                }
-            }
-        }
-    ]
+  "Statement": {
+    "Resource": "https://*",
+    "Condition": {
+      "IpAddress": {
+        "AWS:SourceIp": "192.0.2.10/32"
+      },
+      "DateGreaterThan": {
+        "AWS:EpochTime": 1675159200
+      },
+      "DateLessThan": {
+        "AWS:EpochTime": 1675332000
+      }
+    }
+  }
 }
 ```
 
-Each signed URL in which you use this policy includes a base URL that identifies a specific file in a specific CloudFront distribution, for example:
+Each signed URL with which you use this policy has a URL that identifies a specific file in a specific CloudFront distribution, for example:
 
-`http://d111111abcdef8.cloudfront.net/training/orientation.pdf`
+`https://d111111abcdef8.cloudfront.net/training/orientation.pdf`
 
-The signed URL also includes a key pair ID, which must be associated with a trusted key group in the distribution \(d111111abcdef8\.cloudfront\.net\) that you specify in the base URL\.
+The signed URL also includes a key pair ID, which must be associated with a trusted key group in the distribution \(d111111abcdef8\.cloudfront\.net\) that you specify in the URL\.
 
 ## Creating a signature for a signed URL that uses a custom policy<a name="private-content-custom-policy-creating-signature"></a>
 

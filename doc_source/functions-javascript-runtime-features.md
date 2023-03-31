@@ -161,7 +161,7 @@ The following built\-in objects of ES are supported\.
 
 **Math**  
 All ES 5\.1 math methods are supported\.  
-In the CloudFront Functions runtime environment, the `Math.Random()` implementation uses OpenBSD `arc4random` seeded with the timestamp of when the function runs\.
+In the CloudFront Functions runtime environment, the `Math.random()` implementation uses OpenBSD `arc4random` seeded with the timestamp of when the function runs\.
 The following ES 6 math methods are supported:  
 + `acosh`
 + `asinh`

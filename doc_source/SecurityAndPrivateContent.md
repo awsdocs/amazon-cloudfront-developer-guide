@@ -11,7 +11,7 @@ CloudFront provides several options for securing content that it delivers\. The 
 + [Using HTTPS with CloudFront](using-https.md)
 + [Using alternate domain names and HTTPS](using-https-alternate-domain-names.md)
 + [Serving private content with signed URLs and signed cookies](PrivateContent.md)
-+ [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)
++ [Restricting access to an AWS origin](private-content-restricting-access-to-origin.md)
 + [Restricting access to Application Load Balancers](restrict-access-to-load-balancer.md)
 + [Using AWS WAF to control access to your content](distribution-web-awswaf.md)
 + [Restricting the geographic distribution of your content](georestrictions.md)

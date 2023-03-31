@@ -26,11 +26,11 @@ In addition to ensuring that the status for a distribution is **Deployed**, you 
 
 ## Last modified<a name="DownloadDistReturnLastModDate"></a>
 
-The date and time that the distribution was last modified, using ISO 8601 format, for example, 2012\-05\-19T19:37:58Z\. For more information, see [http://www\.w3\.org/TR/NOTE\-datetime](http://www.w3.org/TR/NOTE-datetime)\. 
+The date and time that the distribution was last modified, using ISO 8601 format, for example, 2012\-05\-19T19:37:58Z\. For more information, see [https://www.w3.org/TR/NOTE-datetime](https://www.w3.org/TR/NOTE-datetime)\.
 
 ## Domain name<a name="DownloadDistReturnDomainName"></a>
 
-You use the distribution's domain name in the links to your objects\. For example, if your distribution's domain name is `d111111abcdef8.cloudfront.net`, the link to `/images/image.jpg` would be `http://d111111abcdef8.cloudfront.net/images/image.jpg`\. You can't change the CloudFront domain name for your distribution\. For more information about CloudFront URLs for links to your objects, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.
+You use the distribution's domain name in the links to your objects\. For example, if your distribution's domain name is `d111111abcdef8.cloudfront.net`, the link to `/images/image.jpg` would be `https://d111111abcdef8.cloudfront.net/images/image.jpg`\. You can't change the CloudFront domain name for your distribution\. For more information about CloudFront URLs for links to your objects, see [Customizing the URL format for files in CloudFront](LinkFormat.md)\.
 
 If you specified one or more alternate domain names \(CNAMEs\), you can use your own domain names for links to your objects instead of using the CloudFront domain name\. For more information about CNAMEs, see [Alternate domain names \(CNAMEs\)](distribution-web-values-specify.md#DownloadDistValuesCNAME)\. 
 

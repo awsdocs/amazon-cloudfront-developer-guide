@@ -20,7 +20,7 @@ The SSL/TLS negotiation occurs early in the process of establishing an HTTPS con
 
 1. CloudFront returns the requested content to the viewer\.
 
-For a current list of the browsers that support SNI, see the Wikipedia entry [Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)\.
+For a current list of the browsers that support SNI, see the Wikipedia entry [Server Name Indication](https://en.wikipedia.org/wiki/Server_Name_Indication)\.
 
 If you want to use SNI but some of your users' browsers don't support SNI, you have several options:
 + Configure CloudFront to serve HTTPS requests by using dedicated IP addresses instead of SNI\. For more information, see [Using a dedicated IP address to serve HTTPS requests \(works for all clients\)](#cnames-https-dedicated-ip)\.
@@ -36,10 +36,10 @@ If you want to use SNI but some of your users' browsers don't support SNI, you h
 
 ## Using a dedicated IP address to serve HTTPS requests \(works for all clients\)<a name="cnames-https-dedicated-ip"></a>
 
-Server Name Indication \(SNI\) is one way to associate a request with a domain\. Another way is to use a dedicated IP address\. If you have users who can't upgrade to a browser or client released after 2010, you can use a dedicated IP address to serve HTTPS requests\. For a current list of the browsers that support SNI, see the Wikipedia entry [Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)\. 
+Server Name Indication \(SNI\) is one way to associate a request with a domain\. Another way is to use a dedicated IP address\. If you have users who can't upgrade to a browser or client released after 2010, you can use a dedicated IP address to serve HTTPS requests\. For a current list of the browsers that support SNI, see the Wikipedia entry [Server Name Indication](https://en.wikipedia.org/wiki/Server_Name_Indication)\. 
 
 **Important**  
-If you configure CloudFront to serve HTTPS requests using dedicated IP addresses, you incur an additional monthly charge\. The charge begins when you associate your SSL/TLS certificate with a distribution and you enable the distribution\. For more information about CloudFront pricing, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing)\. In addition, see [Using the Same Certificate for Multiple CloudFront Distributions](cnames-and-https-limits.md#cnames-and-https-same-certificate-multiple-distributions)\.
+If you configure CloudFront to serve HTTPS requests using dedicated IP addresses, you incur an additional monthly charge\. The charge begins when you associate your SSL/TLS certificate with a distribution and you enable the distribution\. For more information about CloudFront pricing, see [Amazon CloudFront Pricing](https://aws.amazon.com/cloudfront/pricing)\. In addition, see [Using the Same Certificate for Multiple CloudFront Distributions](cnames-and-https-limits.md#cnames-and-https-same-certificate-multiple-distributions)\.
 
 When you configure CloudFront to serve HTTPS requests using dedicated IP addresses, CloudFront associates your alternate domain name with a dedicated IP address in each CloudFront edge location\. When a viewer submits an HTTPS request for your content, here's what happens:
 

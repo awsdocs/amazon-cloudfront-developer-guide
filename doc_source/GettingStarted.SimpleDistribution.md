@@ -3,7 +3,7 @@
 The procedures in this section show you how to use CloudFront to set up a basic configuration that does the following:
 + Stores the original versions of your objects in an Amazon Simple Storage Service \(Amazon S3\) bucket
 + Makes your objects accessible to everyone
-+ Uses the CloudFront domain name in URLs for your objects \(for example, `http://d111111abcdef8.cloudfront.net/index.html`\)
++ Uses the CloudFront domain name in URLs for your objects \(for example, `https://d111111abcdef8.cloudfront.net/index.html`\)
 + Keeps your objects in CloudFront edge locations for the default duration of 24 hours \(the minimum duration is 0 seconds\)
 
 Most of these options are customizable\. For example, you can store your content on your own web server instead of using an S3 bucket, and you can restrict who has access to the content by using signed URLs or cookies\. For information about how to customize your CloudFront distribution options, see [Steps for creating a distribution \(overview\)](distribution-web-creating.md)\.
@@ -18,7 +18,7 @@ You have to complete only a few basic steps to start delivering your content wit
 
 ## Prerequisites<a name="GettingStartedSignup"></a>
 
-Before you begin, make sure that you’ve completed the steps in [Setting up Amazon CloudFront](setting-up-cloudfront.md)\.
+Before you begin, make sure that you’ve completed the steps in [Setting up](setting-up-cloudfront.md)\.
 
 ## Step 1: Upload your content to Amazon S3 and grant object permissions<a name="GettingStartedUploadContent"></a>
 
@@ -85,21 +85,21 @@ If you created the bucket in the US East \(N\. Virginia\) Region \(us\-east\-1\)
 
 1. Open the CloudFront console at [https://console.aws.amazon.com/cloudfront/v3/home](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
-1. Choose **Create Distribution**, and then choose **Get Started**\.
+1. Choose **Create distribution**\.
 
-1. Under **Origin Settings**, for **Origin Domain Name**, choose the Amazon S3 bucket that you created earlier\.
+1. Under **Origin**, for **Origin domain**, choose the Amazon S3 bucket that you created earlier\.
 
-   For the other settings under **Origin Settings**, accept the default values\.
+   For the other settings under **Origin**, accept the default values\.
 
-1. For the settings under **Default Cache Behavior Settings**, accept the default values\.
+1. For the settings under **Default cache behavior**, accept the default values\.
 
    For more information about cache behavior options, see [Cache behavior settings](distribution-web-values-specify.md#DownloadDistValuesCacheBehavior)\.
 
-1. For the settings under **Distribution Settings**, accept the default values\.
+1. For the remainder of **Settings**, accept the default values\.
 
-   For more information about distribution options, see [Distribution settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)\.
+   For more information about these options, see [Distribution settings](distribution-web-values-specify.md#DownloadDistValuesGeneral)\.
 
-1. At the bottom of the page, choose **Create Distribution**\.
+1. At the bottom of the page, choose **Create distribution**\.
 
 1. After CloudFront creates your distribution, the value of the **Status** column for your distribution changes from **In Progress** to **Deployed**\. This typically takes a few minutes\.
 

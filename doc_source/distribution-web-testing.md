@@ -14,18 +14,18 @@ You must wait until the status of the distribution changes to **Deployed** befor
    <head>My CloudFront Test</head>
    <body>
    <p>My text content goes here.</p>
-   <p><img src="http://domain-name/object-name" alt="my test image"
+   <p><img src="https://domain-name/object-name" alt="my test image"
    </body>
    </html>
    ```
 
    For example, if your domain name were `d111111abcdef8.cloudfront.net` and your object were `image.jpg`, the URL for the link would be:
 
-   `http://d111111abcdef8.cloudfront.net/image.jpg`\.
+   `https://d111111abcdef8.cloudfront.net/image.jpg`\.
 
    If your object is in a folder on your origin server, then the folder must also be included in the URL\. For example, if image\.jpg were located in the images folder on your origin server, then the URL would be: 
 
-   `http://d111111abcdef8.cloudfront.net/images/image.jpg`
+   `https://d111111abcdef8.cloudfront.net/images/image.jpg`
 
 1. Save the HTML code in a file that has an \.html file name extension\.
 

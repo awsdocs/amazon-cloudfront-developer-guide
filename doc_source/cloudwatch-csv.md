@@ -1,4 +1,4 @@
-# Downloading data in CSV format<a name="cloudwatch-csv"></a>
+# Downloading metrics data in CSV format<a name="cloudwatch-csv"></a>
 
 You can download the CloudWatch metrics data for a CloudFront distribution in CSV format\. You can download the data when you **View distribution metrics** for a particular distribution in the [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home)\.
 
@@ -58,7 +58,7 @@ The percentage of requests for which the HTTP status code was a `4xx` error for 
 **5xxErrorRatePct**  
 The percentage of requests for which the HTTP status code was a `5xx` error for the specified distribution during the time period\.
 
-If you have [enabled additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional) for your distribution, then the report also includes the following additional values:
+If you have [turned on additional metrics](viewing-cloudfront-metrics.md#monitoring-console.distributions-additional) for your distribution, then the report also includes the following additional values:
 
 **401ErrorRatePct**  
 The percentage of requests for which the HTTP status code was a `401` error for the specified distribution during the time period\.

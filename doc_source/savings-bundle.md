@@ -1,6 +1,6 @@
 # CloudFront security savings bundle<a name="savings-bundle"></a>
 
-The CloudFront security savings bundle is a simple way to save up to 30% on the CloudFront charges on your AWS bill when you make an upfront commitment\. When you purchase a savings bundle, you also get credits for [AWS WAF](http://aws.amazon.com/waf/), a web application firewall that helps protect your CloudFront distribution against common web exploits\.
+The CloudFront security savings bundle is a simple way to save up to 30% on the CloudFront charges on your AWS bill when you make an upfront commitment\. When you purchase a savings bundle, you also get credits for [AWS WAF](https://aws.amazon.com/waf/), a web application firewall that helps protect your CloudFront distribution against common web exploits\.
 
 For more information, see the following sections\. To purchase a savings bundle, go to the [savings bundle overview page in the CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home?#/savings-bundle/overview)\.
 
@@ -70,7 +70,7 @@ The credits apply at the AWS account level to all CloudFront usage in the AWS ac
 Yes\. The credits apply to all CloudFront charges, including data transfer charges, request charges, and Lambda@Edge charges\.
 
 **Can I use a CloudFront security savings bundle with consolidated billing?**  
-Yes, as long as credit sharing is enabled \(you can verify this by viewing the [billing preferences page](https://console.aws.amazon.com/billing/home#/preferences) in the AWS Billing and Cost Management console\)\. You purchase the savings bundle with the payer account \(management account\)\. The credits apply first to any CloudFront charges accrued in the payer account, and then to CloudFront charges accrued in the member accounts, depending on when the account joins or leaves an organization\. For more information about how AWS credits apply across single and multiple accounts, see [AWS credits](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-credits.html) in the *AWS Billing and Cost Management User Guide*\.
+Yes, as long as credit sharing is enabled \(you can verify this by viewing the [billing preferences page](https://console.aws.amazon.com/billing/home#/preferences) in the AWS Billing and Cost Management console\)\. You purchase the savings bundle with the payer account \(management account\)\. The credits apply first to any CloudFront charges accrued in the payer account, and then to CloudFront charges accrued in the member accounts, depending on when the account joins or leaves an organization\. For more information about how AWS credits apply across single and multiple accounts, see [AWS credits](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-credits.html) in the *AWS Billing User Guide*\.
 
 **What if I don’t use all the credits in a given billing period?**  
 Credits are applied to your AWS bill each billing period, and must be used in that billing period\. If any credits are left unused at the end of the billing period, they expire\. Credits do not carry over to the following billing period\.
@@ -90,4 +90,4 @@ Yes\. With AWS Budgets, you can set cost or usage thresholds\. When your actual 
 **How does the CloudFront security savings bundle appear on my bill?**  
 The charges for your commitment amount appear in the **CloudFront Security Bundle** section of your monthly bill\. The credits appear in the CloudFront and AWS WAF section of your bill with the description **Usage covered by CloudFront Security Savings Bundle**\.
 
-For more information, see [Amazon CloudFront Pricing](http://aws.amazon.com/cloudfront/pricing/) on the AWS website\.
+For more information, see [Amazon CloudFront Pricing](https://aws.amazon.com/cloudfront/pricing/) on the AWS website\.

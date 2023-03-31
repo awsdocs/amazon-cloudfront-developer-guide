@@ -4,7 +4,7 @@ You can configure CloudFront to return a specific object \(the default root obje
 
 **Topics**
 + [How to specify a default root object](#DefaultRootObjectHowToDefine)
-+ [How headers work with default root objects](#DefaultRootObjectHow)
++ [How default root object works](#DefaultRootObjectHow)
 + [How CloudFront works if you don’t define a root object](#DefaultRootObjectNotSet)
 
 ## How to specify a default root object<a name="DefaultRootObjectHowToDefine"></a>
@@ -21,7 +21,7 @@ If the file name of the default root object is too long or contains an invalid c
 
 1. Confirm that the permissions for the object grant CloudFront at least `read` access\.
 
-   For more information about Amazon S3 permissions, see [Access Control](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAuthAccess.html) in the *Amazon Simple Storage Service User Guide*\. For information on using the Amazon S3 console to update permissions, go to the [http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html](http://docs.aws.amazon.com/AmazonS3/latest/UG/Welcome.html)\. 
+   For more information about Amazon S3 permissions, see [Identity and access management in Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html) in the *Amazon Simple Storage Service User Guide*\.
 
 1. Update your distribution to refer to the default root object using the CloudFront console or the CloudFront API\.
 
@@ -31,13 +31,13 @@ If the file name of the default root object is too long or contains an invalid c
 
    1. In the list of distributions in the top pane, select the distribution to update\.
 
-   1. In the **Distribution Details** pane, on the **General** tab, choose **Edit**\.
+   1. In the **Settings** pane, on the **General** tab, choose **Edit**\.
 
-   1. In the **Edit Distribution** dialog box, in the **Default Root Object** field, enter the file name of the default root object\.
+   1. In the **Edit settings** dialog box, in the **Default root object** field, enter the file name of the default root object\.
 
       Enter only the object name, for example, `index.html`\. Do not add a `/` before the object name\.
 
-   1. To save your changes, choose **Yes, Edit**\.
+   1. Choose **Save changes**\.
 
    To update your configuration using the CloudFront API, you specify a value for the `DefaultRootObject` element in your distribution\. For information about using the CloudFront API to specify a default root object, see [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html) in the *Amazon CloudFront API Reference*\.
 
@@ -47,9 +47,9 @@ If the file name of the default root object is too long or contains an invalid c
 
    1. Repeat steps 2 and 3 to verify that you granted the correct permissions and that you correctly updated the configuration of your distribution to specify the default root object\.
 
-## How headers work with default root objects<a name="DefaultRootObjectHow"></a>
+## How default root object works<a name="DefaultRootObjectHow"></a>
 
-Here's an example of how a default root object works\. Suppose the following request points to the object `image.jpg`:
+Suppose the following request points to the object `image.jpg`:
 
 `https://d111111abcdef8.cloudfront.net/image.jpg`
 
@@ -71,7 +71,7 @@ However, if you define a default root object, an end\-user request for a subdire
 
 CloudFront does not return the default root object even if a copy of `index.html` appears in the `install` directory\.
 
-If you configure your distribution to allow all of the HTTP methods that CloudFront supports, the default root object applies to all methods\. For example, if your default root object is index\.php and you write your application to submit a `POST` request to the root of your domain \(http://example\.com\), CloudFront sends the request to http://example\.com/index\.php\.
+If you configure your distribution to allow all of the HTTP methods that CloudFront supports, the default root object applies to all methods\. For example, if your default root object is index\.php and you write your application to submit a `POST` request to the root of your domain \(https://example\.com\), CloudFront sends the request to https://example\.com/index\.php\.
 
 The behavior of CloudFront default root objects is different from the behavior of Amazon S3 index documents\. When you configure an Amazon S3 bucket as a website and specify the index document, Amazon S3 returns the index document even if a user requests a subdirectory in the bucket\. \(A copy of the index document must appear in every subdirectory\.\) For more information about configuring Amazon S3 buckets as websites and about index documents, see the [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) chapter in the *Amazon Simple Storage Service User Guide*\.
 

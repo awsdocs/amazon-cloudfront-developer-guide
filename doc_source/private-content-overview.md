@@ -3,7 +3,7 @@
 You can control user access to your private content in two ways:
 + [Restrict access to files in CloudFront caches](#private-content-overview-edge-caches)\.
 + Restrict access to files in your origin by doing one of the following:
-  + [Set up an origin access identity \(OAI\) for your Amazon S3 bucket](#private-content-overview-s3)\.
+  + [Set up an origin access control \(OAC\) for your Amazon S3 bucket](private-content-restricting-access-to-s3.md)\.
   + [Configure custom headers for a private HTTP server \(a custom origin\)](#forward-custom-headers-restrict-access)\.
 
 ## Restricting access to files in CloudFront caches<a name="private-content-overview-edge-caches"></a>
@@ -21,14 +21,14 @@ You must use RSA\-SHA1 for signing URLs or cookies\. CloudFront doesn't accept o
 
 ## Restricting access to files in Amazon S3 buckets<a name="private-content-overview-s3"></a>
 
-You can optionally secure the content in your Amazon S3 bucket so that users can access it through CloudFront but cannot access it directly by using Amazon S3 URLs\. This prevents someone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\.
+You can optionally secure the content in your Amazon S3 bucket so that users can access it through the specified CloudFront distribution but cannot access it directly by using Amazon S3 URLs\. This prevents someone from bypassing CloudFront and using the Amazon S3 URL to get content that you want to restrict access to\. This step isn't required to use signed URLs, but we recommend it\.
 
 To require that users access your content through CloudFront URLs, you do the following tasks:
-+ Create a special CloudFront user called an *origin access identity* and associate it with your CloudFront distribution\.
-+ Give the origin access identity permission to read the files in your bucket\.
++ Give a CloudFront *origin access control* permission to read the files in the S3 bucket\.
++ Create the origin access control and associate it with your CloudFront distribution\.
 + Remove permission for anyone else to use Amazon S3 URLs to read the files\.
 
-For more information, see [Restricting access to Amazon S3 content by using an origin access identity \(OAI\)](private-content-restricting-access-to-s3.md)\.
+For more information, see [Restricting access to an Amazon S3 origin](private-content-restricting-access-to-s3.md)\.
 
 ## Restricting access to files on custom origins<a name="forward-custom-headers-restrict-access"></a>
 
@@ -43,7 +43,7 @@ Configure CloudFront to forward custom headers to your origin\. See [Configuring
 Configure your distribution to require viewers to use HTTPS to access CloudFront\. See [Viewer protocol policy](distribution-web-values-specify.md#DownloadDistValuesViewerProtocolPolicy)\. 
 
 **Origin Protocol Policy**  
-Configure your distribution to require CloudFront to use the same protocol as viewers to forward requests to the origin\. See [Origin protocol policy](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)\. 
+Configure your distribution to require CloudFront to use the same protocol as viewers to forward requests to the origin\. See [Protocol \(custom origins only\)](distribution-web-values-specify.md#DownloadDistValuesOriginProtocolPolicy)\. 
 
 After you've made these changes, update your application on your custom origin to only accept requests that include the custom headers that you’ve configured CloudFront to send\.
 

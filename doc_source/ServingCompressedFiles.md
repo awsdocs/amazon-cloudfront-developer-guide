@@ -22,7 +22,7 @@ To configure CloudFront to compress objects, update the cache behavior that you 
 To update a cache behavior, you can use any of the following tools:
 + The [CloudFront console](https://console.aws.amazon.com/cloudfront/v3/home)
 + [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_CloudFront.html)
-+ The [AWS SDKs and command line tools](http://aws.amazon.com/getting-started/tools-sdks/)
++ The [AWS SDKs and command line tools](https://aws.amazon.com/getting-started/tools-sdks/)
 
 ## How CloudFront compression works<a name="compressed-content-cloudfront-how-it-works"></a>
 
@@ -38,13 +38,13 @@ The Chrome and Firefox web browsers support Brotli compression only when the req
 
    If the compressed object is not in the cache, CloudFront forwards the request to the origin\.
 **Note**  
-If an uncompressed copy of the object is already in the cache, CloudFront might send it to the viewer without forwarding the request to the origin\. For example, this can happen when CloudFront previously skipped compression for this object due to an unusually busy host\. When this happens, CloudFront caches the uncompressed object and continues to serve it until the object expires, is evicted, or is invalidated\.
+If an uncompressed copy of the object is already in the cache, CloudFront might send it to the viewer without forwarding the request to the origin\. For example, this can happen when CloudFront [previously skipped compression](#compression-skipped)\. When this happens, CloudFront caches the uncompressed object and continues to serve it until the object expires, is evicted, or is invalidated\.
 
-1. If the origin returns a compressed object, as indicated by the presence of a `Content-Encoding` header in the HTTP response, CloudFront sends the compressed object to the viewer, adds it to the cache, and skips the remaining steps\. CloudFront doesn’t compress the object again\.
+1. If the origin returns a compressed object, as indicated by the presence of a `Content-Encoding` header in the HTTP response, CloudFront sends the compressed object to the viewer, adds it to the cache, and skips the remaining step\. CloudFront doesn’t compress the object again\.
 
    If the origin returns an uncompressed object to CloudFront \(there’s no `Content-Encoding` header in the HTTP response\), CloudFront determines whether the object is compressible\. For more information about how CloudFront determines whether an object is compressible, see the following section\.
 
-1. If the object is compressible, CloudFront compresses it, sends it to the viewer, and adds it to the cache\.
+1. If the object is compressible, CloudFront compresses it, sends it to the viewer, and adds it to the cache\. \(In rare cases, CloudFront might [skip compression](#compression-skipped) and send the uncompressed object to the viewer\.\)
 
 ## Notes about CloudFront compression<a name="compressed-content-cloudfront-notes"></a>
 
@@ -84,9 +84,8 @@ When the HTTP response from the origin has no body, there is nothing for CloudFr
 **`ETag` header**  
 CloudFront sometimes modifies the `ETag` header in the HTTP response when it compresses objects\. For more information, see [`ETag` header conversion](#compressed-content-cloudfront-etag-header)\.
 
-**CloudFront is busy**  
-In rare cases when a CloudFront host is unusually busy, CloudFront might not compress some objects\.  
-If CloudFront skips compression for an object due to an unusually busy host, it caches the uncompressed object and continues to serve it until the object expires, is evicted, or is invalidated\.
+**CloudFront skips compression**  
+CloudFront compresses objects on a best\-effort basis\. In rare cases, CloudFront skips compression\. CloudFront makes this decision based on a variety of factors, including host capacity\. If CloudFront skips compression for an object, it caches the uncompressed object and continues to serve it to viewers until the object expires, is evicted, or is invalidated\.
 
 ## File types that CloudFront compresses<a name="compressed-content-cloudfront-file-types"></a>
 

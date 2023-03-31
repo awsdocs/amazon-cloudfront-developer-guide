@@ -2,7 +2,7 @@
 
 Before you create a function, you must write the function code\. For more information about writing a function, see [Writing function code \(programming model\)](writing-function-code.md)\. For example code that can help you get started, see [Example code](functions-example-code.md)\.
 
-When you create a new function in CloudFront Functions, the function is in the `DEVELOPMENT` stage\. In this stage, you can [test the function](test-function.md), and [update it](update-function.md) if necessary\. When you’re ready to use your function with a CloudFront distribution, you [publish the function](publish-function.md), which copies it from the `DEVELOPMENT` stage to `LIVE`\. When it’s in the `LIVE` stage, you can [associate the function with a distribution’s cache behavior](associate-function.md)\.
+When you create a new function in CloudFront Functions, the function is in the `DEVELOPMENT` stage\. In this stage, you can [test the function](test-function.md), and [update it](update-function.md) if necessary\. When you're ready to use your function with a CloudFront distribution, you [publish the function](publish-function.md), which copies it from the `DEVELOPMENT` stage to `LIVE`\. When it's in the `LIVE` stage, you can [associate the function with a distribution's cache behavior](associate-function.md)\.
 
 You can create a function in the CloudFront console or with the AWS Command Line Interface \(AWS CLI\)\.
 
@@ -50,9 +50,6 @@ aws cloudfront create-function \
 ```
 
 When the command is successful, you see output like the following that describes the function that was just created\.
-
-**Note**  
-The following output is formatted as a YAML string\. This feature is only available in version 2 of the AWS CLI\. For more information, see [Setting the AWS CLI output format]() in the *AWS Command Line Interface User Guide*\.
 
 ```
 ETag: ETVABCEXAMPLE
